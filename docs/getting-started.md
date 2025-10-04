@@ -22,8 +22,8 @@ Add the following dependency to your Maven `pom.xml`:
 
 ```xml
 <dependency>
-  <groupId>com.skyapi</groupId>
-  <artifactId>skyapi-java</artifactId>
+  <groupId>com.MenschMachine</groupId>
+  <artifactId>MenschMachine-java</artifactId>
   <version>1.0.0</version>
 </dependency>
 ```
@@ -35,7 +35,7 @@ Add the following dependency to your Maven `pom.xml`:
 Install from PyPI:
 
 ```bash
-pip install skyapi
+pip install MenschMachine
 ```
 
   </TabItem>
@@ -45,7 +45,7 @@ pip install skyapi
 Install from npm:
 
 ```bash
-npm install skyapi
+npm install MenschMachine
 ```
 
   </TabItem>
@@ -62,7 +62,7 @@ npm install skyapi
 
 
 ```java
-import com.skyapi.Client;
+import com.MenschMachine.Client;
 
 public class Main {
     public static void main(String[] args) {
@@ -77,7 +77,7 @@ public class Main {
 
 
 ```python
-from skyapi import Client
+from MenschMachine import Client
 
 client = Client("API_KEY")
 print(client.get_user("123"))
@@ -88,7 +88,7 @@ print(client.get_user("123"))
 
 
 ```ts
-import { Client } from "skyapi";
+import { Client } from "MenschMachine";
 
 const client = new Client("API_KEY");
 console.log(await client.getUser("123"));

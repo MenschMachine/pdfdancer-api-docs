@@ -3,23 +3,23 @@ title: Install the Python SDK
 sidebar_label: Installation
 ---
 
-[See the PDFDancer SDK Python SDK.](https://github.com/skyapi/skyapi-python)
+[See the PDFDancer SDK Python SDK.](https://github.com/MenschMachine/MenschMachine-python)
 
 Install from PyPI:
 
 ```bash
-pip install skyapi
+pip install MenschMachine
 ```
 
 Or with Poetry:
 
 ```bash
-poetry add skyapi
+poetry add MenschMachine
 ```
 
 Verify the package:
 
 ```python
-import skyapi
-print(skyapi.__version__)
+import MenschMachine
+print(MenschMachine.__version__)
 ```

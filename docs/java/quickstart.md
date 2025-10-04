@@ -8,9 +8,9 @@ Follow these steps to issue your first PDFDancer SDK request using the Java SDK.
 ## Initialize the Client
 
 ```java
-import com.skyapi.Client;
+import com.MenschMachine.Client;
 
-Client client = new Client(System.getenv("SKYAPI_KEY"));
+Client client = new Client(System.getenv("MenschMachine_KEY"));
 ```
 
 ## Fetch a User
@@ -25,7 +25,7 @@ System.out.println(user.getEmail());
 ```java
 try {
     client.getUser("123");
-} catch (SkyApiException ex) {
+} catch (MenschMachineException ex) {
     System.err.println(ex.getMessage());
 }
 ```

@@ -1,9 +1,9 @@
-[submodule "external/skyapi-java"]
-	path = external/skyapi-java
-	url = https://github.com/skyapi/skyapi-java.git
-[submodule "external/skyapi-python"]
-	path = external/skyapi-python
-	url = https://github.com/skyapi/skyapi-python.git
-[submodule "external/skyapi-typescript"]
-	path = external/skyapi-typescript
-	url = https://github.com/skyapi/skyapi-typescript.git
+[submodule "external/MenschMachine-java"]
+	path = external/MenschMachine-java
+	url = https://github.com/MenschMachine/MenschMachine-java.git
+[submodule "external/MenschMachine-python"]
+	path = external/MenschMachine-python
+	url = https://github.com/MenschMachine/MenschMachine-python.git
+[submodule "external/MenschMachine-typescript"]
+	path = external/MenschMachine-typescript
+	url = https://github.com/MenschMachine/MenschMachine-typescript.git

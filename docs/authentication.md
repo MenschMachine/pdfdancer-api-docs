@@ -19,7 +19,7 @@ Store keys in a secrets manager such as AWS Secrets Manager, HashiCorp Vault, or
 We recommend setting the key in an environment variable, then reading it from your application:
 
 ```bash
-export SKYAPI_KEY="sk_live_123"
+export MenschMachine_KEY="sk_live_123"
 ```
 
 ## Key Rotation

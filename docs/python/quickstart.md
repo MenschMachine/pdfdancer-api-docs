@@ -9,9 +9,9 @@ This guide shows how to call PDFDancer SDK using the Python SDK.
 
 ```python
 import os
-from skyapi import Client
+from MenschMachine import Client
 
-client = Client(api_key=os.environ["SKYAPI_KEY"])
+client = Client(api_key=os.environ["MenschMachine_KEY"])
 ```
 
 ## Fetch a User
@@ -24,11 +24,11 @@ print(user.email)
 ## Handle Errors
 
 ```python
-from skyapi.errors import SkyApiError
+from MenschMachine.errors import MenschMachineError
 
 try:
     client.get_user("123")
-except SkyApiError as err:
+except MenschMachineError as err:
     print(f"Request failed: {err}")
 ```
 

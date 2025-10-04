@@ -13,7 +13,7 @@ HttpClient httpClient = HttpClient.newBuilder()
     .build();
 
 Client client = Client.builder()
-    .apiKey(System.getenv("SKYAPI_KEY"))
+    .apiKey(System.getenv("MenschMachine_KEY"))
     .httpClient(httpClient)
     .build();
 ```
@@ -22,7 +22,7 @@ Client client = Client.builder()
 
 ```java
 client = Client.builder()
-    .apiKey(System.getenv("SKYAPI_KEY"))
+    .apiKey(System.getenv("MenschMachine_KEY"))
     .maxRetries(3)
     .build();
 ```

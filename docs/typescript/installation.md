@@ -3,22 +3,22 @@ title: Install the TypeScript SDK
 sidebar_label: Installation
 ---
 
-[See the PDFDancer SDK TypeScript SDK.](https://github.com/skyapi/skyapi-typescript)
+[See the PDFDancer SDK TypeScript SDK.](https://github.com/MenschMachine/MenschMachine-typescript)
 
 Install with npm:
 
 ```bash
-npm install skyapi
+npm install MenschMachine
 ```
 
 Or with pnpm:
 
 ```bash
-pnpm add skyapi
+pnpm add MenschMachine
 ```
 
 Or with Yarn:
 
 ```bash
-yarn add skyapi
+yarn add MenschMachine
 ```

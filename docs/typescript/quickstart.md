@@ -8,9 +8,9 @@ Use the TypeScript SDK to call PDFDancer SDK from Node.js or browser environment
 ## Initialize the Client
 
 ```ts
-import { Client } from "skyapi";
+import { Client } from "MenschMachine";
 
-const client = new Client({ apiKey: process.env.SKYAPI_KEY! });
+const client = new Client({ apiKey: process.env.MenschMachine_KEY! });
 ```
 
 ## Fetch a User
@@ -26,7 +26,7 @@ console.log(user.email);
 try {
   await client.getUser("123");
 } catch (error) {
-  if (error instanceof SkyApiError) {
+  if (error instanceof MenschMachineError) {
     console.error(error.message);
   }
 }

@@ -8,11 +8,11 @@ Advanced patterns for using the TypeScript SDK.
 ## Custom Fetch Implementation
 
 ```ts
-import { Client } from "skyapi";
+import { Client } from "MenschMachine";
 import fetch from "node-fetch";
 
 const client = new Client({
-  apiKey: process.env.SKYAPI_KEY!,
+  apiKey: process.env.MenschMachine_KEY!,
   fetchImplementation: fetch,
 });
 ```
@@ -21,7 +21,7 @@ const client = new Client({
 
 ```ts
 const client = new Client({
-  apiKey: process.env.SKYAPI_KEY!,
+  apiKey: process.env.MenschMachine_KEY!,
   maxRetries: 3,
   timeout: 5000,
 });
