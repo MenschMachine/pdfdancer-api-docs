@@ -3,7 +3,7 @@ title: Python Quickstart
 sidebar_label: Quickstart
 ---
 
-This guide shows how to call SkyAPI using the Python SDK.
+This guide shows how to call PDFDancer SDK using the Python SDK.
 
 ## Initialize the Client
 

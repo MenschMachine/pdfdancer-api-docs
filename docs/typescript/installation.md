@@ -3,7 +3,7 @@ title: Install the TypeScript SDK
 sidebar_label: Installation
 ---
 
-[See the SkyAPI TypeScript SDK.](https://github.com/skyapi/skyapi-typescript)
+[See the PDFDancer SDK TypeScript SDK.](https://github.com/skyapi/skyapi-typescript)
 
 Install with npm:
 

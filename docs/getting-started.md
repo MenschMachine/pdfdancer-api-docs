@@ -1,13 +1,14 @@
 ---
 id: getting-started
-title: Getting Started with SkyAPI
-description: Learn how to install the SkyAPI SDKs and make your first request.
+slug: /
+title: Getting Started with PDFDancer SDK
+description: Learn how to install the PDFDancer SDK SDKs and make your first request.
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-SkyAPI makes it simple to connect to our platform from your favorite programming language.  
+PDFDancer SDK makes it simple to connect to our platform from your favorite programming language.  
 This guide walks you through the basics of setting up a client and making your first request.
 
 ---

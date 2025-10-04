@@ -3,7 +3,7 @@ title: Install the Python SDK
 sidebar_label: Installation
 ---
 
-[See the SkyAPI Python SDK.](https://github.com/skyapi/skyapi-python)
+[See the PDFDancer SDK Python SDK.](https://github.com/skyapi/skyapi-python)
 
 Install from PyPI:
 

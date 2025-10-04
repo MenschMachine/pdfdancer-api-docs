@@ -1,14 +1,14 @@
 ---
 id: authentication
 title: Authentication
-description: Manage API credentials and configure your SkyAPI clients securely.
+description: Manage API credentials and configure your PDFDancer SDK clients securely.
 ---
 
-SkyAPI uses API keys to authenticate requests. Each key is tied to a workspace and can be scoped to specific permissions.
+PDFDancer SDK uses API keys to authenticate requests. Each key is tied to a workspace and can be scoped to specific permissions.
 
 ## Create an API Key
 
-1. Sign into the SkyAPI Console.
+1. Sign into the PDFDancer SDK Console.
 2. Navigate to **Settings → API Keys**.
 3. Click **Generate Key**, provide a descriptive name, and copy the generated secret.
 

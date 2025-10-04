@@ -3,7 +3,7 @@ title: Java Quickstart
 sidebar_label: Quickstart
 ---
 
-Follow these steps to issue your first SkyAPI request using the Java SDK.
+Follow these steps to issue your first PDFDancer SDK request using the Java SDK.
 
 ## Initialize the Client
 

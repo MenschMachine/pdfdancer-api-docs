@@ -5,8 +5,8 @@ import type * as Preset from '@docusaurus/preset-classic';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-    title: 'SkyAPI Docs',
-    tagline: 'Unified guides for every SkyAPI SDK',
+    title: 'PDFDancer SDK Docs',
+    tagline: 'Unified guides for every PDFDancer SDK SDK',
     favicon: 'img/favicon.ico',
 
     // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -41,9 +41,6 @@ const config: Config = {
             {
                 docs: {
                     sidebarPath: './sidebars.ts',
-                    // Please change this to your repo.
-                    // Remove this to remove the "edit this page" links.
-                    editUrl: undefined,
                 },
                 blog: false,
                 theme: {
@@ -60,9 +57,9 @@ const config: Config = {
             respectPrefersColorScheme: true,
         },
         navbar: {
-            title: 'SkyAPI',
+            title: 'PDFDancer SDK',
             logo: {
-                alt: 'SkyAPI Logo',
+                alt: 'PDFDancer SDK Logo',
                 src: 'img/logo.svg',
             },
             items: [
@@ -87,7 +84,7 @@ const config: Config = {
                     items: [
                         {
                             label: 'Getting Started',
-                            to: '/docs/getting-started',
+                            to: '/docs/',
                         },
                     ],
                 },

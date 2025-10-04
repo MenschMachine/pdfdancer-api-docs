@@ -3,7 +3,7 @@ title: TypeScript Quickstart
 sidebar_label: Quickstart
 ---
 
-Use the TypeScript SDK to call SkyAPI from Node.js or browser environments.
+Use the TypeScript SDK to call PDFDancer SDK from Node.js or browser environments.
 
 ## Initialize the Client
 

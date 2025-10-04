@@ -3,7 +3,7 @@ title: Install the Java SDK
 sidebar_label: Installation
 ---
 
-[See the SkyAPI Java SDK.](https://github.com/skyapi/skyapi-java)
+[See the PDFDancer SDK Java SDK.](https://github.com/skyapi/skyapi-java)
 
 Install via Maven by adding the dependency to your `pom.xml`:
 

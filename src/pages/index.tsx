@@ -21,7 +21,7 @@ function HomepageHeader() {
           <Link
             className="button button--secondary button--lg"
             to="/docs/getting-started">
-            Get Started with SkyAPI
+            Get Started with PDFDancer SDK
           </Link>
         </div>
       </div>
