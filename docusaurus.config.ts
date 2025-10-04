@@ -23,7 +23,7 @@ const config: Config = {
     // GitHub pages deployment config.
     // If you aren't using GitHub pages, you don't need these.
     organizationName: 'skyapi', // Usually your GitHub org/user name.
-    projectName: 'skyapi-docs', // Usually your repo name.
+    projectName: 'pdfdamcer-api-docs', // Usually your repo name.
 
     onBrokenLinks: 'throw',
 
@@ -70,7 +70,7 @@ const config: Config = {
                     label: 'Docs',
                 },
                 {
-                    href: 'https://github.com/skyapi/skyapi-docs',
+                    href: 'https://github.com/skyapi/pdfdamcer-api-docs',
                     label: 'GitHub',
                     position: 'right',
                 },
