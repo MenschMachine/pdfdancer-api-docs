@@ -61,7 +61,7 @@ const config: Config = {
             title: 'PDFDancer SDK',
             logo: {
                 alt: 'PDFDancer SDK Logo',
-                src: 'img/logo.svg',
+                src: 'img/logo-512h.webp',
             },
             items: [
                 {
