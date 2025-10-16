@@ -606,4 +606,4 @@ await pdf.save('output.pdf');
 ## Next Steps
 
 - [**Advanced**](advanced.md) – Learn advanced patterns and optimization techniques
-- [**Examples**](examples.md) – See complete working examples with error handling
+- [**Examples**](cookbook.md) – See complete working examples with error handling

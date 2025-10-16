@@ -626,4 +626,4 @@ await pdf.save('output.pdf');
 
 - [**Adding Content**](adding-content.md) – Learn how to add new paragraphs and images
 - [**Advanced**](advanced.md) – Custom fonts, complex workflows, and optimization
-- [**Examples**](examples.md) – See complete working examples
+- [**Examples**](cookbook.md) – See complete working examples

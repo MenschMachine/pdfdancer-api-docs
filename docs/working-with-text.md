@@ -1,7 +1,7 @@
 ---
-id: selecting-content
-title: Selecting PDF Content
-description: Learn how to find and select paragraphs, images, text lines, forms, and paths in PDFs.
+id: working-with-text
+title: Working with Text
+description: Learn how to find, select, and manipulate text content in PDFs including paragraphs and text lines.
 ---
 
 import Tabs from '@theme/Tabs';
@@ -539,4 +539,4 @@ const combined = [...page0Paras, ...page1Paras];
 
 - [**Editing Content**](editing-content.md) – Learn how to modify selected content
 - [**Adding Content**](adding-content.md) – Add new paragraphs and images
-- [**Examples**](examples.md) – See complete working examples
+- [**Examples**](cookbook.md) – See complete working examples

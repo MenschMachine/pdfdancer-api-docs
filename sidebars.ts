@@ -5,12 +5,14 @@ const sidebars: SidebarsConfig = {
         'getting-started',
         'authentication',
         'quickstart',
-        'selecting-content',
-        'editing-content',
-        'adding-content',
-        'error-handling',
-        'advanced',
-        'examples'
+        'working-with-text',
+        'working-with-images',
+        'working-with-acroforms',
+        'working-with-formxobjects',
+        'working-with-vector-graphics',
+        'working-with-fonts',
+        'positioning',
+        'cookbook'
     ],
 };
 

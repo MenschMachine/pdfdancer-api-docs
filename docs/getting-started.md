@@ -176,6 +176,6 @@ run().catch(console.error);
 
 - [**Authentication**](authentication.md) – Learn how to securely manage API tokens
 - [**Quickstart**](quickstart.md) – Dive deeper into basic PDF operations
-- [**Selecting Content**](selecting-content.md) – Find paragraphs, images, and forms
+- [**Selecting Content**](working-with-text.md) – Find paragraphs, images, and forms
 - [**Editing Content**](editing-content.md) – Modify existing PDF content
 - [**Adding Content**](adding-content.md) – Insert new paragraphs and images

@@ -557,4 +557,4 @@ await pdf.save('output.pdf');
 
 - [**Error Handling**](error-handling.md) – Handle exceptions when adding content
 - [**Advanced**](advanced.md) – Complex workflows and optimization techniques
-- [**Examples**](examples.md) – See complete working examples
+- [**Examples**](cookbook.md) – See complete working examples

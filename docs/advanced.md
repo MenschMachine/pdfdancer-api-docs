@@ -618,5 +618,5 @@ await pdf.save('output.pdf');
 
 ## Next Steps
 
-- [**Examples**](examples.md) – See complete cookbook-style examples
+- [**Examples**](cookbook.md) – See complete cookbook-style examples
 - [**Error Handling**](error-handling.md) – Review error handling best practices

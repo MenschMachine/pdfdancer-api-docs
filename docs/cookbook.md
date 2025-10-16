@@ -1,6 +1,6 @@
 ---
-id: examples
-title: Cookbook Examples
+id: cookbook
+title: Cookbook
 description: Complete working examples for common PDF manipulation tasks.
 ---
 
