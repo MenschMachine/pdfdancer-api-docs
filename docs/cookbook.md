@@ -11,6 +11,129 @@ This page provides complete, copy-paste ready examples for common PDF manipulati
 
 ---
 
+## Creating a New PDF
+
+### Create PDF from Scratch
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+from pdfdancer import PDFDancer, Color
+
+def create_new_pdf(output_path: str) -> None:
+    """Create a new PDF with multiple pages and content."""
+    # Create a new blank PDF with Letter size pages (612 x 792 points)
+    pdf = PDFDancer.create(width=612, height=792)
+
+    # Add title on first page
+    pdf.new_paragraph() \
+        .text("Sample Document") \
+        .font("Helvetica-Bold", 24) \
+        .color(Color(0, 0, 128)) \
+        .at(page_index=0, x=100, y=720) \
+        .add()
+
+    # Add body text
+    pdf.new_paragraph() \
+        .text("This is a new PDF document created from scratch.") \
+        .font("Helvetica", 12) \
+        .color(Color(0, 0, 0)) \
+        .at(page_index=0, x=100, y=680) \
+        .add()
+
+    # Add a second page
+    pdf.add_page(width=612, height=792)
+
+    # Add content to second page
+    pdf.new_paragraph() \
+        .text("Page 2 Content") \
+        .font("Helvetica-Bold", 18) \
+        .color(Color(0, 0, 0)) \
+        .at(page_index=1, x=100, y=720) \
+        .add()
+
+    # Add footer on both pages
+    for page_num in range(2):
+        pdf.new_paragraph() \
+            .text(f"Page {page_num + 1} of 2") \
+            .font("Helvetica", 10) \
+            .color(Color(128, 128, 128)) \
+            .at(page_index=page_num, x=280, y=30) \
+            .add()
+
+    pdf.save(output_path)
+
+
+# Usage
+create_new_pdf("output/new_document.pdf")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+import { PDFDancer, Color } from 'pdfdancer-client-typescript';
+
+async function createNewPdf(outputPath: string): Promise<void> {
+  /**
+   * Create a new PDF with multiple pages and content.
+   */
+  // Create a new blank PDF with Letter size pages (612 x 792 points)
+  const pdf = await PDFDancer.create(612, 792);
+
+  // Add title on first page
+  await pdf.page(0).newParagraph()
+    .text('Sample Document')
+    .font('Helvetica-Bold', 24)
+    .color(new Color(0, 0, 128))
+    .at(100, 720)
+    .apply();
+
+  // Add body text
+  await pdf.page(0).newParagraph()
+    .text('This is a new PDF document created from scratch.')
+    .font('Helvetica', 12)
+    .color(new Color(0, 0, 0))
+    .at(100, 680)
+    .apply();
+
+  // Add a second page
+  await pdf.addPage(612, 792);
+
+  // Add content to second page
+  await pdf.page(1).newParagraph()
+    .text('Page 2 Content')
+    .font('Helvetica-Bold', 18)
+    .color(new Color(0, 0, 0))
+    .at(100, 720)
+    .apply();
+
+  // Add footer on both pages
+  for (let pageNum = 0; pageNum < 2; pageNum++) {
+    await pdf.page(pageNum).newParagraph()
+      .text(`Page ${pageNum + 1} of 2`)
+      .font('Helvetica', 10)
+      .color(new Color(128, 128, 128))
+      .at(280, 30)
+      .apply();
+  }
+
+  await pdf.save(outputPath);
+}
+
+// Usage
+await createNewPdf('output/new_document.pdf');
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+  </TabItem>
+</Tabs>
+
+---
+
 ## Invoice Processing
 
 ### Mark Invoice as Paid
