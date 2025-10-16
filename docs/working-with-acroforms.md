@@ -47,7 +47,7 @@ const allFields = await pdf.selectFormFields();
 const pageFields = await pdf.page(1).selectFormFields();
 
 for (const field of pageFields) {
-  console.log(`Field: ${field.name}, Type: ${field.objectType}`);
+  console.log(`Field: ${field.name}, Type: ${field.type}`);
 }
 ```
 

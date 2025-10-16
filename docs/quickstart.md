@@ -84,7 +84,7 @@ with PDFDancer.open("document.pdf") as pdf:
 
     # Iterate through pages
     for i, page in enumerate(all_pages):
-        print(f"Page {i}: {page.get().internal_id}")
+        print(f"Page {i}: {page.internal_id}")
 ```
 
   </TabItem>
@@ -119,7 +119,7 @@ for (const [i, page] of allPages.entries()) {
 
 ```python
 with PDFDancer.open("document.pdf") as pdf:
-    page = pdf.page(0).get()
+    page = pdf.page(0)
 
     print(f"Page ID: {page.internal_id}")
     print(f"Position: {page.position.bounding_rect}")
