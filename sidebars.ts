@@ -4,6 +4,7 @@ const sidebars: SidebarsConfig = {
     docs: [
         'getting-started',
         'authentication',
+        'concepts',
         'quickstart',
         'working-with-pages',
         'working-with-text',
