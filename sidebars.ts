@@ -5,6 +5,7 @@ const sidebars: SidebarsConfig = {
         'getting-started',
         'authentication',
         'quickstart',
+        'working-with-pages',
         'working-with-text',
         'working-with-images',
         'working-with-acroforms',
