@@ -16,16 +16,13 @@ This guide walks you through the basics of setting up a client and making your f
 ## Installation
 
 <Tabs>
-  <TabItem value="java" label="Java">
+  <TabItem value="typescript" label="TypeScript">
 
-Add the following dependency to your Maven `pom.xml`:
 
-```xml
-<dependency>
-  <groupId>com.MenschMachine</groupId>
-  <artifactId>MenschMachine-java</artifactId>
-  <version>1.0.0</version>
-</dependency>
+Install from npm:
+
+```bash
+npm install MenschMachine
 ```
 
   </TabItem>
@@ -39,13 +36,17 @@ pip install MenschMachine
 ```
 
   </TabItem>
-  <TabItem value="typescript" label="TypeScript">
+  <TabItem value="java" label="Java">
 
+Add the following dependency to your Maven `pom.xml`:
 
-Install from npm:
+```xml
 
-```bash
-npm install MenschMachine
+<dependency>
+    <groupId>com.MenschMachine</groupId>
+    <artifactId>MenschMachine-java</artifactId>
+    <version>1.0.0</version>
+</dependency>
 ```
 
   </TabItem>
@@ -58,8 +59,27 @@ npm install MenschMachine
 ## Initialize the Client
 
 <Tabs>
-  <TabItem value="java" label="Java">
+  <TabItem value="typescript" label="TypeScript">
 
+```ts
+import {Client} from "MenschMachine";
+
+const client = new Client("API_KEY");
+console.log(await client.getUser("123"));
+```
+
+  </TabItem>
+  <TabItem value="python" label="Python">
+
+```python
+from MenschMachine import Client
+
+client = Client("API_KEY")
+print(client.get_user("123"))
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
 
 ```java
 import com.MenschMachine.Client;
@@ -70,28 +90,6 @@ public class Main {
         System.out.println(client.getUser("123"));
     }
 }
-```
-
-  </TabItem>
-  <TabItem value="python" label="Python">
-
-
-```python
-from MenschMachine import Client
-
-client = Client("API_KEY")
-print(client.get_user("123"))
-```
-
-  </TabItem>
-  <TabItem value="typescript" label="TypeScript">
-
-
-```ts
-import { Client } from "MenschMachine";
-
-const client = new Client("API_KEY");
-console.log(await client.getUser("123"));
 ```
 
   </TabItem>
