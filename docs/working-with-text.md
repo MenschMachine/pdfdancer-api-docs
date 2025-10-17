@@ -7,7 +7,7 @@ description: Learn how to find, select, and manipulate text content in PDFs incl
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-PDFDancer provides powerful selectors to find content within PDFs. You can search by page, coordinates, text content, or field names.
+PDFDancer provides powerful selectors to find text content within PDFs. You can search by page, coordinates, or text content.
 
 ---
 
