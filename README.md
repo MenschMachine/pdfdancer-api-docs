@@ -4,7 +4,8 @@ Unified documentation site for PDFDancer SDK across Java, Python, and TypeScript
 
 ## Overview
 
-This repository contains the API documentation for PDFDancer SDK, built with [Docusaurus](https://docusaurus.io/). The docs are automatically synced from the SDK repositories using git submodules and deployed via GitHub Actions.
+This repository contains the API documentation for PDFDancer SDK, built with [Docusaurus](https://docusaurus.io/). The
+docs are automatically synced from the SDK repositories using git submodules and deployed via GitHub Actions.
 
 ## Prerequisites
 
@@ -55,8 +56,6 @@ pdfdancer-api-docs/
 │   ├── MenschMachine-java/
 │   ├── MenschMachine-python/
 │   └── MenschMachine-typescript/
-├── scripts/
-│   └── sync-docs.sh       # Sync docs from submodules
 ├── docusaurus.config.ts   # Docusaurus configuration
 └── sidebars.ts           # Sidebar structure
 ```
@@ -71,39 +70,25 @@ pdfdancer-api-docs/
 4. Run type checking: `npm run typecheck`
 5. Build and verify: `npm run build`
 
-### Syncing SDK Documentation
-
-The `scripts/sync-docs.sh` script copies README files from SDK submodules:
-
-```bash
-./scripts/sync-docs.sh
-```
-
-This copies:
-- `external/MenschMachine-java/README.md` → `docs/java/installation.md`
-- `external/MenschMachine-python/README.md` → `docs/python/installation.md`
-- `external/MenschMachine-typescript/README.md` → `docs/typescript/installation.md`
-
 ### Updating SDK Submodules
 
 Pull latest changes from SDK repositories:
 
 ```bash
 git submodule update --remote --merge
-./scripts/sync-docs.sh
 git add .
 git commit -m "docs: sync SDK documentation"
 ```
 
 ## Available Commands
 
-| Command | Description |
-|---------|-------------|
-| `npm start` | Start development server |
-| `npm run build` | Build static site for production |
-| `npm run serve` | Serve built site locally |
-| `npm run typecheck` | Run TypeScript type checking |
-| `npm run clear` | Clear Docusaurus cache |
+| Command             | Description                      |
+|---------------------|----------------------------------|
+| `npm start`         | Start development server         |
+| `npm run build`     | Build static site for production |
+| `npm run serve`     | Serve built site locally         |
+| `npm run typecheck` | Run TypeScript type checking     |
+| `npm run clear`     | Clear Docusaurus cache           |
 
 ## Theming
 

@@ -1,13 +1,13 @@
 ---
 id: working-with-text
 title: Working with Text
-description: Learn how to find, select, and manipulate text content in PDFs including paragraphs and text lines.
+description: Learn how to find, add, edit, move, and delete text content in PDFs including paragraphs and text lines.
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-PDFDancer provides powerful selectors to find text content within PDFs. You can search by page, coordinates, or text content.
+PDFDancer provides comprehensive tools for working with text in PDFs. You can select existing text, add new paragraphs, edit content, move text, and delete paragraphs.
 
 ---
 
@@ -24,9 +24,11 @@ from pdfdancer import PDFDancer
 with PDFDancer.open("document.pdf") as pdf:
     # Get all paragraphs across the entire document
     all_paragraphs = pdf.select_paragraphs()
+    print(f"Total paragraphs: {len(all_paragraphs)}")
 
     # Get all paragraphs on a specific page
     page_paragraphs = pdf.page(0).select_paragraphs()
+    print(f"Page 0 paragraphs: {len(page_paragraphs)}")
 
     for para in page_paragraphs:
         print(f"Paragraph: {para.text[:50]}...")
@@ -42,9 +44,11 @@ const pdf = await PDFDancer.open(pdfBytes);
 
 // Get all paragraphs across the entire document
 const allParagraphs = await pdf.selectParagraphs();
+console.log(`Total paragraphs: ${allParagraphs.length}`);
 
 // Get all paragraphs on a specific page
 const pageParagraphs = await pdf.page(0).selectParagraphs();
+console.log(`Page 0 paragraphs: ${pageParagraphs.length}`);
 
 for (const para of pageParagraphs) {
   console.log(`Paragraph: ${para.text?.substring(0, 50)}...`);
@@ -68,10 +72,12 @@ with PDFDancer.open("invoice.pdf") as pdf:
     headers = pdf.select_paragraphs_starting_with("Invoice #")
 
     # On a specific page
-    page_headers = pdf.page(0).select_paragraphs_starting_with("Total Amount:")
+    page_headers = pdf.page(0).select_paragraphs_starting_with("The Complete")
 
     if page_headers:
-        print(f"Found: {page_headers[0].text}")
+        para = page_headers[0]
+        print(f"Found: {para.text}")
+        print(f"Position: ({para.position.x()}, {para.position.y()})")
 ```
 
   </TabItem>
@@ -84,10 +90,12 @@ const pdf = await PDFDancer.open(pdfBytes);
 const headers = await pdf.selectParagraphsStartingWith('Invoice #');
 
 // On a specific page
-const pageHeaders = await pdf.page(0).selectParagraphsStartingWith('Total Amount:');
+const pageHeaders = await pdf.page(0).selectParagraphsStartingWith('The Complete');
 
 if (pageHeaders.length > 0) {
-  console.log(`Found: ${pageHeaders[0].text}`);
+  const para = pageHeaders[0];
+  console.log(`Found: ${para.text}`);
+  console.log(`Position: (${para.position.x}, ${para.position.y})`);
 }
 ```
 
@@ -103,15 +111,11 @@ if (pageHeaders.length > 0) {
   <TabItem value="python" label="Python">
 
 ```python
-from pdfdancer import Position
+from pdfdancer import PDFDancer
 
 with PDFDancer.open("document.pdf") as pdf:
     # Find paragraphs at specific coordinates
     paragraphs = pdf.page(0).select_paragraphs_at(x=150, y=320)
-
-    # Using Position helper
-    position = Position.at_page_coordinates(page=0, x=150, y=320)
-    paragraphs = pdf.select_paragraphs_at(position)
 
     for para in paragraphs:
         print(f"Paragraph at position: {para.text}")
@@ -121,19 +125,12 @@ with PDFDancer.open("document.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-import { PDFDancer, Position } from 'pdfdancer-client-typescript';
+import { PDFDancer } from 'pdfdancer-client-typescript';
 
 const pdf = await PDFDancer.open(pdfBytes);
 
 // Find paragraphs at specific coordinates
 const paragraphs = await pdf.page(0).selectParagraphsAt(150, 320);
-
-// Using Position helper
-const position = Position.atPageCoordinates(0, 150, 320);
-const paragraphsAtPos = await pdf.page(0).selectParagraphsAt(
-  position.getX()!,
-  position.getY()!
-);
 
 for (const para of paragraphs) {
   console.log(`Paragraph at position: ${para.text}`);
@@ -148,7 +145,622 @@ for (const para of paragraphs) {
 
 ---
 
+## Adding Paragraphs
+
+### Basic Paragraph with Standard Font
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+from pdfdancer import PDFDancer, StandardFonts, Color
+
+with PDFDancer.open("document.pdf") as pdf:
+    # Add a simple paragraph with standard font
+    pdf.new_paragraph() \
+        .text("Standard Font Test\nHelvetica Bold") \
+        .font(StandardFonts.HELVETICA_BOLD.value, 16) \
+        .line_spacing(1.2) \
+        .color(Color(255, 0, 0)) \
+        .at(0, 100, 100) \
+        .add()
+
+    pdf.save("output.pdf")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+import { PDFDancer, Color } from 'pdfdancer-client-typescript';
+
+const pdf = await PDFDancer.open(pdfBytes);
+
+// Add a simple paragraph with standard font
+await pdf.page(0).newParagraph()
+  .text('Standard Font Test\nHelvetica Bold')
+  .font('Helvetica-Bold', 16)
+  .lineSpacing(1.2)
+  .color(new Color(255, 0, 0))
+  .at(100, 100)
+  .apply();
+
+await pdf.save('output.pdf');
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+  </TabItem>
+</Tabs>
+
+### Adding to Specific Page
+
+You can add paragraphs directly to a specific page using two syntaxes:
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+from pdfdancer import PDFDancer, StandardFonts
+
+with PDFDancer.open("document.pdf") as pdf:
+    # Method 1: Specify page index in at()
+    pdf.new_paragraph() \
+        .text("Times Roman Test") \
+        .font(StandardFonts.TIMES_ROMAN.value, 14) \
+        .at(0, 150, 150) \
+        .add()
+
+    # Method 2: Use page() to scope the builder
+    pdf.page(0).new_paragraph() \
+        .text("Awesomely\nObvious!") \
+        .font("Roboto-Regular", 14) \
+        .line_spacing(0.7) \
+        .at(300.1, 500) \
+        .add()
+
+    pdf.save("output.pdf")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+const pdf = await PDFDancer.open(pdfBytes);
+
+// Add to specific page
+await pdf.page(0).newParagraph()
+  .text('Times Roman Test')
+  .font('Times-Roman', 14)
+  .at(150, 150)
+  .apply();
+
+await pdf.save('output.pdf');
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+  </TabItem>
+</Tabs>
+
+### Multi-line Paragraph with Courier
+
+Monospace fonts like Courier are perfect for code examples:
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+from pdfdancer import PDFDancer, StandardFonts
+
+with PDFDancer.open("document.pdf") as pdf:
+    # Add multi-line code example with Courier
+    pdf.new_paragraph() \
+        .text("Courier Monospace\nCode Example") \
+        .font(StandardFonts.COURIER_BOLD.value, 12) \
+        .line_spacing(1.5) \
+        .at(0, 200, 200) \
+        .add()
+
+    pdf.save("output.pdf")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+const pdf = await PDFDancer.open(pdfBytes);
+
+// Add multi-line code example with Courier
+await pdf.page(0).newParagraph()
+  .text('Courier Monospace\nCode Example')
+  .font('Courier-Bold', 12)
+  .lineSpacing(1.5)
+  .at(200, 200)
+  .apply();
+
+await pdf.save('output.pdf');
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+  </TabItem>
+</Tabs>
+
+### Using Custom TTF Fonts
+
+You can use custom TrueType fonts directly without pre-registration:
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+from pathlib import Path
+from pdfdancer import PDFDancer, Color
+
+with PDFDancer.open("document.pdf") as pdf:
+    # Use custom font file directly
+    ttf_path = Path("fonts/DancingScript-Regular.ttf")
+
+    pdf.new_paragraph() \
+        .text("Awesomely\nObvious!") \
+        .font_file(ttf_path, 24) \
+        .line_spacing(1.8) \
+        .color(Color(0, 0, 255)) \
+        .at(0, 300.1, 500) \
+        .add()
+
+    pdf.save("output.pdf")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+import { PDFDancer, Color } from 'pdfdancer-client-typescript';
+import { promises as fs } from 'node:fs';
+
+const pdf = await PDFDancer.open(pdfBytes);
+
+// Use custom font file directly
+const fontBytes = await fs.readFile('fonts/DancingScript-Regular.ttf');
+
+await pdf.page(0).newParagraph()
+  .text('Awesomely\nObvious!')
+  .fontFile(fontBytes, 24)
+  .lineSpacing(1.8)
+  .color(new Color(0, 0, 255))
+  .at(300.1, 500)
+  .apply();
+
+await pdf.save('output.pdf');
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+  </TabItem>
+</Tabs>
+
+### Using Service Fonts with find_fonts()
+
+You can search for fonts available on the PDFDancer service:
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+from pdfdancer import PDFDancer
+
+with PDFDancer.open("document.pdf") as pdf:
+    # Find fonts matching "Roboto" at size 14
+    fonts = pdf.find_fonts("Roboto", 14)
+
+    if fonts:
+        # Use the first match (e.g., "Roboto-Regular")
+        roboto = fonts[0]
+        print(f"Using: {roboto.name} at {roboto.size}pt")
+
+        pdf.new_paragraph() \
+            .text("Awesomely\nObvious!") \
+            .font(roboto.name, roboto.size) \
+            .line_spacing(0.7) \
+            .at(0, 300.1, 500) \
+            .add()
+
+    pdf.save("output.pdf")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+// TypeScript uses font names directly
+const pdf = await PDFDancer.open(pdfBytes);
+
+await pdf.page(0).newParagraph()
+  .text('Text with service font')
+  .font('Roboto-Regular', 14)
+  .lineSpacing(0.7)
+  .at(300.1, 500)
+  .apply();
+
+await pdf.save('output.pdf');
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+  </TabItem>
+</Tabs>
+
+---
+
+## Editing Paragraphs
+
+### Basic Text Replacement
+
+The simplest way to edit a paragraph is to replace its text content:
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+from pdfdancer import PDFDancer
+
+with PDFDancer.open("document.pdf") as pdf:
+    # Find a paragraph by text prefix
+    paragraph = pdf.page(0).select_paragraphs_starting_with("The Complete")[0]
+
+    # Replace just the text (keeps position, font, etc.)
+    paragraph.edit().replace("Awesomely\nObvious!").apply()
+
+    pdf.save("output.pdf")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+import { PDFDancer } from 'pdfdancer-client-typescript';
+
+const pdf = await PDFDancer.open(pdfBytes);
+
+// Find a paragraph by text prefix
+const paragraphs = await pdf.page(0).selectParagraphsStartingWith('The Complete');
+
+if (paragraphs.length > 0) {
+  // Replace just the text (keeps position, font, etc.)
+  await paragraphs[0].edit()
+    .replace('Awesomely\nObvious!')
+    .apply();
+}
+
+await pdf.save('output.pdf');
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+  </TabItem>
+</Tabs>
+
+### Editing Text Without Changing Position
+
+When you edit text without specifying a new position, the paragraph stays in its original location:
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+from pdfdancer import PDFDancer
+
+with PDFDancer.open("document.pdf") as pdf:
+    paragraph = pdf.page(0).select_paragraphs_starting_with("The Complete")[0]
+    original_x = paragraph.position.x()
+    original_y = paragraph.position.y()
+
+    # Edit text and font, keeping original position
+    paragraph.edit() \
+        .replace("Awesomely\nObvious!") \
+        .font("Helvetica", 12) \
+        .line_spacing(0.7) \
+        .apply()
+
+    # Verify position unchanged
+    new_para = pdf.page(0).select_paragraphs_starting_with("Awesomely")[0]
+    assert new_para.position.x() == original_x
+    assert new_para.position.y() == original_y
+
+    pdf.save("output.pdf")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+const pdf = await PDFDancer.open(pdfBytes);
+const paragraphs = await pdf.page(0).selectParagraphsStartingWith('The Complete');
+
+if (paragraphs.length > 0) {
+  const paragraph = paragraphs[0];
+  const originalX = paragraph.position.x;
+  const originalY = paragraph.position.y;
+
+  // Edit text and font, keeping original position
+  await paragraph.edit()
+    .replace('Awesomely\nObvious!')
+    .font('Helvetica', 12)
+    .lineSpacing(0.7)
+    .apply();
+
+  const newPara = (await pdf.page(0).selectParagraphsStartingWith('Awesomely'))[0];
+  console.log(`Position unchanged: ${newPara.position.x}, ${newPara.position.y}`);
+}
+
+await pdf.save('output.pdf');
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+  </TabItem>
+</Tabs>
+
+### Chaining Multiple Edits
+
+You can chain multiple edits together, including text, font, color, spacing, and position:
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+from pdfdancer import PDFDancer
+
+with PDFDancer.open("document.pdf") as pdf:
+    paragraph = pdf.page(0).select_paragraphs_starting_with("The Complete")[0]
+
+    # Chain multiple edits: text, font, spacing, AND position
+    paragraph.edit() \
+        .replace("Awesomely\nObvious!") \
+        .font("Helvetica", 12) \
+        .line_spacing(0.7) \
+        .move_to(300.1, 500) \
+        .apply()
+
+    pdf.save("output.pdf")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+import { PDFDancer } from 'pdfdancer-client-typescript';
+
+const pdf = await PDFDancer.open(pdfBytes);
+const paragraphs = await pdf.page(0).selectParagraphsStartingWith('The Complete');
+
+if (paragraphs.length > 0) {
+  // Chain multiple edits: text, font, spacing, AND position
+  await paragraphs[0].edit()
+    .replace('Awesomely\nObvious!')
+    .font('Helvetica', 12)
+    .lineSpacing(0.7)
+    .moveTo(300.1, 500)
+    .apply();
+}
+
+await pdf.save('output.pdf');
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+  </TabItem>
+</Tabs>
+
+### Changing Only Font
+
+You can change just the font without modifying the text content:
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+from pdfdancer import PDFDancer
+
+with PDFDancer.open("document.pdf") as pdf:
+    paragraph = pdf.page(0).select_paragraphs_starting_with("The Complete")[0]
+
+    # Change only the font, keep everything else
+    paragraph.edit() \
+        .font("Helvetica", 28) \
+        .apply()
+
+    # Verify font changed
+    line = pdf.page(0).select_text_lines_starting_with("The Complete")[0]
+    assert line.object_ref().font_name == "Helvetica"
+    assert line.object_ref().font_size == 28
+
+    pdf.save("output.pdf")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+const pdf = await PDFDancer.open(pdfBytes);
+const paragraphs = await pdf.page(0).selectParagraphsStartingWith('The Complete');
+
+if (paragraphs.length > 0) {
+  // Change only the font, keep everything else
+  await paragraphs[0].edit()
+    .font('Helvetica', 28)
+    .apply();
+}
+
+await pdf.save('output.pdf');
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+  </TabItem>
+</Tabs>
+
+---
+
+## Moving Paragraphs
+
+### Move to New Coordinates
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+from pdfdancer import PDFDancer
+
+with PDFDancer.open("document.pdf") as pdf:
+    paragraph = pdf.page(0).select_paragraphs_starting_with("The Complete")[0]
+
+    # Move to new coordinates
+    paragraph.move_to(0.1, 300)
+
+    # Verify new position
+    moved = pdf.page(0).select_paragraphs_at(0.1, 300)[0]
+    assert moved is not None
+
+    pdf.save("output.pdf")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+const pdf = await PDFDancer.open(pdfBytes);
+const paragraphs = await pdf.page(0).selectParagraphsStartingWith('The Complete');
+
+if (paragraphs.length > 0) {
+  // Move to new coordinates
+  await paragraphs[0].moveTo(0.1, 300);
+
+  // Verify new position
+  const moved = (await pdf.page(0).selectParagraphsAt(0.1, 300))[0];
+  console.log(`Moved paragraph found: ${moved !== undefined}`);
+}
+
+await pdf.save('output.pdf');
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+  </TabItem>
+</Tabs>
+
+### Move Only (Using Edit)
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+from pdfdancer import PDFDancer
+
+with PDFDancer.open("document.pdf") as pdf:
+    paragraph = pdf.page(0).select_paragraphs_starting_with("The Complete")[0]
+
+    # Move using edit builder
+    paragraph.edit() \
+        .move_to(1, 1) \
+        .apply()
+
+    # Verify new position
+    new_para = pdf.page(0).select_paragraphs_starting_with("The Complete")[0]
+    assert new_para.position.x() == 1
+    assert new_para.position.y() == 1
+
+    pdf.save("output.pdf")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+const pdf = await PDFDancer.open(pdfBytes);
+const paragraphs = await pdf.page(0).selectParagraphsStartingWith('The Complete');
+
+if (paragraphs.length > 0) {
+  // Move using edit builder
+  await paragraphs[0].edit()
+    .moveTo(1, 1)
+    .apply();
+}
+
+await pdf.save('output.pdf');
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+  </TabItem>
+</Tabs>
+
+---
+
+## Deleting Paragraphs
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+from pdfdancer import PDFDancer
+
+with PDFDancer.open("document.pdf") as pdf:
+    # Find and delete a paragraph
+    paragraph = pdf.page(0).select_paragraphs_starting_with("The Complete")[0]
+    paragraph.delete()
+
+    # Verify deletion
+    remaining = pdf.page(0).select_paragraphs_starting_with("The Complete")
+    assert remaining == []
+
+    pdf.save("output.pdf")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+const pdf = await PDFDancer.open(pdfBytes);
+
+// Find and delete a paragraph
+const paragraphs = await pdf.page(0).selectParagraphsStartingWith('The Complete');
+
+if (paragraphs.length > 0) {
+  await paragraphs[0].delete();
+
+  // Verify deletion
+  const remaining = await pdf.page(0).selectParagraphsStartingWith('The Complete');
+  console.log(`Remaining paragraphs: ${remaining.length}`);
+}
+
+await pdf.save('output.pdf');
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+  </TabItem>
+</Tabs>
+
+---
+
 ## Selecting Text Lines
+
+Text lines provide finer-grained control than paragraphs.
 
 ### All Text Lines
 
@@ -226,112 +838,8 @@ if (lines.length > 0) {
 
 ---
 
-## Working with Position Objects
-
-Position objects help you work with coordinates and bounding rectangles.
-
-<Tabs>
-  <TabItem value="python" label="Python">
-
-```python
-from pdfdancer import Position, PositionMode
-
-# Create position at specific coordinates
-position = Position.at_page_coordinates(page=0, x=100, y=200)
-
-# Create position with bounding rectangle
-position = Position(
-    page_number=1,
-    bounding_rect={"x": 100, "y": 200, "width": 50, "height": 30},
-    mode=PositionMode.INTERSECT
-)
-
-# Use position for selection
-paragraphs = pdf.select_paragraphs_at(position)
-```
-
-  </TabItem>
-  <TabItem value="typescript" label="TypeScript">
-
-```typescript
-import { Position, PositionMode } from 'pdfdancer-client-typescript';
-
-// Create position at specific coordinates
-const position = Position.atPageCoordinates(0, 100, 200);
-
-// Access position properties
-const x = position.getX();
-const y = position.getY();
-const page = position.getPageNumber();
-
-// Use position for selection
-const paragraphs = await pdf.page(0).selectParagraphsAt(x!, y!);
-```
-
-  </TabItem>
-  <TabItem value="java" label="Java">
-
-  </TabItem>
-</Tabs>
-
----
-
-## Filtering and Combining Results
-
-<Tabs>
-  <TabItem value="python" label="Python">
-
-```python
-with PDFDancer.open("document.pdf") as pdf:
-    # Get all paragraphs
-    all_paragraphs = pdf.select_paragraphs()
-
-    # Filter by text content
-    invoices = [p for p in all_paragraphs if "Invoice" in p.text]
-
-    # Filter by position
-    top_half = [p for p in all_paragraphs
-                if p.position.bounding_rect.get("y", 0) > 400]
-
-    # Combine selections from multiple pages
-    page_0_paras = pdf.page(0).select_paragraphs()
-    page_1_paras = pdf.page(1).select_paragraphs()
-    combined = page_0_paras + page_1_paras
-```
-
-  </TabItem>
-  <TabItem value="typescript" label="TypeScript">
-
-```typescript
-const pdf = await PDFDancer.open(pdfBytes);
-
-// Get all paragraphs
-const allParagraphs = await pdf.selectParagraphs();
-
-// Filter by text content
-const invoices = allParagraphs.filter(p => p.text?.includes('Invoice'));
-
-// Filter by position
-const topHalf = allParagraphs.filter(
-  p => (p.position.boundingRect?.y ?? 0) > 400
-);
-
-// Combine selections from multiple pages
-const page0Paras = await pdf.page(0).selectParagraphs();
-const page1Paras = await pdf.page(1).selectParagraphs();
-const combined = [...page0Paras, ...page1Paras];
-```
-
-  </TabItem>
-  <TabItem value="java" label="Java">
-
-  </TabItem>
-</Tabs>
-
----
-
 ## Next Steps
 
-- [**Editing Content**](editing-content.md) – Learn how to modify selected content
-- [**Adding Content**](adding-content.md) – Add new paragraphs and images
-- [**Examples**](cookbook.md) – See complete working examples
+- [**Working with Fonts**](working-with-fonts.md) – Learn about standard and custom fonts
+- [**Positioning**](positioning.md) – Understand PDF coordinate systems
+- [**Cookbook**](cookbook.md) – See complete working examples

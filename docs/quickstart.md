@@ -441,8 +441,7 @@ await pdf.save('filled_form.pdf');
 
 ## Next Steps
 
-- [**Selecting Content**](working-with-text.md) – Learn all the ways to find content in PDFs
-- [**Editing Content**](editing-content.md) – Master text and paragraph editing
-- [**Adding Content**](adding-content.md) – Add paragraphs, images, and more
+- [**Working with Text**](working-with-text.md) – Select, add, edit, move, and delete paragraphs
+- [**Working with Fonts**](working-with-fonts.md) – Standard fonts and custom TTF fonts
 - [**Error Handling**](error-handling.md) – Handle exceptions properly
-- [**Examples**](cookbook.md) – See complete working examples
+- [**Cookbook**](cookbook.md) – See complete working examples
