@@ -377,6 +377,151 @@ for (const [i, page] of allPages.entries()) {
 
 ---
 
+## Creating New PDFs
+
+### Create with Standard Page Sizes
+
+You can create new PDF documents with standard page sizes and orientations.
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+from pdfdancer import PDFDancer
+
+# Create with default A4 portrait
+with PDFDancer.create() as pdf:
+    pdf.new_paragraph() \
+        .text("Hello World") \
+        .at(page_index=0, x=72, y=720) \
+        .add()
+    pdf.save("output.pdf")
+
+# Create with specific page size
+with PDFDancer.create(page_size="LETTER", orientation="PORTRAIT", initial_page_count=3) as pdf:
+    pdf.save("letter_size.pdf")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+import { PDFDancer, Orientation } from 'pdfdancer-client-typescript';
+
+// Create with default A4 portrait
+const pdf = await PDFDancer.create();
+await pdf.page(0).newParagraph()
+  .text('Hello World')
+  .at(72, 720)
+  .apply();
+await pdf.save('output.pdf');
+
+// Create with specific page size and orientation
+const letterPdf = await PDFDancer.create('LETTER', Orientation.PORTRAIT, 3);
+await letterPdf.save('letter_size.pdf');
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+  </TabItem>
+</Tabs>
+
+### Supported Standard Page Sizes
+
+The following standard page sizes are supported:
+
+- **A4**: 595 x 842 points (default)
+- **LETTER**: 612 x 792 points
+- **LEGAL**: 612 x 1008 points
+- **TABLOID**: 792 x 1224 points
+- **A3**: 842 x 1191 points
+- **A5**: 420 x 595 points
+
+### Create with Custom Page Sizes
+
+You can also create PDFs with custom page dimensions.
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+from pdfdancer import PDFDancer
+
+# Custom page size with explicit dimensions (in points)
+with PDFDancer.create(
+    page_size={"width": 600, "height": 800},
+    orientation="PORTRAIT"
+) as pdf:
+    pdf.save("custom_size.pdf")
+
+# Custom named size
+with PDFDancer.create(
+    page_size={"name": "CUSTOM", "width": 500, "height": 700}
+) as pdf:
+    pdf.save("named_custom.pdf")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+import { PDFDancer, Orientation } from 'pdfdancer-client-typescript';
+
+// Custom page size with explicit dimensions (in points)
+const pdf = await PDFDancer.create(
+  { width: 600, height: 800 },
+  Orientation.PORTRAIT
+);
+await pdf.save('custom_size.pdf');
+
+// Custom named size
+const namedPdf = await PDFDancer.create({
+  name: 'CUSTOM',
+  width: 500,
+  height: 700
+});
+await namedPdf.save('named_custom.pdf');
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+  </TabItem>
+</Tabs>
+
+### Landscape Orientation
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+from pdfdancer import PDFDancer
+
+# Create A4 landscape
+with PDFDancer.create(page_size="A4", orientation="LANDSCAPE") as pdf:
+    pdf.save("landscape.pdf")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+import { PDFDancer, Orientation } from 'pdfdancer-client-typescript';
+
+// Create A4 landscape
+const pdf = await PDFDancer.create('A4', Orientation.LANDSCAPE);
+await pdf.save('landscape.pdf');
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+  </TabItem>
+</Tabs>
+
+---
+
 ## Next Steps
 
 - [**Working with Text**](working-with-text.md) – Select and manipulate text content

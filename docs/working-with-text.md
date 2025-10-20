@@ -145,6 +145,113 @@ for (const para of paragraphs) {
 
 ---
 
+## Text Properties
+
+Once you've selected a paragraph or text line, you can access its properties including text content, font information, position, and color.
+
+### Accessing Text Properties
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+from pdfdancer import PDFDancer
+
+with PDFDancer.open("document.pdf") as pdf:
+    paragraphs = pdf.page(0).select_paragraphs()
+
+    for para in paragraphs:
+        # Access text content
+        print(f"Text: {para.text}")
+
+        # Access font information
+        print(f"Font: {para.font_name} at {para.font_size}pt")
+
+        # Access position
+        print(f"Position: ({para.position.x()}, {para.position.y()})")
+
+        # Access color (if available)
+        if para.color:
+            print(f"Color: RGB({para.color.r}, {para.color.g}, {para.color.b})")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+import { PDFDancer } from 'pdfdancer-client-typescript';
+
+const pdf = await PDFDancer.open(pdfBytes);
+const paragraphs = await pdf.page(0).selectParagraphs();
+
+for (const para of paragraphs) {
+  // Access text content
+  console.log(`Text: ${para.text}`);
+
+  // Access font information
+  console.log(`Font: ${para.fontName} at ${para.fontSize}pt`);
+
+  // Access position
+  console.log(`Position: (${para.position.x}, ${para.position.y})`);
+
+  // Access color (if available)
+  if (para.color) {
+    console.log(`Color: RGB(${para.color.r}, ${para.color.g}, ${para.color.b})`);
+  }
+}
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+  </TabItem>
+</Tabs>
+
+### Working with Text Line Properties
+
+Text lines also expose color and other properties:
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+with PDFDancer.open("document.pdf") as pdf:
+    lines = pdf.page(0).select_lines()
+
+    for line in lines:
+        print(f"Line text: {line.text}")
+        if line.color:
+            print(f"  Color: RGB({line.color.r}, {line.color.g}, {line.color.b})")
+        if line.font_name:
+            print(f"  Font: {line.font_name} {line.font_size}pt")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+const pdf = await PDFDancer.open(pdfBytes);
+const lines = await pdf.page(0).selectLines();
+
+for (const line of lines) {
+  console.log(`Line text: ${line.text}`);
+  if (line.color) {
+    console.log(`  Color: RGB(${line.color.r}, ${line.color.g}, ${line.color.b})`);
+  }
+  if (line.fontName) {
+    console.log(`  Font: ${line.fontName} ${line.fontSize}pt`);
+  }
+}
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+  </TabItem>
+</Tabs>
+
+---
+
 ## Adding Paragraphs
 
 ### Basic Paragraph with Standard Font
