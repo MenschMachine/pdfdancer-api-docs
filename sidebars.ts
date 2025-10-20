@@ -14,7 +14,8 @@ const sidebars: SidebarsConfig = {
         'working-with-vector-graphics',
         'working-with-fonts',
         'positioning',
-        'cookbook'
+        'cookbook',
+        'sdk-versions'
     ],
 };
 
