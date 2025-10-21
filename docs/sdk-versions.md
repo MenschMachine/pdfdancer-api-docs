@@ -11,16 +11,18 @@ This documentation is based on the following SDK versions:
 ## Python SDK
 
 - **Repository**: [pdfdancer-client-python](https://github.com/MenschMachine/pdfdancer-client-python)
+- **Version**: 0.2.12
 - **Commit**: `4abc80bf1d037c3e6b5f4fb9e71e6a9f24e03efc`
-- **Date**: ci: Update CI workflow to use HTTPS for API URL and set default base URL in tests.
-- **Version**: ci: Update CI workflow to use HTTPS for API URL and set default base URL in tests.
+- **Date**: October 2025
+- **Commit Message**: ci: Update CI workflow to use HTTPS for API URL and set default base URL in tests.
 
 ## TypeScript SDK
 
 - **Repository**: [pdfdancer-client-typescript](https://github.com/MenschMachine/pdfdancer-client-typescript)
+- **Version**: 1.0.10
 - **Commit**: `452bbdf045e0e8193ab273844a8cecc9a75c8655`
-- **Date**: test: add assertions and tests for acroform fields and pdf creation
-- **Version**: test: add assertions and tests for acroform fields and pdf creation
+- **Date**: October 2025
+- **Commit Message**: test: add assertions and tests for acroform fields and pdf creation
 
 ---
 

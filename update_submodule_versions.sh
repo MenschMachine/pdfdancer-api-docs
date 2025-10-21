@@ -7,17 +7,21 @@ OUTPUT_FILE="docs/sdk-versions.md"
 # Get Python SDK info
 cd external/pdfdancer-client-python
 PYTHON_COMMIT=$(git log -1 --format="%H")
-PYTHON_DATE=$(git log -1 --format="%B %Y" | head -1)
+PYTHON_SHORT_COMMIT=$(git log -1 --format="%h")
+PYTHON_DATE=$(git log -1 --format="%cd" --date=format:"%B %Y")
 PYTHON_MESSAGE=$(git log -1 --format="%s")
 PYTHON_TAG=$(git describe --tags --exact-match 2>/dev/null || echo "")
+PYTHON_VERSION=$(grep '^version = ' pyproject.toml | sed 's/version = "\(.*\)"/\1/')
 cd ../..
 
 # Get TypeScript SDK info
 cd external/pdfdancer-client-typescript
 TS_COMMIT=$(git log -1 --format="%H")
-TS_DATE=$(git log -1 --format="%B %Y" | head -1)
+TS_SHORT_COMMIT=$(git log -1 --format="%h")
+TS_DATE=$(git log -1 --format="%cd" --date=format:"%B %Y")
 TS_MESSAGE=$(git log -1 --format="%s")
 TS_TAG=$(git describe --tags --exact-match 2>/dev/null || echo "")
+TS_VERSION=$(grep '"version"' package.json | head -1 | sed 's/.*"version": "\(.*\)".*/\1/')
 cd ../..
 
 # Generate the markdown file
@@ -35,30 +39,30 @@ This documentation is based on the following SDK versions:
 ## Python SDK
 
 - **Repository**: [pdfdancer-client-python](https://github.com/MenschMachine/pdfdancer-client-python)
+- **Version**: $PYTHON_VERSION
 - **Commit**: \`$PYTHON_COMMIT\`
 - **Date**: $PYTHON_DATE
 EOF
 
 if [ -n "$PYTHON_TAG" ]; then
-    echo "- **Version**: $PYTHON_TAG" >> "$OUTPUT_FILE"
-else
-    echo "- **Version**: $PYTHON_MESSAGE" >> "$OUTPUT_FILE"
+    echo "- **Git Tag**: $PYTHON_TAG" >> "$OUTPUT_FILE"
 fi
+echo "- **Commit Message**: $PYTHON_MESSAGE" >> "$OUTPUT_FILE"
 
 cat >> "$OUTPUT_FILE" << EOF
 
 ## TypeScript SDK
 
 - **Repository**: [pdfdancer-client-typescript](https://github.com/MenschMachine/pdfdancer-client-typescript)
+- **Version**: $TS_VERSION
 - **Commit**: \`$TS_COMMIT\`
 - **Date**: $TS_DATE
 EOF
 
 if [ -n "$TS_TAG" ]; then
-    echo "- **Version**: $TS_TAG" >> "$OUTPUT_FILE"
-else
-    echo "- **Version**: $TS_MESSAGE" >> "$OUTPUT_FILE"
+    echo "- **Git Tag**: $TS_TAG" >> "$OUTPUT_FILE"
 fi
+echo "- **Commit Message**: $TS_MESSAGE" >> "$OUTPUT_FILE"
 
 cat >> "$OUTPUT_FILE" << 'EOF'
 

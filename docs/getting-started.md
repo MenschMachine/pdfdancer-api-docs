@@ -8,13 +8,16 @@ description: Pixel-perfect programmatic control over any PDF. Edit PDFs you didn
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-PDFDancer gives you pixel-perfect programmatic control over any PDF document from Python, TypeScript, or Java. Unlike other tools, you can edit existing PDFs you didn't create - locate any element by coordinates or text, modify it precisely, add new content at exact positions, and manipulate forms with surgical precision.
+PDFDancer gives you pixel-perfect programmatic control over any PDF document from Python, TypeScript, or Java. Unlike
+other tools, you can edit existing PDFs you didn't create - locate any element by coordinates or text, modify it
+precisely, add new content at exact positions, and manipulate forms with surgical precision.
 
 ---
 
 ## Highlights
 
-- **Locate anything** inside any PDF—paragraphs, text lines, images, vector paths, pages, AcroForm fields—by page, coordinates, or text prefixes
+- **Locate anything** inside any PDF—paragraphs, text lines, images, vector paths, pages, AcroForm fields—by page,
+  coordinates, or text prefixes
 - **Edit existing content** with pixel-perfect precision using fluent editors and coordinate-based positioning
 - **Programmatic control** over PDFs you didn't create - modify invoices, contracts, forms, reports from any source
 - **Add content at exact positions** with paragraph/image builders, custom fonts, and coordinate-based placement
@@ -36,12 +39,14 @@ PDFDancer gives you pixel-perfect programmatic control over any PDF document fro
 <Tabs>
   <TabItem value="python" label="Python">
 
-Python 3.9 or newer, a PDFDancer API token (set `PDFDANCER_TOKEN` or pass `token=...`), and network access to a PDFDancer service (defaults to `https://api.pdfdancer.com`; override with `PDFDANCER_BASE_URL`).
+Python 3.10 or newer, a PDFDancer API token (set `PDFDANCER_TOKEN` or pass `token=...`), and network access to a
+PDFDancer service (defaults to `https://api.pdfdancer.com`; override with `PDFDANCER_BASE_URL`).
 
   </TabItem>
   <TabItem value="typescript" label="TypeScript">
 
-Node.js 16 or newer, a PDFDancer API token (set `PDFDANCER_TOKEN` or pass as argument), and network access to a PDFDancer service (defaults to `https://api.pdfdancer.com`; override with `PDFDANCER_BASE_URL`).
+Node.js 16 or newer, a PDFDancer API token (set `PDFDANCER_TOKEN` or pass as argument), and network access to a
+PDFDancer service (defaults to `https://api.pdfdancer.com`; override with `PDFDANCER_BASE_URL`).
 
   </TabItem>
   <TabItem value="java" label="Java">
@@ -129,36 +134,36 @@ with PDFDancer.open(
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-import { PDFDancer, Color } from 'pdfdancer-client-typescript';
-import { promises as fs } from 'node:fs';
+import {PDFDancer, Color} from 'pdfdancer-client-typescript';
+import {promises as fs} from 'node:fs';
 
 async function run() {
-  const pdfBytes = await fs.readFile('input.pdf');
+    const pdfBytes = await fs.readFile('input.pdf');
 
-  // Token defaults to PDFDANCER_TOKEN when omitted.
-  const pdf = await PDFDancer.open(pdfBytes, 'your-auth-token');
+    // Token defaults to PDFDANCER_TOKEN when omitted.
+    const pdf = await PDFDancer.open(pdfBytes, 'your-auth-token');
 
-  const page0 = pdf.page(0); // Page indexes are zero-based
+    const page0 = pdf.page(0); // Page indexes are zero-based
 
-  // Locate and edit existing content
-  const headings = await page0.selectParagraphsStartingWith('Executive Summary');
-  if (headings[0]) {
-    await headings[0].edit()
-      .replace('Overview')
-      .apply();
-  }
+    // Locate and edit existing content
+    const headings = await page0.selectParagraphsStartingWith('Executive Summary');
+    if (headings[0]) {
+        await headings[0].edit()
+            .replace('Overview')
+            .apply();
+    }
 
-  // Add a new paragraph
-  await page0.newParagraph()
-    .text('Generated with PDFDancer')
-    .font('Helvetica', 12)
-    .color(new Color(70, 70, 70))
-    .lineSpacing(1.4)
-    .at(72, 520)
-    .apply();
+    // Add a new paragraph
+    await page0.newParagraph()
+        .text('Generated with PDFDancer')
+        .font('Helvetica', 12)
+        .color(new Color(70, 70, 70))
+        .lineSpacing(1.4)
+        .at(72, 520)
+        .apply();
 
-  const updated = await pdf.getPdfFile();
-  await fs.writeFile('output.pdf', updated);
+    const updated = await pdf.getPdfFile();
+    await fs.writeFile('output.pdf', updated);
 }
 
 run().catch(console.error);
