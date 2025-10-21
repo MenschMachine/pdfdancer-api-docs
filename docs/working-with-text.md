@@ -644,7 +644,25 @@ await pdf.save('output.pdf');
 - `commandName` (string): Name of the operation performed (e.g., "ModifyParagraph", "ModifyTextLine")
 - `elementId` (string | null): ID of the modified element
 - `message` (string | null): Optional informational message
-- `warning` (string | null): Optional warning message
+- `warning` (string | null): Optional warning message (e.g., when modifying text with embedded fonts)
+
+:::tip Python Context Manager Pattern
+Python supports using edit operations with context managers for automatic application:
+
+```python
+with PDFDancer.open("document.pdf") as pdf:
+    paragraph = pdf.page(0).select_paragraphs_starting_with("The Complete")[0]
+
+    # Context manager automatically calls apply() on success
+    with paragraph.edit() as editor:
+        editor.replace("Awesomely\nObvious!")
+        editor.font("Helvetica", 12)
+
+    pdf.save("output.pdf")
+```
+
+This pattern automatically applies changes when the context exits successfully, or discards them if an exception occurs.
+:::
 
 ### Editing Text Without Changing Position
 
