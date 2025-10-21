@@ -11,18 +11,26 @@ This documentation is based on the following SDK versions:
 ## Python SDK
 
 - **Repository**: [pdfdancer-client-python](https://github.com/MenschMachine/pdfdancer-client-python)
-- **Version**: 0.2.12
-- **Commit**: `4abc80bf1d037c3e6b5f4fb9e71e6a9f24e03efc`
+- **Version**: 0.2.12+
+- **Commit**: `603a0dfcbb51c59044e9e62ee6200b54f40bd910`
 - **Date**: October 2025
-- **Commit Message**: ci: Update CI workflow to use HTTPS for API URL and set default base URL in tests.
+- **Commit Message**: docs: Update README.md and pyproject.toml for PDFDancer Python client
+- **Key Changes Since Last Version**:
+  - Added `CommandResult` model returned by modify operations (instead of boolean)
+  - Added `TextStatus`, `FontRecommendation`, and `FontType` models for text modification tracking
+  - Text objects now include status information about modifications and font encoding
 
 ## TypeScript SDK
 
 - **Repository**: [pdfdancer-client-typescript](https://github.com/MenschMachine/pdfdancer-client-typescript)
-- **Version**: 1.0.10
-- **Commit**: `452bbdf045e0e8193ab273844a8cecc9a75c8655`
+- **Version**: 1.0.11
+- **Commit**: `4c08afd5d2f2ef9f9382f010dfa8dcdbdfe4b2fb`
 - **Date**: October 2025
-- **Commit Message**: test: add assertions and tests for acroform fields and pdf creation
+- **Commit Message**: 1.0.11
+- **Key Changes Since Last Version**:
+  - Added `CommandResult` class returned by modify operations (instead of boolean)
+  - Added `TextStatus`, `FontRecommendation`, and `FontType` for text modification tracking
+  - Text objects now include status information about modifications and font encoding
 
 ---
 

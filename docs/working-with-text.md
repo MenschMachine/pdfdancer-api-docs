@@ -147,7 +147,7 @@ for (const para of paragraphs) {
 
 ## Text Properties
 
-Once you've selected a paragraph or text line, you can access its properties including text content, font information, position, and color.
+Once you've selected a paragraph or text line, you can access its properties including text content, font information, position, color, and status information.
 
 ### Accessing Text Properties
 
@@ -249,6 +249,77 @@ for (const line of lines) {
 
   </TabItem>
 </Tabs>
+
+### Text Status Information
+
+Text objects include status information that indicates whether they have been modified, whether the text is encodable with the current font, and font recommendations:
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+from pdfdancer import PDFDancer
+
+with PDFDancer.open("document.pdf") as pdf:
+    paragraphs = pdf.page(0).select_paragraphs()
+
+    for para in paragraphs:
+        if para.status:
+            # Check if text was modified
+            print(f"Modified: {para.status.is_modified()}")
+
+            # Check if text is encodable with current font
+            print(f"Encodable: {para.status.is_encodable()}")
+
+            # Get font type classification
+            font_type = para.status.get_font_type()
+            print(f"Font type: {font_type.value}")  # SYSTEM, STANDARD, or EMBEDDED
+
+            # Get font recommendation with similarity score
+            recommendation = para.status.get_font_recommendation()
+            print(f"Recommended font: {recommendation.get_font_name()}")
+            print(f"Similarity score: {recommendation.get_similarity_score()}")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+import { PDFDancer } from 'pdfdancer-client-typescript';
+
+const pdf = await PDFDancer.open(pdfBytes);
+const paragraphs = await pdf.page(0).selectParagraphs();
+
+for (const para of paragraphs) {
+  if (para.status) {
+    // Check if text was modified
+    console.log(`Modified: ${para.status.isModified()}`);
+
+    // Check if text is encodable with current font
+    console.log(`Encodable: ${para.status.isEncodable()}`);
+
+    // Get font type classification
+    const fontType = para.status.getFontType();
+    console.log(`Font type: ${fontType}`);  // SYSTEM, STANDARD, or EMBEDDED
+
+    // Get font recommendation with similarity score
+    const recommendation = para.status.getFontRecommendation();
+    console.log(`Recommended font: ${recommendation.getFontName()}`);
+    console.log(`Similarity score: ${recommendation.getSimilarityScore()}`);
+  }
+}
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+  </TabItem>
+</Tabs>
+
+**Font Type Classifications:**
+- `SYSTEM`: Font available from the operating system
+- `STANDARD`: One of the 14 standard PDF fonts (Helvetica, Times-Roman, Courier, etc.)
+- `EMBEDDED`: Font embedded in the PDF file
 
 ---
 
@@ -510,7 +581,7 @@ await pdf.save('output.pdf');
 
 ### Basic Text Replacement
 
-The simplest way to edit a paragraph is to replace its text content:
+The simplest way to edit a paragraph is to replace its text content. Edit operations return a `CommandResult` object that provides detailed information about the operation:
 
 <Tabs>
   <TabItem value="python" label="Python">
@@ -523,7 +594,13 @@ with PDFDancer.open("document.pdf") as pdf:
     paragraph = pdf.page(0).select_paragraphs_starting_with("The Complete")[0]
 
     # Replace just the text (keeps position, font, etc.)
-    paragraph.edit().replace("Awesomely\nObvious!").apply()
+    result = paragraph.edit().replace("Awesomely\nObvious!").apply()
+
+    # Check the result
+    print(f"Success: {result.success}")
+    print(f"Command: {result.command_name}")
+    if result.warning:
+        print(f"Warning: {result.warning}")
 
     pdf.save("output.pdf")
 ```
@@ -541,9 +618,16 @@ const paragraphs = await pdf.page(0).selectParagraphsStartingWith('The Complete'
 
 if (paragraphs.length > 0) {
   // Replace just the text (keeps position, font, etc.)
-  await paragraphs[0].edit()
+  const result = await paragraphs[0].edit()
     .replace('Awesomely\nObvious!')
     .apply();
+
+  // Check the result
+  console.log(`Success: ${result.success}`);
+  console.log(`Command: ${result.commandName}`);
+  if (result.warning) {
+    console.log(`Warning: ${result.warning}`);
+  }
 }
 
 await pdf.save('output.pdf');
@@ -554,6 +638,13 @@ await pdf.save('output.pdf');
 
   </TabItem>
 </Tabs>
+
+**CommandResult Properties:**
+- `success` (boolean): Whether the operation succeeded
+- `commandName` (string): Name of the operation performed (e.g., "ModifyParagraph", "ModifyTextLine")
+- `elementId` (string | null): ID of the modified element
+- `message` (string | null): Optional informational message
+- `warning` (string | null): Optional warning message
 
 ### Editing Text Without Changing Position
 
