@@ -25,6 +25,16 @@ PDF uses a Cartesian coordinate system with the origin at the **bottom-left corn
 - **A4**: 595 × 842 points (210mm × 297mm)
 - **Legal**: 612 × 1008 points (8.5" × 14")
 
+### Visual Guide to PDF Coordinates
+
+![Comprehensive visual guide showing PDF coordinate system with grid, corners labeled, and examples](/img/placeholders/positioning-visual-guide.png)
+
+:::info Visual Asset Needed
+**Image:** `positioning-visual-guide.png`
+**Shows:** Complete PDF page with grid overlay, all four corners annotated with coordinates, common page sizes shown with dimensions, bounding rectangles with labeled properties (x, y, width, height), ruler/scale indicator, and examples of elements at different positions.
+**Details:** See `/static/img/placeholders/README.md` for full specifications.
+:::
+
 ---
 
 ## Understanding Coordinates
@@ -218,6 +228,18 @@ for (const para of paragraphs) {
 
   </TabItem>
 </Tabs>
+
+### Visual Example: Bounding Rectangles
+
+Understanding bounding rectangles is crucial for precise element positioning:
+
+![Detailed view of bounding rectangle with labeled x, y, width, height properties](/img/placeholders/bounding-rect-example.png)
+
+:::info Visual Asset Needed
+**Image:** `bounding-rect-example.png`
+**Shows:** Zoomed-in view of a text element or shape with bounding rectangle clearly shown. Label all four properties: x (left edge), y (bottom edge), width, height. Use different colors for each dimension and include actual coordinate values as labels.
+**Details:** See `/static/img/placeholders/README.md` for full specifications.
+:::
 
 ---
 

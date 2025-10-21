@@ -273,6 +273,18 @@ return new Response(pdfBytes, {
 
 ## Editing Existing Content
 
+### Visual Example: Complete Workflow
+
+See how PDFDancer transforms a PDF with simple operations:
+
+![Side-by-side showing original PDF with 'Executive Summary' and modified PDF with 'Overview' plus new content](/img/placeholders/quickstart-complete-example.png)
+
+:::info Visual Asset Needed
+**Image:** `quickstart-complete-example.png`
+**Shows:** Side-by-side comparison. Left: Original PDF with "Executive Summary" heading. Right: Modified PDF with "Overview" heading and new paragraph added. Highlight changes with subtle boxes or arrows. Keep it simple and clean.
+**Details:** See `/static/img/placeholders/README.md` for full specifications.
+:::
+
 ### Find and Modify Paragraphs
 
 <Tabs>

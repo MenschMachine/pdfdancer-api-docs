@@ -188,6 +188,33 @@ await pdf.save('output.pdf');
   </TabItem>
 </Tabs>
 
+### Visual Example: Adding an Image
+
+<table>
+<tr>
+<td width="50%">
+
+**Before**
+
+![PDF page before adding logo](/img/placeholders/image-add-before.png)
+
+</td>
+<td width="50%">
+
+**After**
+
+![PDF page with logo added at specified coordinates](/img/placeholders/image-add-after.png)
+
+</td>
+</tr>
+</table>
+
+:::info Visual Asset Needed
+**Images:** `image-add-before.png` and `image-add-after.png`
+**Shows:** Side-by-side comparison of a PDF before and after adding an image (e.g., logo). The "after" image should show coordinate box around the added image with position labeled (e.g., "x:48, y:700").
+**Details:** See `/static/img/placeholders/README.md` for full specifications.
+:::
+
 ---
 
 ## Moving Images
@@ -269,6 +296,20 @@ await pdf.save('output.pdf');
 
   </TabItem>
 </Tabs>
+
+---
+
+## Visual Summary: Image Operations
+
+Here's a comprehensive view of all image operations you can perform with PDFDancer:
+
+![Grid showing image operations: original, moved, resized, and deleted](/img/placeholders/image-operations-grid.png)
+
+:::info Visual Asset Needed
+**Image:** `image-operations-grid.png`
+**Shows:** 2x2 grid demonstrating: (1) Original image, (2) Image moved to new position, (3) Image resized, (4) Image deleted (empty space with outline). Each operation clearly labeled.
+**Details:** See `/static/img/placeholders/README.md` for full specifications.
+:::
 
 ---
 

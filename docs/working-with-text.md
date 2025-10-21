@@ -646,6 +646,33 @@ await pdf.save('output.pdf');
 - `message` (string | null): Optional informational message
 - `warning` (string | null): Optional warning message (e.g., when modifying text with embedded fonts)
 
+### Visual Example: Text Replacement
+
+<table>
+<tr>
+<td width="50%">
+
+**Before**
+
+![Original PDF with "Executive Summary" heading](/img/placeholders/text-edit-before.png)
+
+</td>
+<td width="50%">
+
+**After**
+
+![Modified PDF with "Overview" heading](/img/placeholders/text-edit-after.png)
+
+</td>
+</tr>
+</table>
+
+:::info Visual Asset Needed
+**Images:** `text-edit-before.png` and `text-edit-after.png`
+**Shows:** Side-by-side comparison of a paragraph before and after text replacement, highlighting the changed content.
+**Details:** See `/static/img/placeholders/README.md` for full specifications.
+:::
+
 :::tip Python Context Manager Pattern
 Python supports using edit operations with context managers for automatic application:
 
@@ -725,6 +752,18 @@ await pdf.save('output.pdf');
 
   </TabItem>
 </Tabs>
+
+### Visual Example: Position Stays the Same
+
+When you edit text without specifying a new position, PDFDancer keeps the element in its original location:
+
+![Comparison showing text changed but coordinates remain the same](/img/placeholders/text-position-unchanged.png)
+
+:::info Visual Asset Needed
+**Image:** `text-position-unchanged.png`
+**Shows:** Side-by-side or overlay comparison demonstrating that when editing text content, the X,Y coordinates remain constant. Include coordinate indicators showing position is unchanged.
+**Details:** See `/static/img/placeholders/README.md` for full specifications.
+:::
 
 ### Chaining Multiple Edits
 
@@ -923,6 +962,18 @@ await pdf.save('output.pdf');
 
   </TabItem>
 </Tabs>
+
+### Visual Example: Moving Paragraphs
+
+See how a paragraph moves from one position to another with precise coordinate control:
+
+![Before and after showing paragraph moved from original position to new coordinates](/img/placeholders/text-move-comparison.png)
+
+:::info Visual Asset Needed
+**Image:** `text-move-comparison.png`
+**Shows:** Before/after comparison with coordinate annotations. Draw arrow from old position to new position, label old coordinates and new coordinates.
+**Details:** See `/static/img/placeholders/README.md` for full specifications.
+:::
 
 ---
 

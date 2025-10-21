@@ -21,17 +21,13 @@ PDF uses a **Cartesian coordinate system** with the origin at the **bottom-left 
 - **Y-axis**: Increases from bottom (0) to top
 - **Units**: PDF points (1 point = 1/72 inch)
 
-```
-(0, 792) ────────────────── (612, 792)    Top
-   │                              │
-   │                              │
-   │         Letter Size          │
-   │        612 × 792 pts         │
-   │                              │
-   │                              │
-(0, 0) ──────────────────── (612, 0)      Bottom
-Left                                Right
-```
+![PDF Coordinate System - Bottom-left origin with X increasing right, Y increasing up](/img/placeholders/coordinate-system-annotated.png)
+
+:::info Visual Asset Needed
+**Image:** `coordinate-system-annotated.png`
+**Shows:** Real PDF page with annotated coordinate system - corners labeled with coordinates (0,0) at bottom-left and (612,792) at top-right, axes with arrows, and a sample element with its bounding box labeled.
+**Details:** See `/static/img/placeholders/README.md` for full specifications.
+:::
 
 **Common Page Sizes**:
 - **Letter (US)**: 612 × 792 points (8.5" × 11")

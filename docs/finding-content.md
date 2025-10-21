@@ -171,6 +171,16 @@ for (const field of fields) {
   </TabItem>
 </Tabs>
 
+### Visual Example: Selecting All Elements
+
+![PDF showing multiple paragraphs, images, and form fields being selected](/img/placeholders/finding-content-select-all.png)
+
+:::info Visual Asset Needed
+**Image:** `finding-content-select-all.png` (optional - not in original README, but useful)
+**Shows:** PDF page with multiple elements highlighted/outlined, demonstrating how `select_paragraphs()` or `select_images()` finds all elements of a type on a page.
+**Details:** Create if time permits. Shows the scope of selection methods.
+:::
+
 ---
 
 ## 2. Select by Position
@@ -288,6 +298,18 @@ if (logo.length > 0) {
   </TabItem>
 </Tabs>
 
+### Visual Example: Coordinate-Based Selection
+
+See how PDFDancer finds elements at specific X,Y coordinates:
+
+![PDF with coordinate point (crosshair) and highlighted elements that intersect](/img/placeholders/finding-content-by-coordinates.png)
+
+:::info Visual Asset Needed
+**Image:** `finding-content-by-coordinates.png`
+**Shows:** PDF with multiple elements (text, images). Show a coordinate point (e.g., crosshair at x:150, y:320). Highlight all elements that intersect with that point. Include coordinate labels and selection indicators.
+**Details:** See `/static/img/placeholders/README.md` for full specifications.
+:::
+
 ---
 
 ## 3. Select by Content
@@ -340,6 +362,18 @@ const pageHeaders = await pdf.page(0).selectParagraphsStartingWith('Executive Su
 
   </TabItem>
 </Tabs>
+
+### Visual Example: Text-Based Selection
+
+Finding content by text prefix is one of the most common selection methods:
+
+![PDF showing paragraph starting with "Invoice #" being located and highlighted](/img/placeholders/finding-content-by-text.png)
+
+:::info Visual Asset Needed
+**Image:** `finding-content-by-text.png`
+**Shows:** PDF page with multiple paragraphs. Highlight the found paragraph (e.g., one starting with "Invoice #"). Show search indicator or magnifying glass icon. Optionally show the bounding box of the found element.
+**Details:** See `/static/img/placeholders/README.md` for full specifications.
+:::
 
 ### Select by Pattern (Regex)
 
@@ -513,6 +547,20 @@ await pdf.save('processed.pdf');
 
   </TabItem>
 </Tabs>
+
+---
+
+## Visual Comparison: Selection Methods
+
+Here's how the three main selection approaches work on the same PDF:
+
+![Three-column comparison showing: text prefix selection, coordinate selection, and select all](/img/placeholders/finding-content-methods-comparison.png)
+
+:::info Visual Asset Needed
+**Image:** `finding-content-methods-comparison.png`
+**Shows:** Three columns with the same PDF page: (1) Select by text prefix (highlighted paragraph), (2) Select by coordinates (crosshair + highlighted element), (3) Select all on page (all elements outlined). Clear labels for each method.
+**Details:** See `/static/img/placeholders/README.md` for full specifications.
+:::
 
 ---
 
