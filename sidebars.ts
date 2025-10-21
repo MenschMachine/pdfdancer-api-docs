@@ -6,6 +6,7 @@ const sidebars: SidebarsConfig = {
         'authentication',
         'concepts',
         'quickstart',
+        'finding-content',
         'working-with-pages',
         'working-with-text',
         'working-with-images',
