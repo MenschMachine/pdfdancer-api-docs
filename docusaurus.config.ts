@@ -81,11 +81,40 @@ const config: Config = {
             style: 'dark',
             links: [
                 {
-                    title: 'Documentation',
+                    title: 'PDFDancer',
                     items: [
                         {
-                            label: 'Getting Started',
+                            label: 'Docs',
                             to: '/',
+                        },
+                        {
+                            label: 'Status',
+                            href: 'https://status.pdfdancer.com',
+                        },
+                        {
+                            label: 'Blog',
+                            href: 'https://www.pdfdancer.com/blog',
+                        },
+                    ],
+                },
+                {
+                    title: 'Company',
+                    items: [
+                        {
+                            label: 'Privacy',
+                            href: 'https://www.pdfdancer.com/privacy',
+                        },
+                        {
+                            label: 'Terms of Service',
+                            href: 'https://www.pdfdancer.com/terms-of-service',
+                        },
+                        {
+                            label: 'Refund Policy',
+                            href: 'https://www.pdfdancer.com/refund-policy',
+                        },
+                        {
+                            label: 'Contact',
+                            href: 'https://www.pdfdancer.com/contact',
                         },
                     ],
                 },
@@ -93,30 +122,13 @@ const config: Config = {
                     title: 'Community',
                     items: [
                         {
-                            label: 'Stack Overflow',
-                            href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-                        },
-                        {
-                            label: 'Discord',
-                            href: 'https://discordapp.com/invite/docusaurus',
-                        },
-                        {
-                            label: 'X',
-                            href: 'https://x.com/docusaurus',
-                        },
-                    ],
-                },
-                {
-                    title: 'More',
-                    items: [
-                        {
                             label: 'GitHub',
-                            href: 'https://github.com/facebook/docusaurus',
+                            href: 'https://github.com/MenschMachine/pdfdancer',
                         },
                     ],
                 },
             ],
-            copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+            copyright: `© ${new Date().getFullYear()} PDFDancer. All rights reserved.`,
         },
         prism: {
             theme: prismThemes.github,
