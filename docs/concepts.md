@@ -608,6 +608,93 @@ await paragraph.edit()
 
 ---
 
+## Thread Safety
+
+:::danger Important
+**PDFDancer sessions are not thread-safe and must not be used concurrently.**
+
+Each session instance should only be accessed from a single thread at a time. Do not share session objects across threads or use them in concurrent operations.
+:::
+
+**Why This Matters:**
+
+When you call `PDFDancer.open()`, you create a session that maintains state on both the client and server. Concurrent access from multiple threads can lead to:
+- Race conditions and unpredictable behavior
+- Corrupted PDF state
+- API errors and failed operations
+
+**Safe Patterns:**
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+from pdfdancer import PDFDancer
+from concurrent.futures import ThreadPoolExecutor
+
+# ✓ SAFE: Each thread creates its own session
+def process_pdf(file_path: str) -> None:
+    with PDFDancer.open(file_path) as pdf:
+        # Operations on this session
+        paragraphs = pdf.select_paragraphs()
+        pdf.save(f"output_{file_path}")
+
+# Process multiple PDFs in parallel - each gets its own session
+with ThreadPoolExecutor() as executor:
+    executor.map(process_pdf, ["doc1.pdf", "doc2.pdf", "doc3.pdf"])
+
+
+# ✗ UNSAFE: Sharing a session across threads
+pdf = PDFDancer.open("document.pdf")
+def unsafe_operation():
+    # DON'T DO THIS - multiple threads using the same session
+    pdf.select_paragraphs()  # Not thread-safe!
+
+with ThreadPoolExecutor() as executor:
+    executor.submit(unsafe_operation)
+    executor.submit(unsafe_operation)
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+import { PDFDancer } from 'pdfdancer-client-typescript';
+
+// ✓ SAFE: Each async operation creates its own session
+async function processPdf(filePath: string): Promise<void> {
+  const pdfBytes = await fs.readFile(filePath);
+  const pdf = await PDFDancer.open(pdfBytes);
+
+  const paragraphs = await pdf.selectParagraphs();
+  await pdf.save(`output_${filePath}`);
+}
+
+// Process multiple PDFs - each gets its own session
+await Promise.all([
+  processPdf('doc1.pdf'),
+  processPdf('doc2.pdf'),
+  processPdf('doc3.pdf')
+]);
+
+
+// ✗ UNSAFE: Sharing a session across concurrent operations
+const pdf = await PDFDancer.open(pdfBytes);
+
+// DON'T DO THIS - concurrent operations on the same session
+await Promise.all([
+  pdf.selectParagraphs(),  // Not safe!
+  pdf.selectImages()       // Not safe!
+]);
+```
+
+  </TabItem>
+</Tabs>
+
+**Best Practice:** Always create a new session instance for each thread or concurrent operation. Sessions are lightweight to create and are designed for single-threaded access.
+
+---
+
 ## Next Steps
 
 Now that you understand the core concepts, explore how to use them:

@@ -39,6 +39,12 @@ finally:
 
 Using the context manager ensures sessions are properly cleaned up even if exceptions occur.
 
+:::danger Thread Safety Warning
+**PDFDancer sessions are not thread-safe.** Each session instance must be accessed from only one thread at a time. Never share session objects across threads or use them in concurrent operations.
+
+For parallel processing, create a separate session instance for each thread. See the [Thread Safety section](concepts.md#thread-safety) for detailed examples.
+:::
+
   </TabItem>
   <TabItem value="typescript" label="TypeScript">
 
