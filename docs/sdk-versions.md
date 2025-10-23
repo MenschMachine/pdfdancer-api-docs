@@ -11,26 +11,35 @@ This documentation is based on the following SDK versions:
 ## Python SDK
 
 - **Repository**: [pdfdancer-client-python](https://github.com/MenschMachine/pdfdancer-client-python)
-- **Version**: 0.2.12+
-- **Commit**: `603a0dfcbb51c59044e9e62ee6200b54f40bd910`
+- **Version**: 0.2.16
+- **Commit**: `77632a466b092b961eb34e5b0ac0da8f5606a579`
 - **Date**: October 2025
-- **Commit Message**: docs: Update README.md and pyproject.toml for PDFDancer Python client
+- **Commit Message**: fix: update base URL in test_env_vars to use HTTPS
 - **Key Changes Since Last Version**:
-  - Added `CommandResult` model returned by modify operations (instead of boolean)
-  - Added `TextStatus`, `FontRecommendation`, and `FontType` models for text modification tracking
-  - Text objects now include status information about modifications and font encoding
+  - **License updated** from MIT to Apache License 2.0
+  - **New HTTP client configuration** via environment variables:
+    - `PDFDANCER_POOL_CONNECTIONS` - Configure connection pool size
+    - `PDFDANCER_POOL_MAXSIZE` - Configure maximum pool size
+    - `PDFDANCER_RETRY_TOTAL` - Configure retry attempts
+    - `PDFDANCER_TRUST_ENV` - Honor system proxy settings (set to `true`)
+  - **Python 3.10+ required** (Python 3.9 has SSL issues with large file uploads)
+  - Enhanced development setup documentation with detailed instructions
+  - Improved CI workflow and test coverage
 
 ## TypeScript SDK
 
 - **Repository**: [pdfdancer-client-typescript](https://github.com/MenschMachine/pdfdancer-client-typescript)
-- **Version**: 1.0.11
-- **Commit**: `4c08afd5d2f2ef9f9382f010dfa8dcdbdfe4b2fb`
+- **Version**: 1.0.13
+- **Commit**: `8238181b7d0280a1d0efc7756aed6f30a64a3525`
 - **Date**: October 2025
-- **Commit Message**: 1.0.11
+- **Commit Message**: 1.0.13
 - **Key Changes Since Last Version**:
-  - Added `CommandResult` class returned by modify operations (instead of boolean)
-  - Added `TextStatus`, `FontRecommendation`, and `FontType` for text modification tracking
-  - Text objects now include status information about modifications and font encoding
+  - **License updated** from MIT to Apache License 2.0
+  - **Node.js 20+ required** (updated from Node.js 18+)
+  - Added `discuss` command for enhanced API interactions
+  - Improved error handling and messaging for token validation
+  - Base URL normalization and validation in constructor
+  - Enhanced end-to-end tests with token from environment variables
 
 ---
 

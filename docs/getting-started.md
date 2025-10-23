@@ -39,13 +39,13 @@ precisely, add new content at exact positions, and manipulate forms with surgica
 <Tabs>
   <TabItem value="python" label="Python">
 
-Python 3.10 or newer, a PDFDancer API token (set `PDFDANCER_TOKEN` or pass `token=...`), and network access to a
+Python 3.10 or newer (Python 3.9 has SSL issues with large file uploads), a PDFDancer API token (set `PDFDANCER_TOKEN` or pass `token=...`), and network access to a
 PDFDancer service (defaults to `https://api.pdfdancer.com`; override with `PDFDANCER_BASE_URL`).
 
   </TabItem>
   <TabItem value="typescript" label="TypeScript">
 
-Node.js 16 or newer, a PDFDancer API token (set `PDFDANCER_TOKEN` or pass as argument), and network access to a
+Node.js 20 or newer, a PDFDancer API token (set `PDFDANCER_TOKEN` or pass as argument), and network access to a
 PDFDancer service (defaults to `https://api.pdfdancer.com`; override with `PDFDANCER_BASE_URL`).
 
   </TabItem>
