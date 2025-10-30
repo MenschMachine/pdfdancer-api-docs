@@ -96,6 +96,19 @@ a:hover {
   text-shadow: var(--theme-glow);
 }
 
+/* External links in markdown content - underlined */
+.markdown a[href^="http"],
+.markdown a[href^="https"],
+.markdown a[href^="//"] {
+  text-decoration: underline;
+}
+
+.markdown a[href^="http"]:hover,
+.markdown a[href^="https"]:hover,
+.markdown a[href^="//"]:hover {
+  text-decoration: underline;
+}
+
 /* Code Blocks */
 code {
   background: var(--ifm-code-background);
