@@ -13,7 +13,7 @@ PDFDancer uses API tokens to authenticate requests. Each token is tied to your a
 
 ## Obtaining an API Token
 
-1. Sign into the PDFDancer Console.
+1. Sign into the [PDFDancer Dashboard](https://www.pdfdancer.com/dashboard).
 2. Navigate to **Settings → API Tokens**.
 3. Click **Generate Token**, provide a descriptive name, and copy the generated token.
 
@@ -194,7 +194,7 @@ const pdf = await PDFDancer.open(
 
 ### Token Rotation
 
-1. Generate a new token in the PDFDancer Console
+1. Generate a new token in the [PDFDancer Dashboard](https://www.pdfdancer.com/dashboard)
 2. Update your environment variables or secrets manager
 3. Deploy the changes to all environments
 4. Deactivate the old token after verifying the new one works
@@ -203,7 +203,7 @@ const pdf = await PDFDancer.open(
 
 If a token is compromised:
 
-1. Immediately deactivate it in the PDFDancer Console
+1. Immediately deactivate it in the [PDFDancer Dashboard](https://www.pdfdancer.com/dashboard)
 2. Generate a new token
 3. Update all applications using the old token
 4. Review audit logs for suspicious activity
