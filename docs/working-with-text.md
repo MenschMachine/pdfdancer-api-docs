@@ -593,8 +593,13 @@ with PDFDancer.open("document.pdf") as pdf:
     # Find a paragraph by text prefix
     paragraph = pdf.page(0).select_paragraphs_starting_with("The Complete")[0]
 
-    # Replace just the text (keeps position, font, etc.)
+    # Method 1: Explicit apply() call
     result = paragraph.edit().replace("Awesomely\nObvious!").apply()
+
+    # Method 2: Context manager (recommended - auto-applies on success)
+    with paragraph.edit() as editor:
+        editor.replace("Awesomely\nObvious!")
+        # Changes are automatically applied when context exits
 
     # Check the result
     print(f"Success: {result.success}")
@@ -673,22 +678,21 @@ await pdf.save('output.pdf');
 **Details:** See `/static/img/placeholders/README.md` for full specifications.
 :::
 
-:::tip Python Context Manager Pattern
-Python supports using edit operations with context managers for automatic application:
+:::tip Python Context Manager Pattern (Recommended)
+The context manager pattern (`with paragraph.edit() as editor:`) is the recommended approach in Python because:
+- **Automatic application**: Changes are applied when the context exits successfully
+- **Error safety**: Changes are discarded if an exception occurs
+- **Cleaner code**: No need to explicitly call `apply()`
+- **Multiple operations**: Chain multiple edits in one context
 
 ```python
-with PDFDancer.open("document.pdf") as pdf:
-    paragraph = pdf.page(0).select_paragraphs_starting_with("The Complete")[0]
-
-    # Context manager automatically calls apply() on success
-    with paragraph.edit() as editor:
-        editor.replace("Awesomely\nObvious!")
-        editor.font("Helvetica", 12)
-
-    pdf.save("output.pdf")
+# Multiple edits in one context
+with paragraph.edit() as editor:
+    editor.replace("New text")
+    editor.font("Helvetica", 12)
+    editor.color(255, 0, 0)  # Red text
+# All changes applied automatically here
 ```
-
-This pattern automatically applies changes when the context exits successfully, or discards them if an exception occurs.
 :::
 
 ### Editing Text Without Changing Position
@@ -973,6 +977,171 @@ See how a paragraph moves from one position to another with precise coordinate c
 **Image:** `text-move-comparison.png`
 **Shows:** Before/after comparison with coordinate annotations. Draw arrow from old position to new position, label old coordinates and new coordinates.
 **Details:** See `/static/img/placeholders/README.md` for full specifications.
+:::
+
+---
+
+## Editing Text Lines
+
+Text lines can be edited just like paragraphs. This is useful when you need to modify individual lines within a paragraph or work with single-line text elements.
+
+### Basic Text Line Replacement
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+from pdfdancer import PDFDancer
+
+with PDFDancer.open("document.pdf") as pdf:
+    # Find and edit a text line
+    text_line = pdf.page(0).select_text_lines_starting_with("Invoice Number:")[0]
+
+    # Replace the text
+    text_line.edit().replace("Invoice Number: INV-2024-001").apply()
+
+    pdf.save("output.pdf")
+```
+
+**Using Context Manager (Recommended):**
+
+```python
+from pdfdancer import PDFDancer
+
+with PDFDancer.open("document.pdf") as pdf:
+    text_line = pdf.page(0).select_text_lines_starting_with("Invoice Number:")[0]
+
+    # Context manager automatically applies changes
+    with text_line.edit() as editor:
+        editor.replace("Invoice Number: INV-2024-001")
+
+    pdf.save("output.pdf")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+import { PDFDancer } from 'pdfdancer-client-typescript';
+
+const pdf = await PDFDancer.open(pdfBytes);
+
+// Find and edit a text line
+const textLines = await pdf.page(0).selectTextLinesStartingWith('Invoice Number:');
+
+if (textLines.length > 0) {
+  // Replace the text
+  await textLines[0].edit()
+    .replace('Invoice Number: INV-2024-001')
+    .apply();
+}
+
+await pdf.save('output.pdf');
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+  </TabItem>
+</Tabs>
+
+### Editing Text Line Font and Style
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+from pdfdancer import PDFDancer, Color
+
+with PDFDancer.open("document.pdf") as pdf:
+    text_line = pdf.page(0).select_text_lines_starting_with("Total:")[0]
+
+    # Change text, font, and color
+    text_line.edit() \
+        .replace("Total: $1,234.56") \
+        .font("Helvetica-Bold", 14) \
+        .color(Color(255, 0, 0)) \
+        .apply()
+
+    pdf.save("output.pdf")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+import { PDFDancer, Color } from 'pdfdancer-client-typescript';
+
+const pdf = await PDFDancer.open(pdfBytes);
+const textLines = await pdf.page(0).selectTextLinesStartingWith('Total:');
+
+if (textLines.length > 0) {
+  // Change text, font, and color
+  await textLines[0].edit()
+    .replace('Total: $1,234.56')
+    .font('Helvetica-Bold', 14)
+    .color(new Color(255, 0, 0))
+    .apply();
+}
+
+await pdf.save('output.pdf');
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+  </TabItem>
+</Tabs>
+
+### Moving Text Lines
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+from pdfdancer import PDFDancer
+
+with PDFDancer.open("document.pdf") as pdf:
+    text_line = pdf.page(0).select_text_lines_starting_with("Footer")[0]
+
+    # Move text line to new position
+    text_line.edit() \
+        .move_to(72, 50) \
+        .apply()
+
+    pdf.save("output.pdf")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+import { PDFDancer } from 'pdfdancer-client-typescript';
+
+const pdf = await PDFDancer.open(pdfBytes);
+const textLines = await pdf.page(0).selectTextLinesStartingWith('Footer');
+
+if (textLines.length > 0) {
+  // Move text line to new position
+  await textLines[0].edit()
+    .moveTo(72, 50)
+    .apply();
+}
+
+await pdf.save('output.pdf');
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+  </TabItem>
+</Tabs>
+
+:::tip Text Lines vs Paragraphs
+- **Text lines** are individual lines of text, useful for precise line-by-line editing
+- **Paragraphs** are multi-line text blocks with line spacing control
+- Both support the same editing operations: `replace()`, `font()`, `color()`, `move_to()`
+- Use text lines when you need to edit specific lines within a larger text block
 :::
 
 ---

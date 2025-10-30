@@ -80,8 +80,11 @@ with PDFDancer.open("form.pdf") as pdf:
 ```typescript
 const pdf = await PDFDancer.open(pdfBytes);
 
-// Find form fields by name
+// Find form fields by name (document-level)
 const firstNameFields = await pdf.selectFieldsByName('firstName');
+
+// On a specific page
+const pageFields = await pdf.page(0).selectFormFieldsByName('signature');
 
 if (firstNameFields.length > 0) {
   console.log(`Found field: ${firstNameFields[0].name}`);

@@ -39,14 +39,16 @@ precisely, add new content at exact positions, and manipulate forms with surgica
 <Tabs>
   <TabItem value="python" label="Python">
 
-Python 3.10 or newer (Python 3.9 has SSL issues with large file uploads), a PDFDancer API token (set `PDFDANCER_TOKEN` or pass `token=...`), and network access to a
-PDFDancer service (defaults to `https://api.pdfdancer.com`; override with `PDFDANCER_BASE_URL`).
+**Minimum:** Python 3.10 or newer (Python 3.9 has SSL issues with large file uploads) and network access to a PDFDancer service (defaults to `https://api.pdfdancer.com`).
+
+**Authentication:** Optional! The SDK automatically obtains an anonymous token if you don't provide one. For production use, get an API token and set `PDFDANCER_TOKEN` environment variable or pass `token=...`.
 
   </TabItem>
   <TabItem value="typescript" label="TypeScript">
 
-Node.js 20 or newer, a PDFDancer API token (set `PDFDANCER_TOKEN` or pass as argument), and network access to a
-PDFDancer service (defaults to `https://api.pdfdancer.com`; override with `PDFDANCER_BASE_URL`).
+**Minimum:** Node.js 20 or newer and network access to a PDFDancer service (defaults to `https://api.pdfdancer.com`).
+
+**Authentication:** Optional! The SDK automatically obtains an anonymous token if you don't provide one. For production use, get an API token and set `PDFDANCER_TOKEN` environment variable or pass as argument.
 
   </TabItem>
   <TabItem value="java" label="Java">
@@ -99,7 +101,9 @@ yarn add pdfdancer-client-typescript
 
 ---
 
-## Your First PDF Manipulation
+## Quick Start (No API Token Required!)
+
+The easiest way to get started is without any authentication - the SDK automatically handles it for you:
 
 <Tabs>
   <TabItem value="python" label="Python">
@@ -108,11 +112,8 @@ yarn add pdfdancer-client-typescript
 from pathlib import Path
 from pdfdancer import Color, PDFDancer
 
-with PDFDancer.open(
-    pdf_data=Path("input.pdf"),
-    token="your-api-token",  # optional when PDFDANCER_TOKEN is set
-    base_url="https://api.pdfdancer.com",
-) as pdf:
+# No token needed! SDK automatically gets an anonymous token
+with PDFDancer.open(pdf_data=Path("input.pdf")) as pdf:
     # Locate existing content
     heading = pdf.page(0).select_paragraphs_starting_with("Executive Summary")[0]
     heading.edit().replace("Overview").apply()
@@ -140,8 +141,8 @@ import {promises as fs} from 'node:fs';
 async function run() {
     const pdfBytes = await fs.readFile('input.pdf');
 
-    // Token defaults to PDFDANCER_TOKEN when omitted.
-    const pdf = await PDFDancer.open(pdfBytes, 'your-auth-token');
+    // No token needed! SDK automatically gets an anonymous token
+    const pdf = await PDFDancer.open(pdfBytes);
 
     const page0 = pdf.page(0); // Page indexes are zero-based
 
@@ -174,6 +175,84 @@ run().catch(console.error);
 
   </TabItem>
 </Tabs>
+
+---
+
+## Using API Tokens (Production)
+
+For production use, you should use an API token instead of anonymous access:
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+**Option 1: Environment Variable (Recommended)**
+
+```bash
+export PDFDANCER_TOKEN="your-api-token"
+```
+
+```python
+from pdfdancer import PDFDancer
+
+# Token automatically loaded from PDFDANCER_TOKEN
+with PDFDancer.open("input.pdf") as pdf:
+    # ... your code
+    pdf.save("output.pdf")
+```
+
+**Option 2: Pass Token Directly**
+
+```python
+from pdfdancer import PDFDancer
+
+with PDFDancer.open(
+    pdf_data="input.pdf",
+    token="your-api-token"
+) as pdf:
+    # ... your code
+    pdf.save("output.pdf")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+**Option 1: Environment Variable (Recommended)**
+
+```bash
+export PDFDANCER_TOKEN="your-api-token"
+```
+
+```typescript
+import {PDFDancer} from 'pdfdancer-client-typescript';
+
+// Token automatically loaded from PDFDANCER_TOKEN
+const pdf = await PDFDancer.open(pdfBytes);
+// ... your code
+```
+
+**Option 2: Pass Token Directly**
+
+```typescript
+import {PDFDancer} from 'pdfdancer-client-typescript';
+
+const pdf = await PDFDancer.open(pdfBytes, 'your-api-token');
+// ... your code
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+  </TabItem>
+</Tabs>
+
+:::tip Authentication Fallback
+The SDK uses this priority order:
+1. Token passed directly to `open()` or `new()`
+2. `PDFDANCER_TOKEN` environment variable
+3. **Automatic anonymous token** (for quick testing)
+
+For production, always use options 1 or 2!
+:::
 
 ---
 

@@ -19,6 +19,7 @@ const sidebars: SidebarsConfig = {
             items: [
                 'concepts',
                 'finding-content',
+                'working-with-snapshots',
                 'positioning',
             ],
         },

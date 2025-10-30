@@ -109,6 +109,52 @@ const pageImages = await pdf.page(1).selectImages();
   </TabItem>
 </Tabs>
 
+### Select All Elements (Convenience Method)
+
+Use `select_elements()` to get all content types at once:
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+with PDFDancer.open("document.pdf") as pdf:
+    # Get all elements in the entire document
+    # Returns paragraphs, text lines, images, paths, forms, and form fields
+    all_elements = pdf.select_elements()
+
+    # Get all elements on a specific page
+    page_elements = pdf.page(0).select_elements()
+
+    # Process all elements
+    for element in page_elements:
+        print(f"Type: {element.object_type}, Position: ({element.position.x}, {element.position.y})")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+const pdf = await PDFDancer.open(pdfBytes);
+
+// Get all elements in the entire document
+// Returns paragraphs, text lines, images, paths, forms, and form fields
+const allElements = await pdf.selectElements();
+
+// Get all elements on a specific page
+const pageElements = await pdf.page(0).selectElements();
+
+// Process all elements
+for (const element of pageElements) {
+  console.log(`Type: ${element.type}, Position: (${element.position.x}, ${element.position.y})`);
+}
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+  </TabItem>
+</Tabs>
+
 ### Working with Selected Elements
 
 All selection methods return lists/arrays of typed objects with methods and properties:
@@ -318,23 +364,23 @@ Search for text elements by their content using text matching or regular express
 
 ### Select by Text Prefix
 
-Find paragraphs or text lines that start with specific text:
+Find paragraphs or text lines that start with specific text. You can search across the entire document or limit the search to a specific page.
 
 <Tabs>
   <TabItem value="python" label="Python">
 
 ```python
 with PDFDancer.open("invoice.pdf") as pdf:
-    # Find paragraphs starting with specific text
+    # Document-level search (searches all pages)
     invoices = pdf.select_paragraphs_starting_with("Invoice #")
     totals = pdf.select_paragraphs_starting_with("Total:")
     disclaimers = pdf.select_paragraphs_starting_with("Note:")
 
-    # Find text lines by prefix
+    # Find text lines by prefix across all pages
     date_lines = pdf.select_text_lines_starting_with("Date:")
     amount_lines = pdf.select_text_lines_starting_with("Amount:")
 
-    # Page-scoped prefix search
+    # Page-scoped prefix search (only searches specific page)
     page_headers = pdf.page(0).select_paragraphs_starting_with("Executive Summary")
 ```
 
@@ -344,16 +390,16 @@ with PDFDancer.open("invoice.pdf") as pdf:
 ```typescript
 const pdf = await PDFDancer.open(pdfBytes);
 
-// Find paragraphs starting with specific text
+// Document-level search (searches all pages)
 const invoices = await pdf.selectParagraphsStartingWith('Invoice #');
 const totals = await pdf.selectParagraphsStartingWith('Total:');
 const disclaimers = await pdf.selectParagraphsStartingWith('Note:');
 
-// Find text lines by prefix
+// Find text lines by prefix across all pages
 const dateLines = await pdf.selectTextLinesStartingWith('Date:');
 const amountLines = await pdf.selectTextLinesStartingWith('Amount:');
 
-// Page-scoped prefix search
+// Page-scoped prefix search (only searches specific page)
 const pageHeaders = await pdf.page(0).selectParagraphsStartingWith('Executive Summary');
 ```
 
@@ -377,7 +423,7 @@ Finding content by text prefix is one of the most common selection methods:
 
 ### Select by Pattern (Regex)
 
-Use regular expressions to find text matching complex patterns:
+Use regular expressions to find text matching complex patterns. Pattern matching works at both document and page levels.
 
 <Tabs>
   <TabItem value="python" label="Python">
@@ -386,6 +432,7 @@ Use regular expressions to find text matching complex patterns:
 import re
 
 with PDFDancer.open("document.pdf") as pdf:
+    # Document-level pattern matching (searches all pages)
     # Find dates in format YYYY-MM-DD
     dates = pdf.select_paragraphs_matching(r"\d{4}-\d{2}-\d{2}")
 
@@ -403,6 +450,9 @@ with PDFDancer.open("document.pdf") as pdf:
 
     # Find invoice numbers (custom pattern)
     invoice_nums = pdf.select_paragraphs_matching(r"INV-\d{6}")
+
+    # Page-scoped pattern matching (only searches specific page)
+    page_dates = pdf.page(0).select_paragraphs_matching(r"\d{4}-\d{2}-\d{2}")
 ```
 
   </TabItem>
@@ -411,6 +461,7 @@ with PDFDancer.open("document.pdf") as pdf:
 ```typescript
 const pdf = await PDFDancer.open(pdfBytes);
 
+// Document-level pattern matching (searches all pages)
 // Find dates in format YYYY-MM-DD
 const dates = await pdf.selectParagraphsMatching('\\d{4}-\\d{2}-\\d{2}');
 
@@ -428,6 +479,9 @@ const zips = await pdf.selectTextLinesMatching('\\d{5}(-\\d{4})?');
 
 // Find invoice numbers (custom pattern)
 const invoiceNums = await pdf.selectParagraphsMatching('INV-\\d{6}');
+
+// Page-scoped pattern matching (only searches specific page)
+const pageDates = await pdf.page(0).selectParagraphsMatching('\\d{4}-\\d{2}-\\d{2}');
 ```
 
   </TabItem>
