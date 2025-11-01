@@ -1,42 +1,42 @@
 ---
 id: quickstart
-title: Quickstart Guide
-description: Learn the basics of pixel-perfect PDF editing with PDFDancer.
+title: Core Concepts
+description: Understand PDFDancer's core patterns and progressively build more complex workflows.
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-This guide introduces the core concepts for working with PDFDancer. You'll learn how to open any PDF, locate elements precisely, edit content at exact positions, and save your modifications.
+This guide covers the core concepts you'll use in every PDFDancer workflow. Examples progress from simple to complex, introducing new concepts step by step.
 
 ---
 
 ## Opening a PDF Document
 
+The simplest way to open a PDF:
+
 <Tabs>
   <TabItem value="python" label="Python">
 
 ```python
-from pathlib import Path
 from pdfdancer import PDFDancer
 
-# From a file path
-with PDFDancer.open(pdf_data=Path("document.pdf")) as pdf:
+with PDFDancer.open("document.pdf") as pdf:
     # Your operations here
     pass
+```
 
-# From bytes
+The `with` statement automatically closes the connection when done.
+
+**Opening from bytes:**
+
+```python
+from pathlib import Path
+
 pdf_bytes = Path("document.pdf").read_bytes()
 with PDFDancer.open(pdf_data=pdf_bytes) as pdf:
     pass
-
-# Without context manager
-pdf = PDFDancer.open(pdf_data="document.pdf")
-# ... operations ...
-pdf.close()  # Remember to close!
 ```
-
-The context manager automatically handles session cleanup and is the recommended approach.
 
   </TabItem>
   <TabItem value="typescript" label="TypeScript">
@@ -45,19 +45,11 @@ The context manager automatically handles session cleanup and is the recommended
 import { PDFDancer } from 'pdfdancer-client-typescript';
 import { promises as fs } from 'node:fs';
 
-// From a file
 const pdfBytes = await fs.readFile('document.pdf');
 const pdf = await PDFDancer.open(pdfBytes);
-
-// From a Uint8Array
-const buffer = new Uint8Array(await file.arrayBuffer());
-const pdf = await PDFDancer.open(buffer);
-
-// In browsers from a File input
-const file = document.querySelector('input[type="file"]').files[0];
-const arrayBuffer = await file.arrayBuffer();
-const pdf = await PDFDancer.open(new Uint8Array(arrayBuffer));
 ```
+
+Always `await` the `open()` call—PDFDancer establishes a session with the service.
 
   </TabItem>
   <TabItem value="java" label="Java">
@@ -69,40 +61,46 @@ const pdf = await PDFDancer.open(new Uint8Array(arrayBuffer));
 
 ## Working with Pages
 
-### Accessing Pages
+**Access a specific page (0-indexed):**
 
 <Tabs>
   <TabItem value="python" label="Python">
 
 ```python
-with PDFDancer.open("document.pdf") as pdf:
-    # Get a specific page (0-indexed)
-    page = pdf.page(0)
-
-    # Get all pages
-    all_pages = pdf.pages()
-
-    # Iterate through pages
-    for i, page in enumerate(all_pages):
-        print(f"Page {i}: {page.internal_id}")
+page = pdf.page(0)
 ```
 
   </TabItem>
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdf = await PDFDancer.open(pdfBytes);
-
-// Get a specific page (0-indexed)
 const page = pdf.page(0);
+```
 
-// Get all pages
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+  </TabItem>
+</Tabs>
+
+**Iterate through all pages:**
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+for page in pdf.pages():
+    print(f"Page ID: {page.internal_id}")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
 const allPages = await pdf.pages();
-
-// Iterate through pages
-for (const [i, page] of allPages.entries()) {
-  const pageData = await page.get();
-  console.log(`Page ${i}: ${pageData.internalId}`);
+for (const page of allPages) {
+  const data = await page.get();
+  console.log(`Page ID: ${data.internalId}`);
 }
 ```
 
@@ -112,64 +110,22 @@ for (const [i, page] of allPages.entries()) {
   </TabItem>
 </Tabs>
 
-### Getting Page Information
+**Delete a page:**
 
 <Tabs>
   <TabItem value="python" label="Python">
 
 ```python
-with PDFDancer.open("document.pdf") as pdf:
-    page = pdf.page(0)
-
-    print(f"Page ID: {page.internal_id}")
-    print(f"Position: {page.position.bounding_rect}")
-    print(f"Type: {page.object_type}")
+pdf.page(2).delete()
+pdf.save("output.pdf")
 ```
 
   </TabItem>
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdf = await PDFDancer.open(pdfBytes);
-const page = await pdf.page(0).get();
-
-console.log(`Page ID: ${page.internalId}`);
-console.log(`Position: ${JSON.stringify(page.position.boundingRect)}`);
-console.log(`Type: ${page.objectType}`);
-```
-
-  </TabItem>
-  <TabItem value="java" label="Java">
-
-  </TabItem>
-</Tabs>
-
-### Deleting Pages
-
-<Tabs>
-  <TabItem value="python" label="Python">
-
-```python
-with PDFDancer.open("document.pdf") as pdf:
-    # Delete a specific page
-    pdf.page(2).delete()
-
-    # Save the modified PDF
-    pdf.save("output.pdf")
-```
-
-  </TabItem>
-  <TabItem value="typescript" label="TypeScript">
-
-```typescript
-const pdf = await PDFDancer.open(pdfBytes);
-
-// Delete a specific page
 await pdf.page(2).delete();
-
-// Save the modified PDF
 const modifiedBytes = await pdf.getPdfFile();
-await fs.writeFile('output.pdf', modifiedBytes);
 ```
 
   </TabItem>
@@ -182,36 +138,22 @@ await fs.writeFile('output.pdf', modifiedBytes);
 
 ## Saving PDFs
 
-### Save to File
+**Save to a file:**
 
 <Tabs>
   <TabItem value="python" label="Python">
 
 ```python
-with PDFDancer.open("input.pdf") as pdf:
-    # Perform operations...
-
-    # Save to file
-    pdf.save("output.pdf")
-
-    # Save creates parent directories if needed
-    pdf.save("reports/2024/january/output.pdf")
+pdf.save("output.pdf")
 ```
+
+Automatically creates parent directories if needed.
 
   </TabItem>
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdf = await PDFDancer.open(pdfBytes);
-
-// Perform operations...
-
-// Save to file (Node.js helper)
 await pdf.save('output.pdf');
-
-// The save method is a convenience wrapper around:
-const bytes = await pdf.getPdfFile();
-await fs.writeFile('output.pdf', bytes);
 ```
 
   </TabItem>
@@ -220,46 +162,25 @@ await fs.writeFile('output.pdf', bytes);
   </TabItem>
 </Tabs>
 
-### Get PDF as Bytes
+**Get PDF as bytes (for streaming, S3 upload, etc.):**
 
 <Tabs>
   <TabItem value="python" label="Python">
 
 ```python
-with PDFDancer.open("input.pdf") as pdf:
-    # Perform operations...
-
-    # Get as bytes for further processing
-    pdf_bytes = pdf.get_pdf_file()
-
-    # Upload to S3
-    s3_client.put_object(Bucket='my-bucket', Key='output.pdf', Body=pdf_bytes)
-
-    # Return in HTTP response
-    return Response(pdf_bytes, mimetype='application/pdf')
+pdf_bytes = pdf.get_pdf_file()
+s3_client.put_object(Bucket='my-bucket', Key='output.pdf', Body=pdf_bytes)
 ```
 
   </TabItem>
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdf = await PDFDancer.open(pdfBytes);
-
-// Perform operations...
-
-// Get as bytes for further processing
 const pdfBytes = await pdf.getPdfFile();
-
-// Upload to S3
 await s3Client.putObject({
   Bucket: 'my-bucket',
   Key: 'output.pdf',
   Body: pdfBytes
-});
-
-// Return in HTTP response
-return new Response(pdfBytes, {
-  headers: { 'Content-Type': 'application/pdf' }
 });
 ```
 
@@ -273,63 +194,66 @@ return new Response(pdfBytes, {
 
 ## Editing Existing Content
 
-### Visual Example: Complete Workflow
-
-See how PDFDancer transforms a PDF with simple operations:
-
-![Side-by-side showing original PDF with 'Executive Summary' and modified PDF with 'Overview' plus new content](/img/placeholders/quickstart-complete-example.png)
-
-:::info Visual Asset Needed
-**Image:** `quickstart-complete-example.png`
-**Shows:** Side-by-side comparison. Left: Original PDF with "Executive Summary" heading. Right: Modified PDF with "Overview" heading and new paragraph added. Highlight changes with subtle boxes or arrows. Keep it simple and clean.
-**Details:** See `/static/img/placeholders/README.md` for full specifications.
-:::
-
-### Find and Modify Paragraphs
+**Find all paragraphs on a page:**
 
 <Tabs>
   <TabItem value="python" label="Python">
 
 ```python
-from pdfdancer import PDFDancer, Color
-
-with PDFDancer.open("invoice.pdf") as pdf:
-    # Find all paragraphs on page 0
-    paragraphs = pdf.page(0).select_paragraphs()
-
-    # Find paragraphs starting with specific text
-    headers = pdf.page(0).select_paragraphs_starting_with("Invoice #")
-
-    if headers:
-        # Edit the first header
-        headers[0].edit() \
-            .replace("Invoice #12345") \
-            .font("Helvetica-Bold", 14) \
-            .color(Color(255, 0, 0)) \
-            .apply()
+paragraphs = pdf.page(0).select_paragraphs()
 ```
 
   </TabItem>
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-import { PDFDancer, Color } from 'pdfdancer-client-typescript';
-
-const pdf = await PDFDancer.open(pdfBytes);
-
-// Find all paragraphs on page 0
 const paragraphs = await pdf.page(0).selectParagraphs();
+```
 
-// Find paragraphs starting with specific text
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+  </TabItem>
+</Tabs>
+
+**Find paragraphs by text prefix:**
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+headers = pdf.page(0).select_paragraphs_starting_with("Invoice #")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
 const headers = await pdf.page(0).selectParagraphsStartingWith('Invoice #');
+```
 
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+  </TabItem>
+</Tabs>
+
+**Replace text (simplest edit):**
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+if headers:
+    headers[0].edit().replace("Invoice #12345").apply()
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
 if (headers.length > 0) {
-  // Edit the first header
-  await headers[0].edit()
-    .replace('Invoice #12345')
-    .font('Helvetica-Bold', 14)
-    .color(new Color(255, 0, 0))
-    .apply();
+  await headers[0].edit().replace('Invoice #12345').apply();
 }
 ```
 
@@ -339,57 +263,102 @@ if (headers.length > 0) {
   </TabItem>
 </Tabs>
 
-### Add New Content
+**Add styling while editing:**
 
 <Tabs>
   <TabItem value="python" label="Python">
 
 ```python
-from pdfdancer import PDFDancer, Color
+from pdfdancer import Color
 
-with PDFDancer.open("document.pdf") as pdf:
-    # Add a new paragraph
-    pdf.new_paragraph() \
-        .text("This is a new paragraph") \
-        .font("Helvetica", 12) \
-        .color(Color(0, 0, 0)) \
-        .line_spacing(1.5) \
-        .at(page_index=0, x=100, y=500) \
-        .add()
-
-    # Add an image
-    pdf.new_image() \
-        .from_file("logo.png") \
-        .at(page=0, x=50, y=700) \
-        .add()
-
-    pdf.save("output.pdf")
+headers[0].edit() \
+    .replace("Invoice #12345") \
+    .font("Helvetica-Bold", 14) \
+    .color(Color(255, 0, 0)) \
+    .apply()
 ```
 
   </TabItem>
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-import { PDFDancer, Color } from 'pdfdancer-client-typescript';
+import { Color } from 'pdfdancer-client-typescript';
 
-const pdf = await PDFDancer.open(pdfBytes);
+await headers[0].edit()
+  .replace('Invoice #12345')
+  .font('Helvetica-Bold', 14)
+  .color(new Color(255, 0, 0))
+  .apply();
+```
 
-// Add a new paragraph
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+  </TabItem>
+</Tabs>
+
+---
+
+## Adding New Content
+
+**Add a simple paragraph:**
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+pdf.new_paragraph() \
+    .text("Hello World") \
+    .at(page_index=0, x=100, y=500) \
+    .add()
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
 await pdf.page(0).newParagraph()
-  .text('This is a new paragraph')
+  .text('Hello World')
+  .at(100, 500)
+  .apply();
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+  </TabItem>
+</Tabs>
+
+**Add a paragraph with styling:**
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+from pdfdancer import Color
+
+pdf.new_paragraph() \
+    .text("Hello World") \
+    .font("Helvetica", 12) \
+    .color(Color(0, 0, 0)) \
+    .line_spacing(1.5) \
+    .at(page_index=0, x=100, y=500) \
+    .add()
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+import { Color } from 'pdfdancer-client-typescript';
+
+await pdf.page(0).newParagraph()
+  .text('Hello World')
   .font('Helvetica', 12)
   .color(new Color(0, 0, 0))
   .lineSpacing(1.5)
   .at(100, 500)
   .apply();
-
-// Add an image
-await pdf.newImage()
-  .fromFile('logo.png')
-  .at(0, 50, 700)
-  .add();
-
-await pdf.save('output.pdf');
 ```
 
   </TabItem>
@@ -398,49 +367,99 @@ await pdf.save('output.pdf');
   </TabItem>
 </Tabs>
 
-### Fill Form Fields
+**Add an image:**
 
 <Tabs>
   <TabItem value="python" label="Python">
 
 ```python
-with PDFDancer.open("form.pdf") as pdf:
-    # Find form fields by name
-    name_fields = pdf.page(0).select_form_fields_by_name("firstName")
-
-    if name_fields:
-        # Fill the field
-        name_fields[0].edit().value("John Doe").apply()
-
-    # Find all form fields on a page
-    all_fields = pdf.page(0).select_form_fields()
-    for field in all_fields:
-        print(f"Field: {field.name}")
-
-    pdf.save("filled_form.pdf")
+pdf.new_image() \
+    .from_file("logo.png") \
+    .at(page=0, x=50, y=700) \
+    .add()
 ```
 
   </TabItem>
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdf = await PDFDancer.open(pdfBytes);
+await pdf.newImage()
+  .fromFile('logo.png')
+  .at(0, 50, 700)
+  .add();
+```
 
-// Find form fields by name
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+  </TabItem>
+</Tabs>
+
+---
+
+## Working with Forms
+
+**Find all form fields on a page:**
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+fields = pdf.page(0).select_form_fields()
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+const fields = await pdf.selectFormFields();
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+  </TabItem>
+</Tabs>
+
+**Find form fields by name:**
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+name_fields = pdf.page(0).select_form_fields_by_name("firstName")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
 const nameFields = await pdf.selectFieldsByName('firstName');
+```
 
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+  </TabItem>
+</Tabs>
+
+**Fill a form field:**
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+if name_fields:
+    name_fields[0].edit().value("John Doe").apply()
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
 if (nameFields.length > 0) {
-  // Fill the field
   await nameFields[0].fill('John Doe');
 }
-
-// Find all form fields
-const allFields = await pdf.selectFormFields();
-for (const field of allFields) {
-  console.log(`Field: ${field.name}`);
-}
-
-await pdf.save('filled_form.pdf');
 ```
 
   </TabItem>
@@ -453,7 +472,7 @@ await pdf.save('filled_form.pdf');
 
 ## Next Steps
 
-- [**Working with Text**](working-with-text.md) – Select, add, edit, move, and delete paragraphs
+- [**Working with Text**](working-with-text.md) – Advanced text selection and manipulation
 - [**Working with Fonts**](working-with-fonts.md) – Standard fonts and custom TTF fonts
-- [**Error Handling**](error-handling.md) – Handle exceptions properly
-- [**Cookbook**](cookbook.md) – See complete working examples
+- [**Concepts**](concepts.md) – Deeper understanding of PDFDancer's model
+- [**Cookbook**](cookbook.md) – Complete working examples
