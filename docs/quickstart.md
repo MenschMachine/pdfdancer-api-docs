@@ -1,13 +1,13 @@
 ---
 id: quickstart
-title: Core Concepts
-description: Understand PDFDancer's core patterns and progressively build more complex workflows.
+title: Essential Operations
+description: Learn the essential operations you'll use in every PDFDancer workflow—opening, saving, editing, and adding content.
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-This guide covers the core concepts you'll use in every PDFDancer workflow. Examples progress from simple to complex, introducing new concepts step by step.
+This guide covers the essential operations you'll use in every PDFDancer workflow. Examples progress from simple to complex, introducing new patterns step by step.
 
 ---
 
