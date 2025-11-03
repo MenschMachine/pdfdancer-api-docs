@@ -71,6 +71,23 @@ try {
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+import com.tfc.pdf.pdfdancer.PDFDancer;
+import com.tfc.pdf.pdfdancer.api.common.model.*;
+
+import java.util.List;
+
+// Java uses try-with-resources for automatic cleanup
+try (PDFDancer pdf = PDFDancer.createSession("document.pdf")) {
+    // Perform operations
+    List<ParagraphRef> paragraphs = pdf.page(0).selectParagraphs();
+    if (!paragraphs.isEmpty()) {
+        paragraphs.get(0).delete();
+    }
+    pdf.save("output.pdf");
+} // Session automatically closed
+```
+
   </TabItem>
 </Tabs>
 
@@ -123,6 +140,19 @@ await pdf.save('output.pdf');
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+// Java client uses standard font names directly
+try (PDFDancer pdf = PDFDancer.createSession("document.pdf")) {
+    pdf.page(0).newParagraph()
+        .text("Text with standard font")
+        .font("Roboto-Regular", 12)
+        .at(100, 500)
+        .apply();
+
+    pdf.save("output.pdf");
+}
+```
+
   </TabItem>
 </Tabs>
 
@@ -174,6 +204,25 @@ await pdf.save('output.pdf');
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+import java.nio.file.Files;
+import java.nio.file.Path;
+
+try (PDFDancer pdf = PDFDancer.createSession("document.pdf")) {
+    // Load custom font file
+    byte[] fontBytes = Files.readAllBytes(Path.of("fonts/CustomFont.ttf"));
+
+    // Use the custom font directly with fontFile()
+    pdf.page(0).newParagraph()
+        .text("Text with custom font")
+        .fontFile(fontBytes, 14)
+        .at(100, 500)
+        .apply();
+
+    pdf.save("output.pdf");
+}
+```
 
   </TabItem>
 </Tabs>
@@ -298,6 +347,64 @@ await batchProcessInvoices('invoices/pending', 'invoices/processed');
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+import com.tfc.pdf.pdfdancer.api.common.model.Color;
+
+import java.io.IOException;
+import java.nio.file.DirectoryStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+public class BatchProcessor {
+    public static void processInvoice(Path inputPath, Path outputDir) throws IOException {
+        // Process a single invoice PDF
+        try (PDFDancer pdf = PDFDancer.createSession(inputPath.toString())) {
+            // Add PAID watermark
+            pdf.page(0).newParagraph()
+                .text("PAID")
+                .font("Helvetica-Bold", 72)
+                .color(new Color(0, 200, 0))
+                .at(200, 400)
+                .apply();
+
+            // Save to output directory
+            Path outputPath = outputDir.resolve(inputPath.getFileName());
+            pdf.save(outputPath.toString());
+        }
+    }
+
+    public static void batchProcessInvoices(Path inputDir, Path outputDir) throws IOException {
+        // Process all PDFs in a directory
+        Files.createDirectories(outputDir);
+
+        // Find all PDF files
+        try (DirectoryStream<Path> stream = Files.newDirectoryStream(inputDir, "*.pdf")) {
+            int count = 0;
+            for (Path pdfFile : stream) {
+                count++;
+                try {
+                    System.out.printf("[%d] Processing %s...%n", count, pdfFile.getFileName());
+                    processInvoice(pdfFile, outputDir);
+                    System.out.printf("  ✓ Saved to %s%n", outputDir.resolve(pdfFile.getFileName()));
+                } catch (Exception e) {
+                    System.err.printf("  ✗ Error: %s%n", e.getMessage());
+                }
+            }
+            System.out.println("Batch processing complete!");
+        }
+    }
+
+    // Usage
+    public static void main(String[] args) throws IOException {
+        batchProcessInvoices(
+            Paths.get("invoices/pending"),
+            Paths.get("invoices/processed")
+        );
+    }
+}
+```
+
   </TabItem>
 </Tabs>
 
@@ -382,6 +489,42 @@ await redactSensitiveInfo('document.pdf', 'redacted.pdf');
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+import java.util.List;
+
+public class DocumentRedactor {
+    public static void redactSensitiveInfo(String pdfPath, String outputPath) throws IOException {
+        // Find and redact sensitive information in a PDF
+        String[] sensitiveKeywords = {"SSN:", "Credit Card:", "Password:"};
+
+        try (PDFDancer pdf = PDFDancer.createSession(pdfPath)) {
+            // Search all paragraphs for sensitive keywords
+            List<ParagraphRef> allParagraphs = pdf.selectParagraphs();
+
+            for (ParagraphRef paragraph : allParagraphs) {
+                for (String keyword : sensitiveKeywords) {
+                    if (paragraph.getText().contains(keyword)) {
+                        // Replace with REDACTED
+                        paragraph.edit()
+                            .replace("[REDACTED]")
+                            .color(new Color(0, 0, 0))
+                            .apply();
+                        System.out.printf("Redacted: %s in paragraph%n", keyword);
+                        break;
+                    }
+                }
+            }
+
+            pdf.save(outputPath);
+        }
+    }
+
+    public static void main(String[] args) throws IOException {
+        redactSensitiveInfo("document.pdf", "redacted.pdf");
+    }
+}
+```
 
   </TabItem>
 </Tabs>
@@ -501,6 +644,65 @@ for (const [name, course, date] of students) {
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+import java.util.Map;
+
+public class CertificateGenerator {
+    public static void generateCertificate(
+        String templatePath,
+        String outputPath,
+        String studentName,
+        String courseName,
+        String completionDate
+    ) throws IOException {
+        // Generate a certificate from an existing template
+        try (PDFDancer pdf = PDFDancer.createSession(templatePath)) {
+            // Replace placeholder fields
+            Map<String, String> placeholders = Map.of(
+                "{{STUDENT_NAME}}", studentName,
+                "{{COURSE_NAME}}", courseName,
+                "{{DATE}}", completionDate
+            );
+
+            for (Map.Entry<String, String> entry : placeholders.entrySet()) {
+                // Find paragraphs with placeholders
+                List<ParagraphRef> matches = pdf.selectParagraphsStartingWith(entry.getKey());
+
+                for (ParagraphRef match : matches) {
+                    match.edit().replace(entry.getValue()).apply();
+                }
+            }
+
+            // Add signature image
+            pdf.newImage()
+                .fromFile("signature.png")
+                .at(0, 400, 100)
+                .add();
+
+            pdf.save(outputPath);
+        }
+    }
+
+    // Generate certificates for multiple students
+    public static void main(String[] args) throws IOException {
+        String[][] students = {
+            {"Alice Johnson", "Python Programming", "2024-01-15"},
+            {"Bob Smith", "Python Programming", "2024-01-15"},
+            {"Carol Davis", "Python Programming", "2024-01-15"}
+        };
+
+        for (String[] student : students) {
+            String name = student[0];
+            String course = student[1];
+            String date = student[2];
+            String output = String.format("certificates/%s.pdf", name.replace(" ", "_"));
+            generateCertificate("template.pdf", output, name, course, date);
+            System.out.printf("Generated certificate for %s%n", name);
+        }
+    }
+}
+```
+
   </TabItem>
 </Tabs>
 
@@ -550,6 +752,24 @@ for (const para of paragraphs.slice(0, 10)) {
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+// Less efficient: Multiple API calls
+try (PDFDancer pdf = PDFDancer.createSession("document.pdf")) {
+    for (int i = 0; i < 10; i++) {
+        List<ParagraphRef> paragraphs = pdf.page(0).selectParagraphs();
+        paragraphs.get(i).delete();  // Multiple separate API calls
+    }
+}
+
+// More efficient: Batch operations
+try (PDFDancer pdf = PDFDancer.createSession("document.pdf")) {
+    List<ParagraphRef> paragraphs = pdf.page(0).selectParagraphs();  // Single fetch
+    for (int i = 0; i < 10 && i < paragraphs.size(); i++) {
+        paragraphs.get(i).delete();  // Batch deletions
+    }
+}
+```
 
   </TabItem>
 </Tabs>
@@ -616,6 +836,32 @@ await pdf.save('output.pdf');
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+// Process multiple operations in a single session
+try (PDFDancer pdf = PDFDancer.createSession("document.pdf")) {
+    // Operation 1: Edit text
+    List<ParagraphRef> paragraphs = pdf.selectParagraphsStartingWith("Invoice");
+    if (!paragraphs.isEmpty()) {
+        paragraphs.get(0).edit().replace("PAID").apply();
+    }
+
+    // Operation 2: Add watermark
+    pdf.page(0).newParagraph()
+        .text("CONFIDENTIAL")
+        .at(200, 400)
+        .apply();
+
+    // Operation 3: Add image
+    pdf.newImage()
+        .fromFile("logo.png")
+        .at(0, 50, 750)
+        .add();
+
+    // Single save operation
+    pdf.save("output.pdf");
+}
+```
 
   </TabItem>
 </Tabs>

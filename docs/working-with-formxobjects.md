@@ -51,6 +51,13 @@ import { PDFDancer } from 'pdfdancer-client-typescript';
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+import com.tfc.pdf.pdfdancer.PDFDancer;
+
+// Content for working with FormXObjects will be added here
+// as the API evolves
+```
+
   </TabItem>
 </Tabs>
 

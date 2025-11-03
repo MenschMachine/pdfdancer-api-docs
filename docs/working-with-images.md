@@ -56,6 +56,24 @@ for (const img of pageImages) {
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+import com.tfc.pdf.pdfdancer.api.PDFDancer;
+import com.tfc.pdf.pdfdancer.api.common.model.*;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Get all images across the document
+List<Image> allImages = pdf.selectImages();
+
+// Get all images on a specific page
+List<Image> pageImages = pdf.page(0).selectImages();
+
+for (Image img : pageImages) {
+    System.out.println("Image ID: " + img.getInternalId());
+    System.out.println("Position: " + img.getPosition().getBoundingRect());
+}
+```
+
   </TabItem>
 </Tabs>
 
@@ -89,6 +107,17 @@ for (const img of images) {
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Find images at specific coordinates
+List<Image> images = pdf.page(2).selectImagesAt(120, 300);
+
+for (Image img : images) {
+    System.out.println("Found image at position: " + img.getPosition());
+}
+```
 
   </TabItem>
 </Tabs>
@@ -135,6 +164,21 @@ await pdf.save('output.pdf');
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+import com.tfc.pdf.pdfdancer.api.PDFDancer;
+import java.nio.file.Paths;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Add image from file
+pdf.newImage()
+    .fromFile(Paths.get("logo.png"))
+    .at(0, 48, 700)
+    .add();
+
+pdf.save("output.pdf");
+```
 
   </TabItem>
 </Tabs>
@@ -184,6 +228,25 @@ await pdf.save('output.pdf');
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+import com.tfc.pdf.pdfdancer.api.PDFDancer;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Load image bytes
+byte[] imageBytes = Files.readAllBytes(Paths.get("logo.png"));
+
+// Add image from bytes
+pdf.newImage()
+    .fromBytes(imageBytes)
+    .at(0, 100, 600)
+    .add();
+
+pdf.save("output.pdf");
+```
 
   </TabItem>
 </Tabs>
@@ -253,6 +316,21 @@ await pdf.save('output.pdf');
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+import com.tfc.pdf.pdfdancer.api.PDFDancer;
+import com.tfc.pdf.pdfdancer.api.common.model.*;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+List<Image> images = pdf.page(0).selectImages();
+
+if (!images.isEmpty()) {
+    // Move image to new position
+    images.get(0).moveTo(200, 350);
+}
+
+pdf.save("output.pdf");
+```
+
   </TabItem>
 </Tabs>
 
@@ -293,6 +371,21 @@ await pdf.save('output.pdf');
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+import com.tfc.pdf.pdfdancer.api.PDFDancer;
+import com.tfc.pdf.pdfdancer.api.common.model.*;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+List<Image> images = pdf.page(0).selectImages();
+
+// Delete all images on page 0
+for (Image image : images) {
+    image.delete();
+}
+
+pdf.save("output.pdf");
+```
 
   </TabItem>
 </Tabs>

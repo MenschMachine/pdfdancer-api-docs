@@ -48,9 +48,13 @@ yarn add pdfdancer-client-typescript
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+Install from Maven:
+
 ```bash
 Coming soon
 ```
+
   </TabItem>
 </Tabs>
 
@@ -125,6 +129,32 @@ run().catch(console.error);
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+import com.tfc.pdf.pdfdancer.api.common.model.*;
+import java.util.List;
+
+// No token needed! SDK automatically gets an anonymous token
+PDFDancer pdf = PDFDancer.createSession("input.pdf");
+
+// Locate and edit existing content
+List<TextParagraphReference> headings = pdf.selectParagraphsStartingWith("Executive Summary");
+if (!headings.isEmpty()) {
+    headings.get(0).edit().replace("Overview").apply();
+}
+
+// Add a new paragraph using the fluent builder
+pdf.newParagraph()
+    .text("Generated with PDFDancer")
+    .font("Helvetica", 12)
+    .color(new Color(70, 70, 70))
+    .lineSpacing(1.4)
+    .at(0, 72, 520)
+    .add();
+
+// Persist the modified document
+pdf.save("output.pdf");
+```
 
   </TabItem>
 </Tabs>

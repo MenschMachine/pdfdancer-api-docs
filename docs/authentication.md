@@ -58,6 +58,12 @@ const pdf = await PDFDancer.open(pdfBytes);
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+// Token is automatically read from PDFDANCER_TOKEN environment variable
+PDFDancer pdf = PDFDancer.createSession("input.pdf");
+// Your PDF operations here
+```
+
   </TabItem>
 </Tabs>
 
@@ -90,6 +96,13 @@ const pdf = await PDFDancer.open(pdfBytes, 'your-api-token');
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+// Token can be passed through system properties or environment variables
+// Set via: -DPDFDANCER_TOKEN="your-api-token" or environment variable
+PDFDancer pdf = PDFDancer.createSession("input.pdf");
+// Your PDF operations here
+```
 
   </TabItem>
 </Tabs>
@@ -140,6 +153,14 @@ const pdf = await PDFDancer.open(
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+// Set via system properties or environment variable
+// export PDFDANCER_BASE_URL="https://sandbox.pdfdancer.com"
+// or -DPDFDANCER_BASE_URL="https://sandbox.pdfdancer.com"
+
+PDFDancer pdf = PDFDancer.createSession("input.pdf");
+```
+
   </TabItem>
 </Tabs>
 
@@ -177,6 +198,14 @@ const pdf = await PDFDancer.open(
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+// Configure timeout via system properties
+// Set via: -DPDFDANCER_TIMEOUT="60000" (milliseconds)
+// or environment variable: PDFDANCER_TIMEOUT
+
+PDFDancer pdf = PDFDancer.createSession("input.pdf");
+```
 
   </TabItem>
 </Tabs>

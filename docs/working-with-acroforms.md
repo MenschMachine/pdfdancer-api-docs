@@ -54,6 +54,25 @@ for (const field of pageFields) {
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+import com.tfc.pdf.pdfdancer.PDFDancer;
+import com.tfc.pdf.pdfdancer.api.common.model.*;
+
+import java.util.List;
+
+try (PDFDancer pdf = PDFDancer.createSession("form.pdf")) {
+    // Get all form fields across the document
+    List<FormFieldRef> allFields = pdf.selectFormFields();
+
+    // Get all form fields on a specific page
+    List<FormFieldRef> pageFields = pdf.page(1).selectFormFields();
+
+    for (FormFieldRef field : pageFields) {
+        System.out.printf("Field: %s, Type: %s%n", field.getName(), field.getType());
+    }
+}
+```
+
   </TabItem>
 </Tabs>
 
@@ -93,6 +112,20 @@ if (firstNameFields.length > 0) {
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+try (PDFDancer pdf = PDFDancer.createSession("form.pdf")) {
+    // Find form fields by name
+    List<FormFieldRef> firstNameFields = pdf.selectFormFieldsByName("firstName");
+
+    // On a specific page
+    List<FormFieldRef> pageFields = pdf.page(0).selectFormFieldsByName("signature");
+
+    if (!firstNameFields.isEmpty()) {
+        System.out.printf("Found field: %s%n", firstNameFields.get(0).getName());
+    }
+}
+```
 
   </TabItem>
 </Tabs>
@@ -139,6 +172,20 @@ await pdf.save('filled_form.pdf');
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+try (PDFDancer pdf = PDFDancer.createSession("form.pdf")) {
+    // Find form field by name
+    List<FormFieldRef> fields = pdf.selectFormFieldsByName("signature");
+
+    if (!fields.isEmpty()) {
+        // Update the field value using fill method
+        fields.get(0).fill("Signed by Jane Doe");
+    }
+
+    pdf.save("filled_form.pdf");
+}
+```
 
   </TabItem>
 </Tabs>
@@ -197,6 +244,30 @@ await pdf.save('filled_form.pdf');
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+import java.util.Map;
+
+try (PDFDancer pdf = PDFDancer.createSession("form.pdf")) {
+    // Define form data
+    Map<String, String> formData = Map.of(
+        "firstName", "John",
+        "lastName", "Doe",
+        "email", "john@example.com",
+        "phone", "555-1234"
+    );
+
+    // Fill all fields
+    for (Map.Entry<String, String> entry : formData.entrySet()) {
+        List<FormFieldRef> fields = pdf.selectFormFieldsByName(entry.getKey());
+        if (!fields.isEmpty()) {
+            fields.get(0).fill(entry.getValue());
+        }
+    }
+
+    pdf.save("filled_form.pdf");
+}
+```
+
   </TabItem>
 </Tabs>
 
@@ -238,6 +309,19 @@ await pdf.save('output.pdf');
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+try (PDFDancer pdf = PDFDancer.createSession("form.pdf")) {
+    // Delete specific form fields
+    List<FormFieldRef> zipFields = pdf.selectFormFieldsByName("zip");
+
+    for (FormFieldRef field : zipFields) {
+        field.delete();
+    }
+
+    pdf.save("output.pdf");
+}
+```
 
   </TabItem>
 </Tabs>

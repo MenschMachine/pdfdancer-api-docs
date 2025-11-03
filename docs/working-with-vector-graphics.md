@@ -54,6 +54,23 @@ for (const path of paths) {
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+import com.tfc.pdf.pdfdancer.api.PDFDancer;
+import com.tfc.pdf.pdfdancer.api.common.model.*;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Get all paths on a specific page
+List<Path> paths = pdf.page(3).selectPaths();
+
+// Get paths at specific coordinates
+List<Path> pathsAtPoint = pdf.page(3).selectPathsAt(150, 320);
+
+for (Path path : paths) {
+    System.out.println("Path ID: " + path.getInternalId());
+}
+```
+
   </TabItem>
 </Tabs>
 
@@ -107,6 +124,23 @@ for (const [i, path] of paths.entries()) {
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+import com.tfc.pdf.pdfdancer.api.PDFDancer;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Select paths on a page
+List<Path> paths = pdf.page(0).selectPaths();
+
+System.out.println("Found " + paths.size() + " paths on page 0");
+
+// You can iterate through paths
+for (int i = 0; i < paths.size(); i++) {
+    Path path = paths.get(i);
+    System.out.println("Path " + i + ": " + path.getInternalId());
+}
+```
 
   </TabItem>
 </Tabs>
@@ -178,6 +212,33 @@ await fs.writeFile('output.pdf', updated);
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+import com.tfc.pdf.pdfdancer.api.PDFDancer;
+import com.tfc.pdf.pdfdancer.api.common.model.*;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+Page page = pdf.page(0);
+
+// Draw a simple line
+page.newLine()
+    .fromPoint(100, 100)
+    .toPoint(400, 100)
+    .strokeColor(new Color(0, 0, 0))
+    .strokeWidth(2)
+    .add();
+
+// Draw a dashed line
+page.newLine()
+    .fromPoint(100, 150)
+    .toPoint(400, 150)
+    .strokeColor(new Color(255, 0, 0))
+    .strokeWidth(1)
+    .dashPattern(new int[]{5, 3})
+    .add();
+
+pdf.save("output.pdf");
+```
 
   </TabItem>
 </Tabs>
@@ -264,6 +325,40 @@ await fs.writeFile('output.pdf', updated);
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+import com.tfc.pdf.pdfdancer.api.PDFDancer;
+import com.tfc.pdf.pdfdancer.api.common.model.*;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+Page page = pdf.page(0);
+
+// Draw a stroked rectangle
+page.newRectangle()
+    .at(100, 200)
+    .size(200, 100)
+    .strokeColor(new Color(0, 0, 255))
+    .strokeWidth(3)
+    .add();
+
+// Draw a filled rectangle
+page.newRectangle()
+    .at(350, 200)
+    .size(200, 100)
+    .fillColor(new Color(255, 200, 0))
+    .add();
+
+// Draw a rectangle with both stroke and fill
+page.newRectangle()
+    .at(100, 350)
+    .size(200, 100)
+    .strokeColor(new Color(0, 0, 0))
+    .strokeWidth(2)
+    .fillColor(new Color(200, 200, 255))
+    .add();
+
+pdf.save("output.pdf");
+```
+
   </TabItem>
 </Tabs>
 
@@ -320,6 +415,26 @@ await fs.writeFile('output.pdf', updated);
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+import com.tfc.pdf.pdfdancer.api.PDFDancer;
+import com.tfc.pdf.pdfdancer.api.common.model.*;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+Page page = pdf.page(0);
+
+// Draw a bezier curve
+page.newBezier()
+    .startPoint(100, 100)
+    .controlPoint1(200, 200)
+    .controlPoint2(300, 200)
+    .endPoint(400, 100)
+    .strokeColor(new Color(0, 128, 0))
+    .strokeWidth(2)
+    .add();
+
+pdf.save("output.pdf");
+```
 
   </TabItem>
 </Tabs>
@@ -399,6 +514,37 @@ await fs.writeFile('output.pdf', updated);
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+import com.tfc.pdf.pdfdancer.api.PDFDancer;
+import com.tfc.pdf.pdfdancer.api.common.model.*;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+Page page = pdf.page(0);
+
+// Draw a complex path (triangle)
+page.newPath()
+    .moveTo(250, 100)
+    .lineTo(350, 250)
+    .lineTo(150, 250)
+    .closePath()
+    .strokeColor(new Color(128, 0, 128))
+    .strokeWidth(3)
+    .fillColor(new Color(255, 200, 255))
+    .add();
+
+// Draw a path with curves
+page.newPath()
+    .moveTo(100, 400)
+    .lineTo(200, 400)
+    .curveTo(250, 450, 300, 450, 350, 400)
+    .lineTo(450, 400)
+    .strokeColor(new Color(255, 100, 0))
+    .strokeWidth(2)
+    .add();
+
+pdf.save("output.pdf");
+```
 
   </TabItem>
 </Tabs>

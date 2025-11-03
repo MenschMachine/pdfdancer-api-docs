@@ -54,6 +54,11 @@ Always `await` the `open()` call—PDFDancer establishes a session with the serv
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+// Your operations here
+```
+
   </TabItem>
 </Tabs>
 
@@ -79,6 +84,10 @@ const page = pdf.page(0);
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+ObjectRef page = pdf.getPage(0);
+```
 
   </TabItem>
 </Tabs>
@@ -107,6 +116,13 @@ for (const page of allPages) {
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+List<PageRef> allPages = pdf.getPages();
+for (PageRef page : allPages) {
+    System.out.println("Page ID: " + page.getInternalId());
+}
+```
+
   </TabItem>
 </Tabs>
 
@@ -130,6 +146,11 @@ const modifiedBytes = await pdf.getPdfFile();
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+pdf.deletePage(pdf.getPage(2));
+pdf.save("output.pdf");
+```
 
   </TabItem>
 </Tabs>
@@ -159,6 +180,10 @@ await pdf.save('output.pdf');
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+pdf.save("output.pdf");
+```
+
   </TabItem>
 </Tabs>
 
@@ -187,6 +212,12 @@ await s3Client.putObject({
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+byte[] pdfBytes = pdf.getFileBytes();
+// For S3 upload or streaming:
+// s3Client.putObject("my-bucket", "output.pdf", pdfBytes);
+```
+
   </TabItem>
 </Tabs>
 
@@ -213,6 +244,10 @@ const paragraphs = await pdf.page(0).selectParagraphs();
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+List<TextParagraphReference> paragraphs = pdf.page(0).selectParagraphs();
+```
+
   </TabItem>
 </Tabs>
 
@@ -234,6 +269,10 @@ const headers = await pdf.page(0).selectParagraphsStartingWith('Invoice #');
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+List<TextParagraphReference> headers = pdf.page(0).selectParagraphsStartingWith("Invoice #");
+```
 
   </TabItem>
 </Tabs>
@@ -259,6 +298,12 @@ if (headers.length > 0) {
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+if (!headers.isEmpty()) {
+    headers.get(0).edit().replace("Invoice #12345").apply();
+}
+```
 
   </TabItem>
 </Tabs>
@@ -294,6 +339,16 @@ await headers[0].edit()
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+if (!headers.isEmpty()) {
+    headers.get(0).edit()
+        .replace("Invoice #12345")
+        .font("Helvetica-Bold", 14)
+        .color(new Color(255, 0, 0))
+        .apply();
+}
+```
+
   </TabItem>
 </Tabs>
 
@@ -325,6 +380,13 @@ await pdf.page(0).newParagraph()
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+pdf.newParagraph()
+    .text("Hello World")
+    .at(0, 100, 500)
+    .add();
+```
 
   </TabItem>
 </Tabs>
@@ -364,6 +426,16 @@ await pdf.page(0).newParagraph()
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+pdf.newParagraph()
+    .text("Hello World")
+    .font("Helvetica", 12)
+    .color(new Color(0, 0, 0))
+    .lineSpacing(1.5)
+    .at(0, 100, 500)
+    .add();
+```
+
   </TabItem>
 </Tabs>
 
@@ -392,6 +464,13 @@ await pdf.newImage()
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+pdf.newImage()
+    .fromFile("logo.png")
+    .at(0, 50, 700)
+    .add();
+```
+
   </TabItem>
 </Tabs>
 
@@ -418,6 +497,10 @@ const fields = await pdf.selectFormFields();
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+List<FormFieldReference> fields = pdf.selectFormFields();
+```
+
   </TabItem>
 </Tabs>
 
@@ -439,6 +522,10 @@ const nameFields = await pdf.selectFieldsByName('firstName');
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+List<FormFieldReference> nameFields = pdf.selectFormFieldsByName("firstName");
+```
 
   </TabItem>
 </Tabs>
@@ -464,6 +551,12 @@ if (nameFields.length > 0) {
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+if (!nameFields.isEmpty()) {
+    nameFields.get(0).edit().value("John Doe").apply();
+}
+```
 
   </TabItem>
 </Tabs>

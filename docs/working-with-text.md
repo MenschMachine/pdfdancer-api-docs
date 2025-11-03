@@ -58,6 +58,25 @@ for (const para of pageParagraphs) {
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+import com.tfc.pdf.pdfdancer.api.PDFDancer;
+import com.tfc.pdf.pdfdancer.api.common.model.*;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Get all paragraphs across the entire document
+List<Paragraph> allParagraphs = pdf.selectParagraphs();
+System.out.println("Total paragraphs: " + allParagraphs.size());
+
+// Get all paragraphs on a specific page
+List<Paragraph> pageParagraphs = pdf.page(0).selectParagraphs();
+System.out.println("Page 0 paragraphs: " + pageParagraphs.size());
+
+for (Paragraph para : pageParagraphs) {
+    System.out.println("Paragraph: " + para.getText().substring(0, Math.min(50, para.getText().length())) + "...");
+}
+```
+
   </TabItem>
 </Tabs>
 
@@ -102,6 +121,22 @@ if (pageHeaders.length > 0) {
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+PDFDancer pdf = PDFDancer.createSession("invoice.pdf");
+
+// Find paragraphs starting with specific text
+List<Paragraph> headers = pdf.selectParagraphsStartingWith("Invoice #");
+
+// On a specific page
+List<Paragraph> pageHeaders = pdf.page(0).selectParagraphsStartingWith("The Complete");
+
+if (!pageHeaders.isEmpty()) {
+    Paragraph para = pageHeaders.get(0);
+    System.out.println("Found: " + para.getText());
+    System.out.println("Position: (" + para.getPosition().getX() + ", " + para.getPosition().getY() + ")");
+}
+```
+
   </TabItem>
 </Tabs>
 
@@ -139,6 +174,19 @@ for (const para of paragraphs) {
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+import com.tfc.pdf.pdfdancer.api.PDFDancer;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Find paragraphs at specific coordinates
+List<Paragraph> paragraphs = pdf.page(0).selectParagraphsAt(150, 320);
+
+for (Paragraph para : paragraphs) {
+    System.out.println("Paragraph at position: " + para.getText());
+}
+```
 
   </TabItem>
 </Tabs>
@@ -204,6 +252,31 @@ for (const para of paragraphs) {
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+import com.tfc.pdf.pdfdancer.api.PDFDancer;
+import com.tfc.pdf.pdfdancer.api.common.model.*;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+List<Paragraph> paragraphs = pdf.page(0).selectParagraphs();
+
+for (Paragraph para : paragraphs) {
+    // Access text content
+    System.out.println("Text: " + para.getText());
+
+    // Access font information
+    System.out.println("Font: " + para.getFontName() + " at " + para.getFontSize() + "pt");
+
+    // Access position
+    System.out.println("Position: (" + para.getPosition().getX() + ", " + para.getPosition().getY() + ")");
+
+    // Access color (if available)
+    if (para.getColor() != null) {
+        System.out.println("Color: RGB(" + para.getColor().getR() + ", " +
+            para.getColor().getG() + ", " + para.getColor().getB() + ")");
+    }
+}
+```
+
   </TabItem>
 </Tabs>
 
@@ -246,6 +319,22 @@ for (const line of lines) {
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+List<TextLine> lines = pdf.page(0).selectLines();
+
+for (TextLine line : lines) {
+    System.out.println("Line text: " + line.getText());
+    if (line.getColor() != null) {
+        System.out.println("  Color: RGB(" + line.getColor().getR() + ", " +
+            line.getColor().getG() + ", " + line.getColor().getB() + ")");
+    }
+    if (line.getFontName() != null) {
+        System.out.println("  Font: " + line.getFontName() + " " + line.getFontSize() + "pt");
+    }
+}
+```
 
   </TabItem>
 </Tabs>
@@ -313,6 +402,33 @@ for (const para of paragraphs) {
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+import com.tfc.pdf.pdfdancer.api.PDFDancer;
+import com.tfc.pdf.pdfdancer.api.common.model.*;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+List<Paragraph> paragraphs = pdf.page(0).selectParagraphs();
+
+for (Paragraph para : paragraphs) {
+    if (para.getStatus() != null) {
+        // Check if text was modified
+        System.out.println("Modified: " + para.getStatus().isModified());
+
+        // Check if text is encodable with current font
+        System.out.println("Encodable: " + para.getStatus().isEncodable());
+
+        // Get font type classification
+        FontType fontType = para.getStatus().getFontType();
+        System.out.println("Font type: " + fontType.getValue());  // SYSTEM, STANDARD, or EMBEDDED
+
+        // Get font recommendation with similarity score
+        FontRecommendation recommendation = para.getStatus().getFontRecommendation();
+        System.out.println("Recommended font: " + recommendation.getFontName());
+        System.out.println("Similarity score: " + recommendation.getSimilarityScore());
+    }
+}
+```
+
   </TabItem>
 </Tabs>
 
@@ -369,6 +485,24 @@ await pdf.save('output.pdf');
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+import com.tfc.pdf.pdfdancer.api.PDFDancer;
+import com.tfc.pdf.pdfdancer.api.common.model.*;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Add a simple paragraph with standard font
+pdf.newParagraph()
+    .text("Standard Font Test\nHelvetica Bold")
+    .font(StandardFonts.HELVETICA_BOLD.getValue(), 16)
+    .lineSpacing(1.2)
+    .color(new Color(255, 0, 0))
+    .at(0, 100, 100)
+    .add();
+
+pdf.save("output.pdf");
+```
+
   </TabItem>
 </Tabs>
 
@@ -420,6 +554,30 @@ await pdf.save('output.pdf');
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+import com.tfc.pdf.pdfdancer.api.PDFDancer;
+import com.tfc.pdf.pdfdancer.api.common.model.*;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Method 1: Specify page index in at()
+pdf.newParagraph()
+    .text("Times Roman Test")
+    .font(StandardFonts.TIMES_ROMAN.getValue(), 14)
+    .at(0, 150, 150)
+    .add();
+
+// Method 2: Use page() to scope the builder
+pdf.page(0).newParagraph()
+    .text("Awesomely\nObvious!")
+    .font("Roboto-Regular", 14)
+    .lineSpacing(0.7)
+    .at(300.1, 500)
+    .add();
+
+pdf.save("output.pdf");
+```
+
   </TabItem>
 </Tabs>
 
@@ -464,6 +622,23 @@ await pdf.save('output.pdf');
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+import com.tfc.pdf.pdfdancer.api.PDFDancer;
+import com.tfc.pdf.pdfdancer.api.common.model.*;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Add multi-line code example with Courier
+pdf.newParagraph()
+    .text("Courier Monospace\nCode Example")
+    .font(StandardFonts.COURIER_BOLD.getValue(), 12)
+    .lineSpacing(1.5)
+    .at(0, 200, 200)
+    .add();
+
+pdf.save("output.pdf");
+```
 
   </TabItem>
 </Tabs>
@@ -520,6 +695,28 @@ await pdf.save('output.pdf');
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+import com.tfc.pdf.pdfdancer.api.PDFDancer;
+import com.tfc.pdf.pdfdancer.api.common.model.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Use custom font file directly
+Path ttfPath = Paths.get("fonts/DancingScript-Regular.ttf");
+
+pdf.newParagraph()
+    .text("Awesomely\nObvious!")
+    .fontFile(ttfPath, 24)
+    .lineSpacing(1.8)
+    .color(new Color(0, 0, 255))
+    .at(0, 300.1, 500)
+    .add();
+
+pdf.save("output.pdf");
+```
+
   </TabItem>
 </Tabs>
 
@@ -571,6 +768,30 @@ await pdf.save('output.pdf');
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+import com.tfc.pdf.pdfdancer.api.PDFDancer;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Find fonts matching "Roboto" at size 14
+List<Font> fonts = pdf.findFonts("Roboto", 14);
+
+if (!fonts.isEmpty()) {
+    // Use the first match (e.g., "Roboto-Regular")
+    Font roboto = fonts.get(0);
+    System.out.println("Using: " + roboto.getName() + " at " + roboto.getSize() + "pt");
+
+    pdf.newParagraph()
+        .text("Awesomely\nObvious!")
+        .font(roboto.getName(), roboto.getSize())
+        .lineSpacing(0.7)
+        .at(0, 300.1, 500)
+        .add();
+}
+
+pdf.save("output.pdf");
+```
 
   </TabItem>
 </Tabs>
@@ -640,6 +861,31 @@ await pdf.save('output.pdf');
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+import com.tfc.pdf.pdfdancer.api.PDFDancer;
+import com.tfc.pdf.pdfdancer.api.common.model.*;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Find a paragraph by text prefix
+List<Paragraph> paragraphs = pdf.page(0).selectParagraphsStartingWith("The Complete");
+if (!paragraphs.isEmpty()) {
+    Paragraph paragraph = paragraphs.get(0);
+
+    // Replace text
+    CommandResult result = paragraph.edit().replace("Awesomely\nObvious!").apply();
+
+    // Check the result
+    System.out.println("Success: " + result.isSuccess());
+    System.out.println("Command: " + result.getCommandName());
+    if (result.getWarning() != null) {
+        System.out.println("Warning: " + result.getWarning());
+    }
+}
+
+pdf.save("output.pdf");
+```
 
   </TabItem>
 </Tabs>
@@ -754,6 +1000,27 @@ await pdf.save('output.pdf');
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+import com.tfc.pdf.pdfdancer.api.PDFDancer;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+List<Paragraph> paragraphs = pdf.page(0).selectParagraphsStartingWith("The Complete");
+
+if (!paragraphs.isEmpty()) {
+    Paragraph paragraph = paragraphs.get(0);
+
+    // Chain multiple edits: text, font, spacing, AND position
+    paragraph.edit()
+        .replace("Awesomely\nObvious!")
+        .font("Helvetica", 12)
+        .lineSpacing(0.7)
+        .moveTo(300.1, 500)
+        .apply();
+}
+
+pdf.save("output.pdf");
+```
+
   </TabItem>
 </Tabs>
 
@@ -818,6 +1085,35 @@ await pdf.save('output.pdf');
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+import com.tfc.pdf.pdfdancer.api.PDFDancer;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+List<Paragraph> paragraphs = pdf.page(0).selectParagraphsStartingWith("The Complete");
+
+if (!paragraphs.isEmpty()) {
+    Paragraph paragraph = paragraphs.get(0);
+    double originalX = paragraph.getPosition().getX();
+    double originalY = paragraph.getPosition().getY();
+
+    // Edit text and font, keeping original position
+    paragraph.edit()
+        .replace("Awesomely\nObvious!")
+        .font("Helvetica", 12)
+        .lineSpacing(0.7)
+        .apply();
+
+    // Verify position unchanged
+    List<Paragraph> newPara = pdf.page(0).selectParagraphsStartingWith("Awesomely");
+    if (!newPara.isEmpty()) {
+        System.out.println("Position unchanged: " + newPara.get(0).getPosition().getX() +
+            ", " + newPara.get(0).getPosition().getY());
+    }
+}
+
+pdf.save("output.pdf");
+```
+
   </TabItem>
 </Tabs>
 
@@ -866,6 +1162,24 @@ await pdf.save('output.pdf');
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+import com.tfc.pdf.pdfdancer.api.PDFDancer;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+List<Paragraph> paragraphs = pdf.page(0).selectParagraphsStartingWith("The Complete");
+
+if (!paragraphs.isEmpty()) {
+    // Move to new coordinates
+    paragraphs.get(0).moveTo(0.1, 300);
+
+    // Verify new position
+    List<Paragraph> moved = pdf.page(0).selectParagraphsAt(0.1, 300);
+    System.out.println("Moved paragraph found: " + (!moved.isEmpty()));
+}
+
+pdf.save("output.pdf");
+```
 
   </TabItem>
 </Tabs>
@@ -917,6 +1231,27 @@ await pdf.save('output.pdf');
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+List<Paragraph> paragraphs = pdf.page(0).selectParagraphsStartingWith("The Complete");
+
+if (!paragraphs.isEmpty()) {
+    // Move using edit builder
+    paragraphs.get(0).edit()
+        .moveTo(1, 1)
+        .apply();
+
+    // Verify new position
+    List<Paragraph> newPara = pdf.page(0).selectParagraphsStartingWith("The Complete");
+    if (!newPara.isEmpty()) {
+        System.out.println("New position: " + newPara.get(0).getPosition().getX() +
+            ", " + newPara.get(0).getPosition().getY());
+    }
+}
+
+pdf.save("output.pdf");
+```
+
   </TabItem>
 </Tabs>
 
@@ -963,6 +1298,21 @@ await pdf.save('output.pdf');
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+import com.tfc.pdf.pdfdancer.api.PDFDancer;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Find and edit a text line
+List<TextLine> textLines = pdf.page(0).selectTextLinesStartingWith("Invoice Number:");
+if (!textLines.isEmpty()) {
+    // Replace the text
+    textLines.get(0).edit().replace("Invoice Number: INV-2024-001").apply();
+}
+
+pdf.save("output.pdf");
+```
 
   </TabItem>
 </Tabs>
@@ -1042,6 +1392,25 @@ await pdf.save('output.pdf');
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+import com.tfc.pdf.pdfdancer.api.PDFDancer;
+import com.tfc.pdf.pdfdancer.api.common.model.*;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+List<TextLine> textLines = pdf.page(0).selectTextLinesStartingWith("Total:");
+
+if (!textLines.isEmpty()) {
+    // Change text, font, and color
+    textLines.get(0).edit()
+        .replace("Total: $1,234.56")
+        .font("Helvetica-Bold", 14)
+        .color(new Color(255, 0, 0))
+        .apply();
+}
+
+pdf.save("output.pdf");
+```
+
   </TabItem>
 </Tabs>
 
@@ -1090,6 +1459,29 @@ await pdf.save('output.pdf');
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+List<Paragraph> paragraphs = pdf.page(0).selectParagraphsStartingWith("The Complete");
+
+if (!paragraphs.isEmpty()) {
+    Paragraph paragraph = paragraphs.get(0);
+
+    // Change only the font, keep everything else
+    paragraph.edit()
+        .font("Helvetica", 28)
+        .apply();
+
+    // Verify font changed
+    List<TextLine> lines = pdf.page(0).selectTextLinesStartingWith("The Complete");
+    if (!lines.isEmpty()) {
+        System.out.println("Font: " + lines.get(0).getFontName());
+        System.out.println("Size: " + lines.get(0).getFontSize());
+    }
+}
+
+pdf.save("output.pdf");
+```
+
   </TabItem>
 </Tabs>
 
@@ -1133,6 +1525,22 @@ await pdf.save('output.pdf');
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+import com.tfc.pdf.pdfdancer.api.PDFDancer;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+List<TextLine> textLines = pdf.page(0).selectTextLinesStartingWith("Footer");
+
+if (!textLines.isEmpty()) {
+    // Move text line to new position
+    textLines.get(0).edit()
+        .moveTo(72, 50)
+        .apply();
+}
+
+pdf.save("output.pdf");
+```
 
   </TabItem>
 </Tabs>
@@ -1189,6 +1597,24 @@ await pdf.save('output.pdf');
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+import com.tfc.pdf.pdfdancer.api.PDFDancer;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Find and delete a paragraph
+List<Paragraph> paragraphs = pdf.page(0).selectParagraphsStartingWith("The Complete");
+if (!paragraphs.isEmpty()) {
+    paragraphs.get(0).delete();
+
+    // Verify deletion
+    List<Paragraph> remaining = pdf.page(0).selectParagraphsStartingWith("The Complete");
+    System.out.println("Remaining paragraphs: " + remaining.size());
+}
+
+pdf.save("output.pdf");
+```
+
   </TabItem>
 </Tabs>
 
@@ -1235,6 +1661,20 @@ for (const line of pageLines) {
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Get all text lines across the document
+List<TextLine> allLines = pdf.selectLines();
+
+// Get all text lines on a specific page
+List<TextLine> pageLines = pdf.page(0).selectLines();
+
+for (TextLine line : pageLines) {
+    System.out.println("Line: " + line.getText());
+}
+```
+
   </TabItem>
 </Tabs>
 
@@ -1268,6 +1708,17 @@ if (lines.length > 0) {
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Find text lines starting with specific text
+List<TextLine> lines = pdf.page(0).selectTextLinesStartingWith("Date:");
+
+if (!lines.isEmpty()) {
+    System.out.println("Found date line: " + lines.get(0).getText());
+}
+```
 
   </TabItem>
 </Tabs>

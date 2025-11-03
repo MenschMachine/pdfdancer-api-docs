@@ -55,6 +55,22 @@ const lastPage = pdf.page(4);  // For a 5-page document
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+import com.tfc.pdf.pdfdancer.api.PDFDancer;
+import com.tfc.pdf.pdfdancer.api.common.model.*;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Get the first page (0-indexed)
+Page firstPage = pdf.page(0);
+
+// Get the second page
+Page secondPage = pdf.page(1);
+
+// Get the last page (if you know the total count)
+Page lastPage = pdf.page(4);  // For a 5-page document
+```
+
   </TabItem>
 </Tabs>
 
@@ -91,6 +107,19 @@ for (const [i, page] of allPages.entries()) {
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Get all pages
+List<Page> allPages = pdf.pages();
+
+// Iterate through pages
+for (int i = 0; i < allPages.size(); i++) {
+    Page page = allPages.get(i);
+    System.out.println("Page " + i + ": " + page.getInternalId());
+}
+```
 
   </TabItem>
 </Tabs>
@@ -157,6 +186,30 @@ console.log(`Height: ${bbox?.height}`);
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+Page page = pdf.page(0);
+
+System.out.println("Page ID: " + page.getInternalId());
+System.out.println("Position: " + page.getPosition().getBoundingRect());
+System.out.println("Type: " + page.getObjectType());
+
+// Page size and orientation
+System.out.println("Page size: " + page.getPageSize());
+System.out.println("Orientation: " + page.getOrientation());
+
+// Get dimensions from page size
+if (page.getPageSize() != null) {
+    System.out.println("Width: " + page.getPageSize().getWidth());
+    System.out.println("Height: " + page.getPageSize().getHeight());
+}
+
+// Get bounding box dimensions (alternative method)
+BoundingRect bbox = page.getPosition().getBoundingRect();
+System.out.println("Width: " + bbox.getWidth());
+System.out.println("Height: " + bbox.getHeight());
+```
+
   </TabItem>
 </Tabs>
 
@@ -195,6 +248,16 @@ await fs.writeFile('output.pdf', modifiedBytes);
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Delete the third page (index 2)
+pdf.page(2).delete();
+
+// Save the modified PDF
+pdf.save("output.pdf");
+```
+
   </TabItem>
 </Tabs>
 
@@ -230,6 +293,24 @@ await pdf.save('output.pdf');
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+import java.util.Arrays;
+import java.util.Collections;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Delete pages 2, 3, and 5 (0-indexed)
+// Delete in reverse order to avoid index shifting
+Integer[] pageIndices = {5, 3, 2};
+Arrays.sort(pageIndices, Collections.reverseOrder());
+
+for (int pageIndex : pageIndices) {
+    pdf.page(pageIndex).delete();
+}
+
+pdf.save("output.pdf");
+```
 
   </TabItem>
 </Tabs>
@@ -284,6 +365,23 @@ await pdf.save('reordered.pdf');
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Move page 3 to position 0 (make it the first page)
+pdf.movePage(3, 0);
+
+// Alternative: use the page object's moveTo method
+Page page = pdf.page(3);
+page.moveTo(0);
+
+// Move the last page to position 1
+int lastPageIndex = pdf.pages().size() - 1;
+pdf.movePage(lastPageIndex, 1);
+
+pdf.save("reordered.pdf");
+```
 
   </TabItem>
 </Tabs>
@@ -346,6 +444,25 @@ await pdf.save('with_new_page.pdf');
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Add a new blank page (appended to the end)
+PageRef newPageRef = pdf.newPage();
+
+// The new page is now available
+System.out.println("New page added at index: " + newPageRef.getPosition().getPageIndex());
+
+// You can now add content to the new page
+Page newPage = pdf.page(newPageRef.getPosition().getPageIndex());
+newPage.newParagraph()
+    .text("This is content on the new page")
+    .at(100, 700)
+    .create();
+
+pdf.save("with_new_page.pdf");
+```
+
   </TabItem>
 </Tabs>
 
@@ -404,6 +521,23 @@ const lines = await page.selectLines();
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+Page page = pdf.page(0);
+
+// Select paragraphs on this page
+List<Paragraph> paragraphs = page.selectParagraphs();
+
+// Select images on this page
+List<Image> images = page.selectImages();
+
+// Select form fields on this page
+List<FormField> fields = page.selectFormFields();
+
+// Select text lines on this page
+List<TextLine> lines = page.selectLines();
+```
+
   </TabItem>
 </Tabs>
 
@@ -453,6 +587,29 @@ await pdf.save('output.pdf');
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+import com.tfc.pdf.pdfdancer.api.PDFDancer;
+import com.tfc.pdf.pdfdancer.api.common.model.*;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Add a paragraph to a specific page
+pdf.newParagraph()
+    .text("New paragraph on page 1")
+    .font("Helvetica", 12)
+    .at(0, 100, 500)
+    .add();
+
+// Or use page reference
+Page page = pdf.page(0);
+page.newParagraph()
+    .text("Another paragraph")
+    .at(100, 400)
+    .add();
+
+pdf.save("output.pdf");
+```
 
   </TabItem>
 </Tabs>
@@ -510,6 +667,26 @@ for (const [i, page] of allPages.entries()) {
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+List<Page> allPages = pdf.pages();
+
+for (int i = 0; i < allPages.size(); i++) {
+    Page page = allPages.get(i);
+    System.out.println("Processing page " + i);
+
+    // Get page information
+    System.out.println("  Internal ID: " + page.getInternalId());
+
+    // Select content on this page
+    List<Paragraph> paragraphs = page.selectParagraphs();
+    System.out.println("  Paragraphs: " + paragraphs.size());
+
+    List<Image> images = page.selectImages();
+    System.out.println("  Images: " + images.size());
+}
+```
+
   </TabItem>
 </Tabs>
 
@@ -561,6 +738,22 @@ await letterPdf.save('letter_size.pdf');
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+import com.tfc.pdf.pdfdancer.api.PDFDancer;
+
+// Create with default A4 portrait
+PDFDancer pdf = PDFDancer.create();
+pdf.page(0).newParagraph()
+    .text("Hello World")
+    .at(72, 720)
+    .add();
+pdf.save("output.pdf");
+
+// Create with specific page size
+PDFDancer letterPdf = PDFDancer.create("LETTER", Orientation.PORTRAIT, 3);
+letterPdf.save("letter_size.pdf");
+```
 
   </TabItem>
 </Tabs>
@@ -625,6 +818,25 @@ await namedPdf.save('named_custom.pdf');
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+import com.tfc.pdf.pdfdancer.api.PDFDancer;
+import com.tfc.pdf.pdfdancer.api.common.model.*;
+import java.util.Map;
+
+// Custom page size with explicit dimensions (in points)
+PDFDancer pdf = PDFDancer.create(
+    Map.of("width", 600, "height", 800),
+    Orientation.PORTRAIT
+);
+pdf.save("custom_size.pdf");
+
+// Custom named size
+PDFDancer namedPdf = PDFDancer.create(
+    Map.of("name", "CUSTOM", "width", 500, "height", 700)
+);
+namedPdf.save("named_custom.pdf");
+```
+
   </TabItem>
 </Tabs>
 
@@ -654,6 +866,15 @@ await pdf.save('landscape.pdf');
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+import com.tfc.pdf.pdfdancer.api.PDFDancer;
+import com.tfc.pdf.pdfdancer.api.common.model.*;
+
+// Create A4 landscape
+PDFDancer pdf = PDFDancer.create("A4", Orientation.LANDSCAPE);
+pdf.save("landscape.pdf");
+```
 
   </TabItem>
 </Tabs>

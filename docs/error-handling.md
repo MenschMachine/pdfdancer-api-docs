@@ -58,6 +58,18 @@ import {
   </TabItem>
   <TabItem value="java" label="Java">
 
+All exceptions inherit from `PdfDancerException`:
+
+- **`PdfDancerException`** - Base exception for all PDFDancer errors
+  - **`ValidationException`** - Client-side validation errors
+  - **`FontNotFoundException`** - Font not found on the service
+  - **`HttpClientException`** - HTTP transport or server errors
+  - **`SessionException`** - Session creation or management failures
+
+```java
+import com.tfc.pdf.pdfdancer.exceptions.*;
+```
+
   </TabItem>
 </Tabs>
 
@@ -128,6 +140,24 @@ try {
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+import com.tfc.pdf.pdfdancer.PDFDancer;
+import com.tfc.pdf.pdfdancer.exceptions.ValidationException;
+
+try {
+    // Invalid coordinates
+    try (PDFDancer pdf = PDFDancer.createSession("document.pdf")) {
+        pdf.page(0).newParagraph()
+            .text("Test")
+            .font("Helvetica", 12)
+            .at(-100, 500)  // Invalid negative coordinate
+            .apply();
+    }
+} catch (ValidationException e) {
+    System.err.println("Validation error: " + e.getMessage());
+}
+```
+
   </TabItem>
 </Tabs>
 
@@ -194,6 +224,33 @@ try {
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+import com.tfc.pdf.pdfdancer.exceptions.FontNotFoundException;
+
+try {
+    try (PDFDancer pdf = PDFDancer.createSession("document.pdf")) {
+        pdf.page(0).newParagraph()
+            .text("Hello")
+            .font("NonExistentFont", 12)
+            .at(100, 500)
+            .apply();
+    }
+} catch (FontNotFoundException e) {
+    System.err.println("Font not found: " + e.getMessage());
+
+    // Fallback to default font
+    try (PDFDancer pdf = PDFDancer.createSession("document.pdf")) {
+        pdf.page(0).newParagraph()
+            .text("Hello")
+            .font("Helvetica", 12)
+            .at(100, 500)
+            .apply();
+
+        pdf.save("output.pdf");
+    }
+}
+```
 
   </TabItem>
 </Tabs>
@@ -272,6 +329,31 @@ try {
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+import com.tfc.pdf.pdfdancer.exceptions.*;
+
+try {
+    try (PDFDancer pdf = PDFDancer.createSession(
+        "document.pdf",
+        "invalid-token",
+        "https://api.pdfdancer.com"
+    )) {
+        pdf.save("output.pdf");
+    }
+} catch (SessionException e) {
+    System.err.println("Session error: " + e.getMessage());
+    // Session creation failed, possibly due to invalid token
+
+} catch (HttpClientException e) {
+    System.err.println("HTTP error: " + e.getMessage());
+    // Network or server error
+
+} catch (PdfDancerException e) {
+    System.err.println("Unexpected error: " + e.getMessage());
+    // Catch-all for other PDFDancer errors
+}
+```
 
   </TabItem>
 </Tabs>
@@ -481,6 +563,97 @@ if (success) {
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+import com.tfc.pdf.pdfdancer.api.common.model.Color;
+import java.io.IOException;
+import java.util.List;
+
+public class PdfProcessor {
+    /**
+     * Process a PDF with comprehensive error handling.
+     *
+     * @return true on success, false on failure
+     */
+    public static boolean processPdf(String inputPath, String outputPath) {
+        try (PDFDancer pdf = PDFDancer.createSession(inputPath)) {
+            // Find and edit paragraphs
+            List<ParagraphRef> paragraphs = pdf.page(0)
+                .selectParagraphsStartingWith("Invoice");
+
+            if (!paragraphs.isEmpty()) {
+                paragraphs.get(0).edit()
+                    .replace("PAID")
+                    .color(new Color(0, 128, 0))
+                    .apply();
+            }
+
+            // Add watermark
+            pdf.page(0).newParagraph()
+                .text("CONFIDENTIAL")
+                .font("Helvetica-Bold", 48)
+                .color(new Color(200, 200, 200))
+                .at(150, 400)
+                .apply();
+
+            pdf.save(outputPath);
+            return true;
+
+        } catch (ValidationException e) {
+            System.err.println("Validation failed: " + e.getMessage());
+            System.err.println("Check your input parameters and try again.");
+            return false;
+
+        } catch (FontNotFoundException e) {
+            System.err.println("Font error: " + e.getMessage());
+            System.err.println("Using fallback font...");
+
+            // Retry with fallback font
+            try (PDFDancer pdf = PDFDancer.createSession(inputPath)) {
+                pdf.page(0).newParagraph()
+                    .text("CONFIDENTIAL")
+                    .font("Helvetica", 48)
+                    .color(new Color(200, 200, 200))
+                    .at(150, 400)
+                    .apply();
+                pdf.save(outputPath);
+                return true;
+            } catch (Exception retryError) {
+                System.err.println("Retry failed: " + retryError.getMessage());
+                return false;
+            }
+
+        } catch (SessionException e) {
+            System.err.println("Session error: " + e.getMessage());
+            System.err.println("Check your API token and network connection.");
+            return false;
+
+        } catch (HttpClientException e) {
+            System.err.println("HTTP error: " + e.getMessage());
+            System.err.println("The API server may be unavailable. Try again later.");
+            return false;
+
+        } catch (PdfDancerException e) {
+            System.err.println("PDFDancer error: " + e.getMessage());
+            return false;
+
+        } catch (Exception e) {
+            System.err.println("Unexpected error: " + e.getMessage());
+            return false;
+        }
+    }
+
+    // Usage
+    public static void main(String[] args) {
+        boolean success = processPdf("invoice.pdf", "processed_invoice.pdf");
+        if (success) {
+            System.out.println("PDF processed successfully!");
+        } else {
+            System.out.println("PDF processing failed.");
+        }
+    }
+}
+```
+
   </TabItem>
 </Tabs>
 
@@ -520,6 +693,18 @@ const pdf = await PDFDancer.open(pdfBytes, 'your-token');
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+// Error: ValidationException - API token is required
+// Solution: Set PDFDANCER_TOKEN environment variable or pass token explicitly
+
+System.setProperty("PDFDANCER_TOKEN", "your-token");
+
+// Or pass explicitly
+try (PDFDancer pdf = PDFDancer.createSession("doc.pdf", "your-token")) {
+    // Process PDF
+}
+```
 
   </TabItem>
 </Tabs>
@@ -563,6 +748,21 @@ try {
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+import java.nio.file.Files;
+import java.nio.file.Path;
+
+Path pdfPath = Path.of("document.pdf");
+
+if (!Files.exists(pdfPath)) {
+    System.err.println("Error: File " + pdfPath + " not found");
+} else {
+    try (PDFDancer pdf = PDFDancer.createSession(pdfPath.toString())) {
+        pdf.save("output.pdf");
+    }
+}
+```
+
   </TabItem>
 </Tabs>
 
@@ -597,6 +797,18 @@ await pdf.save('output.pdf');
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+// Increase timeout for large PDFs or slow connections
+try (PDFDancer pdf = PDFDancer.createSession(
+    "large-document.pdf",
+    null,  // Use default token
+    null,  // Use default base URL
+    120000  // 120 seconds in milliseconds
+)) {
+    pdf.save("output.pdf");
+}
+```
 
   </TabItem>
 </Tabs>

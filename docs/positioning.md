@@ -134,6 +134,47 @@ await pdf.save('output.pdf');
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Bottom-left corner (0, 0)
+pdf.newParagraph()
+    .text("Bottom Left")
+    .font("Helvetica", 10)
+    .at(0, 10, 10)
+    .add();
+
+// Top-left corner (for Letter size: 792pt height)
+pdf.newParagraph()
+    .text("Top Left")
+    .font("Helvetica", 10)
+    .at(0, 10, 782)
+    .add();
+
+// Center of page (for Letter size: 612×792)
+pdf.newParagraph()
+    .text("Center")
+    .font("Helvetica", 10)
+    .at(0, 306, 396)
+    .add();
+
+// Top-right corner
+pdf.newParagraph()
+    .text("Top Right")
+    .font("Helvetica", 10)
+    .at(0, 552, 782)
+    .add();
+
+// Bottom-right corner
+pdf.newParagraph()
+    .text("Bottom Right")
+    .font("Helvetica", 10)
+    .at(0, 552, 10)
+    .add();
+
+pdf.save("output.pdf");
+```
+
   </TabItem>
 </Tabs>
 
@@ -185,6 +226,22 @@ const paragraphs = await pdf.page(0).selectParagraphsAt(x!, y!);
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+import com.tfc.pdf.pdfdancer.api.common.model.*;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Get position at specific coordinates
+Position position = pdf.page(0).selectParagraphsAt(100, 200).get(0).getPosition();
+
+// Access position properties
+Double x = position.getX();
+Double y = position.getY();
+
+// Use position for selection
+List<TextParagraphReference> paragraphs = pdf.page(0).selectParagraphsAt(x, y);
+```
+
   </TabItem>
 </Tabs>
 
@@ -225,6 +282,19 @@ for (const para of paragraphs) {
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+import com.tfc.pdf.pdfdancer.api.common.model.*;
+import java.util.List;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+List<TextParagraphReference> paragraphs = pdf.page(0).selectParagraphs();
+
+for (TextParagraphReference para : paragraphs) {
+    Position pos = para.getPosition();
+    System.out.println("Paragraph at: x=" + pos.getX() + ", y=" + pos.getY());
+}
+```
 
   </TabItem>
 </Tabs>
@@ -298,6 +368,27 @@ await pdf.save('output.pdf');
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+// Define margins (in points)
+final int LEFT_MARGIN = 72;    // 1 inch
+final int RIGHT_MARGIN = 72;   // 1 inch
+final int TOP_MARGIN = 72;     // 1 inch
+final int BOTTOM_MARGIN = 72;  // 1 inch
+
+final int PAGE_WIDTH = 612;    // Letter width
+final int PAGE_HEIGHT = 792;   // Letter height
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Content within margins
+pdf.newParagraph()
+    .text("Safe content area")
+    .at(0, LEFT_MARGIN, PAGE_HEIGHT - TOP_MARGIN)
+    .add();
+
+pdf.save("output.pdf");
+```
 
   </TabItem>
 </Tabs>

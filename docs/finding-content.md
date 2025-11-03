@@ -47,6 +47,19 @@ const pageParagraphs = await pdf.page(0).selectParagraphs();
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+import com.tfc.pdf.pdfdancer.api.PDFDancer;
+import com.tfc.pdf.pdfdancer.api.common.model.*;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Document-level: searches ALL pages
+List<Paragraph> allParagraphs = pdf.selectParagraphs();
+
+// Page-level: searches only page 0
+List<Paragraph> pageParagraphs = pdf.page(0).selectParagraphs();
+```
+
   </TabItem>
 </Tabs>
 
@@ -106,6 +119,26 @@ const pageImages = await pdf.page(1).selectImages();
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Text content
+List<Paragraph> allParagraphs = pdf.selectParagraphs();
+List<TextLine> allLines = pdf.selectTextLines();  // or selectLines()
+
+// Visual content
+List<Image> allImages = pdf.selectImages();
+List<Path> allPaths = pdf.selectPaths();  // vector graphics
+List<FormXObject> allForms = pdf.selectForms();  // form XObjects (templates, watermarks)
+
+// Interactive content
+List<FormField> allFields = pdf.selectFormFields();  // AcroForm fields
+
+// Page-scoped selections
+List<Paragraph> pageParagraphs = pdf.page(0).selectParagraphs();
+List<Image> pageImages = pdf.page(1).selectImages();
+```
+
   </TabItem>
 </Tabs>
 
@@ -151,6 +184,23 @@ for (const element of pageElements) {
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Get all elements in the entire document
+// Returns paragraphs, text lines, images, paths, forms, and form fields
+List<Element> allElements = pdf.selectElements();
+
+// Get all elements on a specific page
+List<Element> pageElements = pdf.page(0).selectElements();
+
+// Process all elements
+for (Element element : pageElements) {
+    System.out.println("Type: " + element.getType() + ", Position: (" +
+        element.getPosition().getX() + ", " + element.getPosition().getY() + ")");
+}
+```
 
   </TabItem>
 </Tabs>
@@ -213,6 +263,31 @@ for (const field of fields) {
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Select and inspect
+List<Paragraph> paragraphs = pdf.page(0).selectParagraphs();
+for (Paragraph para : paragraphs) {
+    System.out.println("Text: " + para.getText());
+    System.out.println("Font: " + para.getFontName() + " at " + para.getFontSize() + "pt");
+    System.out.println("Position: (" + para.getPosition().getX() + ", " + para.getPosition().getY() + ")");
+}
+
+// Select and manipulate
+List<Image> images = pdf.selectImages();
+for (Image img : images) {
+    System.out.println("Image at (" + img.getPosition().getX() + ", " + img.getPosition().getY() + ")");
+    // Objects have .delete(), .moveTo(), etc.
+}
+
+// Select and check form fields
+List<FormField> fields = pdf.selectFormFields();
+for (FormField field : fields) {
+    System.out.println(field.getFieldName() + ": " + field.getValue());
+}
+```
 
   </TabItem>
 </Tabs>
@@ -287,6 +362,28 @@ const dateLine = await pdf.page(0).selectTextLinesAt(500, 750);
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Find paragraphs at specific coordinates
+List<Paragraph> header = pdf.page(0).selectParagraphsAt(72, 750);
+
+// Find images at logo position
+List<Image> logo = pdf.page(0).selectImagesAt(50, 750);
+
+// Find form fields at signature area
+List<FormField> signature = pdf.page(2).selectFormFieldsAt(150, 100);
+
+// Find paths (vector graphics) at specific position
+List<Path> lines = pdf.page(0).selectPathsAt(200, 400);
+
+// Find form XObjects at watermark position
+List<FormXObject> watermark = pdf.page(0).selectFormsAt(300, 400);
+
+// Find text lines at specific coordinates
+List<TextLine> dateLine = pdf.page(0).selectTextLinesAt(500, 750);
+```
+
   </TabItem>
 </Tabs>
 
@@ -340,6 +437,28 @@ if (logo.length > 0) {
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+PDFDancer pdf = PDFDancer.createSession("invoice.pdf");
+
+// Invoice header is always at (72, 750)
+List<Paragraph> header = pdf.page(0).selectParagraphsAt(72, 750);
+if (!header.isEmpty()) {
+    System.out.println("Invoice: " + header.get(0).getText());
+}
+
+// Total amount always at (450, 150)
+List<Paragraph> total = pdf.page(0).selectParagraphsAt(450, 150);
+if (!total.isEmpty()) {
+    System.out.println("Total: " + total.get(0).getText());
+}
+
+// Company logo always at (50, 750)
+List<Image> logo = pdf.page(0).selectImagesAt(50, 750);
+if (!logo.isEmpty()) {
+    System.out.println("Found logo at expected position");
+}
+```
 
   </TabItem>
 </Tabs>
@@ -405,6 +524,22 @@ const pageHeaders = await pdf.page(0).selectParagraphsStartingWith('Executive Su
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+PDFDancer pdf = PDFDancer.createSession("invoice.pdf");
+
+// Document-level search (searches all pages)
+List<Paragraph> invoices = pdf.selectParagraphsStartingWith("Invoice #");
+List<Paragraph> totals = pdf.selectParagraphsStartingWith("Total:");
+List<Paragraph> disclaimers = pdf.selectParagraphsStartingWith("Note:");
+
+// Find text lines by prefix across all pages
+List<TextLine> dateLines = pdf.selectTextLinesStartingWith("Date:");
+List<TextLine> amountLines = pdf.selectTextLinesStartingWith("Amount:");
+
+// Page-scoped prefix search (only searches specific page)
+List<Paragraph> pageHeaders = pdf.page(0).selectParagraphsStartingWith("Executive Summary");
+```
 
   </TabItem>
 </Tabs>
@@ -487,6 +622,32 @@ const pageDates = await pdf.page(0).selectParagraphsMatching('\\d{4}-\\d{2}-\\d{
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Document-level pattern matching (searches all pages)
+// Find dates in format YYYY-MM-DD
+List<Paragraph> dates = pdf.selectParagraphsMatching("\\d{4}-\\d{2}-\\d{2}");
+
+// Find email addresses
+List<Paragraph> emails = pdf.selectParagraphsMatching("[\\w\\.-]+@[\\w\\.-]+\\.\\w+");
+
+// Find dollar amounts
+List<Paragraph> prices = pdf.selectParagraphsMatching("\\$\\d+\\.\\d{2}");
+
+// Find phone numbers
+List<TextLine> phones = pdf.selectTextLinesMatching("\\(\\d{3}\\) \\d{3}-\\d{4}");
+
+// Find ZIP codes
+List<TextLine> zips = pdf.selectTextLinesMatching("\\d{5}(-\\d{4})?");
+
+// Find invoice numbers (custom pattern)
+List<Paragraph> invoiceNums = pdf.selectParagraphsMatching("INV-\\d{6}");
+
+// Page-scoped pattern matching (only searches specific page)
+List<Paragraph> pageDates = pdf.page(0).selectParagraphsMatching("\\d{4}-\\d{2}-\\d{2}");
+```
+
   </TabItem>
 </Tabs>
 
@@ -532,6 +693,22 @@ if (signatureFields.length > 0) {
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+PDFDancer pdf = PDFDancer.createSession("form.pdf");
+
+// Find specific form fields by name
+List<FormField> signatureFields = pdf.selectFormFieldsByName("signature");
+List<FormField> nameFields = pdf.selectFormFieldsByName("applicant_name");
+List<FormField> dateFields = pdf.selectFormFieldsByName("application_date");
+
+// Check and modify field values
+if (!signatureFields.isEmpty()) {
+    FormField sig = signatureFields.get(0);
+    System.out.println("Signature value: " + sig.getValue());
+    sig.edit().value("John Doe").apply();
+}
+```
 
   </TabItem>
 </Tabs>
@@ -598,6 +775,32 @@ await pdf.save('processed.pdf');
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+import com.tfc.pdf.pdfdancer.api.PDFDancer;
+import com.tfc.pdf.pdfdancer.api.common.model.*;
+
+PDFDancer pdf = PDFDancer.createSession("invoice.pdf");
+
+// Find all invoices on first page
+List<Paragraph> invoices = pdf.page(0).selectParagraphsStartingWith("Invoice #");
+
+// Find all dollar amounts
+List<Paragraph> prices = pdf.selectParagraphsMatching("\\$\\d+\\.\\d{2}");
+
+// Find signature field and check if signed
+List<FormField> sigFields = pdf.selectFormFieldsByName("signature");
+if (!sigFields.isEmpty() && sigFields.get(0).getValue() != null) {
+    System.out.println("Document is signed");
+}
+
+// Delete all images on page 2
+for (Image img : pdf.page(2).selectImages()) {
+    img.delete();
+}
+
+pdf.save("processed.pdf");
+```
 
   </TabItem>
 </Tabs>

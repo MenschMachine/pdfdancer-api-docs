@@ -117,6 +117,42 @@ await pdf.save('output.pdf');
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+import com.tfc.pdf.pdfdancer.api.PDFDancer;
+import com.tfc.pdf.pdfdancer.api.common.model.*;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Use standard fonts with enum (recommended)
+pdf.newParagraph()
+    .text("Helvetica Bold text")
+    .font(StandardFonts.HELVETICA_BOLD.getValue(), 16)
+    .color(new Color(255, 0, 0))
+    .at(0, 100, 500)
+    .add();
+
+pdf.newParagraph()
+    .text("Times Roman text")
+    .font(StandardFonts.TIMES_ROMAN.getValue(), 14)
+    .at(0, 100, 480)
+    .add();
+
+pdf.newParagraph()
+    .text("Courier monospace code")
+    .font(StandardFonts.COURIER_BOLD.getValue(), 12)
+    .at(0, 100, 460)
+    .add();
+
+// You can also use font names directly as strings
+pdf.newParagraph()
+    .text("Direct font name")
+    .font("Helvetica", 12)
+    .at(0, 100, 440)
+    .add();
+
+pdf.save("output.pdf");
+```
+
   </TabItem>
 </Tabs>
 
@@ -265,6 +301,43 @@ if (result.warning) {
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+import com.tfc.pdf.pdfdancer.api.PDFDancer;
+import com.tfc.pdf.pdfdancer.api.common.model.*;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+List<Paragraph> paragraphs = pdf.page(0).selectParagraphs();
+
+for (Paragraph para : paragraphs) {
+    if (para.getStatus() != null) {
+        // Check font type
+        if (para.getStatus().getFontType().getValue().equals("EMBEDDED")) {
+            System.out.println("Embedded font: " + para.getFontName());
+
+            // Check if text is encodable
+            if (!para.getStatus().isEncodable()) {
+                System.out.println("Cannot encode new characters with this font");
+            }
+
+            // Get font recommendation
+            FontRecommendation rec = para.getStatus().getFontRecommendation();
+            System.out.println("Recommended: " + rec.getFontName() +
+                " (similarity: " + rec.getSimilarityScore() + ")");
+        }
+    }
+}
+
+// Attempt to modify embedded font text
+Paragraph para = paragraphs.get(0);
+CommandResult result = para.edit().replace("New text").apply();
+
+if (result.getWarning() != null) {
+    System.out.println("Warning: " + result.getWarning());
+    // Consider using a standard font instead
+    result = para.edit().replace("New text").font("Helvetica", 12).apply();
+}
+```
+
   </TabItem>
 </Tabs>
 
@@ -333,6 +406,28 @@ await pdf.save('output.pdf');
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+import com.tfc.pdf.pdfdancer.api.PDFDancer;
+import com.tfc.pdf.pdfdancer.api.common.model.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Use custom font file directly
+Path ttfPath = Paths.get("fonts/DancingScript-Regular.ttf");
+
+pdf.newParagraph()
+    .text("Beautiful custom font\nwith multiple lines")
+    .fontFile(ttfPath, 24)
+    .lineSpacing(1.8)
+    .color(new Color(0, 0, 255))
+    .at(0, 300, 500)
+    .add();
+
+pdf.save("output.pdf");
+```
+
   </TabItem>
 </Tabs>
 
@@ -381,6 +476,27 @@ await pdf.save('output.pdf');
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Search for fonts available on the service
+List<Font> fonts = pdf.findFonts("Roboto", 14);
+
+if (!fonts.isEmpty()) {
+    // Use the first match (e.g., "Roboto-Regular")
+    Font font = fonts.get(0);
+    System.out.println("Using: " + font.getName() + " at " + font.getSize() + "pt");
+
+    pdf.newParagraph()
+        .text("Text with service font")
+        .font(font.getName(), font.getSize())
+        .at(0, 300, 500)
+        .add();
+}
+
+pdf.save("output.pdf");
+```
+
   </TabItem>
 </Tabs>
 
@@ -418,6 +534,24 @@ with PDFDancer.open("document.pdf") as pdf:
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+import java.nio.file.Paths;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Register custom TTF font
+pdf.registerFont(Paths.get("fonts/CustomFont.ttf").toString());
+
+// Now use the registered font by name
+pdf.newParagraph()
+    .text("Text with registered font")
+    .font("CustomFont", 14)
+    .at(0, 100, 500)
+    .add();
+
+pdf.save("output.pdf");
+```
 
   </TabItem>
 </Tabs>
@@ -515,6 +649,47 @@ await pdf.save('output.pdf');
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+import com.tfc.pdf.pdfdancer.api.PDFDancer;
+import com.tfc.pdf.pdfdancer.api.common.model.*;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Large heading with bold Helvetica
+pdf.newParagraph()
+    .text("Large heading")
+    .font(StandardFonts.HELVETICA_BOLD.getValue(), 24)
+    .color(new Color(0, 0, 0))
+    .at(0, 100, 700)
+    .add();
+
+// Normal body text with Times Roman
+pdf.newParagraph()
+    .text("Normal body text in Times Roman")
+    .font(StandardFonts.TIMES_ROMAN.getValue(), 12)
+    .at(0, 100, 660)
+    .add();
+
+// Monospace code example with Courier
+pdf.newParagraph()
+    .text("def hello():\n    print('Hello')")
+    .font(StandardFonts.COURIER_BOLD.getValue(), 11)
+    .lineSpacing(1.5)
+    .color(new Color(40, 40, 40))
+    .at(0, 100, 620)
+    .add();
+
+// Small footnote
+pdf.newParagraph()
+    .text("Small footnote")
+    .font(StandardFonts.HELVETICA.getValue(), 8)
+    .color(new Color(128, 128, 128))
+    .at(0, 100, 580)
+    .add();
+
+pdf.save("output.pdf");
+```
 
   </TabItem>
 </Tabs>

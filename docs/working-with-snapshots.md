@@ -84,6 +84,35 @@ console.log(`Total elements in document: ${allElements.length}`);
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+import com.tfc.pdf.pdfdancer.api.PDFDancer;
+import com.tfc.pdf.pdfdancer.api.common.model.*;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Get snapshot of entire document
+DocumentSnapshot snapshot = pdf.getDocumentSnapshot();
+
+// Access document information
+System.out.println("Total pages: " + snapshot.getPageCount());
+System.out.println("Fonts used: " + snapshot.getFonts().size());
+
+// Iterate through all pages
+for (PageSnapshot pageSnapshot : snapshot.getPages()) {
+    int pageIndex = pageSnapshot.getPageRef().getPosition().getPageIndex();
+    int elementCount = pageSnapshot.getElements().size();
+    System.out.println("Page " + pageIndex + ": " + elementCount + " elements");
+}
+
+// Get all elements across all pages
+List<Element> allElements = new ArrayList<>();
+for (PageSnapshot pageSnap : snapshot.getPages()) {
+    allElements.addAll(pageSnap.getElements());
+}
+
+System.out.println("Total elements in document: " + allElements.size());
+```
+
   </TabItem>
 </Tabs>
 
@@ -146,6 +175,30 @@ for (const element of elements) {
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+import com.tfc.pdf.pdfdancer.api.PDFDancer;
+import com.tfc.pdf.pdfdancer.api.common.model.*;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Get snapshot of page 0
+PageSnapshot pageSnapshot = pdf.getPageSnapshot(0);
+
+// Access page information
+PageRef pageRef = pageSnapshot.getPageRef();
+System.out.println("Page size: " + pageRef.getPageSize());
+System.out.println("Orientation: " + pageRef.getOrientation());
+
+// Get all elements on this page
+List<Element> elements = pageSnapshot.getElements();
+System.out.println("Elements on page: " + elements.size());
+
+// Iterate through elements
+for (Element element : elements) {
+    System.out.println("  " + element.getType() + ": " + element.getInternalId());
+}
+```
+
   </TabItem>
 </Tabs>
 
@@ -181,6 +234,16 @@ console.log(`Elements: ${snapshot.elements.length}`);
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+Page page = pdf.page(0);
+
+// Get snapshot from page object
+PageSnapshot snapshot = page.getSnapshot();
+
+System.out.println("Elements: " + snapshot.getElements().size());
+```
 
   </TabItem>
 </Tabs>
@@ -251,6 +314,33 @@ console.log(`Images: ${imageCount}`);
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+import com.tfc.pdf.pdfdancer.api.PDFDancer;
+import com.tfc.pdf.pdfdancer.api.common.model.*;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Get only paragraphs and images
+DocumentSnapshot snapshot = pdf.getDocumentSnapshot("PARAGRAPH,IMAGE");
+
+// Count elements by type
+int paragraphCount = 0;
+int imageCount = 0;
+
+for (PageSnapshot pageSnap : snapshot.getPages()) {
+    for (Element element : pageSnap.getElements()) {
+        if (element.getType().equals("PARAGRAPH")) {
+            paragraphCount++;
+        } else if (element.getType().equals("IMAGE")) {
+            imageCount++;
+        }
+    }
+}
+
+System.out.println("Paragraphs: " + paragraphCount);
+System.out.println("Images: " + imageCount);
+```
+
   </TabItem>
 </Tabs>
 
@@ -317,6 +407,33 @@ console.log(fullText);
   </TabItem>
   <TabItem value="java" label="Java">
 
+```java
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Get snapshot with only text elements
+DocumentSnapshot snapshot = pdf.getDocumentSnapshot("PARAGRAPH,TEXT_LINE");
+
+List<String> allText = new ArrayList<>();
+for (PageSnapshot pageSnap : snapshot.getPages()) {
+    for (Element element : pageSnap.getElements()) {
+        if (element instanceof Paragraph) {
+            Paragraph para = (Paragraph) element;
+            if (para.getText() != null) {
+                allText.add(para.getText());
+            }
+        } else if (element instanceof TextLine) {
+            TextLine line = (TextLine) element;
+            if (line.getText() != null) {
+                allText.add(line.getText());
+            }
+        }
+    }
+}
+
+String fullText = String.join("\n", allText);
+System.out.println(fullText);
+```
+
   </TabItem>
 </Tabs>
 
@@ -369,6 +486,30 @@ for (const [i, pageSnap] of snapshot.pages.entries()) {
 
   </TabItem>
   <TabItem value="java" label="Java">
+
+```java
+import java.util.HashMap;
+import java.util.Map;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+DocumentSnapshot snapshot = pdf.getDocumentSnapshot();
+
+// Analyze each page
+for (int i = 0; i < snapshot.getPages().size(); i++) {
+    PageSnapshot pageSnap = snapshot.getPages().get(i);
+    Map<String, Integer> elementsByType = new HashMap<>();
+
+    for (Element element : pageSnap.getElements()) {
+        String objType = element.getType();
+        elementsByType.put(objType, elementsByType.getOrDefault(objType, 0) + 1);
+    }
+
+    System.out.println("\nPage " + i + ":");
+    for (Map.Entry<String, Integer> entry : elementsByType.entrySet()) {
+        System.out.println("  " + entry.getKey() + ": " + entry.getValue());
+    }
+}
+```
 
   </TabItem>
 </Tabs>
