@@ -43,13 +43,22 @@ with PDFDancer.open(pdf_data=pdf_bytes) as pdf:
 
 ```typescript
 import { PDFDancer } from 'pdfdancer-client-typescript';
+
+const pdf = await PDFDancer.open('document.pdf');
+// Your operations here
+```
+
+Always `await` the `open()` call—PDFDancer establishes a session with the service.
+
+**Opening from bytes:**
+
+```typescript
+import { PDFDancer } from 'pdfdancer-client-typescript';
 import { promises as fs } from 'node:fs';
 
 const pdfBytes = await fs.readFile('document.pdf');
 const pdf = await PDFDancer.open(pdfBytes);
 ```
-
-Always `await` the `open()` call—PDFDancer establishes a session with the service.
 
   </TabItem>
   <TabItem value="java" label="Java">

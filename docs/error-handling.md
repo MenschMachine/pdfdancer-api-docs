@@ -730,11 +730,9 @@ else:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-import { promises as fs } from 'node:fs';
 
 try {
-  const pdfBytes = await fs.readFile('document.pdf');
-  const pdf = await PDFDancer.open(pdfBytes);
+  const pdf = await PDFDancer.open('document.pdf');
   await pdf.save('output.pdf');
 } catch (error) {
   if ((error as NodeJS.ErrnoException).code === 'ENOENT') {
