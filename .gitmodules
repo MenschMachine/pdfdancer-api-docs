@@ -1,15 +1,9 @@
-[submodule "external/MenschMachine-java"]
-	path = external/MenschMachine-java
-	url = https://github.com/MenschMachine/MenschMachine-java.git
-[submodule "external/MenschMachine-python"]
-	path = external/MenschMachine-python
-	url = https://github.com/MenschMachine/MenschMachine-python.git
-[submodule "external/MenschMachine-typescript"]
-	path = external/MenschMachine-typescript
-	url = https://github.com/MenschMachine/MenschMachine-typescript.git
 [submodule "external/pdfdancer-client-typescript"]
 	path = external/pdfdancer-client-typescript
 	url = git@github.com:MenschMachine/pdfdancer-client-typescript.git
 [submodule "external/pdfdancer-client-python"]
 	path = external/pdfdancer-client-python
 	url = git@github.com:MenschMachine/pdfdancer-client-python.git
+[submodule "external/pdfdancer-client-java"]
+	path = external/pdfdancer-client-java
+	url = git@github.com:MenschMachine/pdfdancer-client-java.git

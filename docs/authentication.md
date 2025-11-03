@@ -7,7 +7,49 @@ description: Manage API credentials and configure your PDFDancer clients securel
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-PDFDancer uses API tokens to authenticate requests. Each token is tied to your account and grants access to the PDF manipulation API.
+PDFDancer uses API tokens to authenticate requests. You can get started immediately with anonymous tokens, or create an account for higher limits and advanced features.
+
+---
+
+## Anonymous Tokens (Quick Start)
+
+No API token needed to get started—the SDK automatically obtains an anonymous token when you don't provide one:
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+from pdfdancer import PDFDancer
+
+# No token needed! SDK automatically gets an anonymous token
+with PDFDancer.open("input.pdf") as pdf:
+    # Your PDF operations here
+    pass
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+import { PDFDancer } from 'pdfdancer-client-typescript';
+
+// No token needed! SDK automatically gets an anonymous token
+const pdf = await PDFDancer.open(pdfBytes);
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+// No token needed! SDK automatically gets an anonymous token
+PDFDancer pdf = PDFDancer.createSession("input.pdf");
+// Your PDF operations here
+```
+
+  </TabItem>
+</Tabs>
+
+Anonymous tokens are perfect for prototyping and small projects. For production use, higher rate limits, and access to premium features, create an account and use authenticated API tokens.
 
 ---
 
@@ -113,7 +155,7 @@ PDFDancer pdf = PDFDancer.createSession("input.pdf");
 
 ### Custom API Endpoint
 
-Override the default API endpoint by setting the `PDFDANCER_BASE_URL` environment variable or passing the `base_url` parameter:
+This configuration is for self-hosted enterprise plans. If you're using a self-hosted instance of PDFDancer, you can override the default API endpoint by setting the `PDFDANCER_BASE_URL` environment variable or passing the `base_url` parameter:
 
 <Tabs>
   <TabItem value="python" label="Python">

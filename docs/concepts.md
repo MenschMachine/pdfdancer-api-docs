@@ -21,13 +21,7 @@ PDF uses a **Cartesian coordinate system** with the origin at the **bottom-left 
 - **Y-axis**: Increases from bottom (0) to top
 - **Units**: PDF points (1 point = 1/72 inch)
 
-![PDF Coordinate System - Bottom-left origin with X increasing right, Y increasing up](/img/placeholders/coordinate-system-annotated.png)
-
-:::info Visual Asset Needed
-**Image:** `coordinate-system-annotated.png`
-**Shows:** Real PDF page with annotated coordinate system - corners labeled with coordinates (0,0) at bottom-left and (612,792) at top-right, axes with arrows, and a sample element with its bounding box labeled.
-**Details:** See `/static/img/placeholders/README.md` for full specifications.
-:::
+![PDF Coordinate System - Bottom-left origin with X increasing right, Y increasing up](/img/doc/coordinate-system-showcase.webp)
 
 **Common Page Sizes**:
 - **Letter (US)**: 612 × 792 points (8.5" × 11")
@@ -70,6 +64,8 @@ PDFDancer provides a structured way to interact with PDF content through several
 
 Pages are accessed using `pdf.page(index)`:
 
+Important: this is *0-based indexing: first page is page 0*
+
 <Tabs>
   <TabItem value="python" label="Python">
 
@@ -90,6 +86,17 @@ const firstPage = pdf.page(0);
 
 // Get all pages
 const allPages = await pdf.pages();
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+// Get first page
+PageRef firstPage = pdf.page(0);
+
+// Get all pages
+List<PageRef> allPages = pdf.getPages();
 ```
 
   </TabItem>
@@ -144,6 +151,23 @@ for (const para of paragraphs) {
 ```
 
   </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+// Select all paragraphs
+List<TextParagraphReference> paragraphs = pdf.selectParagraphs();
+
+// Select by text prefix
+List<TextParagraphReference> headers = pdf.selectParagraphsStartingWith("Chapter");
+
+// Access paragraph properties
+for (TextParagraphReference para : paragraphs) {
+    System.out.println("Text: " + para.getText());
+    System.out.println("Position: " + para.getPosition().getBoundingRect());
+}
+```
+
+  </TabItem>
 </Tabs>
 
 ### TextLines
@@ -186,6 +210,21 @@ const dateLines = await pdf.selectTextLinesStartingWith('Date:');
 
 for (const line of lines) {
   console.log(`Line text: ${line.text}`);
+}
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+// Select all text lines
+List<TextLineReference> lines = pdf.page(0).selectTextLines();
+
+// Select lines by prefix
+List<TextLineReference> dateLines = pdf.selectTextLinesStartingWith("Date:");
+
+for (TextLineReference line : lines) {
+    System.out.println("Line text: " + line.getText());
 }
 ```
 
@@ -246,6 +285,23 @@ await pdf.newImage()
 ```
 
   </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+// Select all images on a page
+List<ImageReference> images = pdf.page(0).selectImages();
+
+// Select images at coordinates
+List<ImageReference> imagesAtPoint = pdf.page(0).selectImagesAt(100, 500);
+
+// Add a new image
+pdf.newImage()
+    .fromFile(new File("logo.png"))
+    .at(0, 50, 700)
+    .add();
+```
+
+  </TabItem>
 </Tabs>
 
 ### Paths (Vector Graphics)
@@ -289,6 +345,21 @@ const pathsAtPoint = await pdf.page(0).selectPathsAt(150, 320);
 
 for (const path of paths) {
   console.log(`Path ID: ${path.internalId}`);
+}
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+// Select all paths on a page
+List<PathReference> paths = pdf.page(0).selectPaths();
+
+// Select paths at specific coordinates
+List<PathReference> pathsAtPoint = pdf.page(0).selectPathAt(150, 320);
+
+for (PathReference path : paths) {
+    System.out.println("Path ID: " + path.getInternalId());
 }
 ```
 
@@ -338,6 +409,22 @@ const nameFields = await pdf.selectFieldsByName('firstName');
 // Fill a field
 if (nameFields.length > 0) {
   await nameFields[0].fill('John Doe');
+}
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+// Select all form fields
+List<FormFieldReference> fields = pdf.selectFormFields();
+
+// Select by name
+List<FormFieldReference> nameFields = pdf.selectFormFieldsByName("firstName");
+
+// Fill a field
+if (!nameFields.isEmpty()) {
+    nameFields.get(0).setValue("John Doe");
 }
 ```
 
@@ -414,6 +501,25 @@ await pdf.page(0).newParagraph()
 ```
 
   </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+// Use standard font
+pdf.newParagraph()
+    .text("Hello World")
+    .font("Helvetica", 12)
+    .at(0, 100, 200)
+    .add();
+
+// Use custom font
+pdf.newParagraph()
+    .text("Custom Typography")
+    .font(new File("custom-font.ttf"), 14)
+    .at(0, 100, 200)
+    .add();
+```
+
+  </TabItem>
 </Tabs>
 
 ---
@@ -460,6 +566,22 @@ const page = position.getPageNumber();
 
 // Use for selection
 const paragraphs = await pdf.page(0).selectParagraphsAt(x!, y!);
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+import com.pdfdancer.common.model.Position;
+
+// Access position properties from selected elements
+Position pos = paragraph.getPosition();
+double x = pos.getX();
+double y = pos.getY();
+int page = pos.getPageIndex();
+
+// Use for selection at coordinates
+List<TextParagraphReference> paragraphs = pdf.page(0).selectParagraphsAt(100, 200);
 ```
 
   </TabItem>
@@ -513,6 +635,31 @@ await pdf.page(0).newParagraph()
   .text('Colored text')
   .color(red)
   .apply();
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+import com.pdfdancer.common.model.Color;
+
+// Create colors
+Color black = new Color(0, 0, 0);
+Color red = new Color(255, 0, 0);
+Color gray = new Color(128, 128, 128);
+Color custom = new Color(70, 130, 180);  // Steel blue
+
+// Pre-defined colors
+Color.BLACK;
+Color.RED;
+Color.WHITE;
+
+// Apply to text
+pdf.newParagraph()
+    .text("Colored text")
+    .color(red)
+    .at(0, 100, 200)
+    .add();
 ```
 
   </TabItem>
@@ -604,6 +751,27 @@ await paragraph.edit()
 ```
 
   </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+// Paragraph builder
+pdf.newParagraph()
+    .text("Hello World")
+    .font("Helvetica", 12)
+    .color(new Color(0, 0, 0))
+    .lineSpacing(1.5)
+    .at(0, 100, 500)
+    .add();
+
+// Edit builder
+paragraph.edit()
+    .replace("New text")
+    .font("Helvetica-Bold", 14)
+    .color(new Color(255, 0, 0))
+    .apply();
+```
+
+  </TabItem>
 </Tabs>
 
 ---
@@ -686,6 +854,46 @@ await Promise.all([
   pdf.selectParagraphs(),  // Not safe!
   pdf.selectImages()       // Not safe!
 ]);
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+import com.pdfdancer.client.rest.PDFDancer;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+// ✓ SAFE: Each thread creates its own session
+class ProcessPdfTask implements Runnable {
+    private final String filePath;
+
+    public void run() {
+        try {
+            byte[] pdfBytes = Files.readAllBytes(Paths.get(filePath));
+            PDFDancer pdf = PDFDancer.createSession(apiKey, pdfBytes, httpClient);
+
+            List<TextParagraphReference> paragraphs = pdf.selectParagraphs();
+            pdf.save("output_" + filePath);
+        } catch (IOException e) {
+            // Handle exception
+        }
+    }
+}
+
+// Process multiple PDFs in parallel - each gets its own session
+ExecutorService executor = Executors.newFixedThreadPool(3);
+executor.submit(new ProcessPdfTask("doc1.pdf"));
+executor.submit(new ProcessPdfTask("doc2.pdf"));
+executor.submit(new ProcessPdfTask("doc3.pdf"));
+
+
+// ✗ UNSAFE: Sharing a session across threads
+PDFDancer pdf = PDFDancer.createSession(apiKey, pdfBytes, httpClient);
+
+// DON'T DO THIS - multiple threads using the same session
+executor.submit(() -> pdf.selectParagraphs());  // Not thread-safe!
+executor.submit(() -> pdf.selectImages());      // Not thread-safe!
 ```
 
   </TabItem>
