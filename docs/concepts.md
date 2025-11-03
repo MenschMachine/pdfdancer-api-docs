@@ -35,6 +35,126 @@ All measurements in PDF use **points** as the base unit:
 - 72 points = 1 inch
 - 1 inch margin = 72 points
 
+### Page Sizes
+
+PDFDancer provides constants for standard page sizes. All dimensions are in points.
+
+**ISO A Series:**
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+from pdfdancer import PageSize
+
+# ISO A Series
+PageSize.A4     # 595 × 842 points (210mm × 297mm)
+PageSize.A3     # 842 × 1191 points (297mm × 420mm)
+PageSize.A5     # 420 × 595 points (148mm × 210mm)
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+import { PageSize } from 'pdfdancer-client-typescript';
+
+// ISO A Series
+PageSize.A4     // 595 × 842 points (210mm × 297mm)
+PageSize.A3     // 842 × 1191 points (297mm × 420mm)
+PageSize.A5     // 420 × 595 points (148mm × 210mm)
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+import com.pdfdancer.common.model.PageSize;
+
+// ISO A Series
+PageSize.A0         // 2384 × 3370 points (841mm × 1189mm)
+PageSize.A1         // 1684 × 2384 points (594mm × 841mm)
+PageSize.A2         // 1191 × 1684 points (420mm × 594mm)
+PageSize.A3         // 842 × 1191 points (297mm × 420mm)
+PageSize.A4         // 595 × 842 points (210mm × 297mm)
+PageSize.A5         // 420 × 595 points (148mm × 210mm)
+PageSize.A6         // 298 × 420 points (105mm × 148mm)
+
+// ISO B Series
+PageSize.B4         // 709 × 1001 points (250mm × 353mm)
+PageSize.B5         // 499 × 709 points (176mm × 250mm)
+```
+
+  </TabItem>
+</Tabs>
+
+**US/North American Sizes:**
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+# US Sizes
+PageSize.LETTER    # 612 × 792 points (8.5" × 11")
+PageSize.LEGAL     # 612 × 1008 points (8.5" × 14")
+PageSize.TABLOID   # 792 × 1224 points (11" × 17")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+// US Sizes
+PageSize.LETTER    // 612 × 792 points (8.5" × 11")
+PageSize.LEGAL     // 612 × 1008 points (8.5" × 14")
+PageSize.TABLOID   // 792 × 1224 points (11" × 17")
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+// US Sizes
+PageSize.LETTER      // 612 × 792 points (8.5" × 11")
+PageSize.LEGAL       // 612 × 1008 points (8.5" × 14")
+PageSize.TABLOID     // 792 × 1224 points (11" × 17")
+PageSize.EXECUTIVE   // 522 × 756 points (7.25" × 10.5")
+PageSize.POSTCARD    // 288 × 432 points (4" × 6")
+PageSize.INDEX_3X5   // 216 × 360 points (3" × 5")
+```
+
+  </TabItem>
+</Tabs>
+
+**Custom Page Sizes:**
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+# Create custom page size (width, height in points)
+custom_size = PageSize(name=None, width=500.0, height=700.0)
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+// Create custom page size (width, height in points)
+const customSize = new PageSize(null, 500.0, 700.0);
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+// Create custom page size (width, height in points)
+PageSize customSize = PageSize.custom(500.0, 700.0);
+```
+
+  </TabItem>
+</Tabs>
+
 ### Bounding Rectangles
 
 Every PDF element has a **bounding rectangle** that defines its position and size:
@@ -456,11 +576,205 @@ PDF supports both standard and custom fonts.
 
 ### Standard PDF Fonts
 
-These 14 fonts are always available in PDFs:
-- **Serif**: Times-Roman, Times-Bold, Times-Italic, Times-BoldItalic
-- **Sans-serif**: Helvetica, Helvetica-Bold, Helvetica-Oblique, Helvetica-BoldOblique
-- **Monospace**: Courier, Courier-Bold, Courier-Oblique, Courier-BoldOblique
-- **Decorative**: Symbol, ZapfDingbats
+The 14 standard PDF fonts are guaranteed to be available in all PDF readers and do not need to be embedded in the PDF document.
+
+**Serif Fonts (Times family):**
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+from pdfdancer import StandardFonts
+
+StandardFonts.TIMES_ROMAN          # Times-Roman
+StandardFonts.TIMES_BOLD           # Times-Bold
+StandardFonts.TIMES_ITALIC         # Times-Italic
+StandardFonts.TIMES_BOLD_ITALIC    # Times-BoldItalic
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+import { StandardFonts } from 'pdfdancer-client-typescript';
+
+StandardFonts.TIMES_ROMAN          // Times-Roman
+StandardFonts.TIMES_BOLD           // Times-Bold
+StandardFonts.TIMES_ITALIC         // Times-Italic
+StandardFonts.TIMES_BOLD_ITALIC    // Times-BoldItalic
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+import com.pdfdancer.common.util.StandardFonts;
+
+StandardFonts.TIMES_ROMAN          // Times-Roman
+StandardFonts.TIMES_BOLD           // Times-Bold
+StandardFonts.TIMES_ITALIC         // Times-Italic
+StandardFonts.TIMES_BOLD_ITALIC    // Times-BoldItalic
+```
+
+  </TabItem>
+</Tabs>
+
+**Sans-serif Fonts (Helvetica family):**
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+StandardFonts.HELVETICA              # Helvetica
+StandardFonts.HELVETICA_BOLD         # Helvetica-Bold
+StandardFonts.HELVETICA_OBLIQUE      # Helvetica-Oblique
+StandardFonts.HELVETICA_BOLD_OBLIQUE # Helvetica-BoldOblique
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+StandardFonts.HELVETICA              // Helvetica
+StandardFonts.HELVETICA_BOLD         // Helvetica-Bold
+StandardFonts.HELVETICA_OBLIQUE      // Helvetica-Oblique
+StandardFonts.HELVETICA_BOLD_OBLIQUE // Helvetica-BoldOblique
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+StandardFonts.HELVETICA              // Helvetica
+StandardFonts.HELVETICA_BOLD         // Helvetica-Bold
+StandardFonts.HELVETICA_OBLIQUE      // Helvetica-Oblique
+StandardFonts.HELVETICA_BOLD_OBLIQUE // Helvetica-BoldOblique
+```
+
+  </TabItem>
+</Tabs>
+
+**Monospace Fonts (Courier family):**
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+StandardFonts.COURIER              # Courier
+StandardFonts.COURIER_BOLD         # Courier-Bold
+StandardFonts.COURIER_OBLIQUE      # Courier-Oblique
+StandardFonts.COURIER_BOLD_OBLIQUE # Courier-BoldOblique
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+StandardFonts.COURIER              // Courier
+StandardFonts.COURIER_BOLD         // Courier-Bold
+StandardFonts.COURIER_OBLIQUE      // Courier-Oblique
+StandardFonts.COURIER_BOLD_OBLIQUE // Courier-BoldOblique
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+StandardFonts.COURIER              // Courier
+StandardFonts.COURIER_BOLD         // Courier-Bold
+StandardFonts.COURIER_OBLIQUE      // Courier-Oblique
+StandardFonts.COURIER_BOLD_OBLIQUE // Courier-BoldOblique
+```
+
+  </TabItem>
+</Tabs>
+
+**Symbol and Decorative Fonts:**
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+StandardFonts.SYMBOL          # Symbol (mathematical and special characters)
+StandardFonts.ZAPF_DINGBATS   # ZapfDingbats (decorative symbols)
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+StandardFonts.SYMBOL          // Symbol (mathematical and special characters)
+StandardFonts.ZAPF_DINGBATS   // ZapfDingbats (decorative symbols)
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+StandardFonts.SYMBOL          // Symbol (mathematical and special characters)
+StandardFonts.ZAPF_DINGBATS   // ZapfDingbats (decorative symbols)
+```
+
+  </TabItem>
+</Tabs>
+
+**Using Standard Fonts:**
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+# Use standard font constant
+pdf.new_paragraph() \
+    .text("Hello World") \
+    .font(StandardFonts.HELVETICA.value, 12) \
+    .add()
+
+# Or use font name string directly
+pdf.new_paragraph() \
+    .text("Hello World") \
+    .font("Helvetica", 12) \
+    .add()
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+// Use standard font constant
+await pdf.page(0).newParagraph()
+  .text('Hello World')
+  .font(StandardFonts.HELVETICA.getFontName(), 12)
+  .apply();
+
+// Or use font name string directly
+await pdf.page(0).newParagraph()
+  .text('Hello World')
+  .font('Helvetica', 12)
+  .apply();
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+// Use standard font constant
+pdf.newParagraph()
+    .text("Hello World")
+    .font(StandardFonts.HELVETICA.getFontName(), 12)
+    .at(0, 100, 200)
+    .add();
+
+// Or use font name string directly
+pdf.newParagraph()
+    .text("Hello World")
+    .font("Helvetica", 12)
+    .at(0, 100, 200)
+    .add();
+```
+
+  </TabItem>
+</Tabs>
 
 ### Custom Fonts
 

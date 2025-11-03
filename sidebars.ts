@@ -20,7 +20,6 @@ const sidebars: SidebarsConfig = {
             items: [
                 'concepts',
                 'finding-content',
-                'working-with-snapshots',
                 'positioning',
             ],
         },
@@ -43,6 +42,7 @@ const sidebars: SidebarsConfig = {
                 'working-with-acroforms',
                 'working-with-formxobjects',
                 'working-with-vector-graphics',
+                'working-with-snapshots',
                 'advanced',
             ],
         },

@@ -65,6 +65,36 @@ This documentation is based on the following SDK versions:
   - Base URL normalization and validation in constructor
   - Enhanced end-to-end tests with token from environment variables
 
+## Java SDK
+
+- **Repository**: [pdfdancer-client-java](https://github.com/MenschMachine/pdfdancer-client-java)
+- **Version**: 0.1.0-SNAPSHOT
+- **Commit**: `f02a4653d8169e4441a27be24f6f80a6868f6ceb`
+- **Commit Date**: November 03, 2025
+- **Commit Message**: refactor: Rename package and update imports to com.pdfdancer.client.
+- **Documentation Coverage**:
+  - ✅ Core PDF manipulation (open, create, save)
+  - ✅ Text operations (paragraphs, text lines)
+  - ✅ Image operations (add, select, manipulate)
+  - ✅ Form field operations (AcroForms)
+  - ✅ Vector graphics (paths, lines, rectangles, Bezier curves)
+  - ✅ Page operations (add, delete, move, reorder)
+  - ✅ Standard PDF fonts constants (StandardFonts enum)
+  - ✅ Page size constants (PageSize class with standard sizes)
+  - ✅ Position and coordinate system support
+  - ✅ Color model support
+- **Requirements**:
+  - **Java 11+** required
+  - Uses Gradle for build management
+  - Jackson for JSON serialization
+  - SLF4J for logging
+- **Key Features**:
+  - **Package**: `com.pdfdancer.client.rest`
+  - **Type-safe API**: Strong typing with Java generics
+  - **Builder pattern**: Fluent API for constructing PDF elements
+  - **Standard constants**: PageSize and StandardFonts enums for common values
+  - **Clean API design**: Mirrors Python and TypeScript SDKs with Java conventions
+
 ---
 
 ## Checking Your Installed Version
@@ -102,6 +132,23 @@ cat package.json | grep pdfdancer-client-typescript
 ```
 
   </TabItem>
+  <TabItem value="java" label="Java">
+
+Check your `build.gradle.kts` or `pom.xml`:
+
+**Gradle:**
+
+```bash
+cat build.gradle.kts | grep pdfdancer
+```
+
+**Maven:**
+
+```bash
+cat pom.xml | grep pdfdancer
+```
+
+  </TabItem>
 </Tabs>
 
 ---
@@ -132,6 +179,43 @@ Or with Yarn:
 
 ```bash
 yarn upgrade pdfdancer-client-typescript
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+**Gradle:**
+
+Update the version in your `build.gradle.kts`:
+
+```kotlin
+dependencies {
+    implementation("com.pdfdancer.client:pdfdancer-client-java:0.1.0-SNAPSHOT")
+}
+```
+
+Then run:
+
+```bash
+./gradlew build --refresh-dependencies
+```
+
+**Maven:**
+
+Update the version in your `pom.xml`:
+
+```xml
+<dependency>
+    <groupId>com.pdfdancer.client</groupId>
+    <artifactId>pdfdancer-client-java</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+</dependency>
+```
+
+Then run:
+
+```bash
+mvn clean install -U
 ```
 
   </TabItem>

@@ -292,18 +292,6 @@ for (FormField field : fields) {
   </TabItem>
 </Tabs>
 
-### Visual Example: Selecting All Elements
-
-![PDF showing multiple paragraphs, images, and form fields being selected](/img/placeholders/finding-content-select-all.png)
-
-:::info Visual Asset Needed
-**Image:** `finding-content-select-all.png` (optional - not in original README, but useful)
-**Shows:** PDF page with multiple elements highlighted/outlined, demonstrating how `select_paragraphs()` or `select_images()` finds all elements of a type on a page.
-**Details:** Create if time permits. Shows the scope of selection methods.
-:::
-
----
-
 ## 2. Select by Position
 
 Find elements at specific x, y coordinates on a page. Useful when you know the layout structure.
@@ -543,18 +531,6 @@ List<Paragraph> pageHeaders = pdf.page(0).selectParagraphsStartingWith("Executiv
 
   </TabItem>
 </Tabs>
-
-### Visual Example: Text-Based Selection
-
-Finding content by text prefix is one of the most common selection methods:
-
-![PDF showing paragraph starting with "Invoice #" being located and highlighted](/img/placeholders/finding-content-by-text.png)
-
-:::info Visual Asset Needed
-**Image:** `finding-content-by-text.png`
-**Shows:** PDF page with multiple paragraphs. Highlight the found paragraph (e.g., one starting with "Invoice #"). Show search indicator or magnifying glass icon. Optionally show the bounding box of the found element.
-**Details:** See `/static/img/placeholders/README.md` for full specifications.
-:::
 
 ### Select by Pattern (Regex)
 
@@ -807,19 +783,6 @@ pdf.save("processed.pdf");
 
 ---
 
-## Visual Comparison: Selection Methods
-
-Here's how the three main selection approaches work on the same PDF:
-
-![Three-column comparison showing: text prefix selection, coordinate selection, and select all](/img/placeholders/finding-content-methods-comparison.png)
-
-:::info Visual Asset Needed
-**Image:** `finding-content-methods-comparison.png`
-**Shows:** Three columns with the same PDF page: (1) Select by text prefix (highlighted paragraph), (2) Select by coordinates (crosshair + highlighted element), (3) Select all on page (all elements outlined). Clear labels for each method.
-**Details:** See `/static/img/placeholders/README.md` for full specifications.
-:::
-
----
 
 ## Selection Method Summary
 
