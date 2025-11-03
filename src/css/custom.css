@@ -33,10 +33,25 @@
   --ifm-font-color-secondary: #aaaaaa;
   --ifm-heading-color: #ffa500;
 
-  /* Typography */
+  /* Typography - Single source of truth for all font sizes */
   --ifm-font-family-base: 'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
   --ifm-font-family-monospace: 'JetBrains Mono', 'Courier New', monospace;
-  --ifm-code-font-size: 95%;
+
+  /* Base font sizes - adjust these to change site-wide font sizes */
+  --custom-base-font-size: 14px;
+  --custom-content-font-size: 0.9rem;
+  --custom-navbar-font-size: 0.9rem;
+  --custom-sidebar-font-size: 0.85rem;
+  --custom-toc-font-size: 0.85rem;
+  --custom-code-font-size: 0.8rem;
+
+  /* Heading font sizes */
+  --custom-h1-font-size: 1.9rem;
+  --custom-h2-font-size: 1.3rem;
+  --custom-h3-font-size: 1.1rem;
+  --custom-h4-font-size: 1rem;
+  --custom-h5-font-size: 0.9rem;
+  --custom-h6-font-size: 0.85rem;
 
   /* Effects */
   --theme-glow: 0 4px 12px rgba(255, 165, 0, 0.2);
@@ -76,6 +91,29 @@ body {
   background: var(--ifm-background-color);
   color: var(--ifm-font-color-base);
   font-family: var(--ifm-font-family-base);
+  font-size: var(--custom-base-font-size);
+}
+
+/* Article content */
+.markdown,
+article {
+  font-size: var(--custom-content-font-size);
+  line-height: 1.6;
+}
+
+/* Navbar */
+.navbar {
+  font-size: var(--custom-navbar-font-size);
+}
+
+/* Sidebar */
+.menu {
+  font-size: var(--custom-sidebar-font-size);
+}
+
+/* Table of contents */
+.table-of-contents {
+  font-size: var(--custom-toc-font-size);
 }
 
 /* Headings */
@@ -83,6 +121,32 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--ifm-color-primary);
   font-weight: 700;
   text-shadow: 0 2px 8px rgba(255, 165, 0, 0.15);
+}
+
+/* Override Docusaurus default heading sizes */
+.markdown h1,
+.markdown h1:first-child {
+  font-size: var(--custom-h1-font-size) !important;
+}
+
+.markdown h2 {
+  font-size: var(--custom-h2-font-size) !important;
+}
+
+.markdown h3 {
+  font-size: var(--custom-h3-font-size) !important;
+}
+
+.markdown h4 {
+  font-size: var(--custom-h4-font-size) !important;
+}
+
+.markdown h5 {
+  font-size: var(--custom-h5-font-size) !important;
+}
+
+.markdown h6 {
+  font-size: var(--custom-h6-font-size) !important;
 }
 
 /* Links */
@@ -115,6 +179,7 @@ code {
   border: 1px solid var(--theme-border);
   border-radius: var(--ifm-global-radius);
   padding: 0.2rem 0.4rem;
+  font-size: var(--custom-code-font-size);
 }
 
 pre {
@@ -123,6 +188,7 @@ pre {
   border-top: 2px solid rgba(255, 165, 0, 0.5);
   box-shadow: var(--theme-glow), inset 0 0 0 1px rgba(255, 165, 0, 0.08);
   border-radius: var(--ifm-global-radius);
+  font-size: var(--custom-code-font-size);
 }
 
 pre code {
