@@ -455,13 +455,7 @@ if (!logo.isEmpty()) {
 
 See how PDFDancer finds elements at specific X,Y coordinates:
 
-![PDF with coordinate point (crosshair) and highlighted elements that intersect](/img/placeholders/finding-content-by-coordinates.png)
-
-:::info Visual Asset Needed
-**Image:** `finding-content-by-coordinates.png`
-**Shows:** PDF with multiple elements (text, images). Show a coordinate point (e.g., crosshair at x:150, y:320). Highlight all elements that intersect with that point. Include coordinate labels and selection indicators.
-**Details:** See `/static/img/placeholders/README.md` for full specifications.
-:::
+![PDF with coordinate point (crosshair) and highlighted elements that intersect](/img/doc/element-selection-showcase.webp)
 
 ---
 
