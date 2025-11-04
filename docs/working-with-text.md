@@ -7,7 +7,8 @@ description: Learn how to find, add, edit, move, and delete text content in PDFs
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-PDFDancer provides comprehensive tools for working with text in PDFs. You can select existing text, add new paragraphs, edit content, move text, and delete paragraphs.
+PDFDancer provides comprehensive tools for working with text in PDFs. You can select existing text, add new paragraphs,
+edit content, move text, and delete paragraphs.
 
 ---
 
@@ -38,7 +39,7 @@ with PDFDancer.open("document.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-import { PDFDancer } from 'pdfdancer-client-typescript';
+import {PDFDancer} from 'pdfdancer-client-typescript';
 
 const pdf = await PDFDancer.open(pdfBytes);
 
@@ -51,7 +52,7 @@ const pageParagraphs = await pdf.page(0).selectParagraphs();
 console.log(`Page 0 paragraphs: ${pageParagraphs.length}`);
 
 for (const para of pageParagraphs) {
-  console.log(`Paragraph: ${para.text?.substring(0, 50)}...`);
+    console.log(`Paragraph: ${para.text?.substring(0, 50)}...`);
 }
 ```
 
@@ -112,9 +113,9 @@ const headers = await pdf.selectParagraphsStartingWith('Invoice #');
 const pageHeaders = await pdf.page(0).selectParagraphsStartingWith('The Complete');
 
 if (pageHeaders.length > 0) {
-  const para = pageHeaders[0];
-  console.log(`Found: ${para.text}`);
-  console.log(`Position: (${para.position.x}, ${para.position.y})`);
+    const para = pageHeaders[0];
+    console.log(`Found: ${para.text}`);
+    console.log(`Position: (${para.position.x}, ${para.position.y})`);
 }
 ```
 
@@ -160,7 +161,7 @@ with PDFDancer.open("document.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-import { PDFDancer } from 'pdfdancer-client-typescript';
+import {PDFDancer} from 'pdfdancer-client-typescript';
 
 const pdf = await PDFDancer.open(pdfBytes);
 
@@ -168,7 +169,7 @@ const pdf = await PDFDancer.open(pdfBytes);
 const paragraphs = await pdf.page(0).selectParagraphsAt(150, 320);
 
 for (const para of paragraphs) {
-  console.log(`Paragraph at position: ${para.text}`);
+    console.log(`Paragraph at position: ${para.text}`);
 }
 ```
 
@@ -195,7 +196,8 @@ for (Paragraph para : paragraphs) {
 
 ## Text Properties
 
-Once you've selected a paragraph or text line, you can access its properties including text content, font information, position, color, and status information.
+Once you've selected a paragraph or text line, you can access its properties including text content, font information,
+position, color, and status information.
 
 ### Accessing Text Properties
 
@@ -227,25 +229,25 @@ with PDFDancer.open("document.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-import { PDFDancer } from 'pdfdancer-client-typescript';
+import {PDFDancer} from 'pdfdancer-client-typescript';
 
 const pdf = await PDFDancer.open(pdfBytes);
 const paragraphs = await pdf.page(0).selectParagraphs();
 
 for (const para of paragraphs) {
-  // Access text content
-  console.log(`Text: ${para.text}`);
+    // Access text content
+    console.log(`Text: ${para.text}`);
 
-  // Access font information
-  console.log(`Font: ${para.fontName} at ${para.fontSize}pt`);
+    // Access font information
+    console.log(`Font: ${para.fontName} at ${para.fontSize}pt`);
 
-  // Access position
-  console.log(`Position: (${para.position.x}, ${para.position.y})`);
+    // Access position
+    console.log(`Position: (${para.position.x}, ${para.position.y})`);
 
-  // Access color (if available)
-  if (para.color) {
-    console.log(`Color: RGB(${para.color.r}, ${para.color.g}, ${para.color.b})`);
-  }
+    // Access color (if available)
+    if (para.color) {
+        console.log(`Color: RGB(${para.color.r}, ${para.color.g}, ${para.color.b})`);
+    }
 }
 ```
 
@@ -307,13 +309,13 @@ const pdf = await PDFDancer.open(pdfBytes);
 const lines = await pdf.page(0).selectLines();
 
 for (const line of lines) {
-  console.log(`Line text: ${line.text}`);
-  if (line.color) {
-    console.log(`  Color: RGB(${line.color.r}, ${line.color.g}, ${line.color.b})`);
-  }
-  if (line.fontName) {
-    console.log(`  Font: ${line.fontName} ${line.fontSize}pt`);
-  }
+    console.log(`Line text: ${line.text}`);
+    if (line.color) {
+        console.log(`  Color: RGB(${line.color.r}, ${line.color.g}, ${line.color.b})`);
+    }
+    if (line.fontName) {
+        console.log(`  Font: ${line.fontName} ${line.fontSize}pt`);
+    }
 }
 ```
 
@@ -341,7 +343,8 @@ for (TextLine line : lines) {
 
 ### Text Status Information
 
-Text objects include status information that indicates whether they have been modified, whether the text is encodable with the current font, and font recommendations:
+Text objects include status information that indicates whether they have been modified, whether the text is encodable
+with the current font, and font recommendations:
 
 <Tabs>
   <TabItem value="python" label="Python">
@@ -374,28 +377,28 @@ with PDFDancer.open("document.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-import { PDFDancer } from 'pdfdancer-client-typescript';
+import {PDFDancer} from 'pdfdancer-client-typescript';
 
 const pdf = await PDFDancer.open(pdfBytes);
 const paragraphs = await pdf.page(0).selectParagraphs();
 
 for (const para of paragraphs) {
-  if (para.status) {
-    // Check if text was modified
-    console.log(`Modified: ${para.status.isModified()}`);
+    if (para.status) {
+        // Check if text was modified
+        console.log(`Modified: ${para.status.isModified()}`);
 
-    // Check if text is encodable with current font
-    console.log(`Encodable: ${para.status.isEncodable()}`);
+        // Check if text is encodable with current font
+        console.log(`Encodable: ${para.status.isEncodable()}`);
 
-    // Get font type classification
-    const fontType = para.status.getFontType();
-    console.log(`Font type: ${fontType}`);  // SYSTEM, STANDARD, or EMBEDDED
+        // Get font type classification
+        const fontType = para.status.getFontType();
+        console.log(`Font type: ${fontType}`);  // SYSTEM, STANDARD, or EMBEDDED
 
-    // Get font recommendation with similarity score
-    const recommendation = para.status.getFontRecommendation();
-    console.log(`Recommended font: ${recommendation.getFontName()}`);
-    console.log(`Similarity score: ${recommendation.getSimilarityScore()}`);
-  }
+        // Get font recommendation with similarity score
+        const recommendation = para.status.getFontRecommendation();
+        console.log(`Recommended font: ${recommendation.getFontName()}`);
+        console.log(`Similarity score: ${recommendation.getSimilarityScore()}`);
+    }
 }
 ```
 
@@ -433,6 +436,7 @@ for (Paragraph para : paragraphs) {
 </Tabs>
 
 **Font Type Classifications:**
+
 - `SYSTEM`: Font available from the operating system
 - `STANDARD`: One of the 14 standard PDF fonts (Helvetica, Times-Roman, Courier, etc.)
 - `EMBEDDED`: Font embedded in the PDF file
@@ -466,18 +470,18 @@ with PDFDancer.open("document.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-import { PDFDancer, Color } from 'pdfdancer-client-typescript';
+import {PDFDancer, Color} from 'pdfdancer-client-typescript';
 
 const pdf = await PDFDancer.open(pdfBytes);
 
 // Add a simple paragraph with standard font
 await pdf.page(0).newParagraph()
-  .text('Standard Font Test\nHelvetica Bold')
-  .font('Helvetica-Bold', 16)
-  .lineSpacing(1.2)
-  .color(new Color(255, 0, 0))
-  .at(100, 100)
-  .apply();
+    .text('Standard Font Test\nHelvetica Bold')
+    .font('Helvetica-Bold', 16)
+    .lineSpacing(1.2)
+    .color(new Color(255, 0, 0))
+    .at(100, 100)
+    .apply();
 
 await pdf.save('output.pdf');
 ```
@@ -543,10 +547,10 @@ const pdf = await PDFDancer.open(pdfBytes);
 
 // Add to specific page
 await pdf.page(0).newParagraph()
-  .text('Times Roman Test')
-  .font('Times-Roman', 14)
-  .at(150, 150)
-  .apply();
+    .text('Times Roman Test')
+    .font('Times-Roman', 14)
+    .at(150, 150)
+    .apply();
 
 await pdf.save('output.pdf');
 ```
@@ -611,11 +615,11 @@ const pdf = await PDFDancer.open(pdfBytes);
 
 // Add multi-line code example with Courier
 await pdf.page(0).newParagraph()
-  .text('Courier Monospace\nCode Example')
-  .font('Courier-Bold', 12)
-  .lineSpacing(1.5)
-  .at(200, 200)
-  .apply();
+    .text('Courier Monospace\nCode Example')
+    .font('Courier-Bold', 12)
+    .lineSpacing(1.5)
+    .at(200, 200)
+    .apply();
 
 await pdf.save('output.pdf');
 ```
@@ -673,8 +677,8 @@ with PDFDancer.open("document.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-import { PDFDancer, Color } from 'pdfdancer-client-typescript';
-import { promises as fs } from 'node:fs';
+import {PDFDancer, Color} from 'pdfdancer-client-typescript';
+import {promises as fs} from 'node:fs';
 
 const pdf = await PDFDancer.open(pdfBytes);
 
@@ -682,12 +686,12 @@ const pdf = await PDFDancer.open(pdfBytes);
 const fontBytes = await fs.readFile('fonts/DancingScript-Regular.ttf');
 
 await pdf.page(0).newParagraph()
-  .text('Awesomely\nObvious!')
-  .fontFile(fontBytes, 24)
-  .lineSpacing(1.8)
-  .color(new Color(0, 0, 255))
-  .at(300.1, 500)
-  .apply();
+    .text('Awesomely\nObvious!')
+    .fontFile(fontBytes, 24)
+    .lineSpacing(1.8)
+    .color(new Color(0, 0, 255))
+    .at(300.1, 500)
+    .apply();
 
 await pdf.save('output.pdf');
 ```
@@ -757,11 +761,11 @@ with PDFDancer.open("document.pdf") as pdf:
 const pdf = await PDFDancer.open(pdfBytes);
 
 await pdf.page(0).newParagraph()
-  .text('Text with service font')
-  .font('Roboto-Regular', 14)
-  .lineSpacing(0.7)
-  .at(300.1, 500)
-  .apply();
+    .text('Text with service font')
+    .font('Roboto-Regular', 14)
+    .lineSpacing(0.7)
+    .at(300.1, 500)
+    .apply();
 
 await pdf.save('output.pdf');
 ```
@@ -802,7 +806,8 @@ pdf.save("output.pdf");
 
 ### Basic Text Replacement
 
-The simplest way to edit a paragraph is to replace its text content. Edit operations return a `CommandResult` object that provides detailed information about the operation:
+The simplest way to edit a paragraph is to replace its text content. Edit operations return a `CommandResult` object
+that provides detailed information about the operation:
 
 <Tabs>
   <TabItem value="python" label="Python">
@@ -835,7 +840,7 @@ with PDFDancer.open("document.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-import { PDFDancer } from 'pdfdancer-client-typescript';
+import {PDFDancer} from 'pdfdancer-client-typescript';
 
 const pdf = await PDFDancer.open(pdfBytes);
 
@@ -843,17 +848,17 @@ const pdf = await PDFDancer.open(pdfBytes);
 const paragraphs = await pdf.page(0).selectParagraphsStartingWith('The Complete');
 
 if (paragraphs.length > 0) {
-  // Replace just the text (keeps position, font, etc.)
-  const result = await paragraphs[0].edit()
-    .replace('Awesomely\nObvious!')
-    .apply();
+    // Replace just the text (keeps position, font, etc.)
+    const result = await paragraphs[0].edit()
+        .replace('Awesomely\nObvious!')
+        .apply();
 
-  // Check the result
-  console.log(`Success: ${result.success}`);
-  console.log(`Command: ${result.commandName}`);
-  if (result.warning) {
-    console.log(`Warning: ${result.warning}`);
-  }
+    // Check the result
+    console.log(`Success: ${result.success}`);
+    console.log(`Command: ${result.commandName}`);
+    if (result.warning) {
+        console.log(`Warning: ${result.warning}`);
+    }
 }
 
 await pdf.save('output.pdf');
@@ -891,41 +896,17 @@ pdf.save("output.pdf");
 </Tabs>
 
 **CommandResult Properties:**
+
 - `success` (boolean): Whether the operation succeeded
 - `commandName` (string): Name of the operation performed (e.g., "ModifyParagraph", "ModifyTextLine")
 - `elementId` (string | null): ID of the modified element
 - `message` (string | null): Optional informational message
 - `warning` (string | null): Optional warning message (e.g., when modifying text with embedded fonts)
 
-### Visual Example: Text Replacement
-
-<table>
-<tr>
-<td width="50%">
-
-**Before**
-
-![Original PDF with "Executive Summary" heading](/img/placeholders/text-edit-before.png)
-
-</td>
-<td width="50%">
-
-**After**
-
-![Modified PDF with "Overview" heading](/img/placeholders/text-edit-after.png)
-
-</td>
-</tr>
-</table>
-
-:::info Visual Asset Needed
-**Images:** `text-edit-before.png` and `text-edit-after.png`
-**Shows:** Side-by-side comparison of a paragraph before and after text replacement, highlighting the changed content.
-**Details:** See `/static/img/placeholders/README.md` for full specifications.
-:::
 
 :::tip Python Context Manager Pattern (Recommended)
 The context manager pattern (`with paragraph.edit() as editor:`) is the recommended approach in Python because:
+
 - **Automatic application**: Changes are applied when the context exits successfully
 - **Error safety**: Changes are discarded if an exception occurs
 - **Cleaner code**: No need to explicitly call `apply()`
@@ -939,6 +920,7 @@ with paragraph.edit() as editor:
     editor.color(255, 0, 0)  # Red text
 # All changes applied automatically here
 ```
+
 :::
 
 ### Editing Text Without Changing Position
@@ -979,19 +961,19 @@ const pdf = await PDFDancer.open(pdfBytes);
 const paragraphs = await pdf.page(0).selectParagraphsStartingWith('The Complete');
 
 if (paragraphs.length > 0) {
-  const paragraph = paragraphs[0];
-  const originalX = paragraph.position.x;
-  const originalY = paragraph.position.y;
+    const paragraph = paragraphs[0];
+    const originalX = paragraph.position.x;
+    const originalY = paragraph.position.y;
 
-  // Edit text and font, keeping original position
-  await paragraph.edit()
-    .replace('Awesomely\nObvious!')
-    .font('Helvetica', 12)
-    .lineSpacing(0.7)
-    .apply();
+    // Edit text and font, keeping original position
+    await paragraph.edit()
+        .replace('Awesomely\nObvious!')
+        .font('Helvetica', 12)
+        .lineSpacing(0.7)
+        .apply();
 
-  const newPara = (await pdf.page(0).selectParagraphsStartingWith('Awesomely'))[0];
-  console.log(`Position unchanged: ${newPara.position.x}, ${newPara.position.y}`);
+    const newPara = (await pdf.page(0).selectParagraphsStartingWith('Awesomely'))[0];
+    console.log(`Position unchanged: ${newPara.position.x}, ${newPara.position.y}`);
 }
 
 await pdf.save('output.pdf');
@@ -1024,18 +1006,6 @@ pdf.save("output.pdf");
   </TabItem>
 </Tabs>
 
-### Visual Example: Position Stays the Same
-
-When you edit text without specifying a new position, PDFDancer keeps the element in its original location:
-
-![Comparison showing text changed but coordinates remain the same](/img/placeholders/text-position-unchanged.png)
-
-:::info Visual Asset Needed
-**Image:** `text-position-unchanged.png`
-**Shows:** Side-by-side or overlay comparison demonstrating that when editing text content, the X,Y coordinates remain constant. Include coordinate indicators showing position is unchanged.
-**Details:** See `/static/img/placeholders/README.md` for full specifications.
-:::
-
 ### Chaining Multiple Edits
 
 You can chain multiple edits together, including text, font, color, spacing, and position:
@@ -1064,19 +1034,19 @@ with PDFDancer.open("document.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-import { PDFDancer } from 'pdfdancer-client-typescript';
+import {PDFDancer} from 'pdfdancer-client-typescript';
 
 const pdf = await PDFDancer.open(pdfBytes);
 const paragraphs = await pdf.page(0).selectParagraphsStartingWith('The Complete');
 
 if (paragraphs.length > 0) {
-  // Chain multiple edits: text, font, spacing, AND position
-  await paragraphs[0].edit()
-    .replace('Awesomely\nObvious!')
-    .font('Helvetica', 12)
-    .lineSpacing(0.7)
-    .moveTo(300.1, 500)
-    .apply();
+    // Chain multiple edits: text, font, spacing, AND position
+    await paragraphs[0].edit()
+        .replace('Awesomely\nObvious!')
+        .font('Helvetica', 12)
+        .lineSpacing(0.7)
+        .moveTo(300.1, 500)
+        .apply();
 }
 
 await pdf.save('output.pdf');
@@ -1151,10 +1121,10 @@ const pdf = await PDFDancer.open(pdfBytes);
 const paragraphs = await pdf.page(0).selectParagraphsStartingWith('The Complete');
 
 if (paragraphs.length > 0) {
-  // Change only the font, keep everything else
-  await paragraphs[0].edit()
-    .font('Helvetica', 28)
-    .apply();
+    // Change only the font, keep everything else
+    await paragraphs[0].edit()
+        .font('Helvetica', 28)
+        .apply();
 }
 
 await pdf.save('output.pdf');
@@ -1217,12 +1187,12 @@ const pdf = await PDFDancer.open(pdfBytes);
 const paragraphs = await pdf.page(0).selectParagraphsStartingWith('The Complete');
 
 if (paragraphs.length > 0) {
-  // Move to new coordinates
-  await paragraphs[0].moveTo(0.1, 300);
+    // Move to new coordinates
+    await paragraphs[0].moveTo(0.1, 300);
 
-  // Verify new position
-  const moved = (await pdf.page(0).selectParagraphsAt(0.1, 300))[0];
-  console.log(`Moved paragraph found: ${moved !== undefined}`);
+    // Verify new position
+    const moved = (await pdf.page(0).selectParagraphsAt(0.1, 300))[0];
+    console.log(`Moved paragraph found: ${moved !== undefined}`);
 }
 
 await pdf.save('output.pdf');
@@ -1287,10 +1257,10 @@ const pdf = await PDFDancer.open(pdfBytes);
 const paragraphs = await pdf.page(0).selectParagraphsStartingWith('The Complete');
 
 if (paragraphs.length > 0) {
-  // Move using edit builder
-  await paragraphs[0].edit()
-    .moveTo(1, 1)
-    .apply();
+    // Move using edit builder
+    await paragraphs[0].edit()
+        .moveTo(1, 1)
+        .apply();
 }
 
 await pdf.save('output.pdf');
@@ -1317,23 +1287,11 @@ pdf.save("output.pdf");
   </TabItem>
 </Tabs>
 
-### Visual Example: Moving Paragraphs
-
-See how a paragraph moves from one position to another with precise coordinate control:
-
-![Before and after showing paragraph moved from original position to new coordinates](/img/placeholders/text-move-comparison.png)
-
-:::info Visual Asset Needed
-**Image:** `text-move-comparison.png`
-**Shows:** Before/after comparison with coordinate annotations. Draw arrow from old position to new position, label old coordinates and new coordinates.
-**Details:** See `/static/img/placeholders/README.md` for full specifications.
-:::
-
----
 
 ## Editing Text Lines
 
-Text lines can be edited just like paragraphs. This is useful when you need to modify individual lines within a paragraph or work with single-line text elements.
+Text lines can be edited just like paragraphs. This is useful when you need to modify individual lines within a
+paragraph or work with single-line text elements.
 
 ### Basic Text Line Replacement
 
@@ -1372,7 +1330,7 @@ with PDFDancer.open("document.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-import { PDFDancer } from 'pdfdancer-client-typescript';
+import {PDFDancer} from 'pdfdancer-client-typescript';
 
 const pdf = await PDFDancer.open(pdfBytes);
 
@@ -1380,10 +1338,10 @@ const pdf = await PDFDancer.open(pdfBytes);
 const textLines = await pdf.page(0).selectTextLinesStartingWith('Invoice Number:');
 
 if (textLines.length > 0) {
-  // Replace the text
-  await textLines[0].edit()
-    .replace('Invoice Number: INV-2024-001')
-    .apply();
+    // Replace the text
+    await textLines[0].edit()
+        .replace('Invoice Number: INV-2024-001')
+        .apply();
 }
 
 await pdf.save('output.pdf');
@@ -1439,18 +1397,18 @@ with PDFDancer.open("document.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-import { PDFDancer, Color } from 'pdfdancer-client-typescript';
+import {PDFDancer, Color} from 'pdfdancer-client-typescript';
 
 const pdf = await PDFDancer.open(pdfBytes);
 const textLines = await pdf.page(0).selectTextLinesStartingWith('Total:');
 
 if (textLines.length > 0) {
-  // Change text, font, and color
-  await textLines[0].edit()
-    .replace('Total: $1,234.56')
-    .font('Helvetica-Bold', 14)
-    .color(new Color(255, 0, 0))
-    .apply();
+    // Change text, font, and color
+    await textLines[0].edit()
+        .replace('Total: $1,234.56')
+        .font('Helvetica-Bold', 14)
+        .color(new Color(255, 0, 0))
+        .apply();
 }
 
 await pdf.save('output.pdf');
@@ -1508,16 +1466,16 @@ with PDFDancer.open("document.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-import { PDFDancer } from 'pdfdancer-client-typescript';
+import {PDFDancer} from 'pdfdancer-client-typescript';
 
 const pdf = await PDFDancer.open(pdfBytes);
 const textLines = await pdf.page(0).selectTextLinesStartingWith('Footer');
 
 if (textLines.length > 0) {
-  // Move text line to new position
-  await textLines[0].edit()
-    .moveTo(72, 50)
-    .apply();
+    // Move text line to new position
+    await textLines[0].edit()
+        .moveTo(72, 50)
+        .apply();
 }
 
 await pdf.save('output.pdf');
@@ -1546,11 +1504,12 @@ pdf.save("output.pdf");
 </Tabs>
 
 :::tip Text Lines vs Paragraphs
+
 - **Text lines** are individual lines of text, useful for precise line-by-line editing
 - **Paragraphs** are multi-line text blocks with line spacing control
 - Both support the same editing operations: `replace()`, `font()`, `color()`, `move_to()`
 - Use text lines when you need to edit specific lines within a larger text block
-:::
+  :::
 
 ---
 
@@ -1584,11 +1543,11 @@ const pdf = await PDFDancer.open(pdfBytes);
 const paragraphs = await pdf.page(0).selectParagraphsStartingWith('The Complete');
 
 if (paragraphs.length > 0) {
-  await paragraphs[0].delete();
+    await paragraphs[0].delete();
 
-  // Verify deletion
-  const remaining = await pdf.page(0).selectParagraphsStartingWith('The Complete');
-  console.log(`Remaining paragraphs: ${remaining.length}`);
+    // Verify deletion
+    const remaining = await pdf.page(0).selectParagraphsStartingWith('The Complete');
+    console.log(`Remaining paragraphs: ${remaining.length}`);
 }
 
 await pdf.save('output.pdf');
@@ -1654,7 +1613,7 @@ const allLines = await pdf.selectLines();
 const pageLines = await pdf.page(0).selectLines();
 
 for (const line of pageLines) {
-  console.log(`Line: ${line.text}`);
+    console.log(`Line: ${line.text}`);
 }
 ```
 
@@ -1702,7 +1661,7 @@ const pdf = await PDFDancer.open(pdfBytes);
 const lines = await pdf.page(0).selectTextLinesStartingWith('Date:');
 
 if (lines.length > 0) {
-  console.log(`Found date line: ${lines[0].text}`);
+    console.log(`Found date line: ${lines[0].text}`);
 }
 ```
 
