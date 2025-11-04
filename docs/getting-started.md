@@ -12,7 +12,7 @@ Get up and running with PDFDancer in just 3 minutes. This guide covers installat
 
 ## Installation
 
-**Requirements:** Python 3.10+, Node.js 20+ or Java 21+. 
+**Requirements:** Python 3.10+, Node.js 20+ or Java 11+. 
 
 *No API token needed* to get started—the SDK uses anonymous access automatically.
 
@@ -49,10 +49,22 @@ yarn add pdfdancer-client-typescript
   </TabItem>
   <TabItem value="java" label="Java">
 
-Install from Maven:
+Add to your Maven `pom.xml`:
 
-```bash
-Coming soon
+```xml
+<dependency>
+  <groupId>com.pdfdancer.client</groupId>
+  <artifactId>pdfdancer-client-java</artifactId>
+  <version>0.1.1</version>
+</dependency>
+```
+
+Or add to your Gradle `build.gradle.kts`:
+
+```kotlin
+dependencies {
+    implementation("com.pdfdancer.client:pdfdancer-client-java:0.1.1")
+}
 ```
 
   </TabItem>
@@ -131,29 +143,40 @@ run().catch(console.error);
   <TabItem value="java" label="Java">
 
 ```java
-import com.tfc.pdf.pdfdancer.api.common.model.*;
-import java.util.List;
+import com.pdfdancer.client.rest.PDFDancer;
+import com.pdfdancer.client.rest.TextParagraphReference;
+import com.pdfdancer.common.model.Color;
+import com.pdfdancer.common.util.StandardFonts;
 
-// No token needed! SDK automatically gets an anonymous token
-PDFDancer pdf = PDFDancer.createSession("input.pdf");
+import java.io.File;
 
-// Locate and edit existing content
-List<TextParagraphReference> headings = pdf.selectParagraphsStartingWith("Executive Summary");
-if (!headings.isEmpty()) {
-    headings.get(0).edit().replace("Overview").apply();
+public class Example {
+    public static void main(String[] args) throws Exception {
+        // No token needed! SDK automatically gets an anonymous token
+        PDFDancer pdf = PDFDancer.createSession(new File("input.pdf"));
+
+        // Locate and edit existing content
+        TextParagraphReference heading = pdf.page(0)
+                .selectParagraphsStartingWith("Executive Summary")
+                .get(0);
+
+        heading.edit()
+                .replace("Overview")
+                .apply();
+
+        // Add a new paragraph using the fluent builder
+        pdf.newParagraph()
+                .text("Generated with PDFDancer")
+                .font(StandardFonts.HELVETICA.getFontName(), 12)
+                .color(new Color(70, 70, 70))
+                .lineSpacing(1.4)
+                .at(0, 72, 520)
+                .add();
+
+        // Persist the modified document
+        pdf.save("output.pdf");
+    }
 }
-
-// Add a new paragraph using the fluent builder
-pdf.newParagraph()
-    .text("Generated with PDFDancer")
-    .font("Helvetica", 12)
-    .color(new Color(70, 70, 70))
-    .lineSpacing(1.4)
-    .at(0, 72, 520)
-    .add();
-
-// Persist the modified document
-pdf.save("output.pdf");
 ```
 
   </TabItem>

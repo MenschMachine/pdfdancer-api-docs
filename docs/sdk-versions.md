@@ -69,9 +69,9 @@ This documentation is based on the following SDK versions:
 
 - **Repository**: [pdfdancer-client-java](https://github.com/MenschMachine/pdfdancer-client-java)
 - **Version**: 0.1.1
-- **Commit**: `16ab80e3cdac13f7f2aa43c13c74666fdf634f6b`
+- **Commit**: `6754ab0ca6d5b20f1e48e54ae1b19c33eaf7a3c0`
 - **Commit Date**: November 04, 2025
-- **Commit Message**: chore: update default API endpoint to https://api.pdfdancer.com
+- **Commit Message**: docs: Add Maven Central publishing guide and Gradle tasks for bundle creation
 - **Documentation Coverage**:
   - ✅ Core PDF manipulation (open, create, save)
   - ✅ Text operations (paragraphs, text lines)
@@ -85,6 +85,7 @@ This documentation is based on the following SDK versions:
   - ✅ Page size constants (PageSize class with standard sizes)
   - ✅ Position and coordinate system support
   - ✅ Color model support
+  - ✅ Maven Central publishing support (automated and manual bundle upload)
 - **Requirements**:
   - **Java 11+** required (tested with Java 11, 17, 21, 23)
   - Uses Gradle for build management
@@ -97,17 +98,16 @@ This documentation is based on the following SDK versions:
   - **Standard constants**: PageSize and StandardFonts enums for common values
   - **Clean API design**: Mirrors Python and TypeScript SDKs with Java conventions
   - **Default API endpoint**: Now uses `https://api.pdfdancer.com`
+  - **Maven Central distribution**: Published artifacts available for easy dependency management
 - **Key Changes Since Last Version**:
-  - **License added**: Apache License 2.0
-  - **Default API endpoint updated** to `https://api.pdfdancer.com`
-  - **Version bump** from 0.1.0-SNAPSHOT to 0.1.1 (published release)
-  - **Snapshot API support**: Added `TypedDocumentSnapshot`, `TypedPageSnapshot`, and `SnapshotCache`
-  - **Session management**: New `SessionService` for managing PDF sessions
-  - **Environment info**: New `EnvironmentInfo` class for retrieving API environment details
-  - **Service refactoring**: Extracted `SelectionService` and `ModificationService` for cleaner architecture
-  - **CI/CD improvements**: GitHub Actions workflow with dynamic Java version testing (11, 17, 21, 23)
-  - **Maven publication configured**: Ready for publishing to Maven Central with signing support
-  - **README added**: Comprehensive documentation with installation and usage examples
+  - **Maven Central publishing configured**: Comprehensive publishing guide with two options
+    - **Option 1**: Direct automated publishing via Gradle
+    - **Option 2**: Manual bundle upload to Maven Central Portal
+  - **New Gradle tasks**: Added `mavenCentralBundle` task for creating distribution bundles
+  - **Complete artifact packaging**: Includes JAR files (main, sources, javadoc), POM, metadata, GPG signatures, and checksums
+  - **Maven repository configuration updated**: Configured for OSSRH and Maven Central Portal
+  - **Signing improvements**: File-based GPG key signing configuration
+  - **Enhanced README**: Detailed publishing instructions with prerequisites and troubleshooting
 
 ---
 
