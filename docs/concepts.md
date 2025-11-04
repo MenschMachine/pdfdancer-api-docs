@@ -568,6 +568,70 @@ if (!nameFields.isEmpty()) {
 
 FormXObjects can be transformed (scaled, rotated, positioned) each time they're used without modifying the original content.
 
+**Working with FormXObjects:**
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+from pdfdancer import PDFDancer
+
+with PDFDancer.open("document.pdf") as pdf:
+    # Select all FormXObjects on a page
+    formxobjects = pdf.page(0).select_formxobjects()
+
+    # Select FormXObjects at specific coordinates
+    formxobjects_at_point = pdf.page(0).select_formxobjects_at(x=100, y=500)
+
+    for fxo in formxobjects:
+        print(f"FormXObject ID: {fxo.internal_id}")
+        print(f"Position: {fxo.position.bounding_rect}")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+import { PDFDancer } from 'pdfdancer-client-typescript';
+
+const pdf = await PDFDancer.open(pdfBytes);
+
+// Select all FormXObjects on a page
+const formxobjects = await pdf.page(0).selectFormXObjects();
+
+// Select FormXObjects at specific coordinates
+const formxobjectsAtPoint = await pdf.page(0).selectFormXObjectsAt(100, 500);
+
+for (const fxo of formxobjects) {
+  console.log(`FormXObject ID: ${fxo.internalId}`);
+  console.log(`Position: ${fxo.position.boundingRect}`);
+}
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+import com.tfc.pdf.pdfdancer.api.PDFDancer;
+import com.tfc.pdf.pdfdancer.api.common.model.*;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Select all FormXObjects on a page
+List<FormXObjectReference> formxobjects = pdf.page(0).selectFormXObjects();
+
+// Select FormXObjects at specific coordinates
+List<FormXObjectReference> formxobjectsAtPoint = pdf.page(0).selectFormXObjectsAt(100, 500);
+
+for (FormXObjectReference fxo : formxobjects) {
+    System.out.println("FormXObject ID: " + fxo.getInternalId());
+    System.out.println("Position: " + fxo.getPosition().getBoundingRect());
+}
+```
+
+  </TabItem>
+</Tabs>
+
 ---
 
 ## Fonts

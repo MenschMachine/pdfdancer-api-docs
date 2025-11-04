@@ -11,7 +11,10 @@ PDFDancer gives you pixel-perfect programmatic control over any PDF document fro
 - **Locate anything** inside any PDF—paragraphs, text lines, images, vector paths, pages, AcroForm fields—by page, coordinates, or text prefixes
 - **Edit existing content** with pixel-perfect precision using fluent editors and coordinate-based positioning
 - **Programmatic control** over PDFs you didn't create - modify invoices, contracts, forms, reports from any source
-- **Add content at exact positions** with paragraph/image builders, custom fonts, and coordinate-based placement
+- **Add content at exact positions** with paragraph/image builders, custom fonts (including embedded font support), and coordinate-based placement
+- **Smart text handling** with paragraph-aware text editing, preserving layout and formatting
+- **Full vector graphics control** for lines, curves, shapes, and complex drawings
+- **Very fast** performance optimized for high-throughput document processing
 - **Download results** as bytes for downstream processing or save directly to disk
 
 ## What Makes PDFDancer Different
@@ -19,9 +22,18 @@ PDFDancer gives you pixel-perfect programmatic control over any PDF document fro
 - **Edit any PDF** - Not just ones you created. Modify third-party invoices, government forms, client contracts
 - **Pixel-perfect positioning** - Place content at exact X,Y coordinates, move elements precisely
 - **Surgical text replacement** - Find and replace specific paragraphs while preserving layout
+- **Embedded font support** - Add text with embedded fonts for consistent rendering across all PDF viewers
+- **Paragraph-aware editing** - Work with logical text blocks, not just individual characters or lines
 - **Form manipulation** - Fill, update, or delete AcroForm fields programmatically
 - **Coordinate-based selection** - Select elements by position, not just content
 - **Real PDF editing** - Modify the actual PDF structure, not just overlay content
+
+### Font Recommendations
+
+For best compatibility and consistent rendering across all PDF viewers, we recommend:
+- **Standard PDF fonts** (Helvetica, Times, Courier) for maximum compatibility
+- **Embedded custom fonts** when you need specific typography or brand fonts
+- **TrueType fonts (.ttf)** are fully supported for embedding
 
 ## Supported Languages
 

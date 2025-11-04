@@ -140,8 +140,10 @@ const pdf = await PDFDancer.open(pdfBytes, 'your-api-token');
   <TabItem value="java" label="Java">
 
 ```java
-// Token can be passed through system properties or environment variables
-// Set via: -DPDFDANCER_TOKEN="your-api-token" or environment variable
+// Java client does not require explicit token parameter
+// Token is automatically read from PDFDANCER_TOKEN environment variable
+// Set via: export PDFDANCER_TOKEN="your-api-token"
+// Or via system property: -DPDFDANCER_TOKEN="your-api-token"
 PDFDancer pdf = PDFDancer.createSession("input.pdf");
 // Your PDF operations here
 ```

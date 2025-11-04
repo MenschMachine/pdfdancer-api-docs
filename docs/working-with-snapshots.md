@@ -258,7 +258,7 @@ Snapshots can be filtered to only include specific types of elements:
   <TabItem value="python" label="Python">
 
 ```python
-from pdfdancer import PDFDancer
+from pdfdancer import PDFDancer, ObjectType
 
 with PDFDancer.open("document.pdf") as pdf:
     # Get only paragraphs and images
@@ -317,6 +317,7 @@ console.log(`Images: ${imageCount}`);
 ```java
 import com.tfc.pdf.pdfdancer.api.PDFDancer;
 import com.tfc.pdf.pdfdancer.api.common.model.*;
+import com.tfc.pdf.pdfdancer.api.common.model.ObjectType;
 
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
 
@@ -365,6 +366,8 @@ Extract all text from a document efficiently:
   <TabItem value="python" label="Python">
 
 ```python
+from pdfdancer import PDFDancer
+
 with PDFDancer.open("document.pdf") as pdf:
     # Get snapshot with only text elements
     snapshot = pdf.get_document_snapshot(types="PARAGRAPH,TEXT_LINE")
@@ -445,6 +448,8 @@ Analyze document structure and content distribution:
   <TabItem value="python" label="Python">
 
 ```python
+from pdfdancer import PDFDancer
+
 with PDFDancer.open("document.pdf") as pdf:
     snapshot = pdf.get_document_snapshot()
     
@@ -488,6 +493,8 @@ for (const [i, pageSnap] of snapshot.pages.entries()) {
   <TabItem value="java" label="Java">
 
 ```java
+import com.tfc.pdf.pdfdancer.api.PDFDancer;
+import com.tfc.pdf.pdfdancer.api.common.model.*;
 import java.util.HashMap;
 import java.util.Map;
 
