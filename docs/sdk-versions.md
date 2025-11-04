@@ -68,10 +68,10 @@ This documentation is based on the following SDK versions:
 ## Java SDK
 
 - **Repository**: [pdfdancer-client-java](https://github.com/MenschMachine/pdfdancer-client-java)
-- **Version**: 0.1.0-SNAPSHOT
-- **Commit**: `f02a4653d8169e4441a27be24f6f80a6868f6ceb`
-- **Commit Date**: November 03, 2025
-- **Commit Message**: refactor: Rename package and update imports to com.pdfdancer.client.
+- **Version**: 0.1.1
+- **Commit**: `16ab80e3cdac13f7f2aa43c13c74666fdf634f6b`
+- **Commit Date**: November 04, 2025
+- **Commit Message**: chore: update default API endpoint to https://api.pdfdancer.com
 - **Documentation Coverage**:
   - ✅ Core PDF manipulation (open, create, save)
   - ✅ Text operations (paragraphs, text lines)
@@ -79,12 +79,14 @@ This documentation is based on the following SDK versions:
   - ✅ Form field operations (AcroForms)
   - ✅ Vector graphics (paths, lines, rectangles, Bezier curves)
   - ✅ Page operations (add, delete, move, reorder)
+  - ✅ Snapshot API (document and page snapshots, caching)
+  - ✅ Session management (SessionService)
   - ✅ Standard PDF fonts constants (StandardFonts enum)
   - ✅ Page size constants (PageSize class with standard sizes)
   - ✅ Position and coordinate system support
   - ✅ Color model support
 - **Requirements**:
-  - **Java 11+** required
+  - **Java 11+** required (tested with Java 11, 17, 21, 23)
   - Uses Gradle for build management
   - Jackson for JSON serialization
   - SLF4J for logging
@@ -94,6 +96,18 @@ This documentation is based on the following SDK versions:
   - **Builder pattern**: Fluent API for constructing PDF elements
   - **Standard constants**: PageSize and StandardFonts enums for common values
   - **Clean API design**: Mirrors Python and TypeScript SDKs with Java conventions
+  - **Default API endpoint**: Now uses `https://api.pdfdancer.com`
+- **Key Changes Since Last Version**:
+  - **License added**: Apache License 2.0
+  - **Default API endpoint updated** to `https://api.pdfdancer.com`
+  - **Version bump** from 0.1.0-SNAPSHOT to 0.1.1 (published release)
+  - **Snapshot API support**: Added `TypedDocumentSnapshot`, `TypedPageSnapshot`, and `SnapshotCache`
+  - **Session management**: New `SessionService` for managing PDF sessions
+  - **Environment info**: New `EnvironmentInfo` class for retrieving API environment details
+  - **Service refactoring**: Extracted `SelectionService` and `ModificationService` for cleaner architecture
+  - **CI/CD improvements**: GitHub Actions workflow with dynamic Java version testing (11, 17, 21, 23)
+  - **Maven publication configured**: Ready for publishing to Maven Central with signing support
+  - **README added**: Comprehensive documentation with installation and usage examples
 
 ---
 
@@ -190,7 +204,7 @@ Update the version in your `build.gradle.kts`:
 
 ```kotlin
 dependencies {
-    implementation("com.pdfdancer.client:pdfdancer-client-java:0.1.0-SNAPSHOT")
+    implementation("com.pdfdancer.client:pdfdancer-client-java:0.1.1")
 }
 ```
 
@@ -208,7 +222,7 @@ Update the version in your `pom.xml`:
 <dependency>
     <groupId>com.pdfdancer.client</groupId>
     <artifactId>pdfdancer-client-java</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>0.1.1</version>
 </dependency>
 ```
 
