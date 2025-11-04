@@ -28,12 +28,12 @@ PDFDancer gives you pixel-perfect programmatic control over any PDF document fro
 - **Coordinate-based selection** - Select elements by position, not just content
 - **Real PDF editing** - Modify the actual PDF structure, not just overlay content
 
-### Font Recommendations
+### Smart Font Matching
 
-For best compatibility and consistent rendering across all PDF viewers, we recommend:
-- **Standard PDF fonts** (Helvetica, Times, Courier) for maximum compatibility
-- **Embedded custom fonts** when you need specific typography or brand fonts
-- **TrueType fonts (.ttf)** are fully supported for embedding
+When working with PDFs that use embedded fonts, PDFDancer uses a sophisticated ML-powered approach:
+- **Glyph analysis** - Our ML model analyzes the visual appearance of glyphs in embedded fonts
+- **Intelligent replacement** - When embedded fonts can't be modified directly, we automatically match them with visually similar fonts from our database
+- **Preserves appearance** - Text edits maintain the original visual style, even when the exact font isn't available
 
 ## Supported Languages
 
