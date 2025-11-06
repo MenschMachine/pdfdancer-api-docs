@@ -94,6 +94,101 @@ pdf.save("output.pdf");
   </TabItem>
 </Tabs>
 
+## Standard and Embedded Fonts
+
+In addition to pre-registered service fonts, PDFDancer supports two other font categories:
+
+### Standard PDF Fonts
+
+Standard PDF fonts (also known as Base 14 fonts) are built into PDF viewers and don't require font files:
+
+- **Times-Roman** (and Times-Bold, Times-Italic, Times-BoldItalic)
+- **Helvetica** (and Helvetica-Bold, Helvetica-Oblique, Helvetica-BoldOblique)
+- **Courier** (and Courier-Bold, Courier-Oblique, Courier-BoldOblique)
+- **Symbol**
+- **ZapfDingbats**
+
+These fonts are universally supported and ideal for basic text rendering without external dependencies.
+
+For detailed information about using standard fonts with the StandardFonts enum and code examples, see [Standard PDF Fonts](working-with-fonts.md#standard-pdf-fonts) in the Working with Fonts guide.
+
+### Embedded Fonts
+
+Embedded fonts are fonts already present in the PDF document you're modifying. PDFDancer can detect and use these fonts automatically. When you call `find_fonts()`, it will search both service fonts and embedded fonts in the document.
+
+To use embedded fonts, simply reference them by name or use `find_fonts()` to discover them:
+
+:::info
+For detailed information about embedded fonts, their limitations, and best practices when working with them, see [About Embedded Fonts](working-with-fonts.md#about-embedded-fonts) in the Working with Fonts guide.
+:::
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+from pdfdancer import PDFDancer
+
+with PDFDancer.open("document.pdf") as pdf:
+    # Find fonts already embedded in the document
+    embedded_fonts = pdf.find_fonts("Arial", 12)
+
+    if embedded_fonts:
+        font = embedded_fonts[0]
+        pdf.new_paragraph() \
+            .text("Using embedded font") \
+            .font(font.name, font.size) \
+            .at(page_index=0, x=100, y=400) \
+            .add()
+
+    pdf.save("output.pdf")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+import { PDFDancer } from 'pdfdancer-client-typescript';
+
+const pdf = await PDFDancer.open(pdfBytes);
+
+// Use embedded fonts by name
+await pdf.page(0).newParagraph()
+  .text('Using embedded font')
+  .font('Arial', 12)
+  .at(100, 400)
+  .apply();
+
+await pdf.save('output.pdf');
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+import com.tfc.pdf.pdfdancer.api.PDFDancer;
+import com.tfc.pdf.pdfdancer.api.common.model.*;
+import java.util.List;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Find fonts already embedded in the document
+List<Font> embeddedFonts = pdf.findFonts("Arial", 12);
+
+if (!embeddedFonts.isEmpty()) {
+    Font font = embeddedFonts.get(0);
+    pdf.newParagraph()
+        .text("Using embedded font")
+        .font(font.getName(), font.getSize())
+        .at(0, 100, 400)
+        .add();
+}
+
+pdf.save("output.pdf");
+```
+
+  </TabItem>
+</Tabs>
+
 ## Finding Fonts Programmatically
 
 You can also search for fonts dynamically using the `find_fonts()` method:
