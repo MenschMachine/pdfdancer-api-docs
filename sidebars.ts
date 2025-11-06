@@ -51,6 +51,7 @@ const sidebars: SidebarsConfig = {
             label: 'Reference',
             collapsed: false,
             items: [
+                'available-fonts',
                 'cookbook',
                 'error-handling',
                 'sdk-versions',
