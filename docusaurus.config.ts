@@ -15,14 +15,14 @@ const config: Config = {
     },
 
     // Set the production url of your site here
-    url: 'https://MenschMachine.github.io',
+    url: 'https://docs.pdfdancer.com',
     // Set the /<baseUrl>/ pathname under which your site is served
     // For GitHub pages deployment, it is often '/<projectName>/'
     baseUrl: '/',
 
     // GitHub pages deployment config.
     // If you aren't using GitHub pages, you don't need these.
-    organizationName: 'MenschMachine', // Usually your GitHub org/user name.
+    organizationName: 'The Famous Cat', // Usually your GitHub org/user name.
     projectName: 'pdfdancer-api-docs', // Usually your repo name.
 
     onBrokenLinks: 'throw',
@@ -98,8 +98,12 @@ const config: Config = {
                     ],
                 },
                 {
-                    title: 'Company',
+                    title: 'PDFDancer',
                     items: [
+                        {
+                            label: 'Home',
+                            href: 'https://www.pdfdancer.com/',
+                        },
                         {
                             label: 'Privacy',
                             href: 'https://www.pdfdancer.com/privacy',
@@ -118,17 +122,8 @@ const config: Config = {
                         },
                     ],
                 },
-                {
-                    title: 'Community',
-                    items: [
-                        {
-                            label: 'GitHub',
-                            href: 'https://github.com/MenschMachine/pdfdancer',
-                        },
-                    ],
-                },
             ],
-            copyright: `© ${new Date().getFullYear()} PDFDancer. All rights reserved.`,
+            copyright: `© ${new Date().getFullYear()} The Famous Cat Ltd. All rights reserved.`,
         },
         prism: {
             theme: prismThemes.github,
