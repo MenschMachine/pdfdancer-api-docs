@@ -33,6 +33,7 @@ npm run clear
 
 1. **Manual docs**: Markdown files in `docs/` directory (getting-started, authentication, quickstart, etc.)
 2. **SDK docs**: Synced from git submodules in `external/` directory
+3. **Roadmap**: Use /Users/michael/Documents/TFC/projects/pdfdancer/Product/Roadmap.md - These are just keywords and also with internal details. Rewrite it so that it can be published.
 
 ### Git Submodules
 

@@ -55,6 +55,7 @@ const sidebars: SidebarsConfig = {
                 'cookbook',
                 'error-handling',
                 'sdk-versions',
+                'roadmap',
             ],
         },
     ],
