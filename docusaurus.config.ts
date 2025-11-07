@@ -50,7 +50,16 @@ const config: Config = {
             } satisfies Preset.Options,
         ],
     ],
-
+    plugins: [
+        [
+            "posthog-docusaurus",
+            {
+                apiKey: "phc_WtwZKShVZjSkh0Y36zP4iDMRsftMWC5tMng2hVeU7h7",
+                appUrl: "https://us.i.posthog.com",
+                enableInDevelopment: false, // optional
+            },
+        ],
+    ],
     themeConfig: {
         // Replace with your project's social card
         image: 'img/docusaurus-social-card.jpg',
