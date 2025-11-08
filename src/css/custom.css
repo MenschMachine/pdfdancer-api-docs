@@ -29,7 +29,7 @@
   --ifm-footer-background-color: #000000;
 
   /* Text Colors */
-  --ifm-font-color-base: #ffa500;
+  --ifm-font-color-base: #000000;
   --ifm-font-color-secondary: #aaaaaa;
   --ifm-heading-color: #ffa500;
 
@@ -80,7 +80,7 @@
 
   --ifm-background-color: #000000;
   --ifm-background-surface-color: #0a0a0a;
-  --ifm-font-color-base: #ffa500;
+  --ifm-font-color-base: white;
   --ifm-font-color-secondary: #aaaaaa;
 
   --docusaurus-highlighted-code-line-bg: rgba(255, 165, 0, 0.15);
