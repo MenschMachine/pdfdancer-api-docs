@@ -28,6 +28,7 @@ const sidebars: SidebarsConfig = {
             label: 'Working with Content',
             collapsed: false,
             items: [
+                'extracting-text',
                 'working-with-text',
                 'working-with-images',
                 'working-with-pages',
