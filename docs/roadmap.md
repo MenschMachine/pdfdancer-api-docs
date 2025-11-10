@@ -8,83 +8,47 @@ This roadmap is subject to change based on customer feedback and evolving requir
 
 ## Currently In Development
 
-### Enhanced SDK Convenience Methods
-We're adding singular convenience methods to complement the existing batch selection methods, making it easier to work with individual elements when you need them.
+- **SDK Example Repositories** - TypeScript and Java examples with real-world scenarios and best practices
+- **Cross-Platform Testing** - Ensuring consistent behavior across Windows and Linux
+- **MCP Server** - Model Context Protocol server for enhanced documentation and PDF inspection
 
-**Status:** In Progress
-**Availability:** Java SDK, TypeScript SDK
+## Next Up
 
-## Coming Soon
+These features are at the top of our development queue and will be implemented in the coming weeks.
 
-### Cross-Platform Testing & Examples
-Comprehensive testing across Windows and Linux platforms, along with example repositories to help you get started quickly with best practices.
+- **OCR (Optical Character Recognition)** - Extract text from scanned documents and images
+- **Enhanced Text Extraction** - Better handling of complex layouts and multi-column documents
+- **Type3 Font Support** - Extended font rendering for wider PDF compatibility
+- **Document Template Store** - Cloud-based template storage with S3-compatible API
+- **Intelligent Font Recommendations** - Automatic font matching and substitution
+- **Observability & Monitoring** - Comprehensive metrics, logging, and tracing
 
-- Platform compatibility validation
-- TypeScript example repository with common use cases
-- Java example repository with common use cases
-
-## Planned Features
+## Future Enhancements
 
 ### Forms & Interactive Documents
+- **XFA Support** - Full support for XML Forms Architecture used in financial and government documents
+- **Enhanced Acroform Editing** - Create and modify PDF form fields programmatically
+- **Digital Signatures** - Sign and verify documents with certificate-based signatures
+- **Document Encryption** - Enhanced encryption for securing sensitive PDFs
 
-#### XFA (XML Forms Architecture) Support
-Full support for XFA forms commonly used in financial services and government documents, enabling automated form filling and data extraction.
-
-#### Enhanced Acroform Editing
-Expanded capabilities for creating and modifying PDF form fields programmatically.
-
-### Content Selection & Positioning
-
-#### Advanced Bounding Box Operations
-New spatial query methods for precise element selection:
-- Point containment testing
-- Element intersection detection
-- Nested element queries
-
-This enables more sophisticated layout analysis and content extraction workflows.
-
-### Security Features
-
-#### Digital Signatures
-Complete support for signing and verifying PDF documents, including:
-- Certificate-based signing
-- Signature validation
-- Multiple signature support
-
-#### Document Encryption
-Enhanced encryption capabilities for securing sensitive PDF documents.
-
-### Text Recognition & Fonts
-
-#### Optical Character Recognition (OCR)
-Built-in OCR support for extracting text from scanned documents and images within PDFs.
-
-#### Extended Font Support
-- Type3 font rendering
-- Improved font substitution and matching
-- Automatic font issue resolution
+### Content & Layout
+- **Advanced Bounding Box Operations** - Spatial queries with point containment, intersection detection, and nested element selection
+- **Inline Image Support** - Improved image extraction and manipulation
 
 ### Developer Experience
+- **GraphQL-Style Querying** - Flexible content selection with powerful query syntax
+- **Batch Operations** - Performance optimization through batched edit operations
+- **First-Class Template Support** - Enhanced SDK-level templating workflows
+- **PHP SDK** - Native PHP support for broader language compatibility
 
-#### Enhanced API Querying
-More flexible content selection with a GraphQL-inspired query syntax for complex document queries.
-
-#### Batch Operations
-Optimize performance by batching multiple edit operations into single API calls.
-
-#### Template Management
-Store and reuse document templates with S3-compatible API access.
-
-### Platform & Integrations
-
-#### Workflow Automation
-Native integration with popular automation platforms like n8n for building document processing workflows.
-
-#### Global Performance
-Multi-region deployment for lower latency worldwide with intelligent load balancing.
+### Platform & Scale
+- **Workflow Automation** - Native n8n integration for no-code document processing
+- **Global Performance** - Multi-region deployment (US, EU, APAC) for lower latency worldwide
 
 ## Recently Shipped
 
+- **Enhanced SDK Convenience Methods** - Singular select methods (e.g., `select_paragraph_at()`) for easier element access in Java and TypeScript SDKs
+- **SDK Retry Functionality** - Built-in retry logic for resilient API interactions across all SDKs (Python, Java, TypeScript)
 - **API Key Management** - Improved security with viewable API keys
 - **Open Source Java SDK** - Java client library available on GitHub and Maven Central
 - **Font Database** - Comprehensive font matching and substitution system
