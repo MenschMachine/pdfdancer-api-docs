@@ -38,7 +38,7 @@ with PDFDancer.open("document.pdf") as pdf:
 ```typescript
 import { PDFDancer } from 'pdfdancer-client-typescript';
 
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // Get all paths on a specific page
 const paths = await pdf.page(3).selectPaths();
@@ -109,7 +109,7 @@ with PDFDancer.open("document.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // Select paths on a page
 const paths = await pdf.page(0).selectPaths();
@@ -186,7 +186,7 @@ with PDFDancer.open("document.pdf") as pdf:
 ```typescript
 import { PDFDancer, Color } from 'pdfdancer-client-typescript';
 
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 const page = pdf.page(0);
 
 // Draw a simple line
@@ -206,8 +206,7 @@ await page.newLine()
   .dashPattern([5, 3])
   .apply();
 
-const updated = await pdf.getBytes();
-await fs.writeFile('output.pdf', updated);
+await pdf.save('output.pdf');
 ```
 
   </TabItem>
@@ -291,7 +290,7 @@ with PDFDancer.open("document.pdf") as pdf:
 ```typescript
 import { PDFDancer, Color } from 'pdfdancer-client-typescript';
 
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 const page = pdf.page(0);
 
 // Draw a stroked rectangle
@@ -318,8 +317,7 @@ await page.newRectangle()
   .fillColor(new Color(200, 200, 255))
   .apply();
 
-const updated = await pdf.getBytes();
-await fs.writeFile('output.pdf', updated);
+await pdf.save('output.pdf');
 ```
 
   </TabItem>
@@ -396,7 +394,7 @@ with PDFDancer.open("document.pdf") as pdf:
 ```typescript
 import { PDFDancer, Color } from 'pdfdancer-client-typescript';
 
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 const page = pdf.page(0);
 
 // Draw a bezier curve
@@ -409,8 +407,7 @@ await page.newBezier()
   .strokeWidth(2)
   .apply();
 
-const updated = await pdf.getBytes();
-await fs.writeFile('output.pdf', updated);
+await pdf.save('output.pdf');
 ```
 
   </TabItem>
@@ -484,7 +481,7 @@ with PDFDancer.open("document.pdf") as pdf:
 ```typescript
 import { PDFDancer, Color } from 'pdfdancer-client-typescript';
 
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 const page = pdf.page(0);
 
 // Draw a complex path (triangle)
@@ -508,8 +505,7 @@ await page.newPath()
   .strokeWidth(2)
   .apply();
 
-const updated = await pdf.getBytes();
-await fs.writeFile('output.pdf', updated);
+await pdf.save('output.pdf');
 ```
 
   </TabItem>

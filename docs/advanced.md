@@ -54,7 +54,7 @@ import { PDFDancer } from 'pdfdancer-client-typescript';
 // TypeScript doesn't have context managers
 // Ensure you handle cleanup in try/finally blocks
 
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 try {
   const paragraphs = await pdf.page(0).selectParagraphs();
@@ -126,7 +126,7 @@ with PDFDancer.open("document.pdf") as pdf:
 
 ```typescript
 // TypeScript client uses standard font names directly
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 await pdf.page(0).newParagraph()
   .text('Text with standard font')
@@ -187,7 +187,7 @@ with PDFDancer.open("document.pdf") as pdf:
 import { PDFDancer } from 'pdfdancer-client-typescript';
 import { promises as fs } from 'node:fs';
 
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // Load custom font file
 const fontBytes = await fs.readFile('fonts/CustomFont.ttf');
@@ -296,8 +296,7 @@ async function processInvoice(
   /**
    * Process a single invoice PDF.
    */
-  const pdfBytes = await fs.readFile(inputPath);
-  const pdf = await PDFDancer.open(pdfBytes);
+  const pdf = await PDFDancer.open(inputPath);
 
   // Add PAID watermark
   await pdf.page(0).newParagraph()
@@ -460,8 +459,7 @@ async function redactSensitiveInfo(
    */
   const sensitiveKeywords = ['SSN:', 'Credit Card:', 'Password:'];
 
-  const pdfBytes = await fs.readFile(pdfPath);
-  const pdf = await PDFDancer.open(pdfBytes);
+  const pdf = await PDFDancer.open(pdfPath);
 
   // Search all paragraphs for sensitive keywords
   const allParagraphs = await pdf.selectParagraphs();
@@ -599,8 +597,7 @@ async function generateCertificate(
   /**
    * Generate a certificate from a template.
    */
-  const pdfBytes = await fs.readFile(templatePath);
-  const pdf = await PDFDancer.open(pdfBytes);
+  const pdf = await PDFDancer.open(templatePath);
 
   // Replace placeholder fields
   const placeholders: Record<string, string> = {
@@ -736,14 +733,14 @@ with PDFDancer.open("document.pdf") as pdf:
 
 ```typescript
 // Less efficient: Multiple API calls
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 for (let i = 0; i < 10; i++) {
   const paragraphs = await pdf.page(0).selectParagraphs();
   await paragraphs[i].delete();  // Multiple fetches
 }
 
 // More efficient: Batch operations
-const pdf2 = await PDFDancer.open(pdfBytes);
+const pdf2 = await PDFDancer.open('document.pdf');
 const paragraphs = await pdf2.page(0).selectParagraphs();  // Single fetch
 for (const para of paragraphs.slice(0, 10)) {
   await para.delete();  // Batch deletions
@@ -810,7 +807,7 @@ with PDFDancer.open("document.pdf") as pdf:
 
 ```typescript
 // Process multiple operations in a single session
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // Operation 1: Edit text
 const paragraphs = await pdf.selectParagraphsStartingWith('Invoice');

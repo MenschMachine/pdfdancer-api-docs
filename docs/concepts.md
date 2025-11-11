@@ -594,7 +594,7 @@ with PDFDancer.open("document.pdf") as pdf:
 ```typescript
 import { PDFDancer } from 'pdfdancer-client-typescript';
 
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // Select all FormXObjects on a page
 const formxobjects = await pdf.page(0).selectFormXObjects();
@@ -1210,7 +1210,7 @@ import { PDFDancer } from 'pdfdancer-client-typescript';
 // ✓ SAFE: Each async operation creates its own session
 async function processPdf(filePath: string): Promise<void> {
   const pdfBytes = await fs.readFile(filePath);
-  const pdf = await PDFDancer.open(pdfBytes);
+  const pdf = await PDFDancer.open('document.pdf');
 
   const paragraphs = await pdf.selectParagraphs();
   await pdf.save(`output_${filePath}`);
@@ -1225,7 +1225,7 @@ await Promise.all([
 
 
 // ✗ UNSAFE: Sharing a session across concurrent operations
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // DON'T DO THIS - concurrent operations on the same session
 await Promise.all([

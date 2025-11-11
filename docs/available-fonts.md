@@ -49,7 +49,7 @@ with PDFDancer.open("document.pdf") as pdf:
 ```typescript
 import { PDFDancer } from 'pdfdancer-client-typescript';
 
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // Use available service fonts directly by name
 await pdf.page(0).newParagraph()
@@ -149,7 +149,7 @@ with PDFDancer.open("document.pdf") as pdf:
 ```typescript
 import { PDFDancer } from 'pdfdancer-client-typescript';
 
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // Use embedded fonts by name
 await pdf.page(0).newParagraph()
@@ -223,7 +223,7 @@ with PDFDancer.open("document.pdf") as pdf:
 ```typescript
 import { PDFDancer } from 'pdfdancer-client-typescript';
 
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // TypeScript client uses font names directly
 await pdf.page(0).newParagraph()

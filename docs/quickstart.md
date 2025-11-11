@@ -150,7 +150,7 @@ pdf.save("output.pdf")
 
 ```typescript
 await pdf.page(2).delete();
-const modifiedBytes = await pdf.getPdfFile();
+await pdf.save('output.pdf');
 ```
 
   </TabItem>
@@ -210,12 +210,7 @@ s3_client.put_object(Bucket='my-bucket', Key='output.pdf', Body=pdf_bytes)
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdfBytes = await pdf.getPdfFile();
-await s3Client.putObject({
-  Bucket: 'my-bucket',
-  Key: 'output.pdf',
-  Body: pdfBytes
-});
+await pdf.save('output.pdf');
 ```
 
   </TabItem>

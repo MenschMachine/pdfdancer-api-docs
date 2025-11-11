@@ -82,7 +82,7 @@ with PDFDancer.open("document.pdf") as pdf:
 ```typescript
 import { PDFDancer, StandardFonts, Color } from 'pdfdancer-client-typescript';
 
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // Use standard fonts with enum (recommended)
 await pdf.page(0).newParagraph()
@@ -266,7 +266,7 @@ with PDFDancer.open("document.pdf") as pdf:
 ```typescript
 import { PDFDancer, FontType } from 'pdfdancer-client-typescript';
 
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 const paragraphs = await pdf.page(0).selectParagraphs();
 
 for (const para of paragraphs) {
@@ -386,7 +386,7 @@ with PDFDancer.open("document.pdf") as pdf:
 import { PDFDancer } from 'pdfdancer-client-typescript';
 import { promises as fs } from 'node:fs';
 
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // Load custom font file
 const fontBytes = await fs.readFile('fonts/DancingScript-Regular.ttf');
@@ -462,7 +462,7 @@ with PDFDancer.open("document.pdf") as pdf:
 
 ```typescript
 // TypeScript client uses font names directly
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 await pdf.page(0).newParagraph()
   .text('Text with service font')
@@ -610,7 +610,7 @@ with PDFDancer.open("document.pdf") as pdf:
 ```typescript
 import { PDFDancer, StandardFonts, Color } from 'pdfdancer-client-typescript';
 
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // Large heading with bold Helvetica
 await pdf.page(0).newParagraph()

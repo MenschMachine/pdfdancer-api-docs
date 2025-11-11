@@ -38,7 +38,7 @@ with PDFDancer.open("form.pdf") as pdf:
 ```typescript
 import { PDFDancer } from 'pdfdancer-client-typescript';
 
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('form.pdf');
 
 // Get all form fields across the document
 const allFields = await pdf.selectFormFields();
@@ -97,7 +97,7 @@ with PDFDancer.open("form.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('form.pdf');
 
 // Find form fields by name (document-level)
 const firstNameFields = await pdf.selectFieldsByName('firstName');
@@ -157,7 +157,7 @@ with PDFDancer.open("form.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('form.pdf');
 
 // Find form field by name
 const fields = await pdf.selectFieldsByName('signature');
@@ -220,7 +220,7 @@ with PDFDancer.open("form.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('form.pdf');
 
 // Define form data
 const formData = {
@@ -295,7 +295,7 @@ with PDFDancer.open("form.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('form.pdf');
 
 // Delete specific form fields
 const zipFields = await pdf.selectFieldsByName('zip');

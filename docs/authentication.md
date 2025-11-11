@@ -34,7 +34,7 @@ with PDFDancer.open("input.pdf") as pdf:
 import { PDFDancer } from 'pdfdancer-client-typescript';
 
 // No token needed! SDK automatically gets an anonymous token
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('input.pdf');
 ```
 
   </TabItem>
@@ -94,7 +94,7 @@ with PDFDancer.open("input.pdf") as pdf:
 import { PDFDancer } from 'pdfdancer-client-typescript';
 
 // Token is automatically read from PDFDANCER_TOKEN environment variable
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('input.pdf');
 ```
 
   </TabItem>
@@ -133,7 +133,7 @@ with PDFDancer.open(
 ```typescript
 import { PDFDancer } from 'pdfdancer-client-typescript';
 
-const pdf = await PDFDancer.open(pdfBytes, 'your-api-token');
+const pdf = await PDFDancer.open('input.pdf', 'your-api-token');
 ```
 
   </TabItem>
@@ -188,7 +188,7 @@ import { PDFDancer } from 'pdfdancer-client-typescript';
 
 // Or passing explicitly
 const pdf = await PDFDancer.open(
-  pdfBytes,
+  'input.pdf',
   'your-api-token',
   'https://sandbox.pdfdancer.com'
 );
@@ -233,7 +233,7 @@ with PDFDancer.open(
 import { PDFDancer } from 'pdfdancer-client-typescript';
 
 const pdf = await PDFDancer.open(
-  pdfBytes,
+  'input.pdf',
   'your-api-token',
   'https://api.pdfdancer.com',
   60000  // 60 seconds in milliseconds

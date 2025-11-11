@@ -90,7 +90,7 @@ with PDFDancer.open("document.pdf") as pdf:
 ```typescript
 import { PDFDancer } from 'pdfdancer-client-typescript';
 
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 const page = pdf.page(0);
 
 // Bottom-left corner (0, 0)
@@ -270,7 +270,7 @@ with PDFDancer.open("document.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 const paragraphs = await pdf.page(0).selectParagraphs();
 
 for (const para of paragraphs) {
@@ -355,7 +355,7 @@ const BOTTOM_MARGIN = 72;  // 1 inch
 const PAGE_WIDTH = 612;    // Letter width
 const PAGE_HEIGHT = 792;   // Letter height
 
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // Content within margins
 await pdf.page(0).newParagraph()

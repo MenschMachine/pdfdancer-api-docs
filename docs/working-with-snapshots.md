@@ -60,7 +60,7 @@ with PDFDancer.open("document.pdf") as pdf:
 ```typescript
 import { PDFDancer } from 'pdfdancer-client-typescript';
 
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // Get snapshot of entire document
 const snapshot = await pdf.getDocumentSnapshot();
@@ -152,7 +152,7 @@ with PDFDancer.open("document.pdf") as pdf:
 ```typescript
 import { PDFDancer } from 'pdfdancer-client-typescript';
 
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // Get snapshot of page 0
 const pageSnapshot = await pdf.getPageSnapshot(0);
@@ -223,7 +223,7 @@ with PDFDancer.open("document.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 const page = pdf.page(0);
 
 // Get snapshot from page object
@@ -285,7 +285,7 @@ with PDFDancer.open("document.pdf") as pdf:
 ```typescript
 import { PDFDancer, ObjectType } from 'pdfdancer-client-typescript';
 
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // Get only paragraphs and images
 const snapshot = await pdf.getDocumentSnapshot([
@@ -386,7 +386,7 @@ with PDFDancer.open("document.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // Get snapshot with only text elements
 const snapshot = await pdf.getDocumentSnapshot([
@@ -470,7 +470,7 @@ with PDFDancer.open("document.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 const snapshot = await pdf.getDocumentSnapshot();
 
 // Analyze each page

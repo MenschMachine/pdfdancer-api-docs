@@ -35,7 +35,7 @@ with PDFDancer.open("document.pdf") as pdf:
 ```typescript
 import { PDFDancer } from 'pdfdancer-client-typescript';
 
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // Document-level: searches ALL pages
 const allParagraphs = await pdf.selectParagraphs();
@@ -97,7 +97,7 @@ with PDFDancer.open("document.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // Text content
 const allParagraphs = await pdf.selectParagraphs();
@@ -167,7 +167,7 @@ with PDFDancer.open("document.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // Get all elements in the entire document
 // Returns paragraphs, text lines, images, paths, forms, and form fields
@@ -237,7 +237,7 @@ with PDFDancer.open("document.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // Select and inspect
 const paragraphs = await pdf.page(0).selectParagraphs();
@@ -326,7 +326,7 @@ with PDFDancer.open("document.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // Find paragraphs at specific coordinates
 const header = await pdf.page(0).selectParagraphsAt(72, 750);
@@ -402,7 +402,7 @@ with PDFDancer.open("invoice.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('invoice.pdf');
 
 // Invoice header is always at (72, 750)
 const header = await pdf.page(0).selectParagraphsAt(72, 750);
@@ -489,7 +489,7 @@ with PDFDancer.open("invoice.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('invoice.pdf');
 
 // Document-level search (searches all pages)
 const invoices = await pdf.selectParagraphsStartingWith('Invoice #');
@@ -564,7 +564,7 @@ with PDFDancer.open("document.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // Document-level pattern matching (searches all pages)
 // Find dates in format YYYY-MM-DD
@@ -646,7 +646,7 @@ with PDFDancer.open("form.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('form.pdf');
 
 // Find specific form fields by name
 const signatureFields = await pdf.selectFormFieldsByName('signature');
@@ -720,7 +720,7 @@ with PDFDancer.open("invoice.pdf") as pdf:
 ```typescript
 import { PDFDancer } from 'pdfdancer-client-typescript';
 
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('invoice.pdf');
 
 // Find all invoices on first page
 const invoices = await pdf.page(0).selectParagraphsStartingWith('Invoice #');

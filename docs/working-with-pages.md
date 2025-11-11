@@ -40,7 +40,7 @@ with PDFDancer.open("document.pdf") as pdf:
 ```typescript
 import { PDFDancer } from 'pdfdancer-client-typescript';
 
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // Get the first page (0-indexed)
 const firstPage = pdf.page(0);
@@ -93,7 +93,7 @@ with PDFDancer.open("document.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // Get all pages
 const allPages = await pdf.pages();
@@ -160,7 +160,7 @@ with PDFDancer.open("document.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 const page = pdf.page(0);
 
 console.log(`Page ID: ${page.internalId}`);
@@ -235,14 +235,13 @@ with PDFDancer.open("document.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // Delete the third page (index 2)
 await pdf.page(2).delete();
 
 // Save the modified PDF
-const modifiedBytes = await pdf.getBytes();
-await fs.writeFile('output.pdf', modifiedBytes);
+await pdf.save('output.pdf');
 ```
 
   </TabItem>
@@ -280,7 +279,7 @@ with PDFDancer.open("document.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // Delete pages 2, 3, and 5 (0-indexed)
 // Delete in reverse order to avoid index shifting
@@ -346,7 +345,7 @@ with PDFDancer.open("document.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // Move page 3 to position 0 (make it the first page)
 await pdf.movePage(3, 0);
@@ -423,7 +422,7 @@ with PDFDancer.open("document.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // Add a new blank page (appended to the end)
 const newPageRef = await pdf.newPage();
@@ -502,7 +501,7 @@ with PDFDancer.open("document.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 const page = pdf.page(0);
 
 // Select paragraphs on this page
@@ -573,7 +572,7 @@ with PDFDancer.open("document.pdf") as pdf:
 ```typescript
 import { PDFDancer, Color } from 'pdfdancer-client-typescript';
 
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // Add a paragraph to a specific page
 await pdf.page(0).newParagraph()
@@ -645,7 +644,7 @@ with PDFDancer.open("document.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 const allPages = await pdf.pages();
 
 for (const [i, page] of allPages.entries()) {

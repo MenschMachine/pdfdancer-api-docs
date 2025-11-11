@@ -59,7 +59,7 @@ with PDFDancer.open("document.pdf") as pdf:
 ```typescript
 import { PDFDancer } from 'pdfdancer-client-typescript';
 
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // Get all paragraphs in the document
 const allParagraphs = await pdf.selectParagraphs();
@@ -133,7 +133,7 @@ with PDFDancer.open("document.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // Extract text from first page
 const pageParagraphs = await pdf.page(0).selectParagraphs();
@@ -217,7 +217,7 @@ async function extractPageRange(
   /**
    * Extract text from a range of pages (inclusive, 0-indexed).
    */
-  const pdf = await PDFDancer.open(pdfBytes);
+  const pdf = await PDFDancer.open('document.pdf');
   const extractedText: string[] = [];
 
   for (let pageNum = startPage; pageNum <= endPage; pageNum++) {
@@ -230,7 +230,7 @@ async function extractPageRange(
 }
 
 // Extract pages 2-5 (0-indexed: pages 1-4)
-const text = await extractPageRange(pdfBytes, 1, 4);
+const text = await extractPageRange('document.pdf', 1, 4);
 console.log(text);
 ```
 
@@ -303,7 +303,7 @@ with PDFDancer.open("document.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // Extract all text lines from the document
 const allLines = await pdf.selectTextLines();
@@ -392,7 +392,7 @@ with PDFDancer.open("invoice.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // Extract invoice number at known position
 const invoiceNum = await pdf.page(0).selectParagraphsAt(450, 750);
@@ -502,7 +502,7 @@ with PDFDancer.open("document.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // Get all paragraphs on the page
 const allParagraphs = await pdf.page(0).selectParagraphs();
@@ -597,7 +597,7 @@ with PDFDancer.open("document.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // Extract all invoice numbers
 const invoices = await pdf.selectParagraphsStartingWith('Invoice #');
@@ -680,7 +680,7 @@ with PDFDancer.open("document.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // Extract email addresses
 const emails = await pdf.selectParagraphsMatching('[\\w\\.-]+@[\\w\\.-]+\\.\\w+');
@@ -828,7 +828,7 @@ async function extractTableData(
    * Extract table-like data from a specific region.
    * Returns list of rows, where each row is a list of cell texts.
    */
-  const pdf = await PDFDancer.open(pdfBytes);
+  const pdf = await PDFDancer.open('document.pdf');
 
   // Get all text lines in the table region
   const allLines = await pdf.page(pageNum).selectTextLines();
@@ -871,7 +871,7 @@ async function extractTableData(
 
 // Extract table data
 const tableData = await extractTableData(
-  pdfBytes,
+  'invoice.pdf',
   0,  // page number
   50, 300, 500, 200  // x, y, width, height
 );
@@ -1025,53 +1025,18 @@ for elem in elements:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-interface TextElement {
-  text: string;
-  page: number;
-  x: number;
-  y: number;
-  fontName: string;
-  fontSize: number;
-  color: { r: number; g: number; b: number };
-}
+const pdf = await PDFDancer.open('document.pdf');
+const pages = await pdf.pages();
 
-async function extractWithMetadata(pdfBytes: Uint8Array): Promise<TextElement[]> {
-  /**
-   * Extract text with complete metadata.
-   */
-  const elements: TextElement[] = [];
-  const pdf = await PDFDancer.open(pdfBytes);
-  const pages = await pdf.pages();
+for (let pageNum = 0; pageNum < pages.length; pageNum++) {
+  const paragraphs = await pdf.page(pageNum).selectParagraphs();
 
-  for (let pageNum = 0; pageNum < pages.length; pageNum++) {
-    const paragraphs = await pdf.page(pageNum).selectParagraphs();
-
-    for (const para of paragraphs) {
-      const element: TextElement = {
-        text: para.text || '',
-        page: pageNum,
-        x: para.position.x || 0,
-        y: para.position.y || 0,
-        fontName: para.fontName || 'Unknown',
-        fontSize: para.fontSize || 0,
-        color: para.color || { r: 0, g: 0, b: 0 }
-      };
-      elements.push(element);
-    }
+  for (const para of paragraphs) {
+    console.log(
+      `Page ${pageNum + 1}: [${para.position.x.toFixed(1)}, ${para.position.y.toFixed(1)}] ` +
+      `${para.fontName} ${para.fontSize}pt - ${para.text.substring(0, 50)}`
+    );
   }
-
-  return elements;
-}
-
-// Extract with metadata
-const elements = await extractWithMetadata(pdfBytes);
-
-// Print elements with metadata
-for (const elem of elements) {
-  console.log(
-    `Page ${elem.page + 1}: [${elem.x.toFixed(1)}, ${elem.y.toFixed(1)}] ` +
-    `${elem.fontName} ${elem.fontSize}pt - ${elem.text.substring(0, 50)}`
-  );
 }
 ```
 
@@ -1225,81 +1190,52 @@ print(f"Line items: {len(invoice.line_items)}")
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-interface InvoiceData {
-  invoiceNumber: string;
-  date: string;
-  customerName: string;
-  totalAmount: string;
-  lineItems: string[];
+const pdf = await PDFDancer.open('invoice.pdf');
+
+// Extract invoice number
+const invNums = await pdf.selectParagraphsStartingWith('Invoice #');
+if (invNums.length > 0) {
+  console.log(`Invoice: ${invNums[0].text}`);
 }
 
-async function extractInvoiceData(pdfBytes: Uint8Array): Promise<InvoiceData> {
-  /**
-   * Extract structured data from an invoice PDF.
-   */
-  const invoice: InvoiceData = {
-    invoiceNumber: '',
-    date: '',
-    customerName: '',
-    totalAmount: '',
-    lineItems: []
-  };
-
-  const pdf = await PDFDancer.open(pdfBytes);
-
-  // Extract invoice number
-  const invNums = await pdf.selectParagraphsStartingWith('Invoice #');
-  if (invNums.length > 0) {
-    invoice.invoiceNumber = invNums[0].text || '';
-  }
-
-  // Extract date
-  const dates = await pdf.selectParagraphsStartingWith('Date:');
-  if (dates.length > 0) {
-    invoice.date = (dates[0].text || '').replace('Date:', '').trim();
-  }
-
-  // Extract customer name
-  const customers = await pdf.selectParagraphsStartingWith('Bill To:');
-  if (customers.length > 0) {
-    invoice.customerName = (customers[0].text || '').replace('Bill To:', '').trim();
-  }
-
-  // Extract total amount
-  const totals = await pdf.selectParagraphsStartingWith('Total:');
-  if (totals.length > 0) {
-    invoice.totalAmount = (totals[0].text || '').replace('Total:', '').trim();
-  }
-
-  // Extract line items
-  const allLines = await pdf.page(0).selectTextLines();
-  let inItemsSection = false;
-
-  for (const line of allLines) {
-    const text = line.text || '';
-    if (text.includes('Description')) {
-      inItemsSection = true;
-      continue;
-    }
-    if (text.includes('Total')) {
-      inItemsSection = false;
-      break;
-    }
-    if (inItemsSection && text.trim()) {
-      invoice.lineItems.push(text.trim());
-    }
-  }
-
-  return invoice;
+// Extract date
+const dates = await pdf.selectParagraphsStartingWith('Date:');
+if (dates.length > 0) {
+  console.log(`Date: ${dates[0].text.replace('Date:', '').trim()}`);
 }
 
-// Extract invoice data
-const invoice = await extractInvoiceData(pdfBytes);
-console.log(`Invoice: ${invoice.invoiceNumber}`);
-console.log(`Date: ${invoice.date}`);
-console.log(`Customer: ${invoice.customerName}`);
-console.log(`Total: ${invoice.totalAmount}`);
-console.log(`Line items: ${invoice.lineItems.length}`);
+// Extract customer name
+const customers = await pdf.selectParagraphsStartingWith('Bill To:');
+if (customers.length > 0) {
+  console.log(`Customer: ${customers[0].text.replace('Bill To:', '').trim()}`);
+}
+
+// Extract total amount
+const totals = await pdf.selectParagraphsStartingWith('Total:');
+if (totals.length > 0) {
+  console.log(`Total: ${totals[0].text.replace('Total:', '').trim()}`);
+}
+
+// Extract line items
+const allLines = await pdf.page(0).selectTextLines();
+let inItemsSection = false;
+const lineItems = [];
+
+for (const line of allLines) {
+  const text = line.text || '';
+  if (text.includes('Description')) {
+    inItemsSection = true;
+    continue;
+  }
+  if (text.includes('Total')) {
+    break;
+  }
+  if (inItemsSection && text.trim()) {
+    lineItems.push(text.trim());
+  }
+}
+
+console.log(`Line items: ${lineItems.length}`);
 ```
 
   </TabItem>
@@ -1449,56 +1385,48 @@ extract_to_json("document.pdf", "extracted_text.json")
 ```typescript
 import { promises as fs } from 'node:fs';
 
-async function extractToJson(pdfBytes: Uint8Array, outputPath: string): Promise<void> {
-  /**
-   * Extract all text and metadata to JSON.
-   */
-  const documentData: any = {
-    pages: []
+const documentData: any = {
+  pages: []
+};
+
+const pdf = await PDFDancer.open('document.pdf');
+const pages = await pdf.pages();
+
+for (let pageNum = 0; pageNum < pages.length; pageNum++) {
+  const pageData: any = {
+    page_number: pageNum + 1,
+    paragraphs: []
   };
 
-  const pdf = await PDFDancer.open(pdfBytes);
-  const pages = await pdf.pages();
-
-  for (let pageNum = 0; pageNum < pages.length; pageNum++) {
-    const pageData: any = {
-      page_number: pageNum + 1,
-      paragraphs: []
-    };
-
-    const paragraphs = await pdf.page(pageNum).selectParagraphs();
-    for (const para of paragraphs) {
-      const paraData: any = {
-        text: para.text,
-        position: {
-          x: para.position.x,
-          y: para.position.y
-        },
-        font: {
-          name: para.fontName,
-          size: para.fontSize
-        }
-      };
-      if (para.color) {
-        paraData.color = {
-          r: para.color.r,
-          g: para.color.g,
-          b: para.color.b
-        };
+  const paragraphs = await pdf.page(pageNum).selectParagraphs();
+  for (const para of paragraphs) {
+    const paraData: any = {
+      text: para.text,
+      position: {
+        x: para.position.x,
+        y: para.position.y
+      },
+      font: {
+        name: para.fontName,
+        size: para.fontSize
       }
-      pageData.paragraphs.push(paraData);
+    };
+    if (para.color) {
+      paraData.color = {
+        r: para.color.r,
+        g: para.color.g,
+        b: para.color.b
+      };
     }
-
-    documentData.pages.push(pageData);
+    pageData.paragraphs.push(paraData);
   }
 
-  // Write to JSON file
-  await fs.writeFile(outputPath, JSON.stringify(documentData, null, 2), 'utf-8');
-  console.log(`Exported to ${outputPath}`);
+  documentData.pages.push(pageData);
 }
 
-// Extract to JSON
-await extractToJson(pdfBytes, 'extracted_text.json');
+// Write to JSON file
+await fs.writeFile('extracted_text.json', JSON.stringify(documentData, null, 2), 'utf-8');
+console.log('Exported to extracted_text.json');
 ```
 
   </TabItem>
@@ -1625,14 +1553,14 @@ for page_num, text in extract_large_document("large.pdf", batch_size=5):
 
 ```typescript
 async function* extractLargeDocument(
-  pdfBytes: Uint8Array,
+  pdfPath: string,
   startPage: number = 0,
   batchSize: number = 10
 ): AsyncGenerator<[number, string]> {
   /**
    * Extract text from large document in batches.
    */
-  const pdf = await PDFDancer.open(pdfBytes);
+  const pdf = await PDFDancer.open(pdfPath);
   const pages = await pdf.pages();
   const totalPages = pages.length;
 
@@ -1654,7 +1582,7 @@ async function* extractLargeDocument(
 }
 
 // Process large document
-for await (const [pageNum, text] of extractLargeDocument(pdfBytes, 0, 5)) {
+for await (const [pageNum, text] of extractLargeDocument('large.pdf', 0, 5)) {
   console.log(`Page ${pageNum + 1}: ${text.substring(0, 100)}...`);
 }
 ```

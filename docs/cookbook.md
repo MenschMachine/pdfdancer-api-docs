@@ -247,8 +247,7 @@ async function markInvoicePaid(
   /**
    * Mark an invoice as paid with a green stamp.
    */
-  const pdfBytes = await fs.readFile(inputPath);
-  const pdf = await PDFDancer.open(pdfBytes);
+  const pdf = await PDFDancer.open('invoice.pdf');
 
   // Find the invoice number paragraph
   const invoiceParas = await pdf.selectParagraphsStartingWith(
@@ -433,8 +432,7 @@ async function fillContractForm(
   /**
    * Fill a contract template with client data.
    */
-  const pdfBytes = await fs.readFile(templatePath);
-  const pdf = await PDFDancer.open(pdfBytes);
+  const pdf = await PDFDancer.open('template.pdf');
 
   // Define field mappings
   const fieldMapping: Record<string, string> = {
@@ -608,8 +606,7 @@ async function redactDocument(
     'Credit Card': /\d{4}[\s-]?\d{4}[\s-]?\d{4}[\s-]?\d{4}/
   };
 
-  const pdfBytes = await fs.readFile(inputPath);
-  const pdf = await PDFDancer.open(pdfBytes);
+  const pdf = await PDFDancer.open('document.pdf');
 
   const allParagraphs = await pdf.selectParagraphs();
   let redactionCount = 0;
@@ -805,8 +802,7 @@ async function generateMonthlyReport(
   /**
    * Generate a monthly report from template.
    */
-  const pdfBytes = await fs.readFile(templatePath);
-  const pdf = await PDFDancer.open(pdfBytes);
+  const pdf = await PDFDancer.open('template.pdf');
 
   // Add report header
   await pdf.page(0).newParagraph()
@@ -981,8 +977,7 @@ async function addWatermark(
   /**
    * Add a diagonal watermark to all pages.
    */
-  const pdfBytes = await fs.readFile(inputPath);
-  const pdf = await PDFDancer.open(pdfBytes);
+  const pdf = await PDFDancer.open('document.pdf');
 
   const pages = await pdf.pages();
 

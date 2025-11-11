@@ -41,7 +41,7 @@ with PDFDancer.open("document.pdf") as pdf:
 ```typescript
 import {PDFDancer} from 'pdfdancer-client-typescript';
 
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // Get all paragraphs across the entire document
 const allParagraphs = await pdf.selectParagraphs();
@@ -104,7 +104,7 @@ with PDFDancer.open("invoice.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('invoice.pdf');
 
 // Find paragraphs starting with specific text
 const headers = await pdf.selectParagraphsStartingWith('Invoice #');
@@ -163,7 +163,7 @@ with PDFDancer.open("document.pdf") as pdf:
 ```typescript
 import {PDFDancer} from 'pdfdancer-client-typescript';
 
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // Find paragraphs at specific coordinates
 const paragraphs = await pdf.page(0).selectParagraphsAt(150, 320);
@@ -231,7 +231,7 @@ with PDFDancer.open("document.pdf") as pdf:
 ```typescript
 import {PDFDancer} from 'pdfdancer-client-typescript';
 
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 const paragraphs = await pdf.page(0).selectParagraphs();
 
 for (const para of paragraphs) {
@@ -305,7 +305,7 @@ with PDFDancer.open("document.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 const lines = await pdf.page(0).selectLines();
 
 for (const line of lines) {
@@ -379,7 +379,7 @@ with PDFDancer.open("document.pdf") as pdf:
 ```typescript
 import {PDFDancer} from 'pdfdancer-client-typescript';
 
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 const paragraphs = await pdf.page(0).selectParagraphs();
 
 for (const para of paragraphs) {
@@ -472,7 +472,7 @@ with PDFDancer.open("document.pdf") as pdf:
 ```typescript
 import {PDFDancer, Color} from 'pdfdancer-client-typescript';
 
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // Add a simple paragraph with standard font
 await pdf.page(0).newParagraph()
@@ -543,7 +543,7 @@ with PDFDancer.open("document.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // Add to specific page
 await pdf.page(0).newParagraph()
@@ -611,7 +611,7 @@ with PDFDancer.open("document.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // Add multi-line code example with Courier
 await pdf.page(0).newParagraph()
@@ -680,7 +680,7 @@ with PDFDancer.open("document.pdf") as pdf:
 import {PDFDancer, Color} from 'pdfdancer-client-typescript';
 import {promises as fs} from 'node:fs';
 
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // Use custom font file directly
 const fontBytes = await fs.readFile('fonts/DancingScript-Regular.ttf');
@@ -758,7 +758,7 @@ with PDFDancer.open("document.pdf") as pdf:
 
 ```typescript
 // TypeScript uses font names directly
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 await pdf.page(0).newParagraph()
     .text('Text with service font')
@@ -842,7 +842,7 @@ with PDFDancer.open("document.pdf") as pdf:
 ```typescript
 import {PDFDancer} from 'pdfdancer-client-typescript';
 
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // Find a paragraph by text prefix
 const paragraphs = await pdf.page(0).selectParagraphsStartingWith('The Complete');
@@ -957,7 +957,7 @@ with PDFDancer.open("document.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 const paragraphs = await pdf.page(0).selectParagraphsStartingWith('The Complete');
 
 if (paragraphs.length > 0) {
@@ -1036,7 +1036,7 @@ with PDFDancer.open("document.pdf") as pdf:
 ```typescript
 import {PDFDancer} from 'pdfdancer-client-typescript';
 
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 const paragraphs = await pdf.page(0).selectParagraphsStartingWith('The Complete');
 
 if (paragraphs.length > 0) {
@@ -1117,7 +1117,7 @@ with PDFDancer.open("document.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 const paragraphs = await pdf.page(0).selectParagraphsStartingWith('The Complete');
 
 if (paragraphs.length > 0) {
@@ -1183,7 +1183,7 @@ with PDFDancer.open("document.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 const paragraphs = await pdf.page(0).selectParagraphsStartingWith('The Complete');
 
 if (paragraphs.length > 0) {
@@ -1253,7 +1253,7 @@ with PDFDancer.open("document.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 const paragraphs = await pdf.page(0).selectParagraphsStartingWith('The Complete');
 
 if (paragraphs.length > 0) {
@@ -1332,7 +1332,7 @@ with PDFDancer.open("document.pdf") as pdf:
 ```typescript
 import {PDFDancer} from 'pdfdancer-client-typescript';
 
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // Find and edit a text line
 const textLines = await pdf.page(0).selectTextLinesStartingWith('Invoice Number:');
@@ -1399,7 +1399,7 @@ with PDFDancer.open("document.pdf") as pdf:
 ```typescript
 import {PDFDancer, Color} from 'pdfdancer-client-typescript';
 
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 const textLines = await pdf.page(0).selectTextLinesStartingWith('Total:');
 
 if (textLines.length > 0) {
@@ -1468,7 +1468,7 @@ with PDFDancer.open("document.pdf") as pdf:
 ```typescript
 import {PDFDancer} from 'pdfdancer-client-typescript';
 
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 const textLines = await pdf.page(0).selectTextLinesStartingWith('Footer');
 
 if (textLines.length > 0) {
@@ -1537,7 +1537,7 @@ with PDFDancer.open("document.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // Find and delete a paragraph
 const paragraphs = await pdf.page(0).selectParagraphsStartingWith('The Complete');
@@ -1604,7 +1604,7 @@ with PDFDancer.open("document.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // Get all text lines across the document
 const allLines = await pdf.selectLines();
@@ -1655,7 +1655,7 @@ with PDFDancer.open("document.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // Find text lines starting with specific text
 const lines = await pdf.page(0).selectTextLinesStartingWith('Date:');

@@ -122,7 +122,7 @@ try {
 }
 
 try {
-  const pdf = await PDFDancer.open(pdfBytes);
+  const pdf = await PDFDancer.open('document.pdf');
 
   // Invalid coordinates
   await pdf.page(0).newParagraph()
@@ -198,7 +198,7 @@ except FontNotFoundException as e:
 import { PDFDancer, FontNotFoundException } from 'pdfdancer-client-typescript';
 
 try {
-  const pdf = await PDFDancer.open(pdfBytes);
+  const pdf = await PDFDancer.open('document.pdf');
 
   await pdf.page(0).newParagraph()
     .text('Hello')
@@ -210,7 +210,7 @@ try {
     console.error('Font not found:', error.message);
 
     // Fallback to default font
-    const pdf = await PDFDancer.open(pdfBytes);
+    const pdf = await PDFDancer.open('document.pdf');
     await pdf.page(0).newParagraph()
       .text('Hello')
       .font('Helvetica', 12)
@@ -304,7 +304,7 @@ import {
 
 try {
   const pdf = await PDFDancer.open(
-    pdfBytes,
+    'document.pdf',
     'invalid-token',
     'https://api.pdfdancer.com'
   );
@@ -465,75 +465,58 @@ import {
   SessionException,
   PdfDancerException
 } from 'pdfdancer-client-typescript';
-import { promises as fs } from 'node:fs';
 
-async function processPdf(
-  inputPath: string,
-  outputPath: string
-): Promise<boolean> {
-  /**
-   * Process a PDF with comprehensive error handling.
-   *
-   * Returns true on success, false on failure.
-   */
-  try {
-    const pdfBytes = await fs.readFile(inputPath);
-    const pdf = await PDFDancer.open(pdfBytes);
+try {
+  const pdf = await PDFDancer.open('input.pdf');
 
-    // Find and edit paragraphs
-    const paragraphs = await pdf.page(0).selectParagraphsStartingWith('Invoice');
+  // Find and edit paragraphs
+  const paragraphs = await pdf.page(0).selectParagraphsStartingWith('Invoice');
 
-    if (paragraphs.length > 0) {
-      await paragraphs[0].edit()
-        .replace('PAID')
-        .color(new Color(0, 128, 0))
+  if (paragraphs.length > 0) {
+    await paragraphs[0].edit()
+      .replace('PAID')
+      .color(new Color(0, 128, 0))
+      .apply();
+  }
+
+  // Add watermark
+  await pdf.page(0).newParagraph()
+    .text('CONFIDENTIAL')
+    .font('Helvetica-Bold', 48)
+    .color(new Color(200, 200, 200))
+    .at(150, 400)
+    .apply();
+
+  await pdf.save('output.pdf');
+
+} catch (error) {
+  if (error instanceof ValidationException) {
+    console.error('Validation failed:', error.message);
+    console.error('Check your input parameters and try again.');
+
+  } else if (error instanceof FontNotFoundException) {
+    console.error('Font error:', error.message);
+    console.error('Using fallback font...');
+
+    // Retry with fallback font
+    try {
+      const pdf = await PDFDancer.open('input.pdf');
+
+      await pdf.page(0).newParagraph()
+        .text('CONFIDENTIAL')
+        .font('Helvetica', 48)
+        .color(new Color(200, 200, 200))
+        .at(150, 400)
         .apply();
+
+      await pdf.save('output.pdf');
+    } catch (retryError) {
+      console.error('Retry failed:', retryError);
     }
 
-    // Add watermark
-    await pdf.page(0).newParagraph()
-      .text('CONFIDENTIAL')
-      .font('Helvetica-Bold', 48)
-      .color(new Color(200, 200, 200))
-      .at(150, 400)
-      .apply();
-
-    await pdf.save(outputPath);
-    return true;
-
-  } catch (error) {
-    if (error instanceof ValidationException) {
-      console.error('Validation failed:', error.message);
-      console.error('Check your input parameters and try again.');
-      return false;
-
-    } else if (error instanceof FontNotFoundException) {
-      console.error('Font error:', error.message);
-      console.error('Using fallback font...');
-
-      // Retry with fallback font
-      try {
-        const pdfBytes = await fs.readFile(inputPath);
-        const pdf = await PDFDancer.open(pdfBytes);
-
-        await pdf.page(0).newParagraph()
-          .text('CONFIDENTIAL')
-          .font('Helvetica', 48)
-          .color(new Color(200, 200, 200))
-          .at(150, 400)
-          .apply();
-
-        await pdf.save(outputPath);
-        return true;
-      } catch (retryError) {
-        console.error('Retry failed:', retryError);
-        return false;
-      }
-
-    } else if (error instanceof SessionException) {
-      console.error('Session error:', error.message);
-      console.error('Check your API token and network connection.');
-      return false;
+  } else if (error instanceof SessionException) {
+    console.error('Session error:', error.message);
+    console.error('Check your API token and network connection.');
 
     } else if (error instanceof HttpClientException) {
       console.error('HTTP error:', error.message);
@@ -688,7 +671,7 @@ with PDFDancer.open("doc.pdf", token="your-token") as pdf:
 process.env.PDFDANCER_TOKEN = 'your-token';
 
 // Or pass explicitly
-const pdf = await PDFDancer.open(pdfBytes, 'your-token');
+const pdf = await PDFDancer.open('document.pdf', 'your-token');
 ```
 
   </TabItem>
@@ -784,7 +767,7 @@ with PDFDancer.open(
 ```typescript
 // Increase timeout for large PDFs or slow connections
 const pdf = await PDFDancer.open(
-  pdfBytes,
+  'large-document.pdf',
   'your-token',
   'https://api.pdfdancer.com',
   120000  // 120 seconds in milliseconds

@@ -39,7 +39,7 @@ with PDFDancer.open("document.pdf") as pdf:
 ```typescript
 import { PDFDancer } from 'pdfdancer-client-typescript';
 
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // Get all images across the document
 const allImages = await pdf.selectImages();
@@ -95,7 +95,7 @@ with PDFDancer.open("document.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // Find images at specific coordinates
 const images = await pdf.page(2).selectImagesAt(120, 300);
@@ -151,7 +151,7 @@ with PDFDancer.open("document.pdf") as pdf:
 ```typescript
 import { PDFDancer } from 'pdfdancer-client-typescript';
 
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // Add image from file
 await pdf.newImage()
@@ -212,7 +212,7 @@ with PDFDancer.open("document.pdf") as pdf:
 import { PDFDancer } from 'pdfdancer-client-typescript';
 import { promises as fs } from 'node:fs';
 
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 
 // Load image bytes
 const imageBytes = await fs.readFile('logo.png');
@@ -275,7 +275,7 @@ with PDFDancer.open("document.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 const images = await pdf.page(0).selectImages();
 
 if (images.length > 0) {
@@ -331,7 +331,7 @@ with PDFDancer.open("document.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const pdf = await PDFDancer.open(pdfBytes);
+const pdf = await PDFDancer.open('document.pdf');
 const images = await pdf.page(0).selectImages();
 
 // Delete all images on page 0

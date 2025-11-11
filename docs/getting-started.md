@@ -105,13 +105,10 @@ with PDFDancer.open(pdf_data=Path("input.pdf")) as pdf:
 
 ```typescript
 import {PDFDancer, Color} from 'pdfdancer-client-typescript';
-import {promises as fs} from 'node:fs';
 
 async function run() {
-    const pdfBytes = await fs.readFile('input.pdf');
-
     // No token needed! SDK automatically gets an anonymous token
-    const pdf = await PDFDancer.open(pdfBytes);
+    const pdf = await PDFDancer.open('input.pdf');
 
     const page0 = pdf.page(0); // Page indexes are zero-based
 
@@ -132,8 +129,7 @@ async function run() {
         .at(72, 520)
         .apply();
 
-    const updated = await pdf.getPdfFile();
-    await fs.writeFile('output.pdf', updated);
+    await pdf.save('output.pdf');
 }
 
 run().catch(console.error);
