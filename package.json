@@ -19,6 +19,7 @@
     "@docusaurus/core": "3.9.1",
     "@docusaurus/preset-classic": "3.9.1",
     "@mdx-js/react": "^3.0.0",
+    "@mlahr/docusaurus-cloudflare-search": "file:../../tools/docusaurus-cloudflare-search/mlahr-docusaurus-cloudflare-search-1.0.0.tgz",
     "clsx": "^2.0.0",
     "posthog-docusaurus": "^2.0.5",
     "prism-react-renderer": "^2.3.0",

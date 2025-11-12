@@ -57,8 +57,13 @@ const config: Config = {
                 apiKey: "phc_WtwZKShVZjSkh0Y36zP4iDMRsftMWC5tMng2hVeU7h7",
                 appUrl: "https://us.i.posthog.com",
                 enableInDevelopment: false, // optional
-            },
+            }
         ],
+        ['@mlahr/docusaurus-cloudflare-search', {
+            indexDocs: true,
+            indexBlog: false,
+            language: 'en',
+        }],
     ],
     themeConfig: {
         //  TODO Replace with your project's social card
