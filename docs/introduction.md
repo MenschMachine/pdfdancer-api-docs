@@ -39,7 +39,7 @@ When working with PDFs that use embedded fonts, PDFDancer uses a sophisticated M
 
 - **Python** 3.10+
 - **TypeScript** with Node.js 20+
-- **Java** (coming soon)
+- **Java** 11+
 
 ## What's Next?
 
