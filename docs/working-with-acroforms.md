@@ -103,7 +103,7 @@ const pdf = await PDFDancer.open('form.pdf');
 const firstNameFields = await pdf.selectFieldsByName('firstName');
 
 // On a specific page
-const pageFields = await pdf.page(0).selectFormFieldsByName('signature');
+const pageFields = await pdf.page(0).selectFormFieldByName('signature');
 
 if (firstNameFields.length > 0) {
   console.log(`Found field: ${firstNameFields[0].name}`);

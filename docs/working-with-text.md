@@ -52,7 +52,7 @@ const pageParagraphs = await pdf.page(0).selectParagraphs();
 console.log(`Page 0 paragraphs: ${pageParagraphs.length}`);
 
 for (const para of pageParagraphs) {
-    console.log(`Paragraph: ${para.text?.substring(0, 50)}...`);
+    console.log(`Paragraph: ${para.getText()?.substring(0, 50)}...`);
 }
 ```
 
@@ -114,8 +114,8 @@ const pageHeaders = await pdf.page(0).selectParagraphsStartingWith('The Complete
 
 if (pageHeaders.length > 0) {
     const para = pageHeaders[0];
-    console.log(`Found: ${para.text}`);
-    console.log(`Position: (${para.position.x}, ${para.position.y})`);
+    console.log(`Found: ${para.getText()}`);
+    console.log(`Position: (${para.position.getX()}, ${para.position.getY()})`);
 }
 ```
 
@@ -169,7 +169,7 @@ const pdf = await PDFDancer.open('document.pdf');
 const paragraphs = await pdf.page(0).selectParagraphsAt(150, 320);
 
 for (const para of paragraphs) {
-    console.log(`Paragraph at position: ${para.text}`);
+    console.log(`Paragraph at position: ${para.getText()}`);
 }
 ```
 
@@ -236,17 +236,18 @@ const paragraphs = await pdf.page(0).selectParagraphs();
 
 for (const para of paragraphs) {
     // Access text content
-    console.log(`Text: ${para.text}`);
+    console.log(`Text: ${para.getText()}`);
 
     // Access font information
-    console.log(`Font: ${para.fontName} at ${para.fontSize}pt`);
+    console.log(`Font: ${para.getFontName()} at ${para.getFontSize()}pt`);
 
     // Access position
-    console.log(`Position: (${para.position.x}, ${para.position.y})`);
+    console.log(`Position: (${para.position.getX()}, ${para.position.getY()})`);
 
     // Access color (if available)
-    if (para.color) {
-        console.log(`Color: RGB(${para.color.r}, ${para.color.g}, ${para.color.b})`);
+    if (para.getColor()) {
+        const color = para.getColor()!;
+        console.log(`Color: RGB(${color.r}, ${color.g}, ${color.b})`);
     }
 }
 ```
@@ -291,7 +292,7 @@ Text lines also expose color and other properties:
 
 ```python
 with PDFDancer.open("document.pdf") as pdf:
-    lines = pdf.page(0).select_lines()
+    lines = pdf.page(0).select_text_lines()
 
     for line in lines:
         print(f"Line text: {line.text}")
@@ -309,12 +310,13 @@ const pdf = await PDFDancer.open('document.pdf');
 const lines = await pdf.page(0).selectLines();
 
 for (const line of lines) {
-    console.log(`Line text: ${line.text}`);
-    if (line.color) {
-        console.log(`  Color: RGB(${line.color.r}, ${line.color.g}, ${line.color.b})`);
+    console.log(`Line text: ${line.getText()}`);
+    if (line.getColor()) {
+        const color = line.getColor()!;
+        console.log(`  Color: RGB(${color.r}, ${color.g}, ${color.b})`);
     }
-    if (line.fontName) {
-        console.log(`  Font: ${line.fontName} ${line.fontSize}pt`);
+    if (line.getFontName()) {
+        console.log(`  Font: ${line.getFontName()} ${line.getFontSize()}pt`);
     }
 }
 ```
@@ -383,21 +385,21 @@ const pdf = await PDFDancer.open('document.pdf');
 const paragraphs = await pdf.page(0).selectParagraphs();
 
 for (const para of paragraphs) {
-    if (para.status) {
+    const status = para.objectRef().status;
+    if (status) {
         // Check if text was modified
-        console.log(`Modified: ${para.status.isModified()}`);
+        console.log(`Modified: ${status.isModified()}`);
 
         // Check if text is encodable with current font
-        console.log(`Encodable: ${para.status.isEncodable()}`);
+        console.log(`Encodable: ${status.isEncodable()}`);
 
         // Get font type classification
-        const fontType = para.status.getFontType();
+        const fontType = status.getFontType();
         console.log(`Font type: ${fontType}`);  // SYSTEM, STANDARD, or EMBEDDED
 
-        // Get font recommendation with similarity score
-        const recommendation = para.status.getFontRecommendation();
-        console.log(`Recommended font: ${recommendation.getFontName()}`);
-        console.log(`Similarity score: ${recommendation.getSimilarityScore()}`);
+        // Get font recommendation
+        const fontInfo = status.getFontRecommendation();
+        console.log(`Recommended font: ${fontInfo.getDocumentFontName()}`);
     }
 }
 ```
@@ -962,8 +964,8 @@ const paragraphs = await pdf.page(0).selectParagraphsStartingWith('The Complete'
 
 if (paragraphs.length > 0) {
     const paragraph = paragraphs[0];
-    const originalX = paragraph.position.x;
-    const originalY = paragraph.position.y;
+    const originalX = paragraph.position.getX();
+    const originalY = paragraph.position.getY();
 
     // Edit text and font, keeping original position
     await paragraph.edit()
@@ -973,7 +975,7 @@ if (paragraphs.length > 0) {
         .apply();
 
     const newPara = (await pdf.page(0).selectParagraphsStartingWith('Awesomely'))[0];
-    console.log(`Position unchanged: ${newPara.position.x}, ${newPara.position.y}`);
+    console.log(`Position unchanged: ${newPara.position.getX()}, ${newPara.position.getY()}`);
 }
 
 await pdf.save('output.pdf');
@@ -1591,10 +1593,10 @@ Text lines provide finer-grained control than paragraphs.
 ```python
 with PDFDancer.open("document.pdf") as pdf:
     # Get all text lines across the document
-    all_lines = pdf.select_lines()
+    all_lines = pdf.select_text_lines()
 
     # Get all text lines on a specific page
-    page_lines = pdf.page(0).select_lines()
+    page_lines = pdf.page(0).select_text_lines()
 
     for line in page_lines:
         print(f"Line: {line.text}")
@@ -1613,7 +1615,7 @@ const allLines = await pdf.selectLines();
 const pageLines = await pdf.page(0).selectLines();
 
 for (const line of pageLines) {
-    console.log(`Line: ${line.text}`);
+    console.log(`Line: ${line.getText()}`);
 }
 ```
 
@@ -1661,7 +1663,7 @@ const pdf = await PDFDancer.open('document.pdf');
 const lines = await pdf.page(0).selectTextLinesStartingWith('Date:');
 
 if (lines.length > 0) {
-    console.log(`Found date line: ${lines[0].text}`);
+    console.log(`Found date line: ${lines[0].getText()}`);
 }
 ```
 

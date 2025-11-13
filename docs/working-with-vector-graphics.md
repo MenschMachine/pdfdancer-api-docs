@@ -259,23 +259,23 @@ with PDFDancer.open("document.pdf") as pdf:
 
     # Draw a stroked rectangle
     page.new_rectangle() \
-        .at(100, 200) \
-        .size(200, 100) \
+        .at_coordinates(100, 200) \
+        .with_size(200, 100) \
         .stroke_color(Color(0, 0, 255)) \
         .stroke_width(3) \
         .add()
 
     # Draw a filled rectangle
     page.new_rectangle() \
-        .at(350, 200) \
-        .size(200, 100) \
+        .at_coordinates(350, 200) \
+        .with_size(200, 100) \
         .fill_color(Color(255, 200, 0)) \
         .add()
 
     # Draw a rectangle with both stroke and fill
     page.new_rectangle() \
-        .at(100, 350) \
-        .size(200, 100) \
+        .at_coordinates(100, 350) \
+        .with_size(200, 100) \
         .stroke_color(Color(0, 0, 0)) \
         .stroke_width(2) \
         .fill_color(Color(200, 200, 255)) \
@@ -377,10 +377,10 @@ with PDFDancer.open("document.pdf") as pdf:
 
     # Draw a bezier curve
     page.new_bezier() \
-        .start_point(100, 100) \
+        .from_point(100, 100) \
         .control_point_1(200, 200) \
         .control_point_2(300, 200) \
-        .end_point(400, 100) \
+        .to_point(400, 100) \
         .stroke_color(Color(0, 128, 0)) \
         .stroke_width(2) \
         .add()
@@ -446,17 +446,16 @@ Create complex vector graphics using path commands:
   <TabItem value="python" label="Python">
 
 ```python
-from pdfdancer import PDFDancer, Color
+from pdfdancer import PDFDancer, Color, Point
 
 with PDFDancer.open("document.pdf") as pdf:
     page = pdf.page(0)
 
     # Draw a complex path (triangle)
     page.new_path() \
-        .move_to(250, 100) \
-        .line_to(350, 250) \
-        .line_to(150, 250) \
-        .close_path() \
+        .add_line(Point(250, 100), Point(350, 250)) \
+        .add_line(Point(350, 250), Point(150, 250)) \
+        .add_line(Point(150, 250), Point(250, 100)) \
         .stroke_color(Color(128, 0, 128)) \
         .stroke_width(3) \
         .fill_color(Color(255, 200, 255)) \
@@ -464,10 +463,9 @@ with PDFDancer.open("document.pdf") as pdf:
 
     # Draw a path with curves
     page.new_path() \
-        .move_to(100, 400) \
-        .line_to(200, 400) \
-        .curve_to(250, 450, 300, 450, 350, 400) \
-        .line_to(450, 400) \
+        .add_line(Point(100, 400), Point(200, 400)) \
+        .add_bezier(Point(200, 400), Point(250, 450), Point(300, 450), Point(350, 400)) \
+        .add_line(Point(350, 400), Point(450, 400)) \
         .stroke_color(Color(255, 100, 0)) \
         .stroke_width(2) \
         .add()

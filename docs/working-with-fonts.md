@@ -270,19 +270,19 @@ const pdf = await PDFDancer.open('document.pdf');
 const paragraphs = await pdf.page(0).selectParagraphs();
 
 for (const para of paragraphs) {
-  if (para.status) {
+  if (para.objectRef().status) {
     // Check font type
-    if (para.status.getFontType() === FontType.EMBEDDED) {
-      console.log(`⚠️  Embedded font: ${para.fontName}`);
+    if (para.objectRef().status.getFontType() === FontType.EMBEDDED) {
+      console.log(`⚠️  Embedded font: ${para.getFontName()}`);
 
       // Check if text is encodable
-      if (!para.status.isEncodable()) {
+      if (!para.objectRef().status.isEncodable()) {
         console.log('Cannot encode new characters with this font');
       }
 
       // Get font recommendation
-      const rec = para.status.getFontRecommendation();
-      console.log(`Recommended: ${rec.getFontName()} (similarity: ${rec.getSimilarityScore().toFixed(2)})`);
+      const fontInfo = para.objectRef().status.getFontRecommendation();
+      console.log(`Recommended: ${fontInfo.getDocumentFontName()}`);
     }
   }
 }

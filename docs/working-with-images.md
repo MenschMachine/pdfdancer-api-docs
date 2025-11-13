@@ -188,7 +188,12 @@ pdf.save("output.pdf");
 <Tabs>
   <TabItem value="python" label="Python">
 
+:::info
+The Python SDK does not have a `from_bytes()` method. If you have image bytes, write them to a temporary file first, then use `from_file()`.
+:::
+
 ```python
+import tempfile
 from pathlib import Path
 from pdfdancer import PDFDancer
 
@@ -196,13 +201,22 @@ with PDFDancer.open("document.pdf") as pdf:
     # Load image bytes
     image_bytes = Path("logo.png").read_bytes()
 
-    # Add image from bytes
-    pdf.new_image() \
-        .from_bytes(image_bytes) \
-        .at(page=0, x=100, y=600) \
-        .add()
+    # Write bytes to temporary file
+    with tempfile.NamedTemporaryFile(suffix=".png", delete=False) as temp_file:
+        temp_path = Path(temp_file.name)
+        temp_path.write_bytes(image_bytes)
 
-    pdf.save("output.pdf")
+    try:
+        # Add image from temporary file
+        pdf.new_image() \
+            .from_file(temp_path) \
+            .at(page=0, x=100, y=600) \
+            .add()
+
+        pdf.save("output.pdf")
+    finally:
+        # Clean up temporary file
+        temp_path.unlink()
 ```
 
   </TabItem>

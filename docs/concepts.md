@@ -857,7 +857,7 @@ pdf.new_paragraph() \
 # Use custom font
 pdf.new_paragraph() \
     .text("Custom Typography") \
-    .font_from_file("custom-font.ttf", 14) \
+    .font_file("custom-font.ttf", 14) \
     .add()
 ```
 
@@ -874,7 +874,7 @@ await pdf.page(0).newParagraph()
 // Use custom font
 await pdf.page(0).newParagraph()
   .text('Custom Typography')
-  .fontFromFile('custom-font.ttf', 14)
+  .fontFile('custom-font.ttf', 14)
   .apply();
 ```
 

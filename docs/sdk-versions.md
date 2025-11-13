@@ -6,17 +6,17 @@ description: Current SDK versions used in this documentation
 
 # SDK Versions
 
-**Documentation Version**: 3.0 (October 30, 2025)
+**Documentation Version**: 3.1 (November 13, 2025)
 
 This documentation is based on the following SDK versions:
 
 ## Python SDK
 
 - **Repository**: [pdfdancer-client-python](https://github.com/MenschMachine/pdfdancer-client-python)
-- **Version**: 0.2.21
-- **Commit**: `eb28644cde1d25a675eb16ab5b04d96f5da1224c`
-- **Commit Date**: October 30, 2025
-- **Commit Message**: 0.2.21
+- **Version**: 0.2.22
+- **Commit**: `7d1495de80355b4ad7333489a59ed8ef7205350a`
+- **Commit Date**: November 13, 2025
+- **Commit Message**: test: remove unused test_rate_limit_retry_with_exponential_backoff and test_rate_limit_retry_uses_retry_after_header tests
 - **Documentation Coverage**:
   - ✅ Anonymous token support (automatic fallback authentication)
   - ✅ Snapshot API (`get_document_snapshot()`, `get_page_snapshot()`, `page.get_snapshot()`)
@@ -29,23 +29,21 @@ This documentation is based on the following SDK versions:
   - ✅ Page size and orientation properties (`page.page_size`, `page.orientation`)
   - ✅ Context manager pattern for text editing (recommended approach)
 - **Key Changes Since Last Version**:
-  - **License updated** from MIT to Apache License 2.0
-  - **New HTTP client configuration** via environment variables:
-    - `PDFDANCER_POOL_CONNECTIONS` - Configure connection pool size
-    - `PDFDANCER_POOL_MAXSIZE` - Configure maximum pool size
-    - `PDFDANCER_RETRY_TOTAL` - Configure retry attempts
-    - `PDFDANCER_TRUST_ENV` - Honor system proxy settings (set to `true`)
-  - **Python 3.10+ required** (Python 3.9 has SSL issues with large file uploads)
-  - Enhanced development setup documentation with detailed instructions
-  - Improved CI workflow and test coverage
+  - **Graceful 429 rate limit handling** with Retry-After header support
+  - **Automatic retry functionality** for transient network errors
+  - **Singular selection convenience methods** added for selecting single elements at coordinates
+  - **Configurable retry backoff** via `PDFDANCER_RETRY_BACKOFF_FACTOR` environment variable
+  - **Code quality improvements**: Configured linters and formatters (black, flake8, mypy, isort)
+  - **Enhanced CI/CD**: Added daily test runs, linter checks, and improved test coverage
+  - **Python 3.12 support** added to CI workflow with full matrix testing
 
 ## TypeScript SDK
 
 - **Repository**: [pdfdancer-client-typescript](https://github.com/MenschMachine/pdfdancer-client-typescript)
-- **Version**: 1.0.15 (tagged: v1.0.15)
-- **Commit**: `c76618bcc83d2d2451d5b3e9d9421d8fb5756d65`
-- **Commit Date**: October 30, 2025
-- **Commit Message**: 1.0.15
+- **Version**: 1.0.17 (tagged: v1.0.17)
+- **Commit**: `30deeb5fb75a6883bf977219c89ffad9552ef0f0`
+- **Commit Date**: November 13, 2025
+- **Commit Message**: 1.0.17
 - **Documentation Coverage**:
   - ✅ Anonymous token support (automatic fallback authentication)
   - ✅ Snapshot API (`getDocumentSnapshot()`, `getPageSnapshot()`, `page.getSnapshot()`)
@@ -58,20 +56,20 @@ This documentation is based on the following SDK versions:
   - ✅ Form field selection naming clarified (document-level: `selectFieldsByName()`, page-level: `selectFormFieldsByName()`)
   - ✅ Corrected method name: `getBytes()` (not `getPdfFile()`)
 - **Key Changes Since Last Version**:
-  - **License updated** from MIT to Apache License 2.0
-  - **Node.js 20+ required** (updated from Node.js 18+)
-  - Added `discuss` command for enhanced API interactions
-  - Improved error handling and messaging for token validation
-  - Base URL normalization and validation in constructor
-  - Enhanced end-to-end tests with token from environment variables
+  - **Retry-After header support** for graceful 429 rate limit handling
+  - **Configurable retry mechanism** for REST API calls with customizable backoff
+  - **Singular convenience select methods** for selecting single elements at coordinates
+  - **String filepath support** added to `_processPdfData` for easier file handling
+  - **Enhanced CI/CD**: Added daily test runs and improved test coverage
+  - **Code quality improvements**: ESLint configuration updates and linter fixes
 
 ## Java SDK
 
 - **Repository**: [pdfdancer-client-java](https://github.com/MenschMachine/pdfdancer-client-java)
-- **Version**: 0.1.1
-- **Commit**: `6754ab0ca6d5b20f1e48e54ae1b19c33eaf7a3c0`
-- **Commit Date**: November 04, 2025
-- **Commit Message**: docs: Add Maven Central publishing guide and Gradle tasks for bundle creation
+- **Version**: 0.1.2
+- **Commit**: `baa5aaa05579dcb3e4a43c7946f7e4d81b6b9160`
+- **Commit Date**: November 13, 2025
+- **Commit Message**: Merge branch 'claude/handle-429-retry-after-011CV1Qtz5VXrKeF86SX4tQR'
 - **Documentation Coverage**:
   - ✅ Core PDF manipulation (open, create, save)
   - ✅ Text operations (paragraphs, text lines)
@@ -100,14 +98,12 @@ This documentation is based on the following SDK versions:
   - **Default API endpoint**: Now uses `https://api.pdfdancer.com`
   - **Maven Central distribution**: Published artifacts available for easy dependency management
 - **Key Changes Since Last Version**:
-  - **Maven Central publishing configured**: Comprehensive publishing guide with two options
-    - **Option 1**: Direct automated publishing via Gradle
-    - **Option 2**: Manual bundle upload to Maven Central Portal
-  - **New Gradle tasks**: Added `mavenCentralBundle` task for creating distribution bundles
-  - **Complete artifact packaging**: Includes JAR files (main, sources, javadoc), POM, metadata, GPG signatures, and checksums
-  - **Maven repository configuration updated**: Configured for OSSRH and Maven Central Portal
-  - **Signing improvements**: File-based GPG key signing configuration
-  - **Enhanced README**: Detailed publishing instructions with prerequisites and troubleshooting
+  - **Graceful 429 Retry-After handling** with increased retry delays (1 second default)
+  - **Configurable retry mechanism** for REST HTTP calls with customizable retry policies
+  - **Singular select methods** for convenience when selecting single elements at coordinates
+  - **Default retry configuration**: Uses sensible defaults when retry config not explicitly specified
+  - **Enhanced CI/CD**: Added daily test runs and improved GitHub Actions workflows with multi-platform testing
+  - **Windows support**: CI now tests on Windows and multiple Java versions (11, 17, 21, 23)
 
 ---
 
@@ -204,7 +200,7 @@ Update the version in your `build.gradle.kts`:
 
 ```kotlin
 dependencies {
-    implementation("com.pdfdancer.client:pdfdancer-client-java:0.1.1")
+    implementation("com.pdfdancer.client:pdfdancer-client-java:0.1.2")
 }
 ```
 
@@ -222,7 +218,7 @@ Update the version in your `pom.xml`:
 <dependency>
     <groupId>com.pdfdancer.client</groupId>
     <artifactId>pdfdancer-client-java</artifactId>
-    <version>0.1.1</version>
+    <version>0.1.2</version>
 </dependency>
 ```
 

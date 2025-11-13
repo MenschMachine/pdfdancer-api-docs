@@ -95,7 +95,7 @@ const page = pdf.page(0);
   <TabItem value="java" label="Java">
 
 ```java
-ObjectRef page = pdf.getPage(0);
+Page page = pdf.page(0);
 ```
 
   </TabItem>
@@ -116,9 +116,8 @@ for page in pdf.pages():
 
 ```typescript
 const allPages = await pdf.pages();
-for (const page of allPages) {
-  const data = await page.get();
-  console.log(`Page ID: ${data.internalId}`);
+for (const [i, page] of allPages.entries()) {
+  console.log(`Page ${i}: ${page.internalId}`);
 }
 ```
 
@@ -157,7 +156,7 @@ await pdf.save('output.pdf');
   <TabItem value="java" label="Java">
 
 ```java
-pdf.deletePage(pdf.getPage(2));
+pdf.page(2).delete();
 pdf.save("output.pdf");
 ```
 
@@ -202,7 +201,7 @@ pdf.save("output.pdf");
   <TabItem value="python" label="Python">
 
 ```python
-pdf_bytes = pdf.get_pdf_file()
+pdf_bytes = pdf.get_bytes()
 s3_client.put_object(Bucket='my-bucket', Key='output.pdf', Body=pdf_bytes)
 ```
 
