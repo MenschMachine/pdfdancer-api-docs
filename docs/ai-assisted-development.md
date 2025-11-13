@@ -53,9 +53,17 @@ Here's a complete session where a developer went from zero to a working TypeScri
 
 ## Installation
 
-### One-Click Install (Cursor)
+### One-Click Install
+
+**Cursor:**
 
 [![Install in Cursor](https://img.shields.io/badge/Install%20in-Cursor-blue?style=for-the-badge&logo=cursor)](cursor://anysphere.cursor-deeplink/mcp/install?name=pdfdancer&config=eyJjb21tYW5kIjoibnB4IC15IEBwZGZkYW5jZXIvcGRmZGFuY2VyLW1jcCJ9)
+
+**Claude Code:**
+
+```bash
+claude mcp add pdfdancer -- npx -y @pdfdancer/pdfdancer-mcp
+```
 
 ### Manual Installation
 
