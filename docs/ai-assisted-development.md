@@ -4,16 +4,19 @@ sidebar_position: 4
 
 # AI-Assisted Development
 
-The **PDFDancer MCP Server** gives AI coding assistants instant, searchable access to the entire PDFDancer SDK documentation. With just one command, your AI assistant can help you build PDF applications faster by automatically finding the right APIs, providing code examples, and guiding you through implementation.
+The fastest way to build with PDFDancer is to let your AI coding assistant do it for you. Install the **PDFDancer MCP Server** once, then just describe what you want in plain English—your AI automatically searches the docs and implements the feature.
 
-## Why Use the MCP Server?
+## How It Works
 
-Instead of manually searching documentation, your AI assistant can:
+1. **Install the MCP server** (one-time setup, takes 30 seconds)
+2. **Ask your AI**: "Create a PDF invoice generator in Python"
+3. **AI automatically**:
+   - Searches PDFDancer docs for relevant APIs
+   - Finds code examples in your preferred language
+   - Writes working code with proper error handling
+   - Debugs issues by consulting the docs again
 
-- 🔍 **Search** the docs for relevant APIs and examples
-- 📖 **Retrieve** complete guides with code samples in your preferred language
-- 🚀 **Generate** working code based on official documentation
-- 🛠️ **Troubleshoot** errors by referencing the latest SDK patterns
+**You never manually search documentation.** Just describe features and your AI builds them.
 
 ## Real-World Example
 
@@ -88,103 +91,53 @@ After adding the configuration, restart your AI assistant.
 - Node.js 18 or higher
 - MCP-compatible client (Claude Code, Cursor, VS Code with MCP extension, etc.)
 
-## Available Tools
+## What You Can Build
 
-Once installed, your AI assistant has access to five powerful tools:
+Once installed, just ask your AI in natural language. Here are real examples:
 
-### 1. **help**
-Displays a comprehensive SDK overview with multi-language code samples and common use cases.
-
-```
-Example: "Show me what PDFDancer can do"
-→ AI uses help tool to get SDK overview
-```
-
-### 2. **search-docs**
-Searches the entire documentation by keyword, returning relevant pages with titles and relevance scores.
-
-```
-Example: "How do I authenticate with the API?"
-→ AI searches for "authentication"
-→ Returns: /authentication, /getting-started, etc.
-```
-
-### 3. **get-docs**
-Retrieves the full markdown content of a specific documentation page.
-
-```
-Example: "Show me the authentication guide"
-→ AI fetches /authentication page
-→ Provides complete guide with code examples
-```
-
-### 4. **list-indexes**
-Shows all available documentation indexes and tags for browsing.
-
-```
-Example: "What documentation sections are available?"
-→ Returns: getting-started, concepts, working-with-text, etc.
-```
-
-### 5. **list-routes**
-Displays all accessible documentation pages in the system.
-
-```
-Example: "List all available guides"
-→ Returns complete route listing
-```
-
-## Typical Workflow
-
-Here's how the MCP server helps you during development:
-
-### 1. **Starting a New Project**
-
+### Start a New Project
 ```
 You: "Create a Python script that extracts all images from a PDF"
 
-AI:
-- Uses search-docs to find "extract images"
-- Uses get-docs to retrieve /working-with-images
-- Generates complete working code with proper imports
-- Includes error handling based on /error-handling docs
+→ AI searches docs, writes complete code with imports and error handling
 ```
 
-### 2. **Solving Specific Problems**
-
+### Add Features
 ```
-You: "How do I position text at the bottom of the page?"
+You: "Add watermarks to every page"
 
-AI:
-- Searches docs for "positioning" or "coordinates"
-- Retrieves /positioning guide
-- Explains coordinate system with examples
-- Provides code snippet
+→ AI finds watermark documentation, updates your code
 ```
 
-### 3. **Debugging Errors**
+### Fix Positioning
+```
+You: "The text needs to be at the bottom of the page"
 
+→ AI consults positioning guide, adjusts coordinates
+```
+
+### Debug Errors
 ```
 You: "I'm getting 'Invalid API key' error"
 
-AI:
-- Searches for "authentication" and "error"
-- Retrieves /authentication and /error-handling
-- Identifies the issue (missing/incorrect API key)
-- Shows correct authentication pattern
+→ AI searches authentication docs, shows correct setup
 ```
 
-### 4. **Exploring Capabilities**
-
+### Explore Capabilities
 ```
-You: "What can PDFDancer do with forms?"
+You: "Can PDFDancer fill out form fields?"
 
-AI:
-- Uses help tool or searches for "forms"
-- Retrieves /working-with-acroforms
-- Explains AcroForm capabilities
-- Shows code examples for your language
+→ AI explains AcroForm support with code examples
 ```
+
+### Handle Complex Layouts
+```
+You: "Create a two-column layout with images and text"
+
+→ AI combines multiple APIs to build the layout
+```
+
+Behind the scenes, your AI automatically searches the PDFDancer documentation, finds relevant APIs, and implements solutions. You just focus on describing what you want.
 
 ## Configuration
 
@@ -214,53 +167,52 @@ Then add it to your MCP configuration:
 
 ## Troubleshooting
 
-### MCP Server Not Appearing
+### AI Doesn't Seem to Know About PDFDancer
 
-**Problem**: Your AI assistant doesn't recognize PDFDancer commands.
+**Problem**: Your AI doesn't automatically search PDFDancer docs when you ask.
 
 **Solutions**:
 1. Verify Node.js 18+ is installed: `node --version`
-2. Check your config file exists at the correct path
+2. Check your config file exists at the correct path (see Installation section)
 3. Restart your AI assistant completely
-4. Check the assistant's MCP server status/logs
+4. Try explicitly mentioning: _"Use PDFDancer to create..."_
 
-### Connection Errors
+### Connection or Timeout Errors
 
-**Problem**: "Failed to connect to MCP server" or timeout errors.
+**Problem**: AI says it can't reach the documentation.
 
 **Solutions**:
-1. Ensure you have internet connectivity (npx needs to download the package)
+1. Ensure you have internet connectivity
 2. Try running `npx -y @pdfdancer/pdfdancer-mcp` manually to test
 3. Check firewall settings aren't blocking npx
+4. Restart your AI assistant
 
-### Outdated Documentation
+### AI Provides Outdated Code
 
-**Problem**: AI is providing outdated examples or APIs.
-
-**Solutions**:
-1. Clear your AI assistant's cache/context
-2. The MCP server always fetches the latest published docs
-3. Verify you're using the latest version: `npm view @pdfdancer/pdfdancer-mcp version`
-
-### Tool Not Working
-
-**Problem**: AI says "I tried to use the tool but it failed."
+**Problem**: The code examples don't match current PDFDancer APIs.
 
 **Solutions**:
-1. Check MCP server logs in your AI client
-2. Verify the package is installed: `npm list -g @pdfdancer/pdfdancer-mcp` or let npx download it
-3. Restart the AI assistant
-4. Try reinstalling by removing and re-adding the config
+1. The MCP server always fetches the latest docs—this is likely a different issue
+2. Clear your AI assistant's cache/context and start a new session
+3. Explicitly say: _"Use the latest PDFDancer SDK to..."_
 
-## Next Steps
+## Try It Out
 
-Now that your AI assistant has access to PDFDancer documentation:
+Start with simple requests and build up complexity:
 
-1. Try the example: **"Create a [Python/TypeScript/Java] script that generates a PDF invoice"**
-2. Explore specific features: **"Show me how to work with fonts in PDFDancer"**
-3. Build something real: **"Help me build a PDF report generator with custom headers"**
+**Beginner:**
+- _"Create a Python script that generates a PDF with 'Hello World'"_
+- _"Add a page number at the bottom"_
 
-The MCP server works alongside the rest of this documentation—use it for quick exploration and code generation, and refer to the full guides for deeper understanding.
+**Intermediate:**
+- _"Build a TypeScript invoice generator with line items and totals"_
+- _"Extract all text from a PDF and save to a file"_
+
+**Advanced:**
+- _"Create a Java application that merges multiple PDFs and adds a table of contents"_
+- _"Build a report generator with charts, images, and multi-column layouts"_
+
+Your AI handles everything—from project setup to implementation to debugging.
 
 ## More Information
 
@@ -270,4 +222,4 @@ The MCP server works alongside the rest of this documentation—use it for quick
 
 ---
 
-**Ready to build?** Just ask your AI assistant: _"Use PDFDancer to create a PDF with..."_ and watch it work!
+**Ready to build?** Just ask your AI: _"Create a PDF with..."_ and watch it implement the solution automatically.
