@@ -95,7 +95,7 @@ const page = pdf.page(0);
   <TabItem value="java" label="Java">
 
 ```java
-ObjectRef page = pdf.getPage(0);
+Page page = pdf.page(0);
 ```
 
   </TabItem>
@@ -157,7 +157,7 @@ await pdf.save('output.pdf');
   <TabItem value="java" label="Java">
 
 ```java
-pdf.deletePage(pdf.getPage(2));
+pdf.page(2).delete();
 pdf.save("output.pdf");
 ```
 
