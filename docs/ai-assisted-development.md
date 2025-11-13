@@ -6,9 +6,34 @@ sidebar_position: 4
 
 The fastest way to build with PDFDancer is to let your AI coding assistant do it for you. Install the **PDFDancer MCP Server** once, then just describe what you want in plain English—your AI automatically searches the docs and implements the feature.
 
+## Installation
+
+### One-Click Install
+
+**Cursor:**
+
+[![Install in Cursor](https://img.shields.io/badge/Install%20in-Cursor-blue?style=for-the-badge&logo=cursor)](cursor://anysphere.cursor-deeplink/mcp/install?name=pdfdancer&config=eyJjb21tYW5kIjoibnB4IC15IEBwZGZkYW5jZXIvcGRmZGFuY2VyLW1jcCJ9)
+
+**Claude Code:**
+
+```bash
+claude mcp add pdfdancer -- npx -y @pdfdancer/pdfdancer-mcp
+```
+
+### Manual Installation
+
+For detailed installation instructions for all clients (Claude Code, VS Code, Windsurf, Zed, etc.), see the [Installation Guide](https://github.com/MenschMachine/pdfdancer-mcp#installation).
+
+After installation, restart your AI assistant.
+
+### Requirements
+
+- Node.js 18 or higher
+- MCP-compatible client (Claude Code, Cursor, VS Code with MCP extension, etc.)
+
 ## How It Works
 
-1. **Install the MCP server** (one-time setup, takes 3 seconds) – [Installation Instructions](https://github.com/MenschMachine/pdfdancer-mcp#installation)
+1. **Install the MCP server** (one-time setup, takes 3 seconds)
 2. **Ask your AI**: "Create a PDF invoice generator in Python, use pdfdancer"
 3. **AI automatically**:
    - Searches PDFDancer docs for relevant APIs
@@ -50,31 +75,6 @@ Here's a complete session where a developer went from zero to a working TypeScri
 ```
 
 **Total time: ~2 minutes** from idea to working application.
-
-## Installation
-
-### One-Click Install
-
-**Cursor:**
-
-[![Install in Cursor](https://img.shields.io/badge/Install%20in-Cursor-blue?style=for-the-badge&logo=cursor)](cursor://anysphere.cursor-deeplink/mcp/install?name=pdfdancer&config=eyJjb21tYW5kIjoibnB4IC15IEBwZGZkYW5jZXIvcGRmZGFuY2VyLW1jcCJ9)
-
-**Claude Code:**
-
-```bash
-claude mcp add pdfdancer -- npx -y @pdfdancer/pdfdancer-mcp
-```
-
-### Manual Installation
-
-For detailed installation instructions for all clients (Claude Code, VS Code, Windsurf, Zed, etc.), see the [Installation Guide](https://github.com/MenschMachine/pdfdancer-mcp#installation).
-
-After installation, restart your AI assistant.
-
-### Requirements
-
-- Node.js 18 or higher
-- MCP-compatible client (Claude Code, Cursor, VS Code with MCP extension, etc.)
 
 ## What You Can Build
 
