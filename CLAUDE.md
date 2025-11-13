@@ -56,10 +56,10 @@ git submodule update --remote --merge
 
 ### Configuration Files
 
-- `docusaurus.config.ts`: Main Docusaurus configuration. Docs are served at root path (`routeBasePath: '/'`). No blog
-  enabled.
+- `docusaurus.config.ts`: Main Docusaurus configuration. Docs are served at root path (`routeBasePath: '/'`). No blog enabled. Includes search integration via `@mlahr/docusaurus-cloudflare-search` plugin.
 - `sidebars.ts`: Defines sidebar navigation structure (flat list of doc IDs)
 - `src/css/custom.css`: Custom "PDFDancer Cyber Orange" theme with Sora font for UI and JetBrains Mono for code
+- `.searchdeployrc.json`: Configuration for Cloudflare search index deployment (uses environment variables)
 
 ### Documentation Workflow
 
@@ -73,12 +73,15 @@ When adding/editing documentation:
 
 ### Deployment
 
-GitHub Actions workflow (`.github/workflows/deploy.yml`) automatically builds and deploys on push to any branch. The
-workflow:
+GitHub Actions workflow (`.github/workflows/deploy.yml`) automatically builds and deploys on push to the `main` branch. The workflow:
 
 1. Checks out with submodules recursively
 2. Installs dependencies with `npm ci`
 3. Builds with `npm run build`
+4. Deploys search indexes to Cloudflare KV with `npx dcs deploy`
+5. Uploads markdown content to Cloudflare KV with `npx dcs upload-content`
+
+For detailed deployment setup and configuration, see [DEPLOYMENT.md](./DEPLOYMENT.md).
 
 ## Important Details
 
