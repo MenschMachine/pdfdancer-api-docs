@@ -8,15 +8,13 @@ The fastest way to build with PDFDancer is to let your AI coding assistant do it
 
 ## How It Works
 
-1. **Install the MCP server** (one-time setup, takes 30 seconds)
-2. **Ask your AI**: "Create a PDF invoice generator in Python"
+1. **Install the MCP server** (one-time setup, takes 3 seconds) – [Installation Instructions](https://github.com/MenschMachine/pdfdancer-mcp#installation)
+2. **Ask your AI**: "Create a PDF invoice generator in Python, use pdfdancer"
 3. **AI automatically**:
    - Searches PDFDancer docs for relevant APIs
    - Finds code examples in your preferred language
    - Writes working code with proper error handling
    - Debugs issues by consulting the docs again
-
-**You never manually search documentation.** Just describe features and your AI builds them.
 
 ## Real-World Example
 
@@ -57,34 +55,13 @@ Here's a complete session where a developer went from zero to a working TypeScri
 
 ### One-Click Install (Cursor)
 
-Visit [cursor.directory](https://cursor.directory) and search for "pdfdancer" to install with one click.
+[![Install in Cursor](https://img.shields.io/badge/Install%20in-Cursor-blue?style=for-the-badge&logo=cursor)](cursor://anysphere.cursor-deeplink/mcp/install?name=pdfdancer&config=eyJjb21tYW5kIjoibnB4IC15IEBwZGZkYW5jZXIvcGRmZGFuY2VyLW1jcCJ9)
 
-### Manual Installation (All Clients)
+### Manual Installation
 
-Add this configuration to your MCP client's config file:
+For detailed installation instructions for all clients (Claude Code, VS Code, Windsurf, Zed, etc.), see the [Installation Guide](https://github.com/MenschMachine/pdfdancer-mcp#installation).
 
-```json
-{
-  "mcpServers": {
-    "pdfdancer-mcp": {
-      "command": "npx",
-      "args": ["-y", "@pdfdancer/pdfdancer-mcp"]
-    }
-  }
-}
-```
-
-#### Configuration File Locations
-
-| Client | Configuration Path |
-|--------|-------------------|
-| **Claude Code** | `~/.config/claude/claude_desktop_config.json` |
-| **Cursor** | Use one-click install or manual JSON config |
-| **VS Code** | Varies by MCP extension |
-| **Windsurf** | Check extension documentation |
-| **Zed** | `~/.config/zed/settings.json` |
-
-After adding the configuration, restart your AI assistant.
+After installation, restart your AI assistant.
 
 ### Requirements
 
@@ -95,75 +72,49 @@ After adding the configuration, restart your AI assistant.
 
 Once installed, just ask your AI in natural language. Here are real examples:
 
-### Start a New Project
+### Document Processing
 ```
-You: "Create a Python script that extracts all images from a PDF"
+You: "Create a function which takes a PDF file as input, finds the date on the first page and changes it to today, use pdfdancer"
 
-→ AI searches docs, writes complete code with imports and error handling
-```
-
-### Add Features
-```
-You: "Add watermarks to every page"
-
-→ AI finds watermark documentation, updates your code
+→ AI searches docs, writes complete code with date parsing and replacement
 ```
 
-### Fix Positioning
+### Form Filling
 ```
-You: "The text needs to be at the bottom of the page"
+You: "Build a script that fills out the invoice template PDF with data from a CSV file, use pdfdancer"
 
-→ AI consults positioning guide, adjusts coordinates
-```
-
-### Debug Errors
-```
-You: "I'm getting 'Invalid API key' error"
-
-→ AI searches authentication docs, shows correct setup
+→ AI finds AcroForm documentation, implements CSV parsing and form field population
 ```
 
-### Explore Capabilities
+### Batch Processing
 ```
-You: "Can PDFDancer fill out form fields?"
+You: "Create a TypeScript function that adds a confidential watermark to all pages of multiple PDFs in a folder, use pdfdancer"
 
-→ AI explains AcroForm support with code examples
+→ AI implements file system iteration, watermark positioning, and batch processing
 ```
 
-### Handle Complex Layouts
+### Text Extraction & Analysis
 ```
-You: "Create a two-column layout with images and text"
+You: "Write a Python script that extracts all phone numbers from a PDF contract and saves them to a JSON file, use pdfdancer"
 
-→ AI combines multiple APIs to build the layout
+→ AI combines text extraction with regex pattern matching and JSON serialization
+```
+
+### Dynamic Report Generation
+```
+You: "Create a Java function that generates a monthly sales report PDF with charts, a summary table, and company branding, use pdfdancer"
+
+→ AI implements layout design, table generation, image placement, and text formatting
+```
+
+### Document Modification
+```
+You: "Build a function that finds all instances of a company name in a PDF and replaces it with a new name, preserving formatting, use pdfdancer"
+
+→ AI searches for text selection APIs, implements find-and-replace with style preservation
 ```
 
 Behind the scenes, your AI automatically searches the PDFDancer documentation, finds relevant APIs, and implements solutions. You just focus on describing what you want.
-
-## Configuration
-
-### Custom Documentation URL
-
-If you're running a local or custom documentation service, set the environment variable:
-
-```bash
-export PDFDANCER_DOCS_BASE_URL=https://your-docs-server.com
-```
-
-Then add it to your MCP configuration:
-
-```json
-{
-  "mcpServers": {
-    "pdfdancer-mcp": {
-      "command": "npx",
-      "args": ["-y", "@pdfdancer/pdfdancer-mcp"],
-      "env": {
-        "PDFDANCER_DOCS_BASE_URL": "https://your-docs-server.com"
-      }
-    }
-  }
-}
-```
 
 ## Troubleshooting
 
@@ -173,9 +124,9 @@ Then add it to your MCP configuration:
 
 **Solutions**:
 1. Verify Node.js 18+ is installed: `node --version`
-2. Check your config file exists at the correct path (see Installation section)
+2. Check your config file exists at the correct path (see [Installation Guide](https://github.com/MenschMachine/pdfdancer-mcp#installation))
 3. Restart your AI assistant completely
-4. Try explicitly mentioning: _"Use PDFDancer to create..."_
+4. Try explicitly mentioning: _"Create a PDF invoice, use pdfdancer"_
 
 ### Connection or Timeout Errors
 
@@ -201,25 +152,27 @@ Then add it to your MCP configuration:
 Start with simple requests and build up complexity:
 
 **Beginner:**
-- _"Create a Python script that generates a PDF with 'Hello World'"_
-- _"Add a page number at the bottom"_
+- _"Create a Python script that generates a PDF with 'Hello World', use pdfdancer"_
+- _"Add a page number at the bottom, use pdfdancer"_
 
 **Intermediate:**
-- _"Build a TypeScript invoice generator with line items and totals"_
-- _"Extract all text from a PDF and save to a file"_
+- _"Build a TypeScript invoice generator with line items and totals, use pdfdancer"_
+- _"Extract all text from a PDF and save to a file, use pdfdancer"_
 
 **Advanced:**
-- _"Create a Java application that merges multiple PDFs and adds a table of contents"_
-- _"Build a report generator with charts, images, and multi-column layouts"_
+- _"Create a Java application that merges multiple PDFs and adds a table of contents, use pdfdancer"_
+- _"Build a report generator with charts, images, and multi-column layouts, use pdfdancer"_
 
 Your AI handles everything—from project setup to implementation to debugging.
 
 ## More Information
 
-- **GitHub Repository**: [github.com/MenschMachine/pdfdancer-mcp](https://github.com/MenschMachine/pdfdancer-mcp)
+- **PDFDancer Website**: [www.pdfdancer.com](https://www.pdfdancer.com)
+- **Documentation**: [docs.pdfdancer.com](https://docs.pdfdancer.com)
+- **MCP Server GitHub**: [github.com/MenschMachine/pdfdancer-mcp](https://github.com/MenschMachine/pdfdancer-mcp)
 - **npm Package**: [@pdfdancer/pdfdancer-mcp](https://www.npmjs.com/package/@pdfdancer/pdfdancer-mcp)
 - **MCP Protocol**: [Model Context Protocol](https://modelcontextprotocol.io/)
 
 ---
 
-**Ready to build?** Just ask your AI: _"Create a PDF with..."_ and watch it implement the solution automatically.
+**Ready to build?** Just ask your AI: _"Create a PDF with..., use pdfdancer"_ and watch it implement the solution automatically.
