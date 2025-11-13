@@ -59,7 +59,7 @@ const config: Config = {
                 enableInDevelopment: false, // optional
             }
         ],
-        ['@mlahr/docusaurus-cloudflare-search', {
+        ['@pdfdancer/docusaurus-cloudflare-search', {
             indexDocs: true,
             indexBlog: false,
             language: 'en',
