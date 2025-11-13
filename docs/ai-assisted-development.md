@@ -22,7 +22,7 @@ claude mcp add pdfdancer -- npx -y @pdfdancer/pdfdancer-mcp
 
 ### Manual Installation
 
-For detailed installation instructions for all clients (Claude Code, VS Code, Windsurf, Zed, etc.), see the [Installation Guide](https://github.com/MenschMachine/pdfdancer-mcp#installation).
+For detailed installation instructions for all clients (Claude Code, VS Code, Windsurf, Zed, etc.), see the [Installation Guide](https://www.pdfdancer.com/quick-start/#setup-guide).
 
 After installation, restart your AI assistant.
 
@@ -139,7 +139,7 @@ Behind the scenes, your AI automatically searches the PDFDancer documentation, f
 
 **Solutions**:
 1. Verify Node.js 18+ is installed: `node --version`
-2. Check your config file exists at the correct path (see [Installation Guide](https://github.com/MenschMachine/pdfdancer-mcp#installation))
+2. Check your config file exists at the correct path (see [Installation Guide](https://www.pdfdancer.com/quick-start/#setup-guide))
 3. Restart your AI assistant completely
 4. Try explicitly mentioning: _"Create a PDF invoice, use pdfdancer"_
 
