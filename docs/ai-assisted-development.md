@@ -74,42 +74,49 @@ Once installed, just ask your AI in natural language. Here are real examples:
 
 ### Document Processing
 ```
-You: "Create a function which takes a PDF file as input, finds the date on the first page and changes it to today, use pdfdancer"
+You: "Create a function which takes a PDF file as input,
+      finds the date on the first page and changes it to today,
+      use pdfdancer"
 
 → AI searches docs, writes complete code with date parsing and replacement
 ```
 
 ### Form Filling
 ```
-You: "Build a script that fills out the invoice template PDF with data from a CSV file, use pdfdancer"
+You: "Build a script that fills out the invoice template PDF
+      with data from a CSV file, use pdfdancer"
 
 → AI finds AcroForm documentation, implements CSV parsing and form field population
 ```
 
 ### Batch Processing
 ```
-You: "Create a TypeScript function that adds a confidential watermark to all pages of multiple PDFs in a folder, use pdfdancer"
+You: "Create a TypeScript function that adds a confidential watermark
+      to all pages of multiple PDFs in a folder, use pdfdancer"
 
 → AI implements file system iteration, watermark positioning, and batch processing
 ```
 
 ### Text Extraction & Analysis
 ```
-You: "Write a Python script that extracts all phone numbers from a PDF contract and saves them to a JSON file, use pdfdancer"
+You: "Write a Python script that extracts all phone numbers
+      from a PDF contract and saves them to a JSON file, use pdfdancer"
 
 → AI combines text extraction with regex pattern matching and JSON serialization
 ```
 
 ### Dynamic Report Generation
 ```
-You: "Create a Java function that generates a monthly sales report PDF with charts, a summary table, and company branding, use pdfdancer"
+You: "Create a Java function that generates a monthly sales report PDF
+      with charts, a summary table, and company branding, use pdfdancer"
 
 → AI implements layout design, table generation, image placement, and text formatting
 ```
 
 ### Document Modification
 ```
-You: "Build a function that finds all instances of a company name in a PDF and replaces it with a new name, preserving formatting, use pdfdancer"
+You: "Build a function that finds all instances of a company name in a PDF
+      and replaces it with a new name, preserving formatting, use pdfdancer"
 
 → AI searches for text selection APIs, implements find-and-replace with style preservation
 ```
