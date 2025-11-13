@@ -168,16 +168,16 @@ The deployment configuration is stored in `.searchdeployrc.json`:
 
 ```json
 {
-  "buildDir": "./build",
-  "cloudflare": {
-    "accountId": "${CLOUDFLARE_ACCOUNT_ID}",
-    "apiToken": "${CLOUDFLARE_API_TOKEN}",
-    "kvNamespaceId": "${CLOUDFLARE_KV_NAMESPACE_ID}"
-  }
+  "buildDir": "./build"
 }
 ```
 
-This file uses environment variable references which are automatically resolved at runtime.
+The Cloudflare credentials are read directly from environment variables and should not be stored in the config file:
+- `CLOUDFLARE_ACCOUNT_ID`
+- `CLOUDFLARE_API_TOKEN`
+- `CLOUDFLARE_KV_NAMESPACE_ID`
+
+These are automatically picked up by the CLI tool from the environment.
 
 ## Cost
 
