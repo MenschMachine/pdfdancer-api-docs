@@ -1,0 +1,8 @@
+{
+  "buildDir": "./build",
+  "cloudflare": {
+    "accountId": "${CLOUDFLARE_ACCOUNT_ID}",
+    "apiToken": "${CLOUDFLARE_API_TOKEN}",
+    "kvNamespaceId": "${CLOUDFLARE_KV_NAMESPACE_ID}"
+  }
+}
