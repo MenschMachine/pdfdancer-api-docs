@@ -12,7 +12,14 @@ Get up and running with PDFDancer in just 3 minutes. This guide covers installat
 
 ## Installation
 
-**Requirements:** Python 3.10+, Node.js 20+ or Java 11+. 
+Choose your preferred method:
+
+**Option 1: Code with AI** – Let your AI coding assistant handle everything (recommended for fastest setup)
+- See [AI-Assisted Development](ai-assisted-development.md) to install the MCP server, then just ask: _"Create a PDF with PDFDancer"_
+
+**Option 2: Manual Install** – Traditional package manager installation
+
+**Requirements:** Python 3.10+, Node.js 20+ or Java 11+.
 
 *No API token needed* to get started—the SDK uses anonymous access automatically.
 
@@ -180,6 +187,7 @@ public class Example {
 
 ## What's Next?
 
+- [**AI-Assisted Development**](ai-assisted-development.md) – Let your AI assistant build PDF applications for you
 - [**Authentication**](authentication.md) – Learn how to securely manage API tokens for production
 - [**Concepts & Core Features**](concepts.md) – Understand PDFDancer's approach to PDF editing
 - [**Working with Text**](working-with-text.md) – Select, add, edit, move, and delete paragraphs
