@@ -403,7 +403,7 @@ You can add new blank pages to an existing PDF document.
 ```python
 with PDFDancer.open("document.pdf") as pdf:
     # Add a new blank page (appended to the end)
-    new_page_ref = pdf.new_page()
+    new_page_ref = pdf.new_page().add()
 
     # The new page is now available
     print(f"New page added at index: {new_page_ref.position.page_index}")
@@ -413,7 +413,7 @@ with PDFDancer.open("document.pdf") as pdf:
     new_page.new_paragraph() \
         .text("This is content on the new page") \
         .at(100, 700) \
-        .create()
+        .add()
 
     pdf.save("with_new_page.pdf")
 ```
@@ -435,7 +435,7 @@ const newPage = pdf.page(newPageRef.position.pageIndex);
 await newPage.newParagraph()
   .text('This is content on the new page')
   .at(100, 700)
-  .create();
+  .apply();
 
 await pdf.save('with_new_page.pdf');
 ```
@@ -494,7 +494,7 @@ with PDFDancer.open("document.pdf") as pdf:
     fields = page.select_form_fields()
 
     # Select text lines on this page
-    lines = page.select_lines()
+    lines = page.select_text_lines()
 ```
 
   </TabItem>
@@ -704,7 +704,7 @@ You can create new PDF documents with standard page sizes and orientations.
 from pdfdancer import PDFDancer
 
 # Create with default A4 portrait
-with PDFDancer.create() as pdf:
+with PDFDancer.new() as pdf:
     pdf.new_paragraph() \
         .text("Hello World") \
         .at(page_index=0, x=72, y=720) \
@@ -712,7 +712,7 @@ with PDFDancer.create() as pdf:
     pdf.save("output.pdf")
 
 # Create with specific page size
-with PDFDancer.create(page_size="LETTER", orientation="PORTRAIT", initial_page_count=3) as pdf:
+with PDFDancer.new(page_size="LETTER", orientation="PORTRAIT", initial_page_count=3) as pdf:
     pdf.save("letter_size.pdf")
 ```
 
@@ -723,7 +723,7 @@ with PDFDancer.create(page_size="LETTER", orientation="PORTRAIT", initial_page_c
 import { PDFDancer, Orientation } from 'pdfdancer-client-typescript';
 
 // Create with default A4 portrait
-const pdf = await PDFDancer.create();
+const pdf = await PDFDancer.new();
 await pdf.page(0).newParagraph()
   .text('Hello World')
   .at(72, 720)
@@ -731,7 +731,7 @@ await pdf.page(0).newParagraph()
 await pdf.save('output.pdf');
 
 // Create with specific page size and orientation
-const letterPdf = await PDFDancer.create('LETTER', Orientation.PORTRAIT, 3);
+const letterPdf = await PDFDancer.new({ pageSize: 'LETTER', orientation: Orientation.PORTRAIT, initialPageCount: 3 });
 await letterPdf.save('letter_size.pdf');
 ```
 
@@ -779,14 +779,14 @@ You can also create PDFs with custom page dimensions.
 from pdfdancer import PDFDancer
 
 # Custom page size with explicit dimensions (in points)
-with PDFDancer.create(
+with PDFDancer.new(
     page_size={"width": 600, "height": 800},
     orientation="PORTRAIT"
 ) as pdf:
     pdf.save("custom_size.pdf")
 
 # Custom named size
-with PDFDancer.create(
+with PDFDancer.new(
     page_size={"name": "CUSTOM", "width": 500, "height": 700}
 ) as pdf:
     pdf.save("named_custom.pdf")
@@ -799,17 +799,19 @@ with PDFDancer.create(
 import { PDFDancer, Orientation } from 'pdfdancer-client-typescript';
 
 // Custom page size with explicit dimensions (in points)
-const pdf = await PDFDancer.create(
-  { width: 600, height: 800 },
-  Orientation.PORTRAIT
-);
+const pdf = await PDFDancer.new({
+  pageSize: { width: 600, height: 800 },
+  orientation: Orientation.PORTRAIT
+});
 await pdf.save('custom_size.pdf');
 
 // Custom named size
-const namedPdf = await PDFDancer.create({
-  name: 'CUSTOM',
-  width: 500,
-  height: 700
+const namedPdf = await PDFDancer.new({
+  pageSize: {
+    name: 'CUSTOM',
+    width: 500,
+    height: 700
+  }
 });
 await namedPdf.save('named_custom.pdf');
 ```
@@ -848,7 +850,7 @@ namedPdf.save("named_custom.pdf");
 from pdfdancer import PDFDancer
 
 # Create A4 landscape
-with PDFDancer.create(page_size="A4", orientation="LANDSCAPE") as pdf:
+with PDFDancer.new(page_size="A4", orientation="LANDSCAPE") as pdf:
     pdf.save("landscape.pdf")
 ```
 
@@ -859,7 +861,7 @@ with PDFDancer.create(page_size="A4", orientation="LANDSCAPE") as pdf:
 import { PDFDancer, Orientation } from 'pdfdancer-client-typescript';
 
 // Create A4 landscape
-const pdf = await PDFDancer.create('A4', Orientation.LANDSCAPE);
+const pdf = await PDFDancer.new({ pageSize: 'A4', orientation: Orientation.LANDSCAPE });
 await pdf.save('landscape.pdf');
 ```
 

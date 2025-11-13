@@ -24,7 +24,7 @@ from pdfdancer import PDFDancer, Color
 def create_new_pdf(output_path: str) -> None:
     """Create a new PDF with multiple pages and content."""
     # Create a new blank PDF with Letter size pages (612 x 792 points)
-    pdf = PDFDancer.create(width=612, height=792)
+    pdf = PDFDancer.new(page_size={"width": 612, "height": 792})
 
     # Add title on first page
     pdf.new_paragraph() \
@@ -43,7 +43,7 @@ def create_new_pdf(output_path: str) -> None:
         .add()
 
     # Add a second page
-    pdf.add_page(width=612, height=792)
+    pdf.new_page().page_size({"width": 612, "height": 792}).add()
 
     # Add content to second page
     pdf.new_paragraph() \
@@ -80,7 +80,7 @@ async function createNewPdf(outputPath: string): Promise<void> {
    * Create a new PDF with multiple pages and content.
    */
   // Create a new blank PDF with Letter size pages (612 x 792 points)
-  const pdf = await PDFDancer.create(612, 792);
+  const pdf = await PDFDancer.new({ pageSize: { width: 612, height: 792 } });
 
   // Add title on first page
   await pdf.page(0).newParagraph()
@@ -99,7 +99,7 @@ async function createNewPdf(outputPath: string): Promise<void> {
     .apply();
 
   // Add a second page
-  await pdf.addPage(612, 792);
+  await pdf.newPage().customSize(612, 792).add();
 
   // Add content to second page
   await pdf.page(1).newParagraph()
