@@ -7,7 +7,7 @@ description: Learn how to fill, update, and manipulate PDF form fields (AcroForm
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-PDFDancer provides powerful tools for working with PDF forms (AcroForms). You can select, fill, update, and delete form fields programmatically.
+PDFDancer lets you work with PDF forms (AcroForms) programmatically. Select, fill, update, and delete form fields with simple API calls.
 
 ---
 

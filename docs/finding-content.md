@@ -7,7 +7,7 @@ description: Learn how to locate and select content in PDFs using all available 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-PDFDancer provides powerful selection methods to find content in your PDF documents. You can select all elements of a type, find elements at specific positions, or search by text content. All selection methods work at both document and page level.
+PDFDancer provides flexible selection methods to find content in your PDF documents. You can select all elements of a type, find elements at specific positions, or search by text content. All selection methods work at both document and page level.
 
 ---
 
@@ -687,7 +687,7 @@ if (!signatureFields.isEmpty()) {
 
 ## Combining Selection Methods
 
-You can chain and combine selection methods to create powerful queries:
+You can chain and combine selection methods to create complex queries:
 
 <Tabs>
   <TabItem value="python" label="Python">

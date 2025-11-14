@@ -36,7 +36,7 @@ These features are at the top of our development queue and will be implemented i
 - **Inline Image Support** - Improved image extraction and manipulation
 
 ### Developer Experience
-- **GraphQL-Style Querying** - Flexible content selection with powerful query syntax
+- **GraphQL-Style Querying** - Flexible content selection with expressive query syntax
 - **Batch Operations** - Performance optimization through batched edit operations
 - **First-Class Template Support** - Enhanced SDK-level templating workflows
 - **PHP SDK** - Native PHP support for broader language compatibility

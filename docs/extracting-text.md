@@ -7,7 +7,7 @@ description: Comprehensive guide to extracting text content from PDF documents a
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-PDFDancer provides powerful capabilities for extracting text from PDF documents. Whether you need to extract all text from a document, specific paragraphs, or text from particular areas, this guide covers all available options.
+PDFDancer provides multiple methods for extracting text from PDF documents. Whether you need to extract all text from a document, specific paragraphs, or text from particular areas, this guide covers all available options.
 
 ---
 
