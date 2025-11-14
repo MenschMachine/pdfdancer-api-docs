@@ -179,8 +179,8 @@ try (PDFDancer pdf = PDFDancer.createSession("form.pdf")) {
     List<FormFieldRef> fields = pdf.selectFormFieldsByName("signature");
 
     if (!fields.isEmpty()) {
-        // Update the field value using fill method
-        fields.get(0).fill("Signed by Jane Doe");
+        // Update the field value using setValue method
+        fields.get(0).setValue("Signed by Jane Doe");
     }
 
     pdf.save("filled_form.pdf");
@@ -260,7 +260,7 @@ try (PDFDancer pdf = PDFDancer.createSession("form.pdf")) {
     for (Map.Entry<String, String> entry : formData.entrySet()) {
         List<FormFieldRef> fields = pdf.selectFormFieldsByName(entry.getKey());
         if (!fields.isEmpty()) {
-            fields.get(0).fill(entry.getValue());
+            fields.get(0).setValue(entry.getValue());
         }
     }
 

@@ -112,7 +112,7 @@ for (const [i, page] of allPages.entries()) {
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
 
 // Get all pages
-List<Page> allPages = pdf.pages();
+List<Page> allPages = pdf.getPages();
 
 // Iterate through pages
 for (int i = 0; i < allPages.size(); i++) {
@@ -376,7 +376,7 @@ Page page = pdf.page(3);
 page.moveTo(0);
 
 // Move the last page to position 1
-int lastPageIndex = pdf.pages().size() - 1;
+int lastPageIndex = pdf.getPages().size() - 1;
 pdf.movePage(lastPageIndex, 1);
 
 pdf.save("reordered.pdf");
@@ -447,7 +447,7 @@ await pdf.save('with_new_page.pdf');
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
 
 // Add a new blank page (appended to the end)
-PageRef newPageRef = pdf.newPage();
+PageRef newPageRef = pdf.addPage();
 
 // The new page is now available
 System.out.println("New page added at index: " + newPageRef.getPosition().getPageIndex());
@@ -668,7 +668,7 @@ for (const [i, page] of allPages.entries()) {
 
 ```java
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
-List<Page> allPages = pdf.pages();
+List<Page> allPages = pdf.getPages();
 
 for (int i = 0; i < allPages.size(); i++) {
     Page page = allPages.get(i);
