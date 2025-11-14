@@ -14,7 +14,7 @@ Get up and running with PDFDancer in just 3 minutes. This guide covers installat
 
 Choose your preferred method:
 
-**Option 1: Code with AI** – Let your AI coding assistant handle everything (recommended for fastest setup)
+**Option 1: AI-Assisted Development** – Let your AI coding assistant handle everything (recommended for fastest setup)
 - See [AI-Assisted Development](ai-assisted-development.md) to install the MCP server, then just ask: _"Create a PDF with PDFDancer"_
 
 **Option 2: Manual Install** – Traditional package manager installation

@@ -1,10 +1,10 @@
 ---
 id: introduction
 title: Introduction to PDFDancer
-description: Pixel-perfect programmatic control over any PDF. Edit PDFs you didn't create with surgical precision.
+description: Pixel-perfect programmatic control over any PDF. Edit text in real-world PDFs you didn't create with surgical precision.
 ---
 
-PDFDancer gives you pixel-perfect programmatic control over any PDF document from Python, TypeScript, or Java. Unlike other tools, you can edit existing PDFs you didn't create - locate any element by coordinates or text, modify it precisely, add new content at exact positions, and manipulate forms with surgical precision.
+PDFDancer gives you pixel-perfect programmatic control over any PDF document from Python, TypeScript, or Java. Edit text in real-world PDFs you didn't create - locate any element by coordinates or text, modify it precisely, add new content at exact positions, and manipulate forms with surgical precision.
 
 ## Highlights
 
@@ -19,7 +19,7 @@ PDFDancer gives you pixel-perfect programmatic control over any PDF document fro
 
 ## What Makes PDFDancer Different
 
-- **Edit any PDF** - Not just ones you created. Modify third-party invoices, government forms, client contracts
+- **Edit text in real-world PDFs** - Not just ones you created. Modify third-party invoices, government forms, client contracts
 - **Pixel-perfect positioning** - Place content at exact X,Y coordinates, move elements precisely
 - **Surgical text replacement** - Find and replace specific paragraphs while preserving layout
 - **Embedded font support** - Add text with embedded fonts for consistent rendering across all PDF viewers
@@ -30,9 +30,9 @@ PDFDancer gives you pixel-perfect programmatic control over any PDF document fro
 
 ### Smart Font Matching
 
-When working with PDFs that use embedded fonts, PDFDancer uses a sophisticated ML-powered approach:
-- **Glyph analysis** - Our ML model analyzes the visual appearance of glyphs in embedded fonts
-- **Intelligent replacement** - When embedded fonts can't be modified directly, we automatically match them with visually similar fonts from our database
+When working with PDFs that use embedded fonts, PDFDancer automatically handles font compatibility:
+- **Visual analysis** - Analyzes the appearance of glyphs in embedded fonts
+- **Automatic matching** - When embedded fonts can't be modified directly, matches them with visually similar fonts from our database
 - **Preserves appearance** - Text edits maintain the original visual style, even when the exact font isn't available
 
 ## Supported Languages
