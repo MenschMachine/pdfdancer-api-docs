@@ -6,17 +6,17 @@ description: Current SDK versions used in this documentation
 
 # SDK Versions
 
-**Documentation Version**: 3.1 (November 13, 2025)
+**Documentation Version**: 3.2 (November 15, 2025)
 
 This documentation is based on the following SDK versions:
 
 ## Python SDK
 
 - **Repository**: [pdfdancer-client-python](https://github.com/MenschMachine/pdfdancer-client-python)
-- **Version**: 0.2.22
-- **Commit**: `7d1495de80355b4ad7333489a59ed8ef7205350a`
-- **Commit Date**: November 13, 2025
-- **Commit Message**: test: remove unused test_rate_limit_retry_with_exponential_backoff and test_rate_limit_retry_uses_retry_after_header tests
+- **Version**: 0.2.24
+- **Commit**: `19d3438016e79f83e28844259a10a733884690bd`
+- **Commit Date**: November 14, 2025
+- **Commit Message**: docs: Update README.md with new logo and rewritten content
 - **Documentation Coverage**:
   - ✅ Anonymous token support (automatic fallback authentication)
   - ✅ Snapshot API (`get_document_snapshot()`, `get_page_snapshot()`, `page.get_snapshot()`)
@@ -41,9 +41,9 @@ This documentation is based on the following SDK versions:
 
 - **Repository**: [pdfdancer-client-typescript](https://github.com/MenschMachine/pdfdancer-client-typescript)
 - **Version**: 1.0.17 (tagged: v1.0.17)
-- **Commit**: `30deeb5fb75a6883bf977219c89ffad9552ef0f0`
-- **Commit Date**: November 13, 2025
-- **Commit Message**: 1.0.17
+- **Commit**: `d4d8e165f031670abd19c4da3f26a3957b432e95`
+- **Commit Date**: November 14, 2025
+- **Commit Message**: docs: update README with new logo and improved descriptions
 - **Documentation Coverage**:
   - ✅ Anonymous token support (automatic fallback authentication)
   - ✅ Snapshot API (`getDocumentSnapshot()`, `getPageSnapshot()`, `page.getSnapshot()`)
@@ -66,10 +66,10 @@ This documentation is based on the following SDK versions:
 ## Java SDK
 
 - **Repository**: [pdfdancer-client-java](https://github.com/MenschMachine/pdfdancer-client-java)
-- **Version**: 0.1.2
-- **Commit**: `baa5aaa05579dcb3e4a43c7946f7e4d81b6b9160`
-- **Commit Date**: November 13, 2025
-- **Commit Message**: Merge branch 'claude/handle-429-retry-after-011CV1Qtz5VXrKeF86SX4tQR'
+- **Version**: 0.1.3
+- **Commit**: `4b34c51453f60bbf16737809f2ccfbf4a77492a3`
+- **Commit Date**: November 15, 2025
+- **Commit Message**: feat: add form field type checks and update setValue method
 - **Documentation Coverage**:
   - ✅ Core PDF manipulation (open, create, save)
   - ✅ Text operations (paragraphs, text lines)
@@ -97,13 +97,14 @@ This documentation is based on the following SDK versions:
   - **Clean API design**: Mirrors Python and TypeScript SDKs with Java conventions
   - **Default API endpoint**: Now uses `https://api.pdfdancer.com`
   - **Maven Central distribution**: Published artifacts available for easy dependency management
-- **Key Changes Since Last Version**:
-  - **Graceful 429 Retry-After handling** with increased retry delays (1 second default)
-  - **Configurable retry mechanism** for REST HTTP calls with customizable retry policies
-  - **Singular select methods** for convenience when selecting single elements at coordinates
-  - **Default retry configuration**: Uses sensible defaults when retry config not explicitly specified
-  - **Enhanced CI/CD**: Added daily test runs and improved GitHub Actions workflows with multi-platform testing
-  - **Windows support**: CI now tests on Windows and multiple Java versions (11, 17, 21, 23)
+- **Key Changes Since Last Version** (0.1.2 → 0.1.3):
+  - **Form field type checks**: Enhanced `setValue()` method with type validation for form fields
+  - **API method renaming**: `name()` renamed to `getName()` in `FormFieldReference` for consistency
+  - **Page delete functionality**: Added `page().delete()` method for removing pages
+  - **API gaps documentation**: Added comprehensive API gaps report comparing SDK with REST API
+  - **Version documentation**: Updated README and internal docs to reflect 0.1.3
+  - **Code quality**: Improved test coverage for AcroForms, paths, and other features
+  - **Build improvements**: Enhanced Gradle configuration and Maven Central publishing
 
 ---
 
@@ -200,7 +201,7 @@ Update the version in your `build.gradle.kts`:
 
 ```kotlin
 dependencies {
-    implementation("com.pdfdancer.client:pdfdancer-client-java:0.1.2")
+    implementation("com.pdfdancer.client:pdfdancer-client-java:0.1.3")
 }
 ```
 
@@ -218,7 +219,7 @@ Update the version in your `pom.xml`:
 <dependency>
     <groupId>com.pdfdancer.client</groupId>
     <artifactId>pdfdancer-client-java</artifactId>
-    <version>0.1.2</version>
+    <version>0.1.3</version>
 </dependency>
 ```
 
