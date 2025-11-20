@@ -777,6 +777,107 @@ pdf.save("processed.pdf");
 
 ---
 
+## Convenience Methods: Select First Match
+
+All multi-result selection methods (`select_paragraphs_*`, `select_text_lines_*`, etc.) return arrays/lists. For convenience, singular versions are available that return just the first match (or `null`/`None` if no matches found).
+
+### When to Use Singular Methods
+
+Use singular selection methods when you:
+- Know there's only one match expected
+- Only need the first occurrence
+- Want to avoid index access (`results[0]`)
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+from pdfdancer import PDFDancer
+
+with PDFDancer.open("invoice.pdf") as pdf:
+    # Plural: returns list (may be empty)
+    headers = pdf.select_paragraphs_starting_with("Invoice #")
+    if headers:
+        first_header = headers[0]
+
+    # Singular: returns first match or None
+    first_header = pdf.select_paragraph_starting_with("Invoice #")
+    if first_header:
+        print(f"Invoice number: {first_header.text}")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+const pdf = await PDFDancer.open('invoice.pdf');
+
+// Plural: returns array (may be empty)
+const headers = await pdf.selectParagraphsStartingWith('Invoice #');
+if (headers.length > 0) {
+    const firstHeader = headers[0];
+}
+
+// Singular: returns first match or null
+const firstHeader = await pdf.selectParagraphStartingWith('Invoice #');
+if (firstHeader) {
+    console.log(`Invoice number: ${firstHeader.getText()}`);
+}
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+PDFDancer pdf = PDFDancer.createSession("invoice.pdf");
+
+// Plural: returns List (may be empty)
+List<Paragraph> headers = pdf.selectParagraphsStartingWith("Invoice #");
+if (!headers.isEmpty()) {
+    Paragraph firstHeader = headers.get(0);
+}
+
+// Singular: returns Optional
+Optional<Paragraph> firstHeader = pdf.selectParagraphStartingWith("Invoice #");
+firstHeader.ifPresent(header ->
+    System.out.println("Invoice number: " + header.getText())
+);
+```
+
+  </TabItem>
+</Tabs>
+
+### Available Singular Methods
+
+| Plural Method | Singular Method | Return Type |
+|--------------|----------------|-------------|
+| `select_paragraphs()` | `select_paragraph()` | First paragraph or `null`/`None`/`Optional.empty()` |
+| `select_paragraphs_starting_with(text)` | `select_paragraph_starting_with(text)` | First match or `null`/`None`/`Optional.empty()` |
+| `select_paragraphs_matching(pattern)` | `select_paragraph_matching(pattern)` | First match or `null`/`None`/`Optional.empty()` |
+| `select_paragraphs_at(x, y)` | `select_paragraph_at(x, y)` | First match or `null`/`None`/`Optional.empty()` |
+| `select_text_lines()` | `select_text_line()` | First text line or `null`/`None`/`Optional.empty()` |
+| `select_text_lines_starting_with(text)` | `select_text_line_starting_with(text)` | First match or `null`/`None`/`Optional.empty()` |
+| `select_text_lines_matching(pattern)` | `select_text_line_matching(pattern)` | First match or `null`/`None`/`Optional.empty()` |
+
+:::tip Java Optional Pattern
+Java returns `Optional<T>` for singular methods, following Java best practices:
+```java
+pdf.selectTextLineMatching("\\d{3}-\\d{4}")
+    .ifPresent(line -> System.out.println(line.getText()));
+```
+:::
+
+:::note Python/TypeScript Return null/None
+Python returns `None` and TypeScript returns `null` when no matches are found. Always check before using:
+```python
+line = pdf.select_text_line_matching(r"\d{3}-\d{4}")
+if line:  # Check for None
+    print(line.text)
+```
+:::
+
+---
+
 
 ## Selection Method Summary
 
