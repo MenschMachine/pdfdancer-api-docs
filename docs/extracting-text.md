@@ -644,6 +644,10 @@ List<Paragraph> pageTotals = pdf.page(0).selectParagraphsStartingWith("Total:");
 
 Use regular expressions to extract text matching specific patterns:
 
+:::info Java Regex Syntax
+All SDKs use Java-compatible regular expression syntax as defined in the [Java Pattern class](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/regex/Pattern.html). Common patterns work the same across Python, TypeScript, and Java.
+:::
+
 <Tabs>
   <TabItem value="python" label="Python">
 

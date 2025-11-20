@@ -1420,23 +1420,18 @@ await pdf.save('output.pdf');
   <TabItem value="java" label="Java">
 
 ```java
+import com.pdfdancer.client.rest.*;
+
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
-List<Paragraph> paragraphs = pdf.page(0).selectParagraphsStartingWith("The Complete");
+List<TextLine> textLines = pdf.page(0).selectTextLinesStartingWith("Total:");
 
-if (!paragraphs.isEmpty()) {
-    Paragraph paragraph = paragraphs.get(0);
-
-    // Change only the font, keep everything else
-    paragraph.edit()
-        .font("Helvetica", 28)
+if (!textLines.isEmpty()) {
+    // Change text, font, and color
+    textLines.get(0).edit()
+        .replace("Total: $1,234.56")
+        .font("Helvetica-Bold", 14)
+        .color(new Color(255, 0, 0))
         .apply();
-
-    // Verify font changed
-    List<TextLine> lines = pdf.page(0).selectTextLinesStartingWith("The Complete");
-    if (!lines.isEmpty()) {
-        System.out.println("Font: " + lines.get(0).getFontName());
-        System.out.println("Size: " + lines.get(0).getFontSize());
-    }
 }
 
 pdf.save("output.pdf");
@@ -1512,6 +1507,76 @@ pdf.save("output.pdf");
 - Both support the same editing operations: `replace()`, `font()`, `color()`, `move_to()`
 - Use text lines when you need to edit specific lines within a larger text block
   :::
+
+---
+
+## Deleting Text Lines
+
+Text lines can be deleted just like paragraphs:
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+from pdfdancer import PDFDancer
+
+with PDFDancer.open("document.pdf") as pdf:
+    # Find and delete a text line
+    text_line = pdf.page(0).select_text_lines_starting_with("Footer")[0]
+    text_line.delete()
+
+    # Verify deletion
+    remaining = pdf.page(0).select_text_lines_starting_with("Footer")
+    assert remaining == []
+
+    pdf.save("output.pdf")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+import {PDFDancer} from 'pdfdancer-client-typescript';
+
+const pdf = await PDFDancer.open('document.pdf');
+
+// Find and delete a text line
+const textLines = await pdf.page(0).selectTextLinesStartingWith('Footer');
+
+if (textLines.length > 0) {
+    await textLines[0].delete();
+
+    // Verify deletion
+    const remaining = await pdf.page(0).selectTextLinesStartingWith('Footer');
+    console.log(`Remaining text lines: ${remaining.length}`);
+}
+
+await pdf.save('output.pdf');
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+import com.pdfdancer.client.rest.*;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Find and delete a text line
+List<TextLine> textLines = pdf.page(0).selectTextLinesStartingWith("Footer");
+if (!textLines.isEmpty()) {
+    textLines.get(0).delete();
+
+    // Verify deletion
+    List<TextLine> remaining = pdf.page(0).selectTextLinesStartingWith("Footer");
+    System.out.println("Remaining text lines: " + remaining.size());
+}
+
+pdf.save("output.pdf");
+```
+
+  </TabItem>
+</Tabs>
 
 ---
 

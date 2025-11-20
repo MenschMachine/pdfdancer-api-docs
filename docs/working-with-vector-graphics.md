@@ -438,6 +438,145 @@ pdf.save("output.pdf");
 
 ---
 
+## PathBuilder: Programmatic Path Creation
+
+The `newPath()` method returns a builder that lets you create complex vector paths programmatically. This builder pattern allows you to chain commands to construct shapes, curves, and complex drawings.
+
+:::info TypeScript PathBuilder Class
+In TypeScript SDK v1.0.22+, `newPath()` returns a `PathBuilder` instance that provides a fluent API for constructing vector paths. You can also import and use the `PathBuilder` class directly:
+
+```typescript
+import { PathBuilder } from 'pdfdancer-client-typescript';
+```
+:::
+
+### Builder Pattern Basics
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+from pdfdancer import PDFDancer, Color
+
+with PDFDancer.open("document.pdf") as pdf:
+    # new_path() returns a builder - chain commands and call add()
+    pdf.page(0).new_path() \
+        .add_line(Point(100, 100), Point(200, 200)) \
+        .stroke_color(Color(0, 0, 0)) \
+        .stroke_width(2) \
+        .add()  # Finalizes and adds the path to the page
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+import { PDFDancer, Color } from 'pdfdancer-client-typescript';
+
+const pdf = await PDFDancer.open('document.pdf');
+
+// newPath() returns a PathBuilder - chain commands and call apply()
+await pdf.page(0).newPath()
+  .moveTo(100, 100)
+  .lineTo(200, 200)
+  .strokeColor(new Color(0, 0, 0))
+  .strokeWidth(2)
+  .apply();  // Finalizes and adds the path to the page
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+import com.pdfdancer.client.rest.*;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// newPath() returns a builder - chain commands and call add()
+pdf.page(0).newPath()
+    .moveTo(100, 100)
+    .lineTo(200, 200)
+    .strokeColor(new Color(0, 0, 0))
+    .strokeWidth(2)
+    .add();  // Finalizes and adds the path to the page
+```
+
+  </TabItem>
+</Tabs>
+
+### Advanced Fill Rules
+
+For complex shapes with overlapping regions, you can control the fill behavior:
+
+<Tabs>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+// Even-odd fill rule for complex shapes
+await pdf.page(0).newPath()
+  .moveTo(100, 100)
+  .lineTo(200, 100)
+  .lineTo(200, 200)
+  .lineTo(100, 200)
+  .closePath()
+  .fillColor(new Color(255, 0, 0))
+  .evenOddFill(true)  // Use even-odd winding rule
+  .apply();
+```
+
+  </TabItem>
+  <TabItem value="python" label="Python">
+
+```python
+# Even-odd fill rule supported in Python SDK
+# (Check API documentation for current implementation status)
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+// Even-odd fill rule supported in Java SDK
+// (Check API documentation for current implementation status)
+```
+
+  </TabItem>
+</Tabs>
+
+:::tip Even-Odd Fill Rule
+The even-odd rule determines whether a point is inside a path by drawing a line from that point to infinity and counting how many times it crosses the path. If the count is odd, the point is inside; if even, it's outside. This is useful for creating shapes with holes or complex overlapping regions.
+:::
+
+### PathBuilder API Reference
+
+Complete list of PathBuilder methods:
+
+**Drawing Commands:**
+- `moveTo(x, y)` - Move to a point without drawing (sets the current point)
+- `lineTo(x, y)` - Draw a line from current point to (x, y)
+- `bezierTo(cp1x, cp1y, cp2x, cp2y, x, y)` - Draw a cubic Bezier curve
+- `closePath()` - Draw a line back to the starting point
+
+**Styling:**
+- `strokeColor(Color)` - Set the outline color
+- `fillColor(Color)` - Set the fill color
+- `strokeWidth(number)` - Set outline width in points
+- `dashPattern([on, off, ...])` - Set dash pattern for strokes
+
+**Advanced:**
+- `dashPhase(number)` - Set the offset for dash patterns
+- `evenOddFill(boolean)` - Use even-odd fill rule (TypeScript)
+
+**Finalize:**
+- `at(pageIndex, x, y)` / `at(x, y)` - Set position and optionally page index
+- `add()` / `apply()` - Add the path to the document
+
+:::note Python Method Names
+Python uses snake_case: `move_to()`, `line_to()`, `stroke_color()`, etc.
+:::
+
+---
+
 ## Drawing Complex Paths
 
 Create complex vector graphics using path commands:
@@ -497,7 +636,7 @@ await page.newPath()
 await page.newPath()
   .moveTo(100, 400)
   .lineTo(200, 400)
-  .curveTo(250, 450, 300, 450, 350, 400)
+  .bezierTo(250, 450, 300, 450, 350, 400)
   .lineTo(450, 400)
   .strokeColor(new Color(255, 100, 0))
   .strokeWidth(2)
@@ -549,7 +688,7 @@ Available path commands:
 
 - **`move_to(x, y)`** / **`moveTo(x, y)`** - Move to a point without drawing
 - **`line_to(x, y)`** / **`lineTo(x, y)`** - Draw a straight line to a point
-- **`curve_to(cp1x, cp1y, cp2x, cp2y, x, y)`** / **`curveTo(...)`** - Draw a cubic Bezier curve
+- **`add_bezier(...)`** / **`bezierTo(cp1x, cp1y, cp2x, cp2y, x, y)`** / **`curveTo(...)`** - Draw a cubic Bezier curve
 - **`close_path()`** / **`closePath()`** - Close the current path by drawing a line to the start point
 
 ---
