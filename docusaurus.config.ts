@@ -104,12 +104,16 @@ const config: Config = {
                             to: '/',
                         },
                         {
-                            label: 'Status',
-                            href: 'https://status.pdfdancer.com',
+                            label: 'Roadmap',
+                            href: 'https://www.pdfdancer.com/roadmap',
                         },
                         {
-                            label: 'Blog',
-                            href: 'https://www.pdfdancer.com/blog',
+                            label: 'Changelog',
+                            href: 'https://www.pdfdancer.com/changelog',
+                        },
+                        {
+                            label: 'Status',
+                            href: 'https://status.pdfdancer.com',
                         },
                     ],
                 },
