@@ -105,7 +105,7 @@ const config: Config = {
                         },
                         {
                             label: 'Roadmap',
-                            href: 'https://www.pdfdancer.com/roadmap',
+                            href: 'https://docs.pdfdancer.com/roadmap',
                         },
                         {
                             label: 'Changelog',
