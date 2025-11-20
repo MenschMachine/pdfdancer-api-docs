@@ -1440,18 +1440,6 @@ pdf.save("output.pdf");
   </TabItem>
 </Tabs>
 
-:::warning Line Spacing Not Supported
-Text lines do not support line spacing modifications. Line spacing is a property of paragraphs. If you need to modify line spacing, work with paragraph objects instead.
-
-```python
-# ❌ This will fail - text lines don't support line spacing
-text_line.edit().line_spacing(1.5).apply()  # Error
-
-# ✅ Use paragraphs for line spacing
-paragraph.edit().line_spacing(1.5).apply()  # Works
-```
-:::
-
 ### Moving Text Lines
 
 <Tabs>
