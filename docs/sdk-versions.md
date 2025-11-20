@@ -39,10 +39,9 @@ This documentation is based on the following SDK versions:
 ## TypeScript SDK
 
 - **Repository**: [pdfdancer-client-typescript](https://github.com/MenschMachine/pdfdancer-client-typescript)
-- **Version**: 1.0.22 (tagged: v1.0.22)
+- **Version**: 1.0.21 (tagged: v1.0.21)
 - **Commit**: `13a7d1671eb1c970f26ca739a81bfcbf13f78bfa`
 - **Commit Date**: November 20, 2025
-- **Commit Message**: 1.0.22
 - **Documentation Coverage**:
   - ✅ Anonymous token support (automatic fallback authentication)
   - ✅ Snapshot API (`getDocumentSnapshot()`, `getPageSnapshot()`, `page.getSnapshot()`)
@@ -67,7 +66,7 @@ This documentation is based on the following SDK versions:
 ## Java SDK
 
 - **Repository**: [pdfdancer-client-java](https://github.com/MenschMachine/pdfdancer-client-java)
-- **Version**: 0.1.7
+- **Version**: 0.1.8
 - **Commit**: `ac3bd98e662495ecc5fd8a2fe1aa82cc656ba9ab`
 - **Commit Date**: November 20, 2025
 - **Commit Message**: Merge pull request #8 from MenschMachine/claude/add-java-matrix-ci-01QNFFTZzfdTZeUzi6N3BCVa
