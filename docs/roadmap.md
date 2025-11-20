@@ -22,7 +22,6 @@ These features are at the top of our development queue and will be implemented i
 - **Document Template Store** - Cloud-based template storage with S3-compatible API
 - **Intelligent Font Recommendations** - Automatic font matching and substitution
 - **Text Reflow Support** - Automatically adjust text layout when editing content
-- **Observability & Monitoring** - SDK-level metrics and tracing for production debugging
 
 ## Future Enhancements
 
@@ -40,7 +39,6 @@ These features are at the top of our development queue and will be implemented i
 
 ### Developer Experience
 - **GraphQL-Style Querying** - Flexible content selection with expressive query syntax
-- **First-Class Template Support** - Enhanced SDK-level templating workflows
 - **PHP SDK** - Native PHP support for broader language compatibility
 - **.NET SDK** - Native C# support for .NET developers
 
