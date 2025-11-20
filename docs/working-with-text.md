@@ -1420,23 +1420,18 @@ await pdf.save('output.pdf');
   <TabItem value="java" label="Java">
 
 ```java
+import com.pdfdancer.client.rest.*;
+
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
-List<Paragraph> paragraphs = pdf.page(0).selectParagraphsStartingWith("The Complete");
+List<TextLine> textLines = pdf.page(0).selectTextLinesStartingWith("Total:");
 
-if (!paragraphs.isEmpty()) {
-    Paragraph paragraph = paragraphs.get(0);
-
-    // Change only the font, keep everything else
-    paragraph.edit()
-        .font("Helvetica", 28)
+if (!textLines.isEmpty()) {
+    // Change text, font, and color
+    textLines.get(0).edit()
+        .replace("Total: $1,234.56")
+        .font("Helvetica-Bold", 14)
+        .color(new Color(255, 0, 0))
         .apply();
-
-    // Verify font changed
-    List<TextLine> lines = pdf.page(0).selectTextLinesStartingWith("The Complete");
-    if (!lines.isEmpty()) {
-        System.out.println("Font: " + lines.get(0).getFontName());
-        System.out.println("Size: " + lines.get(0).getFontSize());
-    }
 }
 
 pdf.save("output.pdf");
@@ -1444,6 +1439,18 @@ pdf.save("output.pdf");
 
   </TabItem>
 </Tabs>
+
+:::warning Line Spacing Not Supported
+Text lines do not support line spacing modifications. Line spacing is a property of paragraphs. If you need to modify line spacing, work with paragraph objects instead.
+
+```python
+# ❌ This will fail - text lines don't support line spacing
+text_line.edit().line_spacing(1.5).apply()  # Error
+
+# ✅ Use paragraphs for line spacing
+paragraph.edit().line_spacing(1.5).apply()  # Works
+```
+:::
 
 ### Moving Text Lines
 
