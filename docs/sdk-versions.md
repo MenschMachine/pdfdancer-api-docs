@@ -6,17 +6,17 @@ description: Current SDK versions used in this documentation
 
 # SDK Versions
 
-**Documentation Version**: 3.2 (November 15, 2025)
+**Documentation Version**: 3.3 (November 20, 2025)
 
 This documentation is based on the following SDK versions:
 
 ## Python SDK
 
 - **Repository**: [pdfdancer-client-python](https://github.com/MenschMachine/pdfdancer-client-python)
-- **Version**: 0.2.24
-- **Commit**: `19d3438016e79f83e28844259a10a733884690bd`
-- **Commit Date**: November 14, 2025
-- **Commit Message**: docs: Update README.md with new logo and rewritten content
+- **Version**: 0.2.28
+- **Commit**: `720afd2a3e24cc88fb8c3e596cd35ee4208a932b`
+- **Commit Date**: November 20, 2025
+- **Commit Message**: Merge branch 'claude/debug-pdf-font-spacing-0191CUHcEE1oFRj3sKt93N3n'
 - **Documentation Coverage**:
   - ✅ Anonymous token support (automatic fallback authentication)
   - ✅ Snapshot API (`get_document_snapshot()`, `get_page_snapshot()`, `page.get_snapshot()`)
@@ -28,22 +28,21 @@ This documentation is based on the following SDK versions:
   - ✅ Select all elements helper (`select_elements()`)
   - ✅ Page size and orientation properties (`page.page_size`, `page.orientation`)
   - ✅ Context manager pattern for text editing (recommended approach)
-- **Key Changes Since Last Version**:
-  - **Graceful 429 rate limit handling** with Retry-After header support
-  - **Automatic retry functionality** for transient network errors
-  - **Singular selection convenience methods** added for selecting single elements at coordinates
-  - **Configurable retry backoff** via `PDFDANCER_RETRY_BACKOFF_FACTOR` environment variable
-  - **Code quality improvements**: Configured linters and formatters (black, flake8, mypy, isort)
-  - **Enhanced CI/CD**: Added daily test runs, linter checks, and improved test coverage
-  - **Python 3.12 support** added to CI workflow with full matrix testing
+- **Key Changes Since Last Version** (0.2.24 → 0.2.28):
+  - **Full TextLineEdit functionality**: Complete implementation of text line editing with font and color changes
+  - **Explicit text/font preservation**: Text lines now explicitly preserve text content and font when modified
+  - **Line spacing validation**: Added hard failure for unsupported line spacing modifications to prevent unexpected behavior
+  - **Improved text line editing**: Enhanced TextLineBuilder with proper text and font handling
+  - **Test improvements**: Updated e2e tests to accommodate baseline vs bounding box differences
+  - **OpenAPI specification updates**: Updated to reflect latest API changes
 
 ## TypeScript SDK
 
 - **Repository**: [pdfdancer-client-typescript](https://github.com/MenschMachine/pdfdancer-client-typescript)
-- **Version**: 1.0.17 (tagged: v1.0.17)
-- **Commit**: `d4d8e165f031670abd19c4da3f26a3957b432e95`
-- **Commit Date**: November 14, 2025
-- **Commit Message**: docs: update README with new logo and improved descriptions
+- **Version**: 1.0.22 (tagged: v1.0.22)
+- **Commit**: `13a7d1671eb1c970f26ca739a81bfcbf13f78bfa`
+- **Commit Date**: November 20, 2025
+- **Commit Message**: 1.0.22
 - **Documentation Coverage**:
   - ✅ Anonymous token support (automatic fallback authentication)
   - ✅ Snapshot API (`getDocumentSnapshot()`, `getPageSnapshot()`, `page.getSnapshot()`)
@@ -55,24 +54,28 @@ This documentation is based on the following SDK versions:
   - ✅ Page size and orientation properties (`page.pageSize`, `page.orientation`)
   - ✅ Form field selection naming clarified (document-level: `selectFieldsByName()`, page-level: `selectFormFieldsByName()`)
   - ✅ Corrected method name: `getBytes()` (not `getPdfFile()`)
-- **Key Changes Since Last Version**:
-  - **Retry-After header support** for graceful 429 rate limit handling
-  - **Configurable retry mechanism** for REST API calls with customizable backoff
-  - **Singular convenience select methods** for selecting single elements at coordinates
-  - **String filepath support** added to `_processPdfData` for easier file handling
-  - **Enhanced CI/CD**: Added daily test runs and improved test coverage
-  - **Code quality improvements**: ESLint configuration updates and linter fixes
+- **Key Changes Since Last Version** (1.0.17 → 1.0.22):
+  - **PathBuilder implementation**: New `PathBuilder` class for creating complex vector paths programmatically
+  - **Test drawing helpers**: Added comprehensive visual debugging utilities for test development
+  - **Memory exhaustion fixes**: Resolved memory issues in test drawing helpers
+  - **Position error fixes**: Corrected path segment position handling and inheritance from page snapshots
+  - **localStorage compatibility**: Added function check for `localStorage.getItem` in Node.js environments
+  - **OpenAPI definition updates**: Updated specifications to reflect latest API changes
+  - **CI improvements**: Set max-parallel to reduce resource contention, added test report uploads on failure
+  - **Test reliability**: Relaxed bounding box assertions and element count expectations for more stable tests
 
 ## Java SDK
 
 - **Repository**: [pdfdancer-client-java](https://github.com/MenschMachine/pdfdancer-client-java)
-- **Version**: 0.1.3
-- **Commit**: `4b34c51453f60bbf16737809f2ccfbf4a77492a3`
-- **Commit Date**: November 15, 2025
-- **Commit Message**: feat: add form field type checks and update setValue method
+- **Version**: 0.1.7
+- **Commit**: `ac3bd98e662495ecc5fd8a2fe1aa82cc656ba9ab`
+- **Commit Date**: November 20, 2025
+- **Commit Message**: Merge pull request #8 from MenschMachine/claude/add-java-matrix-ci-01QNFFTZzfdTZeUzi6N3BCVa
 - **Documentation Coverage**:
   - ✅ Core PDF manipulation (open, create, save)
   - ✅ Text operations (paragraphs, text lines)
+  - ✅ Text line editing (`textLine.edit().replace()`, font, color, move)
+  - ✅ Text line selection (`selectTextLinesMatching()`, `selectTextLineMatching()`)
   - ✅ Image operations (add, select, manipulate)
   - ✅ Form field operations (AcroForms)
   - ✅ Vector graphics (paths, lines, rectangles, Bezier curves)
@@ -84,8 +87,9 @@ This documentation is based on the following SDK versions:
   - ✅ Position and coordinate system support
   - ✅ Color model support
   - ✅ Maven Central publishing support (automated and manual bundle upload)
+  - ✅ OpenAPI specification for REST API integration
 - **Requirements**:
-  - **Java 11+** required (tested with Java 11, 17, 21, 23)
+  - **Java 11+** required (tested with Java 11, 17, 21, 23, 25)
   - Uses Gradle for build management
   - Jackson for JSON serialization
   - SLF4J for logging
@@ -97,14 +101,15 @@ This documentation is based on the following SDK versions:
   - **Clean API design**: Mirrors Python and TypeScript SDKs with Java conventions
   - **Default API endpoint**: Now uses `https://api.pdfdancer.com`
   - **Maven Central distribution**: Published artifacts available for easy dependency management
-- **Key Changes Since Last Version** (0.1.2 → 0.1.3):
-  - **Form field type checks**: Enhanced `setValue()` method with type validation for form fields
-  - **API method renaming**: `name()` renamed to `getName()` in `FormFieldReference` for consistency
-  - **Page delete functionality**: Added `page().delete()` method for removing pages
-  - **API gaps documentation**: Added comprehensive API gaps report comparing SDK with REST API
-  - **Version documentation**: Updated README and internal docs to reflect 0.1.3
-  - **Code quality**: Improved test coverage for AcroForms, paths, and other features
-  - **Build improvements**: Enhanced Gradle configuration and Maven Central publishing
+- **Key Changes Since Last Version** (0.1.3 → 0.1.7):
+  - **Text line modification support**: Full implementation of `TextLineEdit` with fluent builder pattern for rich text line editing
+  - **Text line selection methods**: Added `selectTextLinesMatching()` and `selectTextLineMatching()` for regex-based text line searches
+  - **Enhanced TextLineReference**: Added missing Font and Position imports, improved API consistency
+  - **OpenAPI specification**: Added complete OpenAPI specification in `docs/openapi.yml`
+  - **Java 25 support**: Extended CI matrix to include Java 25 testing
+  - **Base URL refactoring**: Extracted base URL from DEFAULT_BASE_URI to `getBaseUrl()` method for better configurability
+  - **Test improvements**: Relaxed exact element count assertions and updated position value assertions to use ranges
+  - **Build version bumps**: Progressive version updates through 0.1.4, 0.1.5, 0.1.6, and 0.1.7
 
 ---
 
@@ -201,7 +206,7 @@ Update the version in your `build.gradle.kts`:
 
 ```kotlin
 dependencies {
-    implementation("com.pdfdancer.client:pdfdancer-client-java:0.1.3")
+    implementation("com.pdfdancer.client:pdfdancer-client-java:0.1.7")
 }
 ```
 
@@ -219,7 +224,7 @@ Update the version in your `pom.xml`:
 <dependency>
     <groupId>com.pdfdancer.client</groupId>
     <artifactId>pdfdancer-client-java</artifactId>
-    <version>0.1.3</version>
+    <version>0.1.7</version>
 </dependency>
 ```
 

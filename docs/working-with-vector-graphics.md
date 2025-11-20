@@ -497,7 +497,7 @@ await page.newPath()
 await page.newPath()
   .moveTo(100, 400)
   .lineTo(200, 400)
-  .curveTo(250, 450, 300, 450, 350, 400)
+  .bezierTo(250, 450, 300, 450, 350, 400)
   .lineTo(450, 400)
   .strokeColor(new Color(255, 100, 0))
   .strokeWidth(2)
@@ -549,7 +549,7 @@ Available path commands:
 
 - **`move_to(x, y)`** / **`moveTo(x, y)`** - Move to a point without drawing
 - **`line_to(x, y)`** / **`lineTo(x, y)`** - Draw a straight line to a point
-- **`curve_to(cp1x, cp1y, cp2x, cp2y, x, y)`** / **`curveTo(...)`** - Draw a cubic Bezier curve
+- **`add_bezier(...)`** / **`bezierTo(cp1x, cp1y, cp2x, cp2y, x, y)`** / **`curveTo(...)`** - Draw a cubic Bezier curve
 - **`close_path()`** / **`closePath()`** - Close the current path by drawing a line to the start point
 
 ---
