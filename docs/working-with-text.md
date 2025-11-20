@@ -1510,6 +1510,76 @@ pdf.save("output.pdf");
 
 ---
 
+## Deleting Text Lines
+
+Text lines can be deleted just like paragraphs:
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+from pdfdancer import PDFDancer
+
+with PDFDancer.open("document.pdf") as pdf:
+    # Find and delete a text line
+    text_line = pdf.page(0).select_text_lines_starting_with("Footer")[0]
+    text_line.delete()
+
+    # Verify deletion
+    remaining = pdf.page(0).select_text_lines_starting_with("Footer")
+    assert remaining == []
+
+    pdf.save("output.pdf")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+import {PDFDancer} from 'pdfdancer-client-typescript';
+
+const pdf = await PDFDancer.open('document.pdf');
+
+// Find and delete a text line
+const textLines = await pdf.page(0).selectTextLinesStartingWith('Footer');
+
+if (textLines.length > 0) {
+    await textLines[0].delete();
+
+    // Verify deletion
+    const remaining = await pdf.page(0).selectTextLinesStartingWith('Footer');
+    console.log(`Remaining text lines: ${remaining.length}`);
+}
+
+await pdf.save('output.pdf');
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+import com.pdfdancer.client.rest.*;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Find and delete a text line
+List<TextLine> textLines = pdf.page(0).selectTextLinesStartingWith("Footer");
+if (!textLines.isEmpty()) {
+    textLines.get(0).delete();
+
+    // Verify deletion
+    List<TextLine> remaining = pdf.page(0).selectTextLinesStartingWith("Footer");
+    System.out.println("Remaining text lines: " + remaining.size());
+}
+
+pdf.save("output.pdf");
+```
+
+  </TabItem>
+</Tabs>
+
+---
+
 ## Deleting Paragraphs
 
 <Tabs>

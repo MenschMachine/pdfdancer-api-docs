@@ -530,6 +530,10 @@ List<Paragraph> pageHeaders = pdf.page(0).selectParagraphsStartingWith("Executiv
 
 Use regular expressions to find text matching complex patterns. Pattern matching works at both document and page levels.
 
+:::info Java Regex Syntax
+All SDKs use Java-compatible regular expression syntax as defined in the [Java Pattern class](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/regex/Pattern.html). Common patterns work the same across Python, TypeScript, and Java.
+:::
+
 <Tabs>
   <TabItem value="python" label="Python">
 
