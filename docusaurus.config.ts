@@ -97,7 +97,7 @@ const config: Config = {
             style: 'dark',
             links: [
                 {
-                    title: 'PDFDancer',
+                    title: 'Product',
                     items: [
                         {
                             label: 'Docs',
