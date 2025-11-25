@@ -177,7 +177,7 @@ try:
         pdf.new_paragraph() \
             .text("Hello") \
             .font("NonExistentFont", 12) \
-            .at(page_number=0, x=100, y=500) \
+            .at(page_number=1, x=100, y=500) \
             .add()
 except FontNotFoundException as e:
     print(f"Font not found: {e}")
@@ -186,7 +186,7 @@ except FontNotFoundException as e:
         pdf.new_paragraph() \
             .text("Hello") \
             .font("Helvetica", 12) \
-            .at(page_number=0, x=100, y=500) \
+            .at(page_number=1, x=100, y=500) \
             .add()
         pdf.save("output.pdf")
 ```
@@ -397,7 +397,7 @@ def process_pdf(input_path: str, output_path: str) -> bool:
                 .text("CONFIDENTIAL") \
                 .font("Helvetica-Bold", 48) \
                 .color(Color(200, 200, 200)) \
-                .at(page_number=0, x=150, y=400) \
+                .at(page_number=1, x=150, y=400) \
                 .add()
 
             pdf.save(output_path)
@@ -418,7 +418,7 @@ def process_pdf(input_path: str, output_path: str) -> bool:
                     .text("CONFIDENTIAL") \
                     .font("Helvetica", 48) \
                     .color(Color(200, 200, 200)) \
-                    .at(page_number=0, x=150, y=400) \
+                    .at(page_number=1, x=150, y=400) \
                     .add()
                 pdf.save(output_path)
                 return True

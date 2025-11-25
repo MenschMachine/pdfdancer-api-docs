@@ -100,7 +100,7 @@ with PDFDancer.open(pdf_data=Path("input.pdf")) as pdf:
         .font("Helvetica", 12) \
         .color(Color(70, 70, 70)) \
         .line_spacing(1.4) \
-        .at(page_number=0, x=72, y=520) \
+        .at(page_number=1, x=72, y=520) \
         .add()
 
     # Persist the modified document

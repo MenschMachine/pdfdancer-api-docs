@@ -31,7 +31,7 @@ def create_new_pdf(output_path: str) -> None:
         .text("Sample Document") \
         .font("Helvetica-Bold", 24) \
         .color(Color(0, 0, 128)) \
-        .at(page_number=0, x=100, y=720) \
+        .at(page_number=1, x=100, y=720) \
         .add()
 
     # Add body text
@@ -39,7 +39,7 @@ def create_new_pdf(output_path: str) -> None:
         .text("This is a new PDF document created from scratch.") \
         .font("Helvetica", 12) \
         .color(Color(0, 0, 0)) \
-        .at(page_number=0, x=100, y=680) \
+        .at(page_number=1, x=100, y=680) \
         .add()
 
     # Add a second page
@@ -209,7 +209,7 @@ def mark_invoice_paid(input_path: str, output_path: str, invoice_number: str) ->
             .text("PAID") \
             .font("Helvetica-Bold", 72) \
             .color(Color(0, 200, 0, alpha=0.3)) \
-            .at(page_number=0, x=180, y=400) \
+            .at(page_number=1, x=180, y=400) \
             .add()
 
         # Add payment date
@@ -218,7 +218,7 @@ def mark_invoice_paid(input_path: str, output_path: str, invoice_number: str) ->
             .text(f"Paid: {datetime.now().strftime('%Y-%m-%d')}") \
             .font("Helvetica", 10) \
             .color(Color(0, 128, 0)) \
-            .at(page_number=0, x=400, y=50) \
+            .at(page_number=1, x=400, y=50) \
             .add()
 
         pdf.save(output_path)
@@ -571,7 +571,7 @@ def redact_document(input_path: str, output_path: str) -> None:
             .text(f"This document contains {redaction_count} redaction(s)") \
             .font("Helvetica", 8) \
             .color(Color(128, 128, 128)) \
-            .at(page_number=0, x=50, y=30) \
+            .at(page_number=1, x=50, y=30) \
             .add()
 
         pdf.save(output_path)
@@ -729,7 +729,7 @@ def generate_monthly_report(
             .text(f"Monthly Report - {report_data['month']} {report_data['year']}") \
             .font("Helvetica-Bold", 20) \
             .color(Color(0, 0, 128)) \
-            .at(page_number=0, x=100, y=750) \
+            .at(page_number=1, x=100, y=750) \
             .add()
 
         # Add summary stats
@@ -738,7 +738,7 @@ def generate_monthly_report(
             pdf.new_paragraph() \
                 .text(f"{key}: {value}") \
                 .font("Helvetica", 12) \
-                .at(page_number=0, x=100, y=y_position) \
+                .at(page_number=1, x=100, y=y_position) \
                 .add()
             y_position -= 25
 
@@ -755,7 +755,7 @@ def generate_monthly_report(
             .text(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M')}") \
             .font("Helvetica", 8) \
             .color(Color(128, 128, 128)) \
-            .at(page_number=0, x=250, y=30) \
+            .at(page_number=1, x=250, y=30) \
             .add()
 
         pdf.save(output_path)

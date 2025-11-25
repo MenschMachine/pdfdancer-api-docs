@@ -115,7 +115,7 @@ with PDFDancer.open("document.pdf") as pdf:
         pdf.new_paragraph() \
             .text("Text with service font") \
             .font(font.name, font.size) \
-            .at(page_number=0, x=100, y=500) \
+            .at(page_number=1, x=100, y=500) \
             .add()
 
     pdf.save("output.pdf")
@@ -174,7 +174,7 @@ with PDFDancer.open("document.pdf") as pdf:
     pdf.new_paragraph() \
         .text("Text with custom font") \
         .font("CustomFont", 14) \
-        .at(page_number=0, x=100, y=500) \
+        .at(page_number=1, x=100, y=500) \
         .add()
 
     pdf.save("output.pdf")
@@ -246,7 +246,7 @@ def process_invoice(input_path: Path, output_dir: Path) -> None:
             .text("PAID") \
             .font("Helvetica-Bold", 72) \
             .color(Color(0, 200, 0)) \
-            .at(page_number=0, x=200, y=400) \
+            .at(page_number=1, x=200, y=400) \
             .add()
 
         # Save to output directory
@@ -789,7 +789,7 @@ with PDFDancer.open("document.pdf") as pdf:
     # Operation 2: Add watermark
     pdf.new_paragraph() \
         .text("CONFIDENTIAL") \
-        .at(page_number=0, x=200, y=400) \
+        .at(page_number=1, x=200, y=400) \
         .add()
 
     # Operation 3: Add image

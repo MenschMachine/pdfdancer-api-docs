@@ -31,13 +31,13 @@ with PDFDancer.open("document.pdf") as pdf:
     pdf.new_paragraph() \
         .text("Text with Roboto font") \
         .font("Roboto-Regular", 14) \
-        .at(page_number=0, x=100, y=500) \
+        .at(page_number=1, x=100, y=500) \
         .add()
 
     pdf.new_paragraph() \
         .text("Code with JetBrains Mono") \
         .font("JetBrainsMono-Regular", 12) \
-        .at(page_number=0, x=100, y=480) \
+        .at(page_number=1, x=100, y=480) \
         .add()
 
     pdf.save("output.pdf")
@@ -137,7 +137,7 @@ with PDFDancer.open("document.pdf") as pdf:
         pdf.new_paragraph() \
             .text("Using embedded font") \
             .font(font.name, font.size) \
-            .at(page_number=0, x=100, y=400) \
+            .at(page_number=1, x=100, y=400) \
             .add()
 
     pdf.save("output.pdf")
@@ -211,7 +211,7 @@ with PDFDancer.open("document.pdf") as pdf:
         pdf.new_paragraph() \
             .text("Text with service font") \
             .font(font.name, font.size) \
-            .at(page_number=0, x=300, y=500) \
+            .at(page_number=1, x=300, y=500) \
             .add()
 
     pdf.save("output.pdf")

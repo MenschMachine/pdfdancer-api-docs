@@ -919,7 +919,7 @@ position = Position.at_page_coordinates(page=0, x=100, y=200)
 
 # Create position with bounding rect
 position = Position(
-    page_number=0,
+    page_number=1,
     bounding_rect={"x": 100, "y": 200, "width": 50, "height": 30},
     mode=PositionMode.INTERSECT
 )
@@ -1071,7 +1071,7 @@ Use `new_*` methods to add new content:
 # Add new content
 pdf.new_paragraph() \
     .text("New content") \
-    .at(page_number=0, x=100, y=500) \
+    .at(page_number=1, x=100, y=500) \
     .add()
 
 pdf.new_image() \
@@ -1096,7 +1096,7 @@ pdf.new_paragraph() \
     .font("Helvetica", 12) \
     .color(Color(0, 0, 0)) \
     .line_spacing(1.5) \
-    .at(page_number=0, x=100, y=500) \
+    .at(page_number=1, x=100, y=500) \
     .add()
 
 # Edit builder

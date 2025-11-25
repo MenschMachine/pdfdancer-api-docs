@@ -51,26 +51,26 @@ with PDFDancer.open("document.pdf") as pdf:
         .text("Helvetica Bold text") \
         .font(StandardFonts.HELVETICA_BOLD.value, 16) \
         .color(Color(255, 0, 0)) \
-        .at(page_number=0, x=100, y=500) \
+        .at(page_number=1, x=100, y=500) \
         .add()
 
     pdf.new_paragraph() \
         .text("Times Roman text") \
         .font(StandardFonts.TIMES_ROMAN.value, 14) \
-        .at(page_number=0, x=100, y=480) \
+        .at(page_number=1, x=100, y=480) \
         .add()
 
     pdf.new_paragraph() \
         .text("Courier monospace code") \
         .font(StandardFonts.COURIER_BOLD.value, 12) \
-        .at(page_number=0, x=100, y=460) \
+        .at(page_number=1, x=100, y=460) \
         .add()
 
     # You can also use font names directly as strings
     pdf.new_paragraph() \
         .text("Direct font name") \
         .font("Helvetica", 12) \
-        .at(page_number=0, x=100, y=440) \
+        .at(page_number=1, x=100, y=440) \
         .add()
 
     pdf.save("output.pdf")
@@ -373,7 +373,7 @@ with PDFDancer.open("document.pdf") as pdf:
         .font_file(ttf_path, 24) \
         .line_spacing(1.8) \
         .color(Color(0, 0, 255)) \
-        .at(page_number=0, x=300, y=500) \
+        .at(page_number=1, x=300, y=500) \
         .add()
 
     pdf.save("output.pdf")
@@ -451,7 +451,7 @@ with PDFDancer.open("document.pdf") as pdf:
         pdf.new_paragraph() \
             .text("Text with service font") \
             .font(font.name, font.size) \
-            .at(page_number=0, x=300, y=500) \
+            .at(page_number=1, x=300, y=500) \
             .add()
 
     pdf.save("output.pdf")
@@ -518,7 +518,7 @@ with PDFDancer.open("document.pdf") as pdf:
     pdf.new_paragraph() \
         .text("Text with registered font") \
         .font("CustomFont", 14) \
-        .at(page_number=0, x=100, y=500) \
+        .at(page_number=1, x=100, y=500) \
         .add()
 
     pdf.save("output.pdf")
@@ -574,14 +574,14 @@ with PDFDancer.open("document.pdf") as pdf:
         .text("Large heading") \
         .font(StandardFonts.HELVETICA_BOLD.value, 24) \
         .color(Color(0, 0, 0)) \
-        .at(page_number=0, x=100, y=700) \
+        .at(page_number=1, x=100, y=700) \
         .add()
 
     # Normal body text with Times Roman
     pdf.new_paragraph() \
         .text("Normal body text in Times Roman") \
         .font(StandardFonts.TIMES_ROMAN.value, 12) \
-        .at(page_number=0, x=100, y=660) \
+        .at(page_number=1, x=100, y=660) \
         .add()
 
     # Monospace code example with Courier
@@ -590,7 +590,7 @@ with PDFDancer.open("document.pdf") as pdf:
         .font(StandardFonts.COURIER_BOLD.value, 11) \
         .line_spacing(1.5) \
         .color(Color(40, 40, 40)) \
-        .at(page_number=0, x=100, y=620) \
+        .at(page_number=1, x=100, y=620) \
         .add()
 
     # Small footnote
@@ -598,7 +598,7 @@ with PDFDancer.open("document.pdf") as pdf:
         .text("Small footnote") \
         .font(StandardFonts.HELVETICA.value, 8) \
         .color(Color(128, 128, 128)) \
-        .at(page_number=0, x=100, y=580) \
+        .at(page_number=1, x=100, y=580) \
         .add()
 
     pdf.save("output.pdf")

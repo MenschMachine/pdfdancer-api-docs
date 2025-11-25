@@ -50,35 +50,35 @@ with PDFDancer.open("document.pdf") as pdf:
     pdf.new_paragraph() \
         .text("Bottom Left") \
         .font("Helvetica", 10) \
-        .at(page_number=0, x=10, y=10) \
+        .at(page_number=1, x=10, y=10) \
         .add()
 
     # Top-left corner (for Letter size: 792pt height)
     pdf.new_paragraph() \
         .text("Top Left") \
         .font("Helvetica", 10) \
-        .at(page_number=0, x=10, y=782) \
+        .at(page_number=1, x=10, y=782) \
         .add()
 
     # Center of page (for Letter size: 612×792)
     pdf.new_paragraph() \
         .text("Center") \
         .font("Helvetica", 10) \
-        .at(page_number=0, x=306, y=396) \
+        .at(page_number=1, x=306, y=396) \
         .add()
 
     # Top-right corner
     pdf.new_paragraph() \
         .text("Top Right") \
         .font("Helvetica", 10) \
-        .at(page_number=0, x=552, y=782) \
+        .at(page_number=1, x=552, y=782) \
         .add()
 
     # Bottom-right corner
     pdf.new_paragraph() \
         .text("Bottom Right") \
         .font("Helvetica", 10) \
-        .at(page_number=0, x=552, y=10) \
+        .at(page_number=1, x=552, y=10) \
         .add()
 
     pdf.save("output.pdf")
@@ -336,7 +336,7 @@ with PDFDancer.open("document.pdf") as pdf:
     # Content within margins
     pdf.new_paragraph() \
         .text("Safe content area") \
-        .at(page_number=0, x=LEFT_MARGIN, y=PAGE_HEIGHT - TOP_MARGIN) \
+        .at(page_number=1, x=LEFT_MARGIN, y=PAGE_HEIGHT - TOP_MARGIN) \
         .add()
 
     pdf.save("output.pdf")
