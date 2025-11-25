@@ -24,14 +24,14 @@ from pdfdancer import PDFDancer
 # Recommended: Use context manager for automatic cleanup
 with PDFDancer.open("document.pdf") as pdf:
     # Perform operations
-    pdf.page(0).select_paragraphs()[0].delete()
+    pdf.page(1).select_paragraphs()[0].delete()
     pdf.save("output.pdf")
 # Session automatically closed
 
 # Manual management (not recommended)
 pdf = PDFDancer.open("document.pdf")
 try:
-    pdf.page(0).select_paragraphs()[0].delete()
+    pdf.page(1).select_paragraphs()[0].delete()
     pdf.save("output.pdf")
 finally:
     pdf.close()  # Must manually close
@@ -57,7 +57,7 @@ import { PDFDancer } from 'pdfdancer-client-typescript';
 const pdf = await PDFDancer.open('document.pdf');
 
 try {
-  const paragraphs = await pdf.page(0).selectParagraphs();
+  const paragraphs = await pdf.page(1).selectParagraphs();
   if (paragraphs.length > 0) {
     await paragraphs[0].delete();
   }
@@ -80,7 +80,7 @@ import java.util.List;
 // Java uses try-with-resources for automatic cleanup
 try (PDFDancer pdf = PDFDancer.createSession("document.pdf")) {
     // Perform operations
-    List<ParagraphRef> paragraphs = pdf.page(0).selectParagraphs();
+    List<ParagraphRef> paragraphs = pdf.page(1).selectParagraphs();
     if (!paragraphs.isEmpty()) {
         paragraphs.get(0).delete();
     }
@@ -115,7 +115,7 @@ with PDFDancer.open("document.pdf") as pdf:
         pdf.new_paragraph() \
             .text("Text with service font") \
             .font(font.name, font.size) \
-            .at(page_index=0, x=100, y=500) \
+            .at(page_number=0, x=100, y=500) \
             .add()
 
     pdf.save("output.pdf")
@@ -128,7 +128,7 @@ with PDFDancer.open("document.pdf") as pdf:
 // TypeScript client uses standard font names directly
 const pdf = await PDFDancer.open('document.pdf');
 
-await pdf.page(0).newParagraph()
+await pdf.page(1).newParagraph()
   .text('Text with standard font')
   .font('Roboto-Regular', 12)
   .at(100, 500)
@@ -143,7 +143,7 @@ await pdf.save('output.pdf');
 ```java
 // Java client uses standard font names directly
 try (PDFDancer pdf = PDFDancer.createSession("document.pdf")) {
-    pdf.page(0).newParagraph()
+    pdf.page(1).newParagraph()
         .text("Text with standard font")
         .font("Roboto-Regular", 12)
         .at(100, 500)
@@ -174,7 +174,7 @@ with PDFDancer.open("document.pdf") as pdf:
     pdf.new_paragraph() \
         .text("Text with custom font") \
         .font("CustomFont", 14) \
-        .at(page_index=0, x=100, y=500) \
+        .at(page_number=0, x=100, y=500) \
         .add()
 
     pdf.save("output.pdf")
@@ -193,7 +193,7 @@ const pdf = await PDFDancer.open('document.pdf');
 const fontBytes = await fs.readFile('fonts/CustomFont.ttf');
 
 // Use the custom font directly with fontFile()
-await pdf.page(0).newParagraph()
+await pdf.page(1).newParagraph()
   .text('Text with custom font')
   .fontFile(fontBytes, 14)
   .at(100, 500)
@@ -214,7 +214,7 @@ try (PDFDancer pdf = PDFDancer.createSession("document.pdf")) {
     byte[] fontBytes = Files.readAllBytes(Path.of("fonts/CustomFont.ttf"));
 
     // Use the custom font directly with fontFile()
-    pdf.page(0).newParagraph()
+    pdf.page(1).newParagraph()
         .text("Text with custom font")
         .fontFile(fontBytes, 14)
         .at(100, 500)
@@ -246,7 +246,7 @@ def process_invoice(input_path: Path, output_dir: Path) -> None:
             .text("PAID") \
             .font("Helvetica-Bold", 72) \
             .color(Color(0, 200, 0)) \
-            .at(page_index=0, x=200, y=400) \
+            .at(page_number=0, x=200, y=400) \
             .add()
 
         # Save to output directory
@@ -299,7 +299,7 @@ async function processInvoice(
   const pdf = await PDFDancer.open(inputPath);
 
   // Add PAID watermark
-  await pdf.page(0).newParagraph()
+  await pdf.page(1).newParagraph()
     .text('PAID')
     .font('Helvetica-Bold', 72)
     .color(new Color(0, 200, 0))
@@ -360,7 +360,7 @@ public class BatchProcessor {
         // Process a single invoice PDF
         try (PDFDancer pdf = PDFDancer.createSession(inputPath.toString())) {
             // Add PAID watermark
-            pdf.page(0).newParagraph()
+            pdf.page(1).newParagraph()
                 .text("PAID")
                 .font("Helvetica-Bold", 72)
                 .color(new Color(0, 200, 0))
@@ -562,7 +562,7 @@ def generate_certificate(
         # Add signature image
         pdf.new_image() \
             .from_file("signature.png") \
-            .at(page=0, x=400, y=100) \
+            .at(page=1, x=400, y=100) \
             .add()
 
         pdf.save(output_path)
@@ -618,7 +618,7 @@ async function generateCertificate(
   // Add signature image
   await pdf.newImage()
     .fromFile('signature.png')
-    .at(0, 400, 100)
+    .at(1, 400, 100)
     .add();
 
   await pdf.save(outputPath);
@@ -673,7 +673,7 @@ public class CertificateGenerator {
             // Add signature image
             pdf.newImage()
                 .fromFile("signature.png")
-                .at(0, 400, 100)
+                .at(1, 400, 100)
                 .add();
 
             pdf.save(outputPath);
@@ -718,12 +718,12 @@ from pdfdancer import PDFDancer, Color
 # Less efficient: Multiple API calls
 with PDFDancer.open("document.pdf") as pdf:
     for i in range(10):
-        para = pdf.page(0).select_paragraphs()[i]
+        para = pdf.page(1).select_paragraphs()[i]
         para.delete()  # 10 separate API calls
 
 # More efficient: Batch operations
 with PDFDancer.open("document.pdf") as pdf:
-    paragraphs = pdf.page(0).select_paragraphs()[:10]  # Single fetch
+    paragraphs = pdf.page(1).select_paragraphs()[:10]  # Single fetch
     for para in paragraphs:
         para.delete()  # Batch deletions
 ```
@@ -735,13 +735,13 @@ with PDFDancer.open("document.pdf") as pdf:
 // Less efficient: Multiple API calls
 const pdf = await PDFDancer.open('document.pdf');
 for (let i = 0; i < 10; i++) {
-  const paragraphs = await pdf.page(0).selectParagraphs();
+  const paragraphs = await pdf.page(1).selectParagraphs();
   await paragraphs[i].delete();  // Multiple fetches
 }
 
 // More efficient: Batch operations
 const pdf2 = await PDFDancer.open('document.pdf');
-const paragraphs = await pdf2.page(0).selectParagraphs();  // Single fetch
+const paragraphs = await pdf2.page(1).selectParagraphs();  // Single fetch
 for (const para of paragraphs.slice(0, 10)) {
   await para.delete();  // Batch deletions
 }
@@ -754,14 +754,14 @@ for (const para of paragraphs.slice(0, 10)) {
 // Less efficient: Multiple API calls
 try (PDFDancer pdf = PDFDancer.createSession("document.pdf")) {
     for (int i = 0; i < 10; i++) {
-        List<ParagraphRef> paragraphs = pdf.page(0).selectParagraphs();
+        List<ParagraphRef> paragraphs = pdf.page(1).selectParagraphs();
         paragraphs.get(i).delete();  // Multiple separate API calls
     }
 }
 
 // More efficient: Batch operations
 try (PDFDancer pdf = PDFDancer.createSession("document.pdf")) {
-    List<ParagraphRef> paragraphs = pdf.page(0).selectParagraphs();  // Single fetch
+    List<ParagraphRef> paragraphs = pdf.page(1).selectParagraphs();  // Single fetch
     for (int i = 0; i < 10 && i < paragraphs.size(); i++) {
         paragraphs.get(i).delete();  // Batch deletions
     }
@@ -789,13 +789,13 @@ with PDFDancer.open("document.pdf") as pdf:
     # Operation 2: Add watermark
     pdf.new_paragraph() \
         .text("CONFIDENTIAL") \
-        .at(page_index=0, x=200, y=400) \
+        .at(page_number=0, x=200, y=400) \
         .add()
 
     # Operation 3: Add image
     pdf.new_image() \
         .from_file("logo.png") \
-        .at(page=0, x=50, y=750) \
+        .at(page=1, x=50, y=750) \
         .add()
 
     # Single save operation
@@ -816,7 +816,7 @@ if (paragraphs.length > 0) {
 }
 
 // Operation 2: Add watermark
-await pdf.page(0).newParagraph()
+await pdf.page(1).newParagraph()
   .text('CONFIDENTIAL')
   .at(200, 400)
   .apply();
@@ -824,7 +824,7 @@ await pdf.page(0).newParagraph()
 // Operation 3: Add image
 await pdf.newImage()
   .fromFile('logo.png')
-  .at(0, 50, 750)
+  .at(1, 50, 750)
   .add();
 
 // Single save operation
@@ -844,7 +844,7 @@ try (PDFDancer pdf = PDFDancer.createSession("document.pdf")) {
     }
 
     // Operation 2: Add watermark
-    pdf.page(0).newParagraph()
+    pdf.page(1).newParagraph()
         .text("CONFIDENTIAL")
         .at(200, 400)
         .apply();
@@ -852,7 +852,7 @@ try (PDFDancer pdf = PDFDancer.createSession("document.pdf")) {
     // Operation 3: Add image
     pdf.newImage()
         .fromFile("logo.png")
-        .at(0, 50, 750)
+        .at(1, 50, 750)
         .add();
 
     // Single save operation

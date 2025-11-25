@@ -50,35 +50,35 @@ with PDFDancer.open("document.pdf") as pdf:
     pdf.new_paragraph() \
         .text("Bottom Left") \
         .font("Helvetica", 10) \
-        .at(page_index=0, x=10, y=10) \
+        .at(page_number=0, x=10, y=10) \
         .add()
 
     # Top-left corner (for Letter size: 792pt height)
     pdf.new_paragraph() \
         .text("Top Left") \
         .font("Helvetica", 10) \
-        .at(page_index=0, x=10, y=782) \
+        .at(page_number=0, x=10, y=782) \
         .add()
 
     # Center of page (for Letter size: 612×792)
     pdf.new_paragraph() \
         .text("Center") \
         .font("Helvetica", 10) \
-        .at(page_index=0, x=306, y=396) \
+        .at(page_number=0, x=306, y=396) \
         .add()
 
     # Top-right corner
     pdf.new_paragraph() \
         .text("Top Right") \
         .font("Helvetica", 10) \
-        .at(page_index=0, x=552, y=782) \
+        .at(page_number=0, x=552, y=782) \
         .add()
 
     # Bottom-right corner
     pdf.new_paragraph() \
         .text("Bottom Right") \
         .font("Helvetica", 10) \
-        .at(page_index=0, x=552, y=10) \
+        .at(page_number=0, x=552, y=10) \
         .add()
 
     pdf.save("output.pdf")
@@ -91,7 +91,7 @@ with PDFDancer.open("document.pdf") as pdf:
 import { PDFDancer } from 'pdfdancer-client-typescript';
 
 const pdf = await PDFDancer.open('document.pdf');
-const page = pdf.page(0);
+const page = pdf.page(1);
 
 // Bottom-left corner (0, 0)
 await page.newParagraph()
@@ -141,35 +141,35 @@ PDFDancer pdf = PDFDancer.createSession("document.pdf");
 pdf.newParagraph()
     .text("Bottom Left")
     .font("Helvetica", 10)
-    .at(0, 10, 10)
+    .at(1, 10, 10)
     .add();
 
 // Top-left corner (for Letter size: 792pt height)
 pdf.newParagraph()
     .text("Top Left")
     .font("Helvetica", 10)
-    .at(0, 10, 782)
+    .at(1, 10, 782)
     .add();
 
 // Center of page (for Letter size: 612×792)
 pdf.newParagraph()
     .text("Center")
     .font("Helvetica", 10)
-    .at(0, 306, 396)
+    .at(1, 306, 396)
     .add();
 
 // Top-right corner
 pdf.newParagraph()
     .text("Top Right")
     .font("Helvetica", 10)
-    .at(0, 552, 782)
+    .at(1, 552, 782)
     .add();
 
 // Bottom-right corner
 pdf.newParagraph()
     .text("Bottom Right")
     .font("Helvetica", 10)
-    .at(0, 552, 10)
+    .at(1, 552, 10)
     .add();
 
 pdf.save("output.pdf");
@@ -220,7 +220,7 @@ const y = position.getY();
 const page = position.getPageNumber();
 
 // Use position for selection
-const paragraphs = await pdf.page(0).selectParagraphsAt(x!, y!);
+const paragraphs = await pdf.page(1).selectParagraphsAt(x!, y!);
 ```
 
   </TabItem>
@@ -232,14 +232,14 @@ import com.tfc.pdf.pdfdancer.api.common.model.*;
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
 
 // Get position at specific coordinates
-Position position = pdf.page(0).selectParagraphsAt(100, 200).get(0).getPosition();
+Position position = pdf.page(1).selectParagraphsAt(100, 200).get(0).getPosition();
 
 // Access position properties
 Double x = position.getX();
 Double y = position.getY();
 
 // Use position for selection
-List<TextParagraphReference> paragraphs = pdf.page(0).selectParagraphsAt(x, y);
+List<TextParagraphReference> paragraphs = pdf.page(1).selectParagraphsAt(x, y);
 ```
 
   </TabItem>
@@ -258,7 +258,7 @@ Every PDF element has a bounding rectangle that defines its position and size.
 from pdfdancer import PDFDancer
 
 with PDFDancer.open("document.pdf") as pdf:
-    paragraphs = pdf.page(0).select_paragraphs()
+    paragraphs = pdf.page(1).select_paragraphs()
 
     for para in paragraphs:
         rect = para.position.bounding_rect
@@ -271,7 +271,7 @@ with PDFDancer.open("document.pdf") as pdf:
 
 ```typescript
 const pdf = await PDFDancer.open('document.pdf');
-const paragraphs = await pdf.page(0).selectParagraphs();
+const paragraphs = await pdf.page(1).selectParagraphs();
 
 for (const para of paragraphs) {
   const rect = para.position.boundingRect;
@@ -288,7 +288,7 @@ import com.tfc.pdf.pdfdancer.api.common.model.*;
 import java.util.List;
 
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
-List<TextParagraphReference> paragraphs = pdf.page(0).selectParagraphs();
+List<TextParagraphReference> paragraphs = pdf.page(1).selectParagraphs();
 
 for (TextParagraphReference para : paragraphs) {
     Position pos = para.getPosition();
@@ -336,7 +336,7 @@ with PDFDancer.open("document.pdf") as pdf:
     # Content within margins
     pdf.new_paragraph() \
         .text("Safe content area") \
-        .at(page_index=0, x=LEFT_MARGIN, y=PAGE_HEIGHT - TOP_MARGIN) \
+        .at(page_number=0, x=LEFT_MARGIN, y=PAGE_HEIGHT - TOP_MARGIN) \
         .add()
 
     pdf.save("output.pdf")
@@ -358,7 +358,7 @@ const PAGE_HEIGHT = 792;   // Letter height
 const pdf = await PDFDancer.open('document.pdf');
 
 // Content within margins
-await pdf.page(0).newParagraph()
+await pdf.page(1).newParagraph()
   .text('Safe content area')
   .at(LEFT_MARGIN, PAGE_HEIGHT - TOP_MARGIN)
   .apply();

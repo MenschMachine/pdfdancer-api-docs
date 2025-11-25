@@ -6,17 +6,17 @@ description: Current SDK versions used in this documentation
 
 # SDK Versions
 
-**Documentation Version**: 3.3 (November 20, 2025)
+**Documentation Version**: 4.0 (November 25, 2025)
 
 This documentation is based on the following SDK versions:
 
 ## Python SDK
 
 - **Repository**: [pdfdancer-client-python](https://github.com/MenschMachine/pdfdancer-client-python)
-- **Version**: 0.2.28
-- **Commit**: `720afd2a3e24cc88fb8c3e596cd35ee4208a932b`
-- **Commit Date**: November 20, 2025
-- **Commit Message**: Merge branch 'claude/debug-pdf-font-spacing-0191CUHcEE1oFRj3sKt93N3n'
+- **Version**: 0.3.0
+- **Commit**: `05dcae0c71c9d4badc62a3ad588687a5ca856365`
+- **Commit Date**: November 25, 2025
+- **Commit Message**: Merge pull request #8 from MenschMachine/api-v1-migration
 - **Documentation Coverage**:
   - ✅ Anonymous token support (automatic fallback authentication)
   - ✅ Snapshot API (`get_document_snapshot()`, `get_page_snapshot()`, `page.get_snapshot()`)
@@ -28,20 +28,19 @@ This documentation is based on the following SDK versions:
   - ✅ Select all elements helper (`select_elements()`)
   - ✅ Page size and orientation properties (`page.page_size`, `page.orientation`)
   - ✅ Context manager pattern for text editing (recommended approach)
-- **Key Changes Since Last Version** (0.2.24 → 0.2.28):
-  - **Full TextLineEdit functionality**: Complete implementation of text line editing with font and color changes
-  - **Explicit text/font preservation**: Text lines now explicitly preserve text content and font when modified
-  - **Line spacing validation**: Added hard failure for unsupported line spacing modifications to prevent unexpected behavior
-  - **Improved text line editing**: Enhanced TextLineBuilder with proper text and font handling
-  - **Test improvements**: Updated e2e tests to accommodate baseline vs bounding box differences
-  - **OpenAPI specification updates**: Updated to reflect latest API changes
+  - ✅ **Standard page numbering** (`page_number` instead of `page_index`)
+- **Key Changes Since Last Version** (0.2.28 → 0.3.0):
+  - **BREAKING: Standard page numbering**: Page numbers now use standard numbering (page 1 is the first page)
+  - **BREAKING: Renamed `page_index` to `page_number`**: All API methods and properties now use `page_number`
+  - **Removed line spacing for text lines**: Line spacing changes are only supported on paragraphs, not individual text lines
+  - **Code formatting**: Consistent indentation and whitespace throughout
 
 ## TypeScript SDK
 
 - **Repository**: [pdfdancer-client-typescript](https://github.com/MenschMachine/pdfdancer-client-typescript)
-- **Version**: 1.0.21 (tagged: v1.0.21)
-- **Commit**: `13a7d1671eb1c970f26ca739a81bfcbf13f78bfa`
-- **Commit Date**: November 20, 2025
+- **Version**: 2.0.0 (tagged: v1.0.23)
+- **Commit**: `53d4ae46df7aded2a1e3794e0167583aca088ad3`
+- **Commit Date**: November 25, 2025
 - **Documentation Coverage**:
   - ✅ Anonymous token support (automatic fallback authentication)
   - ✅ Snapshot API (`getDocumentSnapshot()`, `getPageSnapshot()`, `page.getSnapshot()`)
@@ -53,23 +52,23 @@ This documentation is based on the following SDK versions:
   - ✅ Page size and orientation properties (`page.pageSize`, `page.orientation`)
   - ✅ Form field selection naming clarified (document-level: `selectFieldsByName()`, page-level: `selectFormFieldsByName()`)
   - ✅ Corrected method name: `getBytes()` (not `getPdfFile()`)
-- **Key Changes Since Last Version** (1.0.17 → 1.0.22):
-  - **PathBuilder implementation**: New `PathBuilder` class for creating complex vector paths programmatically
-  - **Test drawing helpers**: Added comprehensive visual debugging utilities for test development
-  - **Memory exhaustion fixes**: Resolved memory issues in test drawing helpers
-  - **Position error fixes**: Corrected path segment position handling and inheritance from page snapshots
-  - **localStorage compatibility**: Added function check for `localStorage.getItem` in Node.js environments
-  - **OpenAPI definition updates**: Updated specifications to reflect latest API changes
-  - **CI improvements**: Set max-parallel to reduce resource contention, added test report uploads on failure
-  - **Test reliability**: Relaxed bounding box assertions and element count expectations for more stable tests
+  - ✅ **Standard page numbering** (`pageNumber` instead of `pageIndex`)
+  - ✅ **Flexible PDF input types** (File, ArrayBuffer, filepath string, Uint8Array)
+  - ✅ **Automatic dotenv loading**
+- **Key Changes Since Last Version** (1.0.21 → 2.0.0):
+  - **BREAKING: Standard page numbering**: Page numbers now use standard numbering (page 1 is the first page)
+  - **BREAKING: Renamed `pageIndex` to `pageNumber`**: All API methods and properties now use `pageNumber`
+  - **Flexible PDF input**: `PDFDancer.open()` now accepts `File`, `ArrayBuffer`, filepath strings, and `Uint8Array`
+  - **Automatic dotenv support**: Environment variables are automatically loaded from `.env` files
+  - **PDF file existence check**: Added validation for filepath string inputs
 
 ## Java SDK
 
 - **Repository**: [pdfdancer-client-java](https://github.com/MenschMachine/pdfdancer-client-java)
-- **Version**: 0.1.8
-- **Commit**: `ac3bd98e662495ecc5fd8a2fe1aa82cc656ba9ab`
-- **Commit Date**: November 20, 2025
-- **Commit Message**: Merge pull request #8 from MenschMachine/claude/add-java-matrix-ci-01QNFFTZzfdTZeUzi6N3BCVa
+- **Version**: 0.2.0
+- **Commit**: `a0170ecdbfed17c5a87dba93b0a171bf19947efb`
+- **Commit Date**: November 25, 2025
+- **Commit Message**: Merge pull request #10 from MenschMachine/api-v1-migration
 - **Documentation Coverage**:
   - ✅ Core PDF manipulation (open, create, save)
   - ✅ Text operations (paragraphs, text lines)
@@ -87,6 +86,7 @@ This documentation is based on the following SDK versions:
   - ✅ Color model support
   - ✅ Maven Central publishing support (automated and manual bundle upload)
   - ✅ OpenAPI specification for REST API integration
+  - ✅ **Standard page numbering** (`pageNumber` instead of `pageIndex`)
 - **Requirements**:
   - **Java 11+** required (tested with Java 11, 17, 21, 23, 25)
   - Uses Gradle for build management
@@ -100,15 +100,12 @@ This documentation is based on the following SDK versions:
   - **Clean API design**: Mirrors Python and TypeScript SDKs with Java conventions
   - **Default API endpoint**: Now uses `https://api.pdfdancer.com`
   - **Maven Central distribution**: Published artifacts available for easy dependency management
-- **Key Changes Since Last Version** (0.1.3 → 0.1.7):
-  - **Text line modification support**: Full implementation of `TextLineEdit` with fluent builder pattern for rich text line editing
-  - **Text line selection methods**: Added `selectTextLinesMatching()` and `selectTextLineMatching()` for regex-based text line searches
-  - **Enhanced TextLineReference**: Added missing Font and Position imports, improved API consistency
-  - **OpenAPI specification**: Added complete OpenAPI specification in `docs/openapi.yml`
-  - **Java 25 support**: Extended CI matrix to include Java 25 testing
-  - **Base URL refactoring**: Extracted base URL from DEFAULT_BASE_URI to `getBaseUrl()` method for better configurability
-  - **Test improvements**: Relaxed exact element count assertions and updated position value assertions to use ranges
-  - **Build version bumps**: Progressive version updates through 0.1.4, 0.1.5, 0.1.6, and 0.1.7
+- **Key Changes Since Last Version** (0.1.8 → 0.2.0):
+  - **BREAKING: Standard page numbering**: Page numbers now use standard numbering (page 1 is the first page)
+  - **BREAKING: Renamed `pageIndex` to `pageNumber`**: All API methods and properties now use `pageNumber`
+  - **BREAKING: Renamed `getPageIndex()` to `getPageNumber()`**: Updated getter methods accordingly
+  - **Gradle caching**: Added Gradle download caching to CI workflows for faster builds
+  - **File extension refactoring**: Renamed file extensions from `.client` to `.pdf`
 
 ---
 
@@ -205,7 +202,7 @@ Update the version in your `build.gradle.kts`:
 
 ```kotlin
 dependencies {
-    implementation("com.pdfdancer.client:pdfdancer-client-java:0.1.7")
+    implementation("com.pdfdancer.client:pdfdancer-client-java:0.2.0")
 }
 ```
 
@@ -223,7 +220,7 @@ Update the version in your `pom.xml`:
 <dependency>
     <groupId>com.pdfdancer.client</groupId>
     <artifactId>pdfdancer-client-java</artifactId>
-    <version>0.1.7</version>
+    <version>0.2.0</version>
 </dependency>
 ```
 
@@ -239,6 +236,42 @@ mvn clean install -U
 ---
 
 ## Documentation Update History
+
+### Version 4.0 - November 25, 2025
+
+**API V1 Migration: Breaking Changes for Page Indexing**
+
+Updated documentation to reflect major breaking changes in all SDKs:
+
+**Breaking Changes:**
+
+1. **Standard Page Numbering** (All SDKs)
+   - Page numbers now use standard numbering (page 1 is the first page)
+   - `page(0)` → `page(1)` for the first page
+   - All documentation examples updated
+
+2. **Renamed Properties and Methods**
+   - Python: `page_index` → `page_number`, `position.page_index` → `position.page_number`
+   - TypeScript: `pageIndex` → `pageNumber`, `position.pageIndex` → `position.pageNumber`
+   - Java: `getPageIndex()` → `getPageNumber()`, `pageIndex` → `pageNumber`
+
+3. **Removed Features**
+   - Python: Removed `line_spacing()` method from `TextLineEdit` (only supported on paragraphs)
+
+**New Features:**
+
+1. **TypeScript: Flexible PDF Input Types**
+   - `PDFDancer.open()` now accepts `File`, `ArrayBuffer`, filepath strings, and `Uint8Array`
+
+2. **TypeScript: Automatic dotenv Support**
+   - Environment variables automatically loaded from `.env` files
+
+**Files Modified:**
+- All documentation files updated for Standard page numbering
+- `docs/sdk-versions.md` - Version information updated
+- Code samples across all 20+ documentation files updated
+
+---
 
 ### Version 3.0 - October 30, 2025
 

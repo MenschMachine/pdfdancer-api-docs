@@ -31,13 +31,13 @@ with PDFDancer.open("document.pdf") as pdf:
     pdf.new_paragraph() \
         .text("Text with Roboto font") \
         .font("Roboto-Regular", 14) \
-        .at(page_index=0, x=100, y=500) \
+        .at(page_number=0, x=100, y=500) \
         .add()
 
     pdf.new_paragraph() \
         .text("Code with JetBrains Mono") \
         .font("JetBrainsMono-Regular", 12) \
-        .at(page_index=0, x=100, y=480) \
+        .at(page_number=0, x=100, y=480) \
         .add()
 
     pdf.save("output.pdf")
@@ -52,13 +52,13 @@ import { PDFDancer } from 'pdfdancer-client-typescript';
 const pdf = await PDFDancer.open('document.pdf');
 
 // Use available service fonts directly by name
-await pdf.page(0).newParagraph()
+await pdf.page(1).newParagraph()
   .text('Text with Roboto font')
   .font('Roboto-Regular', 14)
   .at(100, 500)
   .apply();
 
-await pdf.page(0).newParagraph()
+await pdf.page(1).newParagraph()
   .text('Code with JetBrains Mono')
   .font('JetBrainsMono-Regular', 12)
   .at(100, 480)
@@ -79,13 +79,13 @@ PDFDancer pdf = PDFDancer.createSession("document.pdf");
 pdf.newParagraph()
     .text("Text with Roboto font")
     .font("Roboto-Regular", 14)
-    .at(0, 100, 500)
+    .at(1, 100, 500)
     .add();
 
 pdf.newParagraph()
     .text("Code with JetBrains Mono")
     .font("JetBrainsMono-Regular", 12)
-    .at(0, 100, 480)
+    .at(1, 100, 480)
     .add();
 
 pdf.save("output.pdf");
@@ -137,7 +137,7 @@ with PDFDancer.open("document.pdf") as pdf:
         pdf.new_paragraph() \
             .text("Using embedded font") \
             .font(font.name, font.size) \
-            .at(page_index=0, x=100, y=400) \
+            .at(page_number=0, x=100, y=400) \
             .add()
 
     pdf.save("output.pdf")
@@ -152,7 +152,7 @@ import { PDFDancer } from 'pdfdancer-client-typescript';
 const pdf = await PDFDancer.open('document.pdf');
 
 // Use embedded fonts by name
-await pdf.page(0).newParagraph()
+await pdf.page(1).newParagraph()
   .text('Using embedded font')
   .font('Arial', 12)
   .at(100, 400)
@@ -179,7 +179,7 @@ if (!embeddedFonts.isEmpty()) {
     pdf.newParagraph()
         .text("Using embedded font")
         .font(font.getName(), font.getSize())
-        .at(0, 100, 400)
+        .at(1, 100, 400)
         .add();
 }
 
@@ -211,7 +211,7 @@ with PDFDancer.open("document.pdf") as pdf:
         pdf.new_paragraph() \
             .text("Text with service font") \
             .font(font.name, font.size) \
-            .at(page_index=0, x=300, y=500) \
+            .at(page_number=0, x=300, y=500) \
             .add()
 
     pdf.save("output.pdf")
@@ -226,7 +226,7 @@ import { PDFDancer } from 'pdfdancer-client-typescript';
 const pdf = await PDFDancer.open('document.pdf');
 
 // TypeScript client uses font names directly
-await pdf.page(0).newParagraph()
+await pdf.page(1).newParagraph()
   .text('Text with service font')
   .font('Roboto-Regular', 14)
   .at(300, 500)
@@ -256,7 +256,7 @@ if (!fonts.isEmpty()) {
     pdf.newParagraph()
         .text("Text with service font")
         .font(font.getName(), font.getSize())
-        .at(0, 300, 500)
+        .at(1, 300, 500)
         .add();
 }
 

@@ -117,7 +117,7 @@ Extract all text from a single page:
 ```python
 with PDFDancer.open("document.pdf") as pdf:
     # Extract text from first page
-    page_paragraphs = pdf.page(0).select_paragraphs()
+    page_paragraphs = pdf.page(1).select_paragraphs()
     page_text = "\n\n".join([para.text for para in page_paragraphs])
     print(f"Page 1 text:\n{page_text}")
 
@@ -136,7 +136,7 @@ with PDFDancer.open("document.pdf") as pdf:
 const pdf = await PDFDancer.open('document.pdf');
 
 // Extract text from first page
-const pageParagraphs = await pdf.page(0).selectParagraphs();
+const pageParagraphs = await pdf.page(1).selectParagraphs();
 const pageText = pageParagraphs.map(para => para.text).join('\n\n');
 console.log(`Page 1 text:\n${pageText}`);
 
@@ -156,7 +156,7 @@ for (const pageNum of pagesToExtract) {
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
 
 // Extract text from first page
-List<Paragraph> pageParagraphs = pdf.page(0).selectParagraphs();
+List<Paragraph> pageParagraphs = pdf.page(1).selectParagraphs();
 String pageText = pageParagraphs.stream()
     .map(Paragraph::getText)
     .collect(Collectors.joining("\n\n"));
@@ -187,19 +187,19 @@ Extract text from a range of consecutive pages:
 from pdfdancer import PDFDancer
 
 def extract_page_range(pdf_path: str, start_page: int, end_page: int) -> str:
-    """Extract text from a range of pages (inclusive, 0-indexed)."""
+    """Extract text from a range of pages (inclusive)."""
     with PDFDancer.open(pdf_path) as pdf:
         extracted_text = []
 
         for page_num in range(start_page, end_page + 1):
             paragraphs = pdf.page(page_num).select_paragraphs()
             page_text = "\n\n".join([p.text for p in paragraphs])
-            extracted_text.append(f"--- Page {page_num + 1} ---\n{page_text}")
+            extracted_text.append(f"--- Page {page_num} ---\n{page_text}")
 
         return "\n\n\n".join(extracted_text)
 
-# Extract pages 2-5 (0-indexed: pages 1-4)
-text = extract_page_range("document.pdf", start_page=1, end_page=4)
+# Extract pages 2-5
+text = extract_page_range("document.pdf", start_page=2, end_page=5)
 print(text)
 ```
 
@@ -215,7 +215,7 @@ async function extractPageRange(
   endPage: number
 ): Promise<string> {
   /**
-   * Extract text from a range of pages (inclusive, 0-indexed).
+   * Extract text from a range of pages (inclusive).
    */
   const pdf = await PDFDancer.open('document.pdf');
   const extractedText: string[] = [];
@@ -223,14 +223,14 @@ async function extractPageRange(
   for (let pageNum = startPage; pageNum <= endPage; pageNum++) {
     const paragraphs = await pdf.page(pageNum).selectParagraphs();
     const pageText = paragraphs.map(p => p.text).join('\n\n');
-    extractedText.push(`--- Page ${pageNum + 1} ---\n${pageText}`);
+    extractedText.push(`--- Page ${pageNum} ---\n${pageText}`);
   }
 
   return extractedText.join('\n\n\n');
 }
 
-// Extract pages 2-5 (0-indexed: pages 1-4)
-const text = await extractPageRange('document.pdf', 1, 4);
+// Extract pages 2-5
+const text = await extractPageRange('document.pdf', 2, 5);
 console.log(text);
 ```
 
@@ -245,7 +245,7 @@ import java.util.stream.Collectors;
 
 public class TextExtractor {
     /**
-     * Extract text from a range of pages (inclusive, 0-indexed).
+     * Extract text from a range of pages (inclusive).
      */
     public static String extractPageRange(String pdfPath, int startPage, int endPage) {
         try (PDFDancer pdf = PDFDancer.createSession(pdfPath)) {
@@ -256,16 +256,16 @@ public class TextExtractor {
                 String pageText = paragraphs.stream()
                     .map(Paragraph::getText)
                     .collect(Collectors.joining("\n\n"));
-                extractedText.add("--- Page " + (pageNum + 1) + " ---\n" + pageText);
+                extractedText.add("--- Page " + pageNum + " ---\n" + pageText);
             }
 
             return String.join("\n\n\n", extractedText);
         }
     }
 
-    // Extract pages 2-5 (0-indexed: pages 1-4)
+    // Extract pages 2-5
     public static void main(String[] args) {
-        String text = extractPageRange("document.pdf", 1, 4);
+        String text = extractPageRange("document.pdf", 2, 5);
         System.out.println(text);
     }
 }
@@ -293,7 +293,7 @@ with PDFDancer.open("document.pdf") as pdf:
         print(f"[{line.position.x():.1f}, {line.position.y():.1f}] {line.text}")
 
     # Extract lines from a specific page
-    page_lines = pdf.page(0).select_text_lines()
+    page_lines = pdf.page(1).select_text_lines()
     page_text = "\n".join([line.text for line in page_lines])
 
     print(f"\nPage text (line by line):\n{page_text}")
@@ -314,7 +314,7 @@ for (const line of allLines) {
 }
 
 // Extract lines from a specific page
-const pageLines = await pdf.page(0).selectTextLines();
+const pageLines = await pdf.page(1).selectTextLines();
 const pageText = pageLines.map(line => line.text).join('\n');
 
 console.log(`\nPage text (line by line):\n${pageText}`);
@@ -338,7 +338,7 @@ for (TextLine line : allLines) {
 }
 
 // Extract lines from a specific page
-List<TextLine> pageLines = pdf.page(0).selectTextLines();
+List<TextLine> pageLines = pdf.page(1).selectTextLines();
 String pageText = pageLines.stream()
     .map(TextLine::getText)
     .collect(Collectors.joining("\n"));
@@ -363,12 +363,12 @@ Extract text located at known positions on a page:
 ```python
 with PDFDancer.open("invoice.pdf") as pdf:
     # Extract invoice number at known position
-    invoice_num = pdf.page(0).select_paragraphs_at(x=450, y=750)
+    invoice_num = pdf.page(1).select_paragraphs_at(x=450, y=750)
     if invoice_num:
         print(f"Invoice: {invoice_num[0].text}")
 
     # Extract total amount at bottom right
-    total = pdf.page(0).select_paragraphs_at(x=450, y=100)
+    total = pdf.page(1).select_paragraphs_at(x=450, y=100)
     if total:
         print(f"Total: {total[0].text}")
 
@@ -381,7 +381,7 @@ with PDFDancer.open("invoice.pdf") as pdf:
 
     extracted_data = {}
     for field_name, (x, y) in fields.items():
-        elements = pdf.page(0).select_paragraphs_at(x=x, y=y)
+        elements = pdf.page(1).select_paragraphs_at(x=x, y=y)
         if elements:
             extracted_data[field_name] = elements[0].text
 
@@ -395,13 +395,13 @@ with PDFDancer.open("invoice.pdf") as pdf:
 const pdf = await PDFDancer.open('document.pdf');
 
 // Extract invoice number at known position
-const invoiceNum = await pdf.page(0).selectParagraphsAt(450, 750);
+const invoiceNum = await pdf.page(1).selectParagraphsAt(450, 750);
 if (invoiceNum.length > 0) {
   console.log(`Invoice: ${invoiceNum[0].text}`);
 }
 
 // Extract total amount at bottom right
-const total = await pdf.page(0).selectParagraphsAt(450, 100);
+const total = await pdf.page(1).selectParagraphsAt(450, 100);
 if (total.length > 0) {
   console.log(`Total: ${total[0].text}`);
 }
@@ -415,7 +415,7 @@ const fields: Record<string, [number, number]> = {
 
 const extractedData: Record<string, string> = {};
 for (const [fieldName, [x, y]] of Object.entries(fields)) {
-  const elements = await pdf.page(0).selectParagraphsAt(x, y);
+  const elements = await pdf.page(1).selectParagraphsAt(x, y);
   if (elements.length > 0) {
     extractedData[fieldName] = elements[0].text || '';
   }
@@ -434,13 +434,13 @@ import java.util.Map;
 PDFDancer pdf = PDFDancer.createSession("invoice.pdf");
 
 // Extract invoice number at known position
-List<Paragraph> invoiceNum = pdf.page(0).selectParagraphsAt(450, 750);
+List<Paragraph> invoiceNum = pdf.page(1).selectParagraphsAt(450, 750);
 if (!invoiceNum.isEmpty()) {
     System.out.println("Invoice: " + invoiceNum.get(0).getText());
 }
 
 // Extract total amount at bottom right
-List<Paragraph> total = pdf.page(0).selectParagraphsAt(450, 100);
+List<Paragraph> total = pdf.page(1).selectParagraphsAt(450, 100);
 if (!total.isEmpty()) {
     System.out.println("Total: " + total.get(0).getText());
 }
@@ -454,7 +454,7 @@ fields.put("amount", new int[]{450, 100});
 Map<String, String> extractedData = new HashMap<>();
 for (Map.Entry<String, int[]> entry : fields.entrySet()) {
     int[] coords = entry.getValue();
-    List<Paragraph> elements = pdf.page(0).selectParagraphsAt(coords[0], coords[1]);
+    List<Paragraph> elements = pdf.page(1).selectParagraphsAt(coords[0], coords[1]);
     if (!elements.isEmpty()) {
         extractedData.put(entry.getKey(), elements.get(0).getText());
     }
@@ -476,7 +476,7 @@ Extract all text within a specific area or bounding box:
 ```python
 with PDFDancer.open("document.pdf") as pdf:
     # Get all paragraphs on the page
-    all_paragraphs = pdf.page(0).select_paragraphs()
+    all_paragraphs = pdf.page(1).select_paragraphs()
 
     # Define region of interest (x, y, width, height)
     region_x, region_y = 100, 400
@@ -505,7 +505,7 @@ with PDFDancer.open("document.pdf") as pdf:
 const pdf = await PDFDancer.open('document.pdf');
 
 // Get all paragraphs on the page
-const allParagraphs = await pdf.page(0).selectParagraphs();
+const allParagraphs = await pdf.page(1).selectParagraphs();
 
 // Define region of interest (x, y, width, height)
 const regionX = 100, regionY = 400;
@@ -536,7 +536,7 @@ console.log(`Text in region:\n${regionText}`);
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
 
 // Get all paragraphs on the page
-List<Paragraph> allParagraphs = pdf.page(0).selectParagraphs();
+List<Paragraph> allParagraphs = pdf.page(1).selectParagraphs();
 
 // Define region of interest (x, y, width, height)
 double regionX = 100, regionY = 400;
@@ -590,7 +590,7 @@ with PDFDancer.open("document.pdf") as pdf:
     headers = pdf.select_paragraphs_starting_with("Chapter")
 
     # Extract from specific page
-    page_totals = pdf.page(0).select_paragraphs_starting_with("Total:")
+    page_totals = pdf.page(1).select_paragraphs_starting_with("Total:")
 ```
 
   </TabItem>
@@ -612,7 +612,7 @@ const dates = await pdf.selectParagraphsStartingWith('Date:');
 const headers = await pdf.selectParagraphsStartingWith('Chapter');
 
 // Extract from specific page
-const pageTotals = await pdf.page(0).selectParagraphsStartingWith('Total:');
+const pageTotals = await pdf.page(1).selectParagraphsStartingWith('Total:');
 ```
 
   </TabItem>
@@ -634,7 +634,7 @@ List<Paragraph> dates = pdf.selectParagraphsStartingWith("Date:");
 List<Paragraph> headers = pdf.selectParagraphsStartingWith("Chapter");
 
 // Extract from specific page
-List<Paragraph> pageTotals = pdf.page(0).selectParagraphsStartingWith("Total:");
+List<Paragraph> pageTotals = pdf.page(1).selectParagraphsStartingWith("Total:");
 ```
 
   </TabItem>
@@ -1166,7 +1166,7 @@ def extract_invoice_data(pdf_path: str) -> InvoiceData:
             invoice.total_amount = totals[0].text.replace("Total:", "").strip()
 
         # Extract line items (items between "Description" and "Total")
-        all_lines = pdf.page(0).select_text_lines()
+        all_lines = pdf.page(1).select_text_lines()
         in_items_section = False
 
         for line in all_lines:
@@ -1221,7 +1221,7 @@ if (totals.length > 0) {
 }
 
 // Extract line items
-const allLines = await pdf.page(0).selectTextLines();
+const allLines = await pdf.page(1).selectTextLines();
 let inItemsSection = false;
 const lineItems = [];
 
@@ -1287,7 +1287,7 @@ public class InvoiceExtractor {
             }
 
             // Extract line items
-            List<TextLine> allLines = pdf.page(0).selectTextLines();
+            List<TextLine> allLines = pdf.page(1).selectTextLines();
             boolean inItemsSection = false;
 
             for (TextLine line : allLines) {

@@ -51,26 +51,26 @@ with PDFDancer.open("document.pdf") as pdf:
         .text("Helvetica Bold text") \
         .font(StandardFonts.HELVETICA_BOLD.value, 16) \
         .color(Color(255, 0, 0)) \
-        .at(page_index=0, x=100, y=500) \
+        .at(page_number=0, x=100, y=500) \
         .add()
 
     pdf.new_paragraph() \
         .text("Times Roman text") \
         .font(StandardFonts.TIMES_ROMAN.value, 14) \
-        .at(page_index=0, x=100, y=480) \
+        .at(page_number=0, x=100, y=480) \
         .add()
 
     pdf.new_paragraph() \
         .text("Courier monospace code") \
         .font(StandardFonts.COURIER_BOLD.value, 12) \
-        .at(page_index=0, x=100, y=460) \
+        .at(page_number=0, x=100, y=460) \
         .add()
 
     # You can also use font names directly as strings
     pdf.new_paragraph() \
         .text("Direct font name") \
         .font("Helvetica", 12) \
-        .at(page_index=0, x=100, y=440) \
+        .at(page_number=0, x=100, y=440) \
         .add()
 
     pdf.save("output.pdf")
@@ -85,27 +85,27 @@ import { PDFDancer, StandardFonts, Color } from 'pdfdancer-client-typescript';
 const pdf = await PDFDancer.open('document.pdf');
 
 // Use standard fonts with enum (recommended)
-await pdf.page(0).newParagraph()
+await pdf.page(1).newParagraph()
   .text('Helvetica Bold text')
   .font(StandardFonts.HELVETICA_BOLD, 16)
   .color(new Color(255, 0, 0))
   .at(100, 500)
   .apply();
 
-await pdf.page(0).newParagraph()
+await pdf.page(1).newParagraph()
   .text('Times Roman text')
   .font(StandardFonts.TIMES_ROMAN, 14)
   .at(100, 480)
   .apply();
 
-await pdf.page(0).newParagraph()
+await pdf.page(1).newParagraph()
   .text('Courier monospace code')
   .font(StandardFonts.COURIER_BOLD, 12)
   .at(100, 460)
   .apply();
 
 // You can also use font names directly as strings
-await pdf.page(0).newParagraph()
+await pdf.page(1).newParagraph()
   .text('Direct font name')
   .font('Helvetica', 12)
   .at(100, 440)
@@ -128,26 +128,26 @@ pdf.newParagraph()
     .text("Helvetica Bold text")
     .font(StandardFonts.HELVETICA_BOLD.getValue(), 16)
     .color(new Color(255, 0, 0))
-    .at(0, 100, 500)
+    .at(1, 100, 500)
     .add();
 
 pdf.newParagraph()
     .text("Times Roman text")
     .font(StandardFonts.TIMES_ROMAN.getValue(), 14)
-    .at(0, 100, 480)
+    .at(1, 100, 480)
     .add();
 
 pdf.newParagraph()
     .text("Courier monospace code")
     .font(StandardFonts.COURIER_BOLD.getValue(), 12)
-    .at(0, 100, 460)
+    .at(1, 100, 460)
     .add();
 
 // You can also use font names directly as strings
 pdf.newParagraph()
     .text("Direct font name")
     .font("Helvetica", 12)
-    .at(0, 100, 440)
+    .at(1, 100, 440)
     .add();
 
 pdf.save("output.pdf");
@@ -234,7 +234,7 @@ When you modify text that uses embedded fonts, PDFDancer will:
 from pdfdancer import PDFDancer
 
 with PDFDancer.open("document.pdf") as pdf:
-    paragraphs = pdf.page(0).select_paragraphs()
+    paragraphs = pdf.page(1).select_paragraphs()
 
     for para in paragraphs:
         if para.status:
@@ -267,7 +267,7 @@ with PDFDancer.open("document.pdf") as pdf:
 import { PDFDancer, FontType } from 'pdfdancer-client-typescript';
 
 const pdf = await PDFDancer.open('document.pdf');
-const paragraphs = await pdf.page(0).selectParagraphs();
+const paragraphs = await pdf.page(1).selectParagraphs();
 
 for (const para of paragraphs) {
   if (para.objectRef().status) {
@@ -306,7 +306,7 @@ import com.tfc.pdf.pdfdancer.api.PDFDancer;
 import com.tfc.pdf.pdfdancer.api.common.model.*;
 
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
-List<Paragraph> paragraphs = pdf.page(0).selectParagraphs();
+List<Paragraph> paragraphs = pdf.page(1).selectParagraphs();
 
 for (Paragraph para : paragraphs) {
     if (para.getStatus() != null) {
@@ -373,7 +373,7 @@ with PDFDancer.open("document.pdf") as pdf:
         .font_file(ttf_path, 24) \
         .line_spacing(1.8) \
         .color(Color(0, 0, 255)) \
-        .at(page_index=0, x=300, y=500) \
+        .at(page_number=0, x=300, y=500) \
         .add()
 
     pdf.save("output.pdf")
@@ -392,7 +392,7 @@ const pdf = await PDFDancer.open('document.pdf');
 const fontBytes = await fs.readFile('fonts/DancingScript-Regular.ttf');
 
 // Use the custom font directly with fontFile()
-await pdf.page(0).newParagraph()
+await pdf.page(1).newParagraph()
   .text('Beautiful custom font\nwith multiple lines')
   .fontFile(fontBytes, 24)
   .lineSpacing(1.8)
@@ -422,7 +422,7 @@ pdf.newParagraph()
     .fontFile(ttfPath, 24)
     .lineSpacing(1.8)
     .color(new Color(0, 0, 255))
-    .at(0, 300, 500)
+    .at(1, 300, 500)
     .add();
 
 pdf.save("output.pdf");
@@ -451,7 +451,7 @@ with PDFDancer.open("document.pdf") as pdf:
         pdf.new_paragraph() \
             .text("Text with service font") \
             .font(font.name, font.size) \
-            .at(page_index=0, x=300, y=500) \
+            .at(page_number=0, x=300, y=500) \
             .add()
 
     pdf.save("output.pdf")
@@ -464,7 +464,7 @@ with PDFDancer.open("document.pdf") as pdf:
 // TypeScript client uses font names directly
 const pdf = await PDFDancer.open('document.pdf');
 
-await pdf.page(0).newParagraph()
+await pdf.page(1).newParagraph()
   .text('Text with service font')
   .font('Roboto-Regular', 14)
   .at(300, 500)
@@ -490,7 +490,7 @@ if (!fonts.isEmpty()) {
     pdf.newParagraph()
         .text("Text with service font")
         .font(font.getName(), font.getSize())
-        .at(0, 300, 500)
+        .at(1, 300, 500)
         .add();
 }
 
@@ -518,7 +518,7 @@ with PDFDancer.open("document.pdf") as pdf:
     pdf.new_paragraph() \
         .text("Text with registered font") \
         .font("CustomFont", 14) \
-        .at(page_index=0, x=100, y=500) \
+        .at(page_number=0, x=100, y=500) \
         .add()
 
     pdf.save("output.pdf")
@@ -547,7 +547,7 @@ pdf.registerFont(Paths.get("fonts/CustomFont.ttf").toString());
 pdf.newParagraph()
     .text("Text with registered font")
     .font("CustomFont", 14)
-    .at(0, 100, 500)
+    .at(1, 100, 500)
     .add();
 
 pdf.save("output.pdf");
@@ -574,14 +574,14 @@ with PDFDancer.open("document.pdf") as pdf:
         .text("Large heading") \
         .font(StandardFonts.HELVETICA_BOLD.value, 24) \
         .color(Color(0, 0, 0)) \
-        .at(page_index=0, x=100, y=700) \
+        .at(page_number=0, x=100, y=700) \
         .add()
 
     # Normal body text with Times Roman
     pdf.new_paragraph() \
         .text("Normal body text in Times Roman") \
         .font(StandardFonts.TIMES_ROMAN.value, 12) \
-        .at(page_index=0, x=100, y=660) \
+        .at(page_number=0, x=100, y=660) \
         .add()
 
     # Monospace code example with Courier
@@ -590,7 +590,7 @@ with PDFDancer.open("document.pdf") as pdf:
         .font(StandardFonts.COURIER_BOLD.value, 11) \
         .line_spacing(1.5) \
         .color(Color(40, 40, 40)) \
-        .at(page_index=0, x=100, y=620) \
+        .at(page_number=0, x=100, y=620) \
         .add()
 
     # Small footnote
@@ -598,7 +598,7 @@ with PDFDancer.open("document.pdf") as pdf:
         .text("Small footnote") \
         .font(StandardFonts.HELVETICA.value, 8) \
         .color(Color(128, 128, 128)) \
-        .at(page_index=0, x=100, y=580) \
+        .at(page_number=0, x=100, y=580) \
         .add()
 
     pdf.save("output.pdf")
@@ -613,7 +613,7 @@ import { PDFDancer, StandardFonts, Color } from 'pdfdancer-client-typescript';
 const pdf = await PDFDancer.open('document.pdf');
 
 // Large heading with bold Helvetica
-await pdf.page(0).newParagraph()
+await pdf.page(1).newParagraph()
   .text('Large heading')
   .font(StandardFonts.HELVETICA_BOLD, 24)
   .color(new Color(0, 0, 0))
@@ -621,14 +621,14 @@ await pdf.page(0).newParagraph()
   .apply();
 
 // Normal body text with Times Roman
-await pdf.page(0).newParagraph()
+await pdf.page(1).newParagraph()
   .text('Normal body text in Times Roman')
   .font(StandardFonts.TIMES_ROMAN, 12)
   .at(100, 660)
   .apply();
 
 // Monospace code example with Courier
-await pdf.page(0).newParagraph()
+await pdf.page(1).newParagraph()
   .text('def hello():\n    print(\'Hello\')')
   .font(StandardFonts.COURIER_BOLD, 11)
   .lineSpacing(1.5)
@@ -637,7 +637,7 @@ await pdf.page(0).newParagraph()
   .apply();
 
 // Small footnote
-await pdf.page(0).newParagraph()
+await pdf.page(1).newParagraph()
   .text('Small footnote')
   .font(StandardFonts.HELVETICA, 8)
   .color(new Color(128, 128, 128))
@@ -661,14 +661,14 @@ pdf.newParagraph()
     .text("Large heading")
     .font(StandardFonts.HELVETICA_BOLD.getValue(), 24)
     .color(new Color(0, 0, 0))
-    .at(0, 100, 700)
+    .at(1, 100, 700)
     .add();
 
 // Normal body text with Times Roman
 pdf.newParagraph()
     .text("Normal body text in Times Roman")
     .font(StandardFonts.TIMES_ROMAN.getValue(), 12)
-    .at(0, 100, 660)
+    .at(1, 100, 660)
     .add();
 
 // Monospace code example with Courier
@@ -677,7 +677,7 @@ pdf.newParagraph()
     .font(StandardFonts.COURIER_BOLD.getValue(), 11)
     .lineSpacing(1.5)
     .color(new Color(40, 40, 40))
-    .at(0, 100, 620)
+    .at(1, 100, 620)
     .add();
 
 // Small footnote
@@ -685,7 +685,7 @@ pdf.newParagraph()
     .text("Small footnote")
     .font(StandardFonts.HELVETICA.getValue(), 8)
     .color(new Color(128, 128, 128))
-    .at(0, 100, 580)
+    .at(1, 100, 580)
     .add();
 
 pdf.save("output.pdf");

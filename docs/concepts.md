@@ -177,21 +177,21 @@ PDFDancer provides a structured way to interact with PDF content through several
 ### Pages
 
 **Pages** are the fundamental containers in a PDF document. Each page has:
-- A **page index** (zero-indexed: first page is page 0)
+- A **page number** (page 1 is the first page)
 - **Dimensions** (width and height in points)
 - A **bounding rectangle** defining its size
 - **Content** (paragraphs, images, paths, form fields)
 
-Pages are accessed using `pdf.page(index)`:
+Pages are accessed using `pdf.page(number)`:
 
-Important: this is *0-based indexing: first page is page 0*
+PDFDancer uses standard page numbering — page 1 is the first page.
 
 <Tabs>
   <TabItem value="python" label="Python">
 
 ```python
 # Get first page
-first_page = pdf.page(0)
+first_page = pdf.page(1)
 
 # Get all pages
 all_pages = pdf.pages()
@@ -202,7 +202,7 @@ all_pages = pdf.pages()
 
 ```typescript
 // Get first page
-const firstPage = pdf.page(0);
+const firstPage = pdf.page(1);
 
 // Get all pages
 const allPages = await pdf.pages();
@@ -213,7 +213,7 @@ const allPages = await pdf.pages();
 
 ```java
 // Get first page
-PageRef firstPage = pdf.page(0);
+PageRef firstPage = pdf.page(1);
 
 // Get all pages
 List<PageRef> allPages = pdf.getPages();
@@ -309,7 +309,7 @@ for (TextParagraphReference para : paragraphs) {
 
 ```python
 # Select all text lines
-lines = pdf.page(0).select_lines()
+lines = pdf.page(1).select_lines()
 
 # Select lines by prefix
 date_lines = pdf.select_text_lines_starting_with("Date:")
@@ -323,7 +323,7 @@ for line in lines:
 
 ```typescript
 // Select all text lines
-const lines = await pdf.page(0).selectLines();
+const lines = await pdf.page(1).selectLines();
 
 // Select lines by prefix
 const dateLines = await pdf.selectTextLinesStartingWith('Date:');
@@ -338,7 +338,7 @@ for (const line of lines) {
 
 ```java
 // Select all text lines
-List<TextLineReference> lines = pdf.page(0).selectTextLines();
+List<TextLineReference> lines = pdf.page(1).selectTextLines();
 
 // Select lines by prefix
 List<TextLineReference> dateLines = pdf.selectTextLinesStartingWith("Date:");
@@ -375,15 +375,15 @@ for (TextLineReference line : lines) {
 
 ```python
 # Select all images on a page
-images = pdf.page(0).select_images()
+images = pdf.page(1).select_images()
 
 # Select images at coordinates
-images_at_point = pdf.page(0).select_images_at(x=100, y=500)
+images_at_point = pdf.page(1).select_images_at(x=100, y=500)
 
 # Add a new image
 pdf.new_image() \
     .from_file("logo.png") \
-    .at(page=0, x=50, y=700) \
+    .at(page=1, x=50, y=700) \
     .add()
 ```
 
@@ -392,15 +392,15 @@ pdf.new_image() \
 
 ```typescript
 // Select all images on a page
-const images = await pdf.page(0).selectImages();
+const images = await pdf.page(1).selectImages();
 
 // Select images at coordinates
-const imagesAtPoint = await pdf.page(0).selectImagesAt(100, 500);
+const imagesAtPoint = await pdf.page(1).selectImagesAt(100, 500);
 
 // Add a new image
 await pdf.newImage()
   .fromFile('logo.png')
-  .at(0, 50, 700)
+  .at(1, 50, 700)
   .add();
 ```
 
@@ -409,15 +409,15 @@ await pdf.newImage()
 
 ```java
 // Select all images on a page
-List<ImageReference> images = pdf.page(0).selectImages();
+List<ImageReference> images = pdf.page(1).selectImages();
 
 // Select images at coordinates
-List<ImageReference> imagesAtPoint = pdf.page(0).selectImagesAt(100, 500);
+List<ImageReference> imagesAtPoint = pdf.page(1).selectImagesAt(100, 500);
 
 // Add a new image
 pdf.newImage()
     .fromFile(new File("logo.png"))
-    .at(0, 50, 700)
+    .at(1, 50, 700)
     .add();
 ```
 
@@ -444,10 +444,10 @@ pdf.newImage()
 
 ```python
 # Select all paths on a page
-paths = pdf.page(0).select_paths()
+paths = pdf.page(1).select_paths()
 
 # Select paths at specific coordinates
-paths_at_point = pdf.page(0).select_paths_at(x=150, y=320)
+paths_at_point = pdf.page(1).select_paths_at(x=150, y=320)
 
 for path in paths:
     print(f"Path ID: {path.internal_id}")
@@ -458,10 +458,10 @@ for path in paths:
 
 ```typescript
 // Select all paths on a page
-const paths = await pdf.page(0).selectPaths();
+const paths = await pdf.page(1).selectPaths();
 
 // Select paths at specific coordinates
-const pathsAtPoint = await pdf.page(0).selectPathsAt(150, 320);
+const pathsAtPoint = await pdf.page(1).selectPathsAt(150, 320);
 
 for (const path of paths) {
   console.log(`Path ID: ${path.internalId}`);
@@ -473,10 +473,10 @@ for (const path of paths) {
 
 ```java
 // Select all paths on a page
-List<PathReference> paths = pdf.page(0).selectPaths();
+List<PathReference> paths = pdf.page(1).selectPaths();
 
 // Select paths at specific coordinates
-List<PathReference> pathsAtPoint = pdf.page(0).selectPathAt(150, 320);
+List<PathReference> pathsAtPoint = pdf.page(1).selectPathAt(150, 320);
 
 for (PathReference path : paths) {
     System.out.println("Path ID: " + path.getInternalId());
@@ -578,10 +578,10 @@ from pdfdancer import PDFDancer
 
 with PDFDancer.open("document.pdf") as pdf:
     # Select all FormXObjects on a page
-    formxobjects = pdf.page(0).select_formxobjects()
+    formxobjects = pdf.page(1).select_formxobjects()
 
     # Select FormXObjects at specific coordinates
-    formxobjects_at_point = pdf.page(0).select_formxobjects_at(x=100, y=500)
+    formxobjects_at_point = pdf.page(1).select_formxobjects_at(x=100, y=500)
 
     for fxo in formxobjects:
         print(f"FormXObject ID: {fxo.internal_id}")
@@ -597,10 +597,10 @@ import { PDFDancer } from 'pdfdancer-client-typescript';
 const pdf = await PDFDancer.open('document.pdf');
 
 // Select all FormXObjects on a page
-const formxobjects = await pdf.page(0).selectFormXObjects();
+const formxobjects = await pdf.page(1).selectFormXObjects();
 
 // Select FormXObjects at specific coordinates
-const formxobjectsAtPoint = await pdf.page(0).selectFormXObjectsAt(100, 500);
+const formxobjectsAtPoint = await pdf.page(1).selectFormXObjectsAt(100, 500);
 
 for (const fxo of formxobjects) {
   console.log(`FormXObject ID: ${fxo.internalId}`);
@@ -618,10 +618,10 @@ import com.tfc.pdf.pdfdancer.api.common.model.*;
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
 
 // Select all FormXObjects on a page
-List<FormXObjectReference> formxobjects = pdf.page(0).selectFormXObjects();
+List<FormXObjectReference> formxobjects = pdf.page(1).selectFormXObjects();
 
 // Select FormXObjects at specific coordinates
-List<FormXObjectReference> formxobjectsAtPoint = pdf.page(0).selectFormXObjectsAt(100, 500);
+List<FormXObjectReference> formxobjectsAtPoint = pdf.page(1).selectFormXObjectsAt(100, 500);
 
 for (FormXObjectReference fxo : formxobjects) {
     System.out.println("FormXObject ID: " + fxo.getInternalId());
@@ -806,13 +806,13 @@ pdf.new_paragraph() \
 
 ```typescript
 // Use standard font constant
-await pdf.page(0).newParagraph()
+await pdf.page(1).newParagraph()
   .text('Hello World')
   .font(StandardFonts.HELVETICA.getFontName(), 12)
   .apply();
 
 // Or use font name string directly
-await pdf.page(0).newParagraph()
+await pdf.page(1).newParagraph()
   .text('Hello World')
   .font('Helvetica', 12)
   .apply();
@@ -826,14 +826,14 @@ await pdf.page(0).newParagraph()
 pdf.newParagraph()
     .text("Hello World")
     .font(StandardFonts.HELVETICA.getFontName(), 12)
-    .at(0, 100, 200)
+    .at(1, 100, 200)
     .add();
 
 // Or use font name string directly
 pdf.newParagraph()
     .text("Hello World")
     .font("Helvetica", 12)
-    .at(0, 100, 200)
+    .at(1, 100, 200)
     .add();
 ```
 
@@ -866,13 +866,13 @@ pdf.new_paragraph() \
 
 ```typescript
 // Use standard font
-await pdf.page(0).newParagraph()
+await pdf.page(1).newParagraph()
   .text('Hello World')
   .font('Helvetica', 12)
   .apply();
 
 // Use custom font
-await pdf.page(0).newParagraph()
+await pdf.page(1).newParagraph()
   .text('Custom Typography')
   .fontFile('custom-font.ttf', 14)
   .apply();
@@ -886,14 +886,14 @@ await pdf.page(0).newParagraph()
 pdf.newParagraph()
     .text("Hello World")
     .font("Helvetica", 12)
-    .at(0, 100, 200)
+    .at(1, 100, 200)
     .add();
 
 // Use custom font
 pdf.newParagraph()
     .text("Custom Typography")
     .font(new File("custom-font.ttf"), 14)
-    .at(0, 100, 200)
+    .at(1, 100, 200)
     .add();
 ```
 
@@ -943,7 +943,7 @@ const y = position.getY();
 const page = position.getPageNumber();
 
 // Use for selection
-const paragraphs = await pdf.page(0).selectParagraphsAt(x!, y!);
+const paragraphs = await pdf.page(1).selectParagraphsAt(x!, y!);
 ```
 
   </TabItem>
@@ -956,10 +956,10 @@ import com.pdfdancer.common.model.Position;
 Position pos = paragraph.getPosition();
 double x = pos.getX();
 double y = pos.getY();
-int page = pos.getPageIndex();
+int page = pos.getPageNumber();
 
 // Use for selection at coordinates
-List<TextParagraphReference> paragraphs = pdf.page(0).selectParagraphsAt(100, 200);
+List<TextParagraphReference> paragraphs = pdf.page(1).selectParagraphsAt(100, 200);
 ```
 
   </TabItem>
@@ -1009,7 +1009,7 @@ const gray = new Color(128, 128, 128);
 const custom = new Color(70, 130, 180);  // Steel blue
 
 // Apply to text
-await pdf.page(0).newParagraph()
+await pdf.page(1).newParagraph()
   .text('Colored text')
   .color(red)
   .apply();
@@ -1036,7 +1036,7 @@ Color.WHITE;
 pdf.newParagraph()
     .text("Colored text")
     .color(red)
-    .at(0, 100, 200)
+    .at(1, 100, 200)
     .add();
 ```
 
@@ -1056,7 +1056,7 @@ Use `select_*` methods to find existing content:
 ```python
 # Find existing content
 paragraphs = pdf.select_paragraphs()
-images = pdf.page(0).select_images()
+images = pdf.page(1).select_images()
 fields = pdf.select_form_fields_by_name("email")
 
 # Modify it
@@ -1071,12 +1071,12 @@ Use `new_*` methods to add new content:
 # Add new content
 pdf.new_paragraph() \
     .text("New content") \
-    .at(page_index=0, x=100, y=500) \
+    .at(page_number=0, x=100, y=500) \
     .add()
 
 pdf.new_image() \
     .from_file("logo.png") \
-    .at(page=0, x=50, y=700) \
+    .at(page=1, x=50, y=700) \
     .add()
 ```
 
@@ -1096,7 +1096,7 @@ pdf.new_paragraph() \
     .font("Helvetica", 12) \
     .color(Color(0, 0, 0)) \
     .line_spacing(1.5) \
-    .at(page_index=0, x=100, y=500) \
+    .at(page_number=0, x=100, y=500) \
     .add()
 
 # Edit builder
@@ -1112,7 +1112,7 @@ paragraph.edit() \
 
 ```typescript
 // Paragraph builder
-await pdf.page(0).newParagraph()
+await pdf.page(1).newParagraph()
   .text('Hello World')
   .font('Helvetica', 12)
   .color(new Color(0, 0, 0))
@@ -1138,7 +1138,7 @@ pdf.newParagraph()
     .font("Helvetica", 12)
     .color(new Color(0, 0, 0))
     .lineSpacing(1.5)
-    .at(0, 100, 500)
+    .at(1, 100, 500)
     .add();
 
 // Edit builder

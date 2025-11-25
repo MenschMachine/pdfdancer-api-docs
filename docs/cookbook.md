@@ -31,7 +31,7 @@ def create_new_pdf(output_path: str) -> None:
         .text("Sample Document") \
         .font("Helvetica-Bold", 24) \
         .color(Color(0, 0, 128)) \
-        .at(page_index=0, x=100, y=720) \
+        .at(page_number=0, x=100, y=720) \
         .add()
 
     # Add body text
@@ -39,7 +39,7 @@ def create_new_pdf(output_path: str) -> None:
         .text("This is a new PDF document created from scratch.") \
         .font("Helvetica", 12) \
         .color(Color(0, 0, 0)) \
-        .at(page_index=0, x=100, y=680) \
+        .at(page_number=0, x=100, y=680) \
         .add()
 
     # Add a second page
@@ -50,7 +50,7 @@ def create_new_pdf(output_path: str) -> None:
         .text("Page 2 Content") \
         .font("Helvetica-Bold", 18) \
         .color(Color(0, 0, 0)) \
-        .at(page_index=1, x=100, y=720) \
+        .at(page_number=1, x=100, y=720) \
         .add()
 
     # Add footer on both pages
@@ -59,7 +59,7 @@ def create_new_pdf(output_path: str) -> None:
             .text(f"Page {page_num + 1} of 2") \
             .font("Helvetica", 10) \
             .color(Color(128, 128, 128)) \
-            .at(page_index=page_num, x=280, y=30) \
+            .at(page_number=page_num, x=280, y=30) \
             .add()
 
     pdf.save(output_path)
@@ -83,7 +83,7 @@ async function createNewPdf(outputPath: string): Promise<void> {
   const pdf = await PDFDancer.new({ pageSize: { width: 612, height: 792 } });
 
   // Add title on first page
-  await pdf.page(0).newParagraph()
+  await pdf.page(1).newParagraph()
     .text('Sample Document')
     .font('Helvetica-Bold', 24)
     .color(new Color(0, 0, 128))
@@ -91,7 +91,7 @@ async function createNewPdf(outputPath: string): Promise<void> {
     .apply();
 
   // Add body text
-  await pdf.page(0).newParagraph()
+  await pdf.page(1).newParagraph()
     .text('This is a new PDF document created from scratch.')
     .font('Helvetica', 12)
     .color(new Color(0, 0, 0))
@@ -140,7 +140,7 @@ pdf.newParagraph()
     .text("Sample Document")
     .font("Helvetica-Bold", 24)
     .color(new Color(0, 0, 128))
-    .at(0, 100, 720)
+    .at(1, 100, 720)
     .add();
 
 // Add body text
@@ -148,7 +148,7 @@ pdf.newParagraph()
     .text("This is a new PDF document created from scratch.")
     .font("Helvetica", 12)
     .color(new Color(0, 0, 0))
-    .at(0, 100, 680)
+    .at(1, 100, 680)
     .add();
 
 // Add a second page
@@ -209,7 +209,7 @@ def mark_invoice_paid(input_path: str, output_path: str, invoice_number: str) ->
             .text("PAID") \
             .font("Helvetica-Bold", 72) \
             .color(Color(0, 200, 0, alpha=0.3)) \
-            .at(page_index=0, x=180, y=400) \
+            .at(page_number=0, x=180, y=400) \
             .add()
 
         # Add payment date
@@ -218,7 +218,7 @@ def mark_invoice_paid(input_path: str, output_path: str, invoice_number: str) ->
             .text(f"Paid: {datetime.now().strftime('%Y-%m-%d')}") \
             .font("Helvetica", 10) \
             .color(Color(0, 128, 0)) \
-            .at(page_index=0, x=400, y=50) \
+            .at(page_number=0, x=400, y=50) \
             .add()
 
         pdf.save(output_path)
@@ -263,7 +263,7 @@ async function markInvoicePaid(
   }
 
   // Add large PAID watermark
-  await pdf.page(0).newParagraph()
+  await pdf.page(1).newParagraph()
     .text('PAID')
     .font('Helvetica-Bold', 72)
     .color(new Color(0, 200, 0))
@@ -272,7 +272,7 @@ async function markInvoicePaid(
 
   // Add payment date
   const today = new Date().toISOString().split('T')[0];
-  await pdf.page(0).newParagraph()
+  await pdf.page(1).newParagraph()
     .text(`Paid: ${today}`)
     .font('Helvetica', 10)
     .color(new Color(0, 128, 0))
@@ -316,7 +316,7 @@ pdf.newParagraph()
     .text("PAID")
     .font("Helvetica-Bold", 72)
     .color(new Color(0, 200, 0))
-    .at(0, 180, 400)
+    .at(1, 180, 400)
     .add();
 
 // Add payment date
@@ -325,7 +325,7 @@ pdf.newParagraph()
     .text("Paid: " + today)
     .font("Helvetica", 10)
     .color(new Color(0, 128, 0))
-    .at(0, 400, 50)
+    .at(1, 400, 50)
     .add();
 
 pdf.save("invoices/paid/INV-001.pdf");
@@ -385,7 +385,7 @@ def fill_contract_form(
         # Add signature image
         pdf.new_image() \
             .from_file("signatures/company_signature.png") \
-            .at(page=0, x=400, y=100) \
+            .at(page=1, x=400, y=100) \
             .add()
 
         pdf.save(output_path)
@@ -456,7 +456,7 @@ async function fillContractForm(
   // Add signature image
   await pdf.newImage()
     .fromFile('signatures/company_signature.png')
-    .at(0, 400, 100)
+    .at(1, 400, 100)
     .add();
 
   await pdf.save(outputPath);
@@ -511,7 +511,7 @@ for (Map.Entry<String, String> entry : fieldMapping.entrySet()) {
 // Add signature image
 pdf.newImage()
     .fromFile("signatures/company_signature.png")
-    .at(0, 400, 100)
+    .at(1, 400, 100)
     .add();
 
 pdf.save("contracts/acme_contract.pdf");
@@ -571,7 +571,7 @@ def redact_document(input_path: str, output_path: str) -> None:
             .text(f"This document contains {redaction_count} redaction(s)") \
             .font("Helvetica", 8) \
             .color(Color(128, 128, 128)) \
-            .at(page_index=0, x=50, y=30) \
+            .at(page_number=0, x=50, y=30) \
             .add()
 
         pdf.save(output_path)
@@ -634,7 +634,7 @@ async function redactDocument(
   }
 
   // Add redaction notice
-  await pdf.page(0).newParagraph()
+  await pdf.page(1).newParagraph()
     .text(`This document contains ${redactionCount} redaction(s)`)
     .font('Helvetica', 8)
     .color(new Color(128, 128, 128))
@@ -693,7 +693,7 @@ pdf.newParagraph()
     .text("This document contains " + redactionCount + " redaction(s)")
     .font("Helvetica", 8)
     .color(new Color(128, 128, 128))
-    .at(0, 50, 30)
+    .at(1, 50, 30)
     .add();
 
 pdf.save("documents/redacted/confidential_redacted.pdf");
@@ -729,7 +729,7 @@ def generate_monthly_report(
             .text(f"Monthly Report - {report_data['month']} {report_data['year']}") \
             .font("Helvetica-Bold", 20) \
             .color(Color(0, 0, 128)) \
-            .at(page_index=0, x=100, y=750) \
+            .at(page_number=0, x=100, y=750) \
             .add()
 
         # Add summary stats
@@ -738,7 +738,7 @@ def generate_monthly_report(
             pdf.new_paragraph() \
                 .text(f"{key}: {value}") \
                 .font("Helvetica", 12) \
-                .at(page_index=0, x=100, y=y_position) \
+                .at(page_number=0, x=100, y=y_position) \
                 .add()
             y_position -= 25
 
@@ -747,7 +747,7 @@ def generate_monthly_report(
         for i, chart_path in enumerate(charts):
             pdf.new_image() \
                 .from_file(chart_path) \
-                .at(page=0, x=100, y=chart_y - (i * 150)) \
+                .at(page=1, x=100, y=chart_y - (i * 150)) \
                 .add()
 
         # Add footer
@@ -755,7 +755,7 @@ def generate_monthly_report(
             .text(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M')}") \
             .font("Helvetica", 8) \
             .color(Color(128, 128, 128)) \
-            .at(page_index=0, x=250, y=30) \
+            .at(page_number=0, x=250, y=30) \
             .add()
 
         pdf.save(output_path)
@@ -805,7 +805,7 @@ async function generateMonthlyReport(
   const pdf = await PDFDancer.open('template.pdf');
 
   // Add report header
-  await pdf.page(0).newParagraph()
+  await pdf.page(1).newParagraph()
     .text(`Monthly Report - ${reportData.month} ${reportData.year}`)
     .font('Helvetica-Bold', 20)
     .color(new Color(0, 0, 128))
@@ -815,7 +815,7 @@ async function generateMonthlyReport(
   // Add summary stats
   let yPosition = 680;
   for (const [key, value] of Object.entries(reportData.stats)) {
-    await pdf.page(0).newParagraph()
+    await pdf.page(1).newParagraph()
       .text(`${key}: ${value}`)
       .font('Helvetica', 12)
       .at(100, yPosition)
@@ -828,13 +828,13 @@ async function generateMonthlyReport(
   for (const [i, chartPath] of charts.entries()) {
     await pdf.newImage()
       .fromFile(chartPath)
-      .at(0, 100, chartY - (i * 150))
+      .at(1, 100, chartY - (i * 150))
       .add();
   }
 
   // Add footer
   const now = new Date().toISOString().replace('T', ' ').substring(0, 16);
-  await pdf.page(0).newParagraph()
+  await pdf.page(1).newParagraph()
     .text(`Generated: ${now}`)
     .font('Helvetica', 8)
     .color(new Color(128, 128, 128))
@@ -880,7 +880,7 @@ pdf.newParagraph()
     .text("Monthly Report - January 2024")
     .font("Helvetica-Bold", 20)
     .color(new Color(0, 0, 128))
-    .at(0, 100, 750)
+    .at(1, 100, 750)
     .add();
 
 // Add summary stats
@@ -894,7 +894,7 @@ for (Map.Entry<String, String> stat : stats.entrySet()) {
     pdf.newParagraph()
         .text(stat.getKey() + ": " + stat.getValue())
         .font("Helvetica", 12)
-        .at(0, 100, yPosition)
+        .at(1, 100, yPosition)
         .add();
     yPosition -= 25;
 }
@@ -905,7 +905,7 @@ String[] charts = {"charts/sales.png", "charts/customers.png"};
 for (int i = 0; i < charts.length; i++) {
     pdf.newImage()
         .fromFile(charts[i])
-        .at(0, 100, chartY - (i * 150))
+        .at(1, 100, chartY - (i * 150))
         .add();
 }
 
@@ -916,7 +916,7 @@ pdf.newParagraph()
     .text("Generated: " + timestamp)
     .font("Helvetica", 8)
     .color(new Color(128, 128, 128))
-    .at(0, 250, 30)
+    .at(1, 250, 30)
     .add();
 
 pdf.save("reports/2024-01.pdf");
@@ -948,7 +948,7 @@ def add_watermark(input_path: str, output_path: str, watermark_text: str) -> Non
                 .text(watermark_text) \
                 .font("Helvetica-Bold", 60) \
                 .color(Color(200, 200, 200)) \
-                .at(page_index=i, x=150, y=400) \
+                .at(page_number=i, x=150, y=400) \
                 .add()
 
         pdf.save(output_path)

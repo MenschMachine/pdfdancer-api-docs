@@ -42,9 +42,9 @@ with PDFDancer.open("document.pdf") as pdf:
     
     # Iterate through all pages
     for page_snapshot in snapshot.pages:
-        page_index = page_snapshot.page_ref.position.page_index
+        page_number = page_snapshot.page_ref.position.page_number
         element_count = len(page_snapshot.elements)
-        print(f"Page {page_index}: {element_count} elements")
+        print(f"Page {page_number}: {element_count} elements")
     
     # Get all elements across all pages
     all_elements = []
@@ -71,9 +71,9 @@ console.log(`Fonts used: ${snapshot.fonts.length}`);
 
 // Iterate through all pages
 for (const pageSnapshot of snapshot.pages) {
-  const pageIndex = pageSnapshot.pageRef.position.pageIndex;
+  const pageNumber = pageSnapshot.pageRef.position.pageNumber;
   const elementCount = pageSnapshot.elements.length;
-  console.log(`Page ${pageIndex}: ${elementCount} elements`);
+  console.log(`Page ${pageNumber}: ${elementCount} elements`);
 }
 
 // Get all elements across all pages
@@ -99,9 +99,9 @@ System.out.println("Fonts used: " + snapshot.getFonts().size());
 
 // Iterate through all pages
 for (PageSnapshot pageSnapshot : snapshot.getPages()) {
-    int pageIndex = pageSnapshot.getPageRef().getPosition().getPageIndex();
+    int pageNumber = pageSnapshot.getPageRef().getPosition().getPageNumber();
     int elementCount = pageSnapshot.getElements().size();
-    System.out.println("Page " + pageIndex + ": " + elementCount + " elements");
+    System.out.println("Page " + pageNumber + ": " + elementCount + " elements");
 }
 
 // Get all elements across all pages
@@ -129,8 +129,8 @@ Get a snapshot of a specific page:
 from pdfdancer import PDFDancer
 
 with PDFDancer.open("document.pdf") as pdf:
-    # Get snapshot of page 0
-    page_snapshot = pdf.get_page_snapshot(0)
+    # Get snapshot of page 1
+    page_snapshot = pdf.get_page_snapshot(1)
     
     # Access page information
     page_ref = page_snapshot.page_ref
@@ -154,8 +154,8 @@ import { PDFDancer } from 'pdfdancer-client-typescript';
 
 const pdf = await PDFDancer.open('document.pdf');
 
-// Get snapshot of page 0
-const pageSnapshot = await pdf.getPageSnapshot(0);
+// Get snapshot of page 1
+const pageSnapshot = await pdf.getPageSnapshot(1);
 
 // Access page information
 const pageRef = pageSnapshot.pageRef;
@@ -181,8 +181,8 @@ import com.tfc.pdf.pdfdancer.api.common.model.*;
 
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
 
-// Get snapshot of page 0
-PageSnapshot pageSnapshot = pdf.getPageSnapshot(0);
+// Get snapshot of page 1
+PageSnapshot pageSnapshot = pdf.getPageSnapshot(1);
 
 // Access page information
 PageRef pageRef = pageSnapshot.getPageRef();
@@ -211,11 +211,11 @@ You can also get a snapshot from a page object:
 
 ```python
 with PDFDancer.open("document.pdf") as pdf:
-    page = pdf.page(0)
-    
+    page = pdf.page(1)
+
     # Get snapshot from page object
     snapshot = page.get_snapshot()
-    
+
     print(f"Elements: {len(snapshot.elements)}")
 ```
 
@@ -224,7 +224,7 @@ with PDFDancer.open("document.pdf") as pdf:
 
 ```typescript
 const pdf = await PDFDancer.open('document.pdf');
-const page = pdf.page(0);
+const page = pdf.page(1);
 
 // Get snapshot from page object
 const snapshot = await page.getSnapshot();
@@ -237,7 +237,7 @@ console.log(`Elements: ${snapshot.elements.length}`);
 
 ```java
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
-Page page = pdf.page(0);
+Page page = pdf.page(1);
 
 // Get snapshot from page object
 PageSnapshot snapshot = page.getSnapshot();

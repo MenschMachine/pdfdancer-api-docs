@@ -15,7 +15,7 @@ PDFDancer provides a straightforward API for working with PDF pages. You can acc
 
 ### Get a Specific Page
 
-Pages are zero-indexed, so the first page is page 0.
+PDFDancer uses standard page numbering — page 1 is the first page.
 
 <Tabs>
   <TabItem value="python" label="Python">
@@ -24,14 +24,14 @@ Pages are zero-indexed, so the first page is page 0.
 from pdfdancer import PDFDancer
 
 with PDFDancer.open("document.pdf") as pdf:
-    # Get the first page (0-indexed)
-    first_page = pdf.page(0)
+    # Get the first page
+    first_page = pdf.page(1)
 
     # Get the second page
-    second_page = pdf.page(1)
+    second_page = pdf.page(2)
 
     # Get the last page (if you know the total count)
-    last_page = pdf.page(4)  # For a 5-page document
+    last_page = pdf.page(5)  # For a 5-page document
 ```
 
   </TabItem>
@@ -42,14 +42,14 @@ import { PDFDancer } from 'pdfdancer-client-typescript';
 
 const pdf = await PDFDancer.open('document.pdf');
 
-// Get the first page (0-indexed)
-const firstPage = pdf.page(0);
+// Get the first page
+const firstPage = pdf.page(1);
 
 // Get the second page
-const secondPage = pdf.page(1);
+const secondPage = pdf.page(2);
 
 // Get the last page (if you know the total count)
-const lastPage = pdf.page(4);  // For a 5-page document
+const lastPage = pdf.page(5);  // For a 5-page document
 ```
 
   </TabItem>
@@ -61,14 +61,14 @@ import com.tfc.pdf.pdfdancer.api.common.model.*;
 
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
 
-// Get the first page (0-indexed)
-Page firstPage = pdf.page(0);
+// Get the first page
+Page firstPage = pdf.page(1);
 
 // Get the second page
-Page secondPage = pdf.page(1);
+Page secondPage = pdf.page(2);
 
 // Get the last page (if you know the total count)
-Page lastPage = pdf.page(4);  // For a 5-page document
+Page lastPage = pdf.page(5);  // For a 5-page document
 ```
 
   </TabItem>
@@ -135,7 +135,7 @@ for (int i = 0; i < allPages.size(); i++) {
 
 ```python
 with PDFDancer.open("document.pdf") as pdf:
-    page = pdf.page(0)
+    page = pdf.page(1)
 
     print(f"Page ID: {page.internal_id}")
     print(f"Position: {page.position.bounding_rect}")
@@ -161,7 +161,7 @@ with PDFDancer.open("document.pdf") as pdf:
 
 ```typescript
 const pdf = await PDFDancer.open('document.pdf');
-const page = pdf.page(0);
+const page = pdf.page(1);
 
 console.log(`Page ID: ${page.internalId}`);
 console.log(`Position: ${JSON.stringify(page.position.boundingRect)}`);
@@ -188,7 +188,7 @@ console.log(`Height: ${bbox?.height}`);
 
 ```java
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
-Page page = pdf.page(0);
+Page page = pdf.page(1);
 
 System.out.println("Page ID: " + page.getInternalId());
 System.out.println("Position: " + page.getPosition().getBoundingRect());
@@ -224,8 +224,8 @@ System.out.println("Height: " + bbox.getHeight());
 
 ```python
 with PDFDancer.open("document.pdf") as pdf:
-    # Delete the third page (index 2)
-    pdf.page(2).delete()
+    # Delete the third page (page number 3)
+    pdf.page(3).delete()
 
     # Save the modified PDF
     pdf.save("output.pdf")
@@ -237,8 +237,8 @@ with PDFDancer.open("document.pdf") as pdf:
 ```typescript
 const pdf = await PDFDancer.open('document.pdf');
 
-// Delete the third page (index 2)
-await pdf.page(2).delete();
+// Delete the third page (page number 3)
+await pdf.page(3).delete();
 
 // Save the modified PDF
 await pdf.save('output.pdf');
@@ -250,8 +250,8 @@ await pdf.save('output.pdf');
 ```java
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
 
-// Delete the third page (index 2)
-pdf.page(2).delete();
+// Delete the third page (page number 3)
+pdf.page(3).delete();
 
 // Save the modified PDF
 pdf.save("output.pdf");
@@ -267,10 +267,10 @@ pdf.save("output.pdf");
 
 ```python
 with PDFDancer.open("document.pdf") as pdf:
-    # Delete pages 2, 3, and 5 (0-indexed)
-    # Delete in reverse order to avoid index shifting
-    for page_index in reversed([2, 3, 5]):
-        pdf.page(page_index).delete()
+    # Delete pages 2, 3, and 5
+    # Delete in reverse order to avoid page number shifting
+    for page_number in reversed([2, 3, 5]):
+        pdf.page(page_number).delete()
 
     pdf.save("output.pdf")
 ```
@@ -281,10 +281,10 @@ with PDFDancer.open("document.pdf") as pdf:
 ```typescript
 const pdf = await PDFDancer.open('document.pdf');
 
-// Delete pages 2, 3, and 5 (0-indexed)
-// Delete in reverse order to avoid index shifting
-for (const pageIndex of [5, 3, 2]) {
-  await pdf.page(pageIndex).delete();
+// Delete pages 2, 3, and 5
+// Delete in reverse order to avoid page number shifting
+for (const pageNumber of [5, 3, 2]) {
+  await pdf.page(pageNumber).delete();
 }
 
 await pdf.save('output.pdf');
@@ -299,13 +299,13 @@ import java.util.Collections;
 
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
 
-// Delete pages 2, 3, and 5 (0-indexed)
-// Delete in reverse order to avoid index shifting
-Integer[] pageIndices = {5, 3, 2};
-Arrays.sort(pageIndices, Collections.reverseOrder());
+// Delete pages 2, 3, and 5
+// Delete in reverse order to avoid page number shifting
+Integer[] pageNumbers = {5, 3, 2};
+Arrays.sort(pageNumbers, Collections.reverseOrder());
 
-for (int pageIndex : pageIndices) {
-    pdf.page(pageIndex).delete();
+for (int pageNumber : pageNumbers) {
+    pdf.page(pageNumber).delete();
 }
 
 pdf.save("output.pdf");
@@ -327,16 +327,16 @@ You can move pages to different positions within the document to reorder them.
 
 ```python
 with PDFDancer.open("document.pdf") as pdf:
-    # Move page 3 to position 0 (make it the first page)
-    pdf.move_page(from_page_index=3, to_page_index=0)
+    # Move page 4 to position 1 (make it the first page)
+    pdf.move_page(from_page_number=4, to_page_number=1)
 
     # Alternative: use the page object's move_to method
-    page = pdf.page(3)
-    page.move_to(0)
+    page = pdf.page(4)
+    page.move_to(1)
 
-    # Move the last page to position 1
-    last_page_index = len(pdf.pages()) - 1
-    pdf.move_page(last_page_index, 1)
+    # Move the last page to position 2
+    last_page_number = len(pdf.pages())
+    pdf.move_page(last_page_number, 2)
 
     pdf.save("reordered.pdf")
 ```
@@ -347,17 +347,17 @@ with PDFDancer.open("document.pdf") as pdf:
 ```typescript
 const pdf = await PDFDancer.open('document.pdf');
 
-// Move page 3 to position 0 (make it the first page)
-await pdf.movePage(3, 0);
+// Move page 4 to position 1 (make it the first page)
+await pdf.movePage(4, 1);
 
 // Alternative: use the page object's moveTo method
-const page = pdf.page(3);
-await page.moveTo(0);
+const page = pdf.page(4);
+await page.moveTo(1);
 
-// Move the last page to position 1
+// Move the last page to position 2
 const pages = await pdf.pages();
-const lastPageIndex = pages.length - 1;
-await pdf.movePage(lastPageIndex, 1);
+const lastPageNumber = pages.length;
+await pdf.movePage(lastPageNumber, 2);
 
 await pdf.save('reordered.pdf');
 ```
@@ -368,16 +368,16 @@ await pdf.save('reordered.pdf');
 ```java
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
 
-// Move page 3 to position 0 (make it the first page)
-pdf.movePage(3, 0);
+// Move page 4 to position 1 (make it the first page)
+pdf.movePage(4, 1);
 
 // Alternative: use the page object's moveTo method
-Page page = pdf.page(3);
-page.moveTo(0);
+Page page = pdf.page(4);
+page.moveTo(1);
 
-// Move the last page to position 1
-int lastPageIndex = pdf.getPages().size() - 1;
-pdf.movePage(lastPageIndex, 1);
+// Move the last page to position 2
+int lastPageNumber = pdf.getPages().size();
+pdf.movePage(lastPageNumber, 2);
 
 pdf.save("reordered.pdf");
 ```
@@ -385,8 +385,8 @@ pdf.save("reordered.pdf");
   </TabItem>
 </Tabs>
 
-:::tip Page Index Shifting
-When you move a page, the indices of other pages shift automatically. If you're moving multiple pages, consider the order of operations to avoid unexpected results.
+:::tip Page Number Shifting
+When you move a page, the page numbers of other pages shift automatically. If you're moving multiple pages, consider the order of operations to avoid unexpected results.
 :::
 
 ---
@@ -406,10 +406,10 @@ with PDFDancer.open("document.pdf") as pdf:
     new_page_ref = pdf.new_page().add()
 
     # The new page is now available
-    print(f"New page added at index: {new_page_ref.position.page_index}")
+    print(f"New page added at page number: {new_page_ref.position.page_number}")
 
     # You can now add content to the new page
-    new_page = pdf.page(new_page_ref.position.page_index)
+    new_page = pdf.page(new_page_ref.position.page_number)
     new_page.new_paragraph() \
         .text("This is content on the new page") \
         .at(100, 700) \
@@ -428,10 +428,10 @@ const pdf = await PDFDancer.open('document.pdf');
 const newPageRef = await pdf.newPage();
 
 // The new page is now available
-console.log(`New page added at index: ${newPageRef.position.pageIndex}`);
+console.log(`New page added at page number: ${newPageRef.position.pageNumber}`);
 
 // You can now add content to the new page
-const newPage = pdf.page(newPageRef.position.pageIndex);
+const newPage = pdf.page(newPageRef.position.pageNumber);
 await newPage.newParagraph()
   .text('This is content on the new page')
   .at(100, 700)
@@ -450,10 +450,10 @@ PDFDancer pdf = PDFDancer.createSession("document.pdf");
 PageRef newPageRef = pdf.addPage();
 
 // The new page is now available
-System.out.println("New page added at index: " + newPageRef.getPosition().getPageIndex());
+System.out.println("New page added at page number: " + newPageRef.getPosition().getPageNumber());
 
 // You can now add content to the new page
-Page newPage = pdf.page(newPageRef.getPosition().getPageIndex());
+Page newPage = pdf.page(newPageRef.getPosition().getPageNumber());
 newPage.newParagraph()
     .text("This is content on the new page")
     .at(100, 700)
@@ -482,7 +482,7 @@ Once you have a page reference, you can select and manipulate content on that pa
 
 ```python
 with PDFDancer.open("document.pdf") as pdf:
-    page = pdf.page(0)
+    page = pdf.page(1)
 
     # Select paragraphs on this page
     paragraphs = page.select_paragraphs()
@@ -502,7 +502,7 @@ with PDFDancer.open("document.pdf") as pdf:
 
 ```typescript
 const pdf = await PDFDancer.open('document.pdf');
-const page = pdf.page(0);
+const page = pdf.page(1);
 
 // Select paragraphs on this page
 const paragraphs = await page.selectParagraphs();
@@ -522,7 +522,7 @@ const lines = await page.selectLines();
 
 ```java
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
-Page page = pdf.page(0);
+Page page = pdf.page(1);
 
 // Select paragraphs on this page
 List<Paragraph> paragraphs = page.selectParagraphs();
@@ -553,11 +553,11 @@ with PDFDancer.open("document.pdf") as pdf:
     pdf.new_paragraph() \
         .text("New paragraph on page 1") \
         .font("Helvetica", 12) \
-        .at(page_index=0, x=100, y=500) \
+        .at(page_number=1, x=100, y=500) \
         .add()
 
     # Or use page reference
-    page = pdf.page(0)
+    page = pdf.page(1)
     page.new_paragraph() \
         .text("Another paragraph") \
         .at(x=100, y=400) \
@@ -575,7 +575,7 @@ import { PDFDancer, Color } from 'pdfdancer-client-typescript';
 const pdf = await PDFDancer.open('document.pdf');
 
 // Add a paragraph to a specific page
-await pdf.page(0).newParagraph()
+await pdf.page(1).newParagraph()
   .text('New paragraph on page 1')
   .font('Helvetica', 12)
   .at(100, 500)
@@ -597,11 +597,11 @@ PDFDancer pdf = PDFDancer.createSession("document.pdf");
 pdf.newParagraph()
     .text("New paragraph on page 1")
     .font("Helvetica", 12)
-    .at(0, 100, 500)
+    .at(1, 100, 500)
     .add();
 
 // Or use page reference
-Page page = pdf.page(0);
+Page page = pdf.page(1);
 page.newParagraph()
     .text("Another paragraph")
     .at(100, 400)
@@ -707,7 +707,7 @@ from pdfdancer import PDFDancer
 with PDFDancer.new() as pdf:
     pdf.new_paragraph() \
         .text("Hello World") \
-        .at(page_index=0, x=72, y=720) \
+        .at(page_number=1, x=72, y=720) \
         .add()
     pdf.save("output.pdf")
 
@@ -724,7 +724,7 @@ import { PDFDancer, Orientation } from 'pdfdancer-client-typescript';
 
 // Create with default A4 portrait
 const pdf = await PDFDancer.new();
-await pdf.page(0).newParagraph()
+await pdf.page(1).newParagraph()
   .text('Hello World')
   .at(72, 720)
   .apply();
@@ -743,7 +743,7 @@ import com.tfc.pdf.pdfdancer.api.PDFDancer;
 
 // Create with default A4 portrait
 PDFDancer pdf = PDFDancer.create();
-pdf.page(0).newParagraph()
+pdf.page(1).newParagraph()
     .text("Hello World")
     .at(72, 720)
     .add();
