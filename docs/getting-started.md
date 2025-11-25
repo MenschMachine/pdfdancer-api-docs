@@ -91,7 +91,7 @@ from pdfdancer import Color, PDFDancer
 # No token needed! SDK automatically gets an anonymous token
 with PDFDancer.open(pdf_data=Path("input.pdf")) as pdf:
     # Locate existing content
-    heading = pdf.page(0).select_paragraphs_starting_with("Executive Summary")[0]
+    heading = pdf.page(1).select_paragraphs_starting_with("Executive Summary")[0]
     heading.edit().replace("Overview").apply()
 
     # Add a new paragraph using the fluent builder
@@ -100,7 +100,7 @@ with PDFDancer.open(pdf_data=Path("input.pdf")) as pdf:
         .font("Helvetica", 12) \
         .color(Color(70, 70, 70)) \
         .line_spacing(1.4) \
-        .at(page_index=0, x=72, y=520) \
+        .at(page_number=1, x=72, y=520) \
         .add()
 
     # Persist the modified document
@@ -117,7 +117,7 @@ async function run() {
     // No token needed! SDK automatically gets an anonymous token
     const pdf = await PDFDancer.open('input.pdf');
 
-    const page0 = pdf.page(0); // Page indexes are zero-based
+    const page0 = pdf.page(1);
 
     // Locate and edit existing content
     const headings = await page0.selectParagraphsStartingWith('Executive Summary');
@@ -159,7 +159,7 @@ public class Example {
         PDFDancer pdf = PDFDancer.createSession(new File("input.pdf"));
 
         // Locate and edit existing content
-        TextParagraphReference heading = pdf.page(0)
+        TextParagraphReference heading = pdf.page(1)
                 .selectParagraphsStartingWith("Executive Summary")
                 .get(0);
 
@@ -173,7 +173,7 @@ public class Example {
                 .font(StandardFonts.HELVETICA.getFontName(), 12)
                 .color(new Color(70, 70, 70))
                 .lineSpacing(1.4)
-                .at(0, 72, 520)
+                .at(1, 72, 520)
                 .add();
 
         // Persist the modified document

@@ -26,7 +26,7 @@ with PDFDancer.open("document.pdf") as pdf:
     all_images = pdf.select_images()
 
     # Get all images on a specific page
-    page_images = pdf.page(0).select_images()
+    page_images = pdf.page(1).select_images()
 
     for img in page_images:
         print(f"Image ID: {img.internal_id}")
@@ -45,7 +45,7 @@ const pdf = await PDFDancer.open('document.pdf');
 const allImages = await pdf.selectImages();
 
 // Get all images on a specific page
-const pageImages = await pdf.page(0).selectImages();
+const pageImages = await pdf.page(1).selectImages();
 
 for (const img of pageImages) {
   console.log(`Image ID: ${img.internalId}`);
@@ -66,7 +66,7 @@ PDFDancer pdf = PDFDancer.createSession("document.pdf");
 List<Image> allImages = pdf.selectImages();
 
 // Get all images on a specific page
-List<Image> pageImages = pdf.page(0).selectImages();
+List<Image> pageImages = pdf.page(1).selectImages();
 
 for (Image img : pageImages) {
     System.out.println("Image ID: " + img.getInternalId());
@@ -139,7 +139,7 @@ with PDFDancer.open("document.pdf") as pdf:
     # Add image from file
     pdf.new_image() \
         .from_file(Path("logo.png")) \
-        .at(page=0, x=48, y=700) \
+        .at(page=1, x=48, y=700) \
         .add()
 
     pdf.save("output.pdf")
@@ -156,7 +156,7 @@ const pdf = await PDFDancer.open('document.pdf');
 // Add image from file
 await pdf.newImage()
   .fromFile('logo.png')
-  .at(0, 48, 700)
+  .at(1, 48, 700)
   .add();
 
 await pdf.save('output.pdf');
@@ -174,7 +174,7 @@ PDFDancer pdf = PDFDancer.createSession("document.pdf");
 // Add image from file
 pdf.newImage()
     .fromFile(Paths.get("logo.png"))
-    .at(0, 48, 700)
+    .at(1, 48, 700)
     .add();
 
 pdf.save("output.pdf");
@@ -210,7 +210,7 @@ with PDFDancer.open("document.pdf") as pdf:
         # Add image from temporary file
         pdf.new_image() \
             .from_file(temp_path) \
-            .at(page=0, x=100, y=600) \
+            .at(page=1, x=100, y=600) \
             .add()
 
         pdf.save("output.pdf")
@@ -234,7 +234,7 @@ const imageBytes = await fs.readFile('logo.png');
 // Add image from bytes
 await pdf.newImage()
   .fromBytes(imageBytes)
-  .at(0, 100, 600)
+  .at(1, 100, 600)
   .add();
 
 await pdf.save('output.pdf');
@@ -256,7 +256,7 @@ byte[] imageBytes = Files.readAllBytes(Paths.get("logo.png"));
 // Add image from bytes
 pdf.newImage()
     .fromBytes(imageBytes)
-    .at(0, 100, 600)
+    .at(1, 100, 600)
     .add();
 
 pdf.save("output.pdf");
@@ -276,7 +276,7 @@ pdf.save("output.pdf");
 from pdfdancer import PDFDancer
 
 with PDFDancer.open("document.pdf") as pdf:
-    images = pdf.page(0).select_images()
+    images = pdf.page(1).select_images()
 
     if images:
         # Move image to new position
@@ -290,7 +290,7 @@ with PDFDancer.open("document.pdf") as pdf:
 
 ```typescript
 const pdf = await PDFDancer.open('document.pdf');
-const images = await pdf.page(0).selectImages();
+const images = await pdf.page(1).selectImages();
 
 if (images.length > 0) {
   // Move image to new position
@@ -308,7 +308,7 @@ import com.tfc.pdf.pdfdancer.api.PDFDancer;
 import com.tfc.pdf.pdfdancer.api.common.model.*;
 
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
-List<Image> images = pdf.page(0).selectImages();
+List<Image> images = pdf.page(1).selectImages();
 
 if (!images.isEmpty()) {
     // Move image to new position
@@ -332,7 +332,7 @@ pdf.save("output.pdf");
 from pdfdancer import PDFDancer
 
 with PDFDancer.open("document.pdf") as pdf:
-    images = pdf.page(0).select_images()
+    images = pdf.page(1).select_images()
 
     # Delete all images on page 0
     for image in images:
@@ -346,7 +346,7 @@ with PDFDancer.open("document.pdf") as pdf:
 
 ```typescript
 const pdf = await PDFDancer.open('document.pdf');
-const images = await pdf.page(0).selectImages();
+const images = await pdf.page(1).selectImages();
 
 // Delete all images on page 0
 for (const image of images) {
@@ -364,7 +364,7 @@ import com.tfc.pdf.pdfdancer.api.PDFDancer;
 import com.tfc.pdf.pdfdancer.api.common.model.*;
 
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
-List<Image> images = pdf.page(0).selectImages();
+List<Image> images = pdf.page(1).selectImages();
 
 // Delete all images on page 0
 for (Image image : images) {

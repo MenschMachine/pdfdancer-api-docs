@@ -87,7 +87,7 @@ with PDFDancer.open("form.pdf") as pdf:
     first_name_fields = pdf.select_form_fields_by_name("firstName")
 
     # On a specific page
-    page_fields = pdf.page(0).select_form_fields_by_name("signature")
+    page_fields = pdf.page(1).select_form_fields_by_name("signature")
 
     if first_name_fields:
         print(f"Found field: {first_name_fields[0].name}")
@@ -103,7 +103,7 @@ const pdf = await PDFDancer.open('form.pdf');
 const firstNameFields = await pdf.selectFieldsByName('firstName');
 
 // On a specific page
-const pageFields = await pdf.page(0).selectFormFieldByName('signature');
+const pageFields = await pdf.page(1).selectFormFieldByName('signature');
 
 if (firstNameFields.length > 0) {
   console.log(`Found field: ${firstNameFields[0].name}`);
@@ -119,7 +119,7 @@ try (PDFDancer pdf = PDFDancer.createSession("form.pdf")) {
     List<FormFieldRef> firstNameFields = pdf.selectFormFieldsByName("firstName");
 
     // On a specific page
-    List<FormFieldRef> pageFields = pdf.page(0).selectFormFieldsByName("signature");
+    List<FormFieldRef> pageFields = pdf.page(1).selectFormFieldsByName("signature");
 
     if (!firstNameFields.isEmpty()) {
         System.out.printf("Found field: %s%n", firstNameFields.get(0).getName());

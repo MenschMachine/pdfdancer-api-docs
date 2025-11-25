@@ -26,7 +26,7 @@ with PDFDancer.open("document.pdf") as pdf:
     all_paragraphs = pdf.select_paragraphs()
 
     # Page-level: searches only page 0
-    page_paragraphs = pdf.page(0).select_paragraphs()
+    page_paragraphs = pdf.page(1).select_paragraphs()
 ```
 
   </TabItem>
@@ -41,7 +41,7 @@ const pdf = await PDFDancer.open('document.pdf');
 const allParagraphs = await pdf.selectParagraphs();
 
 // Page-level: searches only page 0
-const pageParagraphs = await pdf.page(0).selectParagraphs();
+const pageParagraphs = await pdf.page(1).selectParagraphs();
 ```
 
   </TabItem>
@@ -57,7 +57,7 @@ PDFDancer pdf = PDFDancer.createSession("document.pdf");
 List<Paragraph> allParagraphs = pdf.selectParagraphs();
 
 // Page-level: searches only page 0
-List<Paragraph> pageParagraphs = pdf.page(0).selectParagraphs();
+List<Paragraph> pageParagraphs = pdf.page(1).selectParagraphs();
 ```
 
   </TabItem>
@@ -89,7 +89,7 @@ with PDFDancer.open("document.pdf") as pdf:
     all_fields = pdf.select_form_fields()  # AcroForm fields
 
     # Page-scoped selections
-    page_paragraphs = pdf.page(0).select_paragraphs()
+    page_paragraphs = pdf.page(1).select_paragraphs()
     page_images = pdf.page(1).select_images()
 ```
 
@@ -112,7 +112,7 @@ const allForms = await pdf.selectForms();  // form XObjects (templates, watermar
 const allFields = await pdf.selectFormFields();  // AcroForm fields
 
 // Page-scoped selections
-const pageParagraphs = await pdf.page(0).selectParagraphs();
+const pageParagraphs = await pdf.page(1).selectParagraphs();
 const pageImages = await pdf.page(1).selectImages();
 ```
 
@@ -135,7 +135,7 @@ List<FormXObject> allForms = pdf.selectForms();  // form XObjects (templates, wa
 List<FormField> allFields = pdf.selectFormFields();  // AcroForm fields
 
 // Page-scoped selections
-List<Paragraph> pageParagraphs = pdf.page(0).selectParagraphs();
+List<Paragraph> pageParagraphs = pdf.page(1).selectParagraphs();
 List<Image> pageImages = pdf.page(1).selectImages();
 ```
 
@@ -156,7 +156,7 @@ with PDFDancer.open("document.pdf") as pdf:
     all_elements = pdf.select_elements()
 
     # Get all elements on a specific page
-    page_elements = pdf.page(0).select_elements()
+    page_elements = pdf.page(1).select_elements()
 
     # Process all elements
     for element in page_elements:
@@ -174,7 +174,7 @@ const pdf = await PDFDancer.open('document.pdf');
 const allElements = await pdf.selectElements();
 
 // Get all elements on a specific page
-const pageElements = await pdf.page(0).selectElements();
+const pageElements = await pdf.page(1).selectElements();
 
 // Process all elements
 for (const element of pageElements) {
@@ -193,7 +193,7 @@ PDFDancer pdf = PDFDancer.createSession("document.pdf");
 List<Element> allElements = pdf.selectElements();
 
 // Get all elements on a specific page
-List<Element> pageElements = pdf.page(0).selectElements();
+List<Element> pageElements = pdf.page(1).selectElements();
 
 // Process all elements
 for (Element element : pageElements) {
@@ -215,7 +215,7 @@ All selection methods return lists/arrays of typed objects with methods and prop
 ```python
 with PDFDancer.open("document.pdf") as pdf:
     # Select and inspect
-    paragraphs = pdf.page(0).select_paragraphs()
+    paragraphs = pdf.page(1).select_paragraphs()
     for para in paragraphs:
         print(f"Text: {para.text}")
         print(f"Font: {para.font_name} at {para.font_size}pt")
@@ -240,7 +240,7 @@ with PDFDancer.open("document.pdf") as pdf:
 const pdf = await PDFDancer.open('document.pdf');
 
 // Select and inspect
-const paragraphs = await pdf.page(0).selectParagraphs();
+const paragraphs = await pdf.page(1).selectParagraphs();
 for (const para of paragraphs) {
   console.log(`Text: ${para.text}`);
   console.log(`Font: ${para.fontName} at ${para.fontSize}pt`);
@@ -268,7 +268,7 @@ for (const field of fields) {
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
 
 // Select and inspect
-List<Paragraph> paragraphs = pdf.page(0).selectParagraphs();
+List<Paragraph> paragraphs = pdf.page(1).selectParagraphs();
 for (Paragraph para : paragraphs) {
     System.out.println("Text: " + para.getText());
     System.out.println("Font: " + para.getFontName() + " at " + para.getFontSize() + "pt");
@@ -304,22 +304,22 @@ Find elements at specific x, y coordinates on a page. Useful when you know the l
 ```python
 with PDFDancer.open("document.pdf") as pdf:
     # Find paragraphs at specific coordinates
-    header = pdf.page(0).select_paragraphs_at(x=72, y=750)
+    header = pdf.page(1).select_paragraphs_at(x=72, y=750)
 
     # Find images at logo position
-    logo = pdf.page(0).select_images_at(x=50, y=750)
+    logo = pdf.page(1).select_images_at(x=50, y=750)
 
     # Find form fields at signature area
     signature = pdf.page(2).select_form_fields_at(x=150, y=100)
 
     # Find paths (vector graphics) at specific position
-    lines = pdf.page(0).select_paths_at(x=200, y=400)
+    lines = pdf.page(1).select_paths_at(x=200, y=400)
 
     # Find form XObjects at watermark position
-    watermark = pdf.page(0).select_forms_at(x=300, y=400)
+    watermark = pdf.page(1).select_forms_at(x=300, y=400)
 
     # Find text lines at specific coordinates
-    date_line = pdf.page(0).select_text_lines_at(x=500, y=750)
+    date_line = pdf.page(1).select_text_lines_at(x=500, y=750)
 ```
 
   </TabItem>
@@ -329,22 +329,22 @@ with PDFDancer.open("document.pdf") as pdf:
 const pdf = await PDFDancer.open('document.pdf');
 
 // Find paragraphs at specific coordinates
-const header = await pdf.page(0).selectParagraphsAt(72, 750);
+const header = await pdf.page(1).selectParagraphsAt(72, 750);
 
 // Find images at logo position
-const logo = await pdf.page(0).selectImagesAt(50, 750);
+const logo = await pdf.page(1).selectImagesAt(50, 750);
 
 // Find form fields at signature area
 const signature = await pdf.page(2).selectFormFieldsAt(150, 100);
 
 // Find paths (vector graphics) at specific position
-const lines = await pdf.page(0).selectPathsAt(200, 400);
+const lines = await pdf.page(1).selectPathsAt(200, 400);
 
 // Find form XObjects at watermark position
-const watermark = await pdf.page(0).selectFormsAt(300, 400);
+const watermark = await pdf.page(1).selectFormsAt(300, 400);
 
 // Find text lines at specific coordinates
-const dateLine = await pdf.page(0).selectTextLinesAt(500, 750);
+const dateLine = await pdf.page(1).selectTextLinesAt(500, 750);
 ```
 
   </TabItem>
@@ -354,22 +354,22 @@ const dateLine = await pdf.page(0).selectTextLinesAt(500, 750);
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
 
 // Find paragraphs at specific coordinates
-List<Paragraph> header = pdf.page(0).selectParagraphsAt(72, 750);
+List<Paragraph> header = pdf.page(1).selectParagraphsAt(72, 750);
 
 // Find images at logo position
-List<Image> logo = pdf.page(0).selectImagesAt(50, 750);
+List<Image> logo = pdf.page(1).selectImagesAt(50, 750);
 
 // Find form fields at signature area
 List<FormField> signature = pdf.page(2).selectFormFieldsAt(150, 100);
 
 // Find paths (vector graphics) at specific position
-List<Path> lines = pdf.page(0).selectPathsAt(200, 400);
+List<Path> lines = pdf.page(1).selectPathsAt(200, 400);
 
 // Find form XObjects at watermark position
-List<FormXObject> watermark = pdf.page(0).selectFormsAt(300, 400);
+List<FormXObject> watermark = pdf.page(1).selectFormsAt(300, 400);
 
 // Find text lines at specific coordinates
-List<TextLine> dateLine = pdf.page(0).selectTextLinesAt(500, 750);
+List<TextLine> dateLine = pdf.page(1).selectTextLinesAt(500, 750);
 ```
 
   </TabItem>
@@ -383,17 +383,17 @@ List<TextLine> dateLine = pdf.page(0).selectTextLinesAt(500, 750);
 ```python
 with PDFDancer.open("invoice.pdf") as pdf:
     # Invoice header is always at (72, 750)
-    header = pdf.page(0).select_paragraphs_at(72, 750)
+    header = pdf.page(1).select_paragraphs_at(72, 750)
     if header:
         print(f"Invoice: {header[0].text}")
 
     # Total amount always at (450, 150)
-    total = pdf.page(0).select_paragraphs_at(450, 150)
+    total = pdf.page(1).select_paragraphs_at(450, 150)
     if total:
         print(f"Total: {total[0].text}")
 
     # Company logo always at (50, 750)
-    logo = pdf.page(0).select_images_at(50, 750)
+    logo = pdf.page(1).select_images_at(50, 750)
     if logo:
         print(f"Found logo at expected position")
 ```
@@ -405,19 +405,19 @@ with PDFDancer.open("invoice.pdf") as pdf:
 const pdf = await PDFDancer.open('invoice.pdf');
 
 // Invoice header is always at (72, 750)
-const header = await pdf.page(0).selectParagraphsAt(72, 750);
+const header = await pdf.page(1).selectParagraphsAt(72, 750);
 if (header.length > 0) {
   console.log(`Invoice: ${header[0].text}`);
 }
 
 // Total amount always at (450, 150)
-const total = await pdf.page(0).selectParagraphsAt(450, 150);
+const total = await pdf.page(1).selectParagraphsAt(450, 150);
 if (total.length > 0) {
   console.log(`Total: ${total[0].text}`);
 }
 
 // Company logo always at (50, 750)
-const logo = await pdf.page(0).selectImagesAt(50, 750);
+const logo = await pdf.page(1).selectImagesAt(50, 750);
 if (logo.length > 0) {
   console.log('Found logo at expected position');
 }
@@ -430,19 +430,19 @@ if (logo.length > 0) {
 PDFDancer pdf = PDFDancer.createSession("invoice.pdf");
 
 // Invoice header is always at (72, 750)
-List<Paragraph> header = pdf.page(0).selectParagraphsAt(72, 750);
+List<Paragraph> header = pdf.page(1).selectParagraphsAt(72, 750);
 if (!header.isEmpty()) {
     System.out.println("Invoice: " + header.get(0).getText());
 }
 
 // Total amount always at (450, 150)
-List<Paragraph> total = pdf.page(0).selectParagraphsAt(450, 150);
+List<Paragraph> total = pdf.page(1).selectParagraphsAt(450, 150);
 if (!total.isEmpty()) {
     System.out.println("Total: " + total.get(0).getText());
 }
 
 // Company logo always at (50, 750)
-List<Image> logo = pdf.page(0).selectImagesAt(50, 750);
+List<Image> logo = pdf.page(1).selectImagesAt(50, 750);
 if (!logo.isEmpty()) {
     System.out.println("Found logo at expected position");
 }
@@ -482,7 +482,7 @@ with PDFDancer.open("invoice.pdf") as pdf:
     amount_lines = pdf.select_text_lines_starting_with("Amount:")
 
     # Page-scoped prefix search (only searches specific page)
-    page_headers = pdf.page(0).select_paragraphs_starting_with("Executive Summary")
+    page_headers = pdf.page(1).select_paragraphs_starting_with("Executive Summary")
 ```
 
   </TabItem>
@@ -501,7 +501,7 @@ const dateLines = await pdf.selectTextLinesStartingWith('Date:');
 const amountLines = await pdf.selectTextLinesStartingWith('Amount:');
 
 // Page-scoped prefix search (only searches specific page)
-const pageHeaders = await pdf.page(0).selectParagraphsStartingWith('Executive Summary');
+const pageHeaders = await pdf.page(1).selectParagraphsStartingWith('Executive Summary');
 ```
 
   </TabItem>
@@ -520,7 +520,7 @@ List<TextLine> dateLines = pdf.selectTextLinesStartingWith("Date:");
 List<TextLine> amountLines = pdf.selectTextLinesStartingWith("Amount:");
 
 // Page-scoped prefix search (only searches specific page)
-List<Paragraph> pageHeaders = pdf.page(0).selectParagraphsStartingWith("Executive Summary");
+List<Paragraph> pageHeaders = pdf.page(1).selectParagraphsStartingWith("Executive Summary");
 ```
 
   </TabItem>
@@ -561,7 +561,7 @@ with PDFDancer.open("document.pdf") as pdf:
     invoice_nums = pdf.select_paragraphs_matching(r"INV-\d{6}")
 
     # Page-scoped pattern matching (only searches specific page)
-    page_dates = pdf.page(0).select_paragraphs_matching(r"\d{4}-\d{2}-\d{2}")
+    page_dates = pdf.page(1).select_paragraphs_matching(r"\d{4}-\d{2}-\d{2}")
 ```
 
   </TabItem>
@@ -590,7 +590,7 @@ const zips = await pdf.selectTextLinesMatching('\\d{5}(-\\d{4})?');
 const invoiceNums = await pdf.selectParagraphsMatching('INV-\\d{6}');
 
 // Page-scoped pattern matching (only searches specific page)
-const pageDates = await pdf.page(0).selectParagraphsMatching('\\d{4}-\\d{2}-\\d{2}');
+const pageDates = await pdf.page(1).selectParagraphsMatching('\\d{4}-\\d{2}-\\d{2}');
 ```
 
   </TabItem>
@@ -619,7 +619,7 @@ List<TextLine> zips = pdf.selectTextLinesMatching("\\d{5}(-\\d{4})?");
 List<Paragraph> invoiceNums = pdf.selectParagraphsMatching("INV-\\d{6}");
 
 // Page-scoped pattern matching (only searches specific page)
-List<Paragraph> pageDates = pdf.page(0).selectParagraphsMatching("\\d{4}-\\d{2}-\\d{2}");
+List<Paragraph> pageDates = pdf.page(1).selectParagraphsMatching("\\d{4}-\\d{2}-\\d{2}");
 ```
 
   </TabItem>
@@ -701,7 +701,7 @@ from pdfdancer import PDFDancer
 
 with PDFDancer.open("invoice.pdf") as pdf:
     # Find all invoices on first page
-    invoices = pdf.page(0).select_paragraphs_starting_with("Invoice #")
+    invoices = pdf.page(1).select_paragraphs_starting_with("Invoice #")
 
     # Find all dollar amounts
     prices = pdf.select_paragraphs_matching(r"\$\d+\.\d{2}")
@@ -727,7 +727,7 @@ import { PDFDancer } from 'pdfdancer-client-typescript';
 const pdf = await PDFDancer.open('invoice.pdf');
 
 // Find all invoices on first page
-const invoices = await pdf.page(0).selectParagraphsStartingWith('Invoice #');
+const invoices = await pdf.page(1).selectParagraphsStartingWith('Invoice #');
 
 // Find all dollar amounts
 const prices = await pdf.selectParagraphsMatching('\\$\\d+\\.\\d{2}');
@@ -757,7 +757,7 @@ import com.tfc.pdf.pdfdancer.api.common.model.*;
 PDFDancer pdf = PDFDancer.createSession("invoice.pdf");
 
 // Find all invoices on first page
-List<Paragraph> invoices = pdf.page(0).selectParagraphsStartingWith("Invoice #");
+List<Paragraph> invoices = pdf.page(1).selectParagraphsStartingWith("Invoice #");
 
 // Find all dollar amounts
 List<Paragraph> prices = pdf.selectParagraphsMatching("\\$\\d+\\.\\d{2}");
@@ -900,7 +900,7 @@ if line:  # Check for None
 
 All selection methods work at two levels:
 - **Document-level**: `pdf.select_*()` - searches across all pages
-- **Page-level**: `pdf.page(index).select_*()` - searches only on specified page
+- **Page-level**: `pdf.page(pageNumber).select_*()` - searches only on specified page
 
 ---
 

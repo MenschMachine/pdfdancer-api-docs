@@ -28,7 +28,7 @@ with PDFDancer.open("document.pdf") as pdf:
     print(f"Total paragraphs: {len(all_paragraphs)}")
 
     # Get all paragraphs on a specific page
-    page_paragraphs = pdf.page(0).select_paragraphs()
+    page_paragraphs = pdf.page(1).select_paragraphs()
     print(f"Page 0 paragraphs: {len(page_paragraphs)}")
 
     for para in page_paragraphs:
@@ -48,7 +48,7 @@ const allParagraphs = await pdf.selectParagraphs();
 console.log(`Total paragraphs: ${allParagraphs.length}`);
 
 // Get all paragraphs on a specific page
-const pageParagraphs = await pdf.page(0).selectParagraphs();
+const pageParagraphs = await pdf.page(1).selectParagraphs();
 console.log(`Page 0 paragraphs: ${pageParagraphs.length}`);
 
 for (const para of pageParagraphs) {
@@ -70,7 +70,7 @@ List<Paragraph> allParagraphs = pdf.selectParagraphs();
 System.out.println("Total paragraphs: " + allParagraphs.size());
 
 // Get all paragraphs on a specific page
-List<Paragraph> pageParagraphs = pdf.page(0).selectParagraphs();
+List<Paragraph> pageParagraphs = pdf.page(1).selectParagraphs();
 System.out.println("Page 0 paragraphs: " + pageParagraphs.size());
 
 for (Paragraph para : pageParagraphs) {
@@ -92,7 +92,7 @@ with PDFDancer.open("invoice.pdf") as pdf:
     headers = pdf.select_paragraphs_starting_with("Invoice #")
 
     # On a specific page
-    page_headers = pdf.page(0).select_paragraphs_starting_with("The Complete")
+    page_headers = pdf.page(1).select_paragraphs_starting_with("The Complete")
 
     if page_headers:
         para = page_headers[0]
@@ -110,7 +110,7 @@ const pdf = await PDFDancer.open('invoice.pdf');
 const headers = await pdf.selectParagraphsStartingWith('Invoice #');
 
 // On a specific page
-const pageHeaders = await pdf.page(0).selectParagraphsStartingWith('The Complete');
+const pageHeaders = await pdf.page(1).selectParagraphsStartingWith('The Complete');
 
 if (pageHeaders.length > 0) {
     const para = pageHeaders[0];
@@ -129,7 +129,7 @@ PDFDancer pdf = PDFDancer.createSession("invoice.pdf");
 List<Paragraph> headers = pdf.selectParagraphsStartingWith("Invoice #");
 
 // On a specific page
-List<Paragraph> pageHeaders = pdf.page(0).selectParagraphsStartingWith("The Complete");
+List<Paragraph> pageHeaders = pdf.page(1).selectParagraphsStartingWith("The Complete");
 
 if (!pageHeaders.isEmpty()) {
     Paragraph para = pageHeaders.get(0);
@@ -151,7 +151,7 @@ from pdfdancer import PDFDancer
 
 with PDFDancer.open("document.pdf") as pdf:
     # Find paragraphs at specific coordinates
-    paragraphs = pdf.page(0).select_paragraphs_at(x=150, y=320)
+    paragraphs = pdf.page(1).select_paragraphs_at(x=150, y=320)
 
     for para in paragraphs:
         print(f"Paragraph at position: {para.text}")
@@ -166,7 +166,7 @@ import {PDFDancer} from 'pdfdancer-client-typescript';
 const pdf = await PDFDancer.open('document.pdf');
 
 // Find paragraphs at specific coordinates
-const paragraphs = await pdf.page(0).selectParagraphsAt(150, 320);
+const paragraphs = await pdf.page(1).selectParagraphsAt(150, 320);
 
 for (const para of paragraphs) {
     console.log(`Paragraph at position: ${para.getText()}`);
@@ -182,7 +182,7 @@ import com.tfc.pdf.pdfdancer.api.PDFDancer;
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
 
 // Find paragraphs at specific coordinates
-List<Paragraph> paragraphs = pdf.page(0).selectParagraphsAt(150, 320);
+List<Paragraph> paragraphs = pdf.page(1).selectParagraphsAt(150, 320);
 
 for (Paragraph para : paragraphs) {
     System.out.println("Paragraph at position: " + para.getText());
@@ -208,7 +208,7 @@ position, color, and status information.
 from pdfdancer import PDFDancer
 
 with PDFDancer.open("document.pdf") as pdf:
-    paragraphs = pdf.page(0).select_paragraphs()
+    paragraphs = pdf.page(1).select_paragraphs()
 
     for para in paragraphs:
         # Access text content
@@ -232,7 +232,7 @@ with PDFDancer.open("document.pdf") as pdf:
 import {PDFDancer} from 'pdfdancer-client-typescript';
 
 const pdf = await PDFDancer.open('document.pdf');
-const paragraphs = await pdf.page(0).selectParagraphs();
+const paragraphs = await pdf.page(1).selectParagraphs();
 
 for (const para of paragraphs) {
     // Access text content
@@ -260,7 +260,7 @@ import com.tfc.pdf.pdfdancer.api.PDFDancer;
 import com.tfc.pdf.pdfdancer.api.common.model.*;
 
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
-List<Paragraph> paragraphs = pdf.page(0).selectParagraphs();
+List<Paragraph> paragraphs = pdf.page(1).selectParagraphs();
 
 for (Paragraph para : paragraphs) {
     // Access text content
@@ -292,7 +292,7 @@ Text lines also expose color and other properties:
 
 ```python
 with PDFDancer.open("document.pdf") as pdf:
-    lines = pdf.page(0).select_text_lines()
+    lines = pdf.page(1).select_text_lines()
 
     for line in lines:
         print(f"Line text: {line.text}")
@@ -307,7 +307,7 @@ with PDFDancer.open("document.pdf") as pdf:
 
 ```typescript
 const pdf = await PDFDancer.open('document.pdf');
-const lines = await pdf.page(0).selectLines();
+const lines = await pdf.page(1).selectLines();
 
 for (const line of lines) {
     console.log(`Line text: ${line.getText()}`);
@@ -326,7 +326,7 @@ for (const line of lines) {
 
 ```java
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
-List<TextLine> lines = pdf.page(0).selectLines();
+List<TextLine> lines = pdf.page(1).selectLines();
 
 for (TextLine line : lines) {
     System.out.println("Line text: " + line.getText());
@@ -355,7 +355,7 @@ with the current font, and font recommendations:
 from pdfdancer import PDFDancer
 
 with PDFDancer.open("document.pdf") as pdf:
-    paragraphs = pdf.page(0).select_paragraphs()
+    paragraphs = pdf.page(1).select_paragraphs()
 
     for para in paragraphs:
         if para.status:
@@ -382,7 +382,7 @@ with PDFDancer.open("document.pdf") as pdf:
 import {PDFDancer} from 'pdfdancer-client-typescript';
 
 const pdf = await PDFDancer.open('document.pdf');
-const paragraphs = await pdf.page(0).selectParagraphs();
+const paragraphs = await pdf.page(1).selectParagraphs();
 
 for (const para of paragraphs) {
     const status = para.objectRef().status;
@@ -412,7 +412,7 @@ import com.tfc.pdf.pdfdancer.api.PDFDancer;
 import com.tfc.pdf.pdfdancer.api.common.model.*;
 
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
-List<Paragraph> paragraphs = pdf.page(0).selectParagraphs();
+List<Paragraph> paragraphs = pdf.page(1).selectParagraphs();
 
 for (Paragraph para : paragraphs) {
     if (para.getStatus() != null) {
@@ -462,7 +462,7 @@ with PDFDancer.open("document.pdf") as pdf:
         .font(StandardFonts.HELVETICA_BOLD.value, 16) \
         .line_spacing(1.2) \
         .color(Color(255, 0, 0)) \
-        .at(0, 100, 100) \
+        .at(1, 100, 100) \
         .add()
 
     pdf.save("output.pdf")
@@ -477,7 +477,7 @@ import {PDFDancer, Color} from 'pdfdancer-client-typescript';
 const pdf = await PDFDancer.open('document.pdf');
 
 // Add a simple paragraph with standard font
-await pdf.page(0).newParagraph()
+await pdf.page(1).newParagraph()
     .text('Standard Font Test\nHelvetica Bold')
     .font('Helvetica-Bold', 16)
     .lineSpacing(1.2)
@@ -503,7 +503,7 @@ pdf.newParagraph()
     .font(StandardFonts.HELVETICA_BOLD.getValue(), 16)
     .lineSpacing(1.2)
     .color(new Color(255, 0, 0))
-    .at(0, 100, 100)
+    .at(1, 100, 100)
     .add();
 
 pdf.save("output.pdf");
@@ -527,11 +527,11 @@ with PDFDancer.open("document.pdf") as pdf:
     pdf.new_paragraph() \
         .text("Times Roman Test") \
         .font(StandardFonts.TIMES_ROMAN.value, 14) \
-        .at(0, 150, 150) \
+        .at(1, 150, 150) \
         .add()
 
     # Method 2: Use page() to scope the builder
-    pdf.page(0).new_paragraph() \
+    pdf.page(1).new_paragraph() \
         .text("Awesomely\nObvious!") \
         .font("Roboto-Regular", 14) \
         .line_spacing(0.7) \
@@ -548,7 +548,7 @@ with PDFDancer.open("document.pdf") as pdf:
 const pdf = await PDFDancer.open('document.pdf');
 
 // Add to specific page
-await pdf.page(0).newParagraph()
+await pdf.page(1).newParagraph()
     .text('Times Roman Test')
     .font('Times-Roman', 14)
     .at(150, 150)
@@ -570,11 +570,11 @@ PDFDancer pdf = PDFDancer.createSession("document.pdf");
 pdf.newParagraph()
     .text("Times Roman Test")
     .font(StandardFonts.TIMES_ROMAN.getValue(), 14)
-    .at(0, 150, 150)
+    .at(1, 150, 150)
     .add();
 
 // Method 2: Use page() to scope the builder
-pdf.page(0).newParagraph()
+pdf.page(1).newParagraph()
     .text("Awesomely\nObvious!")
     .font("Roboto-Regular", 14)
     .lineSpacing(0.7)
@@ -603,7 +603,7 @@ with PDFDancer.open("document.pdf") as pdf:
         .text("Courier Monospace\nCode Example") \
         .font(StandardFonts.COURIER_BOLD.value, 12) \
         .line_spacing(1.5) \
-        .at(0, 200, 200) \
+        .at(1, 200, 200) \
         .add()
 
     pdf.save("output.pdf")
@@ -616,7 +616,7 @@ with PDFDancer.open("document.pdf") as pdf:
 const pdf = await PDFDancer.open('document.pdf');
 
 // Add multi-line code example with Courier
-await pdf.page(0).newParagraph()
+await pdf.page(1).newParagraph()
     .text('Courier Monospace\nCode Example')
     .font('Courier-Bold', 12)
     .lineSpacing(1.5)
@@ -640,7 +640,7 @@ pdf.newParagraph()
     .text("Courier Monospace\nCode Example")
     .font(StandardFonts.COURIER_BOLD.getValue(), 12)
     .lineSpacing(1.5)
-    .at(0, 200, 200)
+    .at(1, 200, 200)
     .add();
 
 pdf.save("output.pdf");
@@ -669,7 +669,7 @@ with PDFDancer.open("document.pdf") as pdf:
         .font_file(ttf_path, 24) \
         .line_spacing(1.8) \
         .color(Color(0, 0, 255)) \
-        .at(0, 300.1, 500) \
+        .at(1, 300.1, 500) \
         .add()
 
     pdf.save("output.pdf")
@@ -687,7 +687,7 @@ const pdf = await PDFDancer.open('document.pdf');
 // Use custom font file directly
 const fontBytes = await fs.readFile('fonts/DancingScript-Regular.ttf');
 
-await pdf.page(0).newParagraph()
+await pdf.page(1).newParagraph()
     .text('Awesomely\nObvious!')
     .fontFile(fontBytes, 24)
     .lineSpacing(1.8)
@@ -717,7 +717,7 @@ pdf.newParagraph()
     .fontFile(ttfPath, 24)
     .lineSpacing(1.8)
     .color(new Color(0, 0, 255))
-    .at(0, 300.1, 500)
+    .at(1, 300.1, 500)
     .add();
 
 pdf.save("output.pdf");
@@ -749,7 +749,7 @@ with PDFDancer.open("document.pdf") as pdf:
             .text("Awesomely\nObvious!") \
             .font(roboto.name, roboto.size) \
             .line_spacing(0.7) \
-            .at(0, 300.1, 500) \
+            .at(1, 300.1, 500) \
             .add()
 
     pdf.save("output.pdf")
@@ -762,7 +762,7 @@ with PDFDancer.open("document.pdf") as pdf:
 // TypeScript uses font names directly
 const pdf = await PDFDancer.open('document.pdf');
 
-await pdf.page(0).newParagraph()
+await pdf.page(1).newParagraph()
     .text('Text with service font')
     .font('Roboto-Regular', 14)
     .lineSpacing(0.7)
@@ -792,7 +792,7 @@ if (!fonts.isEmpty()) {
         .text("Awesomely\nObvious!")
         .font(roboto.getName(), roboto.getSize())
         .lineSpacing(0.7)
-        .at(0, 300.1, 500)
+        .at(1, 300.1, 500)
         .add();
 }
 
@@ -819,7 +819,7 @@ from pdfdancer import PDFDancer
 
 with PDFDancer.open("document.pdf") as pdf:
     # Find a paragraph by text prefix
-    paragraph = pdf.page(0).select_paragraphs_starting_with("The Complete")[0]
+    paragraph = pdf.page(1).select_paragraphs_starting_with("The Complete")[0]
 
     # Method 1: Explicit apply() call
     result = paragraph.edit().replace("Awesomely\nObvious!").apply()
@@ -847,7 +847,7 @@ import {PDFDancer} from 'pdfdancer-client-typescript';
 const pdf = await PDFDancer.open('document.pdf');
 
 // Find a paragraph by text prefix
-const paragraphs = await pdf.page(0).selectParagraphsStartingWith('The Complete');
+const paragraphs = await pdf.page(1).selectParagraphsStartingWith('The Complete');
 
 if (paragraphs.length > 0) {
     // Replace just the text (keeps position, font, etc.)
@@ -876,7 +876,7 @@ import com.tfc.pdf.pdfdancer.api.common.model.*;
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
 
 // Find a paragraph by text prefix
-List<Paragraph> paragraphs = pdf.page(0).selectParagraphsStartingWith("The Complete");
+List<Paragraph> paragraphs = pdf.page(1).selectParagraphsStartingWith("The Complete");
 if (!paragraphs.isEmpty()) {
     Paragraph paragraph = paragraphs.get(0);
 
@@ -936,7 +936,7 @@ When you edit text without specifying a new position, the paragraph stays in its
 from pdfdancer import PDFDancer
 
 with PDFDancer.open("document.pdf") as pdf:
-    paragraph = pdf.page(0).select_paragraphs_starting_with("The Complete")[0]
+    paragraph = pdf.page(1).select_paragraphs_starting_with("The Complete")[0]
     original_x = paragraph.position.x()
     original_y = paragraph.position.y()
 
@@ -948,7 +948,7 @@ with PDFDancer.open("document.pdf") as pdf:
         .apply()
 
     # Verify position unchanged
-    new_para = pdf.page(0).select_paragraphs_starting_with("Awesomely")[0]
+    new_para = pdf.page(1).select_paragraphs_starting_with("Awesomely")[0]
     assert new_para.position.x() == original_x
     assert new_para.position.y() == original_y
 
@@ -960,7 +960,7 @@ with PDFDancer.open("document.pdf") as pdf:
 
 ```typescript
 const pdf = await PDFDancer.open('document.pdf');
-const paragraphs = await pdf.page(0).selectParagraphsStartingWith('The Complete');
+const paragraphs = await pdf.page(1).selectParagraphsStartingWith('The Complete');
 
 if (paragraphs.length > 0) {
     const paragraph = paragraphs[0];
@@ -974,7 +974,7 @@ if (paragraphs.length > 0) {
         .lineSpacing(0.7)
         .apply();
 
-    const newPara = (await pdf.page(0).selectParagraphsStartingWith('Awesomely'))[0];
+    const newPara = (await pdf.page(1).selectParagraphsStartingWith('Awesomely'))[0];
     console.log(`Position unchanged: ${newPara.position.getX()}, ${newPara.position.getY()}`);
 }
 
@@ -988,7 +988,7 @@ await pdf.save('output.pdf');
 import com.tfc.pdf.pdfdancer.api.PDFDancer;
 
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
-List<Paragraph> paragraphs = pdf.page(0).selectParagraphsStartingWith("The Complete");
+List<Paragraph> paragraphs = pdf.page(1).selectParagraphsStartingWith("The Complete");
 
 if (!paragraphs.isEmpty()) {
     Paragraph paragraph = paragraphs.get(0);
@@ -1019,7 +1019,7 @@ You can chain multiple edits together, including text, font, color, spacing, and
 from pdfdancer import PDFDancer
 
 with PDFDancer.open("document.pdf") as pdf:
-    paragraph = pdf.page(0).select_paragraphs_starting_with("The Complete")[0]
+    paragraph = pdf.page(1).select_paragraphs_starting_with("The Complete")[0]
 
     # Chain multiple edits: text, font, spacing, AND position
     paragraph.edit() \
@@ -1039,7 +1039,7 @@ with PDFDancer.open("document.pdf") as pdf:
 import {PDFDancer} from 'pdfdancer-client-typescript';
 
 const pdf = await PDFDancer.open('document.pdf');
-const paragraphs = await pdf.page(0).selectParagraphsStartingWith('The Complete');
+const paragraphs = await pdf.page(1).selectParagraphsStartingWith('The Complete');
 
 if (paragraphs.length > 0) {
     // Chain multiple edits: text, font, spacing, AND position
@@ -1061,7 +1061,7 @@ await pdf.save('output.pdf');
 import com.tfc.pdf.pdfdancer.api.PDFDancer;
 
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
-List<Paragraph> paragraphs = pdf.page(0).selectParagraphsStartingWith("The Complete");
+List<Paragraph> paragraphs = pdf.page(1).selectParagraphsStartingWith("The Complete");
 
 if (!paragraphs.isEmpty()) {
     Paragraph paragraph = paragraphs.get(0);
@@ -1076,7 +1076,7 @@ if (!paragraphs.isEmpty()) {
         .apply();
 
     // Verify position unchanged
-    List<Paragraph> newPara = pdf.page(0).selectParagraphsStartingWith("Awesomely");
+    List<Paragraph> newPara = pdf.page(1).selectParagraphsStartingWith("Awesomely");
     if (!newPara.isEmpty()) {
         System.out.println("Position unchanged: " + newPara.get(0).getPosition().getX() +
             ", " + newPara.get(0).getPosition().getY());
@@ -1100,7 +1100,7 @@ You can change just the font without modifying the text content:
 from pdfdancer import PDFDancer
 
 with PDFDancer.open("document.pdf") as pdf:
-    paragraph = pdf.page(0).select_paragraphs_starting_with("The Complete")[0]
+    paragraph = pdf.page(1).select_paragraphs_starting_with("The Complete")[0]
 
     # Change only the font, keep everything else
     paragraph.edit() \
@@ -1108,7 +1108,7 @@ with PDFDancer.open("document.pdf") as pdf:
         .apply()
 
     # Verify font changed
-    line = pdf.page(0).select_text_lines_starting_with("The Complete")[0]
+    line = pdf.page(1).select_text_lines_starting_with("The Complete")[0]
     assert line.object_ref().font_name == "Helvetica"
     assert line.object_ref().font_size == 28
 
@@ -1120,7 +1120,7 @@ with PDFDancer.open("document.pdf") as pdf:
 
 ```typescript
 const pdf = await PDFDancer.open('document.pdf');
-const paragraphs = await pdf.page(0).selectParagraphsStartingWith('The Complete');
+const paragraphs = await pdf.page(1).selectParagraphsStartingWith('The Complete');
 
 if (paragraphs.length > 0) {
     // Change only the font, keep everything else
@@ -1139,14 +1139,14 @@ await pdf.save('output.pdf');
 import com.tfc.pdf.pdfdancer.api.PDFDancer;
 
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
-List<Paragraph> paragraphs = pdf.page(0).selectParagraphsStartingWith("The Complete");
+List<Paragraph> paragraphs = pdf.page(1).selectParagraphsStartingWith("The Complete");
 
 if (!paragraphs.isEmpty()) {
     // Move to new coordinates
     paragraphs.get(0).moveTo(0.1, 300);
 
     // Verify new position
-    List<Paragraph> moved = pdf.page(0).selectParagraphsAt(0.1, 300);
+    List<Paragraph> moved = pdf.page(1).selectParagraphsAt(0.1, 300);
     System.out.println("Moved paragraph found: " + (!moved.isEmpty()));
 }
 
@@ -1169,13 +1169,13 @@ pdf.save("output.pdf");
 from pdfdancer import PDFDancer
 
 with PDFDancer.open("document.pdf") as pdf:
-    paragraph = pdf.page(0).select_paragraphs_starting_with("The Complete")[0]
+    paragraph = pdf.page(1).select_paragraphs_starting_with("The Complete")[0]
 
     # Move to new coordinates
     paragraph.move_to(0.1, 300)
 
     # Verify new position
-    moved = pdf.page(0).select_paragraphs_at(0.1, 300)[0]
+    moved = pdf.page(1).select_paragraphs_at(0.1, 300)[0]
     assert moved is not None
 
     pdf.save("output.pdf")
@@ -1186,14 +1186,14 @@ with PDFDancer.open("document.pdf") as pdf:
 
 ```typescript
 const pdf = await PDFDancer.open('document.pdf');
-const paragraphs = await pdf.page(0).selectParagraphsStartingWith('The Complete');
+const paragraphs = await pdf.page(1).selectParagraphsStartingWith('The Complete');
 
 if (paragraphs.length > 0) {
     // Move to new coordinates
     await paragraphs[0].moveTo(0.1, 300);
 
     // Verify new position
-    const moved = (await pdf.page(0).selectParagraphsAt(0.1, 300))[0];
+    const moved = (await pdf.page(1).selectParagraphsAt(0.1, 300))[0];
     console.log(`Moved paragraph found: ${moved !== undefined}`);
 }
 
@@ -1205,7 +1205,7 @@ await pdf.save('output.pdf');
 
 ```java
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
-List<Paragraph> paragraphs = pdf.page(0).selectParagraphsStartingWith("The Complete");
+List<Paragraph> paragraphs = pdf.page(1).selectParagraphsStartingWith("The Complete");
 
 if (!paragraphs.isEmpty()) {
     // Move using edit builder
@@ -1214,7 +1214,7 @@ if (!paragraphs.isEmpty()) {
         .apply();
 
     // Verify new position
-    List<Paragraph> newPara = pdf.page(0).selectParagraphsStartingWith("The Complete");
+    List<Paragraph> newPara = pdf.page(1).selectParagraphsStartingWith("The Complete");
     if (!newPara.isEmpty()) {
         System.out.println("New position: " + newPara.get(0).getPosition().getX() +
             ", " + newPara.get(0).getPosition().getY());
@@ -1236,7 +1236,7 @@ pdf.save("output.pdf");
 from pdfdancer import PDFDancer
 
 with PDFDancer.open("document.pdf") as pdf:
-    paragraph = pdf.page(0).select_paragraphs_starting_with("The Complete")[0]
+    paragraph = pdf.page(1).select_paragraphs_starting_with("The Complete")[0]
 
     # Move using edit builder
     paragraph.edit() \
@@ -1244,7 +1244,7 @@ with PDFDancer.open("document.pdf") as pdf:
         .apply()
 
     # Verify new position
-    new_para = pdf.page(0).select_paragraphs_starting_with("The Complete")[0]
+    new_para = pdf.page(1).select_paragraphs_starting_with("The Complete")[0]
     assert new_para.position.x() == 1
     assert new_para.position.y() == 1
 
@@ -1256,7 +1256,7 @@ with PDFDancer.open("document.pdf") as pdf:
 
 ```typescript
 const pdf = await PDFDancer.open('document.pdf');
-const paragraphs = await pdf.page(0).selectParagraphsStartingWith('The Complete');
+const paragraphs = await pdf.page(1).selectParagraphsStartingWith('The Complete');
 
 if (paragraphs.length > 0) {
     // Move using edit builder
@@ -1277,7 +1277,7 @@ import com.tfc.pdf.pdfdancer.api.PDFDancer;
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
 
 // Find and edit a text line
-List<TextLine> textLines = pdf.page(0).selectTextLinesStartingWith("Invoice Number:");
+List<TextLine> textLines = pdf.page(1).selectTextLinesStartingWith("Invoice Number:");
 if (!textLines.isEmpty()) {
     // Replace the text
     textLines.get(0).edit().replace("Invoice Number: INV-2024-001").apply();
@@ -1305,7 +1305,7 @@ from pdfdancer import PDFDancer
 
 with PDFDancer.open("document.pdf") as pdf:
     # Find and edit a text line
-    text_line = pdf.page(0).select_text_lines_starting_with("Invoice Number:")[0]
+    text_line = pdf.page(1).select_text_lines_starting_with("Invoice Number:")[0]
 
     # Replace the text
     text_line.edit().replace("Invoice Number: INV-2024-001").apply()
@@ -1319,7 +1319,7 @@ with PDFDancer.open("document.pdf") as pdf:
 from pdfdancer import PDFDancer
 
 with PDFDancer.open("document.pdf") as pdf:
-    text_line = pdf.page(0).select_text_lines_starting_with("Invoice Number:")[0]
+    text_line = pdf.page(1).select_text_lines_starting_with("Invoice Number:")[0]
 
     # Context manager automatically applies changes
     with text_line.edit() as editor:
@@ -1337,7 +1337,7 @@ import {PDFDancer} from 'pdfdancer-client-typescript';
 const pdf = await PDFDancer.open('document.pdf');
 
 // Find and edit a text line
-const textLines = await pdf.page(0).selectTextLinesStartingWith('Invoice Number:');
+const textLines = await pdf.page(1).selectTextLinesStartingWith('Invoice Number:');
 
 if (textLines.length > 0) {
     // Replace the text
@@ -1357,7 +1357,7 @@ import com.tfc.pdf.pdfdancer.api.PDFDancer;
 import com.tfc.pdf.pdfdancer.api.common.model.*;
 
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
-List<TextLine> textLines = pdf.page(0).selectTextLinesStartingWith("Total:");
+List<TextLine> textLines = pdf.page(1).selectTextLinesStartingWith("Total:");
 
 if (!textLines.isEmpty()) {
     // Change text, font, and color
@@ -1383,7 +1383,7 @@ pdf.save("output.pdf");
 from pdfdancer import PDFDancer, Color
 
 with PDFDancer.open("document.pdf") as pdf:
-    text_line = pdf.page(0).select_text_lines_starting_with("Total:")[0]
+    text_line = pdf.page(1).select_text_lines_starting_with("Total:")[0]
 
     # Change text, font, and color
     text_line.edit() \
@@ -1402,7 +1402,7 @@ with PDFDancer.open("document.pdf") as pdf:
 import {PDFDancer, Color} from 'pdfdancer-client-typescript';
 
 const pdf = await PDFDancer.open('document.pdf');
-const textLines = await pdf.page(0).selectTextLinesStartingWith('Total:');
+const textLines = await pdf.page(1).selectTextLinesStartingWith('Total:');
 
 if (textLines.length > 0) {
     // Change text, font, and color
@@ -1423,7 +1423,7 @@ await pdf.save('output.pdf');
 import com.pdfdancer.client.rest.*;
 
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
-List<TextLine> textLines = pdf.page(0).selectTextLinesStartingWith("Total:");
+List<TextLine> textLines = pdf.page(1).selectTextLinesStartingWith("Total:");
 
 if (!textLines.isEmpty()) {
     // Change text, font, and color
@@ -1449,7 +1449,7 @@ pdf.save("output.pdf");
 from pdfdancer import PDFDancer
 
 with PDFDancer.open("document.pdf") as pdf:
-    text_line = pdf.page(0).select_text_lines_starting_with("Footer")[0]
+    text_line = pdf.page(1).select_text_lines_starting_with("Footer")[0]
 
     # Move text line to new position
     text_line.edit() \
@@ -1466,7 +1466,7 @@ with PDFDancer.open("document.pdf") as pdf:
 import {PDFDancer} from 'pdfdancer-client-typescript';
 
 const pdf = await PDFDancer.open('document.pdf');
-const textLines = await pdf.page(0).selectTextLinesStartingWith('Footer');
+const textLines = await pdf.page(1).selectTextLinesStartingWith('Footer');
 
 if (textLines.length > 0) {
     // Move text line to new position
@@ -1485,7 +1485,7 @@ await pdf.save('output.pdf');
 import com.tfc.pdf.pdfdancer.api.PDFDancer;
 
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
-List<TextLine> textLines = pdf.page(0).selectTextLinesStartingWith("Footer");
+List<TextLine> textLines = pdf.page(1).selectTextLinesStartingWith("Footer");
 
 if (!textLines.isEmpty()) {
     // Move text line to new position
@@ -1522,11 +1522,11 @@ from pdfdancer import PDFDancer
 
 with PDFDancer.open("document.pdf") as pdf:
     # Find and delete a text line
-    text_line = pdf.page(0).select_text_lines_starting_with("Footer")[0]
+    text_line = pdf.page(1).select_text_lines_starting_with("Footer")[0]
     text_line.delete()
 
     # Verify deletion
-    remaining = pdf.page(0).select_text_lines_starting_with("Footer")
+    remaining = pdf.page(1).select_text_lines_starting_with("Footer")
     assert remaining == []
 
     pdf.save("output.pdf")
@@ -1541,13 +1541,13 @@ import {PDFDancer} from 'pdfdancer-client-typescript';
 const pdf = await PDFDancer.open('document.pdf');
 
 // Find and delete a text line
-const textLines = await pdf.page(0).selectTextLinesStartingWith('Footer');
+const textLines = await pdf.page(1).selectTextLinesStartingWith('Footer');
 
 if (textLines.length > 0) {
     await textLines[0].delete();
 
     // Verify deletion
-    const remaining = await pdf.page(0).selectTextLinesStartingWith('Footer');
+    const remaining = await pdf.page(1).selectTextLinesStartingWith('Footer');
     console.log(`Remaining text lines: ${remaining.length}`);
 }
 
@@ -1563,12 +1563,12 @@ import com.pdfdancer.client.rest.*;
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
 
 // Find and delete a text line
-List<TextLine> textLines = pdf.page(0).selectTextLinesStartingWith("Footer");
+List<TextLine> textLines = pdf.page(1).selectTextLinesStartingWith("Footer");
 if (!textLines.isEmpty()) {
     textLines.get(0).delete();
 
     // Verify deletion
-    List<TextLine> remaining = pdf.page(0).selectTextLinesStartingWith("Footer");
+    List<TextLine> remaining = pdf.page(1).selectTextLinesStartingWith("Footer");
     System.out.println("Remaining text lines: " + remaining.size());
 }
 
@@ -1590,11 +1590,11 @@ from pdfdancer import PDFDancer
 
 with PDFDancer.open("document.pdf") as pdf:
     # Find and delete a paragraph
-    paragraph = pdf.page(0).select_paragraphs_starting_with("The Complete")[0]
+    paragraph = pdf.page(1).select_paragraphs_starting_with("The Complete")[0]
     paragraph.delete()
 
     # Verify deletion
-    remaining = pdf.page(0).select_paragraphs_starting_with("The Complete")
+    remaining = pdf.page(1).select_paragraphs_starting_with("The Complete")
     assert remaining == []
 
     pdf.save("output.pdf")
@@ -1607,13 +1607,13 @@ with PDFDancer.open("document.pdf") as pdf:
 const pdf = await PDFDancer.open('document.pdf');
 
 // Find and delete a paragraph
-const paragraphs = await pdf.page(0).selectParagraphsStartingWith('The Complete');
+const paragraphs = await pdf.page(1).selectParagraphsStartingWith('The Complete');
 
 if (paragraphs.length > 0) {
     await paragraphs[0].delete();
 
     // Verify deletion
-    const remaining = await pdf.page(0).selectParagraphsStartingWith('The Complete');
+    const remaining = await pdf.page(1).selectParagraphsStartingWith('The Complete');
     console.log(`Remaining paragraphs: ${remaining.length}`);
 }
 
@@ -1629,12 +1629,12 @@ import com.tfc.pdf.pdfdancer.api.PDFDancer;
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
 
 // Find and delete a paragraph
-List<Paragraph> paragraphs = pdf.page(0).selectParagraphsStartingWith("The Complete");
+List<Paragraph> paragraphs = pdf.page(1).selectParagraphsStartingWith("The Complete");
 if (!paragraphs.isEmpty()) {
     paragraphs.get(0).delete();
 
     // Verify deletion
-    List<Paragraph> remaining = pdf.page(0).selectParagraphsStartingWith("The Complete");
+    List<Paragraph> remaining = pdf.page(1).selectParagraphsStartingWith("The Complete");
     System.out.println("Remaining paragraphs: " + remaining.size());
 }
 
@@ -1661,7 +1661,7 @@ with PDFDancer.open("document.pdf") as pdf:
     all_lines = pdf.select_text_lines()
 
     # Get all text lines on a specific page
-    page_lines = pdf.page(0).select_text_lines()
+    page_lines = pdf.page(1).select_text_lines()
 
     for line in page_lines:
         print(f"Line: {line.text}")
@@ -1677,7 +1677,7 @@ const pdf = await PDFDancer.open('document.pdf');
 const allLines = await pdf.selectLines();
 
 // Get all text lines on a specific page
-const pageLines = await pdf.page(0).selectLines();
+const pageLines = await pdf.page(1).selectLines();
 
 for (const line of pageLines) {
     console.log(`Line: ${line.getText()}`);
@@ -1694,7 +1694,7 @@ PDFDancer pdf = PDFDancer.createSession("document.pdf");
 List<TextLine> allLines = pdf.selectLines();
 
 // Get all text lines on a specific page
-List<TextLine> pageLines = pdf.page(0).selectLines();
+List<TextLine> pageLines = pdf.page(1).selectLines();
 
 for (TextLine line : pageLines) {
     System.out.println("Line: " + line.getText());
@@ -1712,7 +1712,7 @@ for (TextLine line : pageLines) {
 ```python
 with PDFDancer.open("document.pdf") as pdf:
     # Find text lines starting with specific text
-    lines = pdf.page(0).select_text_lines_starting_with("Date:")
+    lines = pdf.page(1).select_text_lines_starting_with("Date:")
 
     if lines:
         print(f"Found date line: {lines[0].text}")
@@ -1725,7 +1725,7 @@ with PDFDancer.open("document.pdf") as pdf:
 const pdf = await PDFDancer.open('document.pdf');
 
 // Find text lines starting with specific text
-const lines = await pdf.page(0).selectTextLinesStartingWith('Date:');
+const lines = await pdf.page(1).selectTextLinesStartingWith('Date:');
 
 if (lines.length > 0) {
     console.log(`Found date line: ${lines[0].getText()}`);
@@ -1739,7 +1739,7 @@ if (lines.length > 0) {
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
 
 // Find text lines starting with specific text
-List<TextLine> lines = pdf.page(0).selectTextLinesStartingWith("Date:");
+List<TextLine> lines = pdf.page(1).selectTextLinesStartingWith("Date:");
 
 if (!lines.isEmpty()) {
     System.out.println("Found date line: " + lines.get(0).getText());

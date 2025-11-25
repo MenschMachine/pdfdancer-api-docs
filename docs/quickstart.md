@@ -75,27 +75,27 @@ PDFDancer pdf = PDFDancer.createSession("document.pdf");
 
 ## Working with Pages
 
-**Access a specific page (0-indexed):**
+**Access a specific page:**
 
 <Tabs>
   <TabItem value="python" label="Python">
 
 ```python
-page = pdf.page(0)
+page = pdf.page(1)
 ```
 
   </TabItem>
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const page = pdf.page(0);
+const page = pdf.page(1);
 ```
 
   </TabItem>
   <TabItem value="java" label="Java">
 
 ```java
-Page page = pdf.page(0);
+Page page = pdf.page(1);
 ```
 
   </TabItem>
@@ -140,7 +140,7 @@ for (PageRef page : allPages) {
   <TabItem value="python" label="Python">
 
 ```python
-pdf.page(2).delete()
+pdf.page(3).delete()
 pdf.save("output.pdf")
 ```
 
@@ -148,7 +148,7 @@ pdf.save("output.pdf")
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-await pdf.page(2).delete();
+await pdf.page(3).delete();
 await pdf.save('output.pdf');
 ```
 
@@ -156,7 +156,7 @@ await pdf.save('output.pdf');
   <TabItem value="java" label="Java">
 
 ```java
-pdf.page(2).delete();
+pdf.page(3).delete();
 pdf.save("output.pdf");
 ```
 
@@ -234,21 +234,21 @@ byte[] pdfBytes = pdf.getFileBytes();
   <TabItem value="python" label="Python">
 
 ```python
-paragraphs = pdf.page(0).select_paragraphs()
+paragraphs = pdf.page(1).select_paragraphs()
 ```
 
   </TabItem>
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const paragraphs = await pdf.page(0).selectParagraphs();
+const paragraphs = await pdf.page(1).selectParagraphs();
 ```
 
   </TabItem>
   <TabItem value="java" label="Java">
 
 ```java
-List<TextParagraphReference> paragraphs = pdf.page(0).selectParagraphs();
+List<TextParagraphReference> paragraphs = pdf.page(1).selectParagraphs();
 ```
 
   </TabItem>
@@ -260,21 +260,21 @@ List<TextParagraphReference> paragraphs = pdf.page(0).selectParagraphs();
   <TabItem value="python" label="Python">
 
 ```python
-headers = pdf.page(0).select_paragraphs_starting_with("Invoice #")
+headers = pdf.page(1).select_paragraphs_starting_with("Invoice #")
 ```
 
   </TabItem>
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-const headers = await pdf.page(0).selectParagraphsStartingWith('Invoice #');
+const headers = await pdf.page(1).selectParagraphsStartingWith('Invoice #');
 ```
 
   </TabItem>
   <TabItem value="java" label="Java">
 
 ```java
-List<TextParagraphReference> headers = pdf.page(0).selectParagraphsStartingWith("Invoice #");
+List<TextParagraphReference> headers = pdf.page(1).selectParagraphsStartingWith("Invoice #");
 ```
 
   </TabItem>
@@ -367,7 +367,7 @@ if (!headers.isEmpty()) {
 ```python
 pdf.new_paragraph() \
     .text("Hello World") \
-    .at(page_index=0, x=100, y=500) \
+    .at(page_number=1, x=100, y=500) \
     .add()
 ```
 
@@ -375,7 +375,7 @@ pdf.new_paragraph() \
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-await pdf.page(0).newParagraph()
+await pdf.page(1).newParagraph()
   .text('Hello World')
   .at(100, 500)
   .apply();
@@ -387,7 +387,7 @@ await pdf.page(0).newParagraph()
 ```java
 pdf.newParagraph()
     .text("Hello World")
-    .at(0, 100, 500)
+    .at(1, 100, 500)
     .add();
 ```
 
@@ -407,7 +407,7 @@ pdf.new_paragraph() \
     .font("Helvetica", 12) \
     .color(Color(0, 0, 0)) \
     .line_spacing(1.5) \
-    .at(page_index=0, x=100, y=500) \
+    .at(page_number=1, x=100, y=500) \
     .add()
 ```
 
@@ -417,7 +417,7 @@ pdf.new_paragraph() \
 ```typescript
 import { Color } from 'pdfdancer-client-typescript';
 
-await pdf.page(0).newParagraph()
+await pdf.page(1).newParagraph()
   .text('Hello World')
   .font('Helvetica', 12)
   .color(new Color(0, 0, 0))
@@ -435,7 +435,7 @@ pdf.newParagraph()
     .font("Helvetica", 12)
     .color(new Color(0, 0, 0))
     .lineSpacing(1.5)
-    .at(0, 100, 500)
+    .at(1, 100, 500)
     .add();
 ```
 
@@ -450,7 +450,7 @@ pdf.newParagraph()
 ```python
 pdf.new_image() \
     .from_file("logo.png") \
-    .at(page=0, x=50, y=700) \
+    .at(page=1, x=50, y=700) \
     .add()
 ```
 
@@ -460,7 +460,7 @@ pdf.new_image() \
 ```typescript
 await pdf.newImage()
   .fromFile('logo.png')
-  .at(0, 50, 700)
+  .at(1, 50, 700)
   .add();
 ```
 
@@ -470,7 +470,7 @@ await pdf.newImage()
 ```java
 pdf.newImage()
     .fromFile("logo.png")
-    .at(0, 50, 700)
+    .at(1, 50, 700)
     .add();
 ```
 
@@ -487,7 +487,7 @@ pdf.newImage()
   <TabItem value="python" label="Python">
 
 ```python
-fields = pdf.page(0).select_form_fields()
+fields = pdf.page(1).select_form_fields()
 ```
 
   </TabItem>
@@ -513,7 +513,7 @@ List<FormFieldReference> fields = pdf.selectFormFields();
   <TabItem value="python" label="Python">
 
 ```python
-name_fields = pdf.page(0).select_form_fields_by_name("firstName")
+name_fields = pdf.page(1).select_form_fields_by_name("firstName")
 ```
 
   </TabItem>

@@ -98,7 +98,7 @@ try:
         pdf.new_paragraph() \
             .text("Test") \
             .font("Helvetica", 12) \
-            .at(page_index=-1, x=100, y=500) \
+            .at(page_number=-1, x=100, y=500) \
             .add()
 except ValidationException as e:
     print(f"Validation error: {e}")
@@ -125,7 +125,7 @@ try {
   const pdf = await PDFDancer.open('document.pdf');
 
   // Invalid coordinates
-  await pdf.page(0).newParagraph()
+  await pdf.page(1).newParagraph()
     .text('Test')
     .font('Helvetica', 12)
     .at(-100, 500)  // Invalid negative coordinate
@@ -147,7 +147,7 @@ import com.tfc.pdf.pdfdancer.exceptions.ValidationException;
 try {
     // Invalid coordinates
     try (PDFDancer pdf = PDFDancer.createSession("document.pdf")) {
-        pdf.page(0).newParagraph()
+        pdf.page(1).newParagraph()
             .text("Test")
             .font("Helvetica", 12)
             .at(-100, 500)  // Invalid negative coordinate
@@ -177,7 +177,7 @@ try:
         pdf.new_paragraph() \
             .text("Hello") \
             .font("NonExistentFont", 12) \
-            .at(page_index=0, x=100, y=500) \
+            .at(page_number=1, x=100, y=500) \
             .add()
 except FontNotFoundException as e:
     print(f"Font not found: {e}")
@@ -186,7 +186,7 @@ except FontNotFoundException as e:
         pdf.new_paragraph() \
             .text("Hello") \
             .font("Helvetica", 12) \
-            .at(page_index=0, x=100, y=500) \
+            .at(page_number=1, x=100, y=500) \
             .add()
         pdf.save("output.pdf")
 ```
@@ -200,7 +200,7 @@ import { PDFDancer, FontNotFoundException } from 'pdfdancer-client-typescript';
 try {
   const pdf = await PDFDancer.open('document.pdf');
 
-  await pdf.page(0).newParagraph()
+  await pdf.page(1).newParagraph()
     .text('Hello')
     .font('NonExistentFont', 12)
     .at(100, 500)
@@ -211,7 +211,7 @@ try {
 
     // Fallback to default font
     const pdf = await PDFDancer.open('document.pdf');
-    await pdf.page(0).newParagraph()
+    await pdf.page(1).newParagraph()
       .text('Hello')
       .font('Helvetica', 12)
       .at(100, 500)
@@ -230,7 +230,7 @@ import com.tfc.pdf.pdfdancer.exceptions.FontNotFoundException;
 
 try {
     try (PDFDancer pdf = PDFDancer.createSession("document.pdf")) {
-        pdf.page(0).newParagraph()
+        pdf.page(1).newParagraph()
             .text("Hello")
             .font("NonExistentFont", 12)
             .at(100, 500)
@@ -241,7 +241,7 @@ try {
 
     // Fallback to default font
     try (PDFDancer pdf = PDFDancer.createSession("document.pdf")) {
-        pdf.page(0).newParagraph()
+        pdf.page(1).newParagraph()
             .text("Hello")
             .font("Helvetica", 12)
             .at(100, 500)
@@ -384,7 +384,7 @@ def process_pdf(input_path: str, output_path: str) -> bool:
     try:
         with PDFDancer.open(input_path) as pdf:
             # Find and edit paragraphs
-            paragraphs = pdf.page(0).select_paragraphs_starting_with("Invoice")
+            paragraphs = pdf.page(1).select_paragraphs_starting_with("Invoice")
 
             if paragraphs:
                 paragraphs[0].edit() \
@@ -397,7 +397,7 @@ def process_pdf(input_path: str, output_path: str) -> bool:
                 .text("CONFIDENTIAL") \
                 .font("Helvetica-Bold", 48) \
                 .color(Color(200, 200, 200)) \
-                .at(page_index=0, x=150, y=400) \
+                .at(page_number=1, x=150, y=400) \
                 .add()
 
             pdf.save(output_path)
@@ -418,7 +418,7 @@ def process_pdf(input_path: str, output_path: str) -> bool:
                     .text("CONFIDENTIAL") \
                     .font("Helvetica", 48) \
                     .color(Color(200, 200, 200)) \
-                    .at(page_index=0, x=150, y=400) \
+                    .at(page_number=1, x=150, y=400) \
                     .add()
                 pdf.save(output_path)
                 return True
@@ -470,7 +470,7 @@ try {
   const pdf = await PDFDancer.open('input.pdf');
 
   // Find and edit paragraphs
-  const paragraphs = await pdf.page(0).selectParagraphsStartingWith('Invoice');
+  const paragraphs = await pdf.page(1).selectParagraphsStartingWith('Invoice');
 
   if (paragraphs.length > 0) {
     await paragraphs[0].edit()
@@ -480,7 +480,7 @@ try {
   }
 
   // Add watermark
-  await pdf.page(0).newParagraph()
+  await pdf.page(1).newParagraph()
     .text('CONFIDENTIAL')
     .font('Helvetica-Bold', 48)
     .color(new Color(200, 200, 200))
@@ -502,7 +502,7 @@ try {
     try {
       const pdf = await PDFDancer.open('input.pdf');
 
-      await pdf.page(0).newParagraph()
+      await pdf.page(1).newParagraph()
         .text('CONFIDENTIAL')
         .font('Helvetica', 48)
         .color(new Color(200, 200, 200))
@@ -560,7 +560,7 @@ public class PdfProcessor {
     public static boolean processPdf(String inputPath, String outputPath) {
         try (PDFDancer pdf = PDFDancer.createSession(inputPath)) {
             // Find and edit paragraphs
-            List<ParagraphRef> paragraphs = pdf.page(0)
+            List<ParagraphRef> paragraphs = pdf.page(1)
                 .selectParagraphsStartingWith("Invoice");
 
             if (!paragraphs.isEmpty()) {
@@ -571,7 +571,7 @@ public class PdfProcessor {
             }
 
             // Add watermark
-            pdf.page(0).newParagraph()
+            pdf.page(1).newParagraph()
                 .text("CONFIDENTIAL")
                 .font("Helvetica-Bold", 48)
                 .color(new Color(200, 200, 200))
@@ -592,7 +592,7 @@ public class PdfProcessor {
 
             // Retry with fallback font
             try (PDFDancer pdf = PDFDancer.createSession(inputPath)) {
-                pdf.page(0).newParagraph()
+                pdf.page(1).newParagraph()
                     .text("CONFIDENTIAL")
                     .font("Helvetica", 48)
                     .color(new Color(200, 200, 200))

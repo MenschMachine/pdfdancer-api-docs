@@ -96,7 +96,7 @@ from pdfdancer import PDFDancer
 
 with PDFDancer.open("document.pdf") as pdf:
     # Select paths on a page
-    paths = pdf.page(0).select_paths()
+    paths = pdf.page(1).select_paths()
 
     print(f"Found {len(paths)} paths on page 0")
 
@@ -112,7 +112,7 @@ with PDFDancer.open("document.pdf") as pdf:
 const pdf = await PDFDancer.open('document.pdf');
 
 // Select paths on a page
-const paths = await pdf.page(0).selectPaths();
+const paths = await pdf.page(1).selectPaths();
 
 console.log(`Found ${paths.length} paths on page 0`);
 
@@ -131,7 +131,7 @@ import com.tfc.pdf.pdfdancer.api.PDFDancer;
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
 
 // Select paths on a page
-List<Path> paths = pdf.page(0).selectPaths();
+List<Path> paths = pdf.page(1).selectPaths();
 
 System.out.println("Found " + paths.size() + " paths on page 0");
 
@@ -158,7 +158,7 @@ Create straight lines on a page:
 from pdfdancer import PDFDancer, Color
 
 with PDFDancer.open("document.pdf") as pdf:
-    page = pdf.page(0)
+    page = pdf.page(1)
 
     # Draw a simple line
     page.new_line() \
@@ -187,7 +187,7 @@ with PDFDancer.open("document.pdf") as pdf:
 import { PDFDancer, Color } from 'pdfdancer-client-typescript';
 
 const pdf = await PDFDancer.open('document.pdf');
-const page = pdf.page(0);
+const page = pdf.page(1);
 
 // Draw a simple line
 await page.newLine()
@@ -217,7 +217,7 @@ import com.tfc.pdf.pdfdancer.api.PDFDancer;
 import com.tfc.pdf.pdfdancer.api.common.model.*;
 
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
-Page page = pdf.page(0);
+Page page = pdf.page(1);
 
 // Draw a simple line
 page.newLine()
@@ -255,7 +255,7 @@ Create rectangles with stroke and fill:
 from pdfdancer import PDFDancer, Color
 
 with PDFDancer.open("document.pdf") as pdf:
-    page = pdf.page(0)
+    page = pdf.page(1)
 
     # Draw a stroked rectangle
     page.new_rectangle() \
@@ -291,7 +291,7 @@ with PDFDancer.open("document.pdf") as pdf:
 import { PDFDancer, Color } from 'pdfdancer-client-typescript';
 
 const pdf = await PDFDancer.open('document.pdf');
-const page = pdf.page(0);
+const page = pdf.page(1);
 
 // Draw a stroked rectangle
 await page.newRectangle()
@@ -328,7 +328,7 @@ import com.tfc.pdf.pdfdancer.api.PDFDancer;
 import com.tfc.pdf.pdfdancer.api.common.model.*;
 
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
-Page page = pdf.page(0);
+Page page = pdf.page(1);
 
 // Draw a stroked rectangle
 page.newRectangle()
@@ -373,7 +373,7 @@ Create smooth curves using cubic Bezier curves:
 from pdfdancer import PDFDancer, Color
 
 with PDFDancer.open("document.pdf") as pdf:
-    page = pdf.page(0)
+    page = pdf.page(1)
 
     # Draw a bezier curve
     page.new_bezier() \
@@ -395,7 +395,7 @@ with PDFDancer.open("document.pdf") as pdf:
 import { PDFDancer, Color } from 'pdfdancer-client-typescript';
 
 const pdf = await PDFDancer.open('document.pdf');
-const page = pdf.page(0);
+const page = pdf.page(1);
 
 // Draw a bezier curve
 await page.newBezier()
@@ -418,7 +418,7 @@ import com.tfc.pdf.pdfdancer.api.PDFDancer;
 import com.tfc.pdf.pdfdancer.api.common.model.*;
 
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
-Page page = pdf.page(0);
+Page page = pdf.page(1);
 
 // Draw a bezier curve
 page.newBezier()
@@ -460,7 +460,7 @@ from pdfdancer import PDFDancer, Color
 
 with PDFDancer.open("document.pdf") as pdf:
     # new_path() returns a builder - chain commands and call add()
-    pdf.page(0).new_path() \
+    pdf.page(1).new_path() \
         .add_line(Point(100, 100), Point(200, 200)) \
         .stroke_color(Color(0, 0, 0)) \
         .stroke_width(2) \
@@ -476,7 +476,7 @@ import { PDFDancer, Color } from 'pdfdancer-client-typescript';
 const pdf = await PDFDancer.open('document.pdf');
 
 // newPath() returns a PathBuilder - chain commands and call apply()
-await pdf.page(0).newPath()
+await pdf.page(1).newPath()
   .moveTo(100, 100)
   .lineTo(200, 200)
   .strokeColor(new Color(0, 0, 0))
@@ -493,7 +493,7 @@ import com.pdfdancer.client.rest.*;
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
 
 // newPath() returns a builder - chain commands and call add()
-pdf.page(0).newPath()
+pdf.page(1).newPath()
     .moveTo(100, 100)
     .lineTo(200, 200)
     .strokeColor(new Color(0, 0, 0))
@@ -513,7 +513,7 @@ For complex shapes with overlapping regions, you can control the fill behavior:
 
 ```typescript
 // Even-odd fill rule for complex shapes
-await pdf.page(0).newPath()
+await pdf.page(1).newPath()
   .moveTo(100, 100)
   .lineTo(200, 100)
   .lineTo(200, 200)
@@ -568,7 +568,7 @@ Complete list of PathBuilder methods:
 - `evenOddFill(boolean)` - Use even-odd fill rule (TypeScript)
 
 **Finalize:**
-- `at(pageIndex, x, y)` / `at(x, y)` - Set position and optionally page index
+- `at(pageNumber, x, y)` / `at(x, y)` - Set position and optionally page index
 - `add()` / `apply()` - Add the path to the document
 
 :::note Python Method Names
@@ -588,7 +588,7 @@ Create complex vector graphics using path commands:
 from pdfdancer import PDFDancer, Color, Point
 
 with PDFDancer.open("document.pdf") as pdf:
-    page = pdf.page(0)
+    page = pdf.page(1)
 
     # Draw a complex path (triangle)
     page.new_path() \
@@ -619,7 +619,7 @@ with PDFDancer.open("document.pdf") as pdf:
 import { PDFDancer, Color } from 'pdfdancer-client-typescript';
 
 const pdf = await PDFDancer.open('document.pdf');
-const page = pdf.page(0);
+const page = pdf.page(1);
 
 // Draw a complex path (triangle)
 await page.newPath()
@@ -653,7 +653,7 @@ import com.tfc.pdf.pdfdancer.api.PDFDancer;
 import com.tfc.pdf.pdfdancer.api.common.model.*;
 
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
-Page page = pdf.page(0);
+Page page = pdf.page(1);
 
 // Draw a complex path (triangle)
 page.newPath()
