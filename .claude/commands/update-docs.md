@@ -1,6 +1,6 @@
 Update the documentation for the pdfdancer SDKs.
 
-1. Check the latest commit in the repositories under /external.
+1. Check the latest commit in the repositories under /external. If necessary update the repository first.
 2. Compare those commit ids to those recorded in docs/sdk-versions.md
 2. check all changes between those commits and update the documentation acoordingly 
 3. Update version sdk-versions.md
