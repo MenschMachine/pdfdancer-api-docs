@@ -45,6 +45,7 @@ const sidebars: SidebarsConfig = {
                 'working-with-formxobjects',
                 'working-with-vector-graphics',
                 'working-with-snapshots',
+                'redaction',
                 'advanced',
             ],
         },

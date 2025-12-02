@@ -6,17 +6,17 @@ description: Current SDK versions used in this documentation
 
 # SDK Versions
 
-**Documentation Version**: 4.0 (November 25, 2025)
+**Documentation Version**: 5.0 (December 2, 2025)
 
 This documentation is based on the following SDK versions:
 
 ## Python SDK
 
 - **Repository**: [pdfdancer-client-python](https://github.com/MenschMachine/pdfdancer-client-python)
-- **Version**: 0.3.0
-- **Commit**: `05dcae0c71c9d4badc62a3ad588687a5ca856365`
-- **Commit Date**: November 25, 2025
-- **Commit Message**: Merge pull request #8 from MenschMachine/api-v1-migration
+- **Version**: 0.3.1
+- **Commit**: `a71be4c0457436ad046ae33e24be01f4576c5cb7`
+- **Commit Date**: December 2, 2025
+- **Commit Message**: Merge pull request #10 from MenschMachine/redaction-support
 - **Documentation Coverage**:
   - ✅ Anonymous token support (automatic fallback authentication)
   - ✅ Snapshot API (`get_document_snapshot()`, `get_page_snapshot()`, `page.get_snapshot()`)
@@ -28,19 +28,18 @@ This documentation is based on the following SDK versions:
   - ✅ Select all elements helper (`select_elements()`)
   - ✅ Page size and orientation properties (`page.page_size`, `page.orientation`)
   - ✅ Context manager pattern for text editing (recommended approach)
-  - ✅ **Standard page numbering** (`page_number` instead of `page_index`)
-- **Key Changes Since Last Version** (0.2.28 → 0.3.0):
-  - **BREAKING: Standard page numbering**: Page numbers now use standard numbering (page 1 is the first page)
-  - **BREAKING: Renamed `page_index` to `page_number`**: All API methods and properties now use `page_number`
-  - **Removed line spacing for text lines**: Line spacing changes are only supported on paragraphs, not individual text lines
-  - **Code formatting**: Consistent indentation and whitespace throughout
+  - ✅ Standard page numbering (`page_number` instead of `page_index`)
+  - ✅ **Redaction API** (`object.redact()`, `pdf.redact()` for batch redaction)
+- **Key Changes Since Last Version** (0.3.0 → 0.3.1):
+  - **Redaction support**: Permanently redact paragraphs, text lines, images, paths, and form fields
+  - **Batch redaction**: `pdf.redact(objects, replacement, placeholder_color)` for efficient multi-object redaction
 
 ## TypeScript SDK
 
 - **Repository**: [pdfdancer-client-typescript](https://github.com/MenschMachine/pdfdancer-client-typescript)
-- **Version**: 2.0.0 (tagged: v1.0.23)
-- **Commit**: `53d4ae46df7aded2a1e3794e0167583aca088ad3`
-- **Commit Date**: November 25, 2025
+- **Version**: 2.0.1
+- **Commit**: `b1b5872c8b0b45d7430fc36015c855f1f0f821e6`
+- **Commit Date**: December 2, 2025
 - **Documentation Coverage**:
   - ✅ Anonymous token support (automatic fallback authentication)
   - ✅ Snapshot API (`getDocumentSnapshot()`, `getPageSnapshot()`, `page.getSnapshot()`)
@@ -52,23 +51,21 @@ This documentation is based on the following SDK versions:
   - ✅ Page size and orientation properties (`page.pageSize`, `page.orientation`)
   - ✅ Form field selection naming clarified (document-level: `selectFieldsByName()`, page-level: `selectFormFieldsByName()`)
   - ✅ Corrected method name: `getBytes()` (not `getPdfFile()`)
-  - ✅ **Standard page numbering** (`pageNumber` instead of `pageIndex`)
-  - ✅ **Flexible PDF input types** (File, ArrayBuffer, filepath string, Uint8Array)
-  - ✅ **Automatic dotenv loading**
-- **Key Changes Since Last Version** (1.0.21 → 2.0.0):
-  - **BREAKING: Standard page numbering**: Page numbers now use standard numbering (page 1 is the first page)
-  - **BREAKING: Renamed `pageIndex` to `pageNumber`**: All API methods and properties now use `pageNumber`
-  - **Flexible PDF input**: `PDFDancer.open()` now accepts `File`, `ArrayBuffer`, filepath strings, and `Uint8Array`
-  - **Automatic dotenv support**: Environment variables are automatically loaded from `.env` files
-  - **PDF file existence check**: Added validation for filepath string inputs
+  - ✅ Standard page numbering (`pageNumber` instead of `pageIndex`)
+  - ✅ Flexible PDF input types (File, ArrayBuffer, filepath string, Uint8Array)
+  - ✅ Automatic dotenv loading
+  - ✅ **Redaction API** (`object.redact()`, `pdf.redact()` for batch redaction)
+- **Key Changes Since Last Version** (2.0.0 → 2.0.1):
+  - **Redaction support**: Permanently redact paragraphs, text lines, images, paths, and form fields
+  - **Custom placeholder colors**: Specify colors for image/path redaction placeholders
 
 ## Java SDK
 
 - **Repository**: [pdfdancer-client-java](https://github.com/MenschMachine/pdfdancer-client-java)
-- **Version**: 0.2.0
-- **Commit**: `a0170ecdbfed17c5a87dba93b0a171bf19947efb`
-- **Commit Date**: November 25, 2025
-- **Commit Message**: Merge pull request #10 from MenschMachine/api-v1-migration
+- **Version**: 0.2.1
+- **Commit**: `f651ab14b0bcedd68ac200642f3a48f970571d40`
+- **Commit Date**: December 2, 2025
+- **Commit Message**: Merge pull request #14 from MenschMachine/redaction-by-id
 - **Documentation Coverage**:
   - ✅ Core PDF manipulation (open, create, save)
   - ✅ Text operations (paragraphs, text lines)
@@ -86,7 +83,9 @@ This documentation is based on the following SDK versions:
   - ✅ Color model support
   - ✅ Maven Central publishing support (automated and manual bundle upload)
   - ✅ OpenAPI specification for REST API integration
-  - ✅ **Standard page numbering** (`pageNumber` instead of `pageIndex`)
+  - ✅ Standard page numbering (`pageNumber` instead of `pageIndex`)
+  - ✅ **Redaction API** (`object.redact().apply()`, `pdf.redact(request)` for batch redaction)
+  - ✅ **selectFormFieldByName** at document and page level
 - **Requirements**:
   - **Java 11+** required (tested with Java 11, 17, 21, 23, 25)
   - Uses Gradle for build management
@@ -100,12 +99,10 @@ This documentation is based on the following SDK versions:
   - **Clean API design**: Mirrors Python and TypeScript SDKs with Java conventions
   - **Default API endpoint**: Now uses `https://api.pdfdancer.com`
   - **Maven Central distribution**: Published artifacts available for easy dependency management
-- **Key Changes Since Last Version** (0.1.8 → 0.2.0):
-  - **BREAKING: Standard page numbering**: Page numbers now use standard numbering (page 1 is the first page)
-  - **BREAKING: Renamed `pageIndex` to `pageNumber`**: All API methods and properties now use `pageNumber`
-  - **BREAKING: Renamed `getPageIndex()` to `getPageNumber()`**: Updated getter methods accordingly
-  - **Gradle caching**: Added Gradle download caching to CI workflows for faster builds
-  - **File extension refactoring**: Renamed file extensions from `.client` to `.pdf`
+- **Key Changes Since Last Version** (0.2.0 → 0.2.1):
+  - **Redaction support**: Permanently redact paragraphs, text lines, images, paths, and form fields
+  - **RedactRequest builder**: Fluent builder for batch redaction with `RedactRequest.builder()`
+  - **selectFormFieldByName**: New methods at document and page level for form field selection
 
 ---
 
@@ -202,7 +199,7 @@ Update the version in your `build.gradle.kts`:
 
 ```kotlin
 dependencies {
-    implementation("com.pdfdancer.client:pdfdancer-client-java:0.2.0")
+    implementation("com.pdfdancer.client:pdfdancer-client-java:0.2.1")
 }
 ```
 
@@ -220,7 +217,7 @@ Update the version in your `pom.xml`:
 <dependency>
     <groupId>com.pdfdancer.client</groupId>
     <artifactId>pdfdancer-client-java</artifactId>
-    <version>0.2.0</version>
+    <version>0.2.1</version>
 </dependency>
 ```
 
@@ -236,6 +233,41 @@ mvn clean install -U
 ---
 
 ## Documentation Update History
+
+### Version 5.0 - December 2, 2025
+
+**Redaction Support: Permanently Remove Sensitive Content**
+
+Updated documentation to cover redaction features available in Python SDK v0.3.1, TypeScript SDK v2.0.1, and Java SDK v0.2.1:
+
+**New Documentation Added:**
+
+1. **Redaction Page** (`docs/redaction.md` - NEW FILE)
+   - Complete documentation for redaction functionality
+   - Single-object redaction: `paragraph.redact()`, `textline.redact()`, `image.redact()`, `path.redact()`, `formfield.redact()`
+   - Batch redaction: `pdf.redact(objects, replacement, placeholder_color)`
+   - Custom replacement text for text content
+   - Custom placeholder colors for images and paths
+   - Code examples in Python, TypeScript, and Java
+
+**SDK Updates:**
+
+- Python SDK: 0.3.0 → 0.3.1
+- TypeScript SDK: 2.0.0 → 2.0.1
+- Java SDK: 0.2.0 → 0.2.1
+
+**Internal Improvements (not user-facing):**
+
+- All SDKs now send X-PDFDancer-Client header with version information
+- Java SDK: Increased default HTTP timeout to 60 seconds
+- Java SDK: Added `selectFormFieldByName()` at document and page level
+
+**Files Modified:**
+- `docs/redaction.md` - NEW FILE (complete redaction API documentation)
+- `docs/sdk-versions.md` - Version information and changelog updated
+- `sidebars.ts` - Added redaction page to Forms & Advanced category
+
+---
 
 ### Version 4.0 - November 25, 2025
 
