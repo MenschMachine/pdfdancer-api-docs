@@ -6,7 +6,7 @@ description: Current SDK versions used in this documentation
 
 # SDK Versions
 
-**Documentation Version**: 6.0 (December 8, 2025)
+**Documentation Version**: 6.1 (December 8, 2025)
 
 This documentation is based on the following SDK versions:
 
@@ -98,7 +98,9 @@ This documentation is based on the following SDK versions:
   - **Default API endpoint**: Now uses `https://api.pdfdancer.com`
   - **Maven Central distribution**: Published artifacts available for easy dependency management
 - **Key Changes Since Last Version** (0.2.1 → 0.2.2):
-  - **Simplified batch redaction API**: New `pdf.redact(objects)`, `pdf.redact(objects, replacement)`, and `pdf.redact(objects, replacement, placeholderColor)` methods - no longer requires `RedactRequest.builder()`
+  - **Simplified redaction API**: Both single-object and batch redaction now use direct method calls
+    - Single-object: `object.redact()`, `object.redact(replacement)`, `object.redact(placeholderColor)`, `object.redact(replacement, placeholderColor)` - no longer requires `.apply()`
+    - Batch redaction: `pdf.redact(objects)`, `pdf.redact(objects, replacement)`, `pdf.redact(objects, replacement, placeholderColor)` - no longer requires `RedactRequest.builder()`
 
 ---
 
@@ -229,6 +231,33 @@ mvn clean install -U
 ---
 
 ## Documentation Update History
+
+### Version 6.1 - December 8, 2025
+
+**Java Redaction API Simplification & TypeScript Version Update**
+
+Updated documentation to reflect simplified Java redaction API in v0.2.2 and TypeScript SDK version bump to 2.0.3:
+
+**SDK Version Updates:**
+- TypeScript SDK: 2.0.2 → 2.0.3 (version bump only, no functional changes)
+- Java SDK: No version change, but documented unreleased API improvements from commit `886ff0b`
+
+**API Changes (Java SDK):**
+
+1. **Simplified Single-Object Redaction**
+   - Old API (fluent builder): `object.redact().withReplacement("[TEXT]").apply()`
+   - New API (direct call): `object.redact("[TEXT]")`
+   - Also available: `object.redact()`, `object.redact(color)`, `object.redact(replacement, color)`
+   - No longer requires calling `.apply()` - returns `boolean` directly
+
+**Documentation Updated:**
+- `docs/redaction.md` - Updated all Java code examples for single-object redaction
+- `docs/sdk-versions.md` - Updated Java SDK changelog and TypeScript version info
+
+**Files Modified:**
+- All Java redaction examples now use simplified API: `object.redact()` instead of `object.redact().apply()`
+
+---
 
 ### Version 6.0 - December 8, 2025
 

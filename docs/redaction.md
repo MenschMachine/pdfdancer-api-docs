@@ -74,12 +74,10 @@ List<TextParagraphReference> paragraphs = pdf.page(1)
 
 if (!paragraphs.isEmpty()) {
     // Redact with default replacement "[REDACTED]"
-    paragraphs.get(0).redact().apply();
+    paragraphs.get(0).redact();
 
     // Or use custom replacement text
-    paragraphs.get(0).redact()
-        .withReplacement("[CONFIDENTIAL]")
-        .apply();
+    paragraphs.get(0).redact("[CONFIDENTIAL]");
 }
 
 pdf.save("redacted.pdf");
@@ -133,9 +131,7 @@ List<TextLineReference> lines = pdf.page(1)
     .selectTextLinesMatching("\\d{3}-\\d{2}-\\d{4}");
 
 for (TextLineReference line : lines) {
-    line.redact()
-        .withReplacement("XXX-XX-XXXX")
-        .apply();
+    line.redact("XXX-XX-XXXX");
 }
 
 pdf.save("redacted.pdf");
@@ -199,12 +195,10 @@ List<ImageReference> images = pdf.page(1).selectImages();
 
 for (ImageReference image : images) {
     // Redact with default black placeholder
-    image.redact().apply();
+    image.redact();
 
     // Or use custom placeholder color
-    image.redact()
-        .withColor(new Color(128, 128, 128))
-        .apply();
+    image.redact(new Color(128, 128, 128));
 }
 
 pdf.save("redacted.pdf");
@@ -256,7 +250,7 @@ PDFDancer pdf = PDFDancer.createSession("document.pdf");
 List<PathReference> paths = pdf.page(1).selectPaths();
 
 for (PathReference path : paths) {
-    path.redact().apply();
+    path.redact();
 }
 
 pdf.save("redacted.pdf");
@@ -311,9 +305,7 @@ PDFDancer pdf = PDFDancer.createSession("form.pdf");
 List<FormFieldReference> fields = pdf.selectFormFieldsByName("social_security");
 
 if (!fields.isEmpty()) {
-    fields.get(0).redact()
-        .withReplacement("[REMOVED]")
-        .apply();
+    fields.get(0).redact("[REMOVED]");
 }
 
 pdf.save("redacted.pdf");
@@ -462,7 +454,7 @@ if (result.success) {
 
 ```java
 // Java
-boolean success = paragraph.redact().apply();
+boolean success = paragraph.redact();
 if (success) {
     System.out.println("Content permanently redacted");
 } else {
