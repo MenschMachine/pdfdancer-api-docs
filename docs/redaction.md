@@ -112,8 +112,8 @@ with PDFDancer.open("document.pdf") as pdf:
 ```typescript
 const pdf = await PDFDancer.open('document.pdf');
 
-// Find text lines matching a pattern
-const lines = await pdf.page(1).selectTextLinesMatching(/\d{3}-\d{2}-\d{4}/);
+// Find text lines matching a pattern (uses regex string)
+const lines = await pdf.page(1).selectTextLinesMatching('\\d{3}-\\d{2}-\\d{4}');
 
 for (const line of lines) {
     await line.redact('XXX-XX-XXXX');
@@ -367,25 +367,23 @@ import {Color, PDFDancer} from 'pdfdancer-client-typescript';
 
 const pdf = await PDFDancer.open('document.pdf');
 
-// Collect objects to redact
-const objectsToRedact = [];
+let redactedCount = 0;
 
-// Add sensitive paragraphs
-const ssnParagraphs = await pdf.selectParagraphsMatching(/SSN.*\d{3}-\d{2}-\d{4}/);
-objectsToRedact.push(...ssnParagraphs);
+// Redact sensitive paragraphs
+const ssnParagraphs = await pdf.selectParagraphsMatching('SSN.*\\d{3}-\\d{2}-\\d{4}');
+for (const paragraph of ssnParagraphs) {
+    await paragraph.redact('[REDACTED]');
+    redactedCount++;
+}
 
-// Add sensitive images
+// Redact sensitive images with black placeholder
 const pageImages = await pdf.page(1).selectImages();
-objectsToRedact.push(...pageImages);
+for (const image of pageImages) {
+    await image.redact({color: new Color(0, 0, 0)});
+    redactedCount++;
+}
 
-// Batch redact all objects
-const result = await pdf.redact(objectsToRedact, {
-    replacement: '[REDACTED]',
-    placeholderColor: new Color(0, 0, 0)  // Black for images/paths
-});
-
-console.log(`Redacted ${result.count} objects`);
-console.log(`Success: ${result.success}`);
+console.log(`Redacted ${redactedCount} objects`);
 
 await pdf.save('redacted.pdf');
 ```
