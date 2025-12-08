@@ -862,6 +862,7 @@ firstHeader.ifPresent(header ->
 | `select_text_lines()` | `select_text_line()` | First text line or `null`/`None`/`Optional.empty()` |
 | `select_text_lines_starting_with(text)` | `select_text_line_starting_with(text)` | First match or `null`/`None`/`Optional.empty()` |
 | `select_text_lines_matching(pattern)` | `select_text_line_matching(pattern)` | First match or `null`/`None`/`Optional.empty()` |
+| `select_text_lines_at(x, y)` | `select_text_line_at(x, y)` | First match or `null`/`None`/`Optional.empty()` |
 
 :::tip Java Optional Pattern
 Java returns `Optional<T>` for singular methods, following Java best practices:

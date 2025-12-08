@@ -6,17 +6,17 @@ description: Current SDK versions used in this documentation
 
 # SDK Versions
 
-**Documentation Version**: 5.0 (December 2, 2025)
+**Documentation Version**: 6.0 (December 8, 2025)
 
 This documentation is based on the following SDK versions:
 
 ## Python SDK
 
 - **Repository**: [pdfdancer-client-python](https://github.com/MenschMachine/pdfdancer-client-python)
-- **Version**: 0.3.1
-- **Commit**: `a71be4c0457436ad046ae33e24be01f4576c5cb7`
-- **Commit Date**: December 2, 2025
-- **Commit Message**: Merge pull request #10 from MenschMachine/redaction-support
+- **Version**: 0.3.2
+- **Commit**: `96504f66253180d8ae09fa409c4c07e40f33f5e1`
+- **Commit Date**: December 8, 2025
+- **Commit Message**: Merge remote-tracking branch 'refs/remotes/origin/main'
 - **Documentation Coverage**:
   - ✅ Anonymous token support (automatic fallback authentication)
   - ✅ Snapshot API (`get_document_snapshot()`, `get_page_snapshot()`, `page.get_snapshot()`)
@@ -30,16 +30,15 @@ This documentation is based on the following SDK versions:
   - ✅ Context manager pattern for text editing (recommended approach)
   - ✅ Standard page numbering (`page_number` instead of `page_index`)
   - ✅ **Redaction API** (`object.redact()`, `pdf.redact()` for batch redaction)
-- **Key Changes Since Last Version** (0.3.0 → 0.3.1):
-  - **Redaction support**: Permanently redact paragraphs, text lines, images, paths, and form fields
-  - **Batch redaction**: `pdf.redact(objects, replacement, placeholder_color)` for efficient multi-object redaction
+- **Key Changes Since Last Version** (0.3.1 → 0.3.2):
+  - **Document-level regex text line selection**: New `select_text_lines_matching(pattern)` and `select_text_line_matching(pattern)` methods at document level
 
 ## TypeScript SDK
 
 - **Repository**: [pdfdancer-client-typescript](https://github.com/MenschMachine/pdfdancer-client-typescript)
-- **Version**: 2.0.1
-- **Commit**: `b1b5872c8b0b45d7430fc36015c855f1f0f821e6`
-- **Commit Date**: December 2, 2025
+- **Version**: 2.0.2
+- **Commit**: `57b67d8d9e252db3db7d3f055c755ec9a872405a`
+- **Commit Date**: December 8, 2025
 - **Documentation Coverage**:
   - ✅ Anonymous token support (automatic fallback authentication)
   - ✅ Snapshot API (`getDocumentSnapshot()`, `getPageSnapshot()`, `page.getSnapshot()`)
@@ -55,17 +54,16 @@ This documentation is based on the following SDK versions:
   - ✅ Flexible PDF input types (File, ArrayBuffer, filepath string, Uint8Array)
   - ✅ Automatic dotenv loading
   - ✅ **Redaction API** (`object.redact()`, `pdf.redact()` for batch redaction)
-- **Key Changes Since Last Version** (2.0.0 → 2.0.1):
-  - **Redaction support**: Permanently redact paragraphs, text lines, images, paths, and form fields
-  - **Custom placeholder colors**: Specify colors for image/path redaction placeholders
+- **Key Changes Since Last Version** (2.0.1 → 2.0.2):
+  - **Public batch redaction API**: `pdf.redact(objects, options)` now exposed as public method for efficient multi-object redaction
 
 ## Java SDK
 
 - **Repository**: [pdfdancer-client-java](https://github.com/MenschMachine/pdfdancer-client-java)
-- **Version**: 0.2.1
-- **Commit**: `f651ab14b0bcedd68ac200642f3a48f970571d40`
-- **Commit Date**: December 2, 2025
-- **Commit Message**: Merge pull request #14 from MenschMachine/redaction-by-id
+- **Version**: 0.2.2
+- **Commit**: `df394c19717dd1e6de4ac5dd4d7a36d16c4537a9`
+- **Commit Date**: December 8, 2025
+- **Commit Message**: build: bump version to 0.2.2
 - **Documentation Coverage**:
   - ✅ Core PDF manipulation (open, create, save)
   - ✅ Text operations (paragraphs, text lines)
@@ -84,7 +82,7 @@ This documentation is based on the following SDK versions:
   - ✅ Maven Central publishing support (automated and manual bundle upload)
   - ✅ OpenAPI specification for REST API integration
   - ✅ Standard page numbering (`pageNumber` instead of `pageIndex`)
-  - ✅ **Redaction API** (`object.redact().apply()`, `pdf.redact(request)` for batch redaction)
+  - ✅ **Redaction API** (`object.redact().apply()`, `pdf.redact(objects)` for batch redaction)
   - ✅ **selectFormFieldByName** at document and page level
 - **Requirements**:
   - **Java 11+** required (tested with Java 11, 17, 21, 23, 25)
@@ -99,10 +97,8 @@ This documentation is based on the following SDK versions:
   - **Clean API design**: Mirrors Python and TypeScript SDKs with Java conventions
   - **Default API endpoint**: Now uses `https://api.pdfdancer.com`
   - **Maven Central distribution**: Published artifacts available for easy dependency management
-- **Key Changes Since Last Version** (0.2.0 → 0.2.1):
-  - **Redaction support**: Permanently redact paragraphs, text lines, images, paths, and form fields
-  - **RedactRequest builder**: Fluent builder for batch redaction with `RedactRequest.builder()`
-  - **selectFormFieldByName**: New methods at document and page level for form field selection
+- **Key Changes Since Last Version** (0.2.1 → 0.2.2):
+  - **Simplified batch redaction API**: New `pdf.redact(objects)`, `pdf.redact(objects, replacement)`, and `pdf.redact(objects, replacement, placeholderColor)` methods - no longer requires `RedactRequest.builder()`
 
 ---
 
@@ -199,7 +195,7 @@ Update the version in your `build.gradle.kts`:
 
 ```kotlin
 dependencies {
-    implementation("com.pdfdancer.client:pdfdancer-client-java:0.2.1")
+    implementation("com.pdfdancer.client:pdfdancer-client-java:0.2.2")
 }
 ```
 
@@ -217,7 +213,7 @@ Update the version in your `pom.xml`:
 <dependency>
     <groupId>com.pdfdancer.client</groupId>
     <artifactId>pdfdancer-client-java</artifactId>
-    <version>0.2.1</version>
+    <version>0.2.2</version>
 </dependency>
 ```
 
@@ -233,6 +229,37 @@ mvn clean install -U
 ---
 
 ## Documentation Update History
+
+### Version 6.0 - December 8, 2025
+
+**Simplified Batch Redaction API & Document-Level Text Line Matching**
+
+Updated documentation to cover new features in Python SDK v0.3.2, TypeScript SDK v2.0.2, and Java SDK v0.2.2:
+
+**API Improvements:**
+
+1. **Unified Batch Redaction API** (All SDKs)
+   - All SDKs now support `pdf.redact(objects)` for batch redaction with consistent API
+   - TypeScript: `pdf.redact(objects, options)` now public (was internal)
+   - Java: Simplified from `RedactRequest.builder()` pattern to direct `pdf.redact(objects, replacement, color)` calls
+   - Updated batch redaction examples in `docs/redaction.md`
+
+2. **Python: Document-Level Text Line Pattern Matching**
+   - New `pdf.select_text_lines_matching(pattern)` method at document level
+   - New `pdf.select_text_line_matching(pattern)` singular method at document level
+   - Previously only available at page level
+
+**Documentation Updated:**
+- `docs/redaction.md` - Updated batch redaction examples for TypeScript and Java
+- `docs/finding-content.md` - Added `select_text_lines_at` singular method to table
+- `docs/sdk-versions.md` - Updated version information and changelog
+
+**SDK Versions:**
+- Python SDK: 0.3.1 → 0.3.2
+- TypeScript SDK: 2.0.1 → 2.0.2
+- Java SDK: 0.2.1 → 0.2.2
+
+---
 
 ### Version 5.0 - December 2, 2025
 

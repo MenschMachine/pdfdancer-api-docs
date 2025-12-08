@@ -367,23 +367,25 @@ import {Color, PDFDancer} from 'pdfdancer-client-typescript';
 
 const pdf = await PDFDancer.open('document.pdf');
 
-let redactedCount = 0;
+// Collect objects to redact
+const objectsToRedact = [];
 
-// Redact sensitive paragraphs
+// Add sensitive paragraphs
 const ssnParagraphs = await pdf.selectParagraphsMatching('SSN.*\\d{3}-\\d{2}-\\d{4}');
-for (const paragraph of ssnParagraphs) {
-    await paragraph.redact('[REDACTED]');
-    redactedCount++;
-}
+objectsToRedact.push(...ssnParagraphs);
 
-// Redact sensitive images with black placeholder
+// Add sensitive images
 const pageImages = await pdf.page(1).selectImages();
-for (const image of pageImages) {
-    await image.redact({color: new Color(0, 0, 0)});
-    redactedCount++;
-}
+objectsToRedact.push(...pageImages);
 
-console.log(`Redacted ${redactedCount} objects`);
+// Batch redact all objects
+const result = await pdf.redact(objectsToRedact, {
+    defaultReplacement: '[REDACTED]',
+    placeholderColor: new Color(0, 0, 0)  // Black for images/paths
+});
+
+console.log(`Redacted ${result.count} objects`);
+console.log(`Success: ${result.success}`);
 
 await pdf.save('redacted.pdf');
 ```
@@ -392,31 +394,25 @@ await pdf.save('redacted.pdf');
   <TabItem value="java" label="Java">
 
 ```java
-import com.pdfdancer.common.request.RedactRequest;
+import com.pdfdancer.common.model.Color;
 import com.pdfdancer.common.response.RedactResponse;
 
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
 
-// Build redaction request
-RedactRequest.Builder builder = RedactRequest.builder()
-    .defaultReplacement("[REDACTED]")
-    .placeholderColor(Color.BLACK);
+// Collect objects to redact
+List<BaseReference> objectsToRedact = new ArrayList<>();
 
 // Add sensitive paragraphs
 List<TextParagraphReference> ssnParagraphs = pdf
     .selectParagraphsMatching("SSN.*\\d{3}-\\d{2}-\\d{4}");
-for (TextParagraphReference para : ssnParagraphs) {
-    builder.addTargetById(para.getInternalId());
-}
+objectsToRedact.addAll(ssnParagraphs);
 
 // Add sensitive images
 List<ImageReference> pageImages = pdf.page(1).selectImages();
-for (ImageReference image : pageImages) {
-    builder.addTargetById(image.getInternalId());
-}
+objectsToRedact.addAll(pageImages);
 
-// Execute batch redaction
-RedactResponse result = pdf.redact(builder.build());
+// Batch redact all objects
+RedactResponse result = pdf.redact(objectsToRedact, "[REDACTED]", Color.BLACK);
 
 System.out.println("Redacted " + result.count() + " objects");
 System.out.println("Success: " + result.success());
