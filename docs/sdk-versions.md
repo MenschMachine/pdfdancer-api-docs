@@ -6,17 +6,17 @@ description: Current SDK versions used in this documentation
 
 # SDK Versions
 
-**Documentation Version**: 6.1 (December 8, 2025)
+**Documentation Version**: 6.2 (December 16, 2025)
 
 This documentation is based on the following SDK versions:
 
 ## Python SDK
 
 - **Repository**: [pdfdancer-client-python](https://github.com/MenschMachine/pdfdancer-client-python)
-- **Version**: 0.3.2
-- **Commit**: `96504f66253180d8ae09fa409c4c07e40f33f5e1`
-- **Commit Date**: December 8, 2025
-- **Commit Message**: Merge remote-tracking branch 'refs/remotes/origin/main'
+- **Version**: 0.3.3
+- **Commit**: `cf079a6d19e7b0344ff72e960eee5f6c1eca5c61`
+- **Commit Date**: December 12, 2025
+- **Commit Message**: refactor: Improve code formatting and indentation in PDFAssertions class
 - **Documentation Coverage**:
   - ✅ Anonymous token support (automatic fallback authentication)
   - ✅ Snapshot API (`get_document_snapshot()`, `get_page_snapshot()`, `page.get_snapshot()`)
@@ -30,8 +30,8 @@ This documentation is based on the following SDK versions:
   - ✅ Context manager pattern for text editing (recommended approach)
   - ✅ Standard page numbering (`page_number` instead of `page_index`)
   - ✅ **Redaction API** (`object.redact()`, `pdf.redact()` for batch redaction)
-- **Key Changes Since Last Version** (0.3.1 → 0.3.2):
-  - **Document-level regex text line selection**: New `select_text_lines_matching(pattern)` and `select_text_line_matching(pattern)` methods at document level
+- **Key Changes Since Last Version** (0.3.2 → 0.3.3):
+  - Internal test improvements only, no API changes
 
 ## TypeScript SDK
 
@@ -61,9 +61,9 @@ This documentation is based on the following SDK versions:
 
 - **Repository**: [pdfdancer-client-java](https://github.com/MenschMachine/pdfdancer-client-java)
 - **Version**: 0.2.2
-- **Commit**: `df394c19717dd1e6de4ac5dd4d7a36d16c4537a9`
-- **Commit Date**: December 8, 2025
-- **Commit Message**: build: bump version to 0.2.2
+- **Commit**: `e3b642a87f44cbcf0cc19d8dd972ac1db8beeb0a`
+- **Commit Date**: December 12, 2025
+- **Commit Message**: refactor: Update assertTextlineExists method to use pattern instead of text
 - **Documentation Coverage**:
   - ✅ Core PDF manipulation (open, create, save)
   - ✅ Text operations (paragraphs, text lines)
@@ -97,10 +97,8 @@ This documentation is based on the following SDK versions:
   - **Clean API design**: Mirrors Python and TypeScript SDKs with Java conventions
   - **Default API endpoint**: Now uses `https://api.pdfdancer.com`
   - **Maven Central distribution**: Published artifacts available for easy dependency management
-- **Key Changes Since Last Version** (0.2.1 → 0.2.2):
-  - **Simplified redaction API**: Both single-object and batch redaction now use direct method calls
-    - Single-object: `object.redact()`, `object.redact(replacement)`, `object.redact(placeholderColor)`, `object.redact(replacement, placeholderColor)` - no longer requires `.apply()`
-    - Batch redaction: `pdf.redact(objects)`, `pdf.redact(objects, replacement)`, `pdf.redact(objects, replacement, placeholderColor)` - no longer requires `RedactRequest.builder()`
+- **Key Changes Since Last Version** (0.2.2):
+  - Internal test improvements only, no API changes
 
 ---
 
@@ -231,6 +229,27 @@ mvn clean install -U
 ---
 
 ## Documentation Update History
+
+### Version 6.2 - December 16, 2025
+
+**SDK Version Updates**
+
+Updated documentation to reflect latest SDK commits:
+
+**SDK Versions:**
+- Python SDK: 0.3.2 → 0.3.3
+- TypeScript SDK: 2.0.2 (unchanged)
+- Java SDK: 0.2.2 (unchanged, but updated commit reference)
+
+**Changes:**
+- No API changes in any SDK
+- Python SDK: Version bump and test improvements
+- Java SDK: Test refactoring to use regex patterns for text line assertions
+
+**Files Modified:**
+- `docs/sdk-versions.md` - Updated version information and commit references
+
+---
 
 ### Version 6.1 - December 8, 2025
 
