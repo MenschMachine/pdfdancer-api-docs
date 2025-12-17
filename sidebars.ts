@@ -57,6 +57,7 @@ const sidebars: SidebarsConfig = {
                 'available-fonts',
                 'cookbook',
                 'error-handling',
+                'glossary',
                 'sdk-versions',
                 'roadmap',
             ],
