@@ -6,7 +6,7 @@ description: Current SDK versions used in this documentation
 
 # SDK Versions
 
-**Documentation Version**: 6.2 (December 16, 2025)
+**Documentation Version**: 7.0 (December 18, 2025)
 
 This documentation is based on the following SDK versions:
 
@@ -14,9 +14,9 @@ This documentation is based on the following SDK versions:
 
 - **Repository**: [pdfdancer-client-python](https://github.com/MenschMachine/pdfdancer-client-python)
 - **Version**: 0.3.3
-- **Commit**: `cf079a6d19e7b0344ff72e960eee5f6c1eca5c61`
-- **Commit Date**: December 12, 2025
-- **Commit Message**: refactor: Improve code formatting and indentation in PDFAssertions class
+- **Commit**: `01de216b06aa3567bc61ede1e2f4a1e5a0cc7c85`
+- **Commit Date**: December 17, 2025
+- **Commit Message**: Merge pull request #12 from MenschMachine/feat/image-transform
 - **Documentation Coverage**:
   - ✅ Anonymous token support (automatic fallback authentication)
   - ✅ Snapshot API (`get_document_snapshot()`, `get_page_snapshot()`, `page.get_snapshot()`)
@@ -30,15 +30,23 @@ This documentation is based on the following SDK versions:
   - ✅ Context manager pattern for text editing (recommended approach)
   - ✅ Standard page numbering (`page_number` instead of `page_index`)
   - ✅ **Redaction API** (`object.redact()`, `pdf.redact()` for batch redaction)
-- **Key Changes Since Last Version** (0.3.2 → 0.3.3):
-  - Internal test improvements only, no API changes
+  - ✅ **Image Transformation API** (`scale()`, `scale_to()`, `rotate()`, `crop()`, `set_opacity()`, `flip()`, `replace()`)
+- **Key Changes Since Last Version** (0.3.3):
+  - **Image Transformation API**: Full support for image manipulation operations
+    - `image.scale(factor)` - Scale by factor (e.g., 0.5 for half size)
+    - `image.scale_to(width, height, preserve_aspect_ratio)` - Scale to target dimensions
+    - `image.rotate(angle)` - Rotate by angle in degrees
+    - `image.crop(left, top, right, bottom)` - Crop by trimming edges
+    - `image.set_opacity(opacity)` - Set transparency (0.0 to 1.0)
+    - `image.flip(ImageFlipDirection.HORIZONTAL/VERTICAL/BOTH)` - Flip image
+    - `image.replace(new_image)` - Replace with new image content
 
 ## TypeScript SDK
 
 - **Repository**: [pdfdancer-client-typescript](https://github.com/MenschMachine/pdfdancer-client-typescript)
-- **Version**: 2.0.2
-- **Commit**: `57b67d8d9e252db3db7d3f055c755ec9a872405a`
-- **Commit Date**: December 8, 2025
+- **Version**: 2.0.3
+- **Commit**: `47148272df969f59e922a52a7e1d497e959c601b`
+- **Commit Date**: December 17, 2025
 - **Documentation Coverage**:
   - ✅ Anonymous token support (automatic fallback authentication)
   - ✅ Snapshot API (`getDocumentSnapshot()`, `getPageSnapshot()`, `page.getSnapshot()`)
@@ -54,16 +62,24 @@ This documentation is based on the following SDK versions:
   - ✅ Flexible PDF input types (File, ArrayBuffer, filepath string, Uint8Array)
   - ✅ Automatic dotenv loading
   - ✅ **Redaction API** (`object.redact()`, `pdf.redact()` for batch redaction)
-- **Key Changes Since Last Version** (2.0.1 → 2.0.2):
-  - **Public batch redaction API**: `pdf.redact(objects, options)` now exposed as public method for efficient multi-object redaction
+  - ✅ **Image Transformation API** (`scale()`, `scaleTo()`, `rotate()`, `crop()`, `setOpacity()`, `flip()`, `replace()`)
+- **Key Changes Since Last Version** (2.0.2 → 2.0.3):
+  - **Image Transformation API**: Full support for image manipulation operations
+    - `image.scale(factor)` - Scale by factor (e.g., 0.5 for half size)
+    - `image.scaleTo(width, height, preserveAspectRatio)` - Scale to target dimensions
+    - `image.rotate(angle)` - Rotate by angle in degrees
+    - `image.crop(left, top, right, bottom)` - Crop by trimming edges
+    - `image.setOpacity(opacity)` - Set transparency (0.0 to 1.0)
+    - `image.flip(FlipDirection.HORIZONTAL/VERTICAL/BOTH)` - Flip image
+    - `image.replace(newImage)` - Replace with new image content
 
 ## Java SDK
 
 - **Repository**: [pdfdancer-client-java](https://github.com/MenschMachine/pdfdancer-client-java)
-- **Version**: 0.2.2
-- **Commit**: `e3b642a87f44cbcf0cc19d8dd972ac1db8beeb0a`
-- **Commit Date**: December 12, 2025
-- **Commit Message**: refactor: Update assertTextlineExists method to use pattern instead of text
+- **Version**: 0.2.3
+- **Commit**: `c3ba19763ad34a7c278d992cd53a7466bee6582f`
+- **Commit Date**: December 18, 2025
+- **Commit Message**: build: bump version to 0.2.3
 - **Documentation Coverage**:
   - ✅ Core PDF manipulation (open, create, save)
   - ✅ Text operations (paragraphs, text lines)
@@ -84,6 +100,7 @@ This documentation is based on the following SDK versions:
   - ✅ Standard page numbering (`pageNumber` instead of `pageIndex`)
   - ✅ **Redaction API** (`object.redact().apply()`, `pdf.redact(objects)` for batch redaction)
   - ✅ **selectFormFieldByName** at document and page level
+  - ✅ **Image Transformation API** (`scale()`, `scaleTo()`, `rotate()`, `crop()`, `opacity()`, `flip()`, `replace()`)
 - **Requirements**:
   - **Java 11+** required (tested with Java 11, 17, 21, 23, 25)
   - Uses Gradle for build management
@@ -97,8 +114,17 @@ This documentation is based on the following SDK versions:
   - **Clean API design**: Mirrors Python and TypeScript SDKs with Java conventions
   - **Default API endpoint**: Now uses `https://api.pdfdancer.com`
   - **Maven Central distribution**: Published artifacts available for easy dependency management
-- **Key Changes Since Last Version** (0.2.2):
-  - Internal test improvements only, no API changes
+- **Key Changes Since Last Version** (0.2.2 → 0.2.3):
+  - **Image Transformation API**: Full support for image manipulation operations
+    - `image.scale(factor)` - Scale by factor (e.g., 0.5 for half size)
+    - `image.scaleTo(Size, preserveAspectRatio)` or `image.scaleTo(width, height)` - Scale to target dimensions
+    - `image.rotate(angle)` - Rotate by angle in degrees
+    - `image.crop(left, top, right, bottom)` - Crop by trimming edges
+    - `image.opacity(opacity)` - Set transparency (0.0 to 1.0)
+    - `image.flip(FlipDirection.HORIZONTAL/VERTICAL/BOTH)` - Flip image
+    - `image.flipHorizontal()`, `image.flipVertical()` - Convenience methods
+    - `image.replace(File)` or `image.replace(Image)` - Replace with new image content
+  - **Position.getCenter()**: New method to get the center point of a bounding rectangle
 
 ---
 
@@ -195,7 +221,7 @@ Update the version in your `build.gradle.kts`:
 
 ```kotlin
 dependencies {
-    implementation("com.pdfdancer.client:pdfdancer-client-java:0.2.2")
+    implementation("com.pdfdancer.client:pdfdancer-client-java:0.2.3")
 }
 ```
 
@@ -213,7 +239,7 @@ Update the version in your `pom.xml`:
 <dependency>
     <groupId>com.pdfdancer.client</groupId>
     <artifactId>pdfdancer-client-java</artifactId>
-    <version>0.2.2</version>
+    <version>0.2.3</version>
 </dependency>
 ```
 
@@ -229,6 +255,38 @@ mvn clean install -U
 ---
 
 ## Documentation Update History
+
+### Version 7.0 - December 18, 2025
+
+**Image Transformation API**
+
+Added comprehensive documentation for the new Image Transformation API available in all SDKs:
+
+**SDK Version Updates:**
+- Python SDK: 0.3.3 (commit `01de216`)
+- TypeScript SDK: 2.0.2 → 2.0.3 (commit `4714827`)
+- Java SDK: 0.2.2 → 0.2.3 (commit `c3ba197`)
+
+**New Features:**
+
+1. **Image Transformation API** (All SDKs)
+   - **Scale**: Resize images by factor or to target dimensions with optional aspect ratio preservation
+   - **Rotate**: Rotate images by angle in degrees
+   - **Crop**: Trim pixels from image edges
+   - **Opacity**: Adjust image transparency (0.0 to 1.0)
+   - **Flip**: Mirror images horizontally, vertically, or both
+   - **Replace**: Swap image content while preserving position
+
+2. **Java SDK Additions**
+   - `Position.getCenter()` method for getting center point of bounding rectangle
+   - Convenience methods `flipHorizontal()` and `flipVertical()`
+
+**Documentation Updated:**
+- `docs/working-with-images.md` - Added 7 new sections covering all image transformation operations
+- `docs/glossary.md` - Added terms: Aspect Ratio, Image Transformation, Opacity
+- `docs/sdk-versions.md` - Updated version information and changelog
+
+---
 
 ### Version 6.2 - December 16, 2025
 

@@ -16,6 +16,12 @@ The standard PDF form technology for interactive form fields. AcroForms support 
 
 **See also:** [Working with AcroForms](working-with-acroforms.md)
 
+### Aspect Ratio
+
+The proportional relationship between an image's width and height, expressed as width divided by height. For example, a 200×100 image has an aspect ratio of 2.0. When scaling images, you can choose to preserve or ignore the aspect ratio.
+
+**See also:** [Scaling Images](working-with-images.md#scaling-images)
+
 ---
 
 ## B
@@ -76,9 +82,31 @@ The visual representation of a character in a font. Each character (like "A" or 
 
 ### Image
 
-A raster graphic (PNG, JPEG, etc.) embedded in a PDF. PDFDancer can select, add, replace, and delete images at specific coordinates.
+A raster graphic (PNG, JPEG, etc.) embedded in a PDF. PDFDancer can select, add, replace, delete, and transform images. Transformations include scaling, rotating, cropping, adjusting opacity, and flipping.
 
 **See also:** [Working with Images](working-with-images.md)
+
+### Image Transformation
+
+Operations that modify an existing image in-place within a PDF. Supported transformations include:
+- **Scale**: Resize by factor or to specific dimensions
+- **Rotate**: Rotate by angle in degrees
+- **Crop**: Trim pixels from edges
+- **Opacity**: Adjust transparency (0.0 to 1.0)
+- **Flip**: Mirror horizontally, vertically, or both
+- **Replace**: Swap image content while keeping position
+
+**See also:** [Transforming Images](working-with-images.md#transforming-images)
+
+---
+
+## O
+
+### Opacity
+
+The transparency level of an element, expressed as a value from 0.0 (fully transparent) to 1.0 (fully opaque). PDFDancer supports setting opacity on images to create watermark effects or visual layering.
+
+**See also:** [Setting Image Opacity](working-with-images.md#setting-image-opacity)
 
 ---
 
