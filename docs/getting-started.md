@@ -62,7 +62,7 @@ Add to your Maven `pom.xml`:
 <dependency>
   <groupId>com.pdfdancer.client</groupId>
   <artifactId>pdfdancer-client-java</artifactId>
-  <version>0.1.1</version>
+  <version>0.2.3</version>
 </dependency>
 ```
 
@@ -70,7 +70,7 @@ Or add to your Gradle `build.gradle.kts`:
 
 ```kotlin
 dependencies {
-    implementation("com.pdfdancer.client:pdfdancer-client-java:0.1.1")
+    implementation("com.pdfdancer.client:pdfdancer-client-java:0.2.3")
 }
 ```
 
