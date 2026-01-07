@@ -289,6 +289,5 @@ If a token is compromised:
 
 ## Next Steps
 
-- [**Quickstart**](quickstart.md) – Make your first API calls
 - [**Selecting Content**](working-with-text.md) – Learn how to find content in PDFs
 - [**Examples**](cookbook.md) – See complete working examples
