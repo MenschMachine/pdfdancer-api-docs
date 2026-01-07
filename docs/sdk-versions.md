@@ -6,7 +6,7 @@ description: Current SDK versions used in this documentation
 
 # SDK Versions
 
-**Documentation Version**: 8.0 (January 7, 2026)
+**Documentation Version**: 8.1 (January 7, 2026)
 
 This documentation is based on the following SDK versions:
 
@@ -43,10 +43,10 @@ This documentation is based on the following SDK versions:
 ## TypeScript SDK
 
 - **Repository**: [pdfdancer-client-typescript](https://github.com/MenschMachine/pdfdancer-client-typescript)
-- **Version**: 2.0.4
-- **Commit**: `c137948ff9ab69242369d6cf6d0b87675bad8438`
-- **Commit Date**: January 3, 2026
-- **Commit Message**: refactor: simplify code formatting and remove unused imports
+- **Version**: 2.0.5
+- **Commit**: `0de186f3233d41e8638c00047fccd13179679ffc`
+- **Commit Date**: January 7, 2026
+- **Commit Message**: build: bump version to 2.0.5
 - **Documentation Coverage**:
   - ✅ Anonymous token support (automatic fallback authentication)
   - ✅ Snapshot API (`getDocumentSnapshot()`, `getPageSnapshot()`, `page.getSnapshot()`)
@@ -65,20 +65,16 @@ This documentation is based on the following SDK versions:
   - ✅ **Image Transformation API** (`scale()`, `scaleTo()`, `rotate()`, `crop()`, `setOpacity()`, `flip()`, `replace()`)
   - ✅ **Template API** (`applyReplacements()` for filling templates)
   - ✅ **PDFDANCER_API_TOKEN** environment variable (preferred, with PDFDANCER_TOKEN fallback)
-- **Key Changes Since Last Version** (2.0.3 → 2.0.4):
-  - **Template API**: Fill placeholder text in PDFs
-    - `pdf.applyReplacements(new TemplateReplaceRequest([...]))` - Document-level replacement
-    - `TemplateReplacement(placeholder, text, font?, color?)` - With optional formatting
-    - `ReflowPreset.BEST_EFFORT/FIT_OR_FAIL/NONE` - Text reflow options
-  - **Updated Environment Variable**: `PDFDANCER_API_TOKEN` is now the preferred environment variable (with `PDFDANCER_TOKEN` as legacy fallback)
+- **Key Changes Since Last Version** (2.0.4 → 2.0.5):
+  - Version bump only; no API changes
 
 ## Java SDK
 
 - **Repository**: [pdfdancer-client-java](https://github.com/MenschMachine/pdfdancer-client-java)
-- **Version**: 0.2.3
-- **Commit**: `1d91d6dbb3bc5218c5637997716f3dcb8baf02c7`
-- **Commit Date**: January 3, 2026
-- **Commit Message**: docs: update dependency version to 0.2.3
+- **Version**: 0.2.4 (unreleased)
+- **Commit**: `86c7867cd7a9848963943f7859b1b72df59b6142`
+- **Commit Date**: January 7, 2026
+- **Commit Message**: Merge branch 'feat/reflow-templating'
 - **Documentation Coverage**:
   - ✅ Core PDF manipulation (open, create, save)
   - ✅ Text operations (paragraphs, text lines)
@@ -100,7 +96,7 @@ This documentation is based on the following SDK versions:
   - ✅ **Redaction API** (`object.redact().apply()`, `pdf.redact(objects)` for batch redaction)
   - ✅ **selectFormFieldByName** at document and page level
   - ✅ **Image Transformation API** (`scale()`, `scaleTo()`, `rotate()`, `crop()`, `opacity()`, `flip()`, `replace()`)
-  - ✅ **Template API** (`replaceTemplates()` for filling templates)
+  - ✅ **Template API** (`applyReplacements()` for filling templates)
   - ✅ **PDFDANCER_API_TOKEN** environment variable (preferred, with PDFDANCER_TOKEN fallback)
 - **Requirements**:
   - **Java 11+** required (tested with Java 11, 17, 21, 23, 25)
@@ -115,13 +111,8 @@ This documentation is based on the following SDK versions:
   - **Clean API design**: Mirrors Python and TypeScript SDKs with Java conventions
   - **Default API endpoint**: Now uses `https://api.pdfdancer.com`
   - **Maven Central distribution**: Published artifacts available for easy dependency management
-- **Key Changes Since Last Version** (0.2.3):
-  - **Template API**: Fill placeholder text in PDFs
-    - `pdf.replaceTemplates(TemplateReplaceRequest.builder()...)` - Document-level replacement
-    - `TemplateReplacement.of(placeholder, text)` - Simple replacement
-    - `TemplateReplacement.withFormatting(placeholder, text, font, color)` - With formatting
-    - `ReflowPreset.BEST_EFFORT/FIT_OR_FAIL/NONE` - Text reflow options
-  - **Updated Environment Variable**: `PDFDANCER_API_TOKEN` is now the preferred environment variable (with `PDFDANCER_TOKEN` as legacy fallback)
+- **Key Changes Since Last Version** (0.2.3 → 0.2.4):
+  - **API Rename**: `replaceTemplates()` renamed to `applyReplacements()` for consistency with Python and TypeScript SDKs
 
 ---
 
@@ -252,6 +243,29 @@ mvn clean install -U
 ---
 
 ## Documentation Update History
+
+### Version 8.1 - January 7, 2026
+
+**Java SDK API Consistency Update**
+
+Updated Java SDK documentation to reflect the renamed `applyReplacements()` method (previously `replaceTemplates()`), aligning with Python and TypeScript SDK naming conventions.
+
+**SDK Version Updates:**
+- TypeScript SDK: 2.0.4 → 2.0.5 (commit `0de186f`) - version bump only
+- Java SDK: 0.2.3 → 0.2.4 unreleased (commit `86c7867`) - API rename
+
+**Changes:**
+
+1. **Java SDK API Rename**
+   - `pdf.replaceTemplates()` renamed to `pdf.applyReplacements()`
+   - All Java code samples updated in `docs/working-with-templates.md`
+   - Now consistent with Python (`apply_replacements()`) and TypeScript (`applyReplacements()`)
+
+**Documentation Updated:**
+- `docs/working-with-templates.md` - Updated all Java code samples
+- `docs/sdk-versions.md` - Updated version information and changelog
+
+---
 
 ### Version 8.0 - January 7, 2026
 

@@ -61,7 +61,7 @@ import com.pdfdancer.common.request.TemplateReplaceRequest;
 PDFDancer pdf = PDFDancer.createSession("template.pdf");
 
 // Fill placeholders in the entire document
-pdf.replaceTemplates(TemplateReplaceRequest.builder()
+pdf.applyReplacements(TemplateReplaceRequest.builder()
     .addReplacement("{{NAME}}", "John Doe")
     .addReplacement("{{DATE}}", "January 7, 2026")
     .addReplacement("{{COMPANY}}", "Acme Corp")
@@ -132,13 +132,13 @@ import com.pdfdancer.common.request.TemplateReplaceRequest;
 PDFDancer pdf = PDFDancer.createSession("template.pdf");
 
 // Fill only on page 1 (pageIndex is 0-based)
-pdf.replaceTemplates(TemplateReplaceRequest.builder()
+pdf.applyReplacements(TemplateReplaceRequest.builder()
     .addReplacement("{{HEADER}}", "Welcome")
     .pageIndex(0)
     .build());
 
 // Fill only on page 2
-pdf.replaceTemplates(TemplateReplaceRequest.builder()
+pdf.applyReplacements(TemplateReplaceRequest.builder()
     .addReplacement("{{HEADER}}", "Details")
     .pageIndex(1)
     .build());
@@ -206,7 +206,7 @@ import com.pdfdancer.common.model.ReflowPreset;
 PDFDancer pdf = PDFDancer.createSession("template.pdf");
 
 // Use BEST_EFFORT reflow for longer replacement text
-pdf.replaceTemplates(TemplateReplaceRequest.builder()
+pdf.applyReplacements(TemplateReplaceRequest.builder()
     .addReplacement("{{SHORT}}", "This is a much longer replacement text")
     .reflowPreset(ReflowPreset.BEST_EFFORT)
     .build());
@@ -257,7 +257,7 @@ import com.pdfdancer.common.model.Color;
 PDFDancer pdf = PDFDancer.createSession("template.pdf");
 
 // Fill with custom font and color
-pdf.replaceTemplates(TemplateReplaceRequest.builder()
+pdf.applyReplacements(TemplateReplaceRequest.builder()
     .addReplacement(TemplateReplacement.withFormatting(
         "{{HIGHLIGHT}}",
         "Important Text",
