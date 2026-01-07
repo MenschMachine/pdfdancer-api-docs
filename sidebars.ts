@@ -34,6 +34,7 @@ const sidebars: SidebarsConfig = {
                 'working-with-images',
                 'working-with-pages',
                 'working-with-fonts',
+                'working-with-templates',
             ],
         },
         {

@@ -152,6 +152,15 @@ Determines how elements are matched when selecting by position:
 
 ## R
 
+### Reflow Preset
+
+Controls how text is adjusted when replacement text is longer or shorter than the original. Options include:
+- **BEST_EFFORT**: Automatically adjusts text to fit available space (recommended)
+- **FIT_OR_FAIL**: Fails if text doesn't fit in the available space
+- **NONE**: No reflow; text may overflow or be truncated
+
+**See also:** [Working with Templates](working-with-templates.md)
+
 ### Redaction
 
 The process of permanently removing sensitive content from a PDF. Unlike simply covering content with a black box, true redaction removes the underlying data from the document.
@@ -193,6 +202,12 @@ The outline of a path or shape, defined by color and line width. Compare with **
 ---
 
 ## T
+
+### Templates
+
+PDF documents with placeholder text (e.g., `{{NAME}}`, `{{DATE}}`) that can be filled with dynamic content. PDFDancer supports filling templates for mail merge operations, invoice generation, certificate creation, and personalized document generation. Supports text reflow options to handle varying replacement text lengths.
+
+**See also:** [Working with Templates](working-with-templates.md)
 
 ### TextLine
 

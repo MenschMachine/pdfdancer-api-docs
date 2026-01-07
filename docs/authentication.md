@@ -70,10 +70,14 @@ Store tokens in a secrets manager such as AWS Secrets Manager, HashiCorp Vault, 
 Set the token in an environment variable to avoid hardcoding credentials:
 
 ```bash
-export PDFDANCER_TOKEN="your-api-token"
+export PDFDANCER_API_TOKEN="your-api-token"
 ```
 
 The SDK will automatically read this environment variable when initializing.
+
+:::note Legacy Environment Variable
+The `PDFDANCER_TOKEN` environment variable is still supported for backwards compatibility. If both are set, `PDFDANCER_API_TOKEN` takes precedence.
+:::
 
 <Tabs>
   <TabItem value="python" label="Python">
@@ -81,7 +85,7 @@ The SDK will automatically read this environment variable when initializing.
 ```python
 from pdfdancer import PDFDancer
 
-# Token is automatically read from PDFDANCER_TOKEN environment variable
+# Token is automatically read from PDFDANCER_API_TOKEN environment variable
 with PDFDancer.open("input.pdf") as pdf:
     # Your PDF operations here
     pass
@@ -93,7 +97,7 @@ with PDFDancer.open("input.pdf") as pdf:
 ```typescript
 import { PDFDancer } from 'pdfdancer-client-typescript';
 
-// Token is automatically read from PDFDANCER_TOKEN environment variable
+// Token is automatically read from PDFDANCER_API_TOKEN environment variable
 const pdf = await PDFDancer.open('input.pdf');
 ```
 
@@ -101,7 +105,7 @@ const pdf = await PDFDancer.open('input.pdf');
   <TabItem value="java" label="Java">
 
 ```java
-// Token is automatically read from PDFDANCER_TOKEN environment variable
+// Token is automatically read from PDFDANCER_API_TOKEN environment variable
 PDFDancer pdf = PDFDancer.createSession("input.pdf");
 // Your PDF operations here
 ```
@@ -141,9 +145,9 @@ const pdf = await PDFDancer.open('input.pdf', 'your-api-token');
 
 ```java
 // Java client does not require explicit token parameter
-// Token is automatically read from PDFDANCER_TOKEN environment variable
-// Set via: export PDFDANCER_TOKEN="your-api-token"
-// Or via system property: -DPDFDANCER_TOKEN="your-api-token"
+// Token is automatically read from PDFDANCER_API_TOKEN environment variable
+// Set via: export PDFDANCER_API_TOKEN="your-api-token"
+// Or via system property: -DPDFDANCER_API_TOKEN="your-api-token"
 PDFDancer pdf = PDFDancer.createSession("input.pdf");
 // Your PDF operations here
 ```

@@ -651,10 +651,10 @@ public class PdfProcessor {
 
 ```python
 # Error: ValidationException - API token is required
-# Solution: Set PDFDANCER_TOKEN environment variable or pass token explicitly
+# Solution: Set PDFDANCER_API_TOKEN environment variable or pass token explicitly
 
 import os
-os.environ['PDFDANCER_TOKEN'] = 'your-token'
+os.environ['PDFDANCER_API_TOKEN'] = 'your-token'
 
 # Or pass explicitly
 with PDFDancer.open("doc.pdf", token="your-token") as pdf:
@@ -666,9 +666,9 @@ with PDFDancer.open("doc.pdf", token="your-token") as pdf:
 
 ```typescript
 // Error: ValidationException - API token is required
-// Solution: Set PDFDANCER_TOKEN environment variable or pass token explicitly
+// Solution: Set PDFDANCER_API_TOKEN environment variable or pass token explicitly
 
-process.env.PDFDANCER_TOKEN = 'your-token';
+process.env.PDFDANCER_API_TOKEN = 'your-token';
 
 // Or pass explicitly
 const pdf = await PDFDancer.open('document.pdf', 'your-token');
@@ -679,9 +679,9 @@ const pdf = await PDFDancer.open('document.pdf', 'your-token');
 
 ```java
 // Error: ValidationException - API token is required
-// Solution: Set PDFDANCER_TOKEN environment variable or pass token explicitly
+// Solution: Set PDFDANCER_API_TOKEN environment variable or pass token explicitly
 
-System.setProperty("PDFDANCER_TOKEN", "your-token");
+System.setProperty("PDFDANCER_API_TOKEN", "your-token");
 
 // Or pass explicitly
 try (PDFDancer pdf = PDFDancer.createSession("doc.pdf", "your-token")) {

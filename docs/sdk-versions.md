@@ -6,17 +6,17 @@ description: Current SDK versions used in this documentation
 
 # SDK Versions
 
-**Documentation Version**: 7.0 (December 18, 2025)
+**Documentation Version**: 8.0 (January 7, 2026)
 
 This documentation is based on the following SDK versions:
 
 ## Python SDK
 
 - **Repository**: [pdfdancer-client-python](https://github.com/MenschMachine/pdfdancer-client-python)
-- **Version**: 0.3.3
-- **Commit**: `01de216b06aa3567bc61ede1e2f4a1e5a0cc7c85`
-- **Commit Date**: December 17, 2025
-- **Commit Message**: Merge pull request #12 from MenschMachine/feat/image-transform
+- **Version**: 0.3.5
+- **Commit**: `b061e2eed79c9d6f0b1b96c5752e27b8391b640c`
+- **Commit Date**: January 3, 2026
+- **Commit Message**: Merge pull request #14 from MenschMachine/feat/reflow-templating
 - **Documentation Coverage**:
   - ✅ Anonymous token support (automatic fallback authentication)
   - ✅ Snapshot API (`get_document_snapshot()`, `get_page_snapshot()`, `page.get_snapshot()`)
@@ -31,22 +31,22 @@ This documentation is based on the following SDK versions:
   - ✅ Standard page numbering (`page_number` instead of `page_index`)
   - ✅ **Redaction API** (`object.redact()`, `pdf.redact()` for batch redaction)
   - ✅ **Image Transformation API** (`scale()`, `scale_to()`, `rotate()`, `crop()`, `set_opacity()`, `flip()`, `replace()`)
-- **Key Changes Since Last Version** (0.3.3):
-  - **Image Transformation API**: Full support for image manipulation operations
-    - `image.scale(factor)` - Scale by factor (e.g., 0.5 for half size)
-    - `image.scale_to(width, height, preserve_aspect_ratio)` - Scale to target dimensions
-    - `image.rotate(angle)` - Rotate by angle in degrees
-    - `image.crop(left, top, right, bottom)` - Crop by trimming edges
-    - `image.set_opacity(opacity)` - Set transparency (0.0 to 1.0)
-    - `image.flip(ImageFlipDirection.HORIZONTAL/VERTICAL/BOTH)` - Flip image
-    - `image.replace(new_image)` - Replace with new image content
+  - ✅ **Template API** (`apply_replacements()` for filling templates)
+  - ✅ **PDFDANCER_API_TOKEN** environment variable (preferred, with PDFDANCER_TOKEN fallback)
+- **Key Changes Since Last Version** (0.3.3 → 0.3.5):
+  - **Template API**: Fill placeholder text in PDFs
+    - `pdf.apply_replacements([TemplateReplacement(...)])` - Document-level replacement
+    - `page.apply_replacements([TemplateReplacement(...)])` - Page-level replacement
+    - `ReflowPreset.BEST_EFFORT/FIT_OR_FAIL/NONE` - Text reflow options
+  - **Updated Environment Variable**: `PDFDANCER_API_TOKEN` is now the preferred environment variable (with `PDFDANCER_TOKEN` as legacy fallback)
 
 ## TypeScript SDK
 
 - **Repository**: [pdfdancer-client-typescript](https://github.com/MenschMachine/pdfdancer-client-typescript)
-- **Version**: 2.0.3
-- **Commit**: `47148272df969f59e922a52a7e1d497e959c601b`
-- **Commit Date**: December 17, 2025
+- **Version**: 2.0.4
+- **Commit**: `c137948ff9ab69242369d6cf6d0b87675bad8438`
+- **Commit Date**: January 3, 2026
+- **Commit Message**: refactor: simplify code formatting and remove unused imports
 - **Documentation Coverage**:
   - ✅ Anonymous token support (automatic fallback authentication)
   - ✅ Snapshot API (`getDocumentSnapshot()`, `getPageSnapshot()`, `page.getSnapshot()`)
@@ -63,23 +63,22 @@ This documentation is based on the following SDK versions:
   - ✅ Automatic dotenv loading
   - ✅ **Redaction API** (`object.redact()`, `pdf.redact()` for batch redaction)
   - ✅ **Image Transformation API** (`scale()`, `scaleTo()`, `rotate()`, `crop()`, `setOpacity()`, `flip()`, `replace()`)
-- **Key Changes Since Last Version** (2.0.2 → 2.0.3):
-  - **Image Transformation API**: Full support for image manipulation operations
-    - `image.scale(factor)` - Scale by factor (e.g., 0.5 for half size)
-    - `image.scaleTo(width, height, preserveAspectRatio)` - Scale to target dimensions
-    - `image.rotate(angle)` - Rotate by angle in degrees
-    - `image.crop(left, top, right, bottom)` - Crop by trimming edges
-    - `image.setOpacity(opacity)` - Set transparency (0.0 to 1.0)
-    - `image.flip(FlipDirection.HORIZONTAL/VERTICAL/BOTH)` - Flip image
-    - `image.replace(newImage)` - Replace with new image content
+  - ✅ **Template API** (`applyReplacements()` for filling templates)
+  - ✅ **PDFDANCER_API_TOKEN** environment variable (preferred, with PDFDANCER_TOKEN fallback)
+- **Key Changes Since Last Version** (2.0.3 → 2.0.4):
+  - **Template API**: Fill placeholder text in PDFs
+    - `pdf.applyReplacements(new TemplateReplaceRequest([...]))` - Document-level replacement
+    - `TemplateReplacement(placeholder, text, font?, color?)` - With optional formatting
+    - `ReflowPreset.BEST_EFFORT/FIT_OR_FAIL/NONE` - Text reflow options
+  - **Updated Environment Variable**: `PDFDANCER_API_TOKEN` is now the preferred environment variable (with `PDFDANCER_TOKEN` as legacy fallback)
 
 ## Java SDK
 
 - **Repository**: [pdfdancer-client-java](https://github.com/MenschMachine/pdfdancer-client-java)
 - **Version**: 0.2.3
-- **Commit**: `c3ba19763ad34a7c278d992cd53a7466bee6582f`
-- **Commit Date**: December 18, 2025
-- **Commit Message**: build: bump version to 0.2.3
+- **Commit**: `1d91d6dbb3bc5218c5637997716f3dcb8baf02c7`
+- **Commit Date**: January 3, 2026
+- **Commit Message**: docs: update dependency version to 0.2.3
 - **Documentation Coverage**:
   - ✅ Core PDF manipulation (open, create, save)
   - ✅ Text operations (paragraphs, text lines)
@@ -101,6 +100,8 @@ This documentation is based on the following SDK versions:
   - ✅ **Redaction API** (`object.redact().apply()`, `pdf.redact(objects)` for batch redaction)
   - ✅ **selectFormFieldByName** at document and page level
   - ✅ **Image Transformation API** (`scale()`, `scaleTo()`, `rotate()`, `crop()`, `opacity()`, `flip()`, `replace()`)
+  - ✅ **Template API** (`replaceTemplates()` for filling templates)
+  - ✅ **PDFDANCER_API_TOKEN** environment variable (preferred, with PDFDANCER_TOKEN fallback)
 - **Requirements**:
   - **Java 11+** required (tested with Java 11, 17, 21, 23, 25)
   - Uses Gradle for build management
@@ -114,17 +115,13 @@ This documentation is based on the following SDK versions:
   - **Clean API design**: Mirrors Python and TypeScript SDKs with Java conventions
   - **Default API endpoint**: Now uses `https://api.pdfdancer.com`
   - **Maven Central distribution**: Published artifacts available for easy dependency management
-- **Key Changes Since Last Version** (0.2.2 → 0.2.3):
-  - **Image Transformation API**: Full support for image manipulation operations
-    - `image.scale(factor)` - Scale by factor (e.g., 0.5 for half size)
-    - `image.scaleTo(Size, preserveAspectRatio)` or `image.scaleTo(width, height)` - Scale to target dimensions
-    - `image.rotate(angle)` - Rotate by angle in degrees
-    - `image.crop(left, top, right, bottom)` - Crop by trimming edges
-    - `image.opacity(opacity)` - Set transparency (0.0 to 1.0)
-    - `image.flip(FlipDirection.HORIZONTAL/VERTICAL/BOTH)` - Flip image
-    - `image.flipHorizontal()`, `image.flipVertical()` - Convenience methods
-    - `image.replace(File)` or `image.replace(Image)` - Replace with new image content
-  - **Position.getCenter()**: New method to get the center point of a bounding rectangle
+- **Key Changes Since Last Version** (0.2.3):
+  - **Template API**: Fill placeholder text in PDFs
+    - `pdf.replaceTemplates(TemplateReplaceRequest.builder()...)` - Document-level replacement
+    - `TemplateReplacement.of(placeholder, text)` - Simple replacement
+    - `TemplateReplacement.withFormatting(placeholder, text, font, color)` - With formatting
+    - `ReflowPreset.BEST_EFFORT/FIT_OR_FAIL/NONE` - Text reflow options
+  - **Updated Environment Variable**: `PDFDANCER_API_TOKEN` is now the preferred environment variable (with `PDFDANCER_TOKEN` as legacy fallback)
 
 ---
 
@@ -255,6 +252,40 @@ mvn clean install -U
 ---
 
 ## Documentation Update History
+
+### Version 8.0 - January 7, 2026
+
+**Template API & Updated Environment Variables**
+
+Added documentation for the new Template API (Working with Templates) and updated authentication environment variables:
+
+**SDK Version Updates:**
+- Python SDK: 0.3.3 → 0.3.5 (commit `b061e2e`)
+- TypeScript SDK: 2.0.3 → 2.0.4 (commit `c137948`)
+- Java SDK: 0.2.3 (commit `1d91d6d`)
+
+**New Features:**
+
+1. **Template API** (All SDKs)
+   - Fill placeholder text in PDFs with dynamic content
+   - Document-level and page-level replacement support
+   - Text reflow options: `BEST_EFFORT`, `FIT_OR_FAIL`, `NONE`
+   - Custom font and color support (TypeScript and Java)
+   - Ideal for mail merge, invoice generation, and certificate creation
+
+2. **Updated Environment Variable**
+   - `PDFDANCER_API_TOKEN` is now the preferred environment variable
+   - `PDFDANCER_TOKEN` remains supported as a legacy fallback
+   - All SDKs check `PDFDANCER_API_TOKEN` first, then fall back to `PDFDANCER_TOKEN`
+
+**Documentation Updated:**
+- `docs/working-with-templates.md` - NEW FILE (complete template API documentation)
+- `docs/authentication.md` - Updated environment variable documentation
+- `docs/glossary.md` - Added terms: Templates, Reflow Preset
+- `docs/sdk-versions.md` - Updated version information and changelog
+- `sidebars.ts` - Added working-with-templates page to Working with Content category
+
+---
 
 ### Version 7.0 - December 18, 2025
 
