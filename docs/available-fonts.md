@@ -189,6 +189,73 @@ pdf.save("output.pdf");
   </TabItem>
 </Tabs>
 
+## Use Your Own Fonts
+
+You can upload and use your own TrueType (.ttf) fonts with PDFDancer. Use the `font_file()` method to reference a font file directly:
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+from pathlib import Path
+from pdfdancer import PDFDancer
+
+with PDFDancer.open("document.pdf") as pdf:
+    # Use your own TTF font file
+    pdf.new_paragraph() \
+        .text("Custom font text") \
+        .font_file(Path("fonts/MyFont.ttf"), 14) \
+        .at(page_number=1, x=100, y=500) \
+        .add()
+
+    pdf.save("output.pdf")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+import { PDFDancer } from 'pdfdancer-client-typescript';
+import { promises as fs } from 'node:fs';
+
+const pdf = await PDFDancer.open('document.pdf');
+
+// Load and use your own TTF font file
+const fontBytes = await fs.readFile('fonts/MyFont.ttf');
+
+await pdf.page(1).newParagraph()
+  .text('Custom font text')
+  .fontFile(fontBytes, 14)
+  .at(100, 500)
+  .apply();
+
+await pdf.save('output.pdf');
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+import com.tfc.pdf.pdfdancer.api.PDFDancer;
+import java.nio.file.Paths;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Use your own TTF font file
+pdf.newParagraph()
+    .text("Custom font text")
+    .fontFile(Paths.get("fonts/MyFont.ttf"), 14)
+    .at(1, 100, 500)
+    .add();
+
+pdf.save("output.pdf");
+```
+
+  </TabItem>
+</Tabs>
+
+For additional methods including font registration for reuse, see [Registering Custom Fonts](working-with-fonts.md#registering-custom-fonts) in the Working with Fonts guide.
+
 ## Finding Fonts Programmatically
 
 You can also search for fonts dynamically using the `find_fonts()` method:
