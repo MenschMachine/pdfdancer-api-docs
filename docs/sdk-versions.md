@@ -6,17 +6,17 @@ description: Current SDK versions used in this documentation
 
 # SDK Versions
 
-**Documentation Version**: 8.1 (January 7, 2026)
+**Documentation Version**: 8.2 (January 12, 2026)
 
 This documentation is based on the following SDK versions:
 
 ## Python SDK
 
 - **Repository**: [pdfdancer-client-python](https://github.com/MenschMachine/pdfdancer-client-python)
-- **Version**: 0.3.5
-- **Commit**: `b061e2eed79c9d6f0b1b96c5752e27b8391b640c`
-- **Commit Date**: January 3, 2026
-- **Commit Message**: Merge pull request #14 from MenschMachine/feat/reflow-templating
+- **Version**: 0.3.6
+- **Commit**: `7f80f0938413391bc17f2d9fd1f28f58149501fe`
+- **Commit Date**: January 12, 2026
+- **Commit Message**: Merge pull request #15 from MenschMachine/refact/template-api
 - **Documentation Coverage**:
   - ✅ Anonymous token support (automatic fallback authentication)
   - ✅ Snapshot API (`get_document_snapshot()`, `get_page_snapshot()`, `page.get_snapshot()`)
@@ -31,22 +31,21 @@ This documentation is based on the following SDK versions:
   - ✅ Standard page numbering (`page_number` instead of `page_index`)
   - ✅ **Redaction API** (`object.redact()`, `pdf.redact()` for batch redaction)
   - ✅ **Image Transformation API** (`scale()`, `scale_to()`, `rotate()`, `crop()`, `set_opacity()`, `flip()`, `replace()`)
-  - ✅ **Template API** (`apply_replacements()` for filling templates)
+  - ✅ **Template API** (`apply_replacements()` for filling templates with dict syntax)
   - ✅ **PDFDANCER_API_TOKEN** environment variable (preferred, with PDFDANCER_TOKEN fallback)
-- **Key Changes Since Last Version** (0.3.3 → 0.3.5):
-  - **Template API**: Fill placeholder text in PDFs
-    - `pdf.apply_replacements([TemplateReplacement(...)])` - Document-level replacement
-    - `page.apply_replacements([TemplateReplacement(...)])` - Page-level replacement
-    - `ReflowPreset.BEST_EFFORT/FIT_OR_FAIL/NONE` - Text reflow options
-  - **Updated Environment Variable**: `PDFDANCER_API_TOKEN` is now the preferred environment variable (with `PDFDANCER_TOKEN` as legacy fallback)
+- **Key Changes Since Last Version** (0.3.5 → 0.3.6):
+  - **Simplified Template API**: Dict-based syntax for replacements
+    - `pdf.apply_replacements({"{{NAME}}": "John Doe"})` - Simple replacement
+    - `pdf.apply_replacements({"{{NAME}}": {"text": "John", "font": Font(...), "color": Color(...)}})` - With formatting
+  - **Font and Color Support**: Custom font and color now available for replacement text
 
 ## TypeScript SDK
 
 - **Repository**: [pdfdancer-client-typescript](https://github.com/MenschMachine/pdfdancer-client-typescript)
-- **Version**: 2.0.5
-- **Commit**: `0de186f3233d41e8638c00047fccd13179679ffc`
-- **Commit Date**: January 7, 2026
-- **Commit Message**: build: bump version to 2.0.5
+- **Version**: 2.0.6
+- **Commit**: `a448032c4705e321b2c008f1f00df5759b6f5553`
+- **Commit Date**: January 12, 2026
+- **Commit Message**: 2.0.6
 - **Documentation Coverage**:
   - ✅ Anonymous token support (automatic fallback authentication)
   - ✅ Snapshot API (`getDocumentSnapshot()`, `getPageSnapshot()`, `page.getSnapshot()`)
@@ -63,18 +62,23 @@ This documentation is based on the following SDK versions:
   - ✅ Automatic dotenv loading
   - ✅ **Redaction API** (`object.redact()`, `pdf.redact()` for batch redaction)
   - ✅ **Image Transformation API** (`scale()`, `scaleTo()`, `rotate()`, `crop()`, `setOpacity()`, `flip()`, `replace()`)
-  - ✅ **Template API** (`applyReplacements()` for filling templates)
+  - ✅ **Template API** (`replace()` fluent API for filling templates)
   - ✅ **PDFDANCER_API_TOKEN** environment variable (preferred, with PDFDANCER_TOKEN fallback)
-- **Key Changes Since Last Version** (2.0.4 → 2.0.5):
-  - Version bump only; no API changes
+- **Key Changes Since Last Version** (2.0.5 → 2.0.6):
+  - **Fluent Template Replacement API**: New chainable API for template replacements
+    - `pdf.replace('{{NAME}}', 'John').and('{{DATE}}', '2026').apply()` - Chain multiple replacements
+    - `.font('Helvetica', 14)` - Set custom font
+    - `.color(new Color(255, 0, 0))` - Set custom color
+    - `.onPage(1)` - Limit to specific page
+    - `.bestEffort()` / `.fitOrFail()` / `.noReflow()` - Reflow presets
 
 ## Java SDK
 
 - **Repository**: [pdfdancer-client-java](https://github.com/MenschMachine/pdfdancer-client-java)
-- **Version**: 0.2.4 (unreleased)
-- **Commit**: `86c7867cd7a9848963943f7859b1b72df59b6142`
-- **Commit Date**: January 7, 2026
-- **Commit Message**: Merge branch 'feat/reflow-templating'
+- **Version**: 0.2.5
+- **Commit**: `42e496514d7dd40936794a948b1d293dbec23d4c`
+- **Commit Date**: January 12, 2026
+- **Commit Message**: bump: update version to 0.2.5
 - **Documentation Coverage**:
   - ✅ Core PDF manipulation (open, create, save)
   - ✅ Text operations (paragraphs, text lines)
@@ -96,7 +100,7 @@ This documentation is based on the following SDK versions:
   - ✅ **Redaction API** (`object.redact().apply()`, `pdf.redact(objects)` for batch redaction)
   - ✅ **selectFormFieldByName** at document and page level
   - ✅ **Image Transformation API** (`scale()`, `scaleTo()`, `rotate()`, `crop()`, `opacity()`, `flip()`, `replace()`)
-  - ✅ **Template API** (`applyReplacements()` for filling templates)
+  - ✅ **Template API** (`replace()` fluent API for filling templates)
   - ✅ **PDFDANCER_API_TOKEN** environment variable (preferred, with PDFDANCER_TOKEN fallback)
 - **Requirements**:
   - **Java 11+** required (tested with Java 11, 17, 21, 23, 25)
@@ -111,8 +115,14 @@ This documentation is based on the following SDK versions:
   - **Clean API design**: Mirrors Python and TypeScript SDKs with Java conventions
   - **Default API endpoint**: Now uses `https://api.pdfdancer.com`
   - **Maven Central distribution**: Published artifacts available for easy dependency management
-- **Key Changes Since Last Version** (0.2.3 → 0.2.4):
-  - **API Rename**: `replaceTemplates()` renamed to `applyReplacements()` for consistency with Python and TypeScript SDKs
+- **Key Changes Since Last Version** (0.2.4 → 0.2.5):
+  - **Fluent Template Replacement API**: New chainable API for template replacements
+    - `pdf.replace("{{NAME}}", "John").replace("{{DATE}}", "2026").apply()` - Chain multiple replacements
+    - `.withFont("Helvetica", 14)` - Set custom font
+    - `.withColor(255, 0, 0)` - Set custom color
+    - `.onPage(1)` - Limit to specific page
+    - `.withReflow(ReflowPreset.BEST_EFFORT)` - Reflow preset
+  - **Page-Level Replace**: `pdf.page(1).replace("{{HEADER}}", "Title").apply()`
 
 ---
 
@@ -209,7 +219,7 @@ Update the version in your `build.gradle.kts`:
 
 ```kotlin
 dependencies {
-    implementation("com.pdfdancer.client:pdfdancer-client-java:0.2.3")
+    implementation("com.pdfdancer.client:pdfdancer-client-java:0.2.5")
 }
 ```
 
@@ -227,7 +237,7 @@ Update the version in your `pom.xml`:
 <dependency>
     <groupId>com.pdfdancer.client</groupId>
     <artifactId>pdfdancer-client-java</artifactId>
-    <version>0.2.3</version>
+    <version>0.2.5</version>
 </dependency>
 ```
 
@@ -243,6 +253,42 @@ mvn clean install -U
 ---
 
 ## Documentation Update History
+
+### Version 8.2 - January 12, 2026
+
+**Fluent Template API & Dict-Based Replacements**
+
+All SDKs now feature improved template replacement APIs with cleaner, more intuitive syntax.
+
+**SDK Version Updates:**
+- Python SDK: 0.3.5 → 0.3.6 (commit `7f80f09`)
+- TypeScript SDK: 2.0.5 → 2.0.6 (commit `a448032`)
+- Java SDK: 0.2.4 → 0.2.5 (commit `42e4965`)
+
+**Changes:**
+
+1. **Python SDK: Dict-Based Template API**
+   - `apply_replacements()` now accepts dict instead of list
+   - Simple: `pdf.apply_replacements({"{{NAME}}": "John"})`
+   - With formatting: `{"{{NAME}}": {"text": "John", "font": Font(...), "color": Color(...)}}`
+   - Font and color support now available for replacement text
+
+2. **TypeScript SDK: Fluent Template API**
+   - New `pdf.replace()` method with fluent chaining
+   - `pdf.replace('{{NAME}}', 'John').and('{{DATE}}', '2026').apply()`
+   - `.font()`, `.color()`, `.onPage()`, `.bestEffort()` methods
+
+3. **Java SDK: Fluent Template API**
+   - New `pdf.replace()` method with fluent chaining
+   - `pdf.replace("{{NAME}}", "John").replace("{{DATE}}", "2026").apply()`
+   - `.withFont()`, `.withColor()`, `.onPage()`, `.withReflow()` methods
+   - Page-level: `pdf.page(1).replace("{{HEADER}}", "Title").apply()`
+
+**Documentation Updated:**
+- `docs/working-with-templates.md` - Complete rewrite with new API examples
+- `docs/sdk-versions.md` - Updated version information and changelog
+
+---
 
 ### Version 8.1 - January 7, 2026
 

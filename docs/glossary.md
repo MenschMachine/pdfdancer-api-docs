@@ -205,7 +205,7 @@ The outline of a path or shape, defined by color and line width. Compare with **
 
 ### Templates
 
-PDF documents with placeholder text (e.g., `{{NAME}}`, `{{DATE}}`) that can be filled with dynamic content. PDFDancer supports filling templates for mail merge operations, invoice generation, certificate creation, and personalized document generation. Supports text reflow options to handle varying replacement text lengths.
+PDF documents with placeholder text (e.g., `{{NAME}}`, `{{DATE}}`) that can be filled with dynamic content. PDFDancer supports filling templates for mail merge operations, invoice generation, certificate creation, and personalized document generation. All SDKs provide both simple syntax and fluent APIs for template replacement, with support for custom fonts and colors. Supports text reflow options to handle varying replacement text lengths.
 
 **See also:** [Working with Templates](working-with-templates.md)
 
