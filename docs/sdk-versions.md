@@ -6,17 +6,17 @@ description: Current SDK versions used in this documentation
 
 # SDK Versions
 
-**Documentation Version**: 8.2 (January 12, 2026)
+**Documentation Version**: 8.3 (January 12, 2026)
 
 This documentation is based on the following SDK versions:
 
 ## Python SDK
 
 - **Repository**: [pdfdancer-client-python](https://github.com/MenschMachine/pdfdancer-client-python)
-- **Version**: 0.3.6
-- **Commit**: `7f80f0938413391bc17f2d9fd1f28f58149501fe`
+- **Version**: 0.3.7
+- **Commit**: `0ca6e1276d4f3c87f4503b6e075c5a7854a559ac`
 - **Commit Date**: January 12, 2026
-- **Commit Message**: Merge pull request #15 from MenschMachine/refact/template-api
+- **Commit Message**: bump: update package version to 0.3.7
 - **Documentation Coverage**:
   - ✅ Anonymous token support (automatic fallback authentication)
   - ✅ Snapshot API (`get_document_snapshot()`, `get_page_snapshot()`, `page.get_snapshot()`)
@@ -33,11 +33,8 @@ This documentation is based on the following SDK versions:
   - ✅ **Image Transformation API** (`scale()`, `scale_to()`, `rotate()`, `crop()`, `set_opacity()`, `flip()`, `replace()`)
   - ✅ **Template API** (`apply_replacements()` for filling templates with dict syntax)
   - ✅ **PDFDANCER_API_TOKEN** environment variable (preferred, with PDFDANCER_TOKEN fallback)
-- **Key Changes Since Last Version** (0.3.5 → 0.3.6):
-  - **Simplified Template API**: Dict-based syntax for replacements
-    - `pdf.apply_replacements({"{{NAME}}": "John Doe"})` - Simple replacement
-    - `pdf.apply_replacements({"{{NAME}}": {"text": "John", "font": Font(...), "color": Color(...)}})` - With formatting
-  - **Font and Color Support**: Custom font and color now available for replacement text
+- **Key Changes Since Last Version** (0.3.6 → 0.3.7):
+  - Version bump only, no API changes
 
 ## TypeScript SDK
 
@@ -254,6 +251,21 @@ mvn clean install -U
 
 ## Documentation Update History
 
+### Version 8.3 - January 12, 2026
+
+**Python SDK Version Bump**
+
+**SDK Version Updates:**
+- Python SDK: 0.3.6 → 0.3.7 (commit `0ca6e12`)
+
+**Changes:**
+- No API changes - version bump only
+
+**Documentation Updated:**
+- `docs/sdk-versions.md` - Updated version information
+
+---
+
 ### Version 8.2 - January 12, 2026
 
 **Fluent Template API & Dict-Based Replacements**
@@ -261,7 +273,7 @@ mvn clean install -U
 All SDKs now feature improved template replacement APIs with cleaner, more intuitive syntax.
 
 **SDK Version Updates:**
-- Python SDK: 0.3.5 → 0.3.6 (commit `7f80f09`)
+- Python SDK: 0.3.5 → 0.3.6 (commit `7f80f09`) (now at 0.3.7)
 - TypeScript SDK: 2.0.5 → 2.0.6 (commit `a448032`)
 - Java SDK: 0.2.4 → 0.2.5 (commit `42e4965`)
 
