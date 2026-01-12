@@ -64,6 +64,14 @@ const config: Config = {
             indexBlog: false,
             language: 'en',
         }],
+        ['@docusaurus/plugin-client-redirects', {
+            redirects: [
+                {
+                    from: '/sdk/templating',
+                    to: '/working-with-templates',
+                },
+            ],
+        }],
     ],
     themeConfig: {
         //  TODO Replace with your project's social card
