@@ -46,6 +46,7 @@ const sidebars: SidebarsConfig = {
                 'working-with-vector-graphics',
                 'working-with-snapshots',
                 'redaction',
+                'reflow-internals',
                 'advanced',
             ],
         },
