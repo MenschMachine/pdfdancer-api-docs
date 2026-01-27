@@ -1512,6 +1512,10 @@ pdf.save("output.pdf");
 
 ## Deleting Text Lines
 
+:::info
+For a comprehensive guide on deletion operations across all content types, see [Deleting Content](deleting-content.md).
+:::
+
 Text lines can be deleted just like paragraphs:
 
 <Tabs>

@@ -325,6 +325,10 @@ pdf.save("output.pdf");
 
 ## Deleting Images
 
+:::info
+For a comprehensive guide on deletion operations across all content types, see [Deleting Content](deleting-content.md).
+:::
+
 <Tabs>
   <TabItem value="python" label="Python">
 

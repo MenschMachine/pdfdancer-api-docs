@@ -217,6 +217,10 @@ System.out.println("Height: " + bbox.getHeight());
 
 ## Deleting Pages
 
+:::info
+For a comprehensive guide on deletion operations across all content types, see [Deleting Content](deleting-content.md).
+:::
+
 ### Delete a Single Page
 
 <Tabs>

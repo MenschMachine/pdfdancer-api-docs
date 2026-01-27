@@ -21,6 +21,7 @@ const sidebars: SidebarsConfig = {
                 'concepts',
                 'finding-content',
                 'positioning',
+                'deleting-content',
             ],
         },
         {
