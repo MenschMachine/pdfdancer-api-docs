@@ -100,7 +100,6 @@ class TestTypeScriptSemanticValidation:
 
             result = subprocess.run(
                 ["npx", "tsc", "--noEmit", str(ts_file)],
-                cwd=tmp_path,
                 capture_output=True,
                 text=True
             )
