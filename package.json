@@ -15,7 +15,7 @@
     "write-heading-ids": "docusaurus write-heading-ids",
     "typecheck": "tsc",
     "test:docs:ts": "node scripts/test-ts-docs.js",
-    "test:docs:python": "pytest tests/test_python_docs.py -v",
+    "test:docs:python": "pytest tests/ -v",
     "test:docs:java": "node scripts/test-java-docs.js",
     "test:docs": "npm run test:docs:ts && npm run test:docs:python && npm run test:docs:java"
   },

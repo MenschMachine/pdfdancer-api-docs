@@ -55,3 +55,7 @@ GitHub Actions (`.github/workflows/deploy.yml`) auto-deploys on push to `main`:
 - **Node.js**: >= 20.0
 - **Strict links**: `onBrokenLinks: 'throw'` - builds fail on broken internal links
 - **Roadmap source**: Use `/Users/michael/Documents/TFC/projects/pdfdancer/Product/Roadmap.md` - rewrite for public consumption, skip internal details (mysql, payment, etc.)
+
+## Testing
+
+Tests exist to proof correctness or capture wrong behavior. They do *not* exist to just pass.
