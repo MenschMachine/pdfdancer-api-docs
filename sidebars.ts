@@ -9,6 +9,9 @@ const sidebars: SidebarsConfig = {
             items: [
                 'introduction',
                 'getting-started',
+                'getting-started-python',
+                'getting-started-typescript',
+                'getting-started-java',
                 'ai-assisted-development',
                 'authentication',
             ],
