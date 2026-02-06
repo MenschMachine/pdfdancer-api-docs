@@ -58,6 +58,8 @@
     --theme-glow: 0 4px 12px rgba(224, 232, 240, 0.2);
     --theme-shadow: 0 8px 24px rgba(224, 232, 240, 0.18);
     --theme-border: rgba(224, 232, 240, 0.4);
+    --theme-accent-muted: rgba(224, 232, 240, 0.1);
+    --theme-accent-light: rgba(224, 232, 240, 0.05);
 
     /* Border and Transitions */
     --ifm-global-radius: 6px;
@@ -81,10 +83,53 @@
 
     --ifm-background-color: #000000;
     --ifm-background-surface-color: #0a0a0a;
+    --ifm-navbar-background-color: #000000;
+    --ifm-footer-background-color: #000000;
     --ifm-font-color-base: white;
     --ifm-font-color-secondary: #aaaaaa;
 
+    --theme-glow: 0 4px 12px rgba(224, 232, 240, 0.2);
+    --theme-shadow: 0 8px 24px rgba(224, 232, 240, 0.18);
+    --theme-border: rgba(224, 232, 240, 0.4);
+    --theme-accent-muted: rgba(224, 232, 240, 0.1);
+    --theme-accent-light: rgba(224, 232, 240, 0.05);
+
     --docusaurus-highlighted-code-line-bg: rgba(224, 232, 240, 0.15);
+    --ifm-code-background: #0a0c10;
+    --ifm-pre-background: #0a0c10;
+}
+
+/* Light Mode - Light Chrome Theme */
+[data-theme='light'] {
+    --ifm-color-primary: #4a5568;
+    --ifm-color-primary-dark: #3d4654;
+    --ifm-color-primary-darker: #343c48;
+    --ifm-color-primary-darkest: #2d333d;
+    --ifm-color-primary-light: #64748b;
+    --ifm-color-primary-lighter: #718096;
+    --ifm-color-primary-lightest: #94a3b8;
+
+    --theme-secondary: #64748b;
+    --theme-tertiary: #718096;
+    --theme-text-secondary: #4b5563;
+
+    --ifm-background-color: #ffffff;
+    --ifm-background-surface-color: #f9fafb;
+    --ifm-navbar-background-color: #ffffff;
+    --ifm-footer-background-color: #f9fafb;
+    --ifm-font-color-base: #1f2937;
+    --ifm-font-color-secondary: #4b5563;
+    --ifm-heading-color: #4a5568;
+
+    --theme-glow: 0 4px 12px rgba(74, 85, 104, 0.15);
+    --theme-shadow: 0 8px 24px rgba(74, 85, 104, 0.12);
+    --theme-border: rgba(74, 85, 104, 0.3);
+    --theme-accent-muted: rgba(74, 85, 104, 0.1);
+    --theme-accent-light: rgba(74, 85, 104, 0.05);
+
+    --docusaurus-highlighted-code-line-bg: rgba(74, 85, 104, 0.1);
+    --ifm-code-background: #f1f5f9;
+    --ifm-pre-background: #f1f5f9;
 }
 
 /* Global Styles */
@@ -121,7 +166,16 @@ article {
 h1, h2, h3, h4, h5, h6 {
     color: var(--ifm-color-primary);
     font-weight: 700;
+}
+
+[data-theme='dark'] h1, [data-theme='dark'] h2, [data-theme='dark'] h3,
+[data-theme='dark'] h4, [data-theme='dark'] h5, [data-theme='dark'] h6 {
     text-shadow: 0 2px 8px rgba(224, 232, 240, 0.15);
+}
+
+[data-theme='light'] h1, [data-theme='light'] h2, [data-theme='light'] h3,
+[data-theme='light'] h4, [data-theme='light'] h5, [data-theme='light'] h6 {
+    text-shadow: none;
 }
 
 /* Override Docusaurus default heading sizes */
@@ -185,9 +239,8 @@ code {
 
 pre {
     background: var(--ifm-pre-background);
-    border: 2px solid rgba(224, 232, 240, 0.3);
-    border-top: 2px solid rgba(224, 232, 240, 0.5);
-    box-shadow: var(--theme-glow), inset 0 0 0 1px rgba(224, 232, 240, 0.08);
+    border: 2px solid var(--theme-border);
+    box-shadow: var(--theme-glow);
     border-radius: var(--ifm-global-radius);
     font-size: var(--custom-code-font-size);
 }
@@ -236,12 +289,12 @@ pre code {
 
 .menu__link:hover {
     color: var(--ifm-color-primary);
-    background: rgba(224, 232, 240, 0.1);
+    background: var(--theme-accent-muted);
 }
 
 .menu__link--active {
     color: var(--ifm-color-primary);
-    background: rgba(224, 232, 240, 0.15);
+    background: var(--theme-accent-muted);
     border-left: 3px solid var(--ifm-color-primary);
     font-weight: 600;
 }
@@ -313,7 +366,7 @@ table {
 }
 
 th {
-    background: rgba(224, 232, 240, 0.1);
+    background: var(--theme-accent-muted);
     color: var(--ifm-color-primary);
     font-weight: 700;
 }
@@ -323,13 +376,13 @@ td, th {
 }
 
 tr:hover {
-    background: rgba(224, 232, 240, 0.05);
+    background: var(--theme-accent-light);
 }
 
 /* Admonitions */
 .admonition {
     border-left: 4px solid var(--ifm-color-primary);
-    background: rgba(224, 232, 240, 0.05);
+    background: var(--theme-accent-light);
     box-shadow: var(--theme-glow);
 }
 
@@ -376,4 +429,18 @@ tr:hover {
 
 ::-webkit-scrollbar-thumb:hover {
     background: var(--ifm-color-primary);
+}
+
+/* Fix theme toggle icons - swap sun/moon */
+[data-theme='dark'] .navbar__items .clean-btn[class*='toggle'] svg[class*='lightToggleIcon'] {
+    display: block !important;
+}
+[data-theme='dark'] .navbar__items .clean-btn[class*='toggle'] svg[class*='darkToggleIcon'] {
+    display: none !important;
+}
+[data-theme='light'] .navbar__items .clean-btn[class*='toggle'] svg[class*='darkToggleIcon'] {
+    display: block !important;
+}
+[data-theme='light'] .navbar__items .clean-btn[class*='toggle'] svg[class*='lightToggleIcon'] {
+    display: none !important;
 }
