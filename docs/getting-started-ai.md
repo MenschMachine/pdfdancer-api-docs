@@ -1,8 +1,9 @@
 ---
 sidebar_position: 4
+title: Getting Started with AI
 ---
 
-# AI-Assisted Development
+# Getting Started with AI
 
 The fastest way to build with PDFDancer is to let your AI coding assistant do it for you. Install the **PDFDancer MCP Server** once, then just describe what you want in plain English—your AI automatically searches the docs and implements the feature.
 

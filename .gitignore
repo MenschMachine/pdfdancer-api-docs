@@ -11,6 +11,7 @@
 # Compiled TypeScript files
 *.js
 !.*.js
+!/scripts/*.js
 
 # Misc
 .DS_Store
@@ -26,3 +27,4 @@ yarn-error.log*
 /logs
 .aider*
 .env
+.junie

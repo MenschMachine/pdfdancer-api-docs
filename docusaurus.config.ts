@@ -78,14 +78,14 @@ const config: Config = {
         image: 'img/docusaurus-social-card.jpg',
         colorMode: {
             defaultMode: 'dark',
-            disableSwitch: true,
+            disableSwitch: false,
             respectPrefersColorScheme: false,
         },
         navbar: {
             title: 'PDFDancer SDK',
             logo: {
                 alt: 'PDFDancer SDK Logo',
-                src: 'img/logo-orange-512h.webp',
+                src: 'img/logo-silver-512h.webp',
             },
             items: [
                 {
