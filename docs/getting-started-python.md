@@ -64,9 +64,9 @@ from pdfdancer import PDFDancer
 
 # Open the PDF (no API token needed for anonymous access)
 with PDFDancer.open(pdf_data=Path("input.pdf")) as pdf:
-    # Find paragraphs containing specific text
+    # Find paragraphs matching a pattern
     page = pdf.page(1)
-    paragraphs = page.select_paragraphs_containing("Hello")
+    paragraphs = page.select_paragraphs_matching("Hello")
 
     # Replace the text if found
     if paragraphs:
@@ -80,7 +80,7 @@ print("Done! Check output.pdf")
 
 **What this does:**
 1. Opens `input.pdf`
-2. Looks for any paragraph containing "Hello" on page 1
+2. Looks for any paragraph matching "Hello" on page 1
 3. Replaces that paragraph's text with "Hello World!"
 4. Saves the result as `output.pdf`
 

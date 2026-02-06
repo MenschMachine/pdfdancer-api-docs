@@ -73,9 +73,9 @@ async function main() {
     // Open the PDF (no API token needed for anonymous access)
     const pdf = await PDFDancer.open('input.pdf');
 
-    // Find paragraphs containing specific text
+    // Find paragraphs matching a pattern
     const page = pdf.page(1);
-    const paragraphs = await page.selectParagraphsContaining('Hello');
+    const paragraphs = await page.selectParagraphsMatching('Hello');
 
     // Replace the text if found
     if (paragraphs[0]) {
@@ -95,7 +95,7 @@ main().catch(console.error);
 
 **What this does:**
 1. Opens `input.pdf`
-2. Looks for any paragraph containing "Hello" on page 1
+2. Looks for any paragraph matching "Hello" on page 1
 3. Replaces that paragraph's text with "Hello World!"
 4. Saves the result as `output.pdf`
 

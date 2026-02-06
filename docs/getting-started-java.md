@@ -99,9 +99,9 @@ public class EditPdf {
         // Open the PDF (no API token needed for anonymous access)
         PDFDancer pdf = PDFDancer.createSession(new File("input.pdf"));
 
-        // Find paragraphs containing specific text
+        // Find paragraphs matching a pattern
         List<TextParagraphReference> paragraphs = pdf.page(1)
-                .selectParagraphsContaining("Hello");
+                .selectParagraphsMatching("Hello");
 
         // Replace the text if found
         if (!paragraphs.isEmpty()) {
@@ -120,7 +120,7 @@ public class EditPdf {
 
 **What this does:**
 1. Opens `input.pdf`
-2. Looks for any paragraph containing "Hello" on page 1
+2. Looks for any paragraph matching "Hello" on page 1
 3. Replaces that paragraph's text with "Hello World!"
 4. Saves the result as `output.pdf`
 
