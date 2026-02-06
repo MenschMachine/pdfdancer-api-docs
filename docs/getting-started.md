@@ -22,6 +22,8 @@ PDFDancer lets you edit PDFs programmatically. Choose your language to get start
     <h3>Java</h3>
     <p>For Java 11+</p>
   </a>
+  <a href="getting-started-ai" className="card">
+    <h3>AI Coding Agents</h3>
+    <p>For MCP-compatible clients</p>
+  </a>
 </div>
-
-**Want AI to do the work?** See [AI-Assisted Development](ai-assisted-development.md) to let your AI coding assistant handle PDFDancer for you.

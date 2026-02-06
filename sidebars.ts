@@ -12,7 +12,7 @@ const sidebars: SidebarsConfig = {
                 'getting-started-python',
                 'getting-started-typescript',
                 'getting-started-java',
-                'ai-assisted-development',
+                'getting-started-ai',
                 'authentication',
             ],
         },
