@@ -11,6 +11,7 @@
 # Compiled TypeScript files
 *.js
 !.*.js
+!/scripts/*.js
 
 # Misc
 .DS_Store
