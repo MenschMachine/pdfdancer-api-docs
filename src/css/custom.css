@@ -341,23 +341,58 @@ pre code {
 /* Footer */
 .footer {
     background: var(--ifm-footer-background-color);
-    border-top: 2px solid var(--theme-border);
+    border-top: 1px solid var(--theme-border);
     color: var(--ifm-font-color-secondary);
+    padding: 1.25rem 0 0.75rem;
+    font-size: var(--custom-sidebar-font-size);
+}
+
+.footer__links {
+    margin-bottom: 0.5rem;
+}
+
+.footer__col {
+    padding: 0;
 }
 
 .footer__title {
     color: var(--ifm-color-primary);
-    font-weight: 700;
+    font-weight: 600;
+    font-size: var(--custom-sidebar-font-size);
+    letter-spacing: 0.02em;
+    margin-bottom: 0.4rem;
+}
+
+.footer__items {
+    margin: 0;
+}
+
+.footer__item {
+    margin-top: 0.1rem;
 }
 
 .footer__link-item {
     color: var(--ifm-font-color-secondary);
-    transition: var(--ifm-transition-fast);
+    transition: color 0.2s ease;
+    font-size: 0.8rem;
+    line-height: 1.4;
 }
 
 .footer__link-item:hover {
     color: var(--ifm-color-primary);
-    text-shadow: var(--theme-glow);
+}
+
+.footer__copyright {
+    color: var(--ifm-font-color-secondary);
+    font-size: 0.75rem;
+    opacity: 0.6;
+    margin-top: 0;
+}
+
+.footer__bottom {
+    border-top: 1px solid var(--theme-border);
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
 }
 
 /* Tables */
