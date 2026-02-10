@@ -698,6 +698,30 @@ if (result.getWarning() != null) {
 
 ---
 
+## Common Problems
+
+### "Font does not support encoding: No glyph for U+XXXX"
+
+```
+java.io.IOException: Font does not support encoding: No glyph for U+F020 () in font SourceSans3-Regular
+```
+
+This error means the text you are trying to render contains a character that does not exist in the selected font. The Unicode code point in the message (e.g. `U+F020`) tells you exactly which character is missing.
+
+**Common causes:**
+
+- **Private Use Area characters (U+E000–U+F8FF).** These code points are used by icon fonts (Font Awesome, Material Icons, etc.) and have no standard meaning. Regular text fonts like SourceSans3 or Roboto do not contain glyphs for them. If your source text includes icon characters, you need to either strip them or switch to the icon font that defines them.
+- **Subset embedded fonts.** If you are reusing an embedded font from an existing PDF, it may only contain the glyphs for the original text. Adding new characters that were not in the original document will fail. See [Embedded Fonts](#embedded-fonts) for details.
+- **Missing script or symbol coverage.** The font may simply not support the script or symbols in your text (e.g. CJK characters in a Latin-only font).
+
+**How to fix it:**
+
+1. Identify the problematic character from the `U+XXXX` code in the error message.
+2. Either remove or replace that character in your text, or switch to a font that contains it.
+3. If you are working with embedded fonts, consider using a [standard font](#standard-pdf-fonts) or [uploading a custom font](#custom-fonts) with full glyph coverage instead.
+
+---
+
 ## Next Steps
 
 - [**Working with Text**](working-with-text.md) – Learn about text modification and status information
