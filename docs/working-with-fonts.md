@@ -158,7 +158,362 @@ pdf.save("output.pdf");
 
 ---
 
-## About Embedded Fonts
+## Custom Fonts
+
+PDFDancer supports custom TrueType (.ttf) fonts. You can use them in several ways depending on your needs:
+
+### Using a font file directly
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+from pathlib import Path
+from pdfdancer import PDFDancer, Color
+
+with PDFDancer.open("document.pdf") as pdf:
+    # Use custom font directly without registration
+    ttf_path = Path("fonts/DancingScript-Regular.ttf")
+
+    pdf.new_paragraph() \
+        .text("Beautiful custom font\nwith multiple lines") \
+        .font_file(ttf_path, 24) \
+        .line_spacing(1.8) \
+        .color(Color(0, 0, 255)) \
+        .at(page_number=1, x=300, y=500) \
+        .add()
+
+    pdf.save("output.pdf")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+import { PDFDancer } from 'pdfdancer-client-typescript';
+import { promises as fs } from 'node:fs';
+
+const pdf = await PDFDancer.open('document.pdf');
+
+// Load custom font file
+const fontBytes = await fs.readFile('fonts/DancingScript-Regular.ttf');
+
+// Use the custom font directly with fontFile()
+await pdf.page(1).newParagraph()
+  .text('Beautiful custom font\nwith multiple lines')
+  .fontFile(fontBytes, 24)
+  .lineSpacing(1.8)
+  .color(new Color(0, 0, 255))
+  .at(300, 500)
+  .apply();
+
+await pdf.save('output.pdf');
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+import com.tfc.pdf.pdfdancer.api.PDFDancer;
+import com.tfc.pdf.pdfdancer.api.common.model.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Use custom font file directly
+Path ttfPath = Paths.get("fonts/DancingScript-Regular.ttf");
+
+pdf.newParagraph()
+    .text("Beautiful custom font\nwith multiple lines")
+    .fontFile(ttfPath, 24)
+    .lineSpacing(1.8)
+    .color(new Color(0, 0, 255))
+    .at(1, 300, 500)
+    .add();
+
+pdf.save("output.pdf");
+```
+
+  </TabItem>
+</Tabs>
+
+### Using service-hosted fonts
+
+Browse the full list of pre-registered fonts on the [Available Fonts](available-fonts.md) page.
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+from pdfdancer import PDFDancer
+
+with PDFDancer.open("document.pdf") as pdf:
+    # Search for fonts available on the service
+    fonts = pdf.find_fonts("Roboto", 14)
+
+    if fonts:
+        # Use the first match (e.g., "Roboto-Regular")
+        font = fonts[0]
+        print(f"Using: {font.name} at {font.size}pt")
+
+        pdf.new_paragraph() \
+            .text("Text with service font") \
+            .font(font.name, font.size) \
+            .at(page_number=1, x=300, y=500) \
+            .add()
+
+    pdf.save("output.pdf")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+// TypeScript client uses font names directly
+const pdf = await PDFDancer.open('document.pdf');
+
+await pdf.page(1).newParagraph()
+  .text('Text with service font')
+  .font('Roboto-Regular', 14)
+  .at(300, 500)
+  .apply();
+
+await pdf.save('output.pdf');
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Search for fonts available on the service
+List<Font> fonts = pdf.findFonts("Roboto", 14);
+
+if (!fonts.isEmpty()) {
+    // Use the first match (e.g., "Roboto-Regular")
+    Font font = fonts.get(0);
+    System.out.println("Using: " + font.getName() + " at " + font.getSize() + "pt");
+
+    pdf.newParagraph()
+        .text("Text with service font")
+        .font(font.getName(), font.getSize())
+        .at(1, 300, 500)
+        .add();
+}
+
+pdf.save("output.pdf");
+```
+
+  </TabItem>
+</Tabs>
+
+### Registering fonts for reuse
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+from pathlib import Path
+from pdfdancer import PDFDancer
+
+with PDFDancer.open("document.pdf") as pdf:
+    # Register custom TTF font
+    custom_font_path = Path("fonts/CustomFont.ttf")
+    pdf.register_font(str(custom_font_path))
+
+    # Now use the registered font by name
+    pdf.new_paragraph() \
+        .text("Text with registered font") \
+        .font("CustomFont", 14) \
+        .at(page_number=1, x=100, y=500) \
+        .add()
+
+    pdf.save("output.pdf")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+// TypeScript doesn't have explicit font registration
+// Use fontFile() method instead
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+import java.nio.file.Paths;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Register custom TTF font
+pdf.registerFont(Paths.get("fonts/CustomFont.ttf").toString());
+
+// Now use the registered font by name
+pdf.newParagraph()
+    .text("Text with registered font")
+    .font("CustomFont", 14)
+    .at(1, 100, 500)
+    .add();
+
+pdf.save("output.pdf");
+```
+
+  </TabItem>
+</Tabs>
+
+### Font licensing and privacy
+
+- **Uploaded fonts are private.** Custom fonts you upload are only available to your account and are never shared with other users.
+- **You are responsible for licensing.** Make sure you have the appropriate rights to use any font you upload.
+- **Service-hosted fonts are free.** All pre-registered fonts available on the service are licensed under the [SIL Open Font License (OFL)](https://openfontlicense.org/) and free to use. See the [Available Fonts](available-fonts.md) page for the full list.
+
+---
+
+## Font Sizes and Styling
+
+You can combine standard fonts with different sizes, colors, and line spacing for rich typography:
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+from pdfdancer import PDFDancer, StandardFonts, Color
+
+with PDFDancer.open("document.pdf") as pdf:
+    # Large heading with bold Helvetica
+    pdf.new_paragraph() \
+        .text("Large heading") \
+        .font(StandardFonts.HELVETICA_BOLD.value, 24) \
+        .color(Color(0, 0, 0)) \
+        .at(page_number=1, x=100, y=700) \
+        .add()
+
+    # Normal body text with Times Roman
+    pdf.new_paragraph() \
+        .text("Normal body text in Times Roman") \
+        .font(StandardFonts.TIMES_ROMAN.value, 12) \
+        .at(page_number=1, x=100, y=660) \
+        .add()
+
+    # Monospace code example with Courier
+    pdf.new_paragraph() \
+        .text("def hello():\n    print('Hello')") \
+        .font(StandardFonts.COURIER_BOLD.value, 11) \
+        .line_spacing(1.5) \
+        .color(Color(40, 40, 40)) \
+        .at(page_number=1, x=100, y=620) \
+        .add()
+
+    # Small footnote
+    pdf.new_paragraph() \
+        .text("Small footnote") \
+        .font(StandardFonts.HELVETICA.value, 8) \
+        .color(Color(128, 128, 128)) \
+        .at(page_number=1, x=100, y=580) \
+        .add()
+
+    pdf.save("output.pdf")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+import { PDFDancer, StandardFonts, Color } from 'pdfdancer-client-typescript';
+
+const pdf = await PDFDancer.open('document.pdf');
+
+// Large heading with bold Helvetica
+await pdf.page(1).newParagraph()
+  .text('Large heading')
+  .font(StandardFonts.HELVETICA_BOLD, 24)
+  .color(new Color(0, 0, 0))
+  .at(100, 700)
+  .apply();
+
+// Normal body text with Times Roman
+await pdf.page(1).newParagraph()
+  .text('Normal body text in Times Roman')
+  .font(StandardFonts.TIMES_ROMAN, 12)
+  .at(100, 660)
+  .apply();
+
+// Monospace code example with Courier
+await pdf.page(1).newParagraph()
+  .text('def hello():\n    print(\'Hello\')')
+  .font(StandardFonts.COURIER_BOLD, 11)
+  .lineSpacing(1.5)
+  .color(new Color(40, 40, 40))
+  .at(100, 620)
+  .apply();
+
+// Small footnote
+await pdf.page(1).newParagraph()
+  .text('Small footnote')
+  .font(StandardFonts.HELVETICA, 8)
+  .color(new Color(128, 128, 128))
+  .at(100, 580)
+  .apply();
+
+await pdf.save('output.pdf');
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+import com.tfc.pdf.pdfdancer.api.PDFDancer;
+import com.tfc.pdf.pdfdancer.api.common.model.*;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Large heading with bold Helvetica
+pdf.newParagraph()
+    .text("Large heading")
+    .font(StandardFonts.HELVETICA_BOLD.getValue(), 24)
+    .color(new Color(0, 0, 0))
+    .at(1, 100, 700)
+    .add();
+
+// Normal body text with Times Roman
+pdf.newParagraph()
+    .text("Normal body text in Times Roman")
+    .font(StandardFonts.TIMES_ROMAN.getValue(), 12)
+    .at(1, 100, 660)
+    .add();
+
+// Monospace code example with Courier
+pdf.newParagraph()
+    .text("def hello():\n    print('Hello')")
+    .font(StandardFonts.COURIER_BOLD.getValue(), 11)
+    .lineSpacing(1.5)
+    .color(new Color(40, 40, 40))
+    .at(1, 100, 620)
+    .add();
+
+// Small footnote
+pdf.newParagraph()
+    .text("Small footnote")
+    .font(StandardFonts.HELVETICA.getValue(), 8)
+    .color(new Color(128, 128, 128))
+    .at(1, 100, 580)
+    .add();
+
+pdf.save("output.pdf");
+```
+
+  </TabItem>
+</Tabs>
+
+---
+
+## Embedded Fonts
+
+If you're editing text in an existing PDF, the document may contain embedded fonts. This section covers what embedded fonts are, their limitations, and how to work with them.
 
 ### What Are Embedded Fonts?
 
@@ -336,359 +691,6 @@ if (result.getWarning() != null) {
     // Consider using a standard font instead
     result = para.edit().replace("New text").font("Helvetica", 12).apply();
 }
-```
-
-  </TabItem>
-</Tabs>
-
-### Best Practices for Embedded Fonts
-
-1. **Check `TextStatus` before editing** - Know what you're working with
-2. **Use standard fonts when possible** - They have no character limitations
-3. **Handle warnings gracefully** - Check `CommandResult.warning` after modifications
-4. **Consider font substitution** - If editing fails, switch to a similar standard font
-5. **Test with actual content** - Verify that your new text renders correctly
-
----
-
-## Registering Custom Fonts
-
-You can upload and use your own TrueType (.ttf) fonts in three ways:
-
-### Method 1: Using font_file() directly (recommended)
-
-<Tabs>
-  <TabItem value="python" label="Python">
-
-```python
-from pathlib import Path
-from pdfdancer import PDFDancer, Color
-
-with PDFDancer.open("document.pdf") as pdf:
-    # Use custom font directly without registration
-    ttf_path = Path("fonts/DancingScript-Regular.ttf")
-
-    pdf.new_paragraph() \
-        .text("Beautiful custom font\nwith multiple lines") \
-        .font_file(ttf_path, 24) \
-        .line_spacing(1.8) \
-        .color(Color(0, 0, 255)) \
-        .at(page_number=1, x=300, y=500) \
-        .add()
-
-    pdf.save("output.pdf")
-```
-
-  </TabItem>
-  <TabItem value="typescript" label="TypeScript">
-
-```typescript
-import { PDFDancer } from 'pdfdancer-client-typescript';
-import { promises as fs } from 'node:fs';
-
-const pdf = await PDFDancer.open('document.pdf');
-
-// Load custom font file
-const fontBytes = await fs.readFile('fonts/DancingScript-Regular.ttf');
-
-// Use the custom font directly with fontFile()
-await pdf.page(1).newParagraph()
-  .text('Beautiful custom font\nwith multiple lines')
-  .fontFile(fontBytes, 24)
-  .lineSpacing(1.8)
-  .color(new Color(0, 0, 255))
-  .at(300, 500)
-  .apply();
-
-await pdf.save('output.pdf');
-```
-
-  </TabItem>
-  <TabItem value="java" label="Java">
-
-```java
-import com.tfc.pdf.pdfdancer.api.PDFDancer;
-import com.tfc.pdf.pdfdancer.api.common.model.*;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
-PDFDancer pdf = PDFDancer.createSession("document.pdf");
-
-// Use custom font file directly
-Path ttfPath = Paths.get("fonts/DancingScript-Regular.ttf");
-
-pdf.newParagraph()
-    .text("Beautiful custom font\nwith multiple lines")
-    .fontFile(ttfPath, 24)
-    .lineSpacing(1.8)
-    .color(new Color(0, 0, 255))
-    .at(1, 300, 500)
-    .add();
-
-pdf.save("output.pdf");
-```
-
-  </TabItem>
-</Tabs>
-
-### Method 2: Find and use fonts available on the service
-
-<Tabs>
-  <TabItem value="python" label="Python">
-
-```python
-from pdfdancer import PDFDancer
-
-with PDFDancer.open("document.pdf") as pdf:
-    # Search for fonts available on the service
-    fonts = pdf.find_fonts("Roboto", 14)
-
-    if fonts:
-        # Use the first match (e.g., "Roboto-Regular")
-        font = fonts[0]
-        print(f"Using: {font.name} at {font.size}pt")
-
-        pdf.new_paragraph() \
-            .text("Text with service font") \
-            .font(font.name, font.size) \
-            .at(page_number=1, x=300, y=500) \
-            .add()
-
-    pdf.save("output.pdf")
-```
-
-  </TabItem>
-  <TabItem value="typescript" label="TypeScript">
-
-```typescript
-// TypeScript client uses font names directly
-const pdf = await PDFDancer.open('document.pdf');
-
-await pdf.page(1).newParagraph()
-  .text('Text with service font')
-  .font('Roboto-Regular', 14)
-  .at(300, 500)
-  .apply();
-
-await pdf.save('output.pdf');
-```
-
-  </TabItem>
-  <TabItem value="java" label="Java">
-
-```java
-PDFDancer pdf = PDFDancer.createSession("document.pdf");
-
-// Search for fonts available on the service
-List<Font> fonts = pdf.findFonts("Roboto", 14);
-
-if (!fonts.isEmpty()) {
-    // Use the first match (e.g., "Roboto-Regular")
-    Font font = fonts.get(0);
-    System.out.println("Using: " + font.getName() + " at " + font.getSize() + "pt");
-
-    pdf.newParagraph()
-        .text("Text with service font")
-        .font(font.getName(), font.getSize())
-        .at(1, 300, 500)
-        .add();
-}
-
-pdf.save("output.pdf");
-```
-
-  </TabItem>
-</Tabs>
-
-### Method 3: Register custom fonts for reuse
-
-<Tabs>
-  <TabItem value="python" label="Python">
-
-```python
-from pathlib import Path
-from pdfdancer import PDFDancer
-
-with PDFDancer.open("document.pdf") as pdf:
-    # Register custom TTF font
-    custom_font_path = Path("fonts/CustomFont.ttf")
-    pdf.register_font(str(custom_font_path))
-
-    # Now use the registered font by name
-    pdf.new_paragraph() \
-        .text("Text with registered font") \
-        .font("CustomFont", 14) \
-        .at(page_number=1, x=100, y=500) \
-        .add()
-
-    pdf.save("output.pdf")
-```
-
-  </TabItem>
-  <TabItem value="typescript" label="TypeScript">
-
-```typescript
-// TypeScript doesn't have explicit font registration
-// Use fontFile() method instead
-```
-
-  </TabItem>
-  <TabItem value="java" label="Java">
-
-```java
-import java.nio.file.Paths;
-
-PDFDancer pdf = PDFDancer.createSession("document.pdf");
-
-// Register custom TTF font
-pdf.registerFont(Paths.get("fonts/CustomFont.ttf").toString());
-
-// Now use the registered font by name
-pdf.newParagraph()
-    .text("Text with registered font")
-    .font("CustomFont", 14)
-    .at(1, 100, 500)
-    .add();
-
-pdf.save("output.pdf");
-```
-
-  </TabItem>
-</Tabs>
-
----
-
-## Font Sizes and Styling
-
-You can combine standard fonts with different sizes, colors, and line spacing for rich typography:
-
-<Tabs>
-  <TabItem value="python" label="Python">
-
-```python
-from pdfdancer import PDFDancer, StandardFonts, Color
-
-with PDFDancer.open("document.pdf") as pdf:
-    # Large heading with bold Helvetica
-    pdf.new_paragraph() \
-        .text("Large heading") \
-        .font(StandardFonts.HELVETICA_BOLD.value, 24) \
-        .color(Color(0, 0, 0)) \
-        .at(page_number=1, x=100, y=700) \
-        .add()
-
-    # Normal body text with Times Roman
-    pdf.new_paragraph() \
-        .text("Normal body text in Times Roman") \
-        .font(StandardFonts.TIMES_ROMAN.value, 12) \
-        .at(page_number=1, x=100, y=660) \
-        .add()
-
-    # Monospace code example with Courier
-    pdf.new_paragraph() \
-        .text("def hello():\n    print('Hello')") \
-        .font(StandardFonts.COURIER_BOLD.value, 11) \
-        .line_spacing(1.5) \
-        .color(Color(40, 40, 40)) \
-        .at(page_number=1, x=100, y=620) \
-        .add()
-
-    # Small footnote
-    pdf.new_paragraph() \
-        .text("Small footnote") \
-        .font(StandardFonts.HELVETICA.value, 8) \
-        .color(Color(128, 128, 128)) \
-        .at(page_number=1, x=100, y=580) \
-        .add()
-
-    pdf.save("output.pdf")
-```
-
-  </TabItem>
-  <TabItem value="typescript" label="TypeScript">
-
-```typescript
-import { PDFDancer, StandardFonts, Color } from 'pdfdancer-client-typescript';
-
-const pdf = await PDFDancer.open('document.pdf');
-
-// Large heading with bold Helvetica
-await pdf.page(1).newParagraph()
-  .text('Large heading')
-  .font(StandardFonts.HELVETICA_BOLD, 24)
-  .color(new Color(0, 0, 0))
-  .at(100, 700)
-  .apply();
-
-// Normal body text with Times Roman
-await pdf.page(1).newParagraph()
-  .text('Normal body text in Times Roman')
-  .font(StandardFonts.TIMES_ROMAN, 12)
-  .at(100, 660)
-  .apply();
-
-// Monospace code example with Courier
-await pdf.page(1).newParagraph()
-  .text('def hello():\n    print(\'Hello\')')
-  .font(StandardFonts.COURIER_BOLD, 11)
-  .lineSpacing(1.5)
-  .color(new Color(40, 40, 40))
-  .at(100, 620)
-  .apply();
-
-// Small footnote
-await pdf.page(1).newParagraph()
-  .text('Small footnote')
-  .font(StandardFonts.HELVETICA, 8)
-  .color(new Color(128, 128, 128))
-  .at(100, 580)
-  .apply();
-
-await pdf.save('output.pdf');
-```
-
-  </TabItem>
-  <TabItem value="java" label="Java">
-
-```java
-import com.tfc.pdf.pdfdancer.api.PDFDancer;
-import com.tfc.pdf.pdfdancer.api.common.model.*;
-
-PDFDancer pdf = PDFDancer.createSession("document.pdf");
-
-// Large heading with bold Helvetica
-pdf.newParagraph()
-    .text("Large heading")
-    .font(StandardFonts.HELVETICA_BOLD.getValue(), 24)
-    .color(new Color(0, 0, 0))
-    .at(1, 100, 700)
-    .add();
-
-// Normal body text with Times Roman
-pdf.newParagraph()
-    .text("Normal body text in Times Roman")
-    .font(StandardFonts.TIMES_ROMAN.getValue(), 12)
-    .at(1, 100, 660)
-    .add();
-
-// Monospace code example with Courier
-pdf.newParagraph()
-    .text("def hello():\n    print('Hello')")
-    .font(StandardFonts.COURIER_BOLD.getValue(), 11)
-    .lineSpacing(1.5)
-    .color(new Color(40, 40, 40))
-    .at(1, 100, 620)
-    .add();
-
-// Small footnote
-pdf.newParagraph()
-    .text("Small footnote")
-    .font(StandardFonts.HELVETICA.getValue(), 8)
-    .color(new Color(128, 128, 128))
-    .at(1, 100, 580)
-    .add();
-
-pdf.save("output.pdf");
 ```
 
   </TabItem>

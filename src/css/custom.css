@@ -61,6 +61,10 @@
     --theme-accent-muted: rgba(224, 232, 240, 0.1);
     --theme-accent-light: rgba(224, 232, 240, 0.05);
 
+    /* Links */
+    --ifm-link-decoration: underline;
+    --ifm-link-hover-decoration: underline;
+
     /* Border and Transitions */
     --ifm-global-radius: 6px;
     --ifm-transition-fast: all 0.25s cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -215,19 +219,6 @@ a:hover {
     text-shadow: var(--theme-glow);
 }
 
-/* External links in markdown content - underlined */
-.markdown a[href^="http"],
-.markdown a[href^="https"],
-.markdown a[href^="//"] {
-    text-decoration: underline;
-}
-
-.markdown a[href^="http"]:hover,
-.markdown a[href^="https"]:hover,
-.markdown a[href^="//"]:hover {
-    text-decoration: underline;
-}
-
 /* Code Blocks */
 code {
     background: var(--ifm-code-background);
@@ -285,6 +276,11 @@ pre code {
     color: var(--ifm-font-color-secondary);
     transition: var(--ifm-transition-fast);
     border-radius: var(--ifm-global-radius);
+    text-decoration: none;
+}
+
+.table-of-contents a {
+    text-decoration: none;
 }
 
 .menu__link:hover {
