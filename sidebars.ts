@@ -67,6 +67,14 @@ const sidebars: SidebarsConfig = {
                 'roadmap',
             ],
         },
+        {
+            type: 'category',
+            label: 'Notes',
+            collapsed: false,
+            items: [
+                'notes/embedded-font-warning',
+            ],
+        },
     ],
 };
 
