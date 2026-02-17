@@ -4,7 +4,7 @@ title: Introduction to PDFDancer
 description: Pixel-perfect programmatic control over any PDF. Edit text in real-world PDFs you didn't create with surgical precision.
 ---
 
-**PDF used to be read-only. We fixed that.**
+## PDF used to be read-only. We fixed that.
 
 PDFDancer gives you pixel-perfect programmatic control over any PDF document from Python, TypeScript, or Java. Edit text in real-world PDFs you didn't create - locate any element by coordinates or text, modify it precisely, add new content at exact positions, and manipulate forms with surgical precision.
 
@@ -46,3 +46,9 @@ When working with PDFs that use embedded fonts, PDFDancer automatically handles 
 ## What's Next?
 
 Ready to get started? Head to [Getting Started](getting-started.md) to install the SDK and create your first PDF manipulation in 3 minutes.
+
+## Helpful links
+
+- [Product overview](https://www.pdfdancer.com?utm_source=github&utm_medium=readme&utm_campaign=pdfdancer-api-docs)
+- [SDK documentation](https://docs.pdfdancer.com?utm_source=github&utm_medium=readme&utm_campaign=pdfdancer-api-docs)
+- [Changelog](https://www.pdfdancer.com/changelog/?utm_source=github&utm_medium=readme&utm_campaign=pdfdancer-api-docs)
