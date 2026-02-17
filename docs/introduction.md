@@ -4,6 +4,8 @@ title: Introduction to PDFDancer
 description: Pixel-perfect programmatic control over any PDF. Edit text in real-world PDFs you didn't create with surgical precision.
 ---
 
+**PDF used to be read-only. We fixed that.**
+
 PDFDancer gives you pixel-perfect programmatic control over any PDF document from Python, TypeScript, or Java. Edit text in real-world PDFs you didn't create - locate any element by coordinates or text, modify it precisely, add new content at exact positions, and manipulate forms with surgical precision.
 
 ## Highlights
