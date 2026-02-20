@@ -6,17 +6,17 @@ description: Current SDK versions used in this documentation
 
 # SDK Versions
 
-**Documentation Version**: 8.3 (January 12, 2026)
+**Documentation Version**: 8.4 (February 20, 2026)
 
 This documentation is based on the following SDK versions:
 
 ## Python SDK
 
 - **Repository**: [pdfdancer-client-python](https://github.com/MenschMachine/pdfdancer-client-python)
-- **Version**: 0.3.7
-- **Commit**: `0ca6e1276d4f3c87f4503b6e075c5a7854a559ac`
-- **Commit Date**: January 12, 2026
-- **Commit Message**: bump: update package version to 0.3.7
+- **Version**: 0.3.8
+- **Commit**: `b4c1b53949df6527cdcdaa686b0a544b3a16882f`
+- **Commit Date**: February 20, 2026
+- **Commit Message**: feat: bump version to 0.3.8
 - **Documentation Coverage**:
   - ✅ Anonymous token support (automatic fallback authentication)
   - ✅ Snapshot API (`get_document_snapshot()`, `get_page_snapshot()`, `page.get_snapshot()`)
@@ -33,16 +33,17 @@ This documentation is based on the following SDK versions:
   - ✅ **Image Transformation API** (`scale()`, `scale_to()`, `rotate()`, `crop()`, `set_opacity()`, `flip()`, `replace()`)
   - ✅ **Template API** (`apply_replacements()` for filling templates with dict syntax)
   - ✅ **PDFDANCER_API_TOKEN** environment variable (preferred, with PDFDANCER_TOKEN fallback)
-- **Key Changes Since Last Version** (0.3.6 → 0.3.7):
-  - Version bump only, no API changes
+  - ✅ **Fill Region API** (`fill_region()` for filling rectangular pixel areas with color)
+- **Key Changes Since Last Version** (0.3.7 → 0.3.8):
+  - **Image Fill Region**: `image.fill_region(x, y, width, height, color)` - Fill rectangular pixel areas with a solid color
 
 ## TypeScript SDK
 
 - **Repository**: [pdfdancer-client-typescript](https://github.com/MenschMachine/pdfdancer-client-typescript)
-- **Version**: 2.0.6
-- **Commit**: `a448032c4705e321b2c008f1f00df5759b6f5553`
-- **Commit Date**: January 12, 2026
-- **Commit Message**: 2.0.6
+- **Version**: 2.0.7
+- **Commit**: `83c24d4fa9076250644b3010d80798cfa60749c1`
+- **Commit Date**: February 20, 2026
+- **Commit Message**: feat: bump version to 2.0.7
 - **Documentation Coverage**:
   - ✅ Anonymous token support (automatic fallback authentication)
   - ✅ Snapshot API (`getDocumentSnapshot()`, `getPageSnapshot()`, `page.getSnapshot()`)
@@ -61,21 +62,25 @@ This documentation is based on the following SDK versions:
   - ✅ **Image Transformation API** (`scale()`, `scaleTo()`, `rotate()`, `crop()`, `setOpacity()`, `flip()`, `replace()`)
   - ✅ **Template API** (`replace()` fluent API for filling templates)
   - ✅ **PDFDANCER_API_TOKEN** environment variable (preferred, with PDFDANCER_TOKEN fallback)
-- **Key Changes Since Last Version** (2.0.5 → 2.0.6):
+  - ✅ **Fill Region API** (`fillRegion()` for filling rectangular pixel areas with color)
+  - ✅ **Enhanced Text Line Editing** (`font()`, `fontFile()`, `color()`, `moveTo()` with full validation)
+- **Key Changes Since Last Version** (2.0.6 → 2.0.7):
   - **Fluent Template Replacement API**: New chainable API for template replacements
     - `pdf.replace('{{NAME}}', 'John').and('{{DATE}}', '2026').apply()` - Chain multiple replacements
     - `.font('Helvetica', 14)` - Set custom font
     - `.color(new Color(255, 0, 0))` - Set custom color
     - `.onPage(1)` - Limit to specific page
     - `.bestEffort()` / `.fitOrFail()` / `.noReflow()` - Reflow presets
+  - **Image Fill Region**: `image.fillRegion(x, y, width, height, color)` - Fill rectangular pixel areas with a solid color
+  - **Enhanced Text Line Editing**: Full `font()`, `fontFile()`, `color()`, `moveTo()` support on text line editor with proper validation
 
 ## Java SDK
 
 - **Repository**: [pdfdancer-client-java](https://github.com/MenschMachine/pdfdancer-client-java)
-- **Version**: 0.2.5
-- **Commit**: `42e496514d7dd40936794a948b1d293dbec23d4c`
-- **Commit Date**: January 12, 2026
-- **Commit Message**: bump: update version to 0.2.5
+- **Version**: 0.2.6
+- **Commit**: `0c60b104071dd66042b9ee7a90bb75bab7c90974`
+- **Commit Date**: February 20, 2026
+- **Commit Message**: feat: bump version to 0.2.6
 - **Documentation Coverage**:
   - ✅ Core PDF manipulation (open, create, save)
   - ✅ Text operations (paragraphs, text lines)
@@ -99,6 +104,8 @@ This documentation is based on the following SDK versions:
   - ✅ **Image Transformation API** (`scale()`, `scaleTo()`, `rotate()`, `crop()`, `opacity()`, `flip()`, `replace()`)
   - ✅ **Template API** (`replace()` fluent API for filling templates)
   - ✅ **PDFDANCER_API_TOKEN** environment variable (preferred, with PDFDANCER_TOKEN fallback)
+  - ✅ **Fill Region API** (`fillRegion()` for filling rectangular pixel areas with color)
+  - ✅ **Enhanced Text Line Editing** (`replace(text, color)` overload, `font(File, fontSize)` for custom TTF fonts)
 - **Requirements**:
   - **Java 11+** required (tested with Java 11, 17, 21, 23, 25)
   - Uses Gradle for build management
@@ -112,7 +119,7 @@ This documentation is based on the following SDK versions:
   - **Clean API design**: Mirrors Python and TypeScript SDKs with Java conventions
   - **Default API endpoint**: Now uses `https://api.pdfdancer.com`
   - **Maven Central distribution**: Published artifacts available for easy dependency management
-- **Key Changes Since Last Version** (0.2.4 → 0.2.5):
+- **Key Changes Since Last Version** (0.2.5 → 0.2.6):
   - **Fluent Template Replacement API**: New chainable API for template replacements
     - `pdf.replace("{{NAME}}", "John").replace("{{DATE}}", "2026").apply()` - Chain multiple replacements
     - `.withFont("Helvetica", 14)` - Set custom font
@@ -120,6 +127,8 @@ This documentation is based on the following SDK versions:
     - `.onPage(1)` - Limit to specific page
     - `.withReflow(ReflowPreset.BEST_EFFORT)` - Reflow preset
   - **Page-Level Replace**: `pdf.page(1).replace("{{HEADER}}", "Title").apply()`
+  - **Image Fill Region**: `image.fillRegion(x, y, width, height, color)` - Fill rectangular pixel areas with a solid color
+  - **Enhanced Text Line Editing**: `replace(text, color)` convenience overload, `font(File, fontSize)` for custom TTF fonts
 
 ---
 
@@ -216,7 +225,7 @@ Update the version in your `build.gradle.kts`:
 
 ```kotlin
 dependencies {
-    implementation("com.pdfdancer.client:pdfdancer-client-java:0.2.5")
+    implementation("com.pdfdancer.client:pdfdancer-client-java:0.2.6")
 }
 ```
 
@@ -250,6 +259,33 @@ mvn clean install -U
 ---
 
 ## Documentation Update History
+
+### Version 8.4 - February 20, 2026
+
+**Image Fill Region & Text Line Editing Enhancements**
+
+**SDK Commit Updates:**
+- Python SDK: 0.3.8 (commit `b4c1b53`) - fill region
+- TypeScript SDK: 2.0.7 (commit `83c24d4`) - fill region + text line editing enhancements
+- Java SDK: 0.2.6 (commit `0c60b10`) - fill region + text line editing enhancements
+
+**New Features:**
+
+1. **Image Fill Region** (All SDKs)
+   - New `fillRegion()` / `fill_region()` method on image objects
+   - Fills a rectangular pixel area within an image with a solid color
+   - Useful for masking, overlays, or blanking out sections
+
+2. **Enhanced Text Line Editing** (TypeScript & Java)
+   - TypeScript: Full `font()`, `fontFile()`, `color()`, `moveTo()` support on text line editor with proper validation
+   - Java: `replace(text, color)` convenience overload, `font(File, fontSize)` for custom TTF font files
+
+**Documentation Updated:**
+- `docs/working-with-images.md` - Added "Filling Image Regions" section
+- `docs/glossary.md` - Added Fill Region term, updated Image Transformation list
+- `docs/sdk-versions.md` - Updated commit references and changelog
+
+---
 
 ### Version 8.3 - January 12, 2026
 

@@ -62,6 +62,12 @@ A font file that is included within the PDF document itself, ensuring consistent
 
 A programming interface design that allows method chaining, where each method returns an object that can receive further method calls. PDFDancer uses fluent APIs for building paragraphs, images, and edits.
 
+### Fill Region
+
+An image transformation that fills a rectangular area within an image with a solid color, specified by pixel coordinates (x, y) and dimensions (width, height). Useful for masking parts of images, adding colored overlays, or blanking out sections.
+
+**See also:** [Filling Image Regions](working-with-images.md#filling-image-regions)
+
 ### FormXObject
 
 A reusable content stream in PDF that can be referenced multiple times throughout a document. Commonly used for logos, headers, footers, and watermarks. FormXObjects reduce file size by storing content once and referencing it multiple times.
@@ -82,7 +88,7 @@ The visual representation of a character in a font. Each character (like "A" or 
 
 ### Image
 
-A raster graphic (PNG, JPEG, etc.) embedded in a PDF. PDFDancer can select, add, replace, delete, and transform images. Transformations include scaling, rotating, cropping, adjusting opacity, and flipping.
+A raster graphic (PNG, JPEG, etc.) embedded in a PDF. PDFDancer can select, add, replace, delete, and transform images. Transformations include scaling, rotating, cropping, adjusting opacity, flipping, and filling regions with color.
 
 **See also:** [Working with Images](working-with-images.md)
 
@@ -95,6 +101,7 @@ Operations that modify an existing image in-place within a PDF. Supported transf
 - **Opacity**: Adjust transparency (0.0 to 1.0)
 - **Flip**: Mirror horizontally, vertically, or both
 - **Replace**: Swap image content while keeping position
+- **Fill Region**: Fill a rectangular pixel area with a solid color
 
 **See also:** [Transforming Images](working-with-images.md#transforming-images)
 

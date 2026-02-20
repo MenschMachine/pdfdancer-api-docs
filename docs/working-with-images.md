@@ -866,6 +866,94 @@ pdf.save("output.pdf");
   </TabItem>
 </Tabs>
 
+### Filling Image Regions
+
+Fill a rectangular pixel region of an image with a solid color. This is useful for masking parts of an image, adding colored overlays, or blanking out sections.
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+from pdfdancer import PDFDancer, Color
+
+with PDFDancer.open("document.pdf") as pdf:
+    images = pdf.page(1).select_images()
+
+    if images:
+        # Fill a 50x30 pixel region starting at (10, 10) with black
+        images[0].fill_region(10, 10, 50, 30, Color(0, 0, 0))
+
+        # Fill a region with red
+        images[0].fill_region(0, 0, 5, 5, Color(255, 0, 0))
+
+        # Fill a region with white
+        images[0].fill_region(20, 20, 10, 10, Color(255, 255, 255))
+
+    pdf.save("output.pdf")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+import { PDFDancer, Color } from 'pdfdancer-client-typescript';
+
+const pdf = await PDFDancer.open('document.pdf');
+const images = await pdf.page(1).selectImages();
+
+if (images.length > 0) {
+  // Fill a 50x30 pixel region starting at (10, 10) with black
+  await images[0].fillRegion(10, 10, 50, 30, new Color(0, 0, 0));
+
+  // Fill a region with red
+  await images[0].fillRegion(0, 0, 5, 5, new Color(255, 0, 0));
+
+  // Fill a region with white
+  await images[0].fillRegion(20, 20, 10, 10, new Color(255, 255, 255));
+}
+
+await pdf.save('output.pdf');
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+import com.pdfdancer.client.rest.PDFDancer;
+import com.pdfdancer.client.rest.ImageReference;
+import com.pdfdancer.common.model.Color;
+import java.util.List;
+
+PDFDancer pdf = PDFDancer.open("document.pdf");
+List<ImageReference> images = pdf.page(1).selectImages();
+
+if (!images.isEmpty()) {
+    // Fill a 50x30 pixel region starting at (10, 10) with black
+    images.get(0).fillRegion(10, 10, 50, 30, Color.BLACK);
+
+    // Fill a region with red
+    images.get(0).fillRegion(0, 0, 5, 5, Color.RED);
+
+    // Fill a region with a custom color
+    images.get(0).fillRegion(20, 20, 10, 10, new Color(0, 0, 255));
+}
+
+pdf.save("output.pdf");
+```
+
+  </TabItem>
+</Tabs>
+
+The `fillRegion` method takes the following parameters:
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `x` | `number` / `int` | X coordinate of the top-left corner of the region (pixels) |
+| `y` | `number` / `int` | Y coordinate of the top-left corner of the region (pixels) |
+| `width` | `number` / `int` | Width of the region in pixels (must be positive) |
+| `height` | `number` / `int` | Height of the region in pixels (must be positive) |
+| `color` | `Color` | The fill color |
+
 ---
 
 ## Next Steps

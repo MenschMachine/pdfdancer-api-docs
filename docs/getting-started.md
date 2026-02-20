@@ -24,6 +24,6 @@ PDFDancer lets you edit PDFs programmatically. Choose your language to get start
   </a>
   <a href="getting-started-ai" className="card">
     <h3>AI Coding Agents</h3>
-    <p>For MCP-compatible clients</p>
+    <p>For MCP-compatible clients like Cursor or Claude</p>
   </a>
 </div>
