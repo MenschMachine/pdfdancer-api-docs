@@ -243,7 +243,7 @@ Update the version in your `pom.xml`:
 <dependency>
     <groupId>com.pdfdancer.client</groupId>
     <artifactId>pdfdancer-client-java</artifactId>
-    <version>0.2.5</version>
+    <version>0.2.6</version>
 </dependency>
 ```
 

@@ -52,3 +52,5 @@ Ready to get started? Head to [Getting Started](getting-started.md) to install t
 - [Product overview](https://www.pdfdancer.com?utm_source=github&utm_medium=readme&utm_campaign=pdfdancer-api-docs)
 - [SDK documentation](https://docs.pdfdancer.com?utm_source=github&utm_medium=readme&utm_campaign=pdfdancer-api-docs)
 - [Changelog](https://www.pdfdancer.com/changelog/?utm_source=github&utm_medium=readme&utm_campaign=pdfdancer-api-docs)
+- [Status](https://status.pdfdancer.com?utm_source=github&utm_medium=readme&utm_campaign=pdfdancer-api-docs)
+- [Issue tracker](https://github.com/MenschMachine/pdfdancer)
