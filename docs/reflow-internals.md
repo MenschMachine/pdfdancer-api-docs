@@ -1,30 +1,28 @@
 ---
 id: reflow-internals
 title: How Reflow Works
-description: Understanding PDFDancer's text reflow engine and strategies.
+description: Understanding PDFDancer's text reflow engine — a text-fitting calculation that computes how replacement text can fit within original bounds.
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-This page explains how PDFDancer's text reflow feature works internally, including the available strategies and how they combine.
+This page explains how PDFDancer's reflow engine works internally, including the strategies it uses to fit text into existing bounds.
 
 ---
 
 ## What Reflow Is
 
-Reflow is a feature that allows you to **replace existing text in a PDF** and have the engine automatically adjust layout so the new text fits.
+Reflow is a **text-fitting calculation**. Given new text, the original bounding box, and a strategy chain, it computes what font size and line distribution would make the text fit.
 
-Use reflow when:
-- You want to replace text in-place (e.g., translations, corrections, template filling)
-- The new text is longer or shorter than the original
-- You want the engine to try reasonable layout adjustments instead of failing immediately
+Reflow does **not** replace text. Replacement and fitting are separate steps. When you call `replace()` with a reflow preset through the SDK, two things happen in sequence:
 
-Reflow always operates **inside an existing text container**:
+1. The text content in the target element is replaced
+2. The reflow calculation runs against the original bounds and applies the result (scaling, repositioning)
+
+Reflow operates within the bounds of:
 - A single text line
 - A paragraph (multi-line text block)
-
-It does *not* analyze whole pages or documents.
 
 ---
 
@@ -32,10 +30,10 @@ It does *not* analyze whole pages or documents.
 
 Reflow does **not**:
 - Reconstruct logical reading order
-- Merge or split paragraphs automatically
+- Merge or split paragraphs
 - Detect columns or tables
+- Re-layout the page
 - Perform OCR
-- Re-layout the entire page
 
 If you are looking for semantic document reflow or accessibility-style linearization, this feature is not that.
 
@@ -43,48 +41,50 @@ If you are looking for semantic document reflow or accessibility-style lineariza
 
 ## Reflow Presets
 
-PDFDancer exposes reflow through three presets that map to internal strategy chains:
+The SDKs expose reflow through three presets that map to internal strategy chains:
 
-| Preset | Behavior |
-|--------|----------|
-| `BEST_EFFORT` | Tries rewrapping, then font scaling, then vertical expansion. Almost always succeeds. |
-| `FIT_OR_FAIL` | Tries rewrapping and font scaling only. Fails if text cannot fit in original bounds. |
-| `NONE` | No reflow. Text is placed as-is and may overflow or be truncated. |
+| Preset | Strategies Applied | Behavior |
+|--------|-------------------|----------|
+| `BEST_EFFORT` | rewrap → scaleFont → expandVertically | Tries all fitting strategies in order. Almost always succeeds. |
+| `FIT_OR_FAIL` | rewrap → scaleFont | Tries fitting within original bounds only. Fails if text cannot fit. |
+| `NONE` | *(none)* | No fitting. Text is placed as-is and may overflow or be truncated. |
 
 ---
 
 ## Internal Strategies
 
-Under the hood, reflow uses a **strategy chain**. Strategies are tried in order and are cumulative.
+Strategies are tried in order and are cumulative — each builds on what the previous ones enabled.
 
 ### Rewrap
 
-- Redistributes words across multiple lines
-- Uses all available height in the original bounds
-- Attempts to minimize the *maximum* line width (optimal line breaking)
+- Redistributes words across multiple lines within the original bounds
+- Tries different line counts and picks the one that **minimizes the maximum line width**
+- Uses all available height to determine optimal line count
 - Does **not** change font size
+- Respects explicit line breaks (`\n` in replacement text)
 
 This is always tried first in `BEST_EFFORT` and `FIT_OR_FAIL` modes.
 
 ### Scale Font
 
-- Reduces font size in discrete steps (0.5 point increments)
-- Stops at a minimum font size threshold
-- Keeps any rewrapping already enabled
+- Reduces font size in **0.5-unit steps** from the original size down to a minimum
+- If rewrap was enabled earlier in the chain, scaling continues to use balanced line distribution
+- Fails if text still does not fit at the minimum font size
 
 This is tried after rewrapping fails to fit the text.
 
 ### Expand Vertically
 
-- Allows the text block to grow taller than original bounds
-- Still rewraps text optimally within the new height
-- Almost always succeeds unless something is fundamentally broken
+- Allows the text block to grow **taller** than the original bounds
+- Adds lines iteratively until all lines fit within the original width
+- Fails if any single word is wider than the available width (no amount of extra lines helps)
 
 This is the last resort in `BEST_EFFORT` mode.
 
 ### Expand Horizontally
 
-- Allows lines to become wider than original bounds
+- Allows lines to become **wider** than the original bounds
+- Reduces line count iteratively until height fits within the original bounds
 - Less commonly useful, mainly for labels or headings
 
 ---
@@ -113,13 +113,13 @@ NONE:
 ### Paragraphs (Multi-line)
 
 For paragraphs, all strategies apply:
-1. First, words are redistributed across lines to find the optimal layout
-2. If that fails, font size is reduced incrementally
+1. Words are redistributed across lines to find the optimal layout
+2. If that fails, font size is reduced in 0.5-unit steps
 3. If still too large, the paragraph may expand vertically (in `BEST_EFFORT` mode)
 
 ### Single Lines
 
-For single-line text, rewrapping is meaningless (there's only one line). Only font scaling or expansion applies:
+Rewrapping has no effect on single lines. Only font scaling or expansion applies:
 1. Font size is reduced until the text fits
 2. If configured, the line may expand horizontally
 
@@ -129,10 +129,16 @@ For single-line text, rewrapping is meaningless (there's only one line). Only fo
 
 Reflow is **strict by design**. There is no silent fallback.
 
-- If reflow succeeds, the original text elements are replaced with new ones
-- If it fails, an error is thrown with details about why (calculated width, height, font size)
+- If reflow succeeds, the fitting adjustments are applied to the text elements
+- If it fails, the SDK throws an error
 
-This is intentional: PDFDancer prefers **failing loudly** over producing visually broken PDFs.
+Internally, the engine tracks detailed failure information (required vs. available dimensions, minimum font size reached, failure reason). The SDK surfaces this as an exception — use `FIT_OR_FAIL` when you need to detect and handle cases where text cannot fit.
+
+Failure reasons at the engine level include:
+- Width or height constraints violated
+- Minimum font size reached without fitting
+- Unbreakable content (a single word wider than available width)
+- Strategy chain exhausted with no successful fit
 
 ---
 
@@ -195,7 +201,7 @@ pdf.save("output.pdf");
 When replacement text is significantly longer, the strategy chain kicks in:
 
 1. Rewrap redistributes words across available lines
-2. If still too long, font size shrinks (e.g., from 12pt to 11.5pt, then 11pt, etc.)
+2. If still too long, font size shrinks in 0.5-unit steps (e.g., 12 → 11.5 → 11 → ...)
 3. Finally, the text block may grow taller if needed
 
 <Tabs>
@@ -205,7 +211,6 @@ When replacement text is significantly longer, the strategy chain kicks in:
 from pdfdancer import PDFDancer, ReflowPreset
 
 with PDFDancer.open("template.pdf") as pdf:
-    # Long replacement text - reflow handles it automatically
     pdf.apply_replacements(
         {"{{DESCRIPTION}}": "This is a much longer description that would not fit in the original placeholder space without reflow adjustments."},
         reflow_preset=ReflowPreset.BEST_EFFORT
@@ -219,7 +224,6 @@ with PDFDancer.open("template.pdf") as pdf:
 ```typescript
 const pdf = await PDFDancer.open('template.pdf');
 
-// Long replacement text - reflow handles it automatically
 await pdf.replace('{{DESCRIPTION}}',
     'This is a much longer description that would not fit in the original placeholder space without reflow adjustments.')
     .bestEffort()
@@ -234,7 +238,6 @@ await pdf.save('output.pdf');
 ```java
 PDFDancer pdf = PDFDancer.createSession("template.pdf");
 
-// Long replacement text - reflow handles it automatically
 pdf.replace("{{DESCRIPTION}}",
     "This is a much longer description that would not fit in the original placeholder space without reflow adjustments.")
     .withReflow(ReflowPreset.BEST_EFFORT)
@@ -246,7 +249,56 @@ pdf.save("output.pdf");
   </TabItem>
 </Tabs>
 
-### Example 3: Strict Fitting
+### Example 3: Replacement with Line Breaks
+
+Reflow respects explicit `\n` line breaks in your replacement text:
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+from pdfdancer import PDFDancer, ReflowPreset
+
+with PDFDancer.open("template.pdf") as pdf:
+    pdf.apply_replacements(
+        {"{{ADDRESS}}": "123 Main Street\nApt 4B\nNew York, NY 10001"},
+        reflow_preset=ReflowPreset.BEST_EFFORT
+    )
+    pdf.save("output.pdf")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+const pdf = await PDFDancer.open('template.pdf');
+
+await pdf.replace('{{ADDRESS}}',
+    '123 Main Street\nApt 4B\nNew York, NY 10001')
+    .bestEffort()
+    .apply();
+
+await pdf.save('output.pdf');
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+PDFDancer pdf = PDFDancer.createSession("template.pdf");
+
+pdf.replace("{{ADDRESS}}",
+    "123 Main Street\nApt 4B\nNew York, NY 10001")
+    .withReflow(ReflowPreset.BEST_EFFORT)
+    .apply();
+
+pdf.save("output.pdf");
+```
+
+  </TabItem>
+</Tabs>
+
+### Example 4: Strict Fitting
 
 Use `FIT_OR_FAIL` when you need the text to stay within original bounds:
 
@@ -309,10 +361,20 @@ try {
 - **Word splitting is whitespace-based only** — no hyphenation support
 - **No language-aware line breaking** — treats all text the same
 - **No widow/orphan control** — may leave single words on lines
-- **Font scaling uses fixed 0.5pt steps** — not infinitely smooth
+- **Font scaling uses fixed 0.5-unit steps** — not infinitely smooth
 - **Paragraph boundaries cannot change** — reflow stays within the original container
-- **Alignment is not preserved** — reflowed text uses left alignment
+- **Alignment is not preserved** — reflowed text uses left alignment from the original top-left position
 - **Line spacing is derived from existing content** — may not match exactly
+- **Mixed font sizes are averaged** — if the original paragraph contains multiple font sizes, they are averaged into a single reference size for the calculation
+
+---
+
+## Not Implemented
+
+- Hyphenation
+- Per-line alignment preservation
+- Mixed font sizes inside a reflowed paragraph
+- Adaptive line spacing
 
 ---
 
@@ -328,6 +390,16 @@ try {
 
 ---
 
+## Practical Recommendations
+
+- Start with `BEST_EFFORT` — it covers most cases
+- Use `FIT_OR_FAIL` when visual bounds are strict (forms, labels, certificates)
+- Use `NONE` only when you know the replacement text is the same length or you don't care about overflow
+- Use explicit `\n` in replacement text when you need specific line breaks
+- Handle reflow failures — the error tells you why fitting failed
+
+---
+
 ## Design Philosophy
 
 Reflow is intentionally:
@@ -339,8 +411,8 @@ This makes it reliable for automated document processing where visual correctnes
 
 ---
 
-## Next Steps
+## Helpful Links
 
-- [**Working with Templates**](working-with-templates.md) – Use reflow with template replacement
-- [**Working with Text**](working-with-text.md) – Learn about text selection and editing
-- [**Error Handling**](error-handling.md) – Handle reflow failures gracefully
+- [**Working with Templates**](working-with-templates.md) — Use reflow with template replacement
+- [**Working with Text**](working-with-text.md) — Learn about text selection and editing
+- [**Error Handling**](error-handling.md) — Handle reflow failures gracefully

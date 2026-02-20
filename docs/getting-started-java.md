@@ -63,7 +63,7 @@ Create a `pom.xml` file with the PDFDancer dependency:
         <dependency>
             <groupId>com.pdfdancer.client</groupId>
             <artifactId>pdfdancer-client-java</artifactId>
-            <version>0.2.3</version>
+            <version>0.2.5</version>
         </dependency>
     </dependencies>
 </project>
