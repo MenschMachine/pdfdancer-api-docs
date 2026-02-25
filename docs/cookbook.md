@@ -1031,6 +1031,287 @@ pdf.save("documents/watermarked/report.pdf");
 
 ---
 
+## Font Replacement
+
+### Replace Fonts — Paragraph-Based
+
+Replace fonts at the paragraph level. Each paragraph gets the new font applied as a whole — useful for body text where each paragraph uses a single font.
+
+This example maps `TheSans` to `SourceSans3-Regular`, using substring matching to handle embedded font prefixes like `BCDEE+TheSans-Regular`.
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+import logging
+from pdfdancer import PDFDancer
+
+log = logging.getLogger(__name__)
+
+
+def replace_fonts_paragraph(input_path: str, output_path: str) -> None:
+    """Replace fonts at the paragraph level across all pages."""
+    font_map = {
+        "TheSans": "SourceSans3-Regular",
+    }
+
+    with PDFDancer.open(input_path) as pdf:
+        # Register custom font before use
+        pdf.register_font("fonts/SourceSans3-Regular.ttf")
+
+        paragraphs = pdf.select_paragraphs()
+        replaced = 0
+
+        for para in paragraphs:
+            font_name = para.font_name or ""
+            for old_font, new_font in font_map.items():
+                if old_font in font_name:
+                    para.edit() \
+                        .font(new_font, para.font_size) \
+                        .apply()
+                    replaced += 1
+                    log.debug(f"Replaced '{font_name}' -> '{new_font}' in: {para.text[:60]}")
+                    break
+
+        log.debug(f"Replaced fonts in {replaced} paragraphs")
+        pdf.save(output_path)
+
+
+# Usage
+replace_fonts_paragraph(
+    "documents/book.pdf",
+    "documents/book_new_fonts.pdf"
+)
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+import { PDFDancer } from 'pdfdancer-client-typescript';
+
+async function replaceFontsParagraph(
+  inputPath: string,
+  outputPath: string
+): Promise<void> {
+  const fontMap: Record<string, string> = {
+    TheSans: 'SourceSans3-Regular',
+  };
+
+  const pdf = await PDFDancer.open(inputPath);
+
+  // Register custom font before use
+  await pdf.registerFont('fonts/SourceSans3-Regular.ttf');
+
+  const paragraphs = await pdf.selectParagraphs();
+  let replaced = 0;
+
+  for (const para of paragraphs) {
+    const fontName = para.getFontName() ?? '';
+    for (const [oldFont, newFont] of Object.entries(fontMap)) {
+      if (fontName.includes(oldFont)) {
+        await para.edit()
+          .font(newFont, para.getFontSize())
+          .apply();
+        replaced++;
+        console.debug(`Replaced '${fontName}' -> '${newFont}' in: ${para.getText()?.slice(0, 60)}`);
+        break;
+      }
+    }
+  }
+
+  console.debug(`Replaced fonts in ${replaced} paragraphs`);
+  await pdf.save(outputPath);
+}
+
+// Usage
+replaceFontsParagraph(
+  'documents/book.pdf',
+  'documents/book_new_fonts.pdf'
+);
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.Map;
+
+PDFDancer pdf = PDFDancer.createSession("documents/book.pdf");
+
+// Register custom font before use
+pdf.registerFont(Paths.get("fonts/SourceSans3-Regular.ttf").toString());
+
+Map<String, String> fontMap = Map.of(
+    "TheSans", "SourceSans3-Regular"
+);
+
+List<TextParagraphReference> paragraphs = pdf.selectParagraphs();
+int replaced = 0;
+
+for (TextParagraphReference para : paragraphs) {
+    String fontName = para.getFontName() != null ? para.getFontName() : "";
+    for (Map.Entry<String, String> entry : fontMap.entrySet()) {
+        if (fontName.contains(entry.getKey())) {
+            para.edit()
+                .font(entry.getValue(), para.getFontSize())
+                .apply();
+            replaced++;
+            break;
+        }
+    }
+}
+
+System.out.println("Replaced fonts in " + replaced + " paragraphs");
+pdf.save("documents/book_new_fonts.pdf");
+```
+
+  </TabItem>
+</Tabs>
+
+### Replace Fonts — Line-Based
+
+Replace fonts at the text line level for finer control. This handles mixed-font paragraphs where body text and inline code use different fonts within the same paragraph.
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+import logging
+from pdfdancer import PDFDancer
+
+log = logging.getLogger(__name__)
+
+
+def replace_fonts_line(input_path: str, output_path: str) -> None:
+    """Replace fonts at the text line level across all pages."""
+    font_map = {
+        "TheSans": "SourceSans3-Regular",
+        "TheSansMono": "SourceSans3-Regular",
+    }
+
+    with PDFDancer.open(input_path) as pdf:
+        # Register custom font before use
+        pdf.register_font("fonts/SourceSans3-Regular.ttf")
+
+        lines = pdf.select_text_lines()
+        replaced = 0
+
+        for line in lines:
+            font_name = line.font_name or ""
+            for old_font, new_font in font_map.items():
+                if old_font in font_name:
+                    line.edit() \
+                        .font(new_font, line.font_size) \
+                        .apply()
+                    replaced += 1
+                    log.debug(f"Replaced '{font_name}' -> '{new_font}' in: {line.text[:60]}")
+                    break
+
+        log.debug(f"Replaced fonts in {replaced} lines")
+        pdf.save(output_path)
+
+
+# Usage
+replace_fonts_line(
+    "documents/book.pdf",
+    "documents/book_new_fonts.pdf"
+)
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+import { PDFDancer } from 'pdfdancer-client-typescript';
+
+async function replaceFontsLine(
+  inputPath: string,
+  outputPath: string
+): Promise<void> {
+  const fontMap: Record<string, string> = {
+    TheSans: 'SourceSans3-Regular',
+    TheSansMono: 'SourceSans3-Regular',
+  };
+
+  const pdf = await PDFDancer.open(inputPath);
+
+  // Register custom font before use
+  await pdf.registerFont('fonts/SourceSans3-Regular.ttf');
+
+  const lines = await pdf.selectTextLines();
+  let replaced = 0;
+
+  for (const line of lines) {
+    const fontName = line.getFontName() ?? '';
+    for (const [oldFont, newFont] of Object.entries(fontMap)) {
+      if (fontName.includes(oldFont)) {
+        await line.edit()
+          .font(newFont, line.getFontSize())
+          .apply();
+        replaced++;
+        console.debug(`Replaced '${fontName}' -> '${newFont}' in: ${line.getText()?.slice(0, 60)}`);
+        break;
+      }
+    }
+  }
+
+  console.debug(`Replaced fonts in ${replaced} lines`);
+  await pdf.save(outputPath);
+}
+
+// Usage
+replaceFontsLine(
+  'documents/book.pdf',
+  'documents/book_new_fonts.pdf'
+);
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.Map;
+
+PDFDancer pdf = PDFDancer.createSession("documents/book.pdf");
+
+// Register custom font before use
+pdf.registerFont(Paths.get("fonts/SourceSans3-Regular.ttf").toString());
+
+Map<String, String> fontMap = Map.of(
+    "TheSans", "SourceSans3-Regular",
+    "TheSansMono", "SourceSans3-Regular"
+);
+
+List<TextLine> lines = pdf.selectTextLines();
+int replaced = 0;
+
+for (TextLine line : lines) {
+    String fontName = line.getFontName() != null ? line.getFontName() : "";
+    for (Map.Entry<String, String> entry : fontMap.entrySet()) {
+        if (fontName.contains(entry.getKey())) {
+            line.edit()
+                .font(entry.getValue(), line.getFontSize())
+                .apply();
+            replaced++;
+            break;
+        }
+    }
+}
+
+System.out.println("Replaced fonts in " + replaced + " lines");
+pdf.save("documents/book_new_fonts.pdf");
+```
+
+  </TabItem>
+</Tabs>
+
+---
+
 ## Next Steps
 
 - [**Advanced**](advanced.md) – Learn advanced patterns and optimization

@@ -337,8 +337,21 @@ with PDFDancer.open("document.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-// TypeScript doesn't have explicit font registration
-// Use fontFile() method instead
+import { PDFDancer } from 'pdfdancer-client-typescript';
+
+const pdf = await PDFDancer.open('document.pdf');
+
+// Register custom TTF font
+await pdf.registerFont('fonts/CustomFont.ttf');
+
+// Now use the registered font by name
+await pdf.page(1).newParagraph()
+  .text('Text with registered font')
+  .font('CustomFont', 14)
+  .at(300, 500)
+  .apply();
+
+await pdf.save('output.pdf');
 ```
 
   </TabItem>
