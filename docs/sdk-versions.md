@@ -6,17 +6,17 @@ description: Current SDK versions used in this documentation
 
 # SDK Versions
 
-**Documentation Version**: 8.4 (February 20, 2026)
+**Documentation Version**: 8.5 (February 26, 2026)
 
 This documentation is based on the following SDK versions:
 
 ## Python SDK
 
 - **Repository**: [pdfdancer-client-python](https://github.com/MenschMachine/pdfdancer-client-python)
-- **Version**: 0.3.8
-- **Commit**: `b4c1b53949df6527cdcdaa686b0a544b3a16882f`
-- **Commit Date**: February 20, 2026
-- **Commit Message**: feat: bump version to 0.3.8
+- **Version**: 0.3.10
+- **Commit**: `0f22fef17656eaa407738be8e9bc9edf75169967`
+- **Commit Date**: February 26, 2026
+- **Commit Message**: Merge pull request #17 - feat: add image replacement support
 - **Documentation Coverage**:
   - ✅ Anonymous token support (automatic fallback authentication)
   - ✅ Snapshot API (`get_document_snapshot()`, `get_page_snapshot()`, `page.get_snapshot()`)
@@ -34,16 +34,19 @@ This documentation is based on the following SDK versions:
   - ✅ **Template API** (`apply_replacements()` for filling templates with dict syntax)
   - ✅ **PDFDANCER_API_TOKEN** environment variable (preferred, with PDFDANCER_TOKEN fallback)
   - ✅ **Fill Region API** (`fill_region()` for filling rectangular pixel areas with color)
-- **Key Changes Since Last Version** (0.3.7 → 0.3.8):
-  - **Image Fill Region**: `image.fill_region(x, y, width, height, color)` - Fill rectangular pixel areas with a solid color
+  - ✅ **Image Replacement in Templates** (`{"image": Path("logo.png")}` dict syntax for replacing placeholders with images)
+- **Key Changes Since Last Version** (0.3.8 → 0.3.9):
+  - **Template Image Replacement**: Replace placeholder text with images using dict syntax: `{"{{LOGO}}": {"image": Path("logo.png")}}`
+  - Optional `width` and `height` parameters for explicit sizing
+  - Supports `Path` objects and raw `bytes` as image sources
 
 ## TypeScript SDK
 
 - **Repository**: [pdfdancer-client-typescript](https://github.com/MenschMachine/pdfdancer-client-typescript)
-- **Version**: 2.0.7
-- **Commit**: `83c24d4fa9076250644b3010d80798cfa60749c1`
-- **Commit Date**: February 20, 2026
-- **Commit Message**: feat: bump version to 2.0.7
+- **Version**: 2.0.8
+- **Commit**: `1bc33dcfabc55a6fa254d473bc1c7572b1d28215`
+- **Commit Date**: February 26, 2026
+- **Commit Message**: feat(replacement): add image replacement support
 - **Documentation Coverage**:
   - ✅ Anonymous token support (automatic fallback authentication)
   - ✅ Snapshot API (`getDocumentSnapshot()`, `getPageSnapshot()`, `page.getSnapshot()`)
@@ -64,23 +67,21 @@ This documentation is based on the following SDK versions:
   - ✅ **PDFDANCER_API_TOKEN** environment variable (preferred, with PDFDANCER_TOKEN fallback)
   - ✅ **Fill Region API** (`fillRegion()` for filling rectangular pixel areas with color)
   - ✅ **Enhanced Text Line Editing** (`font()`, `fontFile()`, `color()`, `moveTo()` with full validation)
-- **Key Changes Since Last Version** (2.0.6 → 2.0.7):
-  - **Fluent Template Replacement API**: New chainable API for template replacements
-    - `pdf.replace('{{NAME}}', 'John').and('{{DATE}}', '2026').apply()` - Chain multiple replacements
-    - `.font('Helvetica', 14)` - Set custom font
-    - `.color(new Color(255, 0, 0))` - Set custom color
-    - `.onPage(1)` - Limit to specific page
-    - `.bestEffort()` / `.fitOrFail()` / `.noReflow()` - Reflow presets
-  - **Image Fill Region**: `image.fillRegion(x, y, width, height, color)` - Fill rectangular pixel areas with a solid color
-  - **Enhanced Text Line Editing**: Full `font()`, `fontFile()`, `color()`, `moveTo()` support on text line editor with proper validation
+  - ✅ **Image Replacement in Templates** (`replaceWithImage()` for replacing placeholders with images)
+- **Key Changes Since Last Version** (2.0.7 → 2.0.8):
+  - **Template Image Replacement**: Replace placeholder text with images using fluent API
+    - `pdf.replace().replaceWithImage('{{LOGO}}', 'logo.png').apply()` - Replace with image file
+    - `pdf.replace().replaceWithImage('{{LOGO}}', imageData, 100, 50).apply()` - With explicit size
+    - `.andImage('{{LOGO}}', 'logo.png')` - Chain image replacements with text replacements
+    - Accepts file path (`string`) or raw image data (`Uint8Array`)
 
 ## Java SDK
 
 - **Repository**: [pdfdancer-client-java](https://github.com/MenschMachine/pdfdancer-client-java)
-- **Version**: 0.2.6
-- **Commit**: `0c60b104071dd66042b9ee7a90bb75bab7c90974`
-- **Commit Date**: February 20, 2026
-- **Commit Message**: feat: bump version to 0.2.6
+- **Version**: 0.2.7
+- **Commit**: `f6e6b87e1e546446bbe964dd962c58a0281ca3d5`
+- **Commit Date**: February 26, 2026
+- **Commit Message**: Merge pull request #20 - feat: add image replacement support
 - **Documentation Coverage**:
   - ✅ Core PDF manipulation (open, create, save)
   - ✅ Text operations (paragraphs, text lines)
@@ -106,6 +107,7 @@ This documentation is based on the following SDK versions:
   - ✅ **PDFDANCER_API_TOKEN** environment variable (preferred, with PDFDANCER_TOKEN fallback)
   - ✅ **Fill Region API** (`fillRegion()` for filling rectangular pixel areas with color)
   - ✅ **Enhanced Text Line Editing** (`replace(text, color)` overload, `font(File, fontSize)` for custom TTF fonts)
+  - ✅ **Image Replacement in Templates** (`replaceWithImage()` for replacing placeholders with images)
 - **Requirements**:
   - **Java 11+** required (tested with Java 11, 17, 21, 23, 25)
   - Uses Gradle for build management
@@ -119,16 +121,12 @@ This documentation is based on the following SDK versions:
   - **Clean API design**: Mirrors Python and TypeScript SDKs with Java conventions
   - **Default API endpoint**: Now uses `https://api.pdfdancer.com`
   - **Maven Central distribution**: Published artifacts available for easy dependency management
-- **Key Changes Since Last Version** (0.2.5 → 0.2.6):
-  - **Fluent Template Replacement API**: New chainable API for template replacements
-    - `pdf.replace("{{NAME}}", "John").replace("{{DATE}}", "2026").apply()` - Chain multiple replacements
-    - `.withFont("Helvetica", 14)` - Set custom font
-    - `.withColor(255, 0, 0)` - Set custom color
-    - `.onPage(1)` - Limit to specific page
-    - `.withReflow(ReflowPreset.BEST_EFFORT)` - Reflow preset
-  - **Page-Level Replace**: `pdf.page(1).replace("{{HEADER}}", "Title").apply()`
-  - **Image Fill Region**: `image.fillRegion(x, y, width, height, color)` - Fill rectangular pixel areas with a solid color
-  - **Enhanced Text Line Editing**: `replace(text, color)` convenience overload, `font(File, fontSize)` for custom TTF fonts
+- **Key Changes Since Last Version** (0.2.6 → 0.2.6+):
+  - **Template Image Replacement**: Replace placeholder text with images using fluent API
+    - `pdf.replaceWithImage("{{LOGO}}", new File("logo.png")).apply()` - Replace with image file
+    - `pdf.replaceWithImage("{{LOGO}}", new File("logo.png"), 100, 50).apply()` - With explicit size
+    - `.replaceWithImage("{{LOGO}}", imageFile)` - Chain image replacements with text replacements
+    - Page-level: `pdf.page(1).replaceWithImage("{{LOGO}}", imageFile).apply()`
 
 ---
 
@@ -259,6 +257,35 @@ mvn clean install -U
 ---
 
 ## Documentation Update History
+
+### Version 8.5 - February 26, 2026
+
+**Template Image Replacement**
+
+All SDKs now support replacing template placeholders with images, in addition to text.
+
+**SDK Commit Updates:**
+- Python SDK: 0.3.9 (commit `0f22fef`) - image replacement in templates
+- TypeScript SDK: 2.0.8 (commit `1bc33dc`) - image replacement in templates
+- Java SDK: 0.2.6 (commit `f6e6b87`) - image replacement in templates
+
+**New Features:**
+
+1. **Template Image Replacement** (All SDKs)
+   - Replace placeholder text with images in template operations
+   - Optional explicit width and height for sizing
+   - Python: Dict syntax `{"{{LOGO}}": {"image": Path("logo.png")}}`
+   - TypeScript: Fluent API `pdf.replace().replaceWithImage('{{LOGO}}', 'logo.png').apply()`
+   - Java: Direct method `pdf.replaceWithImage("{{LOGO}}", new File("logo.png")).apply()`
+   - Mixed text and image replacements in a single batch
+   - Page-level image replacement (TypeScript via `.onPage()`, Java via `pdf.page(1).replaceWithImage()`)
+
+**Documentation Updated:**
+- `docs/working-with-templates.md` - Added "Replacing with Images" section with examples for all SDKs
+- `docs/glossary.md` - Updated Templates entry to include image replacement
+- `docs/sdk-versions.md` - Updated commit references, versions, and changelog
+
+---
 
 ### Version 8.4 - February 20, 2026
 

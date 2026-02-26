@@ -263,6 +263,151 @@ pdf.save("filled.pdf");
 
 ---
 
+## Replacing with Images
+
+Replace placeholder text with an image instead of text. The image is placed at the placeholder's position. You can optionally specify width and height; if omitted, the image's natural size is used.
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+from pathlib import Path
+from pdfdancer import PDFDancer
+
+with PDFDancer.open("template.pdf") as pdf:
+    # Replace placeholder with image (natural size)
+    pdf.apply_replacements({
+        "{{LOGO}}": {"image": Path("logo.png")},
+    })
+
+    # Replace with explicit size
+    pdf.apply_replacements({
+        "{{SIGNATURE}}": {"image": Path("signature.png"), "width": 150, "height": 50},
+    })
+
+    pdf.save("filled.pdf")
+```
+
+You can mix text and image replacements in a single call:
+
+```python
+from pathlib import Path
+from pdfdancer import PDFDancer
+
+with PDFDancer.open("template.pdf") as pdf:
+    pdf.apply_replacements({
+        "{{NAME}}": "John Doe",
+        "{{LOGO}}": {"image": Path("logo.png")},
+        "{{DATE}}": "January 15, 2026",
+    })
+    pdf.save("filled.pdf")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+import { PDFDancer } from 'pdfdancer-client-typescript';
+
+const pdf = await PDFDancer.open('template.pdf');
+
+// Replace placeholder with image (natural size)
+await pdf.replace()
+    .replaceWithImage('{{LOGO}}', 'logo.png')
+    .apply();
+
+// Replace with explicit size
+await pdf.replace()
+    .replaceWithImage('{{SIGNATURE}}', 'signature.png', 150, 50)
+    .apply();
+
+await pdf.save('filled.pdf');
+```
+
+You can mix text and image replacements using the fluent API:
+
+```typescript
+import { PDFDancer } from 'pdfdancer-client-typescript';
+
+const pdf = await PDFDancer.open('template.pdf');
+
+await pdf.replace('{{NAME}}', 'John Doe')
+    .andImage('{{LOGO}}', 'logo.png')
+    .and('{{DATE}}', 'January 15, 2026')
+    .apply();
+
+await pdf.save('filled.pdf');
+```
+
+You can also pass raw image data as a `Uint8Array`:
+
+```typescript
+import { PDFDancer } from 'pdfdancer-client-typescript';
+import * as fs from 'fs';
+
+const pdf = await PDFDancer.open('template.pdf');
+const imageData = new Uint8Array(fs.readFileSync('logo.png'));
+
+await pdf.replace()
+    .replaceWithImage('{{LOGO}}', imageData, 100, 50)
+    .apply();
+
+await pdf.save('filled.pdf');
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+import com.pdfdancer.client.rest.PDFDancer;
+import java.io.File;
+
+PDFDancer pdf = PDFDancer.createSession("template.pdf");
+
+// Replace placeholder with image (natural size)
+pdf.replaceWithImage("{{LOGO}}", new File("logo.png")).apply();
+
+// Replace with explicit size
+pdf.replaceWithImage("{{SIGNATURE}}", new File("signature.png"), 150, 50).apply();
+
+pdf.save("filled.pdf");
+```
+
+You can mix text and image replacements using the fluent API:
+
+```java
+import com.pdfdancer.client.rest.PDFDancer;
+import java.io.File;
+
+PDFDancer pdf = PDFDancer.createSession("template.pdf");
+
+pdf.replace("{{NAME}}", "John Doe")
+    .replaceWithImage("{{LOGO}}", new File("logo.png"))
+    .replace("{{DATE}}", "January 15, 2026")
+    .apply();
+
+pdf.save("filled.pdf");
+```
+
+Page-level image replacement is also supported:
+
+```java
+import com.pdfdancer.client.rest.PDFDancer;
+import java.io.File;
+
+PDFDancer pdf = PDFDancer.createSession("template.pdf");
+
+// Replace only on page 1
+pdf.page(1).replaceWithImage("{{LOGO}}", new File("logo.png")).apply();
+
+pdf.save("filled.pdf");
+```
+
+  </TabItem>
+</Tabs>
+
+---
+
 ## Use Cases
 
 ### Mail Merge
