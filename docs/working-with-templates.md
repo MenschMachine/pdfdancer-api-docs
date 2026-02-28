@@ -9,24 +9,34 @@ import TabItem from '@theme/TabItem';
 
 Fill placeholder text in PDF templates with dynamic content. This is useful for mail merge operations, invoice generation, certificate creation, and generating personalized documents at scale.
 
+:::info How text matching works
+PDFDancer does exact string matching — it finds the text you specify in the PDF and replaces it. There is no special placeholder syntax required. Any text that exists in the PDF can be matched and replaced. Conventions like `{PLACEHOLDER}` or `%PLACEHOLDER%` are just a way to make placeholders easy to find — the braces and percent signs have no special meaning to the API.
+:::
+
 ---
 
-## Basic Usage
+## Font Registration
 
-Fill placeholders throughout an entire document:
+Most PDFs embed **subsetted fonts** — only the characters actually used in the document are included. When you replace text with new characters that weren't in the original PDF, those characters may not render correctly because they're missing from the subsetted font.
+
+The solution is to register a full font file and specify it on each replacement:
 
 <Tabs>
   <TabItem value="python" label="Python">
 
 ```python
-from pdfdancer import PDFDancer
+from pdfdancer import PDFDancer, Font
 
 with PDFDancer.open("template.pdf") as pdf:
-    # Fill placeholders in the entire document
+    # Register fonts before using them in replacements
+    pdf.register_font("fonts/MyFont-Regular.ttf")
+    pdf.register_font("fonts/MyFont-Bold.ttf")
+
     pdf.apply_replacements({
-        "{{NAME}}": "John Doe",
-        "{{DATE}}": "January 12, 2026",
-        "{{COMPANY}}": "Acme Corp",
+        "{NAME}": {
+            "text": "John Doe",
+            "font": Font("MyFont-Regular", 12),
+        },
     })
 
     pdf.save("filled.pdf")
@@ -36,14 +46,15 @@ with PDFDancer.open("template.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-import { PDFDancer } from 'pdfdancer-client-typescript';
+import { PDFDancer, Font } from 'pdfdancer-client-typescript';
 
 const pdf = await PDFDancer.open('template.pdf');
 
-// Fill placeholders using fluent API
-await pdf.replace('{{NAME}}', 'John Doe')
-    .and('{{DATE}}', 'January 12, 2026')
-    .and('{{COMPANY}}', 'Acme Corp')
+// Register fonts before using them in replacements
+await pdf.registerFont('fonts/MyFont-Regular.ttf');
+await pdf.registerFont('fonts/MyFont-Bold.ttf');
+
+await pdf.replace('{NAME}', { text: 'John Doe', font: new Font('MyFont-Regular', 12) })
     .apply();
 
 await pdf.save('filled.pdf');
@@ -54,13 +65,15 @@ await pdf.save('filled.pdf');
 
 ```java
 import com.pdfdancer.client.rest.PDFDancer;
+import com.pdfdancer.common.model.Font;
 
 PDFDancer pdf = PDFDancer.createSession("template.pdf");
 
-// Fill placeholders using fluent API
-pdf.replace("{{NAME}}", "John Doe")
-    .replace("{{DATE}}", "January 12, 2026")
-    .replace("{{COMPANY}}", "Acme Corp")
+// Register fonts before using them in replacements
+pdf.registerFont("fonts/MyFont-Regular.ttf");
+pdf.registerFont("fonts/MyFont-Bold.ttf");
+
+pdf.replace("{NAME}", new Font("MyFont-Regular", 12), "John Doe")
     .apply();
 
 pdf.save("filled.pdf");
@@ -68,6 +81,158 @@ pdf.save("filled.pdf");
 
   </TabItem>
 </Tabs>
+
+See [Working with Fonts](working-with-fonts.md) for the full list of standard fonts and custom font registration details.
+
+---
+
+## Basic Usage
+
+Fill placeholders throughout an entire document. You should always specify a font on each replacement to avoid issues with subsetted fonts (see above).
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+from pdfdancer import PDFDancer, Font
+
+with PDFDancer.open("template.pdf") as pdf:
+    pdf.register_font("fonts/MyFont-Regular.ttf")
+
+    pdf.apply_replacements({
+        "{NAME}": {
+            "text": "John Doe",
+            "font": Font("MyFont-Regular", 12),
+        },
+        "{DATE}": {
+            "text": "January 12, 2026",
+            "font": Font("MyFont-Regular", 12),
+        },
+        "{COMPANY}": {
+            "text": "Acme Corp",
+            "font": Font("MyFont-Regular", 12),
+        },
+    })
+
+    pdf.save("filled.pdf")
+```
+
+Plain string values are also supported (`"{NAME}": "John Doe"`), but the text will render using the original embedded font — which may have missing characters if the font is subsetted.
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+import { PDFDancer, Font } from 'pdfdancer-client-typescript';
+
+const pdf = await PDFDancer.open('template.pdf');
+await pdf.registerFont('fonts/MyFont-Regular.ttf');
+
+const font = new Font('MyFont-Regular', 12);
+
+await pdf.replace('{NAME}', { text: 'John Doe', font })
+    .and('{DATE}', { text: 'January 12, 2026', font })
+    .and('{COMPANY}', { text: 'Acme Corp', font })
+    .apply();
+
+await pdf.save('filled.pdf');
+```
+
+Plain string values are also supported (`'{NAME}', 'John Doe'`), but the text will render using the original embedded font — which may have missing characters if the font is subsetted.
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+import com.pdfdancer.client.rest.PDFDancer;
+import com.pdfdancer.common.model.Font;
+
+PDFDancer pdf = PDFDancer.createSession("template.pdf");
+pdf.registerFont("fonts/MyFont-Regular.ttf");
+
+Font font = new Font("MyFont-Regular", 12);
+
+pdf.replace("{NAME}", font, "John Doe")
+    .replace("{DATE}", font, "January 12, 2026")
+    .replace("{COMPANY}", font, "Acme Corp")
+    .apply();
+
+pdf.save("filled.pdf");
+```
+
+Plain string values are also supported (`"{NAME}", "John Doe"`), but the text will render using the original embedded font — which may have missing characters if the font is subsetted.
+
+  </TabItem>
+</Tabs>
+
+---
+
+## Matching Surrounding Text
+
+You can match a placeholder along with its surrounding text to replace an entire phrase. This gives you control over line breaks and positioning:
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+from pdfdancer import PDFDancer, Font
+
+with PDFDancer.open("template.pdf") as pdf:
+    pdf.register_font("fonts/MyFont-Regular.ttf")
+
+    pdf.apply_replacements({
+        # Match the placeholder AND surrounding text to replace the full phrase
+        "{EMPLOYEES} switch to the Auto Insurance Program": {
+            "text": "500 employees switch to the\nAuto Insurance Program",
+            "font": Font("MyFont-Regular", 16),
+        },
+    })
+
+    pdf.save("filled.pdf")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+import { PDFDancer, Font } from 'pdfdancer-client-typescript';
+
+const pdf = await PDFDancer.open('template.pdf');
+await pdf.registerFont('fonts/MyFont-Regular.ttf');
+
+// Match the placeholder AND surrounding text to replace the full phrase
+await pdf.replace(
+    '{EMPLOYEES} switch to the Auto Insurance Program',
+    { text: '500 employees switch to the\nAuto Insurance Program', font: new Font('MyFont-Regular', 16) }
+).apply();
+
+await pdf.save('filled.pdf');
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+import com.pdfdancer.client.rest.PDFDancer;
+import com.pdfdancer.common.model.Font;
+
+PDFDancer pdf = PDFDancer.createSession("template.pdf");
+pdf.registerFont("fonts/MyFont-Regular.ttf");
+
+// Match the placeholder AND surrounding text to replace the full phrase
+pdf.replace(
+    "{EMPLOYEES} switch to the Auto Insurance Program",
+    new Font("MyFont-Regular", 16),
+    "500 employees switch to the\nAuto Insurance Program"
+).apply();
+
+pdf.save("filled.pdf");
+```
+
+  </TabItem>
+</Tabs>
+
+Using `\n` in the replacement text creates a line break, splitting the text across multiple lines. This is useful when replacement text is longer than the original and you need to control where lines wrap.
 
 ---
 
@@ -79,17 +244,20 @@ Fill placeholders on a specific page only:
   <TabItem value="python" label="Python">
 
 ```python
-from pdfdancer import PDFDancer
+from pdfdancer import PDFDancer, Font
 
 with PDFDancer.open("template.pdf") as pdf:
+    pdf.register_font("fonts/MyFont-Regular.ttf")
+    font = Font("MyFont-Regular", 14)
+
     # Fill only on page 1
     pdf.page(1).apply_replacements({
-        "{{HEADER}}": "Welcome",
+        "{HEADER}": {"text": "Welcome", "font": font},
     })
 
     # Fill only on page 2
     pdf.page(2).apply_replacements({
-        "{{HEADER}}": "Details",
+        "{HEADER}": {"text": "Details", "font": font},
     })
 
     pdf.save("filled.pdf")
@@ -99,17 +267,19 @@ with PDFDancer.open("template.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-import { PDFDancer } from 'pdfdancer-client-typescript';
+import { PDFDancer, Font } from 'pdfdancer-client-typescript';
 
 const pdf = await PDFDancer.open('template.pdf');
+await pdf.registerFont('fonts/MyFont-Regular.ttf');
+const font = new Font('MyFont-Regular', 14);
 
 // Fill only on page 1
-await pdf.replace('{{HEADER}}', 'Welcome')
+await pdf.replace('{HEADER}', { text: 'Welcome', font })
     .onPage(1)
     .apply();
 
 // Fill only on page 2
-await pdf.replace('{{HEADER}}', 'Details')
+await pdf.replace('{HEADER}', { text: 'Details', font })
     .onPage(2)
     .apply();
 
@@ -121,14 +291,17 @@ await pdf.save('filled.pdf');
 
 ```java
 import com.pdfdancer.client.rest.PDFDancer;
+import com.pdfdancer.common.model.Font;
 
 PDFDancer pdf = PDFDancer.createSession("template.pdf");
+pdf.registerFont("fonts/MyFont-Regular.ttf");
+Font font = new Font("MyFont-Regular", 14);
 
 // Fill only on page 1
-pdf.page(1).replace("{{HEADER}}", "Welcome").apply();
+pdf.page(1).replace("{HEADER}", font, "Welcome").apply();
 
 // Fill only on page 2
-pdf.page(2).replace("{{HEADER}}", "Details").apply();
+pdf.page(2).replace("{HEADER}", font, "Details").apply();
 
 pdf.save("filled.pdf");
 ```
@@ -146,18 +319,24 @@ When replacement text is longer or shorter than the placeholder, PDFDancer can a
 |--------|-------------|
 | `BEST_EFFORT` | Automatically adjusts text to fit available space (recommended) |
 | `FIT_OR_FAIL` | Fails if text doesn't fit in the available space |
-| `NONE` | No reflow; text may overflow or be truncated |
+| `NONE` | No reflow; text may overflow or be truncated. Use when you want full control over layout. |
 
 <Tabs>
   <TabItem value="python" label="Python">
 
 ```python
-from pdfdancer import PDFDancer, ReflowPreset
+from pdfdancer import PDFDancer, Font, ReflowPreset
 
 with PDFDancer.open("template.pdf") as pdf:
-    # Use BEST_EFFORT reflow for longer replacement text
+    pdf.register_font("fonts/MyFont-Regular.ttf")
+
     pdf.apply_replacements(
-        {"{{SHORT}}": "This is a much longer replacement text"},
+        {
+            "{DESCRIPTION}": {
+                "text": "This is a much longer replacement text",
+                "font": Font("MyFont-Regular", 12),
+            },
+        },
         reflow_preset=ReflowPreset.BEST_EFFORT
     )
 
@@ -168,14 +347,15 @@ with PDFDancer.open("template.pdf") as pdf:
   <TabItem value="typescript" label="TypeScript">
 
 ```typescript
-import { PDFDancer } from 'pdfdancer-client-typescript';
+import { PDFDancer, Font } from 'pdfdancer-client-typescript';
 
 const pdf = await PDFDancer.open('template.pdf');
+await pdf.registerFont('fonts/MyFont-Regular.ttf');
 
-// Use BEST_EFFORT reflow for longer replacement text
-await pdf.replace('{{SHORT}}', 'This is a much longer replacement text')
-    .bestEffort()
-    .apply();
+await pdf.replace('{DESCRIPTION}', {
+    text: 'This is a much longer replacement text',
+    font: new Font('MyFont-Regular', 12),
+}).bestEffort().apply();
 
 await pdf.save('filled.pdf');
 ```
@@ -185,12 +365,13 @@ await pdf.save('filled.pdf');
 
 ```java
 import com.pdfdancer.client.rest.PDFDancer;
+import com.pdfdancer.common.model.Font;
 import com.pdfdancer.common.model.ReflowPreset;
 
 PDFDancer pdf = PDFDancer.createSession("template.pdf");
+pdf.registerFont("fonts/MyFont-Regular.ttf");
 
-// Use BEST_EFFORT reflow for longer replacement text
-pdf.replace("{{SHORT}}", "This is a much longer replacement text")
+pdf.replace("{DESCRIPTION}", new Font("MyFont-Regular", 12), "This is a much longer replacement text")
     .withReflow(ReflowPreset.BEST_EFFORT)
     .apply();
 
@@ -204,7 +385,7 @@ pdf.save("filled.pdf");
 
 ## Custom Formatting
 
-You can optionally specify font and color for replacement text:
+You can specify font size and color for replacement text. Since you should always specify a font for correctness with subsetted fonts (see [Font Registration](#font-registration)), the main additional option here is color:
 
 <Tabs>
   <TabItem value="python" label="Python">
@@ -213,11 +394,12 @@ You can optionally specify font and color for replacement text:
 from pdfdancer import PDFDancer, Font, Color
 
 with PDFDancer.open("template.pdf") as pdf:
-    # Fill with custom font and color
+    pdf.register_font("fonts/MyFont-Bold.ttf")
+
     pdf.apply_replacements({
-        "{{HIGHLIGHT}}": {
+        "{HIGHLIGHT}": {
             "text": "Important Text",
-            "font": Font("Helvetica-Bold", 14),
+            "font": Font("MyFont-Bold", 14),
             "color": Color(255, 0, 0),  # Red
         },
     })
@@ -231,12 +413,13 @@ with PDFDancer.open("template.pdf") as pdf:
 import { PDFDancer, Font, Color } from 'pdfdancer-client-typescript';
 
 const pdf = await PDFDancer.open('template.pdf');
+await pdf.registerFont('fonts/MyFont-Bold.ttf');
 
-// Fill with custom font and color
-await pdf.replace('{{HIGHLIGHT}}', 'Important Text')
-    .font('Helvetica-Bold', 14)
-    .color(new Color(255, 0, 0))  // Red
-    .apply();
+await pdf.replace('{HIGHLIGHT}', {
+    text: 'Important Text',
+    font: new Font('MyFont-Bold', 14),
+    color: new Color(255, 0, 0),  // Red
+}).apply();
 
 await pdf.save('filled.pdf');
 ```
@@ -246,12 +429,13 @@ await pdf.save('filled.pdf');
 
 ```java
 import com.pdfdancer.client.rest.PDFDancer;
+import com.pdfdancer.common.model.Font;
+import com.pdfdancer.common.model.Color;
 
 PDFDancer pdf = PDFDancer.createSession("template.pdf");
+pdf.registerFont("fonts/MyFont-Bold.ttf");
 
-// Fill with custom font and color
-pdf.replace("{{HIGHLIGHT}}", "Important Text")
-    .withFont("Helvetica-Bold", 14)
+pdf.replace("{HIGHLIGHT}", new Font("MyFont-Bold", 14), "Important Text")
     .withColor(255, 0, 0)  // Red
     .apply();
 
@@ -265,7 +449,7 @@ pdf.save("filled.pdf");
 
 ## Replacing with Images
 
-Replace placeholder text with an image instead of text. The image is placed at the placeholder's position. You can optionally specify width and height; if omitted, the image's natural size is used.
+Replace placeholder text with an image. The image is placed at the placeholder's position. You can specify `width`, `height`, or both — if only one dimension is given, the image scales proportionally. If neither is specified, the image's natural size is used.
 
 <Tabs>
   <TabItem value="python" label="Python">
@@ -275,14 +459,14 @@ from pathlib import Path
 from pdfdancer import PDFDancer
 
 with PDFDancer.open("template.pdf") as pdf:
-    # Replace placeholder with image (natural size)
+    # Replace placeholder with image, scaled to width of 150px
     pdf.apply_replacements({
-        "{{LOGO}}": {"image": Path("logo.png")},
+        "{LOGO}": {"image": Path("logo.png"), "width": 150},
     })
 
-    # Replace with explicit size
+    # Replace with explicit width and height
     pdf.apply_replacements({
-        "{{SIGNATURE}}": {"image": Path("signature.png"), "width": 150, "height": 50},
+        "{SIGNATURE}": {"image": Path("signature.png"), "width": 150, "height": 50},
     })
 
     pdf.save("filled.pdf")
@@ -292,13 +476,21 @@ You can mix text and image replacements in a single call:
 
 ```python
 from pathlib import Path
-from pdfdancer import PDFDancer
+from pdfdancer import PDFDancer, Font
 
 with PDFDancer.open("template.pdf") as pdf:
+    pdf.register_font("fonts/MyFont-Regular.ttf")
+
     pdf.apply_replacements({
-        "{{NAME}}": "John Doe",
-        "{{LOGO}}": {"image": Path("logo.png")},
-        "{{DATE}}": "January 15, 2026",
+        "{NAME}": {
+            "text": "John Doe",
+            "font": Font("MyFont-Regular", 12),
+        },
+        "{LOGO}": {"image": Path("logo.png"), "width": 150},
+        "{DATE}": {
+            "text": "January 15, 2026",
+            "font": Font("MyFont-Regular", 12),
+        },
     })
     pdf.save("filled.pdf")
 ```
@@ -311,14 +503,14 @@ import { PDFDancer } from 'pdfdancer-client-typescript';
 
 const pdf = await PDFDancer.open('template.pdf');
 
-// Replace placeholder with image (natural size)
+// Replace placeholder with image, scaled to width of 150px
 await pdf.replace()
-    .replaceWithImage('{{LOGO}}', 'logo.png')
+    .replaceWithImage('{LOGO}', 'logo.png', 150)
     .apply();
 
-// Replace with explicit size
+// Replace with explicit width and height
 await pdf.replace()
-    .replaceWithImage('{{SIGNATURE}}', 'signature.png', 150, 50)
+    .replaceWithImage('{SIGNATURE}', 'signature.png', 150, 50)
     .apply();
 
 await pdf.save('filled.pdf');
@@ -327,13 +519,15 @@ await pdf.save('filled.pdf');
 You can mix text and image replacements using the fluent API:
 
 ```typescript
-import { PDFDancer } from 'pdfdancer-client-typescript';
+import { PDFDancer, Font } from 'pdfdancer-client-typescript';
 
 const pdf = await PDFDancer.open('template.pdf');
+await pdf.registerFont('fonts/MyFont-Regular.ttf');
+const font = new Font('MyFont-Regular', 12);
 
-await pdf.replace('{{NAME}}', 'John Doe')
-    .andImage('{{LOGO}}', 'logo.png')
-    .and('{{DATE}}', 'January 15, 2026')
+await pdf.replace('{NAME}', { text: 'John Doe', font })
+    .andImage('{LOGO}', 'logo.png', 150)
+    .and('{DATE}', { text: 'January 15, 2026', font })
     .apply();
 
 await pdf.save('filled.pdf');
@@ -349,7 +543,7 @@ const pdf = await PDFDancer.open('template.pdf');
 const imageData = new Uint8Array(fs.readFileSync('logo.png'));
 
 await pdf.replace()
-    .replaceWithImage('{{LOGO}}', imageData, 100, 50)
+    .replaceWithImage('{LOGO}', imageData, 100, 50)
     .apply();
 
 await pdf.save('filled.pdf');
@@ -364,11 +558,11 @@ import java.io.File;
 
 PDFDancer pdf = PDFDancer.createSession("template.pdf");
 
-// Replace placeholder with image (natural size)
-pdf.replaceWithImage("{{LOGO}}", new File("logo.png")).apply();
+// Replace placeholder with image, scaled to width of 150px
+pdf.replaceWithImage("{LOGO}", new File("logo.png"), 150).apply();
 
-// Replace with explicit size
-pdf.replaceWithImage("{{SIGNATURE}}", new File("signature.png"), 150, 50).apply();
+// Replace with explicit width and height
+pdf.replaceWithImage("{SIGNATURE}", new File("signature.png"), 150, 50).apply();
 
 pdf.save("filled.pdf");
 ```
@@ -377,13 +571,16 @@ You can mix text and image replacements using the fluent API:
 
 ```java
 import com.pdfdancer.client.rest.PDFDancer;
+import com.pdfdancer.common.model.Font;
 import java.io.File;
 
 PDFDancer pdf = PDFDancer.createSession("template.pdf");
+pdf.registerFont("fonts/MyFont-Regular.ttf");
+Font font = new Font("MyFont-Regular", 12);
 
-pdf.replace("{{NAME}}", "John Doe")
-    .replaceWithImage("{{LOGO}}", new File("logo.png"))
-    .replace("{{DATE}}", "January 15, 2026")
+pdf.replace("{NAME}", font, "John Doe")
+    .replaceWithImage("{LOGO}", new File("logo.png"), 150)
+    .replace("{DATE}", font, "January 15, 2026")
     .apply();
 
 pdf.save("filled.pdf");
@@ -398,7 +595,7 @@ import java.io.File;
 PDFDancer pdf = PDFDancer.createSession("template.pdf");
 
 // Replace only on page 1
-pdf.page(1).replaceWithImage("{{LOGO}}", new File("logo.png")).apply();
+pdf.page(1).replaceWithImage("{LOGO}", new File("logo.png"), 150).apply();
 
 pdf.save("filled.pdf");
 ```
@@ -415,7 +612,7 @@ pdf.save("filled.pdf");
 Generate personalized documents from a template:
 
 ```python
-from pdfdancer import PDFDancer
+from pdfdancer import PDFDancer, Font
 
 recipients = [
     {"name": "Alice Johnson", "account": "ACC-001"},
@@ -424,9 +621,12 @@ recipients = [
 
 for recipient in recipients:
     with PDFDancer.open("letter_template.pdf") as pdf:
+        pdf.register_font("fonts/MyFont-Regular.ttf")
+        font = Font("MyFont-Regular", 12)
+
         pdf.apply_replacements({
-            "{{RECIPIENT_NAME}}": recipient["name"],
-            "{{ACCOUNT_NUMBER}}": recipient["account"],
+            "{RECIPIENT_NAME}": {"text": recipient["name"], "font": font},
+            "{ACCOUNT_NUMBER}": {"text": recipient["account"], "font": font},
         })
         pdf.save(f"letter_{recipient['account']}.pdf")
 ```
@@ -436,14 +636,17 @@ for recipient in recipients:
 Fill invoice templates with order data:
 
 ```python
-from pdfdancer import PDFDancer
+from pdfdancer import PDFDancer, Font
 
 with PDFDancer.open("invoice_template.pdf") as pdf:
+    pdf.register_font("fonts/MyFont-Regular.ttf")
+    font = Font("MyFont-Regular", 12)
+
     pdf.apply_replacements({
-        "{{INVOICE_NUMBER}}": "INV-2026-0001",
-        "{{CUSTOMER_NAME}}": "Acme Corporation",
-        "{{TOTAL_AMOUNT}}": "$1,234.56",
-        "{{DUE_DATE}}": "February 12, 2026",
+        "{INVOICE_NUMBER}": {"text": "INV-2026-0001", "font": font},
+        "{CUSTOMER_NAME}": {"text": "Acme Corporation", "font": font},
+        "{TOTAL_AMOUNT}": {"text": "$1,234.56", "font": font},
+        "{DUE_DATE}": {"text": "February 12, 2026", "font": font},
     })
     pdf.save("invoice.pdf")
 ```
@@ -453,14 +656,17 @@ with PDFDancer.open("invoice_template.pdf") as pdf:
 Create personalized certificates:
 
 ```python
-from pdfdancer import PDFDancer, ReflowPreset
+from pdfdancer import PDFDancer, Font, ReflowPreset
 
 with PDFDancer.open("certificate_template.pdf") as pdf:
+    pdf.register_font("fonts/MyFont-Regular.ttf")
+    font = Font("MyFont-Regular", 14)
+
     pdf.apply_replacements(
         {
-            "{{RECIPIENT}}": "Dr. Jane Smith",
-            "{{ACHIEVEMENT}}": "Excellence in Research",
-            "{{DATE}}": "January 12, 2026",
+            "{RECIPIENT}": {"text": "Dr. Jane Smith", "font": font},
+            "{ACHIEVEMENT}": {"text": "Excellence in Research", "font": font},
+            "{DATE}": {"text": "January 12, 2026", "font": font},
         },
         reflow_preset=ReflowPreset.BEST_EFFORT
     )
@@ -471,18 +677,21 @@ with PDFDancer.open("certificate_template.pdf") as pdf:
 
 ## Best Practices
 
-1. **Use consistent placeholder syntax**: Choose a format like `{{PLACEHOLDER}}` or `%PLACEHOLDER%` and use it consistently throughout your templates.
+1. **Always register and specify fonts**: PDFs typically embed subsetted fonts. Register a full font file and specify it on every replacement to avoid missing characters.
 
 2. **Test with edge cases**: Test with both shorter and longer replacement text to ensure proper rendering.
 
-3. **Use BEST_EFFORT reflow**: For most use cases, `BEST_EFFORT` reflow provides the best results when replacement text varies in length.
+3. **Use BEST_EFFORT reflow**: For most use cases, `BEST_EFFORT` reflow provides the best results when replacement text varies in length. Use `NONE` when you want full control over layout.
 
-4. **Validate replacements**: Ensure all placeholders in your template have corresponding replacements to avoid leaving placeholder text in the output.
+4. **Match surrounding text for line break control**: When you need to control where text wraps, match the placeholder along with its surrounding text and use `\n` to insert line breaks.
+
+5. **Validate replacements**: Ensure all placeholders in your template have corresponding replacements to avoid leaving placeholder text in the output.
 
 ---
 
 ## Next Steps
 
+- [**Working with Fonts**](working-with-fonts.md) – Standard fonts and custom font registration
 - [**Working with Text**](working-with-text.md) – Learn about text selection and editing
 - [**Redaction**](redaction.md) – Remove sensitive content from PDFs
 - [**Cookbook**](cookbook.md) – More examples and patterns
