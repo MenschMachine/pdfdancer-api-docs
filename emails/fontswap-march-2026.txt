@@ -1,0 +1,58 @@
+PDFDancer
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Replace Fonts in Finished PDFs — Without Reopening the Source
+
+We just launched FontSwap, a free online tool that swaps fonts directly inside a PDF. Every line break, page break, and layout detail stays exactly where it is. No InDesign, no FrameMaker, no LaTeX required.
+
+→ Try FontSwap Free: https://www.pdfdancer.com/tools/fontswap/?utm_source=email&utm_campaign=fontswap-march-2026
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+THE PROBLEM
+
+Your published PDFs need to change — a font license expires, a merger requires new branding, a backlist title needs updating for a new platform — but the source files are gone, outdated, or the rework would cost days per book. Tools like Acrobat or Callas try, but they break the layout. So the titles sit untouched.
+
+
+HOW FONTSWAP WORKS
+──────────────────
+
+1. Upload your PDF.
+   We detect every font in the document automatically.
+
+2. Pick replacements.
+   Choose from Google Fonts or upload your own. Map one font or many.
+
+3. See the result.
+   Preview your first 3 pages instantly. No reflow: line breaks,
+   page breaks, and spacing stay fixed.
+
+
+BUILT FOR
+─────────
+
+Font relicensing — Switch from expensive embedding licenses to open-source alternatives like Source Sans or Noto, without retypesetting.
+
+Post-merger rebranding — Roll out a new corporate typeface across hundreds of existing titles.
+
+Backlist revival — Prepare older titles for new platforms and markets without recreating them from scratch.
+
+Quality corrections — Fix broken characters, wrong fonts, or encoding issues in published PDFs.
+
+
+FontSwap is free for previewing your first 3 pages. Need to process full documents or batch-convert hundreds of titles? Get in touch — that's exactly what PDFDancer's API is built for.
+
+→ Try It With Your PDF: https://www.pdfdancer.com/tools/fontswap/?utm_source=email&utm_campaign=fontswap-march-2026
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Questions or feedback? Just reply to this email. We'd love to hear from you!
+
+Michael from PDFDancer
+
+──────────────────────────────────────────────────
+The Famous Cat Ltd.
+https://www.pdfdancer.com?utm_source=email&utm_campaign=fontswap-march-2026
+
+Unsubscribe: __unsubscribe_url__

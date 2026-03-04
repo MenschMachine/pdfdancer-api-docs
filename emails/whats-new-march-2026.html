@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>What's New in PDFDancer</title>
+    <!--[if !mso]><!-- -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--<![endif]-->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+        #outlook a {
+            padding: 0;
+        }
+
+        .ReadMsgBody {
+            width: 100%;
+        }
+
+        .ExternalClass {
+            width: 100%;
+        }
+
+        .ExternalClass * {
+            line-height: 100%;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+
+        table, td {
+            border-collapse: collapse;
+            mso-table-lspace: 0pt;
+            mso-table-rspace: 0pt;
+        }
+    </style>
+    <!--[if !mso]><!-->
+    <style type="text/css">
+        @media only screen and (max-width: 480px) {
+            @-ms-viewport {
+                width: 320px;
+            }
+            @viewport {
+                width: 320px;
+            }
+        }
+    </style>
+    <!--<![endif]-->
+    <!--[if mso]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:AllowPNG/>
+            <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+    </xml><![endif]-->
+    <!--[if lte mso 11]>
+    <style type="text/css">.outlook-group-fix {
+        width: 100% !important;
+    }</style><![endif]-->
+    <!--[if !mso]><!-->
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap" rel="stylesheet"
+          type="text/css">
+    <style type="text/css">
+        @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap');
+    </style>
+    <!--<![endif]-->
+    <style type="text/css">
+        @media only screen and (max-width: 595px) {
+            .container {
+                width: 100% !important;
+            }
+
+            .button {
+                display: block !important;
+                width: auto !important;
+            }
+        }
+    </style>
+</head>
+
+<body style="font-family: 'Sora', -apple-system, BlinkMacSystemFont, sans-serif; background: #f5f5f5;">
+<table width="100%" cellspacing="0" cellpadding="0" border="0" align="center" bgcolor="#f5f5f5">
+    <tbody>
+    <tr>
+        <td valign="top" align="center">
+            <table class="container" width="600" cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                <!-- Header -->
+                <tr>
+                    <td style="padding: 48px 0 30px 0; text-align: center; font-size: 24px; font-weight: 700; color: #ffaa00; letter-spacing: 0.05em;">
+                        PDFDancer
+                    </td>
+                </tr>
+
+                <!-- Main Content -->
+                <tr>
+                    <td style="padding: 40px 30px; color: #333333; border-radius: 6px;" bgcolor="#ffffff">
+                        <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                            <!-- Heading -->
+                            <tr>
+                                <td style="padding: 0 0 8px 0; font-size: 22px; line-height: 140%; font-weight: bold; color: #000000;">
+                                    What's New in PDFDancer
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0 0 24px 0; font-size: 15px; line-height: 160%; color: #555555;">
+                                    Templates can now include images &mdash; drop in logos, signatures, or photos alongside text, all in a single API call. Plus: image redaction, vector path grouping, and better font handling.
+                                </td>
+                            </tr>
+
+                            <!-- Feature 1: Template Image Replacement -->
+                            <tr>
+                                <td style="padding: 0 0 8px 0; font-size: 16px; font-weight: 600; color: #000000;">
+                                    Template Image Replacement
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0 0 10px 0; font-size: 15px; line-height: 160%; color: #555555;">
+                                    You can now replace template placeholders with images, not just text. Drop in logos, signatures, photos &mdash; anything. Specify width, height, or both, and mix image and text replacements in a single call.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0 0 16px 0; font-size: 14px; line-height: 160%; color: #888888; font-style: italic;">
+                                    Use case: Generate branded certificates or invoices where each document gets a personalized name, date, and company logo &mdash; all in one API call.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0 0 8px 0;">
+                                    <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        <tr>
+                                            <td style="background: #1a1a2e; border-radius: 6px 6px 0 0; padding: 14px 16px 10px; font-family: 'Courier New', Courier, monospace; font-size: 13px; line-height: 180%; color: #e0e0e0; border-bottom: 1px solid #2a2a4e;">
+                                                <span style="color: #888;"># Python</span><br>
+                                                pdf.<span style="color: #7ecfff;">apply_replacements</span>({<br>
+                                                &nbsp;&nbsp;<span style="color: #98c379;">"{NAME}"</span>: {<span
+                                                    style="color: #98c379;">"text"</span>: <span
+                                                    style="color: #98c379;">"Jane Smith"</span>, <span
+                                                    style="color: #98c379;">"font"</span>: Font(<span
+                                                    style="color: #98c379;">"MyFont"</span>, <span
+                                                    style="color: #c678dd;">12</span>)},<br>
+                                                &nbsp;&nbsp;<span style="color: #98c379;">"{LOGO}"</span>: {<span
+                                                    style="color: #98c379;">"image"</span>: Path(<span
+                                                    style="color: #98c379;">"logo.png"</span>), <span
+                                                    style="color: #98c379;">"width"</span>: <span
+                                                    style="color: #c678dd;">150</span>},<br>
+                                                })
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="background: #1a1a2e; padding: 10px 16px; font-family: 'Courier New', Courier, monospace; font-size: 13px; line-height: 180%; color: #e0e0e0; border-bottom: 1px solid #2a2a4e;">
+                                                <span style="color: #888;">// TypeScript</span><br>
+                                                <span style="color: #ffa500;">await</span> pdf.<span
+                                                    style="color: #7ecfff;">replace</span>(<span
+                                                    style="color: #98c379;">'{NAME}'</span>, { text: <span
+                                                    style="color: #98c379;">'Jane Smith'</span>, font: <span
+                                                    style="color: #ffa500;">new</span> <span
+                                                    style="color: #7ecfff;">Font</span>(<span
+                                                    style="color: #98c379;">'MyFont'</span>, <span
+                                                    style="color: #c678dd;">12</span>) })<br>
+                                                &nbsp;&nbsp;.<span style="color: #7ecfff;">andImage</span>(<span
+                                                    style="color: #98c379;">'{LOGO}'</span>, <span
+                                                    style="color: #98c379;">'logo.png'</span>, <span
+                                                    style="color: #c678dd;">150</span>).<span style="color: #7ecfff;">apply</span>();
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="background: #1a1a2e; border-radius: 0 0 6px 6px; padding: 10px 16px 14px; font-family: 'Courier New', Courier, monospace; font-size: 13px; line-height: 180%; color: #e0e0e0;">
+                                                <span style="color: #888;">// Java</span><br>
+                                                pdf.<span style="color: #7ecfff;">replace</span>(<span
+                                                    style="color: #98c379;">"{NAME}"</span>, <span
+                                                    style="color: #ffa500;">new</span> Font(<span
+                                                    style="color: #98c379;">"MyFont"</span>, <span
+                                                    style="color: #c678dd;">12</span>), <span
+                                                    style="color: #98c379;">"Jane Smith"</span>)<br>
+                                                &nbsp;&nbsp;.<span style="color: #7ecfff;">replaceWithImage</span>(<span
+                                                    style="color: #98c379;">"{LOGO}"</span>, <span
+                                                    style="color: #ffa500;">new</span> File(<span
+                                                    style="color: #98c379;">"logo.png"</span>), <span
+                                                    style="color: #c678dd;">150</span>).<span style="color: #7ecfff;">apply</span>();
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 8px 0 24px 0; font-size: 13px; line-height: 160%; color: #888888;">
+                                    <strong style="color: #666;">Tip:</strong> Use <code style="background: #f0f0f0; padding: 2px 5px; border-radius: 3px; font-size: 12px;">registerFont()</code> to register a full TrueType font before replacements &mdash; this avoids missing characters when the PDF&rsquo;s embedded font is subsetted. We&rsquo;ve also added CID font support for wider PDF compatibility.
+                                </td>
+                            </tr>
+
+                            <!-- Feature 2: Image Fill Region -->
+                            <tr>
+                                <td style="padding: 0 0 8px 0; font-size: 16px; font-weight: 600; color: #000000;">
+                                    Image Fill Region
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0 0 10px 0; font-size: 15px; line-height: 160%; color: #555555;">
+                                    Fill rectangular pixel regions within images with a solid color &mdash; without replacing the entire image.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0 0 16px 0; font-size: 14px; line-height: 160%; color: #888888; font-style: italic;">
+                                    Use case: Black out a face, license plate, or watermark in a scanned document before sharing it externally.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0 0 8px 0;">
+                                    <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        <tr>
+                                            <td style="background: #1a1a2e; border-radius: 6px 6px 0 0; padding: 14px 16px 10px; font-family: 'Courier New', Courier, monospace; font-size: 13px; line-height: 180%; color: #e0e0e0; border-bottom: 1px solid #2a2a4e;">
+                                                <span style="color: #888;"># Python</span><br>
+                                                images[<span style="color: #c678dd;">0</span>].<span
+                                                    style="color: #7ecfff;">fill_region</span>(<span
+                                                    style="color: #c678dd;">10</span>, <span
+                                                    style="color: #c678dd;">10</span>, <span
+                                                    style="color: #c678dd;">50</span>, <span
+                                                    style="color: #c678dd;">30</span>, Color(<span
+                                                    style="color: #c678dd;">0</span>, <span
+                                                    style="color: #c678dd;">0</span>, <span
+                                                    style="color: #c678dd;">0</span>))
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="background: #1a1a2e; padding: 10px 16px; font-family: 'Courier New', Courier, monospace; font-size: 13px; line-height: 180%; color: #e0e0e0; border-bottom: 1px solid #2a2a4e;">
+                                                <span style="color: #888;">// TypeScript</span><br>
+                                                <span style="color: #ffa500;">await</span> images[<span style="color: #c678dd;">0</span>].<span
+                                                    style="color: #7ecfff;">fillRegion</span>(<span
+                                                    style="color: #c678dd;">10</span>, <span
+                                                    style="color: #c678dd;">10</span>, <span
+                                                    style="color: #c678dd;">50</span>, <span
+                                                    style="color: #c678dd;">30</span>, <span style="color: #ffa500;">new</span> <span
+                                                    style="color: #7ecfff;">Color</span>(<span
+                                                    style="color: #c678dd;">0</span>, <span
+                                                    style="color: #c678dd;">0</span>, <span
+                                                    style="color: #c678dd;">0</span>));
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="background: #1a1a2e; border-radius: 0 0 6px 6px; padding: 10px 16px 14px; font-family: 'Courier New', Courier, monospace; font-size: 13px; line-height: 180%; color: #e0e0e0;">
+                                                <span style="color: #888;">// Java</span><br>
+                                                images.get(<span style="color: #c678dd;">0</span>).<span
+                                                    style="color: #7ecfff;">fillRegion</span>(<span
+                                                    style="color: #c678dd;">10</span>, <span
+                                                    style="color: #c678dd;">10</span>, <span
+                                                    style="color: #c678dd;">50</span>, <span
+                                                    style="color: #c678dd;">30</span>, Color.BLACK);
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr><td style="padding: 0 0 24px 0;"></td></tr>
+
+                            <!-- Feature 3: Path Grouping -->
+                            <tr>
+                                <td style="padding: 0 0 8px 0; font-size: 16px; font-weight: 600; color: #000000;">
+                                    Vector Path Grouping
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0 0 10px 0; font-size: 15px; line-height: 160%; color: #555555;">
+                                    Group multiple vector paths together and manipulate them as a single unit. Move, scale, rotate, resize, or remove entire groups in one call. Group by explicit path IDs or by bounding region.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0 0 16px 0; font-size: 14px; line-height: 160%; color: #888888; font-style: italic;">
+                                    Use case: Company logos in PDFs are often vector paths. Group them and move, scale, or remove the logo as a single object &mdash; just like you would with an image.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0 0 8px 0;">
+                                    <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        <tr>
+                                            <td style="background: #1a1a2e; border-radius: 6px 6px 0 0; padding: 14px 16px 10px; font-family: 'Courier New', Courier, monospace; font-size: 13px; line-height: 180%; color: #e0e0e0; border-bottom: 1px solid #2a2a4e;">
+                                                <span style="color: #888;"># Python</span><br>
+                                                region = {<span style="color: #98c379;">"x"</span>: <span style="color: #c678dd;">70</span>, <span style="color: #98c379;">"y"</span>: <span style="color: #c678dd;">710</span>, <span style="color: #98c379;">"width"</span>: <span style="color: #c678dd;">100</span>, <span style="color: #98c379;">"height"</span>: <span style="color: #c678dd;">100</span>}<br>
+                                                group = page.<span style="color: #7ecfff;">group_paths_in_region</span>(region)<br>
+                                                group.<span style="color: #7ecfff;">scale</span>(<span style="color: #c678dd;">1.5</span>)
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="background: #1a1a2e; padding: 10px 16px; font-family: 'Courier New', Courier, monospace; font-size: 13px; line-height: 180%; color: #e0e0e0; border-bottom: 1px solid #2a2a4e;">
+                                                <span style="color: #888;">// TypeScript</span><br>
+                                                <span style="color: #ffa500;">const</span> region = <span style="color: #ffa500;">new</span> <span style="color: #7ecfff;">BoundingRect</span>(<span style="color: #c678dd;">70</span>, <span style="color: #c678dd;">710</span>, <span style="color: #c678dd;">100</span>, <span style="color: #c678dd;">100</span>);<br>
+                                                <span style="color: #ffa500;">const</span> group = <span style="color: #ffa500;">await</span> page.<span style="color: #7ecfff;">groupPathsInRegion</span>(region);<br>
+                                                <span style="color: #ffa500;">await</span> group.<span style="color: #7ecfff;">scale</span>(<span style="color: #c678dd;">1.5</span>);
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="background: #1a1a2e; border-radius: 0 0 6px 6px; padding: 10px 16px 14px; font-family: 'Courier New', Courier, monospace; font-size: 13px; line-height: 180%; color: #e0e0e0;">
+                                                <span style="color: #888;">// Java</span><br>
+                                                BoundingRect region = <span style="color: #ffa500;">new</span> <span style="color: #7ecfff;">BoundingRect</span>(<span style="color: #c678dd;">70</span>, <span style="color: #c678dd;">710</span>, <span style="color: #c678dd;">100</span>, <span style="color: #c678dd;">100</span>);<br>
+                                                PathGroupReference group = page.<span style="color: #7ecfff;">groupPathsInRegion</span>(region);<br>
+                                                group.<span style="color: #7ecfff;">scale</span>(<span style="color: #c678dd;">1.5</span>);
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr><td style="padding: 0 0 24px 0;"></td></tr>
+
+                            <!-- SDK Versions -->
+                            <tr>
+                                <td style="padding: 0 0 8px 0; font-size: 16px; font-weight: 600; color: #000000;">
+                                    Update Your SDKs
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0 0 16px 0; font-size: 15px; line-height: 160%; color: #555555;">
+                                    Be sure to update to the latest SDK versions to enjoy all of these features:
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0 0 24px 0;">
+                                    <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        <tr>
+                                            <td style="padding: 8px 12px; font-size: 14px; color: #333; border-bottom: 1px solid #eee;">
+                                                <strong>Python</strong>
+                                            </td>
+                                            <td style="padding: 8px 12px; font-size: 14px; color: #333; border-bottom: 1px solid #eee; font-family: 'Courier New', Courier, monospace;">
+                                                pip install pdfdancer-client-python==0.3.11
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding: 8px 12px; font-size: 14px; color: #333; border-bottom: 1px solid #eee;">
+                                                <strong>TypeScript</strong>
+                                            </td>
+                                            <td style="padding: 8px 12px; font-size: 14px; color: #333; border-bottom: 1px solid #eee; font-family: 'Courier New', Courier, monospace;">
+                                                npm install pdfdancer-client-typescript@2.0.14
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding: 8px 12px; font-size: 14px; color: #333;">
+                                                <strong>Java</strong>
+                                            </td>
+                                            <td style="padding: 8px 12px; font-size: 14px; color: #333; font-family: 'Courier New', Courier, monospace;">
+                                                com.pdfdancer:pdfdancer-client-java:0.2.13
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+
+                            <!-- Doc Links -->
+                            <tr>
+                                <td style="padding: 0 0 8px 0; font-size: 16px; font-weight: 600; color: #000000;">
+                                    Dive Deeper
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0 0 24px 0; font-size: 14px; line-height: 200%; color: #555555;">
+                                    <a href="https://docs.pdfdancer.com/working-with-templates?utm_source=email&amp;utm_campaign=whats-new-march-2026" style="color: #e68a00; text-decoration: none; font-weight: 600;">Templates &amp; Image Replacement</a><br>
+                                    <a href="https://docs.pdfdancer.com/working-with-images?utm_source=email&amp;utm_campaign=whats-new-march-2026" style="color: #e68a00; text-decoration: none; font-weight: 600;">Image Fill Region</a><br>
+                                    <a href="https://docs.pdfdancer.com/working-with-vector-graphics?utm_source=email&amp;utm_campaign=whats-new-march-2026" style="color: #e68a00; text-decoration: none; font-weight: 600;">Vector Path Grouping</a><br>
+                                    <a href="https://docs.pdfdancer.com/working-with-fonts?utm_source=email&amp;utm_campaign=whats-new-march-2026" style="color: #e68a00; text-decoration: none; font-weight: 600;">Font Registration &amp; CID Support</a>
+                                </td>
+                            </tr>
+
+                            <!-- Divider -->
+                            <tr>
+                                <td style="padding: 0 0 24px 0;">
+                                    <span style="display: block; width: 100%; border-bottom: 1px solid #e0e0e0;"></span>
+                                </td>
+                            </tr>
+
+                            <!-- Coming Soon -->
+                            <tr>
+                                <td style="padding: 0 0 8px 0; font-size: 14px; font-weight: 600; color: #000000;">
+                                    Coming Soon
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0 0 24px 0; font-size: 14px; line-height: 170%; color: #666666; font-style: italic;">
+                                    <strong style="color: #555;">PII Detection &amp; Redaction</strong> &mdash; automatically find and redact names, addresses, SSNs, and more with a single API call. Currently in development.
+                                </td>
+                            </tr>
+
+                            <!-- Divider -->
+                            <tr>
+                                <td style="padding: 0 0 24px 0;">
+                                    <span style="display: block; width: 100%; border-bottom: 1px solid #e0e0e0;"></span>
+                                </td>
+                            </tr>
+
+                            <!-- Footer CTA -->
+                            <tr>
+                                <td style="font-size: 14px; line-height: 170%; color: #666666;">
+                                    Questions or feedback? Just reply to this email. We'd love to hear from you!<br><br>
+                                    Michael from PDFDancer
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+
+                <!-- Footer -->
+                <tr>
+                    <td style="padding: 24px 0 48px 0; text-align: center;">
+                        <span style="font-size: 11px; line-height: 18px; color: #888888;">
+                            The Famous Cat Ltd.<br>
+                            <a href="https://www.pdfdancer.com?utm_source=email&amp;utm_campaign=whats-new-march-2026" style="color: #e68a00; text-decoration: none;">pdfdancer.com</a><br><br>
+                            <a href="__unsubscribe_url__" style="color: #888888; text-decoration: none;">unsubscribe</a>
+                        </span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
