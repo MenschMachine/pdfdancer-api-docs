@@ -137,6 +137,12 @@ A vector graphics element consisting of lines, curves, and shapes. Paths can hav
 
 **See also:** [Working with Vector Graphics](working-with-vector-graphics.md)
 
+### Path Group
+
+A collection of vector paths that are logically grouped together for batch manipulation. Path groups can be created from explicit path IDs or from all paths within a bounding region. Once grouped, paths can be moved, scaled, rotated, resized, or removed as a unit.
+
+**See also:** [Working with Vector Graphics](working-with-vector-graphics.md)
+
 ### PDF Point
 
 The base unit of measurement in PDF documents. One point equals 1/72 of an inch. Common conversions:

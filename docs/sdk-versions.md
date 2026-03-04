@@ -6,17 +6,17 @@ description: Current SDK versions used in this documentation
 
 # SDK Versions
 
-**Documentation Version**: 8.5 (February 26, 2026)
+**Documentation Version**: 8.6 (March 4, 2026)
 
 This documentation is based on the following SDK versions:
 
 ## Python SDK
 
 - **Repository**: [pdfdancer-client-python](https://github.com/MenschMachine/pdfdancer-client-python)
-- **Version**: 0.3.10
-- **Commit**: `0f22fef17656eaa407738be8e9bc9edf75169967`
-- **Commit Date**: February 26, 2026
-- **Commit Message**: Merge pull request #17 - feat: add image replacement support
+- **Version**: 0.3.11
+- **Commit**: `ce81800`
+- **Commit Date**: March 4, 2026
+- **Commit Message**: fix(ci): update ignored test file
 - **Documentation Coverage**:
   - ✅ Anonymous token support (automatic fallback authentication)
   - ✅ Snapshot API (`get_document_snapshot()`, `get_page_snapshot()`, `page.get_snapshot()`)
@@ -35,18 +35,20 @@ This documentation is based on the following SDK versions:
   - ✅ **PDFDANCER_API_TOKEN** environment variable (preferred, with PDFDANCER_TOKEN fallback)
   - ✅ **Fill Region API** (`fill_region()` for filling rectangular pixel areas with color)
   - ✅ **Image Replacement in Templates** (`{"image": Path("logo.png")}` dict syntax for replacing placeholders with images)
-- **Key Changes Since Last Version** (0.3.8 → 0.3.9):
-  - **Template Image Replacement**: Replace placeholder text with images using dict syntax: `{"{{LOGO}}": {"image": Path("logo.png")}}`
-  - Optional `width` and `height` parameters for explicit sizing
-  - Supports `Path` objects and raw `bytes` as image sources
+  - ✅ **Path Grouping API** (`group_paths()`, `group_paths_in_region()`, `get_path_groups()` for batch path manipulation)
+- **Key Changes Since Last Version** (0.3.10 → 0.3.11):
+  - **Path Grouping**: Group vector paths together for batch operations (move, scale, rotate, resize, remove)
+  - `page.group_paths(path_ids)` — group by explicit path IDs
+  - `page.group_paths_in_region(region)` — group by bounding region
+  - `page.get_path_groups()` — list all path groups on a page
 
 ## TypeScript SDK
 
 - **Repository**: [pdfdancer-client-typescript](https://github.com/MenschMachine/pdfdancer-client-typescript)
-- **Version**: 2.0.8
-- **Commit**: `1bc33dcfabc55a6fa254d473bc1c7572b1d28215`
-- **Commit Date**: February 26, 2026
-- **Commit Message**: feat(replacement): add image replacement support
+- **Version**: 2.0.14
+- **Commit**: `9477a33`
+- **Commit Date**: March 4, 2026
+- **Commit Message**: ci: add production API token to release workflow
 - **Documentation Coverage**:
   - ✅ Anonymous token support (automatic fallback authentication)
   - ✅ Snapshot API (`getDocumentSnapshot()`, `getPageSnapshot()`, `page.getSnapshot()`)
@@ -68,20 +70,20 @@ This documentation is based on the following SDK versions:
   - ✅ **Fill Region API** (`fillRegion()` for filling rectangular pixel areas with color)
   - ✅ **Enhanced Text Line Editing** (`font()`, `fontFile()`, `color()`, `moveTo()` with full validation)
   - ✅ **Image Replacement in Templates** (`replaceWithImage()` for replacing placeholders with images)
-- **Key Changes Since Last Version** (2.0.7 → 2.0.8):
-  - **Template Image Replacement**: Replace placeholder text with images using fluent API
-    - `pdf.replace().replaceWithImage('{{LOGO}}', 'logo.png').apply()` - Replace with image file
-    - `pdf.replace().replaceWithImage('{{LOGO}}', imageData, 100, 50).apply()` - With explicit size
-    - `.andImage('{{LOGO}}', 'logo.png')` - Chain image replacements with text replacements
-    - Accepts file path (`string`) or raw image data (`Uint8Array`)
+  - ✅ **Path Grouping API** (`groupPaths()`, `groupPathsInRegion()`, `getPathGroups()` for batch path manipulation)
+- **Key Changes Since Last Version** (2.0.8 → 2.0.14):
+  - **Path Grouping**: Group vector paths together for batch operations (move, scale, rotate, resize, remove)
+  - `page.groupPaths(pathIds)` — group by explicit path IDs
+  - `page.groupPathsInRegion(region)` — group by bounding region
+  - `page.getPathGroups()` — list all path groups on a page
 
 ## Java SDK
 
 - **Repository**: [pdfdancer-client-java](https://github.com/MenschMachine/pdfdancer-client-java)
-- **Version**: 0.2.7
-- **Commit**: `f6e6b87e1e546446bbe964dd962c58a0281ca3d5`
-- **Commit Date**: February 26, 2026
-- **Commit Message**: Merge pull request #20 - feat: add image replacement support
+- **Version**: 0.2.13
+- **Commit**: `7408bee`
+- **Commit Date**: March 4, 2026
+- **Commit Message**: chore: update version to DEV
 - **Documentation Coverage**:
   - ✅ Core PDF manipulation (open, create, save)
   - ✅ Text operations (paragraphs, text lines)
@@ -108,6 +110,7 @@ This documentation is based on the following SDK versions:
   - ✅ **Fill Region API** (`fillRegion()` for filling rectangular pixel areas with color)
   - ✅ **Enhanced Text Line Editing** (`replace(text, color)` overload, `font(File, fontSize)` for custom TTF fonts)
   - ✅ **Image Replacement in Templates** (`replaceWithImage()` for replacing placeholders with images)
+  - ✅ **Path Grouping API** (`groupPaths()`, `groupPathsInRegion()`, `getPathGroups()` for batch path manipulation)
 - **Requirements**:
   - **Java 11+** required (tested with Java 11, 17, 21, 23, 25)
   - Uses Gradle for build management
@@ -121,12 +124,11 @@ This documentation is based on the following SDK versions:
   - **Clean API design**: Mirrors Python and TypeScript SDKs with Java conventions
   - **Default API endpoint**: Now uses `https://api.pdfdancer.com`
   - **Maven Central distribution**: Published artifacts available for easy dependency management
-- **Key Changes Since Last Version** (0.2.6 → 0.2.6+):
-  - **Template Image Replacement**: Replace placeholder text with images using fluent API
-    - `pdf.replaceWithImage("{{LOGO}}", new File("logo.png")).apply()` - Replace with image file
-    - `pdf.replaceWithImage("{{LOGO}}", new File("logo.png"), 100, 50).apply()` - With explicit size
-    - `.replaceWithImage("{{LOGO}}", imageFile)` - Chain image replacements with text replacements
-    - Page-level: `pdf.page(1).replaceWithImage("{{LOGO}}", imageFile).apply()`
+- **Key Changes Since Last Version** (0.2.7 → 0.2.13):
+  - **Path Grouping**: Group vector paths together for batch operations (move, scale, rotate, resize, remove)
+  - `page.groupPaths(pathIds)` — group by explicit path IDs
+  - `page.groupPathsInRegion(region)` — group by bounding region
+  - `page.getPathGroups()` — list all path groups on a page
 
 ---
 
@@ -223,7 +225,7 @@ Update the version in your `build.gradle.kts`:
 
 ```kotlin
 dependencies {
-    implementation("com.pdfdancer.client:pdfdancer-client-java:0.2.6")
+    implementation("com.pdfdancer.client:pdfdancer-client-java:0.2.13")
 }
 ```
 
@@ -241,7 +243,7 @@ Update the version in your `pom.xml`:
 <dependency>
     <groupId>com.pdfdancer.client</groupId>
     <artifactId>pdfdancer-client-java</artifactId>
-    <version>0.2.6</version>
+    <version>0.2.13</version>
 </dependency>
 ```
 
@@ -257,6 +259,35 @@ mvn clean install -U
 ---
 
 ## Documentation Update History
+
+### Version 8.6 - March 4, 2026
+
+**Path Grouping**
+
+All SDKs now support grouping vector paths together for batch manipulation (move, scale, rotate, resize, remove).
+
+**SDK Commit Updates:**
+- Python SDK: 0.3.11 (commit `ce81800`) - path grouping
+- TypeScript SDK: 2.0.14 (commit `9477a33`) - path grouping
+- Java SDK: 0.2.13 (commit `7408bee`) - path grouping
+
+**New Features:**
+
+1. **Path Grouping API** (All SDKs)
+   - Group paths by explicit IDs or by bounding region
+   - Move, scale, rotate, resize, or remove grouped paths as a unit
+   - Python: `page.group_paths(path_ids)`, `page.group_paths_in_region(region)`, `page.get_path_groups()`
+   - TypeScript: `page.groupPaths(pathIds)`, `page.groupPathsInRegion(region)`, `page.getPathGroups()`
+   - Java: `page.groupPaths(pathIds)`, `page.groupPathsInRegion(region)`, `page.getPathGroups()`
+
+**Documentation Updated:**
+- `docs/working-with-vector-graphics.md` - Added "Path Grouping" section with examples for all SDKs
+- `docs/glossary.md` - Added Path Group term
+- `docs/roadmap.md` - Added Path Grouping to Recently Shipped
+- `docs/concepts.md` - Updated Paths section to mention grouping capability
+- `docs/sdk-versions.md` - Updated commit references, versions, and changelog
+
+---
 
 ### Version 8.5 - February 26, 2026
 

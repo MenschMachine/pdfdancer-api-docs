@@ -49,6 +49,7 @@ These features are at the top of our development queue.
 
 ## Recently Shipped
 
+- **Path Grouping** - Group vector paths together for batch operations (move, scale, rotate, resize, remove)
 - **CID Font Support** - Extended support for CID-keyed Type 0 composite fonts
 - **Templating API** - Create and fill PDF templates programmatically with dynamic data
 - **Text Reflow** - Replace text and automatically reflow to fit original bounds

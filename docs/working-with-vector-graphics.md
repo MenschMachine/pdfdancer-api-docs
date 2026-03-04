@@ -147,6 +147,203 @@ for (int i = 0; i < paths.size(); i++) {
 
 ---
 
+## Path Grouping
+
+Group multiple vector paths together and manipulate them as a unit. Path groups support moving, scaling, rotating, resizing, and removing all grouped paths at once.
+
+### Creating Path Groups
+
+You can create path groups by specifying explicit path IDs or by selecting all paths within a bounding region.
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+from pdfdancer import PDFDancer
+
+with PDFDancer.open("document.pdf") as pdf:
+    page = pdf.page(1)
+
+    # Select paths to group
+    paths = page.select_paths()
+    path_ids = [paths[0].internal_id, paths[1].internal_id]
+
+    # Group by explicit path IDs
+    group = page.group_paths(path_ids)
+
+    # Or group all paths within a bounding region
+    region = {"x": 70, "y": 710, "width": 100, "height": 100}
+    group = page.group_paths_in_region(region)
+
+    print(f"Group contains {group.path_count} paths")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+import { PDFDancer, BoundingRect } from 'pdfdancer-client-typescript';
+
+const pdf = await PDFDancer.open('document.pdf');
+const page = pdf.page(1);
+
+// Select paths to group
+const paths = await page.selectPaths();
+const pathIds = [paths[0].internalId, paths[1].internalId];
+
+// Group by explicit path IDs
+const group = await page.groupPaths(pathIds);
+
+// Or group all paths within a bounding region
+const region = new BoundingRect(70, 710, 100, 100);
+const regionGroup = await page.groupPathsInRegion(region);
+
+console.log(`Group contains ${group.pathCount} paths`);
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+import com.pdfdancer.client.rest.PDFDancer;
+import com.pdfdancer.client.rest.PathGroupReference;
+import com.pdfdancer.common.model.BoundingRect;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Select paths to group
+List<PathReference> paths = pdf.page(1).selectPaths();
+List<String> pathIds = List.of(paths.get(0).getInternalId(), paths.get(1).getInternalId());
+
+// Group by explicit path IDs
+PathGroupReference group = pdf.page(1).groupPaths(pathIds);
+
+// Or group all paths within a bounding region
+BoundingRect region = new BoundingRect(70, 710, 100, 100);
+PathGroupReference regionGroup = pdf.page(1).groupPathsInRegion(region);
+
+System.out.println("Group contains " + group.getPathCount() + " paths");
+```
+
+  </TabItem>
+</Tabs>
+
+### Listing Path Groups
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+groups = pdf.page(1).get_path_groups()
+
+for group in groups:
+    print(f"Group {group.group_id}: {group.path_count} paths at ({group.x}, {group.y})")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+const groups = await pdf.page(1).getPathGroups();
+
+for (const group of groups) {
+  console.log(`Group ${group.pathCount} paths at (${group.x}, ${group.y})`);
+}
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+List<PathGroupReference> groups = pdf.page(1).getPathGroups();
+
+for (PathGroupReference group : groups) {
+    System.out.println("Group " + group.getGroupId() + ": " + group.getPathCount() + " paths");
+}
+```
+
+  </TabItem>
+</Tabs>
+
+### Manipulating Path Groups
+
+Once grouped, paths can be moved, scaled, rotated, resized, or removed as a unit.
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+# Move the group to a new position
+group.move_to(200.0, 300.0)
+
+# Scale the group by a factor
+group.scale(2.0)
+
+# Rotate the group by degrees
+group.rotate(90.0)
+
+# Resize the group to specific dimensions
+group.resize(50.0, 50.0)
+
+# Remove the group and all its paths
+group.remove()
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+// Move the group to a new position
+await group.moveTo(200.0, 300.0);
+
+// Scale the group by a factor
+await group.scale(2.0);
+
+// Rotate the group by degrees
+await group.rotate(90.0);
+
+// Resize the group to specific dimensions
+await group.resize(50.0, 50.0);
+
+// Remove the group and all its paths
+await group.remove();
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+// Move the group to a new position
+group.moveTo(200.0, 300.0);
+
+// Scale the group by a factor
+group.scale(2.0);
+
+// Rotate the group by degrees
+group.rotate(90.0);
+
+// Resize the group to specific dimensions
+group.resize(50.0, 50.0);
+
+// Remove the group and all its paths
+group.remove();
+```
+
+  </TabItem>
+</Tabs>
+
+### Path Group Properties
+
+| Property | Python | TypeScript | Java |
+|----------|--------|------------|------|
+| Group ID | `group.group_id` | `group.groupId` | `group.getGroupId()` |
+| Path count | `group.path_count` | `group.pathCount` | `group.getPathCount()` |
+| Bounding box | `group.bounding_box` | `group.boundingBox` | `group.getBoundingBox()` |
+| X position | `group.x` | `group.x` | `group.getX()` |
+| Y position | `group.y` | `group.y` | `group.getY()` |
+
+---
+
 ## Drawing Lines
 
 Create straight lines on a page:

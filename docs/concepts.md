@@ -438,6 +438,7 @@ pdf.newImage()
 - **Bézier curves**: Mathematical curves defined by control points
 - **Stroke**: The outline of a path (color, width)
 - **Fill**: The interior color of closed paths
+- **Path Groups**: Multiple paths can be grouped together for batch manipulation (move, scale, rotate, resize, remove)
 
 <Tabs>
   <TabItem value="python" label="Python">
