@@ -1,0 +1,85 @@
+PDFDancer
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+What's New in PDFDancer
+
+We've been busy building features you asked for. Here's what's new in 2026 so far.
+
+
+NEW TEMPLATING API
+──────────────────
+
+Introducing our new Templating API: define placeholders in your PDFs and replace them programmatically. Perfect for generating personalized documents at scale: contracts, invoices, letters, and more.
+
+TypeScript - Fluent API:
+
+    await pdf.replace('{{NAME}}', 'Jane Smith')
+      .and('{{DATE}}', 'January 2025')
+      .apply();
+
+Python - Dict syntax:
+
+    pdf.apply_replacements({
+      "{{NAME}}": "Jane Smith",
+      "{{DATE}}": "January 2025"
+    })
+
+Java - Fluent API:
+
+    pdf.replace("{{NAME}}", "Jane Smith")
+      .replace("{{DATE}}", "January 2025")
+      .apply();
+
+Additional options: .font(), .color(), .onPage() and reflow presets.
+
+
+GENERAL REFLOW SUPPORT
+──────────────────────
+
+Text reflow now works across all supported operations. When you modify text content, PDFDancer automatically adjusts surrounding content to maintain proper document flow.
+
+BEST_EFFORT — Rewraps words across lines, reduces font size if needed, and expands vertically as a last resort. Guaranteed to fit.
+
+FIT_OR_FAIL — Rewraps and scales font, but fails if text still doesn't fit within the original bounds.
+
+NONE — No reflow; text may overflow or be truncated.
+
+    await pdf.replace('{{INTRO}}', longText)
+      .bestEffort()
+      .apply();
+
+
+IMPROVED PARAGRAPH DETECTION
+────────────────────────────
+
+Our paragraph detection algorithm is now smarter. It better understands document structure, handling multi-line paragraphs, indented text, and complex layouts with greater accuracy.
+
+
+BUG FIXES
+─────────
+
+Paragraph replacement fix: Resolved an issue where the last line of a paragraph was sometimes missed during replacement operations.
+
+
+→ Explore the Templating API: https://docs.pdfdancer.com/sdk/templating
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+COMING SOON: AUTOMATED PII REDACTION
+
+We're working on automated PII detection and redaction. Soon you'll be able to automatically find and redact sensitive information like names, addresses, SSNs, and more — with a single API call.
+
+In the meantime, check out our current Redaction API: https://docs.pdfdancer.com/redaction
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Questions or feedback? Just reply to this email. We'd love to hear from you!
+
+Michael from PDFDancer
+
+──────────────────────────────────────────────────
+The Famous Cat Ltd.
+https://www.pdfdancer.com
+
+Unsubscribe: __unsubscribe_url__
