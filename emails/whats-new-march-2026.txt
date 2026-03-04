@@ -104,7 +104,7 @@ DIVE DEEPER
 
 COMING SOON
 
-PII Detection & Redaction — automatically find and redact names, addresses, SSNs, and more with a single API call. Currently in development.
+Text-Fragment Editing — edit any text snippet in a PDF with full read/write access to font metrics, sizing, and styling. Like line and paragraph editing, but for arbitrary text fragments. Currently in development.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
