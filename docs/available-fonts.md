@@ -14,7 +14,8 @@ PDFDancer provides pre-registered fonts that you can use directly without upload
 
 The following fonts are currently available on the PDFDancer service:
 
-Currently not available.
+
+<AvailableFonts />
 
 ## Using Available Fonts
 
