@@ -159,7 +159,7 @@ You can create path groups by specifying explicit path IDs or by selecting all p
   <TabItem value="python" label="Python">
 
 ```python
-from pdfdancer import PDFDancer
+from pdfdancer import PDFDancer, BoundingRect
 
 with PDFDancer.open("document.pdf") as pdf:
     page = pdf.page(1)
@@ -172,7 +172,7 @@ with PDFDancer.open("document.pdf") as pdf:
     group = page.group_paths(path_ids)
 
     # Or group all paths within a bounding region
-    region = {"x": 70, "y": 710, "width": 100, "height": 100}
+    region = BoundingRect(x=70, y=710, width=100, height=100)
     group = page.group_paths_in_region(region)
 
     print(f"Group contains {group.path_count} paths")
