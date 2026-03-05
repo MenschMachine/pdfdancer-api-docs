@@ -321,12 +321,12 @@ from pdfdancer import PDFDancer
 with PDFDancer.open("document.pdf") as pdf:
     # Register custom TTF font
     custom_font_path = Path("fonts/CustomFont.ttf")
-    pdf.register_font(str(custom_font_path))
+    font_name = pdf.register_font(str(custom_font_path))
 
     # Now use the registered font by name
     pdf.new_paragraph() \
         .text("Text with registered font") \
-        .font("CustomFont", 14) \
+        .font(font_name, 14) \
         .at(page_number=1, x=100, y=500) \
         .add()
 
@@ -342,12 +342,12 @@ import { PDFDancer } from 'pdfdancer-client-typescript';
 const pdf = await PDFDancer.open('document.pdf');
 
 // Register custom TTF font
-await pdf.registerFont('fonts/CustomFont.ttf');
+const fontName = await pdf.registerFont('fonts/CustomFont.ttf');
 
 // Now use the registered font by name
 await pdf.page(1).newParagraph()
   .text('Text with registered font')
-  .font('CustomFont', 14)
+  .font(fontName, 14)
   .at(300, 500)
   .apply();
 
@@ -363,12 +363,12 @@ import java.nio.file.Paths;
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
 
 // Register custom TTF font
-pdf.registerFont(Paths.get("fonts/CustomFont.ttf").toString());
+String fontName = pdf.registerFont(Paths.get("fonts/CustomFont.ttf").toString());
 
 // Now use the registered font by name
 pdf.newParagraph()
     .text("Text with registered font")
-    .font("CustomFont", 14)
+    .font(fontName, 14)
     .at(1, 100, 500)
     .add();
 

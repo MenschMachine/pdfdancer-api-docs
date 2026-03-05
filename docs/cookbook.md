@@ -1051,13 +1051,13 @@ log = logging.getLogger(__name__)
 
 def replace_fonts_paragraph(input_path: str, output_path: str) -> None:
     """Replace fonts at the paragraph level across all pages."""
-    font_map = {
-        "TheSans": "SourceSans3-Regular",
-    }
-
     with PDFDancer.open(input_path) as pdf:
         # Register custom font before use
-        pdf.register_font("fonts/SourceSans3-Regular.ttf")
+        registered_name = pdf.register_font("fonts/SourceSans3-Regular.ttf")
+
+        font_map = {
+            "TheSans": registered_name,
+        }
 
         paragraphs = pdf.select_paragraphs()
         replaced = 0
@@ -1094,14 +1094,14 @@ async function replaceFontsParagraph(
   inputPath: string,
   outputPath: string
 ): Promise<void> {
-  const fontMap: Record<string, string> = {
-    TheSans: 'SourceSans3-Regular',
-  };
-
   const pdf = await PDFDancer.open(inputPath);
 
   // Register custom font before use
-  await pdf.registerFont('fonts/SourceSans3-Regular.ttf');
+  const registeredName = await pdf.registerFont('fonts/SourceSans3-Regular.ttf');
+
+  const fontMap: Record<string, string> = {
+    TheSans: registeredName,
+  };
 
   const paragraphs = await pdf.selectParagraphs();
   let replaced = 0;
@@ -1142,10 +1142,10 @@ import java.util.Map;
 PDFDancer pdf = PDFDancer.createSession("documents/book.pdf");
 
 // Register custom font before use
-pdf.registerFont(Paths.get("fonts/SourceSans3-Regular.ttf").toString());
+String registeredName = pdf.registerFont(Paths.get("fonts/SourceSans3-Regular.ttf").toString());
 
 Map<String, String> fontMap = Map.of(
-    "TheSans", "SourceSans3-Regular"
+    "TheSans", registeredName
 );
 
 List<TextParagraphReference> paragraphs = pdf.selectParagraphs();
@@ -1187,14 +1187,14 @@ log = logging.getLogger(__name__)
 
 def replace_fonts_line(input_path: str, output_path: str) -> None:
     """Replace fonts at the text line level across all pages."""
-    font_map = {
-        "TheSans": "SourceSans3-Regular",
-        "TheSansMono": "SourceSans3-Regular",
-    }
-
     with PDFDancer.open(input_path) as pdf:
         # Register custom font before use
-        pdf.register_font("fonts/SourceSans3-Regular.ttf")
+        registered_name = pdf.register_font("fonts/SourceSans3-Regular.ttf")
+
+        font_map = {
+            "TheSans": registered_name,
+            "TheSansMono": registered_name,
+        }
 
         lines = pdf.select_text_lines()
         replaced = 0
@@ -1231,15 +1231,15 @@ async function replaceFontsLine(
   inputPath: string,
   outputPath: string
 ): Promise<void> {
-  const fontMap: Record<string, string> = {
-    TheSans: 'SourceSans3-Regular',
-    TheSansMono: 'SourceSans3-Regular',
-  };
-
   const pdf = await PDFDancer.open(inputPath);
 
   // Register custom font before use
-  await pdf.registerFont('fonts/SourceSans3-Regular.ttf');
+  const registeredName = await pdf.registerFont('fonts/SourceSans3-Regular.ttf');
+
+  const fontMap: Record<string, string> = {
+    TheSans: registeredName,
+    TheSansMono: registeredName,
+  };
 
   const lines = await pdf.selectTextLines();
   let replaced = 0;
@@ -1280,11 +1280,11 @@ import java.util.Map;
 PDFDancer pdf = PDFDancer.createSession("documents/book.pdf");
 
 // Register custom font before use
-pdf.registerFont(Paths.get("fonts/SourceSans3-Regular.ttf").toString());
+String registeredName = pdf.registerFont(Paths.get("fonts/SourceSans3-Regular.ttf").toString());
 
 Map<String, String> fontMap = Map.of(
-    "TheSans", "SourceSans3-Regular",
-    "TheSansMono", "SourceSans3-Regular"
+    "TheSans", registeredName,
+    "TheSansMono", registeredName
 );
 
 List<TextLine> lines = pdf.selectTextLines();

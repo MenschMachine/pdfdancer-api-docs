@@ -29,13 +29,13 @@ from pdfdancer import PDFDancer, Font
 
 with PDFDancer.open("template.pdf") as pdf:
     # Register fonts before using them in replacements
-    pdf.register_font("fonts/MyFont-Regular.ttf")
-    pdf.register_font("fonts/MyFont-Bold.ttf")
+    regular = pdf.register_font("fonts/MyFont-Regular.ttf")
+    bold = pdf.register_font("fonts/MyFont-Bold.ttf")
 
     pdf.apply_replacements({
         "{NAME}": {
             "text": "John Doe",
-            "font": Font("MyFont-Regular", 12),
+            "font": Font(regular, 12),
         },
     })
 
@@ -51,10 +51,10 @@ import { PDFDancer, Font } from 'pdfdancer-client-typescript';
 const pdf = await PDFDancer.open('template.pdf');
 
 // Register fonts before using them in replacements
-await pdf.registerFont('fonts/MyFont-Regular.ttf');
-await pdf.registerFont('fonts/MyFont-Bold.ttf');
+const regular = await pdf.registerFont('fonts/MyFont-Regular.ttf');
+const bold = await pdf.registerFont('fonts/MyFont-Bold.ttf');
 
-await pdf.replace('{NAME}', { text: 'John Doe', font: new Font('MyFont-Regular', 12) })
+await pdf.replace('{NAME}', { text: 'John Doe', font: new Font(regular, 12) })
     .apply();
 
 await pdf.save('filled.pdf');
@@ -70,10 +70,10 @@ import com.pdfdancer.common.model.Font;
 PDFDancer pdf = PDFDancer.createSession("template.pdf");
 
 // Register fonts before using them in replacements
-pdf.registerFont("fonts/MyFont-Regular.ttf");
-pdf.registerFont("fonts/MyFont-Bold.ttf");
+String regular = pdf.registerFont("fonts/MyFont-Regular.ttf");
+String bold = pdf.registerFont("fonts/MyFont-Bold.ttf");
 
-pdf.replace("{NAME}", new Font("MyFont-Regular", 12), "John Doe")
+pdf.replace("{NAME}", new Font(regular, 12), "John Doe")
     .apply();
 
 pdf.save("filled.pdf");
@@ -97,20 +97,20 @@ Fill placeholders throughout an entire document. You should always specify a fon
 from pdfdancer import PDFDancer, Font
 
 with PDFDancer.open("template.pdf") as pdf:
-    pdf.register_font("fonts/MyFont-Regular.ttf")
+    font_name = pdf.register_font("fonts/MyFont-Regular.ttf")
 
     pdf.apply_replacements({
         "{NAME}": {
             "text": "John Doe",
-            "font": Font("MyFont-Regular", 12),
+            "font": Font(font_name, 12),
         },
         "{DATE}": {
             "text": "January 12, 2026",
-            "font": Font("MyFont-Regular", 12),
+            "font": Font(font_name, 12),
         },
         "{COMPANY}": {
             "text": "Acme Corp",
-            "font": Font("MyFont-Regular", 12),
+            "font": Font(font_name, 12),
         },
     })
 
@@ -126,9 +126,9 @@ Plain string values are also supported (`"{NAME}": "John Doe"`), but the text wi
 import { PDFDancer, Font } from 'pdfdancer-client-typescript';
 
 const pdf = await PDFDancer.open('template.pdf');
-await pdf.registerFont('fonts/MyFont-Regular.ttf');
+const fontName = await pdf.registerFont('fonts/MyFont-Regular.ttf');
 
-const font = new Font('MyFont-Regular', 12);
+const font = new Font(fontName, 12);
 
 await pdf.replace('{NAME}', { text: 'John Doe', font })
     .and('{DATE}', { text: 'January 12, 2026', font })
@@ -148,9 +148,9 @@ import com.pdfdancer.client.rest.PDFDancer;
 import com.pdfdancer.common.model.Font;
 
 PDFDancer pdf = PDFDancer.createSession("template.pdf");
-pdf.registerFont("fonts/MyFont-Regular.ttf");
+String fontName = pdf.registerFont("fonts/MyFont-Regular.ttf");
 
-Font font = new Font("MyFont-Regular", 12);
+Font font = new Font(fontName, 12);
 
 pdf.replace("{NAME}", font, "John Doe")
     .replace("{DATE}", font, "January 12, 2026")
@@ -178,13 +178,13 @@ You can match a placeholder along with its surrounding text to replace an entire
 from pdfdancer import PDFDancer, Font
 
 with PDFDancer.open("template.pdf") as pdf:
-    pdf.register_font("fonts/MyFont-Regular.ttf")
+    font_name = pdf.register_font("fonts/MyFont-Regular.ttf")
 
     pdf.apply_replacements({
         # Match the placeholder AND surrounding text to replace the full phrase
         "{EMPLOYEES} switch to the Auto Insurance Program": {
             "text": "500 employees switch to the\nAuto Insurance Program",
-            "font": Font("MyFont-Regular", 16),
+            "font": Font(font_name, 16),
         },
     })
 
@@ -198,12 +198,12 @@ with PDFDancer.open("template.pdf") as pdf:
 import { PDFDancer, Font } from 'pdfdancer-client-typescript';
 
 const pdf = await PDFDancer.open('template.pdf');
-await pdf.registerFont('fonts/MyFont-Regular.ttf');
+const fontName = await pdf.registerFont('fonts/MyFont-Regular.ttf');
 
 // Match the placeholder AND surrounding text to replace the full phrase
 await pdf.replace(
     '{EMPLOYEES} switch to the Auto Insurance Program',
-    { text: '500 employees switch to the\nAuto Insurance Program', font: new Font('MyFont-Regular', 16) }
+    { text: '500 employees switch to the\nAuto Insurance Program', font: new Font(fontName, 16) }
 ).apply();
 
 await pdf.save('filled.pdf');
@@ -217,12 +217,12 @@ import com.pdfdancer.client.rest.PDFDancer;
 import com.pdfdancer.common.model.Font;
 
 PDFDancer pdf = PDFDancer.createSession("template.pdf");
-pdf.registerFont("fonts/MyFont-Regular.ttf");
+String fontName = pdf.registerFont("fonts/MyFont-Regular.ttf");
 
 // Match the placeholder AND surrounding text to replace the full phrase
 pdf.replace(
     "{EMPLOYEES} switch to the Auto Insurance Program",
-    new Font("MyFont-Regular", 16),
+    new Font(fontName, 16),
     "500 employees switch to the\nAuto Insurance Program"
 ).apply();
 
@@ -247,8 +247,8 @@ Fill placeholders on a specific page only:
 from pdfdancer import PDFDancer, Font
 
 with PDFDancer.open("template.pdf") as pdf:
-    pdf.register_font("fonts/MyFont-Regular.ttf")
-    font = Font("MyFont-Regular", 14)
+    font_name = pdf.register_font("fonts/MyFont-Regular.ttf")
+    font = Font(font_name, 14)
 
     # Fill only on page 1
     pdf.page(1).apply_replacements({
@@ -270,8 +270,8 @@ with PDFDancer.open("template.pdf") as pdf:
 import { PDFDancer, Font } from 'pdfdancer-client-typescript';
 
 const pdf = await PDFDancer.open('template.pdf');
-await pdf.registerFont('fonts/MyFont-Regular.ttf');
-const font = new Font('MyFont-Regular', 14);
+const fontName = await pdf.registerFont('fonts/MyFont-Regular.ttf');
+const font = new Font(fontName, 14);
 
 // Fill only on page 1
 await pdf.replace('{HEADER}', { text: 'Welcome', font })
@@ -294,8 +294,8 @@ import com.pdfdancer.client.rest.PDFDancer;
 import com.pdfdancer.common.model.Font;
 
 PDFDancer pdf = PDFDancer.createSession("template.pdf");
-pdf.registerFont("fonts/MyFont-Regular.ttf");
-Font font = new Font("MyFont-Regular", 14);
+String fontName = pdf.registerFont("fonts/MyFont-Regular.ttf");
+Font font = new Font(fontName, 14);
 
 // Fill only on page 1
 pdf.page(1).replace("{HEADER}", font, "Welcome").apply();
@@ -328,13 +328,13 @@ When replacement text is longer or shorter than the placeholder, PDFDancer can a
 from pdfdancer import PDFDancer, Font, ReflowPreset
 
 with PDFDancer.open("template.pdf") as pdf:
-    pdf.register_font("fonts/MyFont-Regular.ttf")
+    font_name = pdf.register_font("fonts/MyFont-Regular.ttf")
 
     pdf.apply_replacements(
         {
             "{DESCRIPTION}": {
                 "text": "This is a much longer replacement text",
-                "font": Font("MyFont-Regular", 12),
+                "font": Font(font_name, 12),
             },
         },
         reflow_preset=ReflowPreset.BEST_EFFORT
@@ -350,11 +350,11 @@ with PDFDancer.open("template.pdf") as pdf:
 import { PDFDancer, Font } from 'pdfdancer-client-typescript';
 
 const pdf = await PDFDancer.open('template.pdf');
-await pdf.registerFont('fonts/MyFont-Regular.ttf');
+const fontName = await pdf.registerFont('fonts/MyFont-Regular.ttf');
 
 await pdf.replace('{DESCRIPTION}', {
     text: 'This is a much longer replacement text',
-    font: new Font('MyFont-Regular', 12),
+    font: new Font(fontName, 12),
 }).bestEffort().apply();
 
 await pdf.save('filled.pdf');
@@ -369,9 +369,9 @@ import com.pdfdancer.common.model.Font;
 import com.pdfdancer.common.model.ReflowPreset;
 
 PDFDancer pdf = PDFDancer.createSession("template.pdf");
-pdf.registerFont("fonts/MyFont-Regular.ttf");
+String fontName = pdf.registerFont("fonts/MyFont-Regular.ttf");
 
-pdf.replace("{DESCRIPTION}", new Font("MyFont-Regular", 12), "This is a much longer replacement text")
+pdf.replace("{DESCRIPTION}", new Font(fontName, 12), "This is a much longer replacement text")
     .withReflow(ReflowPreset.BEST_EFFORT)
     .apply();
 
@@ -394,12 +394,12 @@ You can specify font size and color for replacement text. Since you should alway
 from pdfdancer import PDFDancer, Font, Color
 
 with PDFDancer.open("template.pdf") as pdf:
-    pdf.register_font("fonts/MyFont-Bold.ttf")
+    font_name = pdf.register_font("fonts/MyFont-Bold.ttf")
 
     pdf.apply_replacements({
         "{HIGHLIGHT}": {
             "text": "Important Text",
-            "font": Font("MyFont-Bold", 14),
+            "font": Font(font_name, 14),
             "color": Color(255, 0, 0),  # Red
         },
     })
@@ -413,11 +413,11 @@ with PDFDancer.open("template.pdf") as pdf:
 import { PDFDancer, Font, Color } from 'pdfdancer-client-typescript';
 
 const pdf = await PDFDancer.open('template.pdf');
-await pdf.registerFont('fonts/MyFont-Bold.ttf');
+const fontName = await pdf.registerFont('fonts/MyFont-Bold.ttf');
 
 await pdf.replace('{HIGHLIGHT}', {
     text: 'Important Text',
-    font: new Font('MyFont-Bold', 14),
+    font: new Font(fontName, 14),
     color: new Color(255, 0, 0),  // Red
 }).apply();
 
@@ -433,9 +433,9 @@ import com.pdfdancer.common.model.Font;
 import com.pdfdancer.common.model.Color;
 
 PDFDancer pdf = PDFDancer.createSession("template.pdf");
-pdf.registerFont("fonts/MyFont-Bold.ttf");
+String fontName = pdf.registerFont("fonts/MyFont-Bold.ttf");
 
-pdf.replace("{HIGHLIGHT}", new Font("MyFont-Bold", 14), "Important Text")
+pdf.replace("{HIGHLIGHT}", new Font(fontName, 14), "Important Text")
     .withColor(255, 0, 0)  // Red
     .apply();
 
@@ -479,17 +479,17 @@ from pathlib import Path
 from pdfdancer import PDFDancer, Font
 
 with PDFDancer.open("template.pdf") as pdf:
-    pdf.register_font("fonts/MyFont-Regular.ttf")
+    font_name = pdf.register_font("fonts/MyFont-Regular.ttf")
 
     pdf.apply_replacements({
         "{NAME}": {
             "text": "John Doe",
-            "font": Font("MyFont-Regular", 12),
+            "font": Font(font_name, 12),
         },
         "{LOGO}": {"image": Path("logo.png"), "width": 150},
         "{DATE}": {
             "text": "January 15, 2026",
-            "font": Font("MyFont-Regular", 12),
+            "font": Font(font_name, 12),
         },
     })
     pdf.save("filled.pdf")
@@ -522,8 +522,8 @@ You can mix text and image replacements using the fluent API:
 import { PDFDancer, Font } from 'pdfdancer-client-typescript';
 
 const pdf = await PDFDancer.open('template.pdf');
-await pdf.registerFont('fonts/MyFont-Regular.ttf');
-const font = new Font('MyFont-Regular', 12);
+const fontName = await pdf.registerFont('fonts/MyFont-Regular.ttf');
+const font = new Font(fontName, 12);
 
 await pdf.replace('{NAME}', { text: 'John Doe', font })
     .andImage('{LOGO}', 'logo.png', 150)
@@ -575,8 +575,8 @@ import com.pdfdancer.common.model.Font;
 import java.io.File;
 
 PDFDancer pdf = PDFDancer.createSession("template.pdf");
-pdf.registerFont("fonts/MyFont-Regular.ttf");
-Font font = new Font("MyFont-Regular", 12);
+String fontName = pdf.registerFont("fonts/MyFont-Regular.ttf");
+Font font = new Font(fontName, 12);
 
 pdf.replace("{NAME}", font, "John Doe")
     .replaceWithImage("{LOGO}", new File("logo.png"), 150)
@@ -621,8 +621,8 @@ recipients = [
 
 for recipient in recipients:
     with PDFDancer.open("letter_template.pdf") as pdf:
-        pdf.register_font("fonts/MyFont-Regular.ttf")
-        font = Font("MyFont-Regular", 12)
+        font_name = pdf.register_font("fonts/MyFont-Regular.ttf")
+        font = Font(font_name, 12)
 
         pdf.apply_replacements({
             "{RECIPIENT_NAME}": {"text": recipient["name"], "font": font},
@@ -639,8 +639,8 @@ Fill invoice templates with order data:
 from pdfdancer import PDFDancer, Font
 
 with PDFDancer.open("invoice_template.pdf") as pdf:
-    pdf.register_font("fonts/MyFont-Regular.ttf")
-    font = Font("MyFont-Regular", 12)
+    font_name = pdf.register_font("fonts/MyFont-Regular.ttf")
+    font = Font(font_name, 12)
 
     pdf.apply_replacements({
         "{INVOICE_NUMBER}": {"text": "INV-2026-0001", "font": font},
@@ -659,8 +659,8 @@ Create personalized certificates:
 from pdfdancer import PDFDancer, Font, ReflowPreset
 
 with PDFDancer.open("certificate_template.pdf") as pdf:
-    pdf.register_font("fonts/MyFont-Regular.ttf")
-    font = Font("MyFont-Regular", 14)
+    font_name = pdf.register_font("fonts/MyFont-Regular.ttf")
+    font = Font(font_name, 14)
 
     pdf.apply_replacements(
         {
