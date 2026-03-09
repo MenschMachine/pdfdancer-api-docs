@@ -13,8 +13,43 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          submodules: recursive
+
+      - name: Checkout SDK repos at pinned versions
+        run: |
+          set -euo pipefail
+
+          # Parse commit SHAs from docs/sdk-versions.md
+          PYTHON_COMMIT=$(grep -A5 '## Python SDK' docs/sdk-versions.md | grep '\*\*Commit\*\*' | sed 's/.*`\([^`]*\)`.*/\1/')
+          TS_COMMIT=$(grep -A5 '## TypeScript SDK' docs/sdk-versions.md | grep '\*\*Commit\*\*' | sed 's/.*`\([^`]*\)`.*/\1/')
+          JAVA_COMMIT=$(grep -A5 '## Java SDK' docs/sdk-versions.md | grep '\*\*Commit\*\*' | sed 's/.*`\([^`]*\)`.*/\1/')
+
+          # Validate parsed SHAs
+          for var_name in PYTHON_COMMIT TS_COMMIT JAVA_COMMIT; do
+            val="${!var_name}"
+            if [ -z "$val" ]; then
+              echo "::error::Failed to parse $var_name from docs/sdk-versions.md"
+              exit 1
+            fi
+          done
+
+          echo "Python commit: $PYTHON_COMMIT"
+          echo "TypeScript commit: $TS_COMMIT"
+          echo "Java commit: $JAVA_COMMIT"
+
+          mkdir -p external
+
+          for repo_info in \
+            "pdfdancer-client-python $PYTHON_COMMIT" \
+            "pdfdancer-client-typescript $TS_COMMIT" \
+            "pdfdancer-client-java $JAVA_COMMIT"; do
+            repo=$(echo "$repo_info" | cut -d' ' -f1)
+            commit=$(echo "$repo_info" | cut -d' ' -f2)
+            git clone --depth 1 "https://github.com/MenschMachine/${repo}.git" "external/${repo}"
+            cd "external/${repo}"
+            git fetch --depth 1 origin "$commit"
+            git checkout "$commit"
+            cd ../..
+          done
 
       - uses: actions/setup-node@v4
         with:
