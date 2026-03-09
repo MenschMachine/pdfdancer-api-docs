@@ -44,11 +44,9 @@ jobs:
             "pdfdancer-client-java $JAVA_COMMIT"; do
             repo=$(echo "$repo_info" | cut -d' ' -f1)
             commit=$(echo "$repo_info" | cut -d' ' -f2)
-            git clone --depth 1 "https://github.com/MenschMachine/${repo}.git" "external/${repo}"
-            cd "external/${repo}"
-            git fetch --depth 1 origin "$commit"
-            git checkout "$commit"
-            cd ../..
+            mkdir -p "external/${repo}"
+            curl -sL "https://github.com/MenschMachine/${repo}/archive/${commit}.tar.gz" \
+              | tar xz --strip-components=1 -C "external/${repo}"
           done
 
       - uses: actions/setup-node@v4
