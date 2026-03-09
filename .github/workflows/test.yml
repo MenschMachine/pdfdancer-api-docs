@@ -49,6 +49,9 @@ jobs:
               | tar xz --strip-components=1 -C "external/${repo}"
           done
 
+          # Ensure gradlew is executable (tarball doesn't preserve permissions)
+          chmod +x external/pdfdancer-client-java/gradlew
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
