@@ -6,17 +6,17 @@ description: Current SDK versions used in this documentation
 
 # SDK Versions
 
-**Documentation Version**: 8.6 (March 4, 2026)
+**Documentation Version**: 8.7 (March 10, 2026)
 
 This documentation is based on the following SDK versions:
 
 ## Python SDK
 
 - **Repository**: [pdfdancer-client-python](https://github.com/MenschMachine/pdfdancer-client-python)
-- **Version**: 0.3.11
-- **Commit**: `ce81800`
-- **Commit Date**: March 4, 2026
-- **Commit Message**: fix(ci): update ignored test file
+- **Version**: 0.3.12
+- **Commit**: `2e92b4e`
+- **Commit Date**: March 10, 2026
+- **Commit Message**: feat(clipping): add clear_clipping capability
 - **Documentation Coverage**:
   - ✅ Anonymous token support (automatic fallback authentication)
   - ✅ Snapshot API (`get_document_snapshot()`, `get_page_snapshot()`, `page.get_snapshot()`)
@@ -36,19 +36,22 @@ This documentation is based on the following SDK versions:
   - ✅ **Fill Region API** (`fill_region()` for filling rectangular pixel areas with color)
   - ✅ **Image Replacement in Templates** (`{"image": Path("logo.png")}` dict syntax for replacing placeholders with images)
   - ✅ **Path Grouping API** (`group_paths()`, `group_paths_in_region()`, `get_path_groups()` for batch path manipulation)
-- **Key Changes Since Last Version** (0.3.10 → 0.3.11):
-  - **Path Grouping**: Group vector paths together for batch operations (move, scale, rotate, resize, remove)
-  - `page.group_paths(path_ids)` — group by explicit path IDs
-  - `page.group_paths_in_region(region)` — group by bounding region
-  - `page.get_path_groups()` — list all path groups on a page
+  - ✅ **Clear Clipping API** (`clear_clipping()` for removing clipping paths from elements)
+- **Key Changes Since Last Version** (0.3.11 → 0.3.12):
+  - **Clear Clipping**: Remove clipping paths from PDF elements to reveal hidden content
+  - `path.clear_clipping()` — clear clipping on a path
+  - `image.clear_clipping()` — clear clipping on an image
+  - `textline.clear_clipping()` — clear clipping on a text line
+  - `pdf.clear_clipping(object_ref)` — clear clipping via object reference
+  - `pdf.clear_path_group_clipping(page_number, group_id)` — clear clipping on a path group
 
 ## TypeScript SDK
 
 - **Repository**: [pdfdancer-client-typescript](https://github.com/MenschMachine/pdfdancer-client-typescript)
-- **Version**: 2.0.14
-- **Commit**: `9477a33`
-- **Commit Date**: March 4, 2026
-- **Commit Message**: ci: add production API token to release workflow
+- **Version**: 2.0.15
+- **Commit**: `834b4bc`
+- **Commit Date**: March 10, 2026
+- **Commit Message**: feat(clipping): add clearClipping capability
 - **Documentation Coverage**:
   - ✅ Anonymous token support (automatic fallback authentication)
   - ✅ Snapshot API (`getDocumentSnapshot()`, `getPageSnapshot()`, `page.getSnapshot()`)
@@ -71,19 +74,22 @@ This documentation is based on the following SDK versions:
   - ✅ **Enhanced Text Line Editing** (`font()`, `fontFile()`, `color()`, `moveTo()` with full validation)
   - ✅ **Image Replacement in Templates** (`replaceWithImage()` for replacing placeholders with images)
   - ✅ **Path Grouping API** (`groupPaths()`, `groupPathsInRegion()`, `getPathGroups()` for batch path manipulation)
-- **Key Changes Since Last Version** (2.0.8 → 2.0.14):
-  - **Path Grouping**: Group vector paths together for batch operations (move, scale, rotate, resize, remove)
-  - `page.groupPaths(pathIds)` — group by explicit path IDs
-  - `page.groupPathsInRegion(region)` — group by bounding region
-  - `page.getPathGroups()` — list all path groups on a page
+  - ✅ **Clear Clipping API** (`clearClipping()` for removing clipping paths from elements)
+- **Key Changes Since Last Version** (2.0.14 → 2.0.15):
+  - **Clear Clipping**: Remove clipping paths from PDF elements to reveal hidden content
+  - `path.clearClipping()` — clear clipping on a path
+  - `image.clearClipping()` — clear clipping on an image
+  - `textline.clearClipping()` — clear clipping on a text line
+  - `pdf.clearClipping(objectRef)` — clear clipping via object reference
+  - `pdf.clearPathGroupClipping(pageNumber, groupId)` — clear clipping on a path group
 
 ## Java SDK
 
 - **Repository**: [pdfdancer-client-java](https://github.com/MenschMachine/pdfdancer-client-java)
-- **Version**: 0.2.13
-- **Commit**: `7408bee`
-- **Commit Date**: March 4, 2026
-- **Commit Message**: chore: update version to DEV
+- **Version**: 0.2.14
+- **Commit**: `e26c48c`
+- **Commit Date**: March 10, 2026
+- **Commit Message**: feat(clipping): add clearClipping capability
 - **Documentation Coverage**:
   - ✅ Core PDF manipulation (open, create, save)
   - ✅ Text operations (paragraphs, text lines)
@@ -111,6 +117,7 @@ This documentation is based on the following SDK versions:
   - ✅ **Enhanced Text Line Editing** (`replace(text, color)` overload, `font(File, fontSize)` for custom TTF fonts)
   - ✅ **Image Replacement in Templates** (`replaceWithImage()` for replacing placeholders with images)
   - ✅ **Path Grouping API** (`groupPaths()`, `groupPathsInRegion()`, `getPathGroups()` for batch path manipulation)
+  - ✅ **Clear Clipping API** (`clearClipping()` for removing clipping paths from elements)
 - **Requirements**:
   - **Java 11+** required (tested with Java 11, 17, 21, 23, 25)
   - Uses Gradle for build management
@@ -124,11 +131,13 @@ This documentation is based on the following SDK versions:
   - **Clean API design**: Mirrors Python and TypeScript SDKs with Java conventions
   - **Default API endpoint**: Now uses `https://api.pdfdancer.com`
   - **Maven Central distribution**: Published artifacts available for easy dependency management
-- **Key Changes Since Last Version** (0.2.7 → 0.2.13):
-  - **Path Grouping**: Group vector paths together for batch operations (move, scale, rotate, resize, remove)
-  - `page.groupPaths(pathIds)` — group by explicit path IDs
-  - `page.groupPathsInRegion(region)` — group by bounding region
-  - `page.getPathGroups()` — list all path groups on a page
+- **Key Changes Since Last Version** (0.2.13 → 0.2.14):
+  - **Clear Clipping**: Remove clipping paths from PDF elements to reveal hidden content
+  - `path.clearClipping()` — clear clipping on a path
+  - `image.clearClipping()` — clear clipping on an image
+  - `textLine.clearClipping()` — clear clipping on a text line
+  - `pdf.clearClipping(ObjectRef)` — clear clipping via object reference
+  - `pdf.clearPathGroupClipping(pageIndex, groupId)` — clear clipping on a path group (0-based page index)
 
 ---
 
@@ -225,7 +234,7 @@ Update the version in your `build.gradle.kts`:
 
 ```kotlin
 dependencies {
-    implementation("com.pdfdancer.client:pdfdancer-client-java:0.2.13")
+    implementation("com.pdfdancer.client:pdfdancer-client-java:0.2.14")
 }
 ```
 
@@ -243,7 +252,7 @@ Update the version in your `pom.xml`:
 <dependency>
     <groupId>com.pdfdancer.client</groupId>
     <artifactId>pdfdancer-client-java</artifactId>
-    <version>0.2.13</version>
+    <version>0.2.14</version>
 </dependency>
 ```
 
@@ -259,6 +268,35 @@ mvn clean install -U
 ---
 
 ## Documentation Update History
+
+### Version 8.7 - March 10, 2026
+
+**Clear Clipping**
+
+All SDKs now support removing clipping paths from PDF elements to reveal hidden content.
+
+**SDK Commit Updates:**
+- Python SDK: 0.3.12 (commit `2e92b4e`) - clear clipping
+- TypeScript SDK: 2.0.15 (commit `834b4bc`) - clear clipping
+- Java SDK: 0.2.14 (commit `e26c48c`) - clear clipping
+
+**New Features:**
+
+1. **Clear Clipping API** (All SDKs)
+   - Clear clipping from paths, images, and text lines
+   - Clear clipping from path groups
+   - Both object-level methods and top-level client methods
+   - Python: `path.clear_clipping()`, `image.clear_clipping()`, `pdf.clear_clipping(object_ref)`, `pdf.clear_path_group_clipping()`
+   - TypeScript: `path.clearClipping()`, `image.clearClipping()`, `pdf.clearClipping()`, `pdf.clearPathGroupClipping()`
+   - Java: `path.clearClipping()`, `image.clearClipping()`, `pdf.clearClipping()`, `pdf.clearPathGroupClipping()`
+
+**Documentation Updated:**
+- `docs/working-with-vector-graphics.md` - Added "Clipping" section with examples for all SDKs
+- `docs/glossary.md` - Added Clipping term
+- `docs/roadmap.md` - Added Clear Clipping to Recently Shipped
+- `docs/sdk-versions.md` - Updated commit references, versions, and changelog
+
+---
 
 ### Version 8.6 - March 4, 2026
 

@@ -909,7 +909,163 @@ All vector graphics support these styling options:
 - Use **fill** for solid shapes
 - Use **both** for outlined shapes with a fill color
 - Omit both to create invisible paths (useful for clipping regions)
-:::
+
+---
+
+## Clipping
+
+PDF content can be clipped, meaning its visible area is restricted by a clipping path. Clipped content exists in the PDF but may not be visible when rendered. PDFDancer provides the ability to clear clipping from elements, making previously hidden content visible.
+
+### Understanding Clipping
+
+A clipping path defines the visible region of an element. Content outside this region is not rendered, even though the data remains in the PDF. This is different from deleted content—the elements are still present, just hidden.
+
+Common use cases for clearing clipping:
+- Moving an element to a new position where it would be clipped
+- Revealing content that was intentionally hidden but is now needed
+- Fixing PDFs where clipping prevents expected content from appearing
+
+### Clearing Clipping
+
+All selectable PDF elements (paths, images, text lines) support the `clear_clipping()` method:
+
+<Tabs>
+<TabItem value="python" label="Python">
+
+```python
+from pdfdancer import PDFDancer
+
+pdf = PDFDancer.open("document.pdf")
+
+# Get all paths on a page
+paths = pdf.page(1).select_paths()
+
+# Clear clipping from each path
+for path in paths:
+    path.clear_clipping()
+
+pdf.save("output.pdf")
+```
+
+You can also clear clipping via the top-level client:
+
+```python
+# Clear clipping on a specific path by object reference
+pdf.clear_clipping(path_object.object_ref())
+
+# Clear clipping on a path group
+pdf.clear_path_group_clipping(page_number=1, group_id="group-123")
+```
+
+</TabItem>
+<TabItem value="typescript" label="TypeScript">
+
+```typescript
+import { PDFDancer } from "pdfdancer-client-typescript";
+
+const pdf = await PDFDancer.open("document.pdf");
+
+// Get all paths on a page
+const paths = await pdf.page(1).selectPaths();
+
+// Clear clipping from each path
+for (const path of paths) {
+  await path.clearClipping();
+}
+
+await pdf.save("output.pdf");
+```
+
+You can also clear clipping via the top-level client:
+
+```typescript
+// Clear clipping on a specific path by object reference
+await pdf.clearClipping(pathObject.objectRef());
+
+// Clear clipping on a path group
+await pdf.clearPathGroupClipping({ pageNumber: 1, groupId: "group-123" });
+```
+
+</TabItem>
+<TabItem value="java" label="Java">
+
+```java
+import com.pdfdancer.client.rest.PDFDancer;
+
+public class ClippingExample {
+    public static void main(String[] args) {
+        PDFDancer pdf = PDFDancer.open("document.pdf");
+        
+        // Get all paths on a page
+        List<PathReference> paths = pdf.page(1).selectPaths();
+        
+        // Clear clipping from each path
+        for (PathReference path : paths) {
+            path.clearClipping();
+        }
+        
+        pdf.save("output.pdf");
+    }
+}
+```
+
+You can also clear clipping via the top-level client:
+
+```java
+// Clear clipping on a specific path by object reference
+pdf.clearClipping(pathObject.objectRef());
+
+// Clear clipping on a path group (uses 0-based page index)
+pdf.clearPathGroupClipping(0, "group-123");
+```
+
+</TabItem>
+</Tabs>
+
+### Path Groups and Clipping
+
+When working with path groups, you can clear clipping on the entire group:
+
+<Tabs>
+<TabItem value="python" label="Python">
+
+```python
+# Get path groups on a page
+groups = pdf.page(1).get_path_groups()
+
+for group in groups:
+    # Clear clipping on the entire group
+    group.clear_clipping()
+```
+
+</TabItem>
+<TabItem value="typescript" label="TypeScript">
+
+```typescript
+// Get path groups on a page
+const groups = await pdf.page(1).getPathGroups();
+
+for (const group of groups) {
+  // Clear clipping on the entire group
+  await group.clearClipping();
+}
+```
+
+</TabItem>
+<TabItem value="java" label="Java">
+
+```java
+// Get path groups on a page
+List<PathGroupReference> groups = pdf.page(1).getPathGroups();
+
+for (PathGroupReference group : groups) {
+    // Clear clipping on the entire group
+    group.clearClipping();
+}
+```
+
+</TabItem>
+</Tabs>
 
 ---
 

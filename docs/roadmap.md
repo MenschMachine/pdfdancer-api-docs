@@ -49,6 +49,7 @@ These features are at the top of our development queue.
 
 ## Recently Shipped
 
+- **Clear Clipping** - Remove clipping paths from PDF elements to reveal hidden content. Works on paths, images, text lines, and path groups
 - **Path Grouping** - Group vector paths together for batch operations (move, scale, rotate, resize, remove)
 - **CID Font Support** - Extended support for CID-keyed Type 0 composite fonts
 - **Templating API** - Create and fill PDF templates programmatically with dynamic data

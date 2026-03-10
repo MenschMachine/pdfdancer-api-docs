@@ -40,6 +40,12 @@ A design pattern used throughout PDFDancer for creating and editing content. Bui
 
 ## C
 
+### Clipping
+
+A clipping path defines the visible region of a PDF element. Content outside this region is not rendered, even though the data remains in the PDF. Clipped elements exist in the document but may not be visible when viewed. PDFDancer's `clear_clipping()` method removes clipping paths from elements, making previously hidden content visible.
+
+**See also:** [Clipping](working-with-vector-graphics.md#clipping)
+
 ### Coordinate System
 
 PDF uses a Cartesian coordinate system with the origin (0, 0) at the **bottom-left corner** of the page. The X-axis increases from left to right, and the Y-axis increases from bottom to top. All measurements are in points.
