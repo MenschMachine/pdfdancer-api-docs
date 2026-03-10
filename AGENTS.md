@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-Docusaurus-based documentation site for PDFDancer SDK covering Java, Python, and TypeScript. Content comes from manual docs in `docs/` and SDK repositories via git submodules in `external/`.
+Docusaurus-based documentation site for PDFDancer SDK covering Java, Python, and TypeScript. Content comes from manual docs in `docs/`
 
 ## Development Commands
 
@@ -14,18 +14,6 @@ npm run build      # Production build
 npm run serve      # Serve production build locally
 npm run typecheck  # TypeScript type checking
 npm run clear      # Clear Docusaurus cache
-```
-
-## Git Submodules
-
-SDK documentation is pulled from submodules in `external/`:
-- `external/pdfdancer-client-java/`
-- `external/pdfdancer-client-python/`
-- `external/pdfdancer-client-typescript/`
-
-```bash
-git submodule update --init --recursive     # After cloning
-git submodule update --remote --merge       # Update to latest
 ```
 
 ## Documentation Workflow
@@ -45,10 +33,9 @@ git submodule update --remote --merge       # Update to latest
 ## Deployment
 
 GitHub Actions (`.github/workflows/deploy.yml`) auto-deploys on push to `main`:
-1. Checkout with submodules
-2. `npm ci && npm run build`
-3. Deploy search indexes to Cloudflare KV (`npx dcs deploy`)
-4. Upload markdown to Cloudflare KV (`npx dcs upload-content`)
+1. `npm ci && npm run build`
+2. Deploy search indexes to Cloudflare KV (`npx dcs deploy`)
+3. Upload markdown to Cloudflare KV (`npx dcs upload-content`)
 
 ## Important Details
 

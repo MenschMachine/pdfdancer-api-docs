@@ -2,11 +2,6 @@
 
 Unified documentation site for PDFDancer SDK across Java, Python, and TypeScript.
 
-## Overview
-
-This repository contains the API documentation for PDFDancer SDK, built with [Docusaurus](https://docusaurus.io/). The
-docs are automatically synced from the SDK repositories using git submodules and deployed via GitHub Actions.
-
 ## Prerequisites
 
 - Node.js >= 20.0
@@ -20,7 +15,6 @@ docs are automatically synced from the SDK repositories using git submodules and
 ```bash
 git clone https://github.com/MenschMachine/pdfdancer-api-docs.git
 cd pdfdancer-api-docs
-git submodule update --init --recursive
 ```
 
 ### Install Dependencies
@@ -52,10 +46,6 @@ pdfdancer-api-docs/
 │   ├── css/               # Custom styles (Cyber Orange theme)
 │   └── pages/             # Custom pages
 ├── static/                 # Static assets (images, logos)
-├── external/              # Git submodules for SDK repos
-│   ├── MenschMachine-java/
-│   ├── MenschMachine-python/
-│   └── MenschMachine-typescript/
 ├── docusaurus.config.ts   # Docusaurus configuration
 └── sidebars.ts           # Sidebar structure
 ```
@@ -69,16 +59,6 @@ pdfdancer-api-docs/
 3. Test locally with `npm start`
 4. Run type checking: `npm run typecheck`
 5. Build and verify: `npm run build`
-
-### Updating SDK Submodules
-
-Pull latest changes from SDK repositories:
-
-```bash
-git submodule update --remote --merge
-git add .
-git commit -m "docs: sync SDK documentation"
-```
 
 ## Available Commands
 
@@ -106,10 +86,9 @@ To modify the theme, edit `src/css/custom.css`.
 
 The site deploys automatically via GitHub Actions on push to any branch. The workflow:
 
-1. Checks out code with submodules
-2. Installs dependencies
-3. Builds the site
-4. Deploys to GitHub Pages
+1. Installs dependencies
+2. Builds the site
+3. Deploys to GitHub Pages
 
 Manual deployment:
 
@@ -119,14 +98,6 @@ npm run serve  # Test the build locally first
 ```
 
 ## Troubleshooting
-
-### Submodule Issues
-
-If submodules are not loading:
-
-```bash
-git submodule update --init --recursive --force
-```
 
 ### Build Errors
 

@@ -55,12 +55,11 @@ Add the following secrets to your GitHub repository:
 The `.github/workflows/deploy.yml` file defines the deployment pipeline:
 
 ```yaml
-1. Checkout code (with submodules)
-2. Setup Node.js 20
-3. Install dependencies (npm ci)
-4. Build Docusaurus site (npm run build)
-5. Deploy search indexes (npx dcs deploy)
-6. Upload markdown content (npx dcs upload-content)
+1. Setup Node.js 20
+2. Install dependencies (npm ci)
+3. Build Docusaurus site (npm run build)
+4. Deploy search indexes (npx dcs deploy)
+5. Upload markdown content (npx dcs upload-content)
 ```
 
 ### Search Index Generation
