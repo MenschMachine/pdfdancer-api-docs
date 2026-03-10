@@ -8,7 +8,7 @@ description: Current SDK versions used in this documentation
 
 **Documentation Version**: 8.7 (March 10, 2026)
 
-This documentation is based on the latest released SDK versions plus the upstream `feat/clear-clipping` branch heads for the new clipping APIs documented here.
+This documentation tracks the current SDK release baselines. The commit IDs below show the upstream revisions used to verify the examples and feature coverage described on this site.
 
 ## Python SDK
 
@@ -267,7 +267,7 @@ mvn clean install -U
 
 **Clear Clipping**
 
-The documentation now covers the new clear-clipping helpers on the upstream `feat/clear-clipping` branches for all three SDKs.
+The documentation now covers the clear-clipping helpers across all three SDKs.
 
 **SDK Commit Updates:**
 - Python SDK: 0.3.11 baseline, documented against commit `2e92b4e`
@@ -293,8 +293,6 @@ The documentation now covers the new clear-clipping helpers on the upstream `fea
 - `docs/working-with-text.md` - Added clipping-clear guidance for paragraphs and text lines
 - `docs/glossary.md` - Added Clipping Path term
 - `docs/sdk-versions.md` - Updated commit references, coverage notes, and changelog history
-- `emails/whats-new-march-2026.html` - Added clear-clipping feature callout
-- `emails/whats-new-march-2026.txt` - Added clear-clipping feature callout
 
 ### Version 8.6 - March 4, 2026
 

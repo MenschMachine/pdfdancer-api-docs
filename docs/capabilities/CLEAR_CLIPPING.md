@@ -97,14 +97,13 @@ include
 ## Implementation in pdfdancer-api-docs
 
 - Added clear-clipping user guides to the language-specific docs pages that already own those content types:
-  - `docs/working-with-vector-graphics.md` documents clearing clipping on individual paths and path groups, including both object-level helpers and top-level APIs.
+  - `docs/working-with-vector-graphics.md` documents clearing clipping on individual paths and path groups with helper-based examples.
   - `docs/working-with-images.md` adds an image-specific clipping section with Python, TypeScript, and Java examples.
   - `docs/working-with-text.md` adds clipping guidance for both paragraphs and text lines, including the note that clipped text can span multiple content streams.
 - Added repo-wide terminology and release tracking:
   - `docs/glossary.md` defines "Clipping Path" so the guides can reference the concept consistently.
-  - `docs/sdk-versions.md` was updated to version 8.7, records the upstream feature-branch commits used for coverage, and adds the March 10, 2026 changelog entry for clear clipping.
-- Added release communication in `emails/whats-new-march-2026.html` and `emails/whats-new-march-2026.txt` so the feature appears in the monthly "What's New" newsletter, while keeping the broader website/marketing pages unchanged.
+  - `docs/sdk-versions.md` was updated to version 8.7, records the upstream verification commits used for coverage, and adds the March 10, 2026 changelog entry for clear clipping.
 - Repo-specific documentation details:
   - The docs explain the feature through per-language tabs rather than a standalone API reference page.
-  - Examples show both convenience helpers (`clear_clipping()` / `clearClipping()`) and the top-level APIs where they are relevant.
+  - Examples favor the convenience helpers (`clear_clipping()` / `clearClipping()`) so the primary workflow stays minimal and does not suggest double-applying the same mutation.
   - The Java examples preserve the repo's existing `pageIndex` wording for `clearPathGroupClipping(...)`, while the SDK versions page calls out the underlying API's 1-based `pageNumber` behavior.

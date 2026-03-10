@@ -339,9 +339,6 @@ with PDFDancer.open("document.pdf") as pdf:
     # Remove the clipping path attached to this image
     image.clear_clipping()
 
-    # You can also call the top-level API if you already have the object ref
-    pdf.clear_clipping(image.object_ref())
-
     pdf.save("output.pdf")
 ```
 
@@ -354,9 +351,6 @@ const image = (await pdf.page(1).selectImages())[0];
 
 // Remove the clipping path attached to this image
 await image.clearClipping();
-
-// You can also call the top-level API if you already have the object ref
-await pdf.clearClipping(image.objectRef());
 
 await pdf.save('output.pdf');
 ```

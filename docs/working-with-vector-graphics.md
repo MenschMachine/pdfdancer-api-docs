@@ -351,10 +351,6 @@ with PDFDancer.open("document.pdf") as pdf:
     group = page.group_paths([path.internal_id])
     group.clear_clipping()
 
-    # Top-level APIs are also available when you already have the references
-    pdf.clear_clipping(path.object_ref())
-    pdf.clear_path_group_clipping(1, group.group_id)
-
     pdf.save("output.pdf")
 ```
 
@@ -372,10 +368,6 @@ await path.clearClipping();
 // Detach clipping from a grouped set of paths
 const group = await page.groupPaths([path.internalId]);
 await group.clearClipping();
-
-// Top-level APIs are also available when you already have the references
-await pdf.clearClipping(path.objectRef());
-await pdf.clearPathGroupClipping(1, group.groupId);
 
 await pdf.save('output.pdf');
 ```
@@ -397,9 +389,6 @@ path.clearClipping();
 // Detach clipping from a grouped set of paths
 PathGroupReference group = pdf.page(1).groupPaths(java.util.List.of(path.getInternalId()));
 group.clearClipping();
-
-// Top-level path-group API is also available when you already have the group ID
-pdf.clearPathGroupClipping(group.getPageIndex(), group.getGroupId());
 
 pdf.save("output.pdf");
 ```
