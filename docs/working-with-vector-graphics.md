@@ -935,26 +935,26 @@ All selectable PDF elements (paths, images, text lines) support the `clear_clipp
 ```python
 from pdfdancer import PDFDancer
 
-pdf = PDFDancer.open("document.pdf")
+with PDFDancer.open("document.pdf") as pdf:
+    # Get all paths on a page
+    paths = pdf.page(1).select_paths()
 
-# Get all paths on a page
-paths = pdf.page(1).select_paths()
+    # Clear clipping from each path
+    for path in paths:
+        path.clear_clipping()
 
-# Clear clipping from each path
-for path in paths:
-    path.clear_clipping()
-
-pdf.save("output.pdf")
+    pdf.save("output.pdf")
 ```
 
 You can also clear clipping via the top-level client:
 
 ```python
 # Clear clipping on a specific path by object reference
-pdf.clear_clipping(path_object.object_ref())
+with PDFDancer.open("document.pdf") as pdf:
+    pdf.clear_clipping(path_object.object_ref())
 
-# Clear clipping on a path group
-pdf.clear_path_group_clipping(page_number=1, group_id="group-123")
+    # Clear clipping on a path group
+    pdf.clear_path_group_clipping(page_number=1, group_id="group-123")
 ```
 
 </TabItem>
@@ -983,7 +983,7 @@ You can also clear clipping via the top-level client:
 await pdf.clearClipping(pathObject.objectRef());
 
 // Clear clipping on a path group
-await pdf.clearPathGroupClipping({ pageNumber: 1, groupId: "group-123" });
+await pdf.clearPathGroupClipping(1, "group-123");
 ```
 
 </TabItem>
@@ -1017,6 +1017,96 @@ pdf.clearClipping(pathObject.objectRef());
 
 // Clear clipping on a path group (uses 0-based page index)
 pdf.clearPathGroupClipping(0, "group-123");
+```
+
+</TabItem>
+</Tabs>
+
+### Clearing Clipping from Images
+
+Images can also have clipping paths applied. Here's how to clear them:
+
+<Tabs>
+<TabItem value="python" label="Python">
+
+```python
+from pdfdancer import PDFDancer
+
+with PDFDancer.open("document.pdf") as pdf:
+    # Get all images on a page
+    images = pdf.page(1).select_images()
+
+    # Clear clipping from each image
+    for image in images:
+        image.clear_clipping()
+
+    pdf.save("output.pdf")
+```
+
+You can also clear clipping on images via the top-level client:
+
+```python
+with PDFDancer.open("document.pdf") as pdf:
+    # Clear clipping on a specific image by object reference
+    pdf.clear_clipping(image_object.object_ref())
+```
+
+</TabItem>
+<TabItem value="typescript" label="TypeScript">
+
+```typescript
+import { PDFDancer } from "pdfdancer-client-typescript";
+
+const pdf = await PDFDancer.open("document.pdf");
+
+// Get all images on a page
+const images = await pdf.page(1).selectImages();
+
+// Clear clipping from each image
+for (const image of images) {
+  await image.clearClipping();
+}
+
+await pdf.save("output.pdf");
+```
+
+You can also clear clipping on images via the top-level client:
+
+```typescript
+// Clear clipping on a specific image by object reference
+await pdf.clearClipping(imageObject.objectRef());
+```
+
+</TabItem>
+<TabItem value="java" label="Java">
+
+```java
+import com.pdfdancer.client.rest.PDFDancer;
+import com.pdfdancer.client.rest.ImageReference;
+import java.util.List;
+
+public class ImageClippingExample {
+    public static void main(String[] args) {
+        PDFDancer pdf = PDFDancer.open("document.pdf");
+        
+        // Get all images on a page
+        List<ImageReference> images = pdf.page(1).selectImages();
+        
+        // Clear clipping from each image
+        for (ImageReference image : images) {
+            image.clearClipping();
+        }
+        
+        pdf.save("output.pdf");
+    }
+}
+```
+
+You can also clear clipping on images via the top-level client:
+
+```java
+// Clear clipping on a specific image by object reference
+pdf.clearClipping(imageObject.objectRef());
 ```
 
 </TabItem>
