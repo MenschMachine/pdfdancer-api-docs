@@ -13,7 +13,7 @@ This documentation tracks the current SDK release baselines. The commit IDs belo
 ## Python SDK
 
 - **Repository**: [pdfdancer-client-python](https://github.com/MenschMachine/pdfdancer-client-python)
-- **Version**: 0.3.11
+- **Version**: 0.3.12
 - **Commit**: `2e92b4e`
 - **Commit Date**: March 10, 2026
 - **Commit Message**: refactor(tests/e2e): improve text draw event detection
@@ -46,7 +46,7 @@ This documentation tracks the current SDK release baselines. The commit IDs belo
 ## TypeScript SDK
 
 - **Repository**: [pdfdancer-client-typescript](https://github.com/MenschMachine/pdfdancer-client-typescript)
-- **Version**: 2.0.14
+- **Version**: 2.0.15
 - **Commit**: `834b4bc`
 - **Commit Date**: March 9, 2026
 - **Commit Message**: feat(e2e): add clipping tests for multiple content streams
@@ -82,7 +82,7 @@ This documentation tracks the current SDK release baselines. The commit IDs belo
 ## Java SDK
 
 - **Repository**: [pdfdancer-client-java](https://github.com/MenschMachine/pdfdancer-client-java)
-- **Version**: 0.2.13
+- **Version**: 0.2.14
 - **Commit**: `e26c48c`
 - **Commit Date**: March 10, 2026
 - **Commit Message**: docs: update CLEAR_CLIPPING.md with request handling details
@@ -228,7 +228,7 @@ Update the version in your `build.gradle.kts`:
 
 ```kotlin
 dependencies {
-    implementation("com.pdfdancer.client:pdfdancer-client-java:0.2.13")
+    implementation("com.pdfdancer.client:pdfdancer-client-java:0.2.14")
 }
 ```
 
@@ -246,7 +246,7 @@ Update the version in your `pom.xml`:
 <dependency>
     <groupId>com.pdfdancer.client</groupId>
     <artifactId>pdfdancer-client-java</artifactId>
-    <version>0.2.13</version>
+    <version>0.2.14</version>
 </dependency>
 ```
 
@@ -270,9 +270,9 @@ mvn clean install -U
 The documentation now covers the clear-clipping helpers across all three SDKs.
 
 **SDK Commit Updates:**
-- Python SDK: 0.3.11 baseline, documented against commit `2e92b4e`
-- TypeScript SDK: 2.0.14 baseline, documented against commit `834b4bc`
-- Java SDK: 0.2.13 baseline, documented against commit `e26c48c`
+- Python SDK: 0.3.12 baseline, documented against commit `2e92b4e`
+- TypeScript SDK: 2.0.15 baseline, documented against commit `834b4bc`
+- Java SDK: 0.2.14 baseline, documented against commit `e26c48c`
 
 **New Features:**
 

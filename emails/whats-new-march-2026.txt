@@ -104,17 +104,17 @@ Java:
     PathGroupReference group = pdf.page(1).groupPaths(List.of(targetPathId));
     group.clearClipping();
 
-Note: The clear-clipping helpers are currently documented from the active upstream SDK feature branches and will land in the next tagged SDK releases.
+Note: The clear-clipping helpers are available in the current SDK releases listed below.
 
 
 UPDATE YOUR SDKs
 ─────────────────
 
-Keep your SDKs current for the latest released features. The clear-clipping helpers above are documented from the active upstream feature branches:
+Install the current SDK releases to use the clear-clipping helpers above:
 
-  Python:      pip install pdfdancer-client-python==0.3.11
-  TypeScript:  npm install pdfdancer-client-typescript@2.0.14
-  Java:        com.pdfdancer:pdfdancer-client-java:0.2.13
+  Python:      pip install pdfdancer-client-python==0.3.12
+  TypeScript:  npm install pdfdancer-client-typescript@2.0.15
+  Java:        com.pdfdancer:pdfdancer-client-java:0.2.14
 
 
 DIVE DEEPER
