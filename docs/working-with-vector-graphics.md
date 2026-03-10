@@ -332,6 +332,81 @@ group.remove();
   </TabItem>
 </Tabs>
 
+### Clearing Path Clipping
+
+Some PDFs use clipping paths to hide vector artwork. If a path or grouped logo is still present in the document model but no longer visible after you move it, clear the inherited clipping before saving.
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+with PDFDancer.open("document.pdf") as pdf:
+    page = pdf.page(1)
+    path = page.select_paths()[0]
+
+    # Detach clipping from a single path
+    path.clear_clipping()
+
+    # Detach clipping from a grouped set of paths
+    group = page.group_paths([path.internal_id])
+    group.clear_clipping()
+
+    # Top-level APIs are also available when you already have the references
+    pdf.clear_clipping(path.object_ref())
+    pdf.clear_path_group_clipping(1, group.group_id)
+
+    pdf.save("output.pdf")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+const pdf = await PDFDancer.open('document.pdf');
+const page = pdf.page(1);
+const path = (await page.selectPaths())[0];
+
+// Detach clipping from a single path
+await path.clearClipping();
+
+// Detach clipping from a grouped set of paths
+const group = await page.groupPaths([path.internalId]);
+await group.clearClipping();
+
+// Top-level APIs are also available when you already have the references
+await pdf.clearClipping(path.objectRef());
+await pdf.clearPathGroupClipping(1, group.groupId);
+
+await pdf.save('output.pdf');
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+import com.pdfdancer.client.rest.PDFDancer;
+import com.pdfdancer.client.rest.PathGroupReference;
+import com.pdfdancer.client.rest.PathReference;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+PathReference path = pdf.page(1).selectPaths().get(0);
+
+// Detach clipping from a single path
+path.clearClipping();
+
+// Detach clipping from a grouped set of paths
+PathGroupReference group = pdf.page(1).groupPaths(java.util.List.of(path.getInternalId()));
+group.clearClipping();
+
+// Top-level path-group API is also available when you already have the group ID
+pdf.clearPathGroupClipping(group.getPageIndex(), group.getGroupId());
+
+pdf.save("output.pdf");
+```
+
+  </TabItem>
+</Tabs>
+
 ### Path Group Properties
 
 | Property | Python | TypeScript | Java |

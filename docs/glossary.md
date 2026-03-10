@@ -40,6 +40,10 @@ A design pattern used throughout PDFDancer for creating and editing content. Bui
 
 ## C
 
+### Clipping Path
+
+A PDF graphics construct that limits where later drawing operations can appear. Paths, images, paragraphs, and text lines can exist in the document model but still be partially or fully hidden if a clipping path excludes their visible area. PDFDancer's clear-clipping helpers detach that association so the object renders normally again.
+
 ### Coordinate System
 
 PDF uses a Cartesian coordinate system with the origin (0, 0) at the **bottom-left corner** of the page. The X-axis increases from left to right, and the Y-axis increases from bottom to top. All measurements are in points.

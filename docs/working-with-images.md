@@ -323,6 +323,65 @@ pdf.save("output.pdf");
 
 ---
 
+## Clearing Image Clipping
+
+If an image is present in the PDF but rendered through a clipping path that hides part or all of it, you can detach that clipping before saving. This is especially useful when reusing artwork that was originally masked into a smaller region.
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+from pdfdancer import PDFDancer
+
+with PDFDancer.open("document.pdf") as pdf:
+    image = pdf.page(1).select_images()[0]
+
+    # Remove the clipping path attached to this image
+    image.clear_clipping()
+
+    # You can also call the top-level API if you already have the object ref
+    pdf.clear_clipping(image.object_ref())
+
+    pdf.save("output.pdf")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+const pdf = await PDFDancer.open('document.pdf');
+const image = (await pdf.page(1).selectImages())[0];
+
+// Remove the clipping path attached to this image
+await image.clearClipping();
+
+// You can also call the top-level API if you already have the object ref
+await pdf.clearClipping(image.objectRef());
+
+await pdf.save('output.pdf');
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+import com.pdfdancer.client.rest.ImageReference;
+import com.pdfdancer.client.rest.PDFDancer;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+ImageReference image = pdf.page(1).selectImages().get(0);
+
+// Remove the clipping path attached to this image
+image.clearClipping();
+
+pdf.save("output.pdf");
+```
+
+  </TabItem>
+</Tabs>
+
+---
+
 ## Deleting Images
 
 :::info
@@ -338,7 +397,7 @@ from pdfdancer import PDFDancer
 with PDFDancer.open("document.pdf") as pdf:
     images = pdf.page(1).select_images()
 
-    # Delete all images on page 0
+    # Delete all images on page 1
     for image in images:
         image.delete()
 
@@ -352,7 +411,7 @@ with PDFDancer.open("document.pdf") as pdf:
 const pdf = await PDFDancer.open('document.pdf');
 const images = await pdf.page(1).selectImages();
 
-// Delete all images on page 0
+// Delete all images on page 1
 for (const image of images) {
   await image.delete();
 }

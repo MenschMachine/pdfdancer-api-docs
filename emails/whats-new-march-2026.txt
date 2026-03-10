@@ -4,7 +4,7 @@ PDFDancer
 
 What's New in PDFDancer
 
-Templates can now include images — drop in logos, signatures, or photos alongside text, all in a single API call. Plus: image redaction, vector path grouping, and better font handling.
+Templates can now include images — drop in logos, signatures, or photos alongside text, all in a single API call. Plus: clear clipping for hidden content, image fill regions, vector path grouping, and better font handling.
 
 
 TEMPLATE IMAGE REPLACEMENT
@@ -82,10 +82,35 @@ Java:
     group.scale(1.5);
 
 
+CLEAR CLIPPING FOR HIDDEN CONTENT
+─────────────────────────────────
+
+Some PDFs keep content in the file but hide it behind clipping paths. You can now detach that clipping from individual objects or grouped vector paths when you need the content to render normally again.
+
+Use case: A vendor PDF may contain a logo, image, or footer text that still exists in the content stream but is clipped away after layout edits. Clear clipping on just that object to reveal it without changing neighboring elements.
+
+Python:
+
+    group = pdf.page(1).group_paths([target_path_id])
+    group.clear_clipping()
+
+TypeScript:
+
+    const group = await pdf.page(1).groupPaths([targetPathId]);
+    await group.clearClipping();
+
+Java:
+
+    PathGroupReference group = pdf.page(1).groupPaths(List.of(targetPathId));
+    group.clearClipping();
+
+Note: The clear-clipping helpers are currently documented from the active upstream SDK feature branches and will land in the next tagged SDK releases.
+
+
 UPDATE YOUR SDKs
 ─────────────────
 
-Be sure to update to the latest SDK versions to enjoy all of these features:
+Keep your SDKs current for the latest released features. The clear-clipping helpers above are documented from the active upstream feature branches:
 
   Python:      pip install pdfdancer-client-python==0.3.11
   TypeScript:  npm install pdfdancer-client-typescript@2.0.14
@@ -98,6 +123,7 @@ DIVE DEEPER
 → Templates & Image Replacement: https://docs.pdfdancer.com/working-with-templates?utm_source=email&utm_campaign=whats-new-march-2026
 → Image Fill Region: https://docs.pdfdancer.com/working-with-images?utm_source=email&utm_campaign=whats-new-march-2026
 → Vector Path Grouping: https://docs.pdfdancer.com/working-with-vector-graphics?utm_source=email&utm_campaign=whats-new-march-2026
+→ Clear Clipping for Hidden Content: https://docs.pdfdancer.com/working-with-vector-graphics?utm_source=email&utm_campaign=whats-new-march-2026
 → Font Registration & CID Support: https://docs.pdfdancer.com/working-with-fonts?utm_source=email&utm_campaign=whats-new-march-2026
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
