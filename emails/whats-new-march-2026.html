@@ -109,7 +109,7 @@
                             </tr>
                             <tr>
                                 <td style="padding: 0 0 24px 0; font-size: 15px; line-height: 160%; color: #555555;">
-                                    Templates can now include images &mdash; drop in logos, signatures, or photos alongside text, all in a single API call. Plus: image redaction, vector path grouping, and better font handling.
+                                    Templates can now include images &mdash; drop in logos, signatures, or photos alongside text, all in a single API call. Plus: clear clipping for hidden content, image fill regions, vector path grouping, and better font handling.
                                 </td>
                             </tr>
 
@@ -304,6 +304,56 @@
                             </tr>
                             <tr><td style="padding: 0 0 24px 0;"></td></tr>
 
+                            <!-- Feature 4: Clear Clipping -->
+                            <tr>
+                                <td style="padding: 0 0 8px 0; font-size: 16px; font-weight: 600; color: #000000;">
+                                    Clear Clipping for Hidden Content
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0 0 10px 0; font-size: 15px; line-height: 160%; color: #555555;">
+                                    Some PDFs keep content in the file but hide it behind clipping paths. You can now detach that clipping from individual objects or grouped vector paths when you need the content to render normally again.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0 0 16px 0; font-size: 14px; line-height: 160%; color: #888888; font-style: italic;">
+                                    Use case: A vendor PDF may contain a logo, image, or footer text that still exists in the content stream but is clipped away after layout edits. Clear clipping on just that object to reveal it without changing neighboring elements.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0 0 8px 0;">
+                                    <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                                        <tr>
+                                            <td style="background: #1a1a2e; border-radius: 6px 6px 0 0; padding: 14px 16px 10px; font-family: 'Courier New', Courier, monospace; font-size: 13px; line-height: 180%; color: #e0e0e0; border-bottom: 1px solid #2a2a4e;">
+                                                <span style="color: #888;"># Python</span><br>
+                                                group = pdf.page(<span style="color: #c678dd;">1</span>).<span style="color: #7ecfff;">group_paths</span>([target_path_id])<br>
+                                                group.<span style="color: #7ecfff;">clear_clipping</span>()
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="background: #1a1a2e; padding: 10px 16px; font-family: 'Courier New', Courier, monospace; font-size: 13px; line-height: 180%; color: #e0e0e0; border-bottom: 1px solid #2a2a4e;">
+                                                <span style="color: #888;">// TypeScript</span><br>
+                                                <span style="color: #ffa500;">const</span> group = <span style="color: #ffa500;">await</span> pdf.page(<span style="color: #c678dd;">1</span>).<span style="color: #7ecfff;">groupPaths</span>([targetPathId]);<br>
+                                                <span style="color: #ffa500;">await</span> group.<span style="color: #7ecfff;">clearClipping</span>();
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="background: #1a1a2e; border-radius: 0 0 6px 6px; padding: 10px 16px 14px; font-family: 'Courier New', Courier, monospace; font-size: 13px; line-height: 180%; color: #e0e0e0;">
+                                                <span style="color: #888;">// Java</span><br>
+                                                PathGroupReference group = pdf.page(<span style="color: #c678dd;">1</span>).<span style="color: #7ecfff;">groupPaths</span>(List.of(targetPathId));<br>
+                                                group.<span style="color: #7ecfff;">clearClipping</span>();
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0 0 16px 0; font-size: 13px; line-height: 160%; color: #777777;">
+                                    Note: The clear-clipping helpers are available in the current SDK releases listed below.
+                                </td>
+                            </tr>
+                            <tr><td style="padding: 0 0 24px 0;"></td></tr>
+
                             <!-- SDK Versions -->
                             <tr>
                                 <td style="padding: 0 0 8px 0; font-size: 16px; font-weight: 600; color: #000000;">
@@ -312,7 +362,7 @@
                             </tr>
                             <tr>
                                 <td style="padding: 0 0 16px 0; font-size: 15px; line-height: 160%; color: #555555;">
-                                    Be sure to update to the latest SDK versions to enjoy all of these features:
+                                    Install the current SDK releases to use the clear-clipping helpers above:
                                 </td>
                             </tr>
                             <tr>
@@ -323,7 +373,7 @@
                                                 <strong>Python</strong>
                                             </td>
                                             <td style="padding: 8px 12px; font-size: 14px; color: #333; border-bottom: 1px solid #eee; font-family: 'Courier New', Courier, monospace;">
-                                                pip install pdfdancer-client-python==0.3.11
+                                                pip install pdfdancer-client-python==0.3.12
                                             </td>
                                         </tr>
                                         <tr>
@@ -331,7 +381,7 @@
                                                 <strong>TypeScript</strong>
                                             </td>
                                             <td style="padding: 8px 12px; font-size: 14px; color: #333; border-bottom: 1px solid #eee; font-family: 'Courier New', Courier, monospace;">
-                                                npm install pdfdancer-client-typescript@2.0.14
+                                                npm install pdfdancer-client-typescript@2.0.15
                                             </td>
                                         </tr>
                                         <tr>
@@ -339,7 +389,7 @@
                                                 <strong>Java</strong>
                                             </td>
                                             <td style="padding: 8px 12px; font-size: 14px; color: #333; font-family: 'Courier New', Courier, monospace;">
-                                                com.pdfdancer:pdfdancer-client-java:0.2.13
+                                                com.pdfdancer:pdfdancer-client-java:0.2.14
                                             </td>
                                         </tr>
                                     </table>
@@ -357,6 +407,7 @@
                                     <a href="https://docs.pdfdancer.com/working-with-templates?utm_source=email&amp;utm_campaign=whats-new-march-2026" style="color: #e68a00; text-decoration: none; font-weight: 600;">Templates &amp; Image Replacement</a><br>
                                     <a href="https://docs.pdfdancer.com/working-with-images?utm_source=email&amp;utm_campaign=whats-new-march-2026" style="color: #e68a00; text-decoration: none; font-weight: 600;">Image Fill Region</a><br>
                                     <a href="https://docs.pdfdancer.com/working-with-vector-graphics?utm_source=email&amp;utm_campaign=whats-new-march-2026" style="color: #e68a00; text-decoration: none; font-weight: 600;">Vector Path Grouping</a><br>
+                                    <a href="https://docs.pdfdancer.com/working-with-vector-graphics?utm_source=email&amp;utm_campaign=whats-new-march-2026" style="color: #e68a00; text-decoration: none; font-weight: 600;">Clear Clipping for Hidden Content</a><br>
                                     <a href="https://docs.pdfdancer.com/working-with-fonts?utm_source=email&amp;utm_campaign=whats-new-march-2026" style="color: #e68a00; text-decoration: none; font-weight: 600;">Font Registration &amp; CID Support</a>
                                 </td>
                             </tr>

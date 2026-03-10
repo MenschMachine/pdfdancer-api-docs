@@ -42,6 +42,7 @@ const config: Config = {
                 docs: {
                     routeBasePath: '/', // Serve the docs at the site's root
                     sidebarPath: './sidebars.ts',
+                    exclude: ['**/capabilities/**'],
                 },
                 blog: false,
                 theme: {

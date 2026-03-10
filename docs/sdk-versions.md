@@ -6,17 +6,17 @@ description: Current SDK versions used in this documentation
 
 # SDK Versions
 
-**Documentation Version**: 8.6 (March 4, 2026)
+**Documentation Version**: 8.7 (March 10, 2026)
 
-This documentation is based on the following SDK versions:
+This documentation tracks the current SDK release baselines. The commit IDs below show the upstream revisions used to verify the examples and feature coverage described on this site.
 
 ## Python SDK
 
 - **Repository**: [pdfdancer-client-python](https://github.com/MenschMachine/pdfdancer-client-python)
-- **Version**: 0.3.11
-- **Commit**: `ce81800`
-- **Commit Date**: March 4, 2026
-- **Commit Message**: fix(ci): update ignored test file
+- **Version**: 0.3.12
+- **Commit**: `2e92b4e`
+- **Commit Date**: March 10, 2026
+- **Commit Message**: refactor(tests/e2e): improve text draw event detection
 - **Documentation Coverage**:
   - ✅ Anonymous token support (automatic fallback authentication)
   - ✅ Snapshot API (`get_document_snapshot()`, `get_page_snapshot()`, `page.get_snapshot()`)
@@ -36,19 +36,20 @@ This documentation is based on the following SDK versions:
   - ✅ **Fill Region API** (`fill_region()` for filling rectangular pixel areas with color)
   - ✅ **Image Replacement in Templates** (`{"image": Path("logo.png")}` dict syntax for replacing placeholders with images)
   - ✅ **Path Grouping API** (`group_paths()`, `group_paths_in_region()`, `get_path_groups()` for batch path manipulation)
-- **Key Changes Since Last Version** (0.3.10 → 0.3.11):
-  - **Path Grouping**: Group vector paths together for batch operations (move, scale, rotate, resize, remove)
-  - `page.group_paths(path_ids)` — group by explicit path IDs
-  - `page.group_paths_in_region(region)` — group by bounding region
-  - `page.get_path_groups()` — list all path groups on a page
+  - ✅ **Clear Clipping API** (`object.clear_clipping()`, `group.clear_clipping()`, `pdf.clear_clipping()`, `pdf.clear_path_group_clipping()`)
+- **Key Changes Since Last Documented Commit** (`ce81800` → `2e92b4e`):
+  - **Clear Clipping**: Detach clipping from selected paths, images, paragraphs, and text lines without affecting sibling clipped objects
+  - **Path Group Clipping Clear**: `group.clear_clipping()` and `pdf.clear_path_group_clipping(page_number, group_id)`
+  - **Cache Invalidation**: Clipping mutations clear local snapshot caches so follow-up selections reflect the unclipped content immediately
+  - **E2E Coverage**: Added tests for paths, path groups, images, clipped text lines, and multi-stream clipping scenarios
 
 ## TypeScript SDK
 
 - **Repository**: [pdfdancer-client-typescript](https://github.com/MenschMachine/pdfdancer-client-typescript)
-- **Version**: 2.0.14
-- **Commit**: `9477a33`
-- **Commit Date**: March 4, 2026
-- **Commit Message**: ci: add production API token to release workflow
+- **Version**: 2.0.15
+- **Commit**: `834b4bc`
+- **Commit Date**: March 9, 2026
+- **Commit Message**: feat(e2e): add clipping tests for multiple content streams
 - **Documentation Coverage**:
   - ✅ Anonymous token support (automatic fallback authentication)
   - ✅ Snapshot API (`getDocumentSnapshot()`, `getPageSnapshot()`, `page.getSnapshot()`)
@@ -71,19 +72,20 @@ This documentation is based on the following SDK versions:
   - ✅ **Enhanced Text Line Editing** (`font()`, `fontFile()`, `color()`, `moveTo()` with full validation)
   - ✅ **Image Replacement in Templates** (`replaceWithImage()` for replacing placeholders with images)
   - ✅ **Path Grouping API** (`groupPaths()`, `groupPathsInRegion()`, `getPathGroups()` for batch path manipulation)
-- **Key Changes Since Last Version** (2.0.8 → 2.0.14):
-  - **Path Grouping**: Group vector paths together for batch operations (move, scale, rotate, resize, remove)
-  - `page.groupPaths(pathIds)` — group by explicit path IDs
-  - `page.groupPathsInRegion(region)` — group by bounding region
-  - `page.getPathGroups()` — list all path groups on a page
+  - ✅ **Clear Clipping API** (`object.clearClipping()`, `object.objectRef()`, `group.clearClipping()`, `pdf.clearClipping()`, `pdf.clearPathGroupClipping()`)
+- **Key Changes Since Last Documented Commit** (`9477a33` → `834b4bc`):
+  - **Clear Clipping**: Added clipping-detach helpers on typed objects so paths, images, paragraphs, and text lines can be made visible again
+  - **Path Group Clipping Clear**: `group.clearClipping()` and `pdf.clearPathGroupClipping(pageNumber, groupId)`
+  - **Object Reference Alias**: `object.objectRef()` is now a first-class alias for `ref()` when calling top-level mutation APIs
+  - **E2E Coverage**: Added clipping assertions for paths, images, text lines, and multiple content streams
 
 ## Java SDK
 
 - **Repository**: [pdfdancer-client-java](https://github.com/MenschMachine/pdfdancer-client-java)
-- **Version**: 0.2.13
-- **Commit**: `7408bee`
-- **Commit Date**: March 4, 2026
-- **Commit Message**: chore: update version to DEV
+- **Version**: 0.2.14
+- **Commit**: `e26c48c`
+- **Commit Date**: March 10, 2026
+- **Commit Message**: docs: update CLEAR_CLIPPING.md with request handling details
 - **Documentation Coverage**:
   - ✅ Core PDF manipulation (open, create, save)
   - ✅ Text operations (paragraphs, text lines)
@@ -102,7 +104,7 @@ This documentation is based on the following SDK versions:
   - ✅ Maven Central publishing support (automated and manual bundle upload)
   - ✅ OpenAPI specification for REST API integration
   - ✅ Standard page numbering (`pageNumber` instead of `pageIndex`)
-  - ✅ **Redaction API** (`object.redact().apply()`, `pdf.redact(objects)` for batch redaction)
+  - ✅ **Redaction API** (`object.redact()`, `pdf.redact(objects)` for batch redaction)
   - ✅ **selectFormFieldByName** at document and page level
   - ✅ **Image Transformation API** (`scale()`, `scaleTo()`, `rotate()`, `crop()`, `opacity()`, `flip()`, `replace()`)
   - ✅ **Template API** (`replace()` fluent API for filling templates)
@@ -111,6 +113,7 @@ This documentation is based on the following SDK versions:
   - ✅ **Enhanced Text Line Editing** (`replace(text, color)` overload, `font(File, fontSize)` for custom TTF fonts)
   - ✅ **Image Replacement in Templates** (`replaceWithImage()` for replacing placeholders with images)
   - ✅ **Path Grouping API** (`groupPaths()`, `groupPathsInRegion()`, `getPathGroups()` for batch path manipulation)
+  - ✅ **Clear Clipping API** (`reference.clearClipping()`, `group.clearClipping()`, `PDFDancer.clearClipping(ObjectRef)`, `PDFDancer.clearPathGroupClipping(pageIndex, groupId)`)
 - **Requirements**:
   - **Java 11+** required (tested with Java 11, 17, 21, 23, 25)
   - Uses Gradle for build management
@@ -124,11 +127,11 @@ This documentation is based on the following SDK versions:
   - **Clean API design**: Mirrors Python and TypeScript SDKs with Java conventions
   - **Default API endpoint**: Now uses `https://api.pdfdancer.com`
   - **Maven Central distribution**: Published artifacts available for easy dependency management
-- **Key Changes Since Last Version** (0.2.7 → 0.2.13):
-  - **Path Grouping**: Group vector paths together for batch operations (move, scale, rotate, resize, remove)
-  - `page.groupPaths(pathIds)` — group by explicit path IDs
-  - `page.groupPathsInRegion(region)` — group by bounding region
-  - `page.getPathGroups()` — list all path groups on a page
+- **Key Changes Since Last Documented Commit** (`7408bee` → `e26c48c`):
+  - **Clear Clipping**: Added `clearClipping()` on typed references including paths, images, paragraphs, and text lines
+  - **Path Group Clipping Clear**: Added `group.clearClipping()` and `PDFDancer.clearPathGroupClipping(pageIndex, groupId)`
+  - **API Request Mapping**: Path-group clipping clear converts the client's 0-based `pageIndex` to the API's 1-based `pageNumber`
+  - **Test Infrastructure**: Added PDFBox-based clipping inspection helpers for saved-PDF assertions
 
 ---
 
@@ -225,7 +228,7 @@ Update the version in your `build.gradle.kts`:
 
 ```kotlin
 dependencies {
-    implementation("com.pdfdancer.client:pdfdancer-client-java:0.2.13")
+    implementation("com.pdfdancer.client:pdfdancer-client-java:0.2.14")
 }
 ```
 
@@ -243,7 +246,7 @@ Update the version in your `pom.xml`:
 <dependency>
     <groupId>com.pdfdancer.client</groupId>
     <artifactId>pdfdancer-client-java</artifactId>
-    <version>0.2.13</version>
+    <version>0.2.14</version>
 </dependency>
 ```
 
@@ -259,6 +262,37 @@ mvn clean install -U
 ---
 
 ## Documentation Update History
+
+### Version 8.7 - March 10, 2026
+
+**Clear Clipping**
+
+The documentation now covers the clear-clipping helpers across all three SDKs.
+
+**SDK Commit Updates:**
+- Python SDK: 0.3.12 baseline, documented against commit `2e92b4e`
+- TypeScript SDK: 2.0.15 baseline, documented against commit `834b4bc`
+- Java SDK: 0.2.14 baseline, documented against commit `e26c48c`
+
+**New Features:**
+
+1. **Clear Clipping API** (All SDKs)
+   - Remove inherited clipping from selected paths, images, paragraphs, and text lines
+   - Clear clipping on grouped vector paths as a unit
+   - Python: `object.clear_clipping()`, `group.clear_clipping()`, `pdf.clear_clipping()`, `pdf.clear_path_group_clipping()`
+   - TypeScript: `object.clearClipping()`, `group.clearClipping()`, `pdf.clearClipping()`, `pdf.clearPathGroupClipping()`
+   - Java: `reference.clearClipping()`, `group.clearClipping()`, `PDFDancer.clearClipping(ObjectRef)`, `PDFDancer.clearPathGroupClipping(int pageIndex, String groupId)`
+
+2. **Clipping-Aware Test Coverage** (All SDKs)
+   - Verified behavior for paths, images, grouped paths, and clipped text content
+   - Added multi-stream clipping cases so the docs can safely describe clipping across multiple content streams
+
+**Documentation Updated:**
+- `docs/working-with-vector-graphics.md` - Added clipping-clear guidance for paths and path groups
+- `docs/working-with-images.md` - Added image clipping-clear section and corrected page-number comments
+- `docs/working-with-text.md` - Added clipping-clear guidance for paragraphs and text lines
+- `docs/glossary.md` - Added Clipping Path term
+- `docs/sdk-versions.md` - Updated commit references, coverage notes, and changelog history
 
 ### Version 8.6 - March 4, 2026
 

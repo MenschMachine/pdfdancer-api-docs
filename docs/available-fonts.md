@@ -6,7 +6,7 @@ description: Complete list of pre-registered fonts available in PDFDancer.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import AvailableFonts from '@site/src/components/AvailableFonts';
+import AvailableFonts from '@site/src/components/AvailableFontsMdx';
 
 PDFDancer provides pre-registered fonts that you can use directly without uploading font files. These fonts are available on the service and can be referenced by name in your code.
 
