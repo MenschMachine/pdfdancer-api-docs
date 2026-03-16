@@ -1510,6 +1510,65 @@ pdf.save("output.pdf");
 
 ---
 
+## Clearing Clipping on Text
+
+Some PDFs apply clipping paths to text objects, which means the paragraph or text line still exists but does not fully render. You can detach that clipping from either paragraphs or text lines before saving.
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+from pdfdancer import PDFDancer
+
+with PDFDancer.open("document.pdf") as pdf:
+    paragraph = pdf.page(1).select_paragraphs_starting_with("Summary")[0]
+    paragraph.clear_clipping()
+
+    text_line = pdf.page(1).select_text_lines_starting_with("Footer")[0]
+    text_line.clear_clipping()
+
+    pdf.save("output.pdf")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+const pdf = await PDFDancer.open('document.pdf');
+const paragraph = (await pdf.page(1).selectParagraphsStartingWith('Summary'))[0];
+await paragraph.clearClipping();
+
+const textLine = (await pdf.page(1).selectTextLinesStartingWith('Footer'))[0];
+await textLine.clearClipping();
+
+await pdf.save('output.pdf');
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+import com.pdfdancer.client.rest.PDFDancer;
+import com.pdfdancer.client.rest.TextLineReference;
+import com.pdfdancer.client.rest.TextParagraphReference;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+TextParagraphReference paragraph = pdf.page(1).selectParagraphsStartingWith("Summary").get(0);
+paragraph.clearClipping();
+
+TextLineReference textLine = pdf.page(1).selectTextLinesStartingWith("Footer").get(0);
+textLine.clearClipping();
+
+pdf.save("output.pdf");
+```
+
+  </TabItem>
+</Tabs>
+
+This is also useful when clipped text spans multiple content streams. The clear-clipping helpers remove the active clipping association without deleting or rewriting the text itself.
+
+---
+
 ## Deleting Text Lines
 
 :::info
