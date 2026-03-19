@@ -835,6 +835,12 @@ pdf.save("output.pdf");
 
 Replace an existing image with a new one while keeping the same position.
 
+:::info
+If the original image uses an embedded ICC color profile, PDFDancer preserves that profile during replacement when the new image uses a compatible number of color components. This helps keep color-managed and PDF/A documents valid after image edits.
+
+If the replacement image uses a different component layout, such as replacing an RGB image with a grayscale image, PDFDancer does not force the old ICC profile onto the new image.
+:::
+
 <Tabs>
   <TabItem value="python" label="Python">
 

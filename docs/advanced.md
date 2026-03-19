@@ -11,6 +11,93 @@ Learn advanced patterns for working with PDFDancer, including custom fonts, batc
 
 ---
 
+## PDF/A and Metadata Preservation
+
+When you open an existing PDF and call `save()`, PDFDancer preserves document-level metadata automatically. This matters most for archival PDFs where metadata and color information are part of the document's compliance requirements, not just descriptive fields.
+
+For PDF/A source files, PDFDancer preserves:
+
+- Document information fields such as title, author, subject, keywords, producer, creator, and custom metadata
+- Embedded XMP metadata, including the detected PDF/A identification schema
+- Output intents and embedded ICC profiles used for document color management
+- MarkInfo entries in the document catalog
+- The source PDF/A conformance level on save
+
+For PDF/A-1 documents, PDFDancer also writes output using PDF 1.4-compatible serialization so the saved file does not introduce object streams or cross-reference streams that would break conformance.
+
+:::info
+If an edit would produce a non-conformant PDF/A result, PDFDancer fails the save instead of silently weakening the document's archival guarantees. In practice, this most often shows up as a font issue when replacement text cannot be encoded with fully embedded fonts.
+:::
+
+You do not need a separate save method for this behavior. Standard edit-and-save workflows preserve the original document metadata and PDF/A properties automatically.
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+from pdfdancer import PDFDancer
+
+with PDFDancer.open("archival-input.pdf") as pdf:
+    paragraphs = pdf.page(1).select_paragraphs_matching("Old Company Name")
+    if paragraphs:
+        paragraphs[0].edit().replace("New Company Name").apply()
+
+    # Metadata, XMP, output intents, and PDF/A conformance
+    # are preserved automatically when possible.
+    pdf.save("archival-output.pdf")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+import { PDFDancer } from 'pdfdancer-client-typescript';
+
+const pdf = await PDFDancer.open('archival-input.pdf');
+
+const paragraphs = await pdf.page(1).selectParagraphsMatching('Old Company Name');
+if (paragraphs[0]) {
+  await paragraphs[0].edit()
+    .replace('New Company Name')
+    .apply();
+}
+
+// Metadata, XMP, output intents, and PDF/A conformance
+// are preserved automatically when possible.
+await pdf.save('archival-output.pdf');
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+import com.pdfdancer.client.rest.PDFDancer;
+import com.pdfdancer.client.rest.TextParagraphReference;
+
+import java.io.File;
+import java.util.List;
+
+try (PDFDancer pdf = PDFDancer.createSession(new File("archival-input.pdf"))) {
+    List<TextParagraphReference> paragraphs = pdf.page(1)
+            .selectParagraphsMatching("Old Company Name");
+
+    if (!paragraphs.isEmpty()) {
+        paragraphs.get(0).edit()
+                .replace("New Company Name")
+                .apply();
+    }
+
+    // Metadata, XMP, output intents, and PDF/A conformance
+    // are preserved automatically when possible.
+    pdf.save("archival-output.pdf");
+}
+```
+
+  </TabItem>
+</Tabs>
+
+---
+
 ## Context Managers and Resource Management
 
 ### Python Context Manager Pattern

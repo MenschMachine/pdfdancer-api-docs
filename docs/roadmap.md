@@ -68,4 +68,4 @@ These features are at the top of our development queue.
 - **Automatic Retry** - Built-in retry logic with rate limit handling across all SDKs
 - **Open Source Java SDK** - Java client library on GitHub and Maven Central
 - **Font Database** - Comprehensive font matching and substitution system
-- **Metadata Preservation** - All PDF metadata is preserved during processing
+- **Metadata & PDF/A Preservation** - Preserve document info, XMP metadata, output intents, mark info, and compatible ICC profiles during processing
