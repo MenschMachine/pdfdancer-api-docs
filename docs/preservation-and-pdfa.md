@@ -29,6 +29,8 @@ This behavior applies across the Python, TypeScript, and Java SDKs. You do not n
 
 If the source file is a PDF/A document, PDFDancer keeps the detected PDF/A level as the target for the output document.
 
+The currently documented and explicitly verified preservation path covers `PDF/A-1b` and `PDF/A-2b`. The backend also detects other PDF/A identifiers from XMP metadata, but this page only claims the preservation behavior that is directly covered by the shipped backend work.
+
 That includes:
 
 - Keeping PDF/A-appropriate metadata instead of overwriting producer and creator fields with generic PDFDancer values
