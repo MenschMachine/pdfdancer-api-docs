@@ -15,6 +15,7 @@ PDFDancer gives you pixel-perfect programmatic control over any PDF document fro
 - **Programmatic control** over PDFs you didn't create - modify invoices, contracts, forms, reports from any source
 - **Add content at exact positions** with paragraph/image builders, custom fonts (including embedded font support), and coordinate-based placement
 - **Smart text handling** with paragraph-aware text editing, preserving layout and formatting
+- **Preserve document fidelity** with metadata, XMP, ICC color profiles, output intents, and PDF/A-aware save behavior
 - **Full vector graphics control** for lines, curves, shapes, and complex drawings
 - **Very fast** performance optimized for high-throughput document processing
 - **Download results** as bytes for downstream processing or save directly to disk
@@ -29,6 +30,7 @@ PDFDancer gives you pixel-perfect programmatic control over any PDF document fro
 - **Form manipulation** - Fill, update, or delete AcroForm fields programmatically
 - **Coordinate-based selection** - Select elements by position, not just content
 - **Real PDF editing** - Modify the actual PDF structure, not just overlay content
+- **Archival-aware processing** - Keep PDF/A-related document structures intact when editing existing archival PDFs
 
 ### Smart Font Matching
 
@@ -51,6 +53,7 @@ Ready to get started? Head to [Getting Started](getting-started.md) to install t
 
 - [Product overview](https://www.pdfdancer.com?utm_source=github&utm_medium=readme&utm_campaign=pdfdancer-api-docs)
 - [SDK documentation](https://docs.pdfdancer.com?utm_source=github&utm_medium=readme&utm_campaign=pdfdancer-api-docs)
+- [Preservation and PDF/A](preservation-and-pdfa.md)
 - [Changelog](https://www.pdfdancer.com/changelog/?utm_source=github&utm_medium=readme&utm_campaign=pdfdancer-api-docs)
 - [Status](https://status.pdfdancer.com?utm_source=github&utm_medium=readme&utm_campaign=pdfdancer-api-docs)
 - [Issue tracker](https://github.com/MenschMachine/pdfdancer)

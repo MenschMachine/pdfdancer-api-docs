@@ -49,6 +49,7 @@ const sidebars: SidebarsConfig = {
                 'working-with-formxobjects',
                 'working-with-vector-graphics',
                 'working-with-snapshots',
+                'preservation-and-pdfa',
                 'redaction',
                 'reflow-internals',
                 'advanced',
