@@ -55,18 +55,18 @@ for (const path of paths) {
   <TabItem value="java" label="Java">
 
 ```java
-import com.tfc.pdf.pdfdancer.api.PDFDancer;
-import com.tfc.pdf.pdfdancer.api.common.model.*;
+import com.pdfdancer.client.rest.PDFDancer;
+import com.pdfdancer.client.rest.PathReference;
 
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
 
 // Get all paths on a specific page
-List<Path> paths = pdf.page(3).selectPaths();
+List<PathReference> paths = pdf.page(3).selectPaths();
 
 // Get paths at specific coordinates
-List<Path> pathsAtPoint = pdf.page(3).selectPathsAt(150, 320);
+List<PathReference> pathsAtPoint = pdf.page(3).selectPathsAt(150, 320);
 
-for (Path path : paths) {
+for (PathReference path : paths) {
     System.out.println("Path ID: " + path.getInternalId());
 }
 ```
@@ -126,24 +126,386 @@ for (const [i, path] of paths.entries()) {
   <TabItem value="java" label="Java">
 
 ```java
-import com.tfc.pdf.pdfdancer.api.PDFDancer;
+import com.pdfdancer.client.rest.PDFDancer;
+import com.pdfdancer.client.rest.PathReference;
 
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
 
 // Select paths on a page
-List<Path> paths = pdf.page(1).selectPaths();
+List<PathReference> paths = pdf.page(1).selectPaths();
 
 System.out.println("Found " + paths.size() + " paths on page 0");
 
 // You can iterate through paths
 for (int i = 0; i < paths.size(); i++) {
-    Path path = paths.get(i);
+    PathReference path = paths.get(i);
     System.out.println("Path " + i + ": " + path.getInternalId());
 }
 ```
 
   </TabItem>
 </Tabs>
+
+---
+
+## Modifying Path Colors
+
+Modify the stroke and fill colors of existing paths. Use the `edit()` method on a path reference to obtain a `PathEdit` builder, then chain color methods and call `apply()` to persist changes.
+
+:::info API Version
+Path color modification is available via API v1. The v1 API uses 1-based page indexing.
+:::
+
+:::note Finalize Method: `apply()` vs `add()`
+The new path color modification API (v1) uses `.apply()` to finalize builder operations, while the existing drawing API (v0) uses `.add()`. This is an intentional API version difference.
+:::
+
+### Basic Color Modification
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+from pdfdancer import PDFDancer, Color
+
+with PDFDancer.open("document.pdf") as pdf:
+    # Select a path to modify
+    paths = pdf.page(1).select_paths()
+    path = paths[0]
+
+    # Modify stroke color (RGB + alpha transparency)
+    path.edit().stroke_color(Color(255, 0, 0, 255)).apply()
+
+    # Modify fill color
+    path.edit().fill_color(Color(0, 255, 0, 200)).apply()
+
+    # Set both at once
+    path.edit() \
+        .stroke_color(Color(0, 0, 255)) \
+        .fill_color(Color(255, 255, 0)) \
+        .apply()
+
+    pdf.save("output.pdf")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+import { PDFDancer, Color } from 'pdfdancer-client-typescript';
+
+const pdf = await PDFDancer.open('document.pdf');
+
+// Select a path to modify
+const paths = await pdf.page(1).selectPaths();
+const path = paths[0];
+
+// Modify stroke color (RGB + alpha transparency)
+await path.edit().strokeColor(new Color(255, 0, 0, 255)).apply();
+
+// Modify fill color
+await path.edit().fillColor(new Color(0, 255, 0, 200)).apply();
+
+// Set both at once
+await path.edit()
+  .strokeColor(new Color(0, 0, 255))
+  .fillColor(new Color(255, 255, 0))
+  .apply();
+
+await pdf.save('output.pdf');
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+import com.pdfdancer.client.rest.PDFDancer;
+import com.pdfdancer.client.common.model.Color;
+import com.pdfdancer.client.rest.PathReference;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Select a path to modify
+List<PathReference> paths = pdf.page(1).selectPaths();
+PathReference path = paths.get(0);
+
+// Modify stroke color (RGB + alpha transparency)
+path.edit().strokeColor(new Color(255, 0, 0, 255)).apply();
+
+// Modify fill color
+path.edit().fillColor(new Color(0, 255, 0, 200)).apply();
+
+// Set both at once
+path.edit()
+    .strokeColor(new Color(0, 0, 255))
+    .fillColor(new Color(255, 255, 0))
+    .apply();
+
+pdf.save("output.pdf");
+```
+
+  </TabItem>
+</Tabs>
+
+### Color Transparency
+
+The alpha component (0-255) controls transparency. Alpha defaults to 255 (fully opaque) when not specified.
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+# Semi-transparent red stroke (alpha = 128)
+path.edit().stroke_color(Color(255, 0, 0, 128)).apply()
+
+# Fully opaque (alpha = 255, default)
+path.edit().stroke_color(Color(255, 0, 0)).apply()
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+// Semi-transparent red stroke (alpha = 128)
+await path.edit().strokeColor(new Color(255, 0, 0, 128)).apply();
+
+// Fully opaque (alpha = 255, default)
+await path.edit().strokeColor(new Color(255, 0, 0)).apply();
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+// Semi-transparent red stroke (alpha = 128)
+path.edit().strokeColor(new Color(255, 0, 0, 128)).apply();
+
+// Fully opaque (alpha = 255, default)
+path.edit().strokeColor(new Color(255, 0, 0)).apply();
+```
+
+  </TabItem>
+</Tabs>
+
+### Partial Updates
+
+Omit a color to leave it unchanged. Setting a color to `null` is not supported.
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+# Only change stroke, leave fill unchanged
+path.edit().stroke_color(Color(0, 0, 255)).apply()
+
+# Only change fill, leave stroke unchanged
+path.edit().fill_color(Color(255, 0, 0)).apply()
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+// Only change stroke, leave fill unchanged
+await path.edit().strokeColor(new Color(0, 0, 255)).apply();
+
+// Only change fill, leave stroke unchanged
+await path.edit().fillColor(new Color(255, 0, 0)).apply();
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+import com.pdfdancer.client.common.model.Color;
+
+// Only change stroke, leave fill unchanged
+path.edit().strokeColor(new Color(0, 0, 255)).apply();
+
+// Only change fill, leave stroke unchanged
+path.edit().fillColor(new Color(255, 0, 0)).apply();
+```
+
+  </TabItem>
+</Tabs>
+
+:::caution Clearing Colors
+Clearing stroke or fill colors is intentionally not supported. Passing `null` or omitting a color means "don't change". To remove a color from a path, consider recreating the path without that color property.
+:::
+
+### Error Handling
+
+Handle errors that may occur when modifying path colors, such as invalid path references or color values.
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+from pdfdancer import PDFDancer, Color
+from pdfdancer.exceptions import PathNotFoundException, InvalidColorException
+
+with PDFDancer.open("document.pdf") as pdf:
+    try:
+        paths = pdf.page(1).select_paths()
+        path = paths[0]
+
+        # Modify stroke color
+        path.edit().stroke_color(Color(255, 0, 0)).apply()
+        print("Color modified successfully")
+
+    except PathNotFoundException:
+        print("Error: Path does not exist")
+    except InvalidColorException:
+        print("Error: Invalid color value")
+    except Exception as e:
+        print(f"Error modifying path color: {e}")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+import { PDFDancer, Color } from 'pdfdancer-client-typescript';
+
+const pdf = await PDFDancer.open('document.pdf');
+
+try {
+  const paths = await pdf.page(1).selectPaths();
+  const path = paths[0];
+
+  // Modify stroke color
+  await path.edit().strokeColor(new Color(255, 0, 0)).apply();
+  console.log('Color modified successfully');
+
+} catch (error) {
+  if (error.code === 'PATH_NOT_FOUND') {
+    console.error('Error: Path does not exist');
+  } else if (error.code === 'INVALID_COLOR') {
+    console.error('Error: Invalid color value');
+  } else {
+    console.error(`Error modifying path color: ${error.message}`);
+  }
+}
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+import com.pdfdancer.client.rest.PDFDancer;
+import com.pdfdancer.client.common.model.Color;
+import com.pdfdancer.client.common.exception.PathNotFoundException;
+import com.pdfdancer.client.common.exception.InvalidColorException;
+import com.pdfdancer.client.rest.PathReference;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+try {
+    List<PathReference> paths = pdf.page(1).selectPaths();
+    PathReference path = paths.get(0);
+
+    // Modify stroke color
+    path.edit().strokeColor(new Color(255, 0, 0)).apply();
+    System.out.println("Color modified successfully");
+
+} catch (PathNotFoundException e) {
+    System.err.println("Error: Path does not exist");
+} catch (InvalidColorException e) {
+    System.err.println("Error: Invalid color value");
+} catch (Exception e) {
+    System.err.println("Error modifying path color: " + e.getMessage());
+}
+```
+
+  </TabItem>
+</Tabs>
+
+### Reading Path Colors
+
+After modifying a path, retrieve the updated color information using the v1 API snapshot which includes path styling data.
+
+:::info PathReference vs PathObjectRefV1
+`selectPaths()` returns lightweight `PathReference` objects that support editing operations. To read styling properties like colors, use `getSnapshotV1()` which returns `PathObjectRefV1` objects containing full path metadata including stroke/fill colors and dash patterns.
+:::
+
+<Tabs>
+  <TabItem value="python" label="Python">
+
+```python
+with PDFDancer.open("document.pdf") as pdf:
+    # Get v1 snapshot to see path colors
+    snapshot = pdf.page(1).get_snapshot(api_version=1)
+
+    for element in snapshot.elements:
+        if element.type == "PATH":
+            path_obj = element
+            print(f"Path {path_obj.internal_id}:")
+            print(f"  Stroke: {path_obj.stroke_color}")
+            print(f"  Fill: {path_obj.fill_color}")
+            print(f"  Stroke width: {path_obj.stroke_width}")
+```
+
+  </TabItem>
+  <TabItem value="typescript" label="TypeScript">
+
+```typescript
+const pdf = await PDFDancer.open('document.pdf');
+
+// Get v1 snapshot to see path colors
+const snapshot = await pdf.page(1).getSnapshot({ apiVersion: 1 });
+
+for (const element of snapshot.elements) {
+  if (element.type === 'PATH') {
+    const pathRef = element as PathObjectRefV1;
+    console.log(`Path ${pathRef.internalId}:`);
+    console.log(`  Stroke: ${pathRef.strokeColor}`);
+    console.log(`  Fill: ${pathRef.fillColor}`);
+    console.log(`  Stroke width: ${pathRef.strokeWidth}`);
+  }
+}
+```
+
+  </TabItem>
+  <TabItem value="java" label="Java">
+
+```java
+import com.pdfdancer.client.rest.PDFDancer;
+import com.pdfdancer.client.common.model.PathObjectRefV1;
+import com.pdfdancer.client.common.model.ObjectRefV1;
+import com.pdfdancer.client.common.response.PageSnapshotV1;
+
+PDFDancer pdf = PDFDancer.createSession("document.pdf");
+
+// Get v1 snapshot to see path colors
+PageSnapshotV1 snapshot = pdf.page(1).getSnapshotV1();
+
+for (ObjectRefV1 element : snapshot.elements()) {
+    if (element instanceof PathObjectRefV1 pathRef) {
+        System.out.println("Path " + pathRef.getInternalId() + ":");
+        System.out.println("  Stroke: " + pathRef.getStrokeColor());
+        System.out.println("  Fill: " + pathRef.getFillColor());
+        System.out.println("  Stroke width: " + pathRef.getStrokeWidth());
+    }
+}
+```
+
+  </TabItem>
+</Tabs>
+
+### PathObjectRefV1 Properties
+
+When using the v1 API, paths are returned as `PathObjectRefV1` objects containing styling information:
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `internal_id` / `internalId` / `getInternalId()` | String | Unique identifier for the path |
+| `type` | String | Object type, always `"PATH"` |
+| `position` | Position | Page and coordinates (v1 uses 1-based page numbers) |
+| `stroke_color` / `strokeColor` / `getStrokeColor()` | Color | Stroke outline color (may be null) |
+| `fill_color` / `fillColor` / `getFillColor()` | Color | Fill color (may be null) |
+| `stroke_width` / `strokeWidth` / `getStrokeWidth()` | Double | Stroke width in points (may be null) |
+| `dash_array` / `dashArray` / `getDashArray()` | double[] | Dash pattern for dashed strokes |
+| `dash_phase` / `dashPhase` / `getDashPhase()` | Double | Dash pattern offset |
 
 ---
 
@@ -474,8 +836,8 @@ await pdf.save('output.pdf');
   <TabItem value="java" label="Java">
 
 ```java
-import com.tfc.pdf.pdfdancer.api.PDFDancer;
-import com.tfc.pdf.pdfdancer.api.common.model.*;
+import com.pdfdancer.client.rest.PDFDancer;
+import com.pdfdancer.client.common.model.Color;
 
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
 Page page = pdf.page(1);
@@ -494,7 +856,7 @@ page.newLine()
     .toPoint(400, 150)
     .strokeColor(new Color(255, 0, 0))
     .strokeWidth(1)
-    .dashPattern(new int[]{5, 3})
+    .dashPattern(new double[]{5, 3})
     .add();
 
 pdf.save("output.pdf");
@@ -585,8 +947,8 @@ await pdf.save('output.pdf');
   <TabItem value="java" label="Java">
 
 ```java
-import com.tfc.pdf.pdfdancer.api.PDFDancer;
-import com.tfc.pdf.pdfdancer.api.common.model.*;
+import com.pdfdancer.client.rest.PDFDancer;
+import com.pdfdancer.client.common.model.Color;
 
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
 Page page = pdf.page(1);
@@ -675,8 +1037,8 @@ await pdf.save('output.pdf');
   <TabItem value="java" label="Java">
 
 ```java
-import com.tfc.pdf.pdfdancer.api.PDFDancer;
-import com.tfc.pdf.pdfdancer.api.common.model.*;
+import com.pdfdancer.client.rest.PDFDancer;
+import com.pdfdancer.client.common.model.Color;
 
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
 Page page = pdf.page(1);
@@ -910,8 +1272,8 @@ await pdf.save('output.pdf');
   <TabItem value="java" label="Java">
 
 ```java
-import com.tfc.pdf.pdfdancer.api.PDFDancer;
-import com.tfc.pdf.pdfdancer.api.common.model.*;
+import com.pdfdancer.client.rest.PDFDancer;
+import com.pdfdancer.client.common.model.Color;
 
 PDFDancer pdf = PDFDancer.createSession("document.pdf");
 Page page = pdf.page(1);
