@@ -1,144 +1,129 @@
 ---
 id: reflow-internals
 title: How Reflow Works
-description: Understanding PDFDancer's text reflow engine — a text-fitting calculation that computes how replacement text can fit within original bounds.
+description: Understanding PDFDancer's current text reflow behavior for paragraph replacement, fitting presets, alignment, and layout results.
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-This page explains how PDFDancer's reflow engine works internally, including the strategies it uses to fit text into existing bounds.
+This page explains how reflow behaves in the SDKs when replacement text needs to fit the original paragraph area.
 
 ---
 
 ## What Reflow Is
 
-Reflow is a **text-fitting calculation**. Given new text, the original bounding box, and a strategy chain, it computes what font size and line distribution would make the text fit.
+Reflow in PDFDancer is a **paragraph replacement and layout recomputation step**. After replacement text is chosen, PDFDancer recalculates the paragraph layout so the result fits as well as possible within the selected preset.
 
-Reflow does **not** replace text. Replacement and fitting are separate steps. When you call `replace()` with a reflow preset through the SDK, two things happen in sequence:
+In practice, reflow combines:
 
-1. The text content in the target element is replaced
-2. The reflow calculation runs against the original bounds and applies the result (scaling, repositioning)
+1. Replacing the paragraph's text content
+2. Measuring the replacement text with the paragraph's style information
+3. Choosing a layout based on the selected reflow preset
+4. Writing the updated paragraph layout back to the page
 
-Reflow operates within the bounds of:
-- A single text line
-- A paragraph (multi-line text block)
+Reflow stays anchored to the original paragraph area. Depending on the preset, it can rewrap text, scale fonts, and allow the paragraph to grow vertically.
 
 ---
 
 ## What Reflow Is Not
 
 Reflow does **not**:
-- Reconstruct logical reading order
-- Merge or split paragraphs
-- Detect columns or tables
-- Re-layout the page
-- Perform OCR
 
-If you are looking for semantic document reflow or accessibility-style linearization, this feature is not that.
+- Move downstream paragraphs
+- Flow content across pages
+- Hyphenate words automatically
+- Provide detailed substitution metadata in the result
+
+It is a paragraph-local layout operation, not a page-wide layout feature.
 
 ---
 
 ## Reflow Presets
 
-The SDKs expose reflow through three presets that map to internal strategy chains:
+The SDKs expose reflow through three presets:
 
-| Preset | Strategies Applied | Behavior |
-|--------|-------------------|----------|
-| `BEST_EFFORT` | rewrap → scaleFont → expandVertically | Tries all fitting strategies in order. Almost always succeeds. |
-| `FIT_OR_FAIL` | rewrap → scaleFont | Tries fitting within original bounds only. Fails if text cannot fit. |
-| `NONE` | *(none)* | No fitting. Text is placed as-is and may overflow or be truncated. |
-
----
-
-## Internal Strategies
-
-Strategies are tried in order and are cumulative — each builds on what the previous ones enabled.
-
-### Rewrap
-
-- Redistributes words across multiple lines within the original bounds
-- Tries different line counts and picks the one that **minimizes the maximum line width**
-- Uses all available height to determine optimal line count
-- Does **not** change font size
-- Respects explicit line breaks (`\n` in replacement text)
-
-This is always tried first in `BEST_EFFORT` and `FIT_OR_FAIL` modes.
-
-### Scale Font
-
-- Reduces font size in **0.5-unit steps** from the original size down to a minimum
-- If rewrap was enabled earlier in the chain, scaling continues to use balanced line distribution
-- Fails if text still does not fit at the minimum font size
-
-This is tried after rewrapping fails to fit the text.
-
-### Expand Vertically
-
-- Allows the text block to grow **taller** than the original bounds
-- Adds lines iteratively until all lines fit within the original width
-- Fails if any single word is wider than the available width (no amount of extra lines helps)
-
-This is the last resort in `BEST_EFFORT` mode.
-
-### Expand Horizontally
-
-- Allows lines to become **wider** than the original bounds
-- Reduces line count iteratively until height fits within the original bounds
-- Less commonly useful, mainly for labels or headings
+| Preset | Behavior |
+|--------|----------|
+| `BEST_EFFORT` | Rewraps text, scales font when needed, and can expand the paragraph vertically as a last resort. |
+| `FIT_OR_FAIL` | Keeps the paragraph inside its original bounds. If it still cannot fit, the operation fails. |
+| `NONE` | Preserves the original line structure instead of redistributing text across different lines. |
 
 ---
 
-## How the Presets Map to Strategies
+## Layout Behavior
 
-```
-BEST_EFFORT:
-  1. rewrap()
-  2. scaleFont(minSize)
-  3. expandVertically()
+### Line Breaking
 
-FIT_OR_FAIL:
-  1. rewrap()
-  2. scaleFont(minSize)
-  [fails if still doesn't fit]
+Reflow can redistribute paragraph text across lines when the selected preset allows it.
 
-NONE:
-  [no strategies applied]
-```
+Explicit `\n` line breaks are preserved. Automatic hyphenation is not supported.
+
+### Width Measurement
+
+Text is measured using the paragraph's current styling so PDFDancer can decide whether it fits, needs rewrapping, or needs font scaling.
+
+### Alignment
+
+PDFDancer preserves the paragraph's detected alignment when possible:
+
+- `LEFT`
+- `RIGHT`
+- `CENTERED`
+- `JUSTIFIED`
+
+Alignment affects:
+
+- The starting x-position for each line
+- Whether inter-word spacing is stretched on justified lines
+
+Reflowed output is not universally left-aligned. Right-aligned, centered, and justified paragraphs are preserved when detected.
+
+### Justification
+
+For justified paragraphs, non-final lines distribute extra width across spaces. The final line keeps natural spacing.
+
+### Line Spacing
+
+Line spacing is derived from the source paragraph so the replacement stays visually close to the original layout.
+
+### Explicit Newlines
+
+Explicit `\n` characters in replacement text are preserved as line breaks.
 
 ---
 
-## Behavior by Text Element Type
+## Style Preservation
 
-### Paragraphs (Multi-line)
+Reflow preserves the paragraph's visual styling, including:
 
-For paragraphs, all strategies apply:
-1. Words are redistributed across lines to find the optimal layout
-2. If that fails, font size is reduced in 0.5-unit steps
-3. If still too large, the paragraph may expand vertically (in `BEST_EFFORT` mode)
+- Font
+- Font size
+- Colors
+- Character spacing
+- Rendering mode
+- Horizontal scaling
+- Stroke line width
 
-### Single Lines
-
-Rewrapping has no effect on single lines. Only font scaling or expansion applies:
-1. Font size is reduced until the text fits
-2. If configured, the line may expand horizontally
+Mixed font sizes are preserved rather than being flattened into a single average size.
 
 ---
 
 ## Failure Handling
 
-Reflow is **strict by design**. There is no silent fallback.
+Reflow is strict by design. There is no silent fallback.
 
-- If reflow succeeds, the fitting adjustments are applied to the text elements
-- If it fails, the SDK throws an error
+- If reflow succeeds, the fitting adjustments are applied to the replacement output
+- If it fails, the SDK surfaces an error
 
-Internally, the engine tracks detailed failure information (required vs. available dimensions, minimum font size reached, failure reason). The SDK surfaces this as an exception — use `FIT_OR_FAIL` when you need to detect and handle cases where text cannot fit.
+Typical failure reasons include:
 
-Failure reasons at the engine level include:
-- Width or height constraints violated
-- Minimum font size reached without fitting
-- Unbreakable content (a single word wider than available width)
-- Strategy chain exhausted with no successful fit
+- Width or height constraints are still violated
+- Minimum font size was reached without fitting
+- A single unbreakable word is wider than the available width
+- The available preset behavior could not produce a valid layout
+
+Use `FIT_OR_FAIL` when you need to detect and handle cases where text cannot remain inside the original bounds.
 
 ---
 
@@ -146,7 +131,7 @@ Failure reasons at the engine level include:
 
 ### Example 1: Replacement That Fits Naturally
 
-When replacement text is similar in length, rewrapping alone handles it:
+When replacement text is similar in length, rewrapping alone is often enough:
 
 <Tabs>
   <TabItem value="python" label="Python">
@@ -198,11 +183,11 @@ pdf.save("output.pdf");
 
 ### Example 2: Longer Replacement Text
 
-When replacement text is significantly longer, the strategy chain kicks in:
+When replacement text is significantly longer, the preset behavior becomes visible:
 
-1. Rewrap redistributes words across available lines
-2. If still too long, font size shrinks in 0.5-unit steps (e.g., 12 → 11.5 → 11 → ...)
-3. Finally, the text block may grow taller if needed
+1. Rewrap redistributes text across the available width
+2. If that is still not enough, font scaling searches for the largest size that fits
+3. In `BEST_EFFORT`, the paragraph can grow taller as a final fallback
 
 <Tabs>
   <TabItem value="python" label="Python">
@@ -300,7 +285,7 @@ pdf.save("output.pdf");
 
 ### Example 4: Strict Fitting
 
-Use `FIT_OR_FAIL` when you need the text to stay within original bounds:
+Use `FIT_OR_FAIL` when the replacement must stay inside the original bounds:
 
 <Tabs>
   <TabItem value="python" label="Python">
@@ -358,56 +343,34 @@ try {
 
 ## Known Limitations
 
-- **Word splitting is whitespace-based only** — no hyphenation support
-- **No language-aware line breaking** — treats all text the same
-- **No widow/orphan control** — may leave single words on lines
-- **Font scaling uses fixed 0.5-unit steps** — not infinitely smooth
-- **Paragraph boundaries cannot change** — reflow stays within the original container
-- **Alignment is not preserved** — reflowed text uses left alignment from the original top-left position
-- **Line spacing is derived from existing content** — may not match exactly
-- **Mixed font sizes are averaged** — if the original paragraph contains multiple font sizes, they are averaged into a single reference size for the calculation
-
----
-
-## Not Implemented
-
-- Hyphenation
-- Per-line alignment preservation
-- Mixed font sizes inside a reflowed paragraph
-- Adaptive line spacing
-
----
-
-## When to Use Each Preset
-
-| Use Case | Recommended Preset |
-|----------|-------------------|
-| Template filling with variable-length data | `BEST_EFFORT` |
-| Form fields with strict size constraints | `FIT_OR_FAIL` |
-| Direct text replacement (no fitting needed) | `NONE` |
-| Translations (often longer than original) | `BEST_EFFORT` |
-| Labels or headings with exact positioning | `FIT_OR_FAIL` |
+- Word splitting is whitespace-based only
+- No language-aware line breaking
+- No widow/orphan control
+- Paragraphs stay anchored to their original page context
+- Line spacing is derived from existing content and may not be exact in every case
+- Detailed substitution metadata is not currently exposed in SDK results
 
 ---
 
 ## Practical Recommendations
 
-- Start with `BEST_EFFORT` — it covers most cases
-- Use `FIT_OR_FAIL` when visual bounds are strict (forms, labels, certificates)
-- Use `NONE` only when you know the replacement text is the same length or you don't care about overflow
-- Use explicit `\n` in replacement text when you need specific line breaks
-- Handle reflow failures — the error tells you why fitting failed
+- Start with `BEST_EFFORT` for template filling with variable-length content
+- Use `FIT_OR_FAIL` when visual bounds are strict
+- Use `NONE` when you want to preserve the original line structure
+- Use explicit `\n` when you need fixed line breaks
+- Handle reflow failures explicitly when bounds matter
 
 ---
 
 ## Design Philosophy
 
 Reflow is intentionally:
-- **Deterministic** — same input always produces same output
-- **Strict** — fails explicitly rather than producing broken output
-- **Predictable** — strategies are applied in a defined order
 
-This makes it reliable for automated document processing where visual correctness matters.
+- Deterministic
+- Strict
+- Predictable
+
+This makes it suitable for automated document generation where layout behavior needs to be consistent across runs.
 
 ---
 

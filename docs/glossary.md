@@ -172,9 +172,9 @@ Determines how elements are matched when selecting by position:
 ### Reflow Preset
 
 Controls how text is adjusted when replacement text is longer or shorter than the original. Options include:
-- **BEST_EFFORT**: Automatically adjusts text to fit available space (recommended)
-- **FIT_OR_FAIL**: Fails if text doesn't fit in the available space
-- **NONE**: No reflow; text may overflow or be truncated
+- **BEST_EFFORT**: Rewraps text, scales font if needed, and can expand vertically as a final fallback
+- **FIT_OR_FAIL**: Rewraps and scales within the original bounds, then fails if the content still cannot fit
+- **NONE**: Preserves the original line structure instead of redistributing text across different lines
 
 **See also:** [Working with Templates](working-with-templates.md)
 

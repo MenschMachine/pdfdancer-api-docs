@@ -313,13 +313,13 @@ pdf.save("filled.pdf");
 
 ## Text Reflow
 
-When replacement text is longer or shorter than the placeholder, PDFDancer can automatically reflow the text to fit. Use the reflow preset to control this behavior:
+When replacement text is longer or shorter than the placeholder, PDFDancer can automatically reflow the paragraph. Use the reflow preset to control how aggressively layout is adjusted:
 
 | Preset | Description |
 |--------|-------------|
-| `BEST_EFFORT` | Automatically adjusts text to fit available space (recommended) |
-| `FIT_OR_FAIL` | Fails if text doesn't fit in the available space |
-| `NONE` | No reflow; text may overflow or be truncated. Use when you want full control over layout. |
+| `BEST_EFFORT` | Rewraps text, scales font if needed, and can expand the paragraph vertically as a last resort. Recommended for variable-length content. |
+| `FIT_OR_FAIL` | Rewraps text and scales font within the original bounds. Fails if the content still cannot fit. |
+| `NONE` | Preserves the original line structure instead of redistributing text across different lines. |
 
 <Tabs>
   <TabItem value="python" label="Python">
@@ -380,6 +380,8 @@ pdf.save("filled.pdf");
 
   </TabItem>
 </Tabs>
+
+For current reflow behavior, alignment, and limits, see [How Reflow Works](reflow-internals.md).
 
 ---
 
