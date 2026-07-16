@@ -2,6 +2,7 @@
 'use strict';
 
 const path = require('node:path');
+const fs = require('node:fs');
 const ts = require('typescript');
 
 function modifiers(declaration) {
@@ -86,11 +87,7 @@ function membersForType(checker, ownerName, type, isStatic) {
   return result;
 }
 
-function extractSymbol(checker, exportedSymbol) {
-  const exportName = exportedSymbol.getName();
-  const symbol = (exportedSymbol.flags & ts.SymbolFlags.Alias)
-    ? checker.getAliasedSymbol(exportedSymbol)
-    : exportedSymbol;
+function extractSymbol(checker, symbol, exportName, moduleName) {
   const declaration = symbol.valueDeclaration || symbol.declarations?.[0];
   if (!declaration) return null;
   const kind = declarationKind(symbol);
@@ -141,17 +138,40 @@ function extractSymbol(checker, exportedSymbol) {
     }
   }
 
-  return {id: exportName, name: exportName, kind, signature: summary, members};
+  return {id: exportName, name: exportName, module: moduleName, kind, signature: summary, members};
 }
 
-function extract(entryFile) {
+function declarationFiles(input) {
+  const stat = fs.statSync(input);
+  if (stat.isFile()) return [input];
+  const result = [];
+  const visit = (directory) => {
+    for (const entry of fs.readdirSync(directory, {withFileTypes: true}).sort((a, b) => a.name.localeCompare(b.name))) {
+      const fullPath = path.join(directory, entry.name);
+      if (entry.isDirectory()) visit(fullPath);
+      else if (entry.name.endsWith('.d.ts')) result.push(fullPath);
+    }
+  };
+  visit(input);
+  return result;
+}
+
+function moduleName(root, sourceFile) {
+  const relative = path.relative(root, sourceFile).replaceAll(path.sep, '/').replace(/\.d\.ts$/, '');
+  return relative || 'index';
+}
+
+function extract(input) {
+  const absoluteInput = path.resolve(input);
+  const files = declarationFiles(absoluteInput).map((file) => path.resolve(file));
+  const root = fs.statSync(absoluteInput).isDirectory() ? absoluteInput : path.dirname(absoluteInput);
   const options = {
     target: ts.ScriptTarget.ES2020,
     module: ts.ModuleKind.CommonJS,
     moduleResolution: ts.ModuleResolutionKind.Node10,
     skipLibCheck: true,
   };
-  const program = ts.createProgram([entryFile], options);
+  const program = ts.createProgram(files, options);
   const diagnostics = ts.getPreEmitDiagnostics(program).filter((diagnostic) => diagnostic.category === ts.DiagnosticCategory.Error);
   if (diagnostics.length > 0) {
     throw new Error(ts.formatDiagnosticsWithColorAndContext(diagnostics, {
@@ -160,24 +180,51 @@ function extract(entryFile) {
       getNewLine: () => '\n',
     }));
   }
-  const source = program.getSourceFile(entryFile) || program.getSourceFile(path.resolve(entryFile));
-  if (!source) throw new Error(`TypeScript declaration entry point not found: ${entryFile}`);
   const checker = program.getTypeChecker();
-  const moduleSymbol = checker.getSymbolAtLocation(source);
-  if (!moduleSymbol) throw new Error(`No module symbol found for: ${entryFile}`);
-  const symbols = checker.getExportsOfModule(moduleSymbol)
-    .map((symbol) => extractSymbol(checker, symbol))
-    .filter(Boolean);
+  const targets = new Map();
+  for (const file of files) {
+    const source = program.getSourceFile(file);
+    if (!source) throw new Error(`TypeScript declaration file not found in compiler program: ${file}`);
+    const sourceModule = checker.getSymbolAtLocation(source);
+    if (!sourceModule) continue;
+    for (const exported of checker.getExportsOfModule(sourceModule)) {
+      const target = (exported.flags & ts.SymbolFlags.Alias) ? checker.getAliasedSymbol(exported) : exported;
+      const declaration = target.valueDeclaration || target.declarations?.[0];
+      if (!declaration) continue;
+      const declarationFile = path.resolve(declaration.getSourceFile().fileName);
+      if (declarationFile !== root && !declarationFile.startsWith(`${root}${path.sep}`)) continue;
+      const current = targets.get(target) || {
+        names: new Set(),
+        module: moduleName(root, declarationFile),
+      };
+      current.names.add(exported.getName());
+      targets.set(target, current);
+    }
+  }
+
+  const extracted = [];
+  for (const [target, details] of targets) {
+    for (const name of [...details.names].sort()) {
+      const symbol = extractSymbol(checker, target, name, details.module);
+      if (symbol) extracted.push(symbol);
+    }
+  }
+  const nameCounts = new Map();
+  for (const symbol of extracted) nameCounts.set(symbol.name, (nameCounts.get(symbol.name) || 0) + 1);
+  for (const symbol of extracted) {
+    if (nameCounts.get(symbol.name) > 1) symbol.id = `${symbol.module}#${symbol.name}`;
+  }
+  const symbols = extracted;
   return {symbols};
 }
 
 if (require.main === module) {
-  const entryFile = process.argv[2];
-  if (!entryFile) {
-    process.stderr.write('Usage: extract-typescript.js <dist/index.d.ts>\n');
+  const input = process.argv[2];
+  if (!input) {
+    process.stderr.write('Usage: extract-typescript.js <dist-directory-or-declaration-file>\n');
     process.exit(2);
   }
-  process.stdout.write(`${JSON.stringify(extract(path.resolve(entryFile)), null, 2)}\n`);
+  process.stdout.write(`${JSON.stringify(extract(path.resolve(input)), null, 2)}\n`);
 }
 
 module.exports = {extract};

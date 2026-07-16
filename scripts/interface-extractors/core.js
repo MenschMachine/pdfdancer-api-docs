@@ -20,7 +20,7 @@ function normalizeMember(member) {
 }
 
 function normalizeSymbol(symbol) {
-  return {
+  const normalized = {
     id: String(symbol.id),
     name: String(symbol.name),
     kind: String(symbol.kind),
@@ -28,6 +28,8 @@ function normalizeSymbol(symbol) {
     members: (symbol.members || []).map(normalizeMember).sort((a, b) =>
       compareText(a.id, b.id) || compareText(a.signature, b.signature)),
   };
+  if (symbol.module !== undefined) normalized.module = String(symbol.module);
+  return normalized;
 }
 
 function normalizeManifest(manifest) {
@@ -116,10 +118,90 @@ function diffManifests(base, candidate) {
     compareText(a.before || '', b.before || '') || compareText(a.after || '', b.after || ''));
 }
 
+function buildSymbolChanges(base, candidate, promotedIds = []) {
+  const promoted = new Set(promotedIds);
+  const baseSymbols = new Map(base.symbols.map((symbol) => [symbol.id, symbol]));
+  const candidateSymbols = new Map(candidate.symbols.map((symbol) => [symbol.id, symbol]));
+  const ids = [...new Set([...baseSymbols.keys(), ...candidateSymbols.keys()])].sort(compareText);
+  const symbolChanges = [];
+
+  for (const id of ids) {
+    const before = baseSymbols.get(id);
+    const after = candidateSymbols.get(id);
+    if (!before) {
+      symbolChanges.push({
+        id,
+        status: 'added',
+        kind: after.kind,
+        signature: after.signature,
+        memberCount: after.members.length,
+      });
+      continue;
+    }
+    if (!after) {
+      symbolChanges.push({
+        id,
+        status: 'removed',
+        kind: before.kind,
+        signature: before.signature,
+        memberCount: before.members.length,
+      });
+      continue;
+    }
+
+    const memberChanges = diffMembers(id, before.members, after.members);
+    const declarationChanged = before.signature !== after.signature || before.kind !== after.kind;
+    if (promoted.has(id)) {
+      const change = {
+        id,
+        status: 'promoted',
+        kind: after.kind,
+        previousModule: before.module,
+        memberChanges,
+      };
+      if (declarationChanged) {
+        change.declarationChange = {before: before.signature, after: after.signature};
+      }
+      symbolChanges.push(change);
+      continue;
+    }
+    if (declarationChanged || memberChanges.length > 0) {
+      const change = {
+        id,
+        status: 'changed',
+        kind: after.kind,
+        memberChanges,
+      };
+      if (declarationChanged) {
+        change.declarationChange = {before: before.signature, after: after.signature};
+      }
+      symbolChanges.push(change);
+    }
+  }
+  return symbolChanges;
+}
+
+function countKinds(values, field) {
+  return {
+    added: values.filter((value) => value[field] === 'added').length,
+    promoted: values.filter((value) => value[field] === 'promoted').length,
+    removed: values.filter((value) => value[field] === 'removed').length,
+    changed: values.filter((value) => value[field] === 'changed').length,
+  };
+}
+
 function buildDiff(baseManifests, candidateManifests, refs) {
   const languages = {};
   for (const language of Object.keys(candidateManifests).sort(compareText)) {
     const changes = diffManifests(baseManifests[language], candidateManifests[language]);
+    const symbolChanges = buildSymbolChanges(
+      baseManifests[language],
+      candidateManifests[language],
+      refs[language].promotedSymbols,
+    );
+    const retainedMemberChanges = symbolChanges
+      .filter((change) => change.status === 'changed')
+      .flatMap((change) => change.memberChanges);
     languages[language] = {
       repository: refs[language].repository,
       baseRef: refs[language].baseRef,
@@ -127,14 +209,65 @@ function buildDiff(baseManifests, candidateManifests, refs) {
       candidateRef: refs[language].candidateRef,
       candidateCommit: refs[language].candidateCommit,
       counts: {
-        added: changes.filter((change) => change.kind === 'added').length,
-        removed: changes.filter((change) => change.kind === 'removed').length,
-        changed: changes.filter((change) => change.kind === 'changed').length,
+        symbols: countKinds(symbolChanges, 'status'),
+        retainedSymbolMembers: countKinds(retainedMemberChanges, 'kind'),
+        records: countKinds(changes, 'kind'),
       },
+      symbolChanges,
       changes,
     };
   }
-  return {schemaVersion: 1, languages};
+  return {schemaVersion: 2, languages};
+}
+
+function titleCase(value) {
+  return `${value[0].toUpperCase()}${value.slice(1)}`;
+}
+
+function inlineCode(value) {
+  const text = String(value);
+  return text.includes('`') ? `\`\` ${text} \`\`` : `\`${text}\``;
+}
+
+function renderSymbolList(lines, heading, changes) {
+  lines.push(`### ${heading} (${changes.length})`, '');
+  if (changes.length === 0) {
+    lines.push('None.', '');
+    return;
+  }
+  for (const change of changes) lines.push(`- ${inlineCode(change.id)} — ${change.kind}`);
+  lines.push('');
+}
+
+function renderMemberChanges(lines, changes) {
+  for (const kind of ['added', 'removed', 'changed']) {
+    const matching = changes.filter((change) => change.kind === kind);
+    if (matching.length === 0) continue;
+    lines.push(`- ${titleCase(kind)} members (${matching.length}):`);
+    for (const change of matching) {
+      const label = change.before && change.after
+        ? `${inlineCode(change.before)} → ${inlineCode(change.after)}`
+        : inlineCode(change.after || change.before);
+      lines.push(`  - ${label}`);
+    }
+  }
+}
+
+function renderPromotedSymbols(lines, changes) {
+  lines.push(`### Existing symbols promoted to the package root (${changes.length})`, '');
+  if (changes.length === 0) {
+    lines.push('None.', '');
+    return;
+  }
+  for (const change of changes) {
+    lines.push(`#### ${inlineCode(change.id)}`, '');
+    lines.push(`- Previously exported from module: ${inlineCode(change.previousModule || 'unknown')}`);
+    if (change.declarationChange) {
+      lines.push(`- Declaration: ${inlineCode(change.declarationChange.before)} → ${inlineCode(change.declarationChange.after)}`);
+    }
+    renderMemberChanges(lines, change.memberChanges);
+    lines.push('');
+  }
 }
 
 function renderDiffMarkdown(diff) {
@@ -143,7 +276,7 @@ function renderDiffMarkdown(diff) {
     '',
     '> Generated by `npm run extract:v2-interfaces`. Do not edit this file manually.',
     '',
-    'This report compares the configured committed base and candidate refs. It does not inspect uncommitted SDK changes.',
+    'This report compares the configured committed base and candidate refs. It does not inspect uncommitted SDK changes. Start with [the review summary](./v2-interface-summary.md), then use this file for exact changes to retained symbols.',
     '',
   ];
   for (const [language, result] of Object.entries(diff.languages)) {
@@ -151,22 +284,70 @@ function renderDiffMarkdown(diff) {
     lines.push(`- Repository: \`${result.repository}\``);
     lines.push(`- Base: \`${result.baseRef}\` (\`${result.baseCommit}\`)`);
     lines.push(`- Candidate: \`${result.candidateRef}\` (\`${result.candidateCommit}\`)`);
-    lines.push(`- Changes: ${result.counts.added} added, ${result.counts.removed} removed, ${result.counts.changed} changed`, '');
-    if (result.changes.length === 0) {
+    const symbolCounts = result.counts.symbols;
+    const memberCounts = result.counts.retainedSymbolMembers;
+    lines.push(`- Public symbols: ${symbolCounts.added} added, ${symbolCounts.promoted} promoted to the package root, ${symbolCounts.removed} removed, ${symbolCounts.changed} changed`);
+    lines.push(`- Members of retained symbols: ${memberCounts.added} added, ${memberCounts.removed} removed, ${memberCounts.changed} changed`, '');
+    if (result.symbolChanges.length === 0) {
       lines.push('No public interface changes.', '');
       continue;
     }
-    for (const kind of ['added', 'removed', 'changed']) {
-      const changes = result.changes.filter((change) => change.kind === kind);
-      if (changes.length === 0) continue;
-      lines.push(`### ${kind[0].toUpperCase()}${kind.slice(1)}`, '');
-      for (const change of changes) {
-        const label = change.before && change.after
-          ? `\`${change.before}\` → \`${change.after}\``
-          : `\`${change.after || change.before}\``;
-        lines.push(`- **${change.symbol}**: ${label}`);
+    renderSymbolList(lines, 'Added public symbols', result.symbolChanges.filter((change) => change.status === 'added'));
+    renderPromotedSymbols(lines, result.symbolChanges.filter((change) => change.status === 'promoted'));
+    renderSymbolList(lines, 'Removed public symbols', result.symbolChanges.filter((change) => change.status === 'removed'));
+    const changed = result.symbolChanges.filter((change) => change.status === 'changed');
+    lines.push(`### Retained public symbols with changes (${changed.length})`, '');
+    if (changed.length === 0) lines.push('None.', '');
+    for (const change of changed) {
+      lines.push(`#### ${inlineCode(change.id)}`, '');
+      if (change.declarationChange) {
+        lines.push(`- Declaration: ${inlineCode(change.declarationChange.before)} → ${inlineCode(change.declarationChange.after)}`);
       }
+      renderMemberChanges(lines, change.memberChanges);
       lines.push('');
+    }
+  }
+  return `${lines.join('\n')}\n`;
+}
+
+function renderSummaryMarkdown(diff) {
+  const lines = [
+    '# v2 public interface review summary',
+    '',
+    '> Generated by `npm run extract:v2-interfaces`. Do not edit this file manually.',
+    '',
+    'Use this file to scope documentation work. Added and removed symbols appear once; their complete members are available in the language manifests. Open [the review diff](./v2-interface-diff.md) only when you need exact changes to retained symbols.',
+    '',
+  ];
+  for (const [language, result] of Object.entries(diff.languages)) {
+    const symbols = result.counts.symbols;
+    const members = result.counts.retainedSymbolMembers;
+    lines.push(`## ${titleCase(language)}`, '');
+    lines.push(`Comparing ${inlineCode(result.baseRef)} to ${inlineCode(result.candidateRef)}.`, '');
+    lines.push('| Review unit | Added | Promoted | Removed | Changed |', '|---|---:|---:|---:|---:|');
+    lines.push(`| Public symbols | ${symbols.added} | ${symbols.promoted} | ${symbols.removed} | ${symbols.changed} |`);
+    lines.push(`| Members of retained symbols | ${members.added} | ${members.promoted} | ${members.removed} | ${members.changed} |`, '');
+    for (const status of ['added', 'promoted', 'removed', 'changed']) {
+      const matching = result.symbolChanges.filter((change) => change.status === status);
+      lines.push(`### ${titleCase(status)} symbols (${matching.length})`, '');
+      if (matching.length === 0) {
+        lines.push('None.', '');
+        continue;
+      }
+      const groups = new Map();
+      for (const change of matching) {
+        const separator = language === 'java' ? change.id.lastIndexOf('.') : -1;
+        const group = separator === -1 ? 'Package exports' : change.id.slice(0, separator);
+        const name = separator === -1 ? change.id : change.id.slice(separator + 1);
+        const names = groups.get(group) || [];
+        names.push(name);
+        groups.set(group, names);
+      }
+      for (const [group, names] of groups) {
+        if (language === 'java') lines.push(`#### ${inlineCode(group)}`, '');
+        for (const name of names) lines.push(`- ${inlineCode(name)}`);
+        lines.push('');
+      }
     }
   }
   return `${lines.join('\n')}\n`;
@@ -198,10 +379,12 @@ function replaceDirectoryAtomically(stagingDirectory, outputDirectory) {
 
 module.exports = {
   buildDiff,
+  buildSymbolChanges,
   compareText,
   diffManifests,
   normalizeManifest,
   renderDiffMarkdown,
+  renderSummaryMarkdown,
   replaceDirectoryAtomically,
   stableJson,
 };

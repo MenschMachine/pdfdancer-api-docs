@@ -4,8 +4,10 @@
 from __future__ import annotations
 
 import enum
+import importlib
 import inspect
 import json
+import pkgutil
 import re
 import sys
 from typing import Any
@@ -86,10 +88,56 @@ def class_symbol(export_name: str, value: type[Any]) -> dict[str, Any]:
     return {
         "id": export_name,
         "name": export_name,
+        "module": value.__module__.removeprefix("pdfdancer."),
         "kind": kind,
         "signature": signature(value, export_name),
         "members": members,
     }
+
+
+def exported_symbol(export_name: str, value: Any) -> dict[str, Any]:
+    if inspect.isclass(value):
+        return class_symbol(export_name, value)
+    if inspect.isroutine(value):
+        return {
+            "id": export_name,
+            "name": export_name,
+            "module": getattr(value, "__module__", "").removeprefix("pdfdancer."),
+            "kind": "function",
+            "signature": signature(value, export_name),
+            "members": [],
+        }
+    return {
+        "id": export_name,
+        "name": export_name,
+        "module": getattr(type(value), "__module__", "").removeprefix("pdfdancer."),
+        "kind": "value",
+        "signature": f"{export_name}: {type(value).__module__}.{type(value).__qualname__}",
+        "members": [],
+    }
+
+
+def all_module_symbols(package: Any) -> list[dict[str, Any]]:
+    symbols: list[dict[str, Any]] = []
+    modules = [package]
+    modules.extend(
+        importlib.import_module(module_info.name)
+        for module_info in pkgutil.walk_packages(package.__path__, f"{package.__name__}.")
+    )
+    for module in modules:
+        for name, value in sorted(vars(module).items()):
+            if name.startswith("_") or getattr(value, "__module__", None) != module.__name__:
+                continue
+            if inspect.isclass(value) or inspect.isroutine(value):
+                symbols.append(exported_symbol(name, value))
+
+    name_counts: dict[str, int] = {}
+    for symbol in symbols:
+        name_counts[symbol["name"]] = name_counts.get(symbol["name"], 0) + 1
+    for symbol in symbols:
+        if name_counts[symbol["name"]] > 1:
+            symbol["id"] = f"{symbol['module']}#{symbol['name']}"
+    return symbols
 
 
 def extract() -> dict[str, Any]:
@@ -102,26 +150,8 @@ def extract() -> dict[str, Any]:
     symbols: list[dict[str, Any]] = []
     for export_name in exports:
         value = getattr(pdfdancer, export_name)
-        if inspect.isclass(value):
-            symbols.append(class_symbol(export_name, value))
-        elif inspect.isroutine(value):
-            item: dict[str, Any] = {
-                "id": export_name,
-                "name": export_name,
-                "kind": "function",
-                "signature": signature(value, export_name),
-                "members": [],
-            }
-            symbols.append(item)
-        else:
-            symbols.append({
-                "id": export_name,
-                "name": export_name,
-                "kind": "value",
-                "signature": f"{export_name}: {type(value).__module__}.{type(value).__qualname__}",
-                "members": [],
-            })
-    return {"symbols": symbols}
+        symbols.append(exported_symbol(export_name, value))
+    return {"symbols": symbols, "allModuleSymbols": all_module_symbols(pdfdancer)}
 
 
 if __name__ == "__main__":

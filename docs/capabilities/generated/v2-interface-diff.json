@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "languages": {
     "java": {
       "repository": "pdfdancer-client-java",
@@ -8,10 +8,1247 @@
       "candidateRef": "release/v2",
       "candidateCommit": "9c04036fe11472d78332038d401c7c44fbefa406",
       "counts": {
-        "added": 499,
-        "removed": 309,
-        "changed": 19
+        "symbols": {
+          "added": 45,
+          "promoted": 0,
+          "removed": 25,
+          "changed": 18
+        },
+        "retainedSymbolMembers": {
+          "added": 26,
+          "promoted": 0,
+          "removed": 73,
+          "changed": 17
+        },
+        "records": {
+          "added": 499,
+          "promoted": 0,
+          "removed": 309,
+          "changed": 19
+        }
       },
+      "symbolChanges": [
+        {
+          "id": "com.pdfdancer.client.rest.BaseReference",
+          "status": "changed",
+          "kind": "class",
+          "memberChanges": [
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.BaseReference",
+              "before": "public boolean redact()"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.BaseReference",
+              "before": "public boolean redact(com.pdfdancer.common.model.Color)"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.BaseReference",
+              "before": "public boolean redact(java.lang.String)"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.BaseReference",
+              "before": "public boolean redact(java.lang.String, com.pdfdancer.common.model.Color)"
+            }
+          ]
+        },
+        {
+          "id": "com.pdfdancer.client.rest.FontNotFoundException",
+          "status": "added",
+          "kind": "class",
+          "signature": "public class com.pdfdancer.client.rest.FontNotFoundException extends com.pdfdancer.client.rest.PdfDancerException",
+          "memberCount": 2
+        },
+        {
+          "id": "com.pdfdancer.client.rest.HttpClientException",
+          "status": "added",
+          "kind": "class",
+          "signature": "public class com.pdfdancer.client.rest.HttpClientException extends com.pdfdancer.client.rest.PdfDancerException",
+          "memberCount": 6
+        },
+        {
+          "id": "com.pdfdancer.client.rest.ImageBuilder",
+          "status": "changed",
+          "kind": "class",
+          "memberChanges": [
+            {
+              "kind": "added",
+              "symbol": "com.pdfdancer.client.rest.ImageBuilder",
+              "after": "public com.pdfdancer.client.rest.ImageBuilder(com.pdfdancer.client.rest.PDFDancer, java.lang.Integer)"
+            },
+            {
+              "kind": "added",
+              "symbol": "com.pdfdancer.client.rest.ImageBuilder",
+              "after": "public com.pdfdancer.client.rest.ImageBuilder at(double, double)"
+            }
+          ]
+        },
+        {
+          "id": "com.pdfdancer.client.rest.ImageReference",
+          "status": "changed",
+          "kind": "class",
+          "memberChanges": [
+            {
+              "kind": "changed",
+              "symbol": "com.pdfdancer.client.rest.ImageReference",
+              "before": "public boolean crop(int, int, int, int)",
+              "after": "public com.pdfdancer.common.response.CommandResult crop(int, int, int, int)"
+            },
+            {
+              "kind": "changed",
+              "symbol": "com.pdfdancer.client.rest.ImageReference",
+              "before": "public boolean fillRegion(int, int, int, int, com.pdfdancer.common.model.Color)",
+              "after": "public com.pdfdancer.common.response.CommandResult fillRegion(int, int, int, int, com.pdfdancer.common.model.Color)"
+            },
+            {
+              "kind": "changed",
+              "symbol": "com.pdfdancer.client.rest.ImageReference",
+              "before": "public boolean flip(com.pdfdancer.common.request.ImageTransformRequest$FlipDirection)",
+              "after": "public com.pdfdancer.common.response.CommandResult flip(com.pdfdancer.common.request.ImageTransformRequest$FlipDirection)"
+            },
+            {
+              "kind": "changed",
+              "symbol": "com.pdfdancer.client.rest.ImageReference",
+              "before": "public boolean flipHorizontal()",
+              "after": "public com.pdfdancer.common.response.CommandResult flipHorizontal()"
+            },
+            {
+              "kind": "changed",
+              "symbol": "com.pdfdancer.client.rest.ImageReference",
+              "before": "public boolean flipVertical()",
+              "after": "public com.pdfdancer.common.response.CommandResult flipVertical()"
+            },
+            {
+              "kind": "changed",
+              "symbol": "com.pdfdancer.client.rest.ImageReference",
+              "before": "public boolean opacity(double)",
+              "after": "public com.pdfdancer.common.response.CommandResult opacity(double)"
+            },
+            {
+              "kind": "changed",
+              "symbol": "com.pdfdancer.client.rest.ImageReference",
+              "before": "public boolean replace(com.pdfdancer.common.model.Image)",
+              "after": "public com.pdfdancer.common.response.CommandResult replace(com.pdfdancer.common.model.Image)"
+            },
+            {
+              "kind": "changed",
+              "symbol": "com.pdfdancer.client.rest.ImageReference",
+              "before": "public boolean replace(java.io.File) throws java.io.IOException",
+              "after": "public com.pdfdancer.common.response.CommandResult replace(java.io.File) throws java.io.IOException"
+            },
+            {
+              "kind": "changed",
+              "symbol": "com.pdfdancer.client.rest.ImageReference",
+              "before": "public boolean rotate(double)",
+              "after": "public com.pdfdancer.common.response.CommandResult rotate(double)"
+            },
+            {
+              "kind": "changed",
+              "symbol": "com.pdfdancer.client.rest.ImageReference",
+              "before": "public boolean scale(double)",
+              "after": "public com.pdfdancer.common.response.CommandResult scale(double)"
+            },
+            {
+              "kind": "changed",
+              "symbol": "com.pdfdancer.client.rest.ImageReference",
+              "before": "public boolean scaleTo(com.pdfdancer.common.model.Size)",
+              "after": "public com.pdfdancer.common.response.CommandResult scaleTo(com.pdfdancer.common.model.Size)"
+            },
+            {
+              "kind": "changed",
+              "symbol": "com.pdfdancer.client.rest.ImageReference",
+              "before": "public boolean scaleTo(com.pdfdancer.common.model.Size, boolean)",
+              "after": "public com.pdfdancer.common.response.CommandResult scaleTo(com.pdfdancer.common.model.Size, boolean)"
+            },
+            {
+              "kind": "changed",
+              "symbol": "com.pdfdancer.client.rest.ImageReference",
+              "before": "public boolean scaleTo(double, double)",
+              "after": "public com.pdfdancer.common.response.CommandResult scaleTo(double, double)"
+            },
+            {
+              "kind": "changed",
+              "symbol": "com.pdfdancer.client.rest.ImageReference",
+              "before": "public boolean scaleTo(double, double, boolean)",
+              "after": "public com.pdfdancer.common.response.CommandResult scaleTo(double, double, boolean)"
+            }
+          ]
+        },
+        {
+          "id": "com.pdfdancer.client.rest.mutation.ModificationService",
+          "status": "changed",
+          "kind": "class",
+          "memberChanges": [
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.mutation.ModificationService",
+              "before": "public boolean modifyParagraph(com.pdfdancer.common.model.ObjectRef, com.pdfdancer.common.model.text.Paragraph)"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.mutation.ModificationService",
+              "before": "public boolean modifyParagraph(com.pdfdancer.common.model.ObjectRef, java.lang.String)"
+            },
+            {
+              "kind": "changed",
+              "symbol": "com.pdfdancer.client.rest.mutation.ModificationService",
+              "before": "public boolean modifyPath(com.pdfdancer.common.model.ObjectRef, com.pdfdancer.common.model.Color, com.pdfdancer.common.model.Color)",
+              "after": "public com.pdfdancer.common.response.CommandResult modifyPath(com.pdfdancer.common.model.ObjectRef, com.pdfdancer.common.model.Color, com.pdfdancer.common.model.Color)"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.mutation.ModificationService",
+              "before": "public boolean modifyTextLine(com.pdfdancer.common.model.ObjectRef, com.pdfdancer.common.model.text.TextLine)"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.mutation.ModificationService",
+              "before": "public boolean modifyTextLine(com.pdfdancer.common.model.ObjectRef, java.lang.String)"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.mutation.ModificationService",
+              "before": "public com.pdfdancer.common.response.RedactResponse redact(com.pdfdancer.common.request.RedactRequest)"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.mutation.ModificationService",
+              "before": "public boolean replaceTemplates(com.pdfdancer.common.request.TemplateReplaceRequest)"
+            },
+            {
+              "kind": "changed",
+              "symbol": "com.pdfdancer.client.rest.mutation.ModificationService",
+              "before": "public boolean transformImage(com.pdfdancer.common.request.ImageTransformRequest)",
+              "after": "public com.pdfdancer.common.response.CommandResult transformImage(com.pdfdancer.common.request.ImageTransformRequest)"
+            }
+          ]
+        },
+        {
+          "id": "com.pdfdancer.client.rest.PageApi",
+          "status": "changed",
+          "kind": "class",
+          "memberChanges": [
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PageApi",
+              "before": "public java.util.Optional<com.pdfdancer.client.rest.TextParagraphReference> selectParagraphAt(double, double)"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PageApi",
+              "before": "public java.util.Optional<com.pdfdancer.client.rest.TextParagraphReference> selectParagraphAt(double, double, double)"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PageApi",
+              "before": "public java.util.List<com.pdfdancer.client.rest.TextParagraphReference> selectParagraphs()"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PageApi",
+              "before": "public java.util.List<com.pdfdancer.client.rest.TextParagraphReference> selectParagraphsAt(double, double)"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PageApi",
+              "before": "public java.util.List<com.pdfdancer.client.rest.TextParagraphReference> selectParagraphsAt(double, double, double)"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PageApi",
+              "before": "public java.util.List<com.pdfdancer.client.rest.TextParagraphReference> selectParagraphsMatching(java.lang.String)"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PageApi",
+              "before": "public java.util.List<com.pdfdancer.client.rest.TextParagraphReference> selectParagraphsStartingWith(java.lang.String)"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PageApi",
+              "before": "public java.util.Optional<com.pdfdancer.client.rest.TextLineReference> selectTextLineAt(double, double)"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PageApi",
+              "before": "public java.util.Optional<com.pdfdancer.client.rest.TextLineReference> selectTextLineAt(double, double, double)"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PageApi",
+              "before": "public java.util.Optional<com.pdfdancer.client.rest.TextLineReference> selectTextLineMatching(java.lang.String)"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PageApi",
+              "before": "public java.util.List<com.pdfdancer.client.rest.TextLineReference> selectTextLines()"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PageApi",
+              "before": "public java.util.List<com.pdfdancer.client.rest.TextLineReference> selectTextLinesAt(double, double)"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PageApi",
+              "before": "public java.util.List<com.pdfdancer.client.rest.TextLineReference> selectTextLinesAt(double, double, double)"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PageApi",
+              "before": "public java.util.List<com.pdfdancer.client.rest.TextLineReference> selectTextLinesMatching(java.lang.String)"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PageApi",
+              "before": "public java.util.List<com.pdfdancer.client.rest.TextLineReference> selectTextLinesStartingWith(java.lang.String)"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PageApi",
+              "before": "public java.util.List<com.pdfdancer.client.rest.TextParagraphReference> selectTextStartingWith(java.lang.String)"
+            },
+            {
+              "kind": "added",
+              "symbol": "com.pdfdancer.client.rest.PageApi",
+              "after": "public com.pdfdancer.client.rest.PageTextClient text()"
+            }
+          ]
+        },
+        {
+          "id": "com.pdfdancer.client.rest.PageBuilder",
+          "status": "changed",
+          "kind": "class",
+          "memberChanges": [
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PageBuilder",
+              "before": "public com.pdfdancer.client.rest.PageBuilder atIndex(int)"
+            }
+          ]
+        },
+        {
+          "id": "com.pdfdancer.client.rest.PageTextClient",
+          "status": "added",
+          "kind": "class",
+          "signature": "public class com.pdfdancer.client.rest.PageTextClient",
+          "memberCount": 4
+        },
+        {
+          "id": "com.pdfdancer.client.rest.ParagraphBuilder",
+          "status": "removed",
+          "kind": "class",
+          "signature": "public class com.pdfdancer.client.rest.ParagraphBuilder",
+          "memberCount": 16
+        },
+        {
+          "id": "com.pdfdancer.client.rest.PathBuilder",
+          "status": "changed",
+          "kind": "class",
+          "memberChanges": [
+            {
+              "kind": "added",
+              "symbol": "com.pdfdancer.client.rest.PathBuilder",
+              "after": "public com.pdfdancer.client.rest.PathBuilder addSegment(com.pdfdancer.common.model.path.PathSegment)"
+            },
+            {
+              "kind": "added",
+              "symbol": "com.pdfdancer.client.rest.PathBuilder",
+              "after": "public com.pdfdancer.client.rest.PathBuilder solid()"
+            }
+          ]
+        },
+        {
+          "id": "com.pdfdancer.client.rest.PathGroupReference",
+          "status": "changed",
+          "kind": "class",
+          "memberChanges": [
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PathGroupReference",
+              "before": "public int getPageIndex()"
+            },
+            {
+              "kind": "added",
+              "symbol": "com.pdfdancer.client.rest.PathGroupReference",
+              "after": "public int getPageNumber()"
+            }
+          ]
+        },
+        {
+          "id": "com.pdfdancer.client.rest.PathReference$PathEdit",
+          "status": "changed",
+          "kind": "class",
+          "memberChanges": [
+            {
+              "kind": "changed",
+              "symbol": "com.pdfdancer.client.rest.PathReference$PathEdit",
+              "before": "public boolean apply()",
+              "after": "public com.pdfdancer.common.response.CommandResult apply()"
+            }
+          ]
+        },
+        {
+          "id": "com.pdfdancer.client.rest.PDFDancer",
+          "status": "changed",
+          "kind": "class",
+          "memberChanges": [
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer",
+              "before": "public static final java.lang.String TYPES_PARAGRAPH"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer",
+              "before": "public static final java.lang.String TYPES_TEXT_LINE"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer",
+              "before": "public boolean applyReplacements(com.pdfdancer.common.request.TemplateReplaceRequest)"
+            },
+            {
+              "kind": "added",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer",
+              "after": "public com.pdfdancer.client.rest.BezierBuilder newBezier(int)"
+            },
+            {
+              "kind": "added",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer",
+              "after": "public com.pdfdancer.client.rest.ImageBuilder newImage(int)"
+            },
+            {
+              "kind": "added",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer",
+              "after": "public com.pdfdancer.client.rest.LineBuilder newLine(int)"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer",
+              "before": "public com.pdfdancer.client.rest.ParagraphBuilder newParagraph()"
+            },
+            {
+              "kind": "added",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer",
+              "after": "public com.pdfdancer.client.rest.PathBuilder newPath(int)"
+            },
+            {
+              "kind": "added",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer",
+              "after": "public com.pdfdancer.client.rest.RectangleBuilder newRectangle(int)"
+            },
+            {
+              "kind": "added",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer",
+              "after": "public java.util.List<com.pdfdancer.client.rest.PDFDancer$PageClient> pages()"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer",
+              "before": "public com.pdfdancer.common.response.RedactResponse redact(java.util.List<? extends com.pdfdancer.client.rest.BaseReference>)"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer",
+              "before": "public com.pdfdancer.common.response.RedactResponse redact(java.util.List<? extends com.pdfdancer.client.rest.BaseReference>, com.pdfdancer.common.model.Color)"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer",
+              "before": "public com.pdfdancer.common.response.RedactResponse redact(java.util.List<? extends com.pdfdancer.client.rest.BaseReference>, java.lang.String)"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer",
+              "before": "public com.pdfdancer.common.response.RedactResponse redact(java.util.List<? extends com.pdfdancer.client.rest.BaseReference>, java.lang.String, com.pdfdancer.common.model.Color)"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer",
+              "before": "public com.pdfdancer.client.rest.ReplaceBuilder replace(java.lang.String, java.lang.String)"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer",
+              "before": "public com.pdfdancer.client.rest.ReplaceBuilder replaceWithImage(java.lang.String, java.io.File) throws java.io.IOException"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer",
+              "before": "public com.pdfdancer.client.rest.ReplaceBuilder replaceWithImage(java.lang.String, java.io.File, double, double) throws java.io.IOException"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer",
+              "before": "public java.util.List<com.pdfdancer.client.rest.TextParagraphReference> selectParagraphs()"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer",
+              "before": "public java.util.List<com.pdfdancer.client.rest.TextLineReference> selectTextLines()"
+            },
+            {
+              "kind": "added",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer",
+              "after": "public com.pdfdancer.client.rest.TextClient text()"
+            }
+          ]
+        },
+        {
+          "id": "com.pdfdancer.client.rest.PDFDancer$PageClient",
+          "status": "changed",
+          "kind": "class",
+          "memberChanges": [
+            {
+              "kind": "added",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer$PageClient",
+              "after": "public com.pdfdancer.common.response.PageSnapshot getSnapshot()"
+            },
+            {
+              "kind": "added",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer$PageClient",
+              "after": "public com.pdfdancer.common.response.PageSnapshot getSnapshot(java.lang.String)"
+            },
+            {
+              "kind": "added",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer$PageClient",
+              "after": "public boolean moveTo(int)"
+            },
+            {
+              "kind": "added",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer$PageClient",
+              "after": "public com.pdfdancer.client.rest.ImageBuilder newImage()"
+            },
+            {
+              "kind": "added",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer$PageClient",
+              "after": "public com.pdfdancer.client.rest.RectangleBuilder newRectangle()"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer$PageClient",
+              "before": "public com.pdfdancer.client.rest.ReplaceBuilder replace(java.lang.String, java.lang.String)"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer$PageClient",
+              "before": "public com.pdfdancer.client.rest.ReplaceBuilder replaceWithImage(java.lang.String, java.io.File) throws java.io.IOException"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer$PageClient",
+              "before": "public com.pdfdancer.client.rest.ReplaceBuilder replaceWithImage(java.lang.String, java.io.File, double, double) throws java.io.IOException"
+            },
+            {
+              "kind": "added",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer$PageClient",
+              "after": "public java.util.List selectElements()"
+            },
+            {
+              "kind": "added",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer$PageClient",
+              "after": "public java.util.List selectElements(java.lang.String)"
+            },
+            {
+              "kind": "added",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer$PageClient",
+              "after": "public java.util.Optional selectForm()"
+            },
+            {
+              "kind": "added",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer$PageClient",
+              "after": "public java.util.Optional selectImage()"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer$PageClient",
+              "before": "public java.util.Optional selectParagraphAt(double, double)"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer$PageClient",
+              "before": "public java.util.Optional selectParagraphAt(double, double, double)"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer$PageClient",
+              "before": "public java.util.List selectParagraphs()"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer$PageClient",
+              "before": "public java.util.List selectParagraphsAt(double, double)"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer$PageClient",
+              "before": "public java.util.List selectParagraphsAt(double, double, double)"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer$PageClient",
+              "before": "public java.util.List selectParagraphsMatching(java.lang.String)"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer$PageClient",
+              "before": "public java.util.List selectParagraphsStartingWith(java.lang.String)"
+            },
+            {
+              "kind": "added",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer$PageClient",
+              "after": "public java.util.Optional selectPath()"
+            },
+            {
+              "kind": "added",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer$PageClient",
+              "after": "public java.util.Optional selectPathAt(double, double, double)"
+            },
+            {
+              "kind": "added",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer$PageClient",
+              "after": "public java.util.List selectPathsAt(double, double, double)"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer$PageClient",
+              "before": "public java.util.Optional selectTextLineAt(double, double)"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer$PageClient",
+              "before": "public java.util.Optional selectTextLineAt(double, double, double)"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer$PageClient",
+              "before": "public java.util.Optional selectTextLineMatching(java.lang.String)"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer$PageClient",
+              "before": "public java.util.List selectTextLines()"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer$PageClient",
+              "before": "public java.util.List selectTextLinesAt(double, double)"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer$PageClient",
+              "before": "public java.util.List selectTextLinesAt(double, double, double)"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer$PageClient",
+              "before": "public java.util.List selectTextLinesMatching(java.lang.String)"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer$PageClient",
+              "before": "public java.util.List selectTextLinesStartingWith(java.lang.String)"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer$PageClient",
+              "before": "public java.util.List selectTextStartingWith(java.lang.String)"
+            },
+            {
+              "kind": "added",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer$PageClient",
+              "after": "public com.pdfdancer.client.rest.PageTextClient text()"
+            }
+          ]
+        },
+        {
+          "id": "com.pdfdancer.client.rest.PdfDancerClientException",
+          "status": "changed",
+          "kind": "class",
+          "memberChanges": [
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PdfDancerClientException",
+              "before": "public int getStatusCode()"
+            }
+          ],
+          "declarationChange": {
+            "before": "public class com.pdfdancer.client.rest.PdfDancerClientException extends java.lang.RuntimeException",
+            "after": "public class com.pdfdancer.client.rest.PdfDancerClientException extends com.pdfdancer.client.rest.HttpClientException"
+          }
+        },
+        {
+          "id": "com.pdfdancer.client.rest.PdfDancerException",
+          "status": "added",
+          "kind": "class",
+          "signature": "public class com.pdfdancer.client.rest.PdfDancerException extends java.lang.RuntimeException",
+          "memberCount": 3
+        },
+        {
+          "id": "com.pdfdancer.client.rest.PdfDancerHttpClient",
+          "status": "changed",
+          "kind": "class",
+          "memberChanges": [
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.client.rest.PdfDancerHttpClient",
+              "before": "public static com.pdfdancer.client.rest.PdfDancerHttpClient create(java.net.http.HttpClient, java.net.URI, com.fasterxml.jackson.databind.ObjectMapper, com.pdfdancer.client.rest.RetryConfig, java.lang.String)"
+            }
+          ]
+        },
+        {
+          "id": "com.pdfdancer.client.rest.RateLimitException",
+          "status": "added",
+          "kind": "class",
+          "signature": "public class com.pdfdancer.client.rest.RateLimitException extends com.pdfdancer.client.rest.HttpClientException",
+          "memberCount": 2
+        },
+        {
+          "id": "com.pdfdancer.client.rest.RectangleBuilder",
+          "status": "added",
+          "kind": "class",
+          "signature": "public final class com.pdfdancer.client.rest.RectangleBuilder",
+          "memberCount": 10
+        },
+        {
+          "id": "com.pdfdancer.client.rest.ReplaceBuilder",
+          "status": "removed",
+          "kind": "class",
+          "signature": "public class com.pdfdancer.client.rest.ReplaceBuilder",
+          "memberCount": 10
+        },
+        {
+          "id": "com.pdfdancer.client.rest.SessionException",
+          "status": "added",
+          "kind": "class",
+          "signature": "public class com.pdfdancer.client.rest.SessionException extends com.pdfdancer.client.rest.PdfDancerException",
+          "memberCount": 2
+        },
+        {
+          "id": "com.pdfdancer.client.rest.SessionNotFoundException",
+          "status": "changed",
+          "kind": "class",
+          "memberChanges": [],
+          "declarationChange": {
+            "before": "public class com.pdfdancer.client.rest.SessionNotFoundException extends com.pdfdancer.client.rest.PdfDancerClientException",
+            "after": "public class com.pdfdancer.client.rest.SessionNotFoundException extends com.pdfdancer.client.rest.SessionException"
+          }
+        },
+        {
+          "id": "com.pdfdancer.client.rest.text.TextEditingService",
+          "status": "added",
+          "kind": "class",
+          "signature": "public final class com.pdfdancer.client.rest.text.TextEditingService",
+          "memberCount": 5
+        },
+        {
+          "id": "com.pdfdancer.client.rest.TextClient",
+          "status": "added",
+          "kind": "class",
+          "signature": "public class com.pdfdancer.client.rest.TextClient",
+          "memberCount": 4
+        },
+        {
+          "id": "com.pdfdancer.client.rest.TextLineReference",
+          "status": "removed",
+          "kind": "class",
+          "signature": "public class com.pdfdancer.client.rest.TextLineReference extends com.pdfdancer.client.rest.BaseReference",
+          "memberCount": 6
+        },
+        {
+          "id": "com.pdfdancer.client.rest.TextLineReference$TextLineEdit",
+          "status": "removed",
+          "kind": "class",
+          "signature": "public class com.pdfdancer.client.rest.TextLineReference$TextLineEdit",
+          "memberCount": 9
+        },
+        {
+          "id": "com.pdfdancer.client.rest.TextParagraphReference",
+          "status": "removed",
+          "kind": "class",
+          "signature": "public class com.pdfdancer.client.rest.TextParagraphReference extends com.pdfdancer.client.rest.BaseReference",
+          "memberCount": 6
+        },
+        {
+          "id": "com.pdfdancer.client.rest.TextParagraphReference$TextEdit",
+          "status": "removed",
+          "kind": "class",
+          "signature": "public class com.pdfdancer.client.rest.TextParagraphReference$TextEdit",
+          "memberCount": 7
+        },
+        {
+          "id": "com.pdfdancer.client.rest.ValidationException",
+          "status": "added",
+          "kind": "class",
+          "signature": "public class com.pdfdancer.client.rest.ValidationException extends com.pdfdancer.client.rest.PdfDancerException",
+          "memberCount": 1
+        },
+        {
+          "id": "com.pdfdancer.common.model.FontNotFoundException",
+          "status": "removed",
+          "kind": "class",
+          "signature": "public class com.pdfdancer.common.model.FontNotFoundException extends java.lang.IllegalArgumentException",
+          "memberCount": 3
+        },
+        {
+          "id": "com.pdfdancer.common.model.ObjectType",
+          "status": "changed",
+          "kind": "enum",
+          "memberChanges": [
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.common.model.ObjectType",
+              "before": "public static final com.pdfdancer.common.model.ObjectType PARAGRAPH"
+            }
+          ]
+        },
+        {
+          "id": "com.pdfdancer.common.model.Page",
+          "status": "changed",
+          "kind": "class",
+          "memberChanges": [
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.common.model.Page",
+              "before": "public java.util.List<com.pdfdancer.common.model.text.Paragraph> getParagraphs()"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.common.model.Page",
+              "before": "public void setParagraphs(java.util.List<com.pdfdancer.common.model.text.Paragraph>)"
+            }
+          ]
+        },
+        {
+          "id": "com.pdfdancer.common.model.PdfAffineTransform",
+          "status": "added",
+          "kind": "class",
+          "signature": "public final class com.pdfdancer.common.model.PdfAffineTransform",
+          "memberCount": 12
+        },
+        {
+          "id": "com.pdfdancer.common.model.PdfAffineTransform$Builder",
+          "status": "added",
+          "kind": "class",
+          "signature": "public final class com.pdfdancer.common.model.PdfAffineTransform$Builder",
+          "memberCount": 5
+        },
+        {
+          "id": "com.pdfdancer.common.model.Position",
+          "status": "changed",
+          "kind": "class",
+          "memberChanges": [
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.common.model.Position",
+              "before": "public java.lang.Integer getPageIndex()"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.common.model.Position",
+              "before": "public java.lang.String getTextPattern()"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.common.model.Position",
+              "before": "public java.lang.String getTextStartsWith()"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.common.model.Position",
+              "before": "public void setTextPattern(java.lang.String)"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.common.model.Position",
+              "before": "public void setTextStartsWith(java.lang.String)"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.common.model.Position",
+              "before": "public boolean textMatches(java.lang.String)"
+            }
+          ]
+        },
+        {
+          "id": "com.pdfdancer.common.model.PositionBuilder",
+          "status": "changed",
+          "kind": "class",
+          "memberChanges": [
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.common.model.PositionBuilder",
+              "before": "public com.pdfdancer.common.model.PositionBuilder textMatches(java.lang.String)"
+            },
+            {
+              "kind": "removed",
+              "symbol": "com.pdfdancer.common.model.PositionBuilder",
+              "before": "public com.pdfdancer.common.model.PositionBuilder textStartsWith(java.lang.String)"
+            }
+          ]
+        },
+        {
+          "id": "com.pdfdancer.common.model.ReflowPreset",
+          "status": "removed",
+          "kind": "enum",
+          "signature": "public final class com.pdfdancer.common.model.ReflowPreset extends java.lang.Enum<com.pdfdancer.common.model.ReflowPreset>",
+          "memberCount": 5
+        },
+        {
+          "id": "com.pdfdancer.common.model.text.Paragraph",
+          "status": "removed",
+          "kind": "class",
+          "signature": "public class com.pdfdancer.common.model.text.Paragraph extends com.pdfdancer.common.model.PDFObject",
+          "memberCount": 14
+        },
+        {
+          "id": "com.pdfdancer.common.model.text.TextElement",
+          "status": "removed",
+          "kind": "class",
+          "signature": "public class com.pdfdancer.common.model.text.TextElement extends com.pdfdancer.common.model.PDFObject",
+          "memberCount": 12
+        },
+        {
+          "id": "com.pdfdancer.common.model.text.TextLine",
+          "status": "removed",
+          "kind": "class",
+          "signature": "public class com.pdfdancer.common.model.text.TextLine extends com.pdfdancer.common.model.PDFObject",
+          "memberCount": 17
+        },
+        {
+          "id": "com.pdfdancer.common.model.text.Word",
+          "status": "removed",
+          "kind": "class",
+          "signature": "public class com.pdfdancer.common.model.text.Word extends com.pdfdancer.common.model.PDFObject",
+          "memberCount": 4
+        },
+        {
+          "id": "com.pdfdancer.common.model.TextStatus",
+          "status": "removed",
+          "kind": "class",
+          "signature": "public class com.pdfdancer.common.model.TextStatus",
+          "memberCount": 14
+        },
+        {
+          "id": "com.pdfdancer.common.model.TextTypeObjectRef",
+          "status": "removed",
+          "kind": "class",
+          "signature": "public class com.pdfdancer.common.model.TextTypeObjectRef extends com.pdfdancer.common.model.ObjectRef",
+          "memberCount": 9
+        },
+        {
+          "id": "com.pdfdancer.common.request.ModifyTextRequest",
+          "status": "removed",
+          "kind": "class",
+          "signature": "public final class com.pdfdancer.common.request.ModifyTextRequest",
+          "memberCount": 6
+        },
+        {
+          "id": "com.pdfdancer.common.request.PdfColorRequest",
+          "status": "added",
+          "kind": "class",
+          "signature": "public final class com.pdfdancer.common.request.PdfColorRequest",
+          "memberCount": 12
+        },
+        {
+          "id": "com.pdfdancer.common.request.PdfColorRequest$Space",
+          "status": "added",
+          "kind": "enum",
+          "signature": "public final class com.pdfdancer.common.request.PdfColorRequest$Space extends java.lang.Enum<com.pdfdancer.common.request.PdfColorRequest$Space>",
+          "memberCount": 5
+        },
+        {
+          "id": "com.pdfdancer.common.request.RedactRequest",
+          "status": "removed",
+          "kind": "class",
+          "signature": "public final class com.pdfdancer.common.request.RedactRequest",
+          "memberCount": 8
+        },
+        {
+          "id": "com.pdfdancer.common.request.RedactRequest$Builder",
+          "status": "removed",
+          "kind": "class",
+          "signature": "public class com.pdfdancer.common.request.RedactRequest$Builder",
+          "memberCount": 7
+        },
+        {
+          "id": "com.pdfdancer.common.request.RedactTarget",
+          "status": "removed",
+          "kind": "class",
+          "signature": "public final class com.pdfdancer.common.request.RedactTarget",
+          "memberCount": 6
+        },
+        {
+          "id": "com.pdfdancer.common.request.TemplateReplacement",
+          "status": "removed",
+          "kind": "class",
+          "signature": "public final class com.pdfdancer.common.request.TemplateReplacement",
+          "memberCount": 15
+        },
+        {
+          "id": "com.pdfdancer.common.request.TemplateReplaceRequest",
+          "status": "removed",
+          "kind": "class",
+          "signature": "public final class com.pdfdancer.common.request.TemplateReplaceRequest",
+          "memberCount": 8
+        },
+        {
+          "id": "com.pdfdancer.common.request.TemplateReplaceRequest$Builder",
+          "status": "removed",
+          "kind": "class",
+          "signature": "public class com.pdfdancer.common.request.TemplateReplaceRequest$Builder",
+          "memberCount": 7
+        },
+        {
+          "id": "com.pdfdancer.common.request.TemplateReplaceRequest$ReplacementBuilder",
+          "status": "removed",
+          "kind": "class",
+          "signature": "public class com.pdfdancer.common.request.TemplateReplaceRequest$ReplacementBuilder",
+          "memberCount": 9
+        },
+        {
+          "id": "com.pdfdancer.common.request.TextDeleteRequest",
+          "status": "added",
+          "kind": "class",
+          "signature": "public final class com.pdfdancer.common.request.TextDeleteRequest",
+          "memberCount": 12
+        },
+        {
+          "id": "com.pdfdancer.common.request.TextDeleteRequest$Builder",
+          "status": "added",
+          "kind": "class",
+          "signature": "public final class com.pdfdancer.common.request.TextDeleteRequest$Builder",
+          "memberCount": 13
+        },
+        {
+          "id": "com.pdfdancer.common.request.TextInsertRequest",
+          "status": "added",
+          "kind": "class",
+          "signature": "public final class com.pdfdancer.common.request.TextInsertRequest",
+          "memberCount": 16
+        },
+        {
+          "id": "com.pdfdancer.common.request.TextInsertRequest$AnchorTarget",
+          "status": "added",
+          "kind": "class",
+          "signature": "public final class com.pdfdancer.common.request.TextInsertRequest$AnchorTarget",
+          "memberCount": 7
+        },
+        {
+          "id": "com.pdfdancer.common.request.TextInsertRequest$Builder",
+          "status": "added",
+          "kind": "class",
+          "signature": "public final class com.pdfdancer.common.request.TextInsertRequest$Builder",
+          "memberCount": 27
+        },
+        {
+          "id": "com.pdfdancer.common.request.TextInsertRequest$Caret",
+          "status": "added",
+          "kind": "enum",
+          "signature": "public final class com.pdfdancer.common.request.TextInsertRequest$Caret extends java.lang.Enum<com.pdfdancer.common.request.TextInsertRequest$Caret>",
+          "memberCount": 4
+        },
+        {
+          "id": "com.pdfdancer.common.request.TextInsertRequest$CoordinateTarget",
+          "status": "added",
+          "kind": "class",
+          "signature": "public final class com.pdfdancer.common.request.TextInsertRequest$CoordinateTarget",
+          "memberCount": 8
+        },
+        {
+          "id": "com.pdfdancer.common.request.TextInsertRequest$Style",
+          "status": "added",
+          "kind": "class",
+          "signature": "public final class com.pdfdancer.common.request.TextInsertRequest$Style",
+          "memberCount": 8
+        },
+        {
+          "id": "com.pdfdancer.common.request.TextInsertRequest$StyleFrom",
+          "status": "added",
+          "kind": "enum",
+          "signature": "public final class com.pdfdancer.common.request.TextInsertRequest$StyleFrom extends java.lang.Enum<com.pdfdancer.common.request.TextInsertRequest$StyleFrom>",
+          "memberCount": 3
+        },
+        {
+          "id": "com.pdfdancer.common.request.TextInsertRequest$Target",
+          "status": "added",
+          "kind": "class",
+          "signature": "public final class com.pdfdancer.common.request.TextInsertRequest$Target",
+          "memberCount": 7
+        },
+        {
+          "id": "com.pdfdancer.common.request.TextLayoutRequest",
+          "status": "added",
+          "kind": "class",
+          "signature": "public final class com.pdfdancer.common.request.TextLayoutRequest",
+          "memberCount": 12
+        },
+        {
+          "id": "com.pdfdancer.common.request.TextLayoutRequest$Mode",
+          "status": "added",
+          "kind": "enum",
+          "signature": "public final class com.pdfdancer.common.request.TextLayoutRequest$Mode extends java.lang.Enum<com.pdfdancer.common.request.TextLayoutRequest$Mode>",
+          "memberCount": 5
+        },
+        {
+          "id": "com.pdfdancer.common.request.TextLayoutRequest$Profile",
+          "status": "added",
+          "kind": "enum",
+          "signature": "public final class com.pdfdancer.common.request.TextLayoutRequest$Profile extends java.lang.Enum<com.pdfdancer.common.request.TextLayoutRequest$Profile>",
+          "memberCount": 7
+        },
+        {
+          "id": "com.pdfdancer.common.request.TextReplacementImageRequest",
+          "status": "added",
+          "kind": "class",
+          "signature": "public final class com.pdfdancer.common.request.TextReplacementImageRequest",
+          "memberCount": 5
+        },
+        {
+          "id": "com.pdfdancer.common.request.TextReplaceRequest",
+          "status": "added",
+          "kind": "class",
+          "signature": "public final class com.pdfdancer.common.request.TextReplaceRequest",
+          "memberCount": 17
+        },
+        {
+          "id": "com.pdfdancer.common.request.TextReplaceRequest$Builder",
+          "status": "added",
+          "kind": "class",
+          "signature": "public final class com.pdfdancer.common.request.TextReplaceRequest$Builder",
+          "memberCount": 24
+        },
+        {
+          "id": "com.pdfdancer.common.request.TextSelectorRequest",
+          "status": "added",
+          "kind": "class",
+          "signature": "public final class com.pdfdancer.common.request.TextSelectorRequest",
+          "memberCount": 9
+        },
+        {
+          "id": "com.pdfdancer.common.request.TextStyleNumericFilterRequest",
+          "status": "added",
+          "kind": "class",
+          "signature": "public final class com.pdfdancer.common.request.TextStyleNumericFilterRequest",
+          "memberCount": 9
+        },
+        {
+          "id": "com.pdfdancer.common.request.TextStylePatchRequest",
+          "status": "added",
+          "kind": "class",
+          "signature": "public final class com.pdfdancer.common.request.TextStylePatchRequest",
+          "memberCount": 12
+        },
+        {
+          "id": "com.pdfdancer.common.request.TextStylePatchRequest$Builder",
+          "status": "added",
+          "kind": "class",
+          "signature": "public final class com.pdfdancer.common.request.TextStylePatchRequest$Builder",
+          "memberCount": 7
+        },
+        {
+          "id": "com.pdfdancer.common.request.TextStyleRequest",
+          "status": "added",
+          "kind": "class",
+          "signature": "public final class com.pdfdancer.common.request.TextStyleRequest",
+          "memberCount": 15
+        },
+        {
+          "id": "com.pdfdancer.common.request.TextStyleRequest$Builder",
+          "status": "added",
+          "kind": "class",
+          "signature": "public final class com.pdfdancer.common.request.TextStyleRequest$Builder",
+          "memberCount": 32
+        },
+        {
+          "id": "com.pdfdancer.common.request.TextStyleRequest$Style",
+          "status": "added",
+          "kind": "class",
+          "signature": "public final class com.pdfdancer.common.request.TextStyleRequest$Style",
+          "memberCount": 11
+        },
+        {
+          "id": "com.pdfdancer.common.request.TextStyleRunFilterRequest",
+          "status": "added",
+          "kind": "class",
+          "signature": "public final class com.pdfdancer.common.request.TextStyleRunFilterRequest",
+          "memberCount": 13
+        },
+        {
+          "id": "com.pdfdancer.common.request.TextStyleRunsSelectorRequest",
+          "status": "added",
+          "kind": "class",
+          "signature": "public final class com.pdfdancer.common.request.TextStyleRunsSelectorRequest",
+          "memberCount": 7
+        },
+        {
+          "id": "com.pdfdancer.common.request.TextStyleSelectorRequest",
+          "status": "added",
+          "kind": "class",
+          "signature": "public final class com.pdfdancer.common.request.TextStyleSelectorRequest",
+          "memberCount": 11
+        },
+        {
+          "id": "com.pdfdancer.common.request.TextStyleSetRequest",
+          "status": "added",
+          "kind": "class",
+          "signature": "public final class com.pdfdancer.common.request.TextStyleSetRequest",
+          "memberCount": 13
+        },
+        {
+          "id": "com.pdfdancer.common.request.TextStyleSetRequest$Builder",
+          "status": "added",
+          "kind": "class",
+          "signature": "public final class com.pdfdancer.common.request.TextStyleSetRequest$Builder",
+          "memberCount": 8
+        },
+        {
+          "id": "com.pdfdancer.common.response.RedactResponse",
+          "status": "removed",
+          "kind": "class",
+          "signature": "public final class com.pdfdancer.common.response.RedactResponse",
+          "memberCount": 7
+        },
+        {
+          "id": "com.pdfdancer.common.response.TextEditChangeDiagnostic",
+          "status": "added",
+          "kind": "class",
+          "signature": "public final class com.pdfdancer.common.response.TextEditChangeDiagnostic",
+          "memberCount": 16
+        },
+        {
+          "id": "com.pdfdancer.common.response.TextEditResponse",
+          "status": "added",
+          "kind": "class",
+          "signature": "public final class com.pdfdancer.common.response.TextEditResponse",
+          "memberCount": 9
+        },
+        {
+          "id": "com.pdfdancer.common.response.TextOperationDiagnostic",
+          "status": "added",
+          "kind": "class",
+          "signature": "public final class com.pdfdancer.common.response.TextOperationDiagnostic",
+          "memberCount": 8
+        },
+        {
+          "id": "com.pdfdancer.common.util.ParagraphUtil",
+          "status": "removed",
+          "kind": "class",
+          "signature": "public class com.pdfdancer.common.util.ParagraphUtil",
+          "memberCount": 2
+        },
+        {
+          "id": "com.pdfdancer.common.util.TextMeasurementUtil",
+          "status": "removed",
+          "kind": "class",
+          "signature": "public class com.pdfdancer.common.util.TextMeasurementUtil",
+          "memberCount": 4
+        }
+      ],
       "changes": [
         {
           "kind": "removed",
@@ -4174,52 +5411,851 @@
       "baseRef": "release/v1",
       "baseCommit": "e89eae4efa048bbf566c45a5e202d414b74ea30b",
       "candidateRef": "release/v2",
-      "candidateCommit": "f9a7bba98a55536e8507c355b1eb691a1f5a4734",
+      "candidateCommit": "811eca2de3578af3227ef53a99b5b06996d5a716",
       "counts": {
-        "added": 313,
-        "removed": 89,
-        "changed": 20
+        "symbols": {
+          "added": 27,
+          "promoted": 7,
+          "removed": 8,
+          "changed": 13
+        },
+        "retainedSymbolMembers": {
+          "added": 24,
+          "promoted": 0,
+          "removed": 13,
+          "changed": 18
+        },
+        "records": {
+          "added": 250,
+          "promoted": 0,
+          "removed": 95,
+          "changed": 29
+        }
       },
+      "symbolChanges": [
+        {
+          "id": "FormFieldObject",
+          "status": "promoted",
+          "kind": "class",
+          "previousModule": "types",
+          "memberChanges": [
+            {
+              "kind": "removed",
+              "symbol": "FormFieldObject",
+              "before": "edit(self) -> 'FormFieldEdit'"
+            },
+            {
+              "kind": "removed",
+              "symbol": "FormFieldObject",
+              "before": "redact(self, replacement: 'str' = '[REDACTED]') -> 'bool'"
+            },
+            {
+              "kind": "added",
+              "symbol": "FormFieldObject",
+              "after": "set_value(self, value: 'str') -> 'bool'"
+            }
+          ]
+        },
+        {
+          "id": "FormFieldRef",
+          "status": "changed",
+          "kind": "class",
+          "memberChanges": [
+            {
+              "kind": "changed",
+              "symbol": "FormFieldRef",
+              "before": "to_dict(self) -> dict",
+              "after": "to_dict(self) -> Dict[str, Any]"
+            },
+            {
+              "kind": "added",
+              "symbol": "FormFieldRef",
+              "after": "object_type: pdfdancer.models.ObjectType"
+            }
+          ]
+        },
+        {
+          "id": "FormObject",
+          "status": "promoted",
+          "kind": "class",
+          "previousModule": "types",
+          "memberChanges": [
+            {
+              "kind": "removed",
+              "symbol": "FormObject",
+              "before": "redact(self, replacement: 'str' = '[REDACTED]') -> 'bool'"
+            }
+          ]
+        },
+        {
+          "id": "ImageObject",
+          "status": "promoted",
+          "kind": "class",
+          "previousModule": "types",
+          "memberChanges": [
+            {
+              "kind": "added",
+              "symbol": "ImageObject",
+              "after": "flip_horizontal(self) -> \"'CommandResult'\""
+            },
+            {
+              "kind": "added",
+              "symbol": "ImageObject",
+              "after": "flip_vertical(self) -> \"'CommandResult'\""
+            },
+            {
+              "kind": "removed",
+              "symbol": "ImageObject",
+              "before": "redact(self, replacement: 'str' = '[REDACTED]') -> 'bool'"
+            },
+            {
+              "kind": "added",
+              "symbol": "ImageObject",
+              "after": "replace_from_file(self, image_path: 'Path') -> \"'CommandResult'\""
+            },
+            {
+              "kind": "added",
+              "symbol": "ImageObject",
+              "after": "aspect_ratio: 'Optional[float]'"
+            },
+            {
+              "kind": "added",
+              "symbol": "ImageObject",
+              "after": "height: 'Optional[float]'"
+            },
+            {
+              "kind": "added",
+              "symbol": "ImageObject",
+              "after": "width: 'Optional[float]'"
+            }
+          ]
+        },
+        {
+          "id": "ImageTransformRequest",
+          "status": "changed",
+          "kind": "class",
+          "memberChanges": [
+            {
+              "kind": "changed",
+              "symbol": "ImageTransformRequest",
+              "before": "to_dict(self) -> dict",
+              "after": "to_dict(self) -> Dict[str, Any]"
+            }
+          ]
+        },
+        {
+          "id": "ModifyPathRequest",
+          "status": "changed",
+          "kind": "class",
+          "memberChanges": [
+            {
+              "kind": "changed",
+              "symbol": "ModifyPathRequest",
+              "before": "to_dict(self) -> dict",
+              "after": "to_dict(self) -> Dict[str, Any]"
+            }
+          ]
+        },
+        {
+          "id": "ObjectRef",
+          "status": "changed",
+          "kind": "class",
+          "memberChanges": [
+            {
+              "kind": "changed",
+              "symbol": "ObjectRef",
+              "before": "to_dict(self) -> dict",
+              "after": "to_dict(self) -> Dict[str, Any]"
+            },
+            {
+              "kind": "added",
+              "symbol": "ObjectRef",
+              "after": "object_type: pdfdancer.models.ObjectType"
+            }
+          ]
+        },
+        {
+          "id": "ObjectType",
+          "status": "changed",
+          "kind": "enum",
+          "memberChanges": [
+            {
+              "kind": "added",
+              "symbol": "ObjectType",
+              "after": "BEZIER = 'BEZIER'"
+            },
+            {
+              "kind": "removed",
+              "symbol": "ObjectType",
+              "before": "CHECK_BOX = 'CHECK_BOX'"
+            },
+            {
+              "kind": "added",
+              "symbol": "ObjectType",
+              "after": "CHECKBOX = 'CHECKBOX'"
+            },
+            {
+              "kind": "added",
+              "symbol": "ObjectType",
+              "after": "CLIPPING = 'CLIPPING'"
+            },
+            {
+              "kind": "added",
+              "symbol": "ObjectType",
+              "after": "LINE = 'LINE'"
+            },
+            {
+              "kind": "removed",
+              "symbol": "ObjectType",
+              "before": "PARAGRAPH = 'PARAGRAPH'"
+            },
+            {
+              "kind": "added",
+              "symbol": "ObjectType",
+              "after": "PDF = 'PDF'"
+            },
+            {
+              "kind": "added",
+              "symbol": "ObjectType",
+              "after": "RECTANGLE = 'RECTANGLE'"
+            },
+            {
+              "kind": "added",
+              "symbol": "ObjectType",
+              "after": "WORD = 'WORD'"
+            }
+          ]
+        },
+        {
+          "id": "PageBuilder",
+          "status": "changed",
+          "kind": "class",
+          "memberChanges": [
+            {
+              "kind": "removed",
+              "symbol": "PageBuilder",
+              "before": "at_index(self, page_number: 'int') -> \"'PageBuilder'\""
+            },
+            {
+              "kind": "changed",
+              "symbol": "PageBuilder",
+              "before": "orientation(self, orientation: 'Orientation') -> \"'PageBuilder'\"",
+              "after": "orientation(self, orientation: 'Union[Orientation, str]') -> \"'PageBuilder'\""
+            },
+            {
+              "kind": "changed",
+              "symbol": "PageBuilder",
+              "before": "page_size(self, page_size: 'PageSize') -> \"'PageBuilder'\"",
+              "after": "page_size(self, page_size: 'Union[PageSize, str, Mapping[str, Any]]') -> \"'PageBuilder'\""
+            }
+          ]
+        },
+        {
+          "id": "PageRef",
+          "status": "changed",
+          "kind": "class",
+          "memberChanges": [
+            {
+              "kind": "changed",
+              "symbol": "PageRef",
+              "before": "to_dict(self) -> dict",
+              "after": "to_dict(self) -> Dict[str, Any]"
+            },
+            {
+              "kind": "added",
+              "symbol": "PageRef",
+              "after": "object_type: pdfdancer.models.ObjectType"
+            }
+          ]
+        },
+        {
+          "id": "PageSize",
+          "status": "changed",
+          "kind": "class",
+          "memberChanges": [
+            {
+              "kind": "added",
+              "symbol": "PageSize",
+              "after": "from_dimensions(cls, width: float, height: float, tolerance: float = 0.5) -> 'PageSize'"
+            },
+            {
+              "kind": "changed",
+              "symbol": "PageSize",
+              "before": "to_dict(self) -> dict",
+              "after": "to_dict(self) -> Dict[str, Any]"
+            }
+          ]
+        },
+        {
+          "id": "Paragraph",
+          "status": "removed",
+          "kind": "class",
+          "signature": "Paragraph(position: pdfdancer.models.Position | None = None, text_lines: List[pdfdancer.models.TextLine] | None = None, font: pdfdancer.models.Font | None = None, color: pdfdancer.models.Color | None = None, line_spacing: float = 1.2, line_spacings: List[float] | None = None) -> None",
+          "memberCount": 9
+        },
+        {
+          "id": "ParagraphBuilder",
+          "status": "removed",
+          "kind": "class",
+          "signature": "ParagraphBuilder(client: \"'PDFDancer'\")",
+          "memberCount": 18
+        },
+        {
+          "id": "PathBuilder",
+          "status": "changed",
+          "kind": "class",
+          "memberChanges": [
+            {
+              "kind": "added",
+              "symbol": "PathBuilder",
+              "after": "add_segment(self, segment: 'PathSegment') -> \"'PathBuilder'\""
+            },
+            {
+              "kind": "added",
+              "symbol": "PathBuilder",
+              "after": "bezier_to(self, control1_x: 'float', control1_y: 'float', control2_x: 'float', control2_y: 'float', x: 'float', y: 'float') -> \"'PathBuilder'\""
+            },
+            {
+              "kind": "added",
+              "symbol": "PathBuilder",
+              "after": "circle(self, center_x: 'float', center_y: 'float', radius: 'float') -> \"'PathBuilder'\""
+            },
+            {
+              "kind": "added",
+              "symbol": "PathBuilder",
+              "after": "close_path(self) -> \"'PathBuilder'\""
+            },
+            {
+              "kind": "added",
+              "symbol": "PathBuilder",
+              "after": "line_to(self, x: 'float', y: 'float') -> \"'PathBuilder'\""
+            },
+            {
+              "kind": "added",
+              "symbol": "PathBuilder",
+              "after": "move_to(self, x: 'float', y: 'float') -> \"'PathBuilder'\""
+            },
+            {
+              "kind": "added",
+              "symbol": "PathBuilder",
+              "after": "rectangle(self, x: 'float', y: 'float', width: 'float', height: 'float') -> \"'PathBuilder'\""
+            }
+          ]
+        },
+        {
+          "id": "PathEditSession",
+          "status": "promoted",
+          "kind": "class",
+          "previousModule": "types",
+          "memberChanges": [
+            {
+              "kind": "changed",
+              "symbol": "PathEditSession",
+              "before": "__init__(self, client: \"'PDFDancer'\", object_ref)",
+              "after": "__init__(self, client: \"'PDFDancer'\", object_ref: 'ObjectRef') -> 'None'"
+            },
+            {
+              "kind": "changed",
+              "symbol": "PathEditSession",
+              "before": "apply(self)",
+              "after": "apply(self) -> \"'CommandResult'\""
+            },
+            {
+              "kind": "changed",
+              "symbol": "PathEditSession",
+              "before": "fill_color(self, color) -> \"'PathEditSession'\"",
+              "after": "fill_color(self, color: \"'Color'\") -> \"'PathEditSession'\""
+            },
+            {
+              "kind": "changed",
+              "symbol": "PathEditSession",
+              "before": "stroke_color(self, color) -> \"'PathEditSession'\"",
+              "after": "stroke_color(self, color: \"'Color'\") -> \"'PathEditSession'\""
+            }
+          ],
+          "declarationChange": {
+            "before": "PathEditSession(client: \"'PDFDancer'\", object_ref)",
+            "after": "PathEditSession(client: \"'PDFDancer'\", object_ref: 'ObjectRef') -> 'None'"
+          }
+        },
+        {
+          "id": "PathGroupObject",
+          "status": "changed",
+          "kind": "class",
+          "memberChanges": [
+            {
+              "kind": "changed",
+              "symbol": "PathGroupObject",
+              "before": "__init__(self, client: \"'PDFDancer'\", page_index: 'int', info)",
+              "after": "__init__(self, client: \"'PDFDancer'\", page_index: 'int', info: \"'PathGroupInfo'\") -> 'None'"
+            },
+            {
+              "kind": "changed",
+              "symbol": "PathGroupObject",
+              "before": "bounding_box",
+              "after": "bounding_box: 'Optional[dict[str, Any]]'"
+            }
+          ],
+          "declarationChange": {
+            "before": "PathGroupObject(client: \"'PDFDancer'\", page_index: 'int', info)",
+            "after": "PathGroupObject(client: \"'PDFDancer'\", page_index: 'int', info: \"'PathGroupInfo'\") -> 'None'"
+          }
+        },
+        {
+          "id": "PathObject",
+          "status": "promoted",
+          "kind": "class",
+          "previousModule": "types",
+          "memberChanges": [
+            {
+              "kind": "changed",
+              "symbol": "PathObject",
+              "before": "__init__(self, client: \"'PDFDancer'\", object_ref)",
+              "after": "__init__(self, client: \"'PDFDancer'\", object_ref: 'ObjectRef')"
+            },
+            {
+              "kind": "changed",
+              "symbol": "PathObject",
+              "before": "object_ref(self)",
+              "after": "object_ref(self) -> 'ObjectRef'"
+            },
+            {
+              "kind": "removed",
+              "symbol": "PathObject",
+              "before": "redact(self, replacement: 'str' = '[REDACTED]') -> 'bool'"
+            },
+            {
+              "kind": "changed",
+              "symbol": "PathObject",
+              "before": "bounding_box: 'Optional[BoundingRect]'",
+              "after": "bounding_box: 'Optional[ModelBoundingRect]'"
+            }
+          ],
+          "declarationChange": {
+            "before": "PathObject(client: \"'PDFDancer'\", object_ref)",
+            "after": "PathObject(client: \"'PDFDancer'\", object_ref: 'ObjectRef')"
+          }
+        },
+        {
+          "id": "PathObjectRef",
+          "status": "changed",
+          "kind": "class",
+          "memberChanges": [
+            {
+              "kind": "changed",
+              "symbol": "PathObjectRef",
+              "before": "to_dict(self) -> dict",
+              "after": "to_dict(self) -> Dict[str, Any]"
+            },
+            {
+              "kind": "added",
+              "symbol": "PathObjectRef",
+              "after": "object_type: pdfdancer.models.ObjectType"
+            }
+          ]
+        },
+        {
+          "id": "PdfAffineTransform",
+          "status": "added",
+          "kind": "class",
+          "signature": "PdfAffineTransform(a: 'float', b: 'float', c: 'float', d: 'float', e: 'float', f: 'float') -> None",
+          "memberCount": 4
+        },
+        {
+          "id": "PdfAffineTransformBuilder",
+          "status": "added",
+          "kind": "class",
+          "signature": "PdfAffineTransformBuilder() -> 'None'",
+          "memberCount": 6
+        },
+        {
+          "id": "PdfColorRequest",
+          "status": "added",
+          "kind": "class",
+          "signature": "PdfColorRequest(space: 'PdfColorSpace', components: 'tuple[float, ...]', alpha_value: 'Optional[float]' = None) -> None",
+          "memberCount": 7
+        },
+        {
+          "id": "PdfColorSpace",
+          "status": "added",
+          "kind": "enum",
+          "signature": "PdfColorSpace(*values)",
+          "memberCount": 3
+        },
+        {
+          "id": "PDFDancer",
+          "status": "changed",
+          "kind": "class",
+          "memberChanges": [
+            {
+              "kind": "changed",
+              "symbol": "PDFDancer",
+              "before": "__init__(self, token: 'str', pdf_data: 'Union[bytes, Path, str, BinaryIO]', base_url: 'str', read_timeout: 'float' = 0, max_retries: 'int' = 3, retry_backoff_factor: 'float' = 2.0)",
+              "after": "__init__(self, token: 'str', pdf_data: 'Union[bytes, Path, str, BinaryIO]', base_url: 'str', read_timeout: 'float' = 0, max_attempts: 'int' = 3, retry_backoff_factor: 'float' = 2.0)"
+            },
+            {
+              "kind": "removed",
+              "symbol": "PDFDancer",
+              "before": "apply_replacements(self, replacements: 'Dict[str, Union[str, dict]]', reflow_preset: 'Optional[ReflowPreset]' = None) -> 'bool'"
+            },
+            {
+              "kind": "changed",
+              "symbol": "PDFDancer",
+              "before": "close(self)",
+              "after": "close(self) -> 'None'"
+            },
+            {
+              "kind": "added",
+              "symbol": "PDFDancer",
+              "after": "new_bezier(self, page_number: 'int') -> 'BezierBuilder'"
+            },
+            {
+              "kind": "added",
+              "symbol": "PDFDancer",
+              "after": "new_line(self, page_number: 'int') -> 'LineBuilder'"
+            },
+            {
+              "kind": "changed",
+              "symbol": "PDFDancer",
+              "before": "new_page(self, orientation=<Orientation.PORTRAIT: 'PORTRAIT'>, size=PageSize(name='A4', width=595.0, height=842.0)) -> 'PageBuilder'",
+              "after": "new_page(self, orientation: 'Optional[Union[Orientation, str]]' = <Orientation.PORTRAIT: 'PORTRAIT'>, size: 'Optional[Union[PageSize, str, Mapping[str, Any]]]' = PageSize(name='A4', width=595.0, height=842.0)) -> 'PageBuilder'"
+            },
+            {
+              "kind": "removed",
+              "symbol": "PDFDancer",
+              "before": "new_paragraph(self) -> 'ParagraphBuilder'"
+            },
+            {
+              "kind": "removed",
+              "symbol": "PDFDancer",
+              "before": "new_path(self) -> \"'PathBuilder'\""
+            },
+            {
+              "kind": "added",
+              "symbol": "PDFDancer",
+              "after": "new_path(self, page_number: 'int') -> \"'PathBuilder'\""
+            },
+            {
+              "kind": "added",
+              "symbol": "PDFDancer",
+              "after": "new_rectangle(self, page_number: 'int') -> \"'RectangleBuilder'\""
+            },
+            {
+              "kind": "changed",
+              "symbol": "PDFDancer",
+              "before": "new(cls, token: 'Optional[str]' = None, base_url: 'Optional[str]' = None, timeout: 'float' = 30.0, page_size: 'Optional[Union[PageSize, str, Mapping[str, Any]]]' = None, orientation: 'Optional[Union[Orientation, str]]' = None, initial_page_count: 'int' = 1, max_retries: 'int' = 3, retry_backoff_factor: 'float' = 2.0) -> \"'PDFDancer'\"",
+              "after": "new(cls, token: 'Optional[str]' = None, base_url: 'Optional[str]' = None, timeout: 'float' = 30.0, page_size: 'Optional[Union[PageSize, str, Mapping[str, Any]]]' = None, orientation: 'Optional[Union[Orientation, str]]' = None, initial_page_count: 'int' = 1, max_attempts: 'int' = 3, retry_backoff_factor: 'float' = 2.0) -> \"'PDFDancer'\""
+            },
+            {
+              "kind": "changed",
+              "symbol": "PDFDancer",
+              "before": "open(cls, pdf_data: 'Union[bytes, Path, str, BinaryIO]', token: 'Optional[str]' = None, base_url: 'Optional[str]' = None, timeout: 'float' = 30.0, max_retries: 'int' = 3, retry_backoff_factor: 'float' = 2.0) -> \"'PDFDancer'\"",
+              "after": "open(cls, pdf_data: 'Union[bytes, Path, str, BinaryIO]', token: 'Optional[str]' = None, base_url: 'Optional[str]' = None, timeout: 'float' = 30.0, max_attempts: 'int' = 3, retry_backoff_factor: 'float' = 2.0) -> \"'PDFDancer'\""
+            },
+            {
+              "kind": "removed",
+              "symbol": "PDFDancer",
+              "before": "redact(self, objects: \"List['PDFObjectBase']\", replacement: 'str' = '[REDACTED]', placeholder_color: 'Optional[Color]' = None) -> \"'RedactResponse'\""
+            },
+            {
+              "kind": "changed",
+              "symbol": "PDFDancer",
+              "before": "select_elements(self)",
+              "after": "select_elements(self) -> 'List[ObjectRef]'"
+            },
+            {
+              "kind": "removed",
+              "symbol": "PDFDancer",
+              "before": "select_paragraph_matching(self, pattern: 'str') -> 'Optional[ParagraphObject]'"
+            },
+            {
+              "kind": "removed",
+              "symbol": "PDFDancer",
+              "before": "select_paragraphs_matching(self, pattern: 'str') -> 'List[ParagraphObject]'"
+            },
+            {
+              "kind": "removed",
+              "symbol": "PDFDancer",
+              "before": "select_paragraphs(self) -> 'List[ParagraphObject]'"
+            },
+            {
+              "kind": "removed",
+              "symbol": "PDFDancer",
+              "before": "select_text_line_matching(self, pattern: 'str') -> 'Optional[TextLineObject]'"
+            },
+            {
+              "kind": "removed",
+              "symbol": "PDFDancer",
+              "before": "select_text_lines_matching(self, pattern: 'str') -> 'List[TextLineObject]'"
+            },
+            {
+              "kind": "removed",
+              "symbol": "PDFDancer",
+              "before": "select_text_lines(self) -> 'List[TextLineObject]'"
+            },
+            {
+              "kind": "added",
+              "symbol": "PDFDancer",
+              "after": "text(self) -> 'TextClient'"
+            }
+          ],
+          "declarationChange": {
+            "before": "PDFDancer(token: 'str', pdf_data: 'Union[bytes, Path, str, BinaryIO]', base_url: 'str', read_timeout: 'float' = 0, max_retries: 'int' = 3, retry_backoff_factor: 'float' = 2.0)",
+            "after": "PDFDancer(token: 'str', pdf_data: 'Union[bytes, Path, str, BinaryIO]', base_url: 'str', read_timeout: 'float' = 0, max_attempts: 'int' = 3, retry_backoff_factor: 'float' = 2.0)"
+          }
+        },
+        {
+          "id": "PDFObjectBase",
+          "status": "promoted",
+          "kind": "class",
+          "previousModule": "types",
+          "memberChanges": [
+            {
+              "kind": "removed",
+              "symbol": "PDFObjectBase",
+              "before": "redact(self, replacement: 'str' = '[REDACTED]') -> 'bool'"
+            }
+          ]
+        },
+        {
+          "id": "RectangleBuilder",
+          "status": "promoted",
+          "kind": "class",
+          "previousModule": "path_builder",
+          "memberChanges": []
+        },
+        {
+          "id": "RedactResponse",
+          "status": "removed",
+          "kind": "class",
+          "signature": "RedactResponse(count: int, success: bool, warnings: List[str]) -> None",
+          "memberCount": 2
+        },
+        {
+          "id": "RedactTarget",
+          "status": "removed",
+          "kind": "class",
+          "signature": "RedactTarget(id: str, replacement: str) -> None",
+          "memberCount": 2
+        },
+        {
+          "id": "ReflowPreset",
+          "status": "removed",
+          "kind": "enum",
+          "signature": "ReflowPreset(*values)",
+          "memberCount": 3
+        },
+        {
+          "id": "Size",
+          "status": "changed",
+          "kind": "class",
+          "memberChanges": [
+            {
+              "kind": "changed",
+              "symbol": "Size",
+              "before": "to_dict(self) -> dict",
+              "after": "to_dict(self) -> Dict[str, Any]"
+            }
+          ]
+        },
+        {
+          "id": "TextDeleteBuilder",
+          "status": "added",
+          "kind": "class",
+          "signature": "TextDeleteBuilder() -> 'None'",
+          "memberCount": 13
+        },
+        {
+          "id": "TextDeleteRequest",
+          "status": "added",
+          "kind": "class",
+          "signature": "TextDeleteRequest(pages: 'Optional[tuple[int, ...]]', select: 'TextSelectorRequest', layout: 'Optional[TextLayoutRequest]' = None) -> None",
+          "memberCount": 7
+        },
+        {
+          "id": "TextEditChangeDiagnostic",
+          "status": "added",
+          "kind": "class",
+          "signature": "TextEditChangeDiagnostic(page: 'Optional[int]', operation: 'Optional[str]', source_text: 'Optional[str]', result_text: 'Optional[str]', requested_layout_mode: 'Optional[str]', requested_layout_profile: 'Optional[str]', effective_hyphenation_enabled: 'bool', applied_layout_mode: 'Optional[str]', element_ids: 'Optional[tuple[str, ...]]', generated_element_ids: 'Optional[tuple[str, ...]]', reflow_unit_ids: 'Optional[tuple[str, ...]]') -> None",
+          "memberCount": 2
+        },
+        {
+          "id": "TextEditResponse",
+          "status": "added",
+          "kind": "class",
+          "signature": "TextEditResponse(matched: 'Optional[int]', changed: 'Optional[int]', pages_changed: 'Optional[tuple[int, ...]]', change: 'Optional[tuple[TextEditChangeDiagnostic, ...]]', warnings: 'Optional[tuple[TextOperationDiagnostic, ...]]', errors: 'Optional[tuple[TextOperationDiagnostic, ...]]') -> None",
+          "memberCount": 2
+        },
+        {
+          "id": "TextInsertBuilder",
+          "status": "added",
+          "kind": "class",
+          "signature": "TextInsertBuilder() -> 'None'",
+          "memberCount": 26
+        },
+        {
+          "id": "TextInsertCaret",
+          "status": "added",
+          "kind": "enum",
+          "signature": "TextInsertCaret(*values)",
+          "memberCount": 2
+        },
+        {
+          "id": "TextInsertRequest",
+          "status": "added",
+          "kind": "class",
+          "signature": "TextInsertRequest(target: 'TextInsertTargetRequest', insert: 'str', style: 'TextInsertStyleRequest', layout: 'Optional[TextLayoutRequest]' = None) -> None",
+          "memberCount": 10
+        },
+        {
+          "id": "TextLayoutMode",
+          "status": "added",
+          "kind": "enum",
+          "signature": "TextLayoutMode(*values)",
+          "memberCount": 3
+        },
+        {
+          "id": "TextLayoutProfile",
+          "status": "added",
+          "kind": "enum",
+          "signature": "TextLayoutProfile(*values)",
+          "memberCount": 3
+        },
+        {
+          "id": "TextLayoutRequest",
+          "status": "added",
+          "kind": "class",
+          "signature": "TextLayoutRequest(mode: 'Optional[TextLayoutMode]' = None, profile: 'Optional[TextLayoutProfile]' = None, hyphenation_enabled: 'Optional[bool]' = None) -> None",
+          "memberCount": 7
+        },
+        {
+          "id": "TextLineBuilder",
+          "status": "removed",
+          "kind": "class",
+          "signature": "TextLineBuilder(client: \"'PDFDancer'\")",
+          "memberCount": 16
+        },
+        {
+          "id": "TextObjectRef",
+          "status": "removed",
+          "kind": "class",
+          "signature": "TextObjectRef(internal_id: str, position: pdfdancer.models.Position, object_type: pdfdancer.models.ObjectType, text: str | None = None, font_name: str | None = None, font_size: float | None = None, line_spacings: List[float] | None = None, color: pdfdancer.models.Color | None = None, status: pdfdancer.models.TextStatus | None = None)",
+          "memberCount": 13
+        },
+        {
+          "id": "TextOperationDiagnostic",
+          "status": "added",
+          "kind": "class",
+          "signature": "TextOperationDiagnostic(page: 'Optional[int]', code: 'Optional[str]', message: 'Optional[str]', element_ids: 'Optional[tuple[str, ...]]', reflow_unit_ids: 'Optional[tuple[str, ...]]') -> None",
+          "memberCount": 2
+        },
+        {
+          "id": "TextReplaceBuilder",
+          "status": "added",
+          "kind": "class",
+          "signature": "TextReplaceBuilder() -> 'None'",
+          "memberCount": 23
+        },
+        {
+          "id": "TextReplacementImageRequest",
+          "status": "added",
+          "kind": "class",
+          "signature": "TextReplacementImageRequest(data: 'bytes', transformation: 'PdfAffineTransform') -> None",
+          "memberCount": 3
+        },
+        {
+          "id": "TextReplaceRequest",
+          "status": "added",
+          "kind": "class",
+          "signature": "TextReplaceRequest(pages: 'Optional[tuple[int, ...]]', select: 'TextSelectorRequest', replace_with: 'Optional[str]' = None, replace_with_image: 'Optional[TextReplacementImageRequest]' = None, style: 'Optional[TextStyleSetRequest]' = None, layout: 'Optional[TextLayoutRequest]' = None) -> None",
+          "memberCount": 7
+        },
+        {
+          "id": "TextSelectorRequest",
+          "status": "added",
+          "kind": "class",
+          "signature": "TextSelectorRequest(literal: 'Optional[str]' = None, regex: 'Optional[str]' = None, case_sensitive: 'Optional[bool]' = None, whole_words: 'Optional[bool]' = None, max_matches: 'Optional[int]' = None) -> None",
+          "memberCount": 3
+        },
+        {
+          "id": "TextStatus",
+          "status": "removed",
+          "kind": "class",
+          "signature": "TextStatus(modified: bool, encodable: bool, font_type: pdfdancer.models.FontType, font_recommendation: pdfdancer.models.FontRecommendation) -> None",
+          "memberCount": 5
+        },
+        {
+          "id": "TextStyleBuilder",
+          "status": "added",
+          "kind": "class",
+          "signature": "TextStyleBuilder() -> 'None'",
+          "memberCount": 29
+        },
+        {
+          "id": "TextStyleNumericFilterRequest",
+          "status": "added",
+          "kind": "class",
+          "signature": "TextStyleNumericFilterRequest(eq: 'float', tolerance: 'Optional[float]' = None) -> None",
+          "memberCount": 4
+        },
+        {
+          "id": "TextStylePatchRequest",
+          "status": "added",
+          "kind": "class",
+          "signature": "TextStylePatchRequest(font: 'Optional[str]' = None, size: 'Optional[float]' = None, fill_color: 'Optional[PdfColorRequest]' = None, stroke_color: 'Optional[PdfColorRequest]' = None, character_spacing: 'Optional[float]' = None, word_spacing: 'Optional[float]' = None) -> None",
+          "memberCount": 4
+        },
+        {
+          "id": "TextStyleRequest",
+          "status": "added",
+          "kind": "class",
+          "signature": "TextStyleRequest(pages: 'Optional[tuple[int, ...]]', select: 'TextStyleSelectorRequest', style: 'TextStyleSetRequest', layout: 'Optional[TextLayoutRequest]' = None) -> None",
+          "memberCount": 8
+        },
+        {
+          "id": "TextStyleRunFilterRequest",
+          "status": "added",
+          "kind": "class",
+          "signature": "TextStyleRunFilterRequest(text_contains: 'Optional[str]' = None, font: 'Optional[str]' = None, size: 'Optional[TextStyleNumericFilterRequest]' = None, fill_color: 'Optional[PdfColorRequest]' = None, stroke_color: 'Optional[PdfColorRequest]' = None, character_spacing: 'Optional[TextStyleNumericFilterRequest]' = None, word_spacing: 'Optional[TextStyleNumericFilterRequest]' = None, contains_unmapped_glyphs: 'Optional[bool]' = None) -> None",
+          "memberCount": 3
+        },
+        {
+          "id": "TextStyleRunsSelectorRequest",
+          "status": "added",
+          "kind": "class",
+          "signature": "TextStyleRunsSelectorRequest(where: 'TextStyleRunFilterRequest', max_matches: 'Optional[int]' = None) -> None",
+          "memberCount": 3
+        },
+        {
+          "id": "TextStyleSelectorRequest",
+          "status": "added",
+          "kind": "class",
+          "signature": "TextStyleSelectorRequest(literal: 'Optional[str]' = None, regex: 'Optional[str]' = None, case_sensitive: 'Optional[bool]' = None, whole_words: 'Optional[bool]' = None, max_matches: 'Optional[int]' = None, runs: 'Optional[TextStyleRunsSelectorRequest]' = None) -> None",
+          "memberCount": 4
+        },
+        {
+          "id": "TextStyleSetRequest",
+          "status": "added",
+          "kind": "class",
+          "signature": "TextStyleSetRequest(font: 'Optional[str]' = None, size: 'Optional[float]' = None, fill_color: 'Optional[PdfColorRequest]' = None, stroke_color: 'Optional[PdfColorRequest]' = None, character_spacing: 'Optional[float]' = None, word_spacing: 'Optional[float]' = None, reset_spacing_overrides: 'Optional[bool]' = None) -> None",
+          "memberCount": 4
+        }
+      ],
       "changes": [
         {
           "kind": "added",
           "symbol": "FormFieldObject",
-          "after": "__init__(self, client: \"'PDFDancer'\", internal_id: 'str', object_type: 'ObjectType', position: 'Position', field_name: 'str', field_value: 'str')"
-        },
-        {
-          "kind": "added",
-          "symbol": "FormFieldObject",
-          "after": "clear_clipping(self) -> 'bool'"
-        },
-        {
-          "kind": "added",
-          "symbol": "FormFieldObject",
-          "after": "delete(self) -> 'bool'"
-        },
-        {
-          "kind": "added",
-          "symbol": "FormFieldObject",
-          "after": "FormFieldObject(client: \"'PDFDancer'\", internal_id: 'str', object_type: 'ObjectType', position: 'Position', field_name: 'str', field_value: 'str')"
-        },
-        {
-          "kind": "added",
-          "symbol": "FormFieldObject",
-          "after": "move_to(self, x: 'float', y: 'float') -> 'bool'"
-        },
-        {
-          "kind": "added",
-          "symbol": "FormFieldObject",
-          "after": "object_ref(self) -> 'FormFieldRef'"
-        },
-        {
-          "kind": "added",
-          "symbol": "FormFieldObject",
-          "after": "page_number: 'int'"
-        },
-        {
-          "kind": "added",
-          "symbol": "FormFieldObject",
           "after": "set_value(self, value: 'str') -> 'bool'"
+        },
+        {
+          "kind": "removed",
+          "symbol": "FormFieldObject",
+          "before": "edit(self) -> 'FormFieldEdit'"
+        },
+        {
+          "kind": "removed",
+          "symbol": "FormFieldObject",
+          "before": "redact(self, replacement: 'str' = '[REDACTED]') -> 'bool'"
         },
         {
           "kind": "added",
@@ -4233,69 +6269,14 @@
           "after": "to_dict(self) -> Dict[str, Any]"
         },
         {
-          "kind": "added",
+          "kind": "removed",
           "symbol": "FormObject",
-          "after": "__init__(self, client: \"'PDFDancer'\", internal_id: 'str', object_type: 'ObjectType', position: 'Position')"
-        },
-        {
-          "kind": "added",
-          "symbol": "FormObject",
-          "after": "clear_clipping(self) -> 'bool'"
-        },
-        {
-          "kind": "added",
-          "symbol": "FormObject",
-          "after": "delete(self) -> 'bool'"
-        },
-        {
-          "kind": "added",
-          "symbol": "FormObject",
-          "after": "FormObject(client: \"'PDFDancer'\", internal_id: 'str', object_type: 'ObjectType', position: 'Position')"
-        },
-        {
-          "kind": "added",
-          "symbol": "FormObject",
-          "after": "move_to(self, x: 'float', y: 'float') -> 'bool'"
-        },
-        {
-          "kind": "added",
-          "symbol": "FormObject",
-          "after": "object_ref(self) -> 'ObjectRef'"
-        },
-        {
-          "kind": "added",
-          "symbol": "FormObject",
-          "after": "page_number: 'int'"
-        },
-        {
-          "kind": "added",
-          "symbol": "ImageObject",
-          "after": "__init__(self, client: \"'PDFDancer'\", internal_id: 'str', object_type: 'ObjectType', position: 'Position')"
+          "before": "redact(self, replacement: 'str' = '[REDACTED]') -> 'bool'"
         },
         {
           "kind": "added",
           "symbol": "ImageObject",
           "after": "aspect_ratio: 'Optional[float]'"
-        },
-        {
-          "kind": "added",
-          "symbol": "ImageObject",
-          "after": "clear_clipping(self) -> 'bool'"
-        },
-        {
-          "kind": "added",
-          "symbol": "ImageObject",
-          "after": "crop(self, left: 'int' = 0, top: 'int' = 0, right: 'int' = 0, bottom: 'int' = 0) -> \"'CommandResult'\""
-        },
-        {
-          "kind": "added",
-          "symbol": "ImageObject",
-          "after": "delete(self) -> 'bool'"
-        },
-        {
-          "kind": "added",
-          "symbol": "ImageObject",
-          "after": "fill_region(self, x: 'int', y: 'int', width: 'int', height: 'int', color: \"'Color'\") -> \"'CommandResult'\""
         },
         {
           "kind": "added",
@@ -4310,32 +6291,7 @@
         {
           "kind": "added",
           "symbol": "ImageObject",
-          "after": "flip(self, direction: \"'ImageFlipDirection'\") -> \"'CommandResult'\""
-        },
-        {
-          "kind": "added",
-          "symbol": "ImageObject",
           "after": "height: 'Optional[float]'"
-        },
-        {
-          "kind": "added",
-          "symbol": "ImageObject",
-          "after": "ImageObject(client: \"'PDFDancer'\", internal_id: 'str', object_type: 'ObjectType', position: 'Position')"
-        },
-        {
-          "kind": "added",
-          "symbol": "ImageObject",
-          "after": "move_to(self, x: 'float', y: 'float') -> 'bool'"
-        },
-        {
-          "kind": "added",
-          "symbol": "ImageObject",
-          "after": "object_ref(self) -> 'ObjectRef'"
-        },
-        {
-          "kind": "added",
-          "symbol": "ImageObject",
-          "after": "page_number: 'int'"
         },
         {
           "kind": "added",
@@ -4345,32 +6301,12 @@
         {
           "kind": "added",
           "symbol": "ImageObject",
-          "after": "replace(self, new_image: \"'Image'\") -> \"'CommandResult'\""
-        },
-        {
-          "kind": "added",
-          "symbol": "ImageObject",
-          "after": "rotate(self, angle: 'float') -> \"'CommandResult'\""
-        },
-        {
-          "kind": "added",
-          "symbol": "ImageObject",
-          "after": "scale_to(self, width: 'float', height: 'float', preserve_aspect_ratio: 'bool' = True) -> \"'CommandResult'\""
-        },
-        {
-          "kind": "added",
-          "symbol": "ImageObject",
-          "after": "scale(self, factor: 'float') -> \"'CommandResult'\""
-        },
-        {
-          "kind": "added",
-          "symbol": "ImageObject",
-          "after": "set_opacity(self, opacity: 'float') -> \"'CommandResult'\""
-        },
-        {
-          "kind": "added",
-          "symbol": "ImageObject",
           "after": "width: 'Optional[float]'"
+        },
+        {
+          "kind": "removed",
+          "symbol": "ImageObject",
+          "before": "redact(self, replacement: 'str' = '[REDACTED]') -> 'bool'"
         },
         {
           "kind": "changed",
@@ -4660,28 +6596,33 @@
           "after": "rectangle(self, x: 'float', y: 'float', width: 'float', height: 'float') -> \"'PathBuilder'\""
         },
         {
-          "kind": "added",
+          "kind": "changed",
           "symbol": "PathEditSession",
+          "before": "__init__(self, client: \"'PDFDancer'\", object_ref)",
           "after": "__init__(self, client: \"'PDFDancer'\", object_ref: 'ObjectRef') -> 'None'"
         },
         {
-          "kind": "added",
+          "kind": "changed",
           "symbol": "PathEditSession",
+          "before": "apply(self)",
           "after": "apply(self) -> \"'CommandResult'\""
         },
         {
-          "kind": "added",
+          "kind": "changed",
           "symbol": "PathEditSession",
+          "before": "fill_color(self, color) -> \"'PathEditSession'\"",
           "after": "fill_color(self, color: \"'Color'\") -> \"'PathEditSession'\""
         },
         {
-          "kind": "added",
+          "kind": "changed",
           "symbol": "PathEditSession",
+          "before": "PathEditSession(client: \"'PDFDancer'\", object_ref)",
           "after": "PathEditSession(client: \"'PDFDancer'\", object_ref: 'ObjectRef') -> 'None'"
         },
         {
-          "kind": "added",
+          "kind": "changed",
           "symbol": "PathEditSession",
+          "before": "stroke_color(self, color) -> \"'PathEditSession'\"",
           "after": "stroke_color(self, color: \"'Color'\") -> \"'PathEditSession'\""
         },
         {
@@ -4703,59 +6644,33 @@
           "after": "PathGroupObject(client: \"'PDFDancer'\", page_index: 'int', info: \"'PathGroupInfo'\") -> 'None'"
         },
         {
-          "kind": "added",
+          "kind": "changed",
           "symbol": "PathObject",
+          "before": "__init__(self, client: \"'PDFDancer'\", object_ref)",
           "after": "__init__(self, client: \"'PDFDancer'\", object_ref: 'ObjectRef')"
         },
         {
-          "kind": "added",
+          "kind": "changed",
           "symbol": "PathObject",
+          "before": "bounding_box: 'Optional[BoundingRect]'",
           "after": "bounding_box: 'Optional[ModelBoundingRect]'"
         },
         {
-          "kind": "added",
+          "kind": "changed",
           "symbol": "PathObject",
-          "after": "clear_clipping(self) -> 'bool'"
-        },
-        {
-          "kind": "added",
-          "symbol": "PathObject",
-          "after": "delete(self) -> 'bool'"
-        },
-        {
-          "kind": "added",
-          "symbol": "PathObject",
-          "after": "edit(self) -> 'PathEditSession'"
-        },
-        {
-          "kind": "added",
-          "symbol": "PathObject",
-          "after": "get_fill_color(self) -> \"Optional['Color']\""
-        },
-        {
-          "kind": "added",
-          "symbol": "PathObject",
-          "after": "get_stroke_color(self) -> \"Optional['Color']\""
-        },
-        {
-          "kind": "added",
-          "symbol": "PathObject",
-          "after": "move_to(self, x: 'float', y: 'float') -> 'bool'"
-        },
-        {
-          "kind": "added",
-          "symbol": "PathObject",
+          "before": "object_ref(self)",
           "after": "object_ref(self) -> 'ObjectRef'"
         },
         {
-          "kind": "added",
+          "kind": "changed",
           "symbol": "PathObject",
-          "after": "page_number: 'int'"
+          "before": "PathObject(client: \"'PDFDancer'\", object_ref)",
+          "after": "PathObject(client: \"'PDFDancer'\", object_ref: 'ObjectRef')"
         },
         {
-          "kind": "added",
+          "kind": "removed",
           "symbol": "PathObject",
-          "after": "PathObject(client: \"'PDFDancer'\", object_ref: 'ObjectRef')"
+          "before": "redact(self, replacement: 'str' = '[REDACTED]') -> 'bool'"
         },
         {
           "kind": "added",
@@ -5006,94 +6921,9 @@
           "before": "select_text_lines(self) -> 'List[TextLineObject]'"
         },
         {
-          "kind": "added",
+          "kind": "removed",
           "symbol": "PDFObjectBase",
-          "after": "__init__(self, client: \"'PDFDancer'\", internal_id: 'str', object_type: 'ObjectType', position: 'Position')"
-        },
-        {
-          "kind": "added",
-          "symbol": "PDFObjectBase",
-          "after": "clear_clipping(self) -> 'bool'"
-        },
-        {
-          "kind": "added",
-          "symbol": "PDFObjectBase",
-          "after": "delete(self) -> 'bool'"
-        },
-        {
-          "kind": "added",
-          "symbol": "PDFObjectBase",
-          "after": "move_to(self, x: 'float', y: 'float') -> 'bool'"
-        },
-        {
-          "kind": "added",
-          "symbol": "PDFObjectBase",
-          "after": "object_ref(self) -> 'ObjectRef'"
-        },
-        {
-          "kind": "added",
-          "symbol": "PDFObjectBase",
-          "after": "page_number: 'int'"
-        },
-        {
-          "kind": "added",
-          "symbol": "PDFObjectBase",
-          "after": "PDFObjectBase(client: \"'PDFDancer'\", internal_id: 'str', object_type: 'ObjectType', position: 'Position')"
-        },
-        {
-          "kind": "added",
-          "symbol": "RectangleBuilder",
-          "after": "__init__(self, client: \"'PDFDancer'\", page_number: 'int')"
-        },
-        {
-          "kind": "added",
-          "symbol": "RectangleBuilder",
-          "after": "add(self) -> 'bool'"
-        },
-        {
-          "kind": "added",
-          "symbol": "RectangleBuilder",
-          "after": "at_coordinates(self, x: 'float', y: 'float') -> \"'RectangleBuilder'\""
-        },
-        {
-          "kind": "added",
-          "symbol": "RectangleBuilder",
-          "after": "dash_pattern(self, dash_array: 'List[float]', dash_phase: 'float' = 0.0) -> \"'RectangleBuilder'\""
-        },
-        {
-          "kind": "added",
-          "symbol": "RectangleBuilder",
-          "after": "even_odd_fill(self, enabled: 'bool' = True) -> \"'RectangleBuilder'\""
-        },
-        {
-          "kind": "added",
-          "symbol": "RectangleBuilder",
-          "after": "fill_color(self, color: 'Color') -> \"'RectangleBuilder'\""
-        },
-        {
-          "kind": "added",
-          "symbol": "RectangleBuilder",
-          "after": "RectangleBuilder(client: \"'PDFDancer'\", page_number: 'int')"
-        },
-        {
-          "kind": "added",
-          "symbol": "RectangleBuilder",
-          "after": "solid(self) -> \"'RectangleBuilder'\""
-        },
-        {
-          "kind": "added",
-          "symbol": "RectangleBuilder",
-          "after": "stroke_color(self, color: 'Color') -> \"'RectangleBuilder'\""
-        },
-        {
-          "kind": "added",
-          "symbol": "RectangleBuilder",
-          "after": "stroke_width(self, width: 'float') -> \"'RectangleBuilder'\""
-        },
-        {
-          "kind": "added",
-          "symbol": "RectangleBuilder",
-          "after": "with_size(self, width: 'float', height: 'float') -> \"'RectangleBuilder'\""
+          "before": "redact(self, replacement: 'str' = '[REDACTED]') -> 'bool'"
         },
         {
           "kind": "removed",
@@ -6320,21 +8150,982 @@
       "candidateRef": "release/v2",
       "candidateCommit": "a9b72397f9992099ebbb7f2abc26dddfd5f8d8c3",
       "counts": {
-        "added": 562,
-        "removed": 94,
-        "changed": 15
+        "symbols": {
+          "added": 43,
+          "promoted": 6,
+          "removed": 5,
+          "changed": 9
+        },
+        "retainedSymbolMembers": {
+          "added": 28,
+          "promoted": 0,
+          "removed": 21,
+          "changed": 14
+        },
+        "records": {
+          "added": 509,
+          "promoted": 0,
+          "removed": 97,
+          "changed": 15
+        }
       },
+      "symbolChanges": [
+        {
+          "id": "BaseObject",
+          "status": "promoted",
+          "kind": "class",
+          "previousModule": "types",
+          "memberChanges": [
+            {
+              "kind": "added",
+              "symbol": "BaseObject",
+              "after": "clearClipping(): Promise<boolean>"
+            },
+            {
+              "kind": "added",
+              "symbol": "BaseObject",
+              "after": "objectRef(): TRef"
+            }
+          ]
+        },
+        {
+          "id": "BezierBuilder",
+          "status": "added",
+          "kind": "class",
+          "signature": "class BezierBuilder extends SinglePathBuilder<BezierBuilder>",
+          "memberCount": 12
+        },
+        {
+          "id": "Color",
+          "status": "changed",
+          "kind": "class",
+          "memberChanges": [
+            {
+              "kind": "added",
+              "symbol": "Color",
+              "after": "BLACK: Color"
+            },
+            {
+              "kind": "added",
+              "symbol": "Color",
+              "after": "RED: Color"
+            },
+            {
+              "kind": "added",
+              "symbol": "Color",
+              "after": "WHITE: Color"
+            }
+          ]
+        },
+        {
+          "id": "DocumentSnapshot",
+          "status": "changed",
+          "kind": "class",
+          "memberChanges": [
+            {
+              "kind": "changed",
+              "symbol": "DocumentSnapshot",
+              "before": "getPageSnapshot(pageIndex: number): PageSnapshot",
+              "after": "getPageSnapshot(pageNumber: number): PageSnapshot"
+            }
+          ]
+        },
+        {
+          "id": "FlipDirection",
+          "status": "added",
+          "kind": "enum",
+          "signature": "enum FlipDirection",
+          "memberCount": 3
+        },
+        {
+          "id": "FormFieldObject",
+          "status": "promoted",
+          "kind": "class",
+          "previousModule": "types",
+          "memberChanges": [
+            {
+              "kind": "added",
+              "symbol": "FormFieldObject",
+              "after": "clearClipping(): Promise<boolean>"
+            },
+            {
+              "kind": "removed",
+              "symbol": "FormFieldObject",
+              "before": "fill(value: string): Promise<boolean>"
+            },
+            {
+              "kind": "added",
+              "symbol": "FormFieldObject",
+              "after": "objectRef(): FormFieldRef"
+            },
+            {
+              "kind": "added",
+              "symbol": "FormFieldObject",
+              "after": "setValue(value: string): Promise<boolean>"
+            }
+          ]
+        },
+        {
+          "id": "FormXObject",
+          "status": "promoted",
+          "kind": "class",
+          "previousModule": "types",
+          "memberChanges": [
+            {
+              "kind": "added",
+              "symbol": "FormXObject",
+              "after": "clearClipping(): Promise<boolean>"
+            },
+            {
+              "kind": "added",
+              "symbol": "FormXObject",
+              "after": "objectRef(): ObjectRef"
+            }
+          ]
+        },
+        {
+          "id": "ImageObject",
+          "status": "promoted",
+          "kind": "class",
+          "previousModule": "types",
+          "memberChanges": [
+            {
+              "kind": "added",
+              "symbol": "ImageObject",
+              "after": "clearClipping(): Promise<boolean>"
+            },
+            {
+              "kind": "added",
+              "symbol": "ImageObject",
+              "after": "crop(left: number, top: number, right: number, bottom: number): Promise<CommandResult>"
+            },
+            {
+              "kind": "added",
+              "symbol": "ImageObject",
+              "after": "fillRegion(x: number, y: number, width: number, height: number, color: Color): Promise<CommandResult>"
+            },
+            {
+              "kind": "added",
+              "symbol": "ImageObject",
+              "after": "flip(direction: FlipDirection): Promise<CommandResult>"
+            },
+            {
+              "kind": "added",
+              "symbol": "ImageObject",
+              "after": "flipHorizontal(): Promise<CommandResult>"
+            },
+            {
+              "kind": "added",
+              "symbol": "ImageObject",
+              "after": "flipVertical(): Promise<CommandResult>"
+            },
+            {
+              "kind": "added",
+              "symbol": "ImageObject",
+              "after": "objectRef(): ObjectRef"
+            },
+            {
+              "kind": "added",
+              "symbol": "ImageObject",
+              "after": "replace(newImage: Image): Promise<CommandResult>"
+            },
+            {
+              "kind": "added",
+              "symbol": "ImageObject",
+              "after": "replaceFromFile(imagePath: string): Promise<CommandResult>"
+            },
+            {
+              "kind": "added",
+              "symbol": "ImageObject",
+              "after": "rotate(angle: number): Promise<CommandResult>"
+            },
+            {
+              "kind": "added",
+              "symbol": "ImageObject",
+              "after": "scale(factor: number): Promise<CommandResult>"
+            },
+            {
+              "kind": "added",
+              "symbol": "ImageObject",
+              "after": "scaleTo(width: number, height: number, preserveAspectRatio?: boolean): Promise<CommandResult>"
+            },
+            {
+              "kind": "added",
+              "symbol": "ImageObject",
+              "after": "setOpacity(opacity: number): Promise<CommandResult>"
+            },
+            {
+              "kind": "added",
+              "symbol": "ImageObject",
+              "after": "aspectRatio: number"
+            },
+            {
+              "kind": "added",
+              "symbol": "ImageObject",
+              "after": "height: number"
+            },
+            {
+              "kind": "added",
+              "symbol": "ImageObject",
+              "after": "width: number"
+            }
+          ]
+        },
+        {
+          "id": "ImageTransformType",
+          "status": "added",
+          "kind": "enum",
+          "signature": "enum ImageTransformType",
+          "memberCount": 7
+        },
+        {
+          "id": "LineBuilder",
+          "status": "added",
+          "kind": "class",
+          "signature": "class LineBuilder extends SinglePathBuilder<LineBuilder>",
+          "memberCount": 9
+        },
+        {
+          "id": "ModifyPathRequest",
+          "status": "added",
+          "kind": "class",
+          "signature": "class ModifyPathRequest",
+          "memberCount": 5
+        },
+        {
+          "id": "ObjectType",
+          "status": "changed",
+          "kind": "enum",
+          "memberChanges": [
+            {
+              "kind": "added",
+              "symbol": "ObjectType",
+              "after": "BEZIER = \"BEZIER\""
+            },
+            {
+              "kind": "added",
+              "symbol": "ObjectType",
+              "after": "BUTTON = \"BUTTON\""
+            },
+            {
+              "kind": "added",
+              "symbol": "ObjectType",
+              "after": "CLIPPING = \"CLIPPING\""
+            },
+            {
+              "kind": "added",
+              "symbol": "ObjectType",
+              "after": "DROPDOWN = \"DROPDOWN\""
+            },
+            {
+              "kind": "added",
+              "symbol": "ObjectType",
+              "after": "LINE = \"LINE\""
+            },
+            {
+              "kind": "removed",
+              "symbol": "ObjectType",
+              "before": "PARAGRAPH = \"PARAGRAPH\""
+            },
+            {
+              "kind": "added",
+              "symbol": "ObjectType",
+              "after": "PDF = \"PDF\""
+            },
+            {
+              "kind": "added",
+              "symbol": "ObjectType",
+              "after": "RECTANGLE = \"RECTANGLE\""
+            },
+            {
+              "kind": "added",
+              "symbol": "ObjectType",
+              "after": "WORD = \"WORD\""
+            }
+          ]
+        },
+        {
+          "id": "PageBuilder",
+          "status": "changed",
+          "kind": "class",
+          "memberChanges": [
+            {
+              "kind": "changed",
+              "symbol": "PageBuilder",
+              "before": "atIndex(pageIndex: number): PageBuilder",
+              "after": "atIndex(pageNumber: number): PageBuilder"
+            },
+            {
+              "kind": "added",
+              "symbol": "PageBuilder",
+              "after": "atPage(pageNumber: number): PageBuilder"
+            }
+          ]
+        },
+        {
+          "id": "PageClient",
+          "status": "added",
+          "kind": "class",
+          "signature": "class PageClient",
+          "memberCount": 36
+        },
+        {
+          "id": "pageSizeFromDimensions",
+          "status": "added",
+          "kind": "function",
+          "signature": "pageSizeFromDimensions(width: number, height: number, tolerance?: number): PageSize",
+          "memberCount": 0
+        },
+        {
+          "id": "PageSnapshot",
+          "status": "changed",
+          "kind": "class",
+          "memberChanges": [
+            {
+              "kind": "removed",
+              "symbol": "PageSnapshot",
+              "before": "getPageIndex(): number"
+            },
+            {
+              "kind": "added",
+              "symbol": "PageSnapshot",
+              "after": "getPageNumber(): number"
+            }
+          ]
+        },
+        {
+          "id": "Paragraph",
+          "status": "removed",
+          "kind": "class",
+          "signature": "class Paragraph",
+          "memberCount": 15
+        },
+        {
+          "id": "ParagraphBuilder",
+          "status": "removed",
+          "kind": "class",
+          "signature": "class ParagraphBuilder",
+          "memberCount": 22
+        },
+        {
+          "id": "PathBuilder",
+          "status": "changed",
+          "kind": "class",
+          "memberChanges": [
+            {
+              "kind": "changed",
+              "symbol": "PathBuilder",
+              "before": "constructor(_client: PDFDancer, _defaultPageIndex?: number): PathBuilder",
+              "after": "constructor(_client: PDFDancer, _defaultPageNumber?: number): PathBuilder"
+            },
+            {
+              "kind": "removed",
+              "symbol": "PathBuilder",
+              "before": "apply(): Promise<boolean>"
+            },
+            {
+              "kind": "changed",
+              "symbol": "PathBuilder",
+              "before": "at(pageIndex: number, x: number, y: number): PathBuilder",
+              "after": "at(pageNumber: number, x: number, y: number): PathBuilder"
+            },
+            {
+              "kind": "added",
+              "symbol": "PathBuilder",
+              "after": "circle(cx: number, cy: number, radius: number): PathBuilder"
+            },
+            {
+              "kind": "added",
+              "symbol": "PathBuilder",
+              "after": "closePath(): PathBuilder"
+            },
+            {
+              "kind": "added",
+              "symbol": "PathBuilder",
+              "after": "rectangle(x: number, y: number, width: number, height: number): PathBuilder"
+            },
+            {
+              "kind": "added",
+              "symbol": "PathBuilder",
+              "after": "solid(): PathBuilder"
+            }
+          ]
+        },
+        {
+          "id": "PathEditSession",
+          "status": "added",
+          "kind": "class",
+          "signature": "class PathEditSession",
+          "memberCount": 4
+        },
+        {
+          "id": "PathGroupObject",
+          "status": "added",
+          "kind": "class",
+          "signature": "class PathGroupObject",
+          "memberCount": 12
+        },
+        {
+          "id": "PathObject",
+          "status": "promoted",
+          "kind": "class",
+          "previousModule": "types",
+          "memberChanges": [
+            {
+              "kind": "added",
+              "symbol": "PathObject",
+              "after": "clearClipping(): Promise<boolean>"
+            },
+            {
+              "kind": "added",
+              "symbol": "PathObject",
+              "after": "edit(): PathEditSession"
+            },
+            {
+              "kind": "added",
+              "symbol": "PathObject",
+              "after": "objectRef(): ObjectRef"
+            },
+            {
+              "kind": "added",
+              "symbol": "PathObject",
+              "after": "dashArray: number[]"
+            },
+            {
+              "kind": "added",
+              "symbol": "PathObject",
+              "after": "dashPhase: number"
+            },
+            {
+              "kind": "added",
+              "symbol": "PathObject",
+              "after": "fillColor: Color"
+            },
+            {
+              "kind": "added",
+              "symbol": "PathObject",
+              "after": "strokeColor: Color"
+            },
+            {
+              "kind": "added",
+              "symbol": "PathObject",
+              "after": "strokeWidth: number"
+            }
+          ]
+        },
+        {
+          "id": "PathObjectRef",
+          "status": "added",
+          "kind": "class",
+          "signature": "class PathObjectRef extends ObjectRef",
+          "memberCount": 10
+        },
+        {
+          "id": "PdfAffineTransform",
+          "status": "added",
+          "kind": "class",
+          "signature": "class PdfAffineTransform",
+          "memberCount": 5
+        },
+        {
+          "id": "PdfAffineTransformBuilder",
+          "status": "added",
+          "kind": "class",
+          "signature": "class PdfAffineTransformBuilder",
+          "memberCount": 6
+        },
+        {
+          "id": "PdfColorRequest",
+          "status": "added",
+          "kind": "class",
+          "signature": "class PdfColorRequest",
+          "memberCount": 10
+        },
+        {
+          "id": "PdfColorSpace",
+          "status": "added",
+          "kind": "enum",
+          "signature": "enum PdfColorSpace",
+          "memberCount": 3
+        },
+        {
+          "id": "PDFDancer",
+          "status": "changed",
+          "kind": "class",
+          "memberChanges": [
+            {
+              "kind": "added",
+              "symbol": "PDFDancer",
+              "after": "clearClipping(objectRef: ObjectRef): Promise<boolean>"
+            },
+            {
+              "kind": "added",
+              "symbol": "PDFDancer",
+              "after": "clearPathGroupClipping(pageNumber: number, groupId: string): Promise<boolean>"
+            },
+            {
+              "kind": "changed",
+              "symbol": "PDFDancer",
+              "before": "deletePage(pageIndex: number): Promise<boolean>",
+              "after": "deletePage(pageNumber: number): Promise<boolean>"
+            },
+            {
+              "kind": "changed",
+              "symbol": "PDFDancer",
+              "before": "getPageSnapshot(pageIndex: number, types?: ObjectType[]): Promise<PageSnapshot>",
+              "after": "getPageSnapshot(pageNumber: number, types?: ObjectType[]): Promise<PageSnapshot>"
+            },
+            {
+              "kind": "changed",
+              "symbol": "PDFDancer",
+              "before": "movePage(pageIndex: number, targetPageIndex: number): Promise<PageRef>",
+              "after": "movePage(fromPage: number, toPage: number): Promise<boolean>"
+            },
+            {
+              "kind": "added",
+              "symbol": "PDFDancer",
+              "after": "newBezier(pageNumber: number): BezierBuilder"
+            },
+            {
+              "kind": "changed",
+              "symbol": "PDFDancer",
+              "before": "newImage(pageIndex?: number): ImageBuilder",
+              "after": "newImage(pageNumber?: number): ImageBuilder"
+            },
+            {
+              "kind": "added",
+              "symbol": "PDFDancer",
+              "after": "newLine(pageNumber: number): LineBuilder"
+            },
+            {
+              "kind": "removed",
+              "symbol": "PDFDancer",
+              "before": "newParagraph(pageIndex?: number): ParagraphBuilder"
+            },
+            {
+              "kind": "changed",
+              "symbol": "PDFDancer",
+              "before": "newPath(pageIndex?: number): PathBuilder",
+              "after": "newPath(pageNumber?: number): PathBuilder"
+            },
+            {
+              "kind": "added",
+              "symbol": "PDFDancer",
+              "after": "newRectangle(pageNumber: number): RectangleBuilder"
+            },
+            {
+              "kind": "changed",
+              "symbol": "PDFDancer",
+              "before": "open(pdfData: string | Uint8Array | File | ArrayBuffer, token?: string, baseUrl?: string, timeout?: number, retryConfig?: RetryConfig): Promise<PDFDancer>",
+              "after": "open(pdfData: string | Uint8Array | ArrayBuffer, token?: string, baseUrl?: string, timeout?: number, retryConfig?: RetryConfig): Promise<PDFDancer>"
+            },
+            {
+              "kind": "changed",
+              "symbol": "PDFDancer",
+              "before": "page(pageIndex: number): PageClient",
+              "after": "page(pageNumber: number): PageClient"
+            },
+            {
+              "kind": "changed",
+              "symbol": "PDFDancer",
+              "before": "registerFont(ttfFile: string | Uint8Array | File): Promise<string>",
+              "after": "registerFont(ttfFile: string | Uint8Array): Promise<string>"
+            },
+            {
+              "kind": "removed",
+              "symbol": "PDFDancer",
+              "before": "selectFieldByName(fieldName: string): Promise<FormFieldObject>"
+            },
+            {
+              "kind": "removed",
+              "symbol": "PDFDancer",
+              "before": "selectFieldsByName(fieldName: string): Promise<FormFieldObject[]>"
+            },
+            {
+              "kind": "removed",
+              "symbol": "PDFDancer",
+              "before": "selectFormField(): Promise<FormFieldObject>"
+            },
+            {
+              "kind": "added",
+              "symbol": "PDFDancer",
+              "after": "selectFormFieldByName(fieldName: string): Promise<FormFieldObject>"
+            },
+            {
+              "kind": "added",
+              "symbol": "PDFDancer",
+              "after": "selectFormFieldsByName(fieldName: string): Promise<FormFieldObject[]>"
+            },
+            {
+              "kind": "removed",
+              "symbol": "PDFDancer",
+              "before": "selectLine(): Promise<TextLineObject>"
+            },
+            {
+              "kind": "removed",
+              "symbol": "PDFDancer",
+              "before": "selectLines(): Promise<TextLineObject[]>"
+            },
+            {
+              "kind": "removed",
+              "symbol": "PDFDancer",
+              "before": "selectParagraph(): Promise<ParagraphObject>"
+            },
+            {
+              "kind": "removed",
+              "symbol": "PDFDancer",
+              "before": "selectParagraphMatching(pattern: string): Promise<ParagraphObject>"
+            },
+            {
+              "kind": "removed",
+              "symbol": "PDFDancer",
+              "before": "selectParagraphs(): Promise<ParagraphObject[]>"
+            },
+            {
+              "kind": "removed",
+              "symbol": "PDFDancer",
+              "before": "selectParagraphsMatching(pattern: string): Promise<ParagraphObject[]>"
+            },
+            {
+              "kind": "removed",
+              "symbol": "PDFDancer",
+              "before": "selectTextLine(): Promise<TextLineObject>"
+            },
+            {
+              "kind": "removed",
+              "symbol": "PDFDancer",
+              "before": "selectTextLines(): Promise<TextLineObject[]>"
+            },
+            {
+              "kind": "added",
+              "symbol": "PDFDancer",
+              "after": "text(): TextClient"
+            }
+          ]
+        },
+        {
+          "id": "Position",
+          "status": "changed",
+          "kind": "class",
+          "memberChanges": [
+            {
+              "kind": "added",
+              "symbol": "Position",
+              "after": "constructor(pageNumber?: number, shape?: ShapeType, mode?: PositionMode, boundingRect?: BoundingRect): Position"
+            },
+            {
+              "kind": "removed",
+              "symbol": "Position",
+              "before": "constructor(pageIndex?: number, shape?: ShapeType, mode?: PositionMode, boundingRect?: BoundingRect, textStartsWith?: string, textPattern?: string): Position"
+            },
+            {
+              "kind": "changed",
+              "symbol": "Position",
+              "before": "atPage(pageIndex: number): Position",
+              "after": "atPage(pageNumber: number): Position"
+            },
+            {
+              "kind": "changed",
+              "symbol": "Position",
+              "before": "atPageCoordinates(pageIndex: number, x: number, y: number, tolerance?: number): Position",
+              "after": "atPageCoordinates(pageNumber: number, x: number, y: number, tolerance?: number): Position"
+            },
+            {
+              "kind": "removed",
+              "symbol": "Position",
+              "before": "atPageWithText(pageIndex: number, text: string): Position"
+            },
+            {
+              "kind": "removed",
+              "symbol": "Position",
+              "before": "withTextStarts(text: string): Position"
+            },
+            {
+              "kind": "added",
+              "symbol": "Position",
+              "after": "center?: Point"
+            },
+            {
+              "kind": "removed",
+              "symbol": "Position",
+              "before": "pageIndex?: number"
+            },
+            {
+              "kind": "added",
+              "symbol": "Position",
+              "after": "pageNumber?: number"
+            },
+            {
+              "kind": "removed",
+              "symbol": "Position",
+              "before": "textPattern?: string"
+            },
+            {
+              "kind": "removed",
+              "symbol": "Position",
+              "before": "textStartsWith?: string"
+            }
+          ]
+        },
+        {
+          "id": "RateLimitException",
+          "status": "added",
+          "kind": "class",
+          "signature": "class RateLimitException extends HttpClientException",
+          "memberCount": 11
+        },
+        {
+          "id": "RectangleBuilder",
+          "status": "added",
+          "kind": "class",
+          "signature": "class RectangleBuilder extends SinglePathBuilder<RectangleBuilder>",
+          "memberCount": 10
+        },
+        {
+          "id": "RetryConfig",
+          "status": "promoted",
+          "kind": "interface",
+          "previousModule": "pdfdancer_v1",
+          "memberChanges": [
+            {
+              "kind": "added",
+              "symbol": "RetryConfig",
+              "after": "maxAttempts?: number"
+            },
+            {
+              "kind": "removed",
+              "symbol": "RetryConfig",
+              "before": "maxRetries?: number"
+            },
+            {
+              "kind": "removed",
+              "symbol": "RetryConfig",
+              "before": "useJitter?: boolean"
+            }
+          ]
+        },
+        {
+          "id": "SessionNotFoundException",
+          "status": "added",
+          "kind": "class",
+          "signature": "class SessionNotFoundException extends SessionException",
+          "memberCount": 8
+        },
+        {
+          "id": "Size",
+          "status": "added",
+          "kind": "interface",
+          "signature": "interface Size",
+          "memberCount": 2
+        },
+        {
+          "id": "TextClient",
+          "status": "added",
+          "kind": "class",
+          "signature": "class TextClient",
+          "memberCount": 5
+        },
+        {
+          "id": "TextDeleteRequest",
+          "status": "added",
+          "kind": "class",
+          "signature": "class TextDeleteRequest",
+          "memberCount": 10
+        },
+        {
+          "id": "TextDeleteRequestBuilder",
+          "status": "added",
+          "kind": "class",
+          "signature": "class TextDeleteRequestBuilder extends SelectorLayoutBuilder<TextDeleteRequest>",
+          "memberCount": 13
+        },
+        {
+          "id": "TextEditChangeDiagnostic",
+          "status": "added",
+          "kind": "interface",
+          "signature": "interface TextEditChangeDiagnostic",
+          "memberCount": 11
+        },
+        {
+          "id": "TextEditResponse",
+          "status": "added",
+          "kind": "interface",
+          "signature": "interface TextEditResponse",
+          "memberCount": 6
+        },
+        {
+          "id": "TextInsertCaret",
+          "status": "added",
+          "kind": "enum",
+          "signature": "enum TextInsertCaret",
+          "memberCount": 2
+        },
+        {
+          "id": "TextInsertRequest",
+          "status": "added",
+          "kind": "class",
+          "signature": "class TextInsertRequest",
+          "memberCount": 14
+        },
+        {
+          "id": "TextInsertRequestBuilder",
+          "status": "added",
+          "kind": "class",
+          "signature": "class TextInsertRequestBuilder extends SelectorLayoutBuilder<TextInsertRequest>",
+          "memberCount": 25
+        },
+        {
+          "id": "TextLayoutMode",
+          "status": "added",
+          "kind": "enum",
+          "signature": "enum TextLayoutMode",
+          "memberCount": 3
+        },
+        {
+          "id": "TextLayoutProfile",
+          "status": "added",
+          "kind": "enum",
+          "signature": "enum TextLayoutProfile",
+          "memberCount": 3
+        },
+        {
+          "id": "TextLayoutRequest",
+          "status": "added",
+          "kind": "class",
+          "signature": "class TextLayoutRequest",
+          "memberCount": 10
+        },
+        {
+          "id": "TextLine",
+          "status": "removed",
+          "kind": "class",
+          "signature": "class TextLine",
+          "memberCount": 8
+        },
+        {
+          "id": "TextObjectRef",
+          "status": "removed",
+          "kind": "class",
+          "signature": "class TextObjectRef extends ObjectRef",
+          "memberCount": 13
+        },
+        {
+          "id": "TextOperationDiagnostic",
+          "status": "added",
+          "kind": "interface",
+          "signature": "interface TextOperationDiagnostic",
+          "memberCount": 5
+        },
+        {
+          "id": "TextReplacementImageRequest",
+          "status": "added",
+          "kind": "class",
+          "signature": "class TextReplacementImageRequest",
+          "memberCount": 4
+        },
+        {
+          "id": "TextReplaceRequest",
+          "status": "added",
+          "kind": "class",
+          "signature": "class TextReplaceRequest",
+          "memberCount": 13
+        },
+        {
+          "id": "TextReplaceRequestBuilder",
+          "status": "added",
+          "kind": "class",
+          "signature": "class TextReplaceRequestBuilder extends SelectorLayoutBuilder<TextReplaceRequest>",
+          "memberCount": 23
+        },
+        {
+          "id": "TextSelectorRequest",
+          "status": "added",
+          "kind": "class",
+          "signature": "class TextSelectorRequest",
+          "memberCount": 8
+        },
+        {
+          "id": "TextStatus",
+          "status": "removed",
+          "kind": "class",
+          "signature": "class TextStatus",
+          "memberCount": 10
+        },
+        {
+          "id": "TextStyleNumericFilterRequest",
+          "status": "added",
+          "kind": "class",
+          "signature": "class TextStyleNumericFilterRequest",
+          "memberCount": 5
+        },
+        {
+          "id": "TextStylePatchBuilder",
+          "status": "added",
+          "kind": "class",
+          "signature": "class TextStylePatchBuilder",
+          "memberCount": 8
+        },
+        {
+          "id": "TextStylePatchRequest",
+          "status": "added",
+          "kind": "class",
+          "signature": "class TextStylePatchRequest implements StyleFields",
+          "memberCount": 10
+        },
+        {
+          "id": "TextStyleRequest",
+          "status": "added",
+          "kind": "class",
+          "signature": "class TextStyleRequest",
+          "memberCount": 12
+        },
+        {
+          "id": "TextStyleRequestBuilder",
+          "status": "added",
+          "kind": "class",
+          "signature": "class TextStyleRequestBuilder extends SelectorLayoutBuilder<TextStyleRequest>",
+          "memberCount": 29
+        },
+        {
+          "id": "TextStyleRunFilterRequest",
+          "status": "added",
+          "kind": "interface",
+          "signature": "interface TextStyleRunFilterRequest",
+          "memberCount": 8
+        },
+        {
+          "id": "TextStyleSelectorRequest",
+          "status": "added",
+          "kind": "interface",
+          "signature": "interface TextStyleSelectorRequest extends Omit<TextSelectorRequest,'validated' | 'toJSON'>",
+          "memberCount": 6
+        },
+        {
+          "id": "TextStyleSetBuilder",
+          "status": "added",
+          "kind": "class",
+          "signature": "class TextStyleSetBuilder",
+          "memberCount": 9
+        },
+        {
+          "id": "TextStyleSetRequest",
+          "status": "added",
+          "kind": "class",
+          "signature": "class TextStyleSetRequest implements StyleFields",
+          "memberCount": 11
+        },
+        {
+          "id": "VERSION",
+          "status": "changed",
+          "kind": "value",
+          "memberChanges": [],
+          "declarationChange": {
+            "before": "VERSION: \"1.0.0\"",
+            "after": "VERSION: \"0.0.0-dev\""
+          }
+        }
+      ],
       "changes": [
-        {
-          "kind": "added",
-          "symbol": "BaseObject",
-          "after": "_client: PDFDancer"
-        },
-        {
-          "kind": "added",
-          "symbol": "BaseObject",
-          "after": "class BaseObject<TRef extends ObjectRef = ObjectRef>"
-        },
         {
           "kind": "added",
           "symbol": "BaseObject",
@@ -6343,37 +9134,7 @@
         {
           "kind": "added",
           "symbol": "BaseObject",
-          "after": "constructor<TRef extends ObjectRef = ObjectRef>(client: PDFDancer, internalId: string, type: ObjectType, position: Position): BaseObject<TRef>"
-        },
-        {
-          "kind": "added",
-          "symbol": "BaseObject",
-          "after": "delete(): Promise<boolean>"
-        },
-        {
-          "kind": "added",
-          "symbol": "BaseObject",
-          "after": "internalId: string"
-        },
-        {
-          "kind": "added",
-          "symbol": "BaseObject",
-          "after": "moveTo(x: number, y: number): Promise<boolean>"
-        },
-        {
-          "kind": "added",
-          "symbol": "BaseObject",
           "after": "objectRef(): TRef"
-        },
-        {
-          "kind": "added",
-          "symbol": "BaseObject",
-          "after": "position: Position"
-        },
-        {
-          "kind": "added",
-          "symbol": "BaseObject",
-          "after": "type: ObjectType"
         },
         {
           "kind": "added",
@@ -6484,47 +9245,7 @@
         {
           "kind": "added",
           "symbol": "FormFieldObject",
-          "after": "_client: PDFDancer"
-        },
-        {
-          "kind": "added",
-          "symbol": "FormFieldObject",
-          "after": "class FormFieldObject extends BaseObject<FormFieldRef>"
-        },
-        {
-          "kind": "added",
-          "symbol": "FormFieldObject",
           "after": "clearClipping(): Promise<boolean>"
-        },
-        {
-          "kind": "added",
-          "symbol": "FormFieldObject",
-          "after": "constructor(client: PDFDancer, internalId: string, type: ObjectType, position: Position, name: string, value: string): FormFieldObject"
-        },
-        {
-          "kind": "added",
-          "symbol": "FormFieldObject",
-          "after": "delete(): Promise<boolean>"
-        },
-        {
-          "kind": "added",
-          "symbol": "FormFieldObject",
-          "after": "fromRef(_client: PDFDancer, objectRef: FormFieldRef): FormFieldObject"
-        },
-        {
-          "kind": "added",
-          "symbol": "FormFieldObject",
-          "after": "internalId: string"
-        },
-        {
-          "kind": "added",
-          "symbol": "FormFieldObject",
-          "after": "moveTo(x: number, y: number): Promise<boolean>"
-        },
-        {
-          "kind": "added",
-          "symbol": "FormFieldObject",
-          "after": "name: string"
         },
         {
           "kind": "added",
@@ -6534,32 +9255,12 @@
         {
           "kind": "added",
           "symbol": "FormFieldObject",
-          "after": "position: Position"
-        },
-        {
-          "kind": "added",
-          "symbol": "FormFieldObject",
           "after": "setValue(value: string): Promise<boolean>"
         },
         {
-          "kind": "added",
+          "kind": "removed",
           "symbol": "FormFieldObject",
-          "after": "type: ObjectType"
-        },
-        {
-          "kind": "added",
-          "symbol": "FormFieldObject",
-          "after": "value: string"
-        },
-        {
-          "kind": "added",
-          "symbol": "FormXObject",
-          "after": "_client: PDFDancer"
-        },
-        {
-          "kind": "added",
-          "symbol": "FormXObject",
-          "after": "class FormXObject extends BaseObject"
+          "before": "fill(value: string): Promise<boolean>"
         },
         {
           "kind": "added",
@@ -6569,47 +9270,7 @@
         {
           "kind": "added",
           "symbol": "FormXObject",
-          "after": "constructor(client: PDFDancer, internalId: string, type: ObjectType, position: Position): FormXObject"
-        },
-        {
-          "kind": "added",
-          "symbol": "FormXObject",
-          "after": "delete(): Promise<boolean>"
-        },
-        {
-          "kind": "added",
-          "symbol": "FormXObject",
-          "after": "fromRef(_client: PDFDancer, objectRef: ObjectRef): FormXObject"
-        },
-        {
-          "kind": "added",
-          "symbol": "FormXObject",
-          "after": "internalId: string"
-        },
-        {
-          "kind": "added",
-          "symbol": "FormXObject",
-          "after": "moveTo(x: number, y: number): Promise<boolean>"
-        },
-        {
-          "kind": "added",
-          "symbol": "FormXObject",
           "after": "objectRef(): ObjectRef"
-        },
-        {
-          "kind": "added",
-          "symbol": "FormXObject",
-          "after": "position: Position"
-        },
-        {
-          "kind": "added",
-          "symbol": "FormXObject",
-          "after": "type: ObjectType"
-        },
-        {
-          "kind": "added",
-          "symbol": "ImageObject",
-          "after": "_client: PDFDancer"
         },
         {
           "kind": "added",
@@ -6619,27 +9280,12 @@
         {
           "kind": "added",
           "symbol": "ImageObject",
-          "after": "class ImageObject extends BaseObject"
-        },
-        {
-          "kind": "added",
-          "symbol": "ImageObject",
           "after": "clearClipping(): Promise<boolean>"
         },
         {
           "kind": "added",
           "symbol": "ImageObject",
-          "after": "constructor(client: PDFDancer, internalId: string, type: ObjectType, position: Position): ImageObject"
-        },
-        {
-          "kind": "added",
-          "symbol": "ImageObject",
           "after": "crop(left: number, top: number, right: number, bottom: number): Promise<CommandResult>"
-        },
-        {
-          "kind": "added",
-          "symbol": "ImageObject",
-          "after": "delete(): Promise<boolean>"
         },
         {
           "kind": "added",
@@ -6664,32 +9310,12 @@
         {
           "kind": "added",
           "symbol": "ImageObject",
-          "after": "fromRef(_client: PDFDancer, objectRef: ObjectRef): ImageObject"
-        },
-        {
-          "kind": "added",
-          "symbol": "ImageObject",
           "after": "height: number"
         },
         {
           "kind": "added",
           "symbol": "ImageObject",
-          "after": "internalId: string"
-        },
-        {
-          "kind": "added",
-          "symbol": "ImageObject",
-          "after": "moveTo(x: number, y: number): Promise<boolean>"
-        },
-        {
-          "kind": "added",
-          "symbol": "ImageObject",
           "after": "objectRef(): ObjectRef"
-        },
-        {
-          "kind": "added",
-          "symbol": "ImageObject",
-          "after": "position: Position"
         },
         {
           "kind": "added",
@@ -6720,11 +9346,6 @@
           "kind": "added",
           "symbol": "ImageObject",
           "after": "setOpacity(opacity: number): Promise<CommandResult>"
-        },
-        {
-          "kind": "added",
-          "symbol": "ImageObject",
-          "after": "type: ObjectType"
         },
         {
           "kind": "added",
@@ -7432,22 +10053,7 @@
         {
           "kind": "added",
           "symbol": "PathObject",
-          "after": "_client: PDFDancer"
-        },
-        {
-          "kind": "added",
-          "symbol": "PathObject",
-          "after": "class PathObject extends BaseObject"
-        },
-        {
-          "kind": "added",
-          "symbol": "PathObject",
           "after": "clearClipping(): Promise<boolean>"
-        },
-        {
-          "kind": "added",
-          "symbol": "PathObject",
-          "after": "constructor(client: PDFDancer, internalId: string, type: ObjectType, position: Position): PathObject"
         },
         {
           "kind": "added",
@@ -7462,11 +10068,6 @@
         {
           "kind": "added",
           "symbol": "PathObject",
-          "after": "delete(): Promise<boolean>"
-        },
-        {
-          "kind": "added",
-          "symbol": "PathObject",
           "after": "edit(): PathEditSession"
         },
         {
@@ -7477,27 +10078,7 @@
         {
           "kind": "added",
           "symbol": "PathObject",
-          "after": "fromRef(_client: PDFDancer, objectRef: ObjectRef): PathObject"
-        },
-        {
-          "kind": "added",
-          "symbol": "PathObject",
-          "after": "internalId: string"
-        },
-        {
-          "kind": "added",
-          "symbol": "PathObject",
-          "after": "moveTo(x: number, y: number): Promise<boolean>"
-        },
-        {
-          "kind": "added",
-          "symbol": "PathObject",
           "after": "objectRef(): ObjectRef"
-        },
-        {
-          "kind": "added",
-          "symbol": "PathObject",
-          "after": "position: Position"
         },
         {
           "kind": "added",
@@ -7508,11 +10089,6 @@
           "kind": "added",
           "symbol": "PathObject",
           "after": "strokeWidth: number"
-        },
-        {
-          "kind": "added",
-          "symbol": "PathObject",
-          "after": "type: ObjectType"
         },
         {
           "kind": "added",
@@ -8032,42 +10608,17 @@
         {
           "kind": "added",
           "symbol": "RetryConfig",
-          "after": "backoffMultiplier?: number"
-        },
-        {
-          "kind": "added",
-          "symbol": "RetryConfig",
-          "after": "initialDelay?: number"
-        },
-        {
-          "kind": "added",
-          "symbol": "RetryConfig",
-          "after": "interface RetryConfig"
-        },
-        {
-          "kind": "added",
-          "symbol": "RetryConfig",
           "after": "maxAttempts?: number"
         },
         {
-          "kind": "added",
+          "kind": "removed",
           "symbol": "RetryConfig",
-          "after": "maxDelay?: number"
+          "before": "maxRetries?: number"
         },
         {
-          "kind": "added",
+          "kind": "removed",
           "symbol": "RetryConfig",
-          "after": "respectRetryAfter?: boolean"
-        },
-        {
-          "kind": "added",
-          "symbol": "RetryConfig",
-          "after": "retryableStatusCodes?: number[]"
-        },
-        {
-          "kind": "added",
-          "symbol": "RetryConfig",
-          "after": "retryOnNetworkError?: boolean"
+          "before": "useJitter?: boolean"
         },
         {
           "kind": "added",

@@ -7,8 +7,11 @@ const os = require('node:os');
 const path = require('node:path');
 const test = require('node:test');
 const {
+  buildDiff,
   diffManifests,
   normalizeManifest,
+  renderDiffMarkdown,
+  renderSummaryMarkdown,
   replaceDirectoryAtomically,
   stableJson,
 } = require('../scripts/interface-extractors/core');
@@ -41,6 +44,52 @@ test('diff pairs changed overloads and reports unmatched members', () => {
     {kind: 'changed', symbol: 'Client', before: 'find(id: string): Item', after: 'find(id: number): Item'},
     {kind: 'removed', symbol: 'Client', before: 'old(): void'},
   ]);
+});
+
+test('review reports list new symbols once and detail only retained-symbol members', () => {
+  const base = manifest([
+    {id: 'Client', name: 'Client', kind: 'class', signature: 'class Client', members: [
+      {id: 'method:find', name: 'find', kind: 'method', arity: 1, signature: 'find(id: string): Item'},
+    ]},
+    {id: 'Legacy', name: 'Legacy', kind: 'class', signature: 'class Legacy', members: [
+      {id: 'method:old', name: 'old', kind: 'method', arity: 0, signature: 'old(): void'},
+    ]},
+  ]);
+  const candidate = manifest([
+    {id: 'Client', name: 'Client', kind: 'class', signature: 'class Client', members: [
+      {id: 'method:find', name: 'find', kind: 'method', arity: 1, signature: 'find(id: number): Item'},
+    ]},
+    {id: 'NewApi', name: 'NewApi', kind: 'class', signature: 'class NewApi', members: [
+      {id: 'method:create', name: 'create', kind: 'method', arity: 0, signature: 'create(): NewApi'},
+    ]},
+  ]);
+  const refs = {test: {
+    repository: 'fixture', baseRef: 'v1', baseCommit: '111', candidateRef: 'v2', candidateCommit: '222',
+  }};
+  const diff = buildDiff({test: base}, {test: candidate}, refs);
+  assert.deepEqual(diff.languages.test.counts.symbols, {added: 1, promoted: 0, removed: 1, changed: 1});
+  assert.deepEqual(diff.languages.test.counts.retainedSymbolMembers, {added: 0, promoted: 0, removed: 0, changed: 1});
+  const report = renderDiffMarkdown(diff);
+  assert.match(report, /Added public symbols \(1\)/);
+  assert.match(report, /`NewApi` — class/);
+  assert.match(report, /find\(id: string\): Item.*find\(id: number\): Item/);
+  assert.doesNotMatch(report, /create\(\): NewApi/);
+  const summary = renderSummaryMarkdown(diff);
+  assert.match(summary, /\| Public symbols \| 1 \| 0 \| 1 \| 1 \|/);
+  assert.match(summary, /### Changed symbols \(1\)[\s\S]*`Client`/);
+});
+
+test('review model distinguishes an existing declaration promoted to the package root', () => {
+  const base = manifest([{id: 'BaseObject', name: 'BaseObject', module: 'types', kind: 'class', signature: 'class BaseObject', members: []}]);
+  const candidate = manifest([{id: 'BaseObject', name: 'BaseObject', module: 'types', kind: 'class', signature: 'class BaseObject', members: []}]);
+  const refs = {test: {
+    repository: 'fixture', baseRef: 'v1', baseCommit: '111', candidateRef: 'v2', candidateCommit: '222',
+    promotedSymbols: ['BaseObject'],
+  }};
+  const diff = buildDiff({test: base}, {test: candidate}, refs);
+  assert.deepEqual(diff.languages.test.counts.symbols, {added: 0, promoted: 1, removed: 0, changed: 0});
+  assert.equal(diff.languages.test.symbolChanges[0].status, 'promoted');
+  assert.match(renderSummaryMarkdown(diff), /### Promoted symbols \(1\)[\s\S]*`BaseObject`/);
 });
 
 test('manifest serialization is deterministic', () => {
@@ -101,6 +150,7 @@ test('Python extractor honors __all__ and includes SDK-defined inherited members
       'class Internal: pass',
       '',
     ].join('\n'));
+    fs.writeFileSync(path.join(packageDirectory, 'types.py'), 'class DeepObject:\n    def edit(self) -> None: pass\n');
     const helper = path.resolve(__dirname, '../scripts/interface-extractors/extract-python.py');
     const output = childProcess.execFileSync('python3', [helper], {
       encoding: 'utf8',
@@ -108,6 +158,7 @@ test('Python extractor honors __all__ and includes SDK-defined inherited members
     });
     const extracted = JSON.parse(output);
     assert.deepEqual(extracted.symbols.map((symbol) => symbol.id), ['Client', 'Mode', 'helper']);
+    assert.ok(extracted.allModuleSymbols.some((symbol) => symbol.id === 'DeepObject' && symbol.module === 'types'));
     const client = extracted.symbols.find((symbol) => symbol.id === 'Client');
     assert.ok(client.members.some((member) => member.name === 'inherited' && member.signature.includes('value: int = 3')));
     assert.ok(client.members.some((member) => member.name === 'name' && member.kind === 'property'));
@@ -139,6 +190,32 @@ test('TypeScript extractor resolves entry-point re-exports and overloads', () =>
     assert.equal(client.members.filter((member) => member.name === 'find').length, 2);
     assert.ok(client.members.some((member) => member.signature.includes('id: string')));
     assert.ok(client.members.some((member) => member.signature === 'label?: string'));
+  } finally {
+    fs.rmSync(root, {recursive: true, force: true});
+  }
+});
+
+test('TypeScript module scan does not label an existing deep export as new when it gains a root re-export', () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'interface-typescript-reexport-test-'));
+  try {
+    const base = path.join(root, 'base');
+    const candidate = path.join(root, 'candidate');
+    fs.mkdirSync(base);
+    fs.mkdirSync(candidate);
+    fs.writeFileSync(path.join(base, 'types.d.ts'), 'export declare class BaseObject { delete(): Promise<boolean>; }\n');
+    fs.writeFileSync(path.join(base, 'index.d.ts'), 'export declare const VERSION = "1";\n');
+    fs.writeFileSync(path.join(candidate, 'types.d.ts'), 'export declare class BaseObject { delete(): Promise<boolean>; }\n');
+    fs.writeFileSync(path.join(candidate, 'index.d.ts'), [
+      'export { BaseObject } from "./types";',
+      'export declare const VERSION = "2";',
+      '',
+    ].join('\n'));
+    const baseManifest = manifest(extractTypeScript(base).symbols);
+    const candidateManifest = manifest(extractTypeScript(candidate).symbols);
+    assert.ok(baseManifest.symbols.some((symbol) => symbol.id === 'BaseObject'));
+    assert.ok(candidateManifest.symbols.some((symbol) => symbol.id === 'BaseObject'));
+    assert.ok(!diffManifests(baseManifest, candidateManifest)
+      .some((change) => change.symbol === 'BaseObject'));
   } finally {
     fs.rmSync(root, {recursive: true, force: true});
   }

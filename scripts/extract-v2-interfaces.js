@@ -9,6 +9,7 @@ const {
   buildDiff,
   normalizeManifest,
   renderDiffMarkdown,
+  renderSummaryMarkdown,
   replaceDirectoryAtomically,
   stableJson,
 } = require('./interface-extractors/core');
@@ -88,9 +89,13 @@ function extractPython(snapshot) {
 function extractTypeScript(snapshot) {
   command('npm', ['ci', '--ignore-scripts'], {cwd: snapshot, quiet: true});
   command('npm', ['run', 'build'], {cwd: snapshot, quiet: true});
-  const entry = path.join(snapshot, 'dist/index.d.ts');
+  const declarations = path.join(snapshot, 'dist');
+  const entry = path.join(declarations, 'index.d.ts');
   if (!fs.existsSync(entry)) throw new Error(`TypeScript build did not create ${entry}`);
-  return runJson(process.execPath, [path.join(ROOT, 'scripts/interface-extractors/extract-typescript.js'), entry], {cwd: snapshot});
+  const extractor = path.join(ROOT, 'scripts/interface-extractors/extract-typescript.js');
+  const publicEntry = runJson(process.execPath, [extractor, entry], {cwd: snapshot});
+  const allModules = runJson(process.execPath, [extractor, declarations], {cwd: snapshot});
+  return {symbols: publicEntry.symbols, allModuleSymbols: allModules.symbols};
 }
 
 function extractJava(snapshot) {
@@ -167,6 +172,25 @@ function main() {
       archiveRef(repository, candidateCommit, candidateSnapshot, tempRoot);
       const baseExtracted = extractLanguage(language, baseSnapshot);
       const candidateExtracted = extractLanguage(language, candidateSnapshot);
+      if (baseExtracted.allModuleSymbols && candidateExtracted.allModuleSymbols) {
+        const baseRootIds = new Set(baseExtracted.symbols.map((symbol) => symbol.id));
+        const baseAllByName = new Map();
+        for (const symbol of baseExtracted.allModuleSymbols) {
+          const matches = baseAllByName.get(symbol.name) || [];
+          matches.push(symbol);
+          baseAllByName.set(symbol.name, matches);
+        }
+        const promotedSymbols = [];
+        for (const candidateSymbol of candidateExtracted.symbols) {
+          if (baseRootIds.has(candidateSymbol.id)) continue;
+          const matches = baseAllByName.get(candidateSymbol.name) || [];
+          if (matches.length !== 1) continue;
+          baseExtracted.symbols.push({...matches[0], id: candidateSymbol.id, name: candidateSymbol.name});
+          baseRootIds.add(candidateSymbol.id);
+          promotedSymbols.push(candidateSymbol.id);
+        }
+        refs[language].promotedSymbols = promotedSymbols.sort();
+      }
       baseManifests[language] = normalizeManifest({
         ...baseExtracted,
         language,
@@ -192,13 +216,15 @@ function main() {
       }
       fs.writeFileSync(path.join(staging, 'v2-interface-diff.json'), stableJson(diff));
       fs.writeFileSync(path.join(staging, 'v2-interface-diff.md'), renderDiffMarkdown(diff));
+      fs.writeFileSync(path.join(staging, 'v2-interface-summary.md'), renderSummaryMarkdown(diff));
       replaceDirectoryAtomically(staging, output);
     } finally {
       fs.rmSync(staging, {recursive: true, force: true});
     }
 
     for (const [language, result] of Object.entries(diff.languages)) {
-      process.stdout.write(`${language}: ${candidateManifests[language].symbols.length} symbols; ${result.counts.added} added, ${result.counts.removed} removed, ${result.counts.changed} changed\n`);
+      const counts = result.counts.symbols;
+      process.stdout.write(`${language}: ${candidateManifests[language].symbols.length} candidate symbols; ${counts.added} added, ${counts.promoted} promoted, ${counts.removed} removed, ${counts.changed} changed\n`);
     }
     process.stdout.write(`Wrote ${path.relative(ROOT, output)} in ${((Date.now() - started) / 1000).toFixed(1)}s\n`);
   } finally {

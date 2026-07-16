@@ -3,7 +3,7 @@
   "language": "python",
   "repository": "pdfdancer-client-python",
   "candidateRef": "release/v2",
-  "candidateCommit": "f9a7bba98a55536e8507c355b1eb691a1f5a4734",
+  "candidateCommit": "811eca2de3578af3227ef53a99b5b06996d5a716",
   "symbols": [
     {
       "id": "Bezier",
@@ -91,7 +91,8 @@
           "arity": 1,
           "static": false
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "BezierBuilder",
@@ -187,7 +188,8 @@
           "arity": 3,
           "static": false
         }
-      ]
+      ],
+      "module": "path_builder"
     },
     {
       "id": "BoundingRect",
@@ -235,7 +237,8 @@
           "arity": 1,
           "static": false
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "Color",
@@ -251,7 +254,8 @@
           "arity": 5,
           "static": false
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "Font",
@@ -267,7 +271,8 @@
           "arity": 3,
           "static": false
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "FontNotFoundException",
@@ -283,7 +288,8 @@
           "arity": 2,
           "static": false
         }
-      ]
+      ],
+      "module": "exceptions"
     },
     {
       "id": "FontRecommendation",
@@ -323,7 +329,8 @@
           "arity": 1,
           "static": false
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "FontType",
@@ -352,7 +359,8 @@
           "signature": "SYSTEM = 'SYSTEM'",
           "static": true
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "FormFieldObject",
@@ -414,7 +422,8 @@
           "kind": "property",
           "signature": "page_number: 'int'"
         }
-      ]
+      ],
+      "module": "types"
     },
     {
       "id": "FormFieldRef",
@@ -492,7 +501,8 @@
           "kind": "property",
           "signature": "object_type: pdfdancer.models.ObjectType"
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "FormObject",
@@ -546,7 +556,8 @@
           "kind": "property",
           "signature": "page_number: 'int'"
         }
-      ]
+      ],
+      "module": "types"
     },
     {
       "id": "HttpClientException",
@@ -562,7 +573,8 @@
           "arity": 4,
           "static": false
         }
-      ]
+      ],
+      "module": "exceptions"
     },
     {
       "id": "Image",
@@ -594,7 +606,8 @@
           "arity": 2,
           "static": false
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "ImageFlipDirection",
@@ -623,7 +636,8 @@
           "signature": "VERTICAL = 'VERTICAL'",
           "static": true
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "ImageObject",
@@ -783,7 +797,8 @@
           "kind": "property",
           "signature": "width: 'Optional[float]'"
         }
-      ]
+      ],
+      "module": "types"
     },
     {
       "id": "ImageTransformRequest",
@@ -807,7 +822,8 @@
           "arity": 1,
           "static": false
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "ImageTransformType",
@@ -864,7 +880,8 @@
           "signature": "SCALE = 'SCALE'",
           "static": true
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "Line",
@@ -936,7 +953,8 @@
           "arity": 1,
           "static": false
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "LineBuilder",
@@ -1016,7 +1034,8 @@
           "arity": 3,
           "static": false
         }
-      ]
+      ],
+      "module": "path_builder"
     },
     {
       "id": "ModifyPathRequest",
@@ -1040,7 +1059,8 @@
           "arity": 1,
           "static": false
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "ObjectRef",
@@ -1102,7 +1122,8 @@
           "kind": "property",
           "signature": "object_type: pdfdancer.models.ObjectType"
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "ObjectType",
@@ -1236,7 +1257,8 @@
           "signature": "WORD = 'WORD'",
           "static": true
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "Orientation",
@@ -1258,7 +1280,8 @@
           "signature": "PORTRAIT = 'PORTRAIT'",
           "static": true
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "PageBuilder",
@@ -1370,7 +1393,8 @@
           "arity": 1,
           "static": false
         }
-      ]
+      ],
+      "module": "page_builder"
     },
     {
       "id": "PageRef",
@@ -1448,7 +1472,8 @@
           "kind": "property",
           "signature": "object_type: pdfdancer.models.ObjectType"
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "PageSize",
@@ -1512,7 +1537,8 @@
           "arity": 1,
           "static": false
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "Path",
@@ -1560,7 +1586,8 @@
           "arity": 2,
           "static": false
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "PathBuilder",
@@ -1712,7 +1739,8 @@
           "arity": 2,
           "static": false
         }
-      ]
+      ],
+      "module": "path_builder"
     },
     {
       "id": "PathEditSession",
@@ -1752,7 +1780,8 @@
           "arity": 2,
           "static": false
         }
-      ]
+      ],
+      "module": "types"
     },
     {
       "id": "PathGroupInfo",
@@ -1776,7 +1805,8 @@
           "arity": 1,
           "static": true
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "PathGroupObject",
@@ -1870,7 +1900,8 @@
           "kind": "property",
           "signature": "y: 'float'"
         }
-      ]
+      ],
+      "module": "types"
     },
     {
       "id": "PathObject",
@@ -1954,7 +1985,8 @@
           "kind": "property",
           "signature": "page_number: 'int'"
         }
-      ]
+      ],
+      "module": "types"
     },
     {
       "id": "PathObjectRef",
@@ -2032,7 +2064,8 @@
           "kind": "property",
           "signature": "object_type: pdfdancer.models.ObjectType"
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "PathSegment",
@@ -2088,7 +2121,8 @@
           "arity": 1,
           "static": false
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "PdfAffineTransform",
@@ -2128,7 +2162,8 @@
           "arity": 1,
           "static": false
         }
-      ]
+      ],
+      "module": "text_editing"
     },
     {
       "id": "PdfAffineTransformBuilder",
@@ -2184,7 +2219,8 @@
           "arity": 3,
           "static": false
         }
-      ]
+      ],
+      "module": "text_editing"
     },
     {
       "id": "PdfColorRequest",
@@ -2248,7 +2284,8 @@
           "arity": 1,
           "static": false
         }
-      ]
+      ],
+      "module": "text_editing"
     },
     {
       "id": "PdfColorSpace",
@@ -2277,7 +2314,8 @@
           "signature": "RGB = 'rgb'",
           "static": true
         }
-      ]
+      ],
+      "module": "text_editing"
     },
     {
       "id": "PDFDancer",
@@ -2517,7 +2555,8 @@
           "arity": 1,
           "static": false
         }
-      ]
+      ],
+      "module": "pdfdancer_v1"
     },
     {
       "id": "PdfDancerException",
@@ -2533,7 +2572,8 @@
           "arity": 3,
           "static": false
         }
-      ]
+      ],
+      "module": "exceptions"
     },
     {
       "id": "PDFObjectBase",
@@ -2587,7 +2627,8 @@
           "kind": "property",
           "signature": "page_number: 'int'"
         }
-      ]
+      ],
+      "module": "types"
     },
     {
       "id": "Point",
@@ -2603,7 +2644,8 @@
           "arity": 3,
           "static": false
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "Position",
@@ -2691,7 +2733,8 @@
           "arity": 1,
           "static": false
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "PositionMode",
@@ -2713,7 +2756,8 @@
           "signature": "INTERSECT = 'INTERSECT'",
           "static": true
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "RateLimitException",
@@ -2729,7 +2773,8 @@
           "arity": 4,
           "static": false
         }
-      ]
+      ],
+      "module": "exceptions"
     },
     {
       "id": "RectangleBuilder",
@@ -2817,7 +2862,8 @@
           "arity": 3,
           "static": false
         }
-      ]
+      ],
+      "module": "path_builder"
     },
     {
       "id": "SessionException",
@@ -2833,7 +2879,8 @@
           "arity": 3,
           "static": false
         }
-      ]
+      ],
+      "module": "exceptions"
     },
     {
       "id": "SessionNotFoundException",
@@ -2849,14 +2896,16 @@
           "arity": 2,
           "static": false
         }
-      ]
+      ],
+      "module": "exceptions"
     },
     {
       "id": "set_ssl_verify",
       "name": "set_ssl_verify",
       "kind": "function",
       "signature": "set_ssl_verify(enabled: bool) -> None",
-      "members": []
+      "members": [],
+      "module": "pdfdancer"
     },
     {
       "id": "ShapeType",
@@ -2892,7 +2941,8 @@
           "signature": "RECT = 'RECT'",
           "static": true
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "Size",
@@ -2916,7 +2966,8 @@
           "arity": 1,
           "static": false
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "StandardFonts",
@@ -3022,7 +3073,8 @@
           "signature": "ZAPF_DINGBATS = 'ZapfDingbats'",
           "static": true
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "TextDeleteBuilder",
@@ -3134,7 +3186,8 @@
           "arity": 2,
           "static": false
         }
-      ]
+      ],
+      "module": "text_editing"
     },
     {
       "id": "TextDeleteRequest",
@@ -3198,7 +3251,8 @@
           "arity": 2,
           "static": false
         }
-      ]
+      ],
+      "module": "text_editing"
     },
     {
       "id": "TextEditChangeDiagnostic",
@@ -3222,7 +3276,8 @@
           "arity": 2,
           "static": true
         }
-      ]
+      ],
+      "module": "text_editing"
     },
     {
       "id": "TextEditResponse",
@@ -3246,7 +3301,8 @@
           "arity": 2,
           "static": true
         }
-      ]
+      ],
+      "module": "text_editing"
     },
     {
       "id": "TextInsertBuilder",
@@ -3462,7 +3518,8 @@
           "arity": 2,
           "static": false
         }
-      ]
+      ],
+      "module": "text_editing"
     },
     {
       "id": "TextInsertCaret",
@@ -3484,7 +3541,8 @@
           "signature": "BEFORE = 'before'",
           "static": true
         }
-      ]
+      ],
+      "module": "text_editing"
     },
     {
       "id": "TextInsertRequest",
@@ -3572,7 +3630,8 @@
           "arity": 2,
           "static": false
         }
-      ]
+      ],
+      "module": "text_editing"
     },
     {
       "id": "TextLayoutMode",
@@ -3601,7 +3660,8 @@
           "signature": "SOURCE_ANCHORED = 'sourceAnchored'",
           "static": true
         }
-      ]
+      ],
+      "module": "text_editing"
     },
     {
       "id": "TextLayoutProfile",
@@ -3630,7 +3690,8 @@
           "signature": "NO_REFLOW = 'noReflow'",
           "static": true
         }
-      ]
+      ],
+      "module": "text_editing"
     },
     {
       "id": "TextLayoutRequest",
@@ -3694,7 +3755,8 @@
           "arity": 2,
           "static": false
         }
-      ]
+      ],
+      "module": "text_editing"
     },
     {
       "id": "TextOperationDiagnostic",
@@ -3718,7 +3780,8 @@
           "arity": 2,
           "static": true
         }
-      ]
+      ],
+      "module": "text_editing"
     },
     {
       "id": "TextReplaceBuilder",
@@ -3910,7 +3973,8 @@
           "arity": 2,
           "static": false
         }
-      ]
+      ],
+      "module": "text_editing"
     },
     {
       "id": "TextReplacementImageRequest",
@@ -3942,7 +4006,8 @@
           "arity": 1,
           "static": false
         }
-      ]
+      ],
+      "module": "text_editing"
     },
     {
       "id": "TextReplaceRequest",
@@ -4006,7 +4071,8 @@
           "arity": 2,
           "static": false
         }
-      ]
+      ],
+      "module": "text_editing"
     },
     {
       "id": "TextSelectorRequest",
@@ -4038,7 +4104,8 @@
           "arity": 1,
           "static": false
         }
-      ]
+      ],
+      "module": "text_editing"
     },
     {
       "id": "TextStyleBuilder",
@@ -4278,7 +4345,8 @@
           "arity": 2,
           "static": false
         }
-      ]
+      ],
+      "module": "text_editing"
     },
     {
       "id": "TextStyleNumericFilterRequest",
@@ -4318,7 +4386,8 @@
           "arity": 1,
           "static": false
         }
-      ]
+      ],
+      "module": "text_editing"
     },
     {
       "id": "TextStylePatchRequest",
@@ -4358,7 +4427,8 @@
           "arity": 1,
           "static": false
         }
-      ]
+      ],
+      "module": "text_editing"
     },
     {
       "id": "TextStyleRequest",
@@ -4430,7 +4500,8 @@
           "arity": 2,
           "static": false
         }
-      ]
+      ],
+      "module": "text_editing"
     },
     {
       "id": "TextStyleRunFilterRequest",
@@ -4462,7 +4533,8 @@
           "arity": 1,
           "static": false
         }
-      ]
+      ],
+      "module": "text_editing"
     },
     {
       "id": "TextStyleRunsSelectorRequest",
@@ -4494,7 +4566,8 @@
           "arity": 1,
           "static": false
         }
-      ]
+      ],
+      "module": "text_editing"
     },
     {
       "id": "TextStyleSelectorRequest",
@@ -4534,7 +4607,8 @@
           "arity": 1,
           "static": false
         }
-      ]
+      ],
+      "module": "text_editing"
     },
     {
       "id": "TextStyleSetRequest",
@@ -4574,7 +4648,8 @@
           "arity": 1,
           "static": false
         }
-      ]
+      ],
+      "module": "text_editing"
     },
     {
       "id": "ValidationException",
@@ -4590,7 +4665,8 @@
           "arity": 3,
           "static": false
         }
-      ]
+      ],
+      "module": "exceptions"
     }
   ]
 }

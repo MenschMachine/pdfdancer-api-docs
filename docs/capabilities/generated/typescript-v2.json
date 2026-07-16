@@ -79,7 +79,8 @@
           "signature": "type: ObjectType",
           "static": false
         }
-      ]
+      ],
+      "module": "types"
     },
     {
       "id": "Bezier",
@@ -165,7 +166,8 @@
           "signature": "strokeWidth?: number",
           "static": false
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "BezierBuilder",
@@ -269,7 +271,8 @@
           "arity": 2,
           "static": false
         }
-      ]
+      ],
+      "module": "path-builder"
     },
     {
       "id": "BoundingRect",
@@ -345,7 +348,8 @@
           "signature": "y: number",
           "static": false
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "Color",
@@ -410,7 +414,8 @@
           "signature": "WHITE: Color",
           "static": true
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "CommandResult",
@@ -477,7 +482,8 @@
           "signature": "warning: string",
           "static": false
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "DocumentFontInfo",
@@ -523,7 +529,8 @@
           "signature": "systemFontName: string",
           "static": false
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "DocumentSnapshot",
@@ -592,7 +599,8 @@
           "signature": "pages: PageSnapshot[]",
           "static": false
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "FlipDirection",
@@ -621,7 +629,8 @@
           "signature": "VERTICAL = \"VERTICAL\"",
           "static": true
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "Font",
@@ -651,7 +660,8 @@
           "signature": "size: number",
           "static": false
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "FontNotFoundException",
@@ -718,7 +728,8 @@
           "signature": "stackTraceLimit: number",
           "static": true
         }
-      ]
+      ],
+      "module": "exceptions"
     },
     {
       "id": "FontRecommendation",
@@ -764,7 +775,8 @@
           "signature": "systemFontName: string",
           "static": false
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "FontType",
@@ -793,7 +805,8 @@
           "signature": "SYSTEM = \"SYSTEM\"",
           "static": true
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "FormFieldObject",
@@ -899,7 +912,8 @@
           "signature": "value: string",
           "static": false
         }
-      ]
+      ],
+      "module": "types"
     },
     {
       "id": "FormFieldRef",
@@ -958,7 +972,8 @@
           "signature": "value: string",
           "static": false
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "FormXObject",
@@ -1042,7 +1057,8 @@
           "signature": "type: ObjectType",
           "static": false
         }
-      ]
+      ],
+      "module": "types"
     },
     {
       "id": "HttpClientException",
@@ -1123,7 +1139,8 @@
           "signature": "statusCode?: number",
           "static": false
         }
-      ]
+      ],
+      "module": "exceptions"
     },
     {
       "id": "Image",
@@ -1190,7 +1207,8 @@
           "signature": "width?: number",
           "static": false
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "ImageObject",
@@ -1383,7 +1401,8 @@
           "signature": "width: number",
           "static": false
         }
-      ]
+      ],
+      "module": "types"
     },
     {
       "id": "ImageTransformType",
@@ -1440,7 +1459,8 @@
           "signature": "SCALE = \"SCALE\"",
           "static": true
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "Line",
@@ -1512,7 +1532,8 @@
           "signature": "strokeWidth?: number",
           "static": false
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "LineBuilder",
@@ -1592,7 +1613,8 @@
           "arity": 2,
           "static": false
         }
-      ]
+      ],
+      "module": "path-builder"
     },
     {
       "id": "ModifyPathRequest",
@@ -1637,7 +1659,8 @@
           "signature": "strokeColor?: Color",
           "static": false
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "ObjectRef",
@@ -1682,7 +1705,8 @@
           "signature": "type: ObjectType",
           "static": false
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "ObjectType",
@@ -1816,7 +1840,8 @@
           "signature": "WORD = \"WORD\"",
           "static": true
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "Orientation",
@@ -1838,7 +1863,8 @@
           "signature": "PORTRAIT = \"PORTRAIT\"",
           "static": true
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "PageBuilder",
@@ -1958,7 +1984,8 @@
           "arity": 0,
           "static": false
         }
-      ]
+      ],
+      "module": "page-builder"
     },
     {
       "id": "PageClient",
@@ -2249,7 +2276,8 @@
           "signature": "type: ObjectType",
           "static": false
         }
-      ]
+      ],
+      "module": "pdfdancer_v1"
     },
     {
       "id": "PageRef",
@@ -2308,7 +2336,8 @@
           "signature": "type: ObjectType",
           "static": false
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "PageSize",
@@ -2337,14 +2366,16 @@
           "signature": "width?: number",
           "static": false
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "pageSizeFromDimensions",
       "name": "pageSizeFromDimensions",
       "kind": "function",
       "signature": "pageSizeFromDimensions(width: number, height: number, tolerance?: number): PageSize",
-      "members": []
+      "members": [],
+      "module": "models"
     },
     {
       "id": "PageSnapshot",
@@ -2398,7 +2429,8 @@
           "signature": "pageRef: PageRef",
           "static": false
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "Path",
@@ -2475,7 +2507,8 @@
           "signature": "position?: Position",
           "static": false
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "PathBuilder",
@@ -2627,7 +2660,8 @@
           "arity": 1,
           "static": false
         }
-      ]
+      ],
+      "module": "path-builder"
     },
     {
       "id": "PathEditSession",
@@ -2667,7 +2701,8 @@
           "arity": 1,
           "static": false
         }
-      ]
+      ],
+      "module": "types"
     },
     {
       "id": "PathGroupObject",
@@ -2766,7 +2801,8 @@
           "signature": "y: number",
           "static": false
         }
-      ]
+      ],
+      "module": "types"
     },
     {
       "id": "PathObject",
@@ -2893,7 +2929,8 @@
           "signature": "type: ObjectType",
           "static": false
         }
-      ]
+      ],
+      "module": "types"
     },
     {
       "id": "PathObjectRef",
@@ -2973,7 +3010,8 @@
           "signature": "type: ObjectType",
           "static": false
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "PathPoint",
@@ -2995,7 +3033,8 @@
           "signature": "y: number",
           "static": false
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "PathSegment",
@@ -3053,7 +3092,8 @@
           "signature": "strokeWidth?: number",
           "static": false
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "PdfAffineTransform",
@@ -3101,7 +3141,8 @@
           "arity": 0,
           "static": false
         }
-      ]
+      ],
+      "module": "text-editing"
     },
     {
       "id": "PdfAffineTransformBuilder",
@@ -3157,7 +3198,8 @@
           "arity": 2,
           "static": false
         }
-      ]
+      ],
+      "module": "text-editing"
     },
     {
       "id": "PdfColorRequest",
@@ -3242,7 +3284,8 @@
           "signature": "space: PdfColorSpace",
           "static": false
         }
-      ]
+      ],
+      "module": "text-editing"
     },
     {
       "id": "PdfColorSpace",
@@ -3271,7 +3314,8 @@
           "signature": "RGB = \"rgb\"",
           "static": true
         }
-      ]
+      ],
+      "module": "text-editing"
     },
     {
       "id": "PDFDancer",
@@ -3535,7 +3579,8 @@
           "arity": 0,
           "static": false
         }
-      ]
+      ],
+      "module": "pdfdancer_v1"
     },
     {
       "id": "PdfDancerException",
@@ -3602,7 +3647,8 @@
           "signature": "stackTraceLimit: number",
           "static": true
         }
-      ]
+      ],
+      "module": "exceptions"
     },
     {
       "id": "Point",
@@ -3624,7 +3670,8 @@
           "signature": "y: number",
           "static": false
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "Position",
@@ -3761,7 +3808,8 @@
           "signature": "tolerance?: number",
           "static": false
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "PositionMode",
@@ -3783,7 +3831,8 @@
           "signature": "INTERSECT = \"INTERSECT\"",
           "static": true
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "RateLimitException",
@@ -3871,7 +3920,8 @@
           "signature": "statusCode?: number",
           "static": false
         }
-      ]
+      ],
+      "module": "exceptions"
     },
     {
       "id": "RectangleBuilder",
@@ -3959,7 +4009,8 @@
           "arity": 1,
           "static": false
         }
-      ]
+      ],
+      "module": "path-builder"
     },
     {
       "id": "RetryConfig",
@@ -4016,7 +4067,8 @@
           "signature": "retryOnNetworkError?: boolean",
           "static": false
         }
-      ]
+      ],
+      "module": "pdfdancer_v1"
     },
     {
       "id": "SessionException",
@@ -4083,7 +4135,8 @@
           "signature": "stackTraceLimit: number",
           "static": true
         }
-      ]
+      ],
+      "module": "exceptions"
     },
     {
       "id": "SessionNotFoundException",
@@ -4150,7 +4203,8 @@
           "signature": "stackTraceLimit: number",
           "static": true
         }
-      ]
+      ],
+      "module": "exceptions"
     },
     {
       "id": "ShapeType",
@@ -4186,7 +4240,8 @@
           "signature": "RECT = \"RECT\"",
           "static": true
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "Size",
@@ -4208,14 +4263,16 @@
           "signature": "width: number",
           "static": false
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "STANDARD_PAGE_SIZES",
       "name": "STANDARD_PAGE_SIZES",
       "kind": "value",
       "signature": "STANDARD_PAGE_SIZES: Record<string, { width: number; height: number; }>",
-      "members": []
+      "members": [],
+      "module": "models"
     },
     {
       "id": "StandardFonts",
@@ -4321,7 +4378,8 @@
           "signature": "ZAPF_DINGBATS = \"ZapfDingbats\"",
           "static": true
         }
-      ]
+      ],
+      "module": "models"
     },
     {
       "id": "TextClient",
@@ -4369,7 +4427,8 @@
           "arity": 1,
           "static": false
         }
-      ]
+      ],
+      "module": "text-editing"
     },
     {
       "id": "TextDeleteRequest",
@@ -4454,7 +4513,8 @@
           "signature": "select: TextSelectorRequest",
           "static": false
         }
-      ]
+      ],
+      "module": "text-editing"
     },
     {
       "id": "TextDeleteRequestBuilder",
@@ -4566,7 +4626,8 @@
           "arity": 1,
           "static": false
         }
-      ]
+      ],
+      "module": "text-editing"
     },
     {
       "id": "TextEditChangeDiagnostic",
@@ -4651,7 +4712,8 @@
           "signature": "sourceText?: string",
           "static": false
         }
-      ]
+      ],
+      "module": "text-editing"
     },
     {
       "id": "TextEditResponse",
@@ -4701,7 +4763,8 @@
           "signature": "warnings?: TextOperationDiagnostic[]",
           "static": false
         }
-      ]
+      ],
+      "module": "text-editing"
     },
     {
       "id": "TextInsertCaret",
@@ -4723,7 +4786,8 @@
           "signature": "BEFORE = \"before\"",
           "static": true
         }
-      ]
+      ],
+      "module": "text-editing"
     },
     {
       "id": "TextInsertRequest",
@@ -4839,7 +4903,8 @@
           "signature": "target: TextInsertTarget",
           "static": false
         }
-      ]
+      ],
+      "module": "text-editing"
     },
     {
       "id": "TextInsertRequestBuilder",
@@ -5047,7 +5112,8 @@
           "arity": 1,
           "static": false
         }
-      ]
+      ],
+      "module": "text-editing"
     },
     {
       "id": "TextLayoutMode",
@@ -5076,7 +5142,8 @@
           "signature": "SOURCE_ANCHORED = \"sourceAnchored\"",
           "static": true
         }
-      ]
+      ],
+      "module": "text-editing"
     },
     {
       "id": "TextLayoutProfile",
@@ -5105,7 +5172,8 @@
           "signature": "NO_REFLOW = \"noReflow\"",
           "static": true
         }
-      ]
+      ],
+      "module": "text-editing"
     },
     {
       "id": "TextLayoutRequest",
@@ -5190,7 +5258,8 @@
           "signature": "profile?: TextLayoutProfile",
           "static": false
         }
-      ]
+      ],
+      "module": "text-editing"
     },
     {
       "id": "TextOperationDiagnostic",
@@ -5233,7 +5302,8 @@
           "signature": "reflowUnitIds?: string[]",
           "static": false
         }
-      ]
+      ],
+      "module": "text-editing"
     },
     {
       "id": "TextReplacementImageRequest",
@@ -5271,7 +5341,8 @@
           "signature": "transformation: PdfAffineTransform",
           "static": false
         }
-      ]
+      ],
+      "module": "text-editing"
     },
     {
       "id": "TextReplaceRequest",
@@ -5377,7 +5448,8 @@
           "signature": "style?: TextStyleSetRequest",
           "static": false
         }
-      ]
+      ],
+      "module": "text-editing"
     },
     {
       "id": "TextReplaceRequestBuilder",
@@ -5569,7 +5641,8 @@
           "arity": 1,
           "static": false
         }
-      ]
+      ],
+      "module": "text-editing"
     },
     {
       "id": "TextSelectorRequest",
@@ -5636,7 +5709,8 @@
           "signature": "wholeWords?: boolean",
           "static": false
         }
-      ]
+      ],
+      "module": "text-editing"
     },
     {
       "id": "TextStyleNumericFilterRequest",
@@ -5682,7 +5756,8 @@
           "signature": "tolerance?: number",
           "static": false
         }
-      ]
+      ],
+      "module": "text-editing"
     },
     {
       "id": "TextStylePatchBuilder",
@@ -5754,7 +5829,8 @@
           "arity": 1,
           "static": false
         }
-      ]
+      ],
+      "module": "text-editing"
     },
     {
       "id": "TextStylePatchRequest",
@@ -5836,7 +5912,8 @@
           "signature": "wordSpacing?: number",
           "static": false
         }
-      ]
+      ],
+      "module": "text-editing"
     },
     {
       "id": "TextStyleRequest",
@@ -5936,7 +6013,8 @@
           "signature": "style: TextStyleValue",
           "static": false
         }
-      ]
+      ],
+      "module": "text-editing"
     },
     {
       "id": "TextStyleRequestBuilder",
@@ -6176,7 +6254,8 @@
           "arity": 1,
           "static": false
         }
-      ]
+      ],
+      "module": "text-editing"
     },
     {
       "id": "TextStyleRunFilterRequest",
@@ -6240,7 +6319,8 @@
           "signature": "wordSpacing?: TextStyleNumericFilterRequest",
           "static": false
         }
-      ]
+      ],
+      "module": "text-editing"
     },
     {
       "id": "TextStyleSelectorRequest",
@@ -6290,7 +6370,8 @@
           "signature": "wholeWords?: boolean",
           "static": false
         }
-      ]
+      ],
+      "module": "text-editing"
     },
     {
       "id": "TextStyleSetBuilder",
@@ -6370,7 +6451,8 @@
           "arity": 1,
           "static": false
         }
-      ]
+      ],
+      "module": "text-editing"
     },
     {
       "id": "TextStyleSetRequest",
@@ -6459,7 +6541,8 @@
           "signature": "wordSpacing?: number",
           "static": false
         }
-      ]
+      ],
+      "module": "text-editing"
     },
     {
       "id": "ValidationException",
@@ -6526,14 +6609,16 @@
           "signature": "stackTraceLimit: number",
           "static": true
         }
-      ]
+      ],
+      "module": "exceptions"
     },
     {
       "id": "VERSION",
       "name": "VERSION",
       "kind": "value",
       "signature": "VERSION: \"0.0.0-dev\"",
-      "members": []
+      "members": [],
+      "module": "version"
     }
   ]
 }
