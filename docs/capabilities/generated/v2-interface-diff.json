@@ -5411,7 +5411,7 @@
       "baseRef": "release/v1",
       "baseCommit": "e89eae4efa048bbf566c45a5e202d414b74ea30b",
       "candidateRef": "release/v2",
-      "candidateCommit": "811eca2de3578af3227ef53a99b5b06996d5a716",
+      "candidateCommit": "af2a1171a1b9b06dff14d2a0d64f4340f925d26c",
       "counts": {
         "symbols": {
           "added": 27,
@@ -8148,7 +8148,7 @@
       "baseRef": "v1.0.23",
       "baseCommit": "eae4b620505422a133b7915a1289220ba0c7afed",
       "candidateRef": "release/v2",
-      "candidateCommit": "a9b72397f9992099ebbb7f2abc26dddfd5f8d8c3",
+      "candidateCommit": "7bd49ac104cc228c66c28f448c72c756eb740183",
       "counts": {
         "symbols": {
           "added": 43,

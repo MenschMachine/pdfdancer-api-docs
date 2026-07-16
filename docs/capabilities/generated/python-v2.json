@@ -3,7 +3,7 @@
   "language": "python",
   "repository": "pdfdancer-client-python",
   "candidateRef": "release/v2",
-  "candidateCommit": "811eca2de3578af3227ef53a99b5b06996d5a716",
+  "candidateCommit": "af2a1171a1b9b06dff14d2a0d64f4340f925d26c",
   "symbols": [
     {
       "id": "Bezier",
@@ -2556,7 +2556,7 @@
           "static": false
         }
       ],
-      "module": "pdfdancer_v1"
+      "module": "pdfdancer_v2"
     },
     {
       "id": "PdfDancerException",

@@ -292,7 +292,7 @@ None.
 
 - Repository: `pdfdancer-client-python`
 - Base: `release/v1` (`e89eae4efa048bbf566c45a5e202d414b74ea30b`)
-- Candidate: `release/v2` (`811eca2de3578af3227ef53a99b5b06996d5a716`)
+- Candidate: `release/v2` (`af2a1171a1b9b06dff14d2a0d64f4340f925d26c`)
 - Public symbols: 27 added, 7 promoted to the package root, 8 removed, 13 changed
 - Members of retained symbols: 24 added, 13 removed, 18 changed
 
@@ -522,7 +522,7 @@ None.
 
 - Repository: `pdfdancer-client-typescript`
 - Base: `v1.0.23` (`eae4b620505422a133b7915a1289220ba0c7afed`)
-- Candidate: `release/v2` (`a9b72397f9992099ebbb7f2abc26dddfd5f8d8c3`)
+- Candidate: `release/v2` (`7bd49ac104cc228c66c28f448c72c756eb740183`)
 - Public symbols: 43 added, 6 promoted to the package root, 5 removed, 9 changed
 - Members of retained symbols: 28 added, 21 removed, 14 changed
 

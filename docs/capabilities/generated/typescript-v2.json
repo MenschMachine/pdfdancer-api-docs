@@ -3,7 +3,7 @@
   "language": "typescript",
   "repository": "pdfdancer-client-typescript",
   "candidateRef": "release/v2",
-  "candidateCommit": "a9b72397f9992099ebbb7f2abc26dddfd5f8d8c3",
+  "candidateCommit": "7bd49ac104cc228c66c28f448c72c756eb740183",
   "symbols": [
     {
       "id": "BaseObject",
@@ -2277,7 +2277,7 @@
           "static": false
         }
       ],
-      "module": "pdfdancer_v1"
+      "module": "pdfdancer_v2"
     },
     {
       "id": "PageRef",
@@ -3580,7 +3580,7 @@
           "static": false
         }
       ],
-      "module": "pdfdancer_v1"
+      "module": "pdfdancer_v2"
     },
     {
       "id": "PdfDancerException",
@@ -4068,7 +4068,7 @@
           "static": false
         }
       ],
-      "module": "pdfdancer_v1"
+      "module": "pdfdancer_v2"
     },
     {
       "id": "SessionException",
