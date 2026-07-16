@@ -12,6 +12,8 @@
 *.js
 !.*.js
 !/scripts/*.js
+!/scripts/**/*.js
+!/tests/*.js
 
 # Misc
 .DS_Store

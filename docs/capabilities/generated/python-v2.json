@@ -1,0 +1,4596 @@
+{
+  "schemaVersion": 1,
+  "language": "python",
+  "repository": "pdfdancer-client-python",
+  "candidateRef": "release/v2",
+  "candidateCommit": "f9a7bba98a55536e8507c355b1eb691a1f5a4734",
+  "symbols": [
+    {
+      "id": "Bezier",
+      "name": "Bezier",
+      "kind": "class",
+      "signature": "Bezier(stroke_color: pdfdancer.models.Color | None = None, fill_color: pdfdancer.models.Color | None = None, stroke_width: float | None = None, dash_array: List[float] | None = None, dash_phase: float | None = None, p0: pdfdancer.models.Point | None = None, p1: pdfdancer.models.Point | None = None, p2: pdfdancer.models.Point | None = None, p3: pdfdancer.models.Point | None = None) -> None",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, stroke_color: pdfdancer.models.Color | None = None, fill_color: pdfdancer.models.Color | None = None, stroke_width: float | None = None, dash_array: List[float] | None = None, dash_phase: float | None = None, p0: pdfdancer.models.Point | None = None, p1: pdfdancer.models.Point | None = None, p2: pdfdancer.models.Point | None = None, p3: pdfdancer.models.Point | None = None) -> None",
+          "arity": 10,
+          "static": false
+        },
+        {
+          "id": "method:get_dash_array",
+          "name": "get_dash_array",
+          "kind": "method",
+          "signature": "get_dash_array(self) -> List[float] | None",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:get_dash_phase",
+          "name": "get_dash_phase",
+          "kind": "method",
+          "signature": "get_dash_phase(self) -> float | None",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:get_fill_color",
+          "name": "get_fill_color",
+          "kind": "method",
+          "signature": "get_fill_color(self) -> pdfdancer.models.Color | None",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:get_p0",
+          "name": "get_p0",
+          "kind": "method",
+          "signature": "get_p0(self) -> pdfdancer.models.Point | None",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:get_p1",
+          "name": "get_p1",
+          "kind": "method",
+          "signature": "get_p1(self) -> pdfdancer.models.Point | None",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:get_p2",
+          "name": "get_p2",
+          "kind": "method",
+          "signature": "get_p2(self) -> pdfdancer.models.Point | None",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:get_p3",
+          "name": "get_p3",
+          "kind": "method",
+          "signature": "get_p3(self) -> pdfdancer.models.Point | None",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:get_stroke_color",
+          "name": "get_stroke_color",
+          "kind": "method",
+          "signature": "get_stroke_color(self) -> pdfdancer.models.Color | None",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:get_stroke_width",
+          "name": "get_stroke_width",
+          "kind": "method",
+          "signature": "get_stroke_width(self) -> float | None",
+          "arity": 1,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "BezierBuilder",
+      "name": "BezierBuilder",
+      "kind": "class",
+      "signature": "BezierBuilder(client: \"'PDFDancer'\", page_number: 'int')",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, client: \"'PDFDancer'\", page_number: 'int')",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:add",
+          "name": "add",
+          "kind": "method",
+          "signature": "add(self) -> 'bool'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:control_point_1",
+          "name": "control_point_1",
+          "kind": "method",
+          "signature": "control_point_1(self, x: 'float', y: 'float') -> \"'BezierBuilder'\"",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:control_point_2",
+          "name": "control_point_2",
+          "kind": "method",
+          "signature": "control_point_2(self, x: 'float', y: 'float') -> \"'BezierBuilder'\"",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:dash_pattern",
+          "name": "dash_pattern",
+          "kind": "method",
+          "signature": "dash_pattern(self, dash_array: 'List[float]', dash_phase: 'float' = 0.0) -> \"'BezierBuilder'\"",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:fill_color",
+          "name": "fill_color",
+          "kind": "method",
+          "signature": "fill_color(self, color: 'Color') -> \"'BezierBuilder'\"",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:from_point",
+          "name": "from_point",
+          "kind": "method",
+          "signature": "from_point(self, x: 'float', y: 'float') -> \"'BezierBuilder'\"",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:solid",
+          "name": "solid",
+          "kind": "method",
+          "signature": "solid(self) -> \"'BezierBuilder'\"",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:stroke_color",
+          "name": "stroke_color",
+          "kind": "method",
+          "signature": "stroke_color(self, color: 'Color') -> \"'BezierBuilder'\"",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:stroke_width",
+          "name": "stroke_width",
+          "kind": "method",
+          "signature": "stroke_width(self, width: 'float') -> \"'BezierBuilder'\"",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:to_point",
+          "name": "to_point",
+          "kind": "method",
+          "signature": "to_point(self, x: 'float', y: 'float') -> \"'BezierBuilder'\"",
+          "arity": 3,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "BoundingRect",
+      "name": "BoundingRect",
+      "kind": "class",
+      "signature": "BoundingRect(x: float, y: float, width: float, height: float) -> None",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, x: float, y: float, width: float, height: float) -> None",
+          "arity": 5,
+          "static": false
+        },
+        {
+          "id": "method:get_height",
+          "name": "get_height",
+          "kind": "method",
+          "signature": "get_height(self) -> float",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:get_width",
+          "name": "get_width",
+          "kind": "method",
+          "signature": "get_width(self) -> float",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:get_x",
+          "name": "get_x",
+          "kind": "method",
+          "signature": "get_x(self) -> float",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:get_y",
+          "name": "get_y",
+          "kind": "method",
+          "signature": "get_y(self) -> float",
+          "arity": 1,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "Color",
+      "name": "Color",
+      "kind": "class",
+      "signature": "Color(r: int, g: int, b: int, a: int = 255) -> None",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, r: int, g: int, b: int, a: int = 255) -> None",
+          "arity": 5,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "Font",
+      "name": "Font",
+      "kind": "class",
+      "signature": "Font(name: str, size: float) -> None",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, name: str, size: float) -> None",
+          "arity": 3,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "FontNotFoundException",
+      "name": "FontNotFoundException",
+      "kind": "class",
+      "signature": "FontNotFoundException(message: str)",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, message: str)",
+          "arity": 2,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "FontRecommendation",
+      "name": "FontRecommendation",
+      "kind": "class",
+      "signature": "FontRecommendation(font_name: str, font_type: 'FontType', similarity_score: float) -> None",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, font_name: str, font_type: 'FontType', similarity_score: float) -> None",
+          "arity": 4,
+          "static": false
+        },
+        {
+          "id": "method:get_font_name",
+          "name": "get_font_name",
+          "kind": "method",
+          "signature": "get_font_name(self) -> str",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:get_font_type",
+          "name": "get_font_type",
+          "kind": "method",
+          "signature": "get_font_type(self) -> 'FontType'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:get_similarity_score",
+          "name": "get_similarity_score",
+          "kind": "method",
+          "signature": "get_similarity_score(self) -> float",
+          "arity": 1,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "FontType",
+      "name": "FontType",
+      "kind": "enum",
+      "signature": "FontType(*values)",
+      "members": [
+        {
+          "id": "enum-value:EMBEDDED",
+          "name": "EMBEDDED",
+          "kind": "enum-value",
+          "signature": "EMBEDDED = 'EMBEDDED'",
+          "static": true
+        },
+        {
+          "id": "enum-value:STANDARD",
+          "name": "STANDARD",
+          "kind": "enum-value",
+          "signature": "STANDARD = 'STANDARD'",
+          "static": true
+        },
+        {
+          "id": "enum-value:SYSTEM",
+          "name": "SYSTEM",
+          "kind": "enum-value",
+          "signature": "SYSTEM = 'SYSTEM'",
+          "static": true
+        }
+      ]
+    },
+    {
+      "id": "FormFieldObject",
+      "name": "FormFieldObject",
+      "kind": "class",
+      "signature": "FormFieldObject(client: \"'PDFDancer'\", internal_id: 'str', object_type: 'ObjectType', position: 'Position', field_name: 'str', field_value: 'str')",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, client: \"'PDFDancer'\", internal_id: 'str', object_type: 'ObjectType', position: 'Position', field_name: 'str', field_value: 'str')",
+          "arity": 7,
+          "static": false
+        },
+        {
+          "id": "method:clear_clipping",
+          "name": "clear_clipping",
+          "kind": "method",
+          "signature": "clear_clipping(self) -> 'bool'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:delete",
+          "name": "delete",
+          "kind": "method",
+          "signature": "delete(self) -> 'bool'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:move_to",
+          "name": "move_to",
+          "kind": "method",
+          "signature": "move_to(self, x: 'float', y: 'float') -> 'bool'",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:object_ref",
+          "name": "object_ref",
+          "kind": "method",
+          "signature": "object_ref(self) -> 'FormFieldRef'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:set_value",
+          "name": "set_value",
+          "kind": "method",
+          "signature": "set_value(self, value: 'str') -> 'bool'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "property:page_number",
+          "name": "page_number",
+          "kind": "property",
+          "signature": "page_number: 'int'"
+        }
+      ]
+    },
+    {
+      "id": "FormFieldRef",
+      "name": "FormFieldRef",
+      "kind": "class",
+      "signature": "FormFieldRef(internal_id: str, position: pdfdancer.models.Position, type: pdfdancer.models.ObjectType, name: str | None = None, value: str | None = None) -> None",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, internal_id: str, position: pdfdancer.models.Position, type: pdfdancer.models.ObjectType, name: str | None = None, value: str | None = None) -> None",
+          "arity": 6,
+          "static": false
+        },
+        {
+          "id": "method:get_internal_id",
+          "name": "get_internal_id",
+          "kind": "method",
+          "signature": "get_internal_id(self) -> str",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:get_name",
+          "name": "get_name",
+          "kind": "method",
+          "signature": "get_name(self) -> str | None",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:get_position",
+          "name": "get_position",
+          "kind": "method",
+          "signature": "get_position(self) -> pdfdancer.models.Position",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:get_type",
+          "name": "get_type",
+          "kind": "method",
+          "signature": "get_type(self) -> pdfdancer.models.ObjectType",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:get_value",
+          "name": "get_value",
+          "kind": "method",
+          "signature": "get_value(self) -> str | None",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:set_position",
+          "name": "set_position",
+          "kind": "method",
+          "signature": "set_position(self, position: pdfdancer.models.Position) -> None",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:to_dict",
+          "name": "to_dict",
+          "kind": "method",
+          "signature": "to_dict(self) -> Dict[str, Any]",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "property:object_type",
+          "name": "object_type",
+          "kind": "property",
+          "signature": "object_type: pdfdancer.models.ObjectType"
+        }
+      ]
+    },
+    {
+      "id": "FormObject",
+      "name": "FormObject",
+      "kind": "class",
+      "signature": "FormObject(client: \"'PDFDancer'\", internal_id: 'str', object_type: 'ObjectType', position: 'Position')",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, client: \"'PDFDancer'\", internal_id: 'str', object_type: 'ObjectType', position: 'Position')",
+          "arity": 5,
+          "static": false
+        },
+        {
+          "id": "method:clear_clipping",
+          "name": "clear_clipping",
+          "kind": "method",
+          "signature": "clear_clipping(self) -> 'bool'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:delete",
+          "name": "delete",
+          "kind": "method",
+          "signature": "delete(self) -> 'bool'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:move_to",
+          "name": "move_to",
+          "kind": "method",
+          "signature": "move_to(self, x: 'float', y: 'float') -> 'bool'",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:object_ref",
+          "name": "object_ref",
+          "kind": "method",
+          "signature": "object_ref(self) -> 'ObjectRef'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "property:page_number",
+          "name": "page_number",
+          "kind": "property",
+          "signature": "page_number: 'int'"
+        }
+      ]
+    },
+    {
+      "id": "HttpClientException",
+      "name": "HttpClientException",
+      "kind": "class",
+      "signature": "HttpClientException(message: str, response: httpx.Response | None = None, cause: Exception | None = None)",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, message: str, response: httpx.Response | None = None, cause: Exception | None = None)",
+          "arity": 4,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "Image",
+      "name": "Image",
+      "kind": "class",
+      "signature": "Image(position: pdfdancer.models.Position | None = None, format: str | None = None, width: float | None = None, height: float | None = None, data: bytes | None = None) -> None",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, position: pdfdancer.models.Position | None = None, format: str | None = None, width: float | None = None, height: float | None = None, data: bytes | None = None) -> None",
+          "arity": 6,
+          "static": false
+        },
+        {
+          "id": "method:get_position",
+          "name": "get_position",
+          "kind": "method",
+          "signature": "get_position(self) -> pdfdancer.models.Position | None",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:set_position",
+          "name": "set_position",
+          "kind": "method",
+          "signature": "set_position(self, position: pdfdancer.models.Position) -> None",
+          "arity": 2,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "ImageFlipDirection",
+      "name": "ImageFlipDirection",
+      "kind": "enum",
+      "signature": "ImageFlipDirection(*values)",
+      "members": [
+        {
+          "id": "enum-value:BOTH",
+          "name": "BOTH",
+          "kind": "enum-value",
+          "signature": "BOTH = 'BOTH'",
+          "static": true
+        },
+        {
+          "id": "enum-value:HORIZONTAL",
+          "name": "HORIZONTAL",
+          "kind": "enum-value",
+          "signature": "HORIZONTAL = 'HORIZONTAL'",
+          "static": true
+        },
+        {
+          "id": "enum-value:VERTICAL",
+          "name": "VERTICAL",
+          "kind": "enum-value",
+          "signature": "VERTICAL = 'VERTICAL'",
+          "static": true
+        }
+      ]
+    },
+    {
+      "id": "ImageObject",
+      "name": "ImageObject",
+      "kind": "class",
+      "signature": "ImageObject(client: \"'PDFDancer'\", internal_id: 'str', object_type: 'ObjectType', position: 'Position')",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, client: \"'PDFDancer'\", internal_id: 'str', object_type: 'ObjectType', position: 'Position')",
+          "arity": 5,
+          "static": false
+        },
+        {
+          "id": "method:clear_clipping",
+          "name": "clear_clipping",
+          "kind": "method",
+          "signature": "clear_clipping(self) -> 'bool'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:crop",
+          "name": "crop",
+          "kind": "method",
+          "signature": "crop(self, left: 'int' = 0, top: 'int' = 0, right: 'int' = 0, bottom: 'int' = 0) -> \"'CommandResult'\"",
+          "arity": 5,
+          "static": false
+        },
+        {
+          "id": "method:delete",
+          "name": "delete",
+          "kind": "method",
+          "signature": "delete(self) -> 'bool'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:fill_region",
+          "name": "fill_region",
+          "kind": "method",
+          "signature": "fill_region(self, x: 'int', y: 'int', width: 'int', height: 'int', color: \"'Color'\") -> \"'CommandResult'\"",
+          "arity": 6,
+          "static": false
+        },
+        {
+          "id": "method:flip",
+          "name": "flip",
+          "kind": "method",
+          "signature": "flip(self, direction: \"'ImageFlipDirection'\") -> \"'CommandResult'\"",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:flip_horizontal",
+          "name": "flip_horizontal",
+          "kind": "method",
+          "signature": "flip_horizontal(self) -> \"'CommandResult'\"",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:flip_vertical",
+          "name": "flip_vertical",
+          "kind": "method",
+          "signature": "flip_vertical(self) -> \"'CommandResult'\"",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:move_to",
+          "name": "move_to",
+          "kind": "method",
+          "signature": "move_to(self, x: 'float', y: 'float') -> 'bool'",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:object_ref",
+          "name": "object_ref",
+          "kind": "method",
+          "signature": "object_ref(self) -> 'ObjectRef'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:replace",
+          "name": "replace",
+          "kind": "method",
+          "signature": "replace(self, new_image: \"'Image'\") -> \"'CommandResult'\"",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:replace_from_file",
+          "name": "replace_from_file",
+          "kind": "method",
+          "signature": "replace_from_file(self, image_path: 'Path') -> \"'CommandResult'\"",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:rotate",
+          "name": "rotate",
+          "kind": "method",
+          "signature": "rotate(self, angle: 'float') -> \"'CommandResult'\"",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:scale",
+          "name": "scale",
+          "kind": "method",
+          "signature": "scale(self, factor: 'float') -> \"'CommandResult'\"",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:scale_to",
+          "name": "scale_to",
+          "kind": "method",
+          "signature": "scale_to(self, width: 'float', height: 'float', preserve_aspect_ratio: 'bool' = True) -> \"'CommandResult'\"",
+          "arity": 4,
+          "static": false
+        },
+        {
+          "id": "method:set_opacity",
+          "name": "set_opacity",
+          "kind": "method",
+          "signature": "set_opacity(self, opacity: 'float') -> \"'CommandResult'\"",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "property:aspect_ratio",
+          "name": "aspect_ratio",
+          "kind": "property",
+          "signature": "aspect_ratio: 'Optional[float]'"
+        },
+        {
+          "id": "property:height",
+          "name": "height",
+          "kind": "property",
+          "signature": "height: 'Optional[float]'"
+        },
+        {
+          "id": "property:page_number",
+          "name": "page_number",
+          "kind": "property",
+          "signature": "page_number: 'int'"
+        },
+        {
+          "id": "property:width",
+          "name": "width",
+          "kind": "property",
+          "signature": "width: 'Optional[float]'"
+        }
+      ]
+    },
+    {
+      "id": "ImageTransformRequest",
+      "name": "ImageTransformRequest",
+      "kind": "class",
+      "signature": "ImageTransformRequest(object_ref: pdfdancer.models.ObjectRef, transform_type: pdfdancer.models.ImageTransformType, new_image: pdfdancer.models.Image | None = None, scale_factor: float | None = None, target_size: pdfdancer.models.Size | None = None, preserve_aspect_ratio: bool | None = None, rotation_angle: float | None = None, crop_left: int | None = None, crop_top: int | None = None, crop_right: int | None = None, crop_bottom: int | None = None, opacity: float | None = None, flip_direction: pdfdancer.models.ImageFlipDirection | None = None, fill_region_x: int | None = None, fill_region_y: int | None = None, fill_region_width: int | None = None, fill_region_height: int | None = None, fill_color: int | None = None) -> None",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, object_ref: pdfdancer.models.ObjectRef, transform_type: pdfdancer.models.ImageTransformType, new_image: pdfdancer.models.Image | None = None, scale_factor: float | None = None, target_size: pdfdancer.models.Size | None = None, preserve_aspect_ratio: bool | None = None, rotation_angle: float | None = None, crop_left: int | None = None, crop_top: int | None = None, crop_right: int | None = None, crop_bottom: int | None = None, opacity: float | None = None, flip_direction: pdfdancer.models.ImageFlipDirection | None = None, fill_region_x: int | None = None, fill_region_y: int | None = None, fill_region_width: int | None = None, fill_region_height: int | None = None, fill_color: int | None = None) -> None",
+          "arity": 19,
+          "static": false
+        },
+        {
+          "id": "method:to_dict",
+          "name": "to_dict",
+          "kind": "method",
+          "signature": "to_dict(self) -> Dict[str, Any]",
+          "arity": 1,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "ImageTransformType",
+      "name": "ImageTransformType",
+      "kind": "enum",
+      "signature": "ImageTransformType(*values)",
+      "members": [
+        {
+          "id": "enum-value:CROP",
+          "name": "CROP",
+          "kind": "enum-value",
+          "signature": "CROP = 'CROP'",
+          "static": true
+        },
+        {
+          "id": "enum-value:FILL_REGION",
+          "name": "FILL_REGION",
+          "kind": "enum-value",
+          "signature": "FILL_REGION = 'FILL_REGION'",
+          "static": true
+        },
+        {
+          "id": "enum-value:FLIP",
+          "name": "FLIP",
+          "kind": "enum-value",
+          "signature": "FLIP = 'FLIP'",
+          "static": true
+        },
+        {
+          "id": "enum-value:OPACITY",
+          "name": "OPACITY",
+          "kind": "enum-value",
+          "signature": "OPACITY = 'OPACITY'",
+          "static": true
+        },
+        {
+          "id": "enum-value:REPLACE",
+          "name": "REPLACE",
+          "kind": "enum-value",
+          "signature": "REPLACE = 'REPLACE'",
+          "static": true
+        },
+        {
+          "id": "enum-value:ROTATE",
+          "name": "ROTATE",
+          "kind": "enum-value",
+          "signature": "ROTATE = 'ROTATE'",
+          "static": true
+        },
+        {
+          "id": "enum-value:SCALE",
+          "name": "SCALE",
+          "kind": "enum-value",
+          "signature": "SCALE = 'SCALE'",
+          "static": true
+        }
+      ]
+    },
+    {
+      "id": "Line",
+      "name": "Line",
+      "kind": "class",
+      "signature": "Line(stroke_color: pdfdancer.models.Color | None = None, fill_color: pdfdancer.models.Color | None = None, stroke_width: float | None = None, dash_array: List[float] | None = None, dash_phase: float | None = None, p0: pdfdancer.models.Point | None = None, p1: pdfdancer.models.Point | None = None) -> None",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, stroke_color: pdfdancer.models.Color | None = None, fill_color: pdfdancer.models.Color | None = None, stroke_width: float | None = None, dash_array: List[float] | None = None, dash_phase: float | None = None, p0: pdfdancer.models.Point | None = None, p1: pdfdancer.models.Point | None = None) -> None",
+          "arity": 8,
+          "static": false
+        },
+        {
+          "id": "method:get_dash_array",
+          "name": "get_dash_array",
+          "kind": "method",
+          "signature": "get_dash_array(self) -> List[float] | None",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:get_dash_phase",
+          "name": "get_dash_phase",
+          "kind": "method",
+          "signature": "get_dash_phase(self) -> float | None",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:get_fill_color",
+          "name": "get_fill_color",
+          "kind": "method",
+          "signature": "get_fill_color(self) -> pdfdancer.models.Color | None",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:get_p0",
+          "name": "get_p0",
+          "kind": "method",
+          "signature": "get_p0(self) -> pdfdancer.models.Point | None",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:get_p1",
+          "name": "get_p1",
+          "kind": "method",
+          "signature": "get_p1(self) -> pdfdancer.models.Point | None",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:get_stroke_color",
+          "name": "get_stroke_color",
+          "kind": "method",
+          "signature": "get_stroke_color(self) -> pdfdancer.models.Color | None",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:get_stroke_width",
+          "name": "get_stroke_width",
+          "kind": "method",
+          "signature": "get_stroke_width(self) -> float | None",
+          "arity": 1,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "LineBuilder",
+      "name": "LineBuilder",
+      "kind": "class",
+      "signature": "LineBuilder(client: \"'PDFDancer'\", page_number: 'int')",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, client: \"'PDFDancer'\", page_number: 'int')",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:add",
+          "name": "add",
+          "kind": "method",
+          "signature": "add(self) -> 'bool'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:dash_pattern",
+          "name": "dash_pattern",
+          "kind": "method",
+          "signature": "dash_pattern(self, dash_array: 'List[float]', dash_phase: 'float' = 0.0) -> \"'LineBuilder'\"",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:fill_color",
+          "name": "fill_color",
+          "kind": "method",
+          "signature": "fill_color(self, color: 'Color') -> \"'LineBuilder'\"",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:from_point",
+          "name": "from_point",
+          "kind": "method",
+          "signature": "from_point(self, x: 'float', y: 'float') -> \"'LineBuilder'\"",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:solid",
+          "name": "solid",
+          "kind": "method",
+          "signature": "solid(self) -> \"'LineBuilder'\"",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:stroke_color",
+          "name": "stroke_color",
+          "kind": "method",
+          "signature": "stroke_color(self, color: 'Color') -> \"'LineBuilder'\"",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:stroke_width",
+          "name": "stroke_width",
+          "kind": "method",
+          "signature": "stroke_width(self, width: 'float') -> \"'LineBuilder'\"",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:to_point",
+          "name": "to_point",
+          "kind": "method",
+          "signature": "to_point(self, x: 'float', y: 'float') -> \"'LineBuilder'\"",
+          "arity": 3,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "ModifyPathRequest",
+      "name": "ModifyPathRequest",
+      "kind": "class",
+      "signature": "ModifyPathRequest(object_ref: pdfdancer.models.ObjectRef, stroke_color: pdfdancer.models.Color | None = None, fill_color: pdfdancer.models.Color | None = None) -> None",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, object_ref: pdfdancer.models.ObjectRef, stroke_color: pdfdancer.models.Color | None = None, fill_color: pdfdancer.models.Color | None = None) -> None",
+          "arity": 4,
+          "static": false
+        },
+        {
+          "id": "method:to_dict",
+          "name": "to_dict",
+          "kind": "method",
+          "signature": "to_dict(self) -> Dict[str, Any]",
+          "arity": 1,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "ObjectRef",
+      "name": "ObjectRef",
+      "kind": "class",
+      "signature": "ObjectRef(internal_id: str, position: pdfdancer.models.Position, type: pdfdancer.models.ObjectType) -> None",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, internal_id: str, position: pdfdancer.models.Position, type: pdfdancer.models.ObjectType) -> None",
+          "arity": 4,
+          "static": false
+        },
+        {
+          "id": "method:get_internal_id",
+          "name": "get_internal_id",
+          "kind": "method",
+          "signature": "get_internal_id(self) -> str",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:get_position",
+          "name": "get_position",
+          "kind": "method",
+          "signature": "get_position(self) -> pdfdancer.models.Position",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:get_type",
+          "name": "get_type",
+          "kind": "method",
+          "signature": "get_type(self) -> pdfdancer.models.ObjectType",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:set_position",
+          "name": "set_position",
+          "kind": "method",
+          "signature": "set_position(self, position: pdfdancer.models.Position) -> None",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:to_dict",
+          "name": "to_dict",
+          "kind": "method",
+          "signature": "to_dict(self) -> Dict[str, Any]",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "property:object_type",
+          "name": "object_type",
+          "kind": "property",
+          "signature": "object_type: pdfdancer.models.ObjectType"
+        }
+      ]
+    },
+    {
+      "id": "ObjectType",
+      "name": "ObjectType",
+      "kind": "enum",
+      "signature": "ObjectType(*values)",
+      "members": [
+        {
+          "id": "enum-value:BEZIER",
+          "name": "BEZIER",
+          "kind": "enum-value",
+          "signature": "BEZIER = 'BEZIER'",
+          "static": true
+        },
+        {
+          "id": "enum-value:BUTTON",
+          "name": "BUTTON",
+          "kind": "enum-value",
+          "signature": "BUTTON = 'BUTTON'",
+          "static": true
+        },
+        {
+          "id": "enum-value:CHECKBOX",
+          "name": "CHECKBOX",
+          "kind": "enum-value",
+          "signature": "CHECKBOX = 'CHECKBOX'",
+          "static": true
+        },
+        {
+          "id": "enum-value:CLIPPING",
+          "name": "CLIPPING",
+          "kind": "enum-value",
+          "signature": "CLIPPING = 'CLIPPING'",
+          "static": true
+        },
+        {
+          "id": "enum-value:DROPDOWN",
+          "name": "DROPDOWN",
+          "kind": "enum-value",
+          "signature": "DROPDOWN = 'DROPDOWN'",
+          "static": true
+        },
+        {
+          "id": "enum-value:FORM_FIELD",
+          "name": "FORM_FIELD",
+          "kind": "enum-value",
+          "signature": "FORM_FIELD = 'FORM_FIELD'",
+          "static": true
+        },
+        {
+          "id": "enum-value:FORM_X_OBJECT",
+          "name": "FORM_X_OBJECT",
+          "kind": "enum-value",
+          "signature": "FORM_X_OBJECT = 'FORM_X_OBJECT'",
+          "static": true
+        },
+        {
+          "id": "enum-value:IMAGE",
+          "name": "IMAGE",
+          "kind": "enum-value",
+          "signature": "IMAGE = 'IMAGE'",
+          "static": true
+        },
+        {
+          "id": "enum-value:LINE",
+          "name": "LINE",
+          "kind": "enum-value",
+          "signature": "LINE = 'LINE'",
+          "static": true
+        },
+        {
+          "id": "enum-value:PAGE",
+          "name": "PAGE",
+          "kind": "enum-value",
+          "signature": "PAGE = 'PAGE'",
+          "static": true
+        },
+        {
+          "id": "enum-value:PATH",
+          "name": "PATH",
+          "kind": "enum-value",
+          "signature": "PATH = 'PATH'",
+          "static": true
+        },
+        {
+          "id": "enum-value:PDF",
+          "name": "PDF",
+          "kind": "enum-value",
+          "signature": "PDF = 'PDF'",
+          "static": true
+        },
+        {
+          "id": "enum-value:RADIO_BUTTON",
+          "name": "RADIO_BUTTON",
+          "kind": "enum-value",
+          "signature": "RADIO_BUTTON = 'RADIO_BUTTON'",
+          "static": true
+        },
+        {
+          "id": "enum-value:RECTANGLE",
+          "name": "RECTANGLE",
+          "kind": "enum-value",
+          "signature": "RECTANGLE = 'RECTANGLE'",
+          "static": true
+        },
+        {
+          "id": "enum-value:TEXT_ELEMENT",
+          "name": "TEXT_ELEMENT",
+          "kind": "enum-value",
+          "signature": "TEXT_ELEMENT = 'TEXT_ELEMENT'",
+          "static": true
+        },
+        {
+          "id": "enum-value:TEXT_FIELD",
+          "name": "TEXT_FIELD",
+          "kind": "enum-value",
+          "signature": "TEXT_FIELD = 'TEXT_FIELD'",
+          "static": true
+        },
+        {
+          "id": "enum-value:TEXT_LINE",
+          "name": "TEXT_LINE",
+          "kind": "enum-value",
+          "signature": "TEXT_LINE = 'TEXT_LINE'",
+          "static": true
+        },
+        {
+          "id": "enum-value:WORD",
+          "name": "WORD",
+          "kind": "enum-value",
+          "signature": "WORD = 'WORD'",
+          "static": true
+        }
+      ]
+    },
+    {
+      "id": "Orientation",
+      "name": "Orientation",
+      "kind": "enum",
+      "signature": "Orientation(*values)",
+      "members": [
+        {
+          "id": "enum-value:LANDSCAPE",
+          "name": "LANDSCAPE",
+          "kind": "enum-value",
+          "signature": "LANDSCAPE = 'LANDSCAPE'",
+          "static": true
+        },
+        {
+          "id": "enum-value:PORTRAIT",
+          "name": "PORTRAIT",
+          "kind": "enum-value",
+          "signature": "PORTRAIT = 'PORTRAIT'",
+          "static": true
+        }
+      ]
+    },
+    {
+      "id": "PageBuilder",
+      "name": "PageBuilder",
+      "kind": "class",
+      "signature": "PageBuilder(client: \"'PDFDancer'\") -> 'None'",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, client: \"'PDFDancer'\") -> 'None'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:a3",
+          "name": "a3",
+          "kind": "method",
+          "signature": "a3(self) -> \"'PageBuilder'\"",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:a4",
+          "name": "a4",
+          "kind": "method",
+          "signature": "a4(self) -> \"'PageBuilder'\"",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:a5",
+          "name": "a5",
+          "kind": "method",
+          "signature": "a5(self) -> \"'PageBuilder'\"",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:add",
+          "name": "add",
+          "kind": "method",
+          "signature": "add(self) -> 'PageRef'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:at_page",
+          "name": "at_page",
+          "kind": "method",
+          "signature": "at_page(self, page_number: 'int') -> \"'PageBuilder'\"",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:custom_size",
+          "name": "custom_size",
+          "kind": "method",
+          "signature": "custom_size(self, width: 'float', height: 'float') -> \"'PageBuilder'\"",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:landscape",
+          "name": "landscape",
+          "kind": "method",
+          "signature": "landscape(self) -> \"'PageBuilder'\"",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:legal",
+          "name": "legal",
+          "kind": "method",
+          "signature": "legal(self) -> \"'PageBuilder'\"",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:letter",
+          "name": "letter",
+          "kind": "method",
+          "signature": "letter(self) -> \"'PageBuilder'\"",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:orientation",
+          "name": "orientation",
+          "kind": "method",
+          "signature": "orientation(self, orientation: 'Union[Orientation, str]') -> \"'PageBuilder'\"",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:page_size",
+          "name": "page_size",
+          "kind": "method",
+          "signature": "page_size(self, page_size: 'Union[PageSize, str, Mapping[str, Any]]') -> \"'PageBuilder'\"",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:portrait",
+          "name": "portrait",
+          "kind": "method",
+          "signature": "portrait(self) -> \"'PageBuilder'\"",
+          "arity": 1,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "PageRef",
+      "name": "PageRef",
+      "kind": "class",
+      "signature": "PageRef(internal_id: str, position: pdfdancer.models.Position, type: pdfdancer.models.ObjectType, page_size: pdfdancer.models.PageSize | None, orientation: pdfdancer.models.Orientation | None) -> None",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, internal_id: str, position: pdfdancer.models.Position, type: pdfdancer.models.ObjectType, page_size: pdfdancer.models.PageSize | None, orientation: pdfdancer.models.Orientation | None) -> None",
+          "arity": 6,
+          "static": false
+        },
+        {
+          "id": "method:get_internal_id",
+          "name": "get_internal_id",
+          "kind": "method",
+          "signature": "get_internal_id(self) -> str",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:get_orientation",
+          "name": "get_orientation",
+          "kind": "method",
+          "signature": "get_orientation(self) -> pdfdancer.models.Orientation | None",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:get_page_size",
+          "name": "get_page_size",
+          "kind": "method",
+          "signature": "get_page_size(self) -> pdfdancer.models.PageSize | None",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:get_position",
+          "name": "get_position",
+          "kind": "method",
+          "signature": "get_position(self) -> pdfdancer.models.Position",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:get_type",
+          "name": "get_type",
+          "kind": "method",
+          "signature": "get_type(self) -> pdfdancer.models.ObjectType",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:set_position",
+          "name": "set_position",
+          "kind": "method",
+          "signature": "set_position(self, position: pdfdancer.models.Position) -> None",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:to_dict",
+          "name": "to_dict",
+          "kind": "method",
+          "signature": "to_dict(self) -> Dict[str, Any]",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "property:object_type",
+          "name": "object_type",
+          "kind": "property",
+          "signature": "object_type: pdfdancer.models.ObjectType"
+        }
+      ]
+    },
+    {
+      "id": "PageSize",
+      "name": "PageSize",
+      "kind": "class",
+      "signature": "PageSize(name: str | None, width: float, height: float) -> None",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, name: str | None, width: float, height: float) -> None",
+          "arity": 4,
+          "static": false
+        },
+        {
+          "id": "method:coerce",
+          "name": "coerce",
+          "kind": "method",
+          "signature": "coerce(cls, value: ForwardRef('PageSize') | str | Mapping[str, Any]) -> 'PageSize'",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "method:from_dict",
+          "name": "from_dict",
+          "kind": "method",
+          "signature": "from_dict(cls, data: Mapping[str, Any]) -> 'PageSize'",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "method:from_dimensions",
+          "name": "from_dimensions",
+          "kind": "method",
+          "signature": "from_dimensions(cls, width: float, height: float, tolerance: float = 0.5) -> 'PageSize'",
+          "arity": 4,
+          "static": true
+        },
+        {
+          "id": "method:from_name",
+          "name": "from_name",
+          "kind": "method",
+          "signature": "from_name(cls, name: str) -> 'PageSize'",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "method:standard_names",
+          "name": "standard_names",
+          "kind": "method",
+          "signature": "standard_names(cls) -> List[str]",
+          "arity": 1,
+          "static": true
+        },
+        {
+          "id": "method:to_dict",
+          "name": "to_dict",
+          "kind": "method",
+          "signature": "to_dict(self) -> Dict[str, Any]",
+          "arity": 1,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "Path",
+      "name": "Path",
+      "kind": "class",
+      "signature": "Path(position: pdfdancer.models.Position | None = None, path_segments: List[pdfdancer.models.PathSegment] | None = None, even_odd_fill: bool | None = None) -> None",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, position: pdfdancer.models.Position | None = None, path_segments: List[pdfdancer.models.PathSegment] | None = None, even_odd_fill: bool | None = None) -> None",
+          "arity": 4,
+          "static": false
+        },
+        {
+          "id": "method:get_even_odd_fill",
+          "name": "get_even_odd_fill",
+          "kind": "method",
+          "signature": "get_even_odd_fill(self) -> bool | None",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:get_path_segments",
+          "name": "get_path_segments",
+          "kind": "method",
+          "signature": "get_path_segments(self) -> List[pdfdancer.models.PathSegment] | None",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:get_position",
+          "name": "get_position",
+          "kind": "method",
+          "signature": "get_position(self) -> pdfdancer.models.Position | None",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:set_position",
+          "name": "set_position",
+          "kind": "method",
+          "signature": "set_position(self, position: pdfdancer.models.Position) -> None",
+          "arity": 2,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "PathBuilder",
+      "name": "PathBuilder",
+      "kind": "class",
+      "signature": "PathBuilder(client: \"'PDFDancer'\", page_number: 'int')",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, client: \"'PDFDancer'\", page_number: 'int')",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:add",
+          "name": "add",
+          "kind": "method",
+          "signature": "add(self) -> 'bool'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:add_bezier",
+          "name": "add_bezier",
+          "kind": "method",
+          "signature": "add_bezier(self, p0: 'Point', p1: 'Point', p2: 'Point', p3: 'Point') -> \"'PathBuilder'\"",
+          "arity": 5,
+          "static": false
+        },
+        {
+          "id": "method:add_line",
+          "name": "add_line",
+          "kind": "method",
+          "signature": "add_line(self, p0: 'Point', p1: 'Point') -> \"'PathBuilder'\"",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:add_rectangle",
+          "name": "add_rectangle",
+          "kind": "method",
+          "signature": "add_rectangle(self, x: 'float', y: 'float', width: 'float', height: 'float') -> \"'PathBuilder'\"",
+          "arity": 5,
+          "static": false
+        },
+        {
+          "id": "method:add_segment",
+          "name": "add_segment",
+          "kind": "method",
+          "signature": "add_segment(self, segment: 'PathSegment') -> \"'PathBuilder'\"",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:bezier_to",
+          "name": "bezier_to",
+          "kind": "method",
+          "signature": "bezier_to(self, control1_x: 'float', control1_y: 'float', control2_x: 'float', control2_y: 'float', x: 'float', y: 'float') -> \"'PathBuilder'\"",
+          "arity": 7,
+          "static": false
+        },
+        {
+          "id": "method:circle",
+          "name": "circle",
+          "kind": "method",
+          "signature": "circle(self, center_x: 'float', center_y: 'float', radius: 'float') -> \"'PathBuilder'\"",
+          "arity": 4,
+          "static": false
+        },
+        {
+          "id": "method:close_path",
+          "name": "close_path",
+          "kind": "method",
+          "signature": "close_path(self) -> \"'PathBuilder'\"",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:dash_pattern",
+          "name": "dash_pattern",
+          "kind": "method",
+          "signature": "dash_pattern(self, dash_array: 'List[float]', dash_phase: 'float' = 0.0) -> \"'PathBuilder'\"",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:even_odd_fill",
+          "name": "even_odd_fill",
+          "kind": "method",
+          "signature": "even_odd_fill(self, enabled: 'bool' = True) -> \"'PathBuilder'\"",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:fill_color",
+          "name": "fill_color",
+          "kind": "method",
+          "signature": "fill_color(self, color: 'Color') -> \"'PathBuilder'\"",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:line_to",
+          "name": "line_to",
+          "kind": "method",
+          "signature": "line_to(self, x: 'float', y: 'float') -> \"'PathBuilder'\"",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:move_to",
+          "name": "move_to",
+          "kind": "method",
+          "signature": "move_to(self, x: 'float', y: 'float') -> \"'PathBuilder'\"",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:rectangle",
+          "name": "rectangle",
+          "kind": "method",
+          "signature": "rectangle(self, x: 'float', y: 'float', width: 'float', height: 'float') -> \"'PathBuilder'\"",
+          "arity": 5,
+          "static": false
+        },
+        {
+          "id": "method:solid",
+          "name": "solid",
+          "kind": "method",
+          "signature": "solid(self) -> \"'PathBuilder'\"",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:stroke_color",
+          "name": "stroke_color",
+          "kind": "method",
+          "signature": "stroke_color(self, color: 'Color') -> \"'PathBuilder'\"",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:stroke_width",
+          "name": "stroke_width",
+          "kind": "method",
+          "signature": "stroke_width(self, width: 'float') -> \"'PathBuilder'\"",
+          "arity": 2,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "PathEditSession",
+      "name": "PathEditSession",
+      "kind": "class",
+      "signature": "PathEditSession(client: \"'PDFDancer'\", object_ref: 'ObjectRef') -> 'None'",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, client: \"'PDFDancer'\", object_ref: 'ObjectRef') -> 'None'",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:apply",
+          "name": "apply",
+          "kind": "method",
+          "signature": "apply(self) -> \"'CommandResult'\"",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:fill_color",
+          "name": "fill_color",
+          "kind": "method",
+          "signature": "fill_color(self, color: \"'Color'\") -> \"'PathEditSession'\"",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:stroke_color",
+          "name": "stroke_color",
+          "kind": "method",
+          "signature": "stroke_color(self, color: \"'Color'\") -> \"'PathEditSession'\"",
+          "arity": 2,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "PathGroupInfo",
+      "name": "PathGroupInfo",
+      "kind": "class",
+      "signature": "PathGroupInfo(group_id: str, path_count: int, bounding_box: Dict[str, Any] | None, x: float, y: float) -> None",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, group_id: str, path_count: int, bounding_box: Dict[str, Any] | None, x: float, y: float) -> None",
+          "arity": 6,
+          "static": false
+        },
+        {
+          "id": "method:from_dict",
+          "name": "from_dict",
+          "kind": "method",
+          "signature": "from_dict(d: Dict[str, Any]) -> 'PathGroupInfo'",
+          "arity": 1,
+          "static": true
+        }
+      ]
+    },
+    {
+      "id": "PathGroupObject",
+      "name": "PathGroupObject",
+      "kind": "class",
+      "signature": "PathGroupObject(client: \"'PDFDancer'\", page_index: 'int', info: \"'PathGroupInfo'\") -> 'None'",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, client: \"'PDFDancer'\", page_index: 'int', info: \"'PathGroupInfo'\") -> 'None'",
+          "arity": 4,
+          "static": false
+        },
+        {
+          "id": "method:clear_clipping",
+          "name": "clear_clipping",
+          "kind": "method",
+          "signature": "clear_clipping(self) -> 'bool'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:move_to",
+          "name": "move_to",
+          "kind": "method",
+          "signature": "move_to(self, x: 'float', y: 'float') -> 'bool'",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:remove",
+          "name": "remove",
+          "kind": "method",
+          "signature": "remove(self) -> 'bool'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:resize",
+          "name": "resize",
+          "kind": "method",
+          "signature": "resize(self, width: 'float', height: 'float') -> 'bool'",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:rotate",
+          "name": "rotate",
+          "kind": "method",
+          "signature": "rotate(self, degrees: 'float') -> 'bool'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:scale",
+          "name": "scale",
+          "kind": "method",
+          "signature": "scale(self, factor: 'float') -> 'bool'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "property:bounding_box",
+          "name": "bounding_box",
+          "kind": "property",
+          "signature": "bounding_box: 'Optional[dict[str, Any]]'"
+        },
+        {
+          "id": "property:group_id",
+          "name": "group_id",
+          "kind": "property",
+          "signature": "group_id: 'str'"
+        },
+        {
+          "id": "property:path_count",
+          "name": "path_count",
+          "kind": "property",
+          "signature": "path_count: 'int'"
+        },
+        {
+          "id": "property:x",
+          "name": "x",
+          "kind": "property",
+          "signature": "x: 'float'"
+        },
+        {
+          "id": "property:y",
+          "name": "y",
+          "kind": "property",
+          "signature": "y: 'float'"
+        }
+      ]
+    },
+    {
+      "id": "PathObject",
+      "name": "PathObject",
+      "kind": "class",
+      "signature": "PathObject(client: \"'PDFDancer'\", object_ref: 'ObjectRef')",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, client: \"'PDFDancer'\", object_ref: 'ObjectRef')",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:clear_clipping",
+          "name": "clear_clipping",
+          "kind": "method",
+          "signature": "clear_clipping(self) -> 'bool'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:delete",
+          "name": "delete",
+          "kind": "method",
+          "signature": "delete(self) -> 'bool'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:edit",
+          "name": "edit",
+          "kind": "method",
+          "signature": "edit(self) -> 'PathEditSession'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:get_fill_color",
+          "name": "get_fill_color",
+          "kind": "method",
+          "signature": "get_fill_color(self) -> \"Optional['Color']\"",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:get_stroke_color",
+          "name": "get_stroke_color",
+          "kind": "method",
+          "signature": "get_stroke_color(self) -> \"Optional['Color']\"",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:move_to",
+          "name": "move_to",
+          "kind": "method",
+          "signature": "move_to(self, x: 'float', y: 'float') -> 'bool'",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:object_ref",
+          "name": "object_ref",
+          "kind": "method",
+          "signature": "object_ref(self) -> 'ObjectRef'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "property:bounding_box",
+          "name": "bounding_box",
+          "kind": "property",
+          "signature": "bounding_box: 'Optional[ModelBoundingRect]'"
+        },
+        {
+          "id": "property:page_number",
+          "name": "page_number",
+          "kind": "property",
+          "signature": "page_number: 'int'"
+        }
+      ]
+    },
+    {
+      "id": "PathObjectRef",
+      "name": "PathObjectRef",
+      "kind": "class",
+      "signature": "PathObjectRef(internal_id: str, position: pdfdancer.models.Position, object_type: pdfdancer.models.ObjectType, stroke_color: pdfdancer.models.Color | None = None, fill_color: pdfdancer.models.Color | None = None)",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, internal_id: str, position: pdfdancer.models.Position, object_type: pdfdancer.models.ObjectType, stroke_color: pdfdancer.models.Color | None = None, fill_color: pdfdancer.models.Color | None = None)",
+          "arity": 6,
+          "static": false
+        },
+        {
+          "id": "method:get_fill_color",
+          "name": "get_fill_color",
+          "kind": "method",
+          "signature": "get_fill_color(self) -> pdfdancer.models.Color | None",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:get_internal_id",
+          "name": "get_internal_id",
+          "kind": "method",
+          "signature": "get_internal_id(self) -> str",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:get_position",
+          "name": "get_position",
+          "kind": "method",
+          "signature": "get_position(self) -> pdfdancer.models.Position",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:get_stroke_color",
+          "name": "get_stroke_color",
+          "kind": "method",
+          "signature": "get_stroke_color(self) -> pdfdancer.models.Color | None",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:get_type",
+          "name": "get_type",
+          "kind": "method",
+          "signature": "get_type(self) -> pdfdancer.models.ObjectType",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:set_position",
+          "name": "set_position",
+          "kind": "method",
+          "signature": "set_position(self, position: pdfdancer.models.Position) -> None",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:to_dict",
+          "name": "to_dict",
+          "kind": "method",
+          "signature": "to_dict(self) -> Dict[str, Any]",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "property:object_type",
+          "name": "object_type",
+          "kind": "property",
+          "signature": "object_type: pdfdancer.models.ObjectType"
+        }
+      ]
+    },
+    {
+      "id": "PathSegment",
+      "name": "PathSegment",
+      "kind": "class",
+      "signature": "PathSegment(stroke_color: pdfdancer.models.Color | None = None, fill_color: pdfdancer.models.Color | None = None, stroke_width: float | None = None, dash_array: List[float] | None = None, dash_phase: float | None = None) -> None",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, stroke_color: pdfdancer.models.Color | None = None, fill_color: pdfdancer.models.Color | None = None, stroke_width: float | None = None, dash_array: List[float] | None = None, dash_phase: float | None = None) -> None",
+          "arity": 6,
+          "static": false
+        },
+        {
+          "id": "method:get_dash_array",
+          "name": "get_dash_array",
+          "kind": "method",
+          "signature": "get_dash_array(self) -> List[float] | None",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:get_dash_phase",
+          "name": "get_dash_phase",
+          "kind": "method",
+          "signature": "get_dash_phase(self) -> float | None",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:get_fill_color",
+          "name": "get_fill_color",
+          "kind": "method",
+          "signature": "get_fill_color(self) -> pdfdancer.models.Color | None",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:get_stroke_color",
+          "name": "get_stroke_color",
+          "kind": "method",
+          "signature": "get_stroke_color(self) -> pdfdancer.models.Color | None",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:get_stroke_width",
+          "name": "get_stroke_width",
+          "kind": "method",
+          "signature": "get_stroke_width(self) -> float | None",
+          "arity": 1,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "PdfAffineTransform",
+      "name": "PdfAffineTransform",
+      "kind": "class",
+      "signature": "PdfAffineTransform(a: 'float', b: 'float', c: 'float', d: 'float', e: 'float', f: 'float') -> None",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, a: 'float', b: 'float', c: 'float', d: 'float', e: 'float', f: 'float') -> None",
+          "arity": 7,
+          "static": false
+        },
+        {
+          "id": "method:builder",
+          "name": "builder",
+          "kind": "method",
+          "signature": "builder(cls) -> \"'PdfAffineTransformBuilder'\"",
+          "arity": 1,
+          "static": true
+        },
+        {
+          "id": "method:from_pdf_matrix",
+          "name": "from_pdf_matrix",
+          "kind": "method",
+          "signature": "from_pdf_matrix(cls, coefficients: 'Sequence[float]') -> \"'PdfAffineTransform'\"",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "method:to_pdf_matrix",
+          "name": "to_pdf_matrix",
+          "kind": "method",
+          "signature": "to_pdf_matrix(self) -> 'tuple[float, float, float, float, float, float]'",
+          "arity": 1,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "PdfAffineTransformBuilder",
+      "name": "PdfAffineTransformBuilder",
+      "kind": "class",
+      "signature": "PdfAffineTransformBuilder() -> 'None'",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self) -> 'None'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:build",
+          "name": "build",
+          "kind": "method",
+          "signature": "build(self) -> 'PdfAffineTransform'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:rotate_degrees",
+          "name": "rotate_degrees",
+          "kind": "method",
+          "signature": "rotate_degrees(self, degrees: 'float') -> \"'PdfAffineTransformBuilder'\"",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:scale",
+          "name": "scale",
+          "kind": "method",
+          "signature": "scale(self, scale_x: 'float', scale_y: 'float') -> \"'PdfAffineTransformBuilder'\"",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:shear",
+          "name": "shear",
+          "kind": "method",
+          "signature": "shear(self, shear_x: 'float', shear_y: 'float') -> \"'PdfAffineTransformBuilder'\"",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:translate",
+          "name": "translate",
+          "kind": "method",
+          "signature": "translate(self, translate_x: 'float', translate_y: 'float') -> \"'PdfAffineTransformBuilder'\"",
+          "arity": 3,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "PdfColorRequest",
+      "name": "PdfColorRequest",
+      "kind": "class",
+      "signature": "PdfColorRequest(space: 'PdfColorSpace', components: 'tuple[float, ...]', alpha_value: 'Optional[float]' = None) -> None",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, space: 'PdfColorSpace', components: 'tuple[float, ...]', alpha_value: 'Optional[float]' = None) -> None",
+          "arity": 4,
+          "static": false
+        },
+        {
+          "id": "method:alpha",
+          "name": "alpha",
+          "kind": "method",
+          "signature": "alpha(self, alpha: 'float') -> \"'PdfColorRequest'\"",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:cmyk",
+          "name": "cmyk",
+          "kind": "method",
+          "signature": "cmyk(cls, cyan: 'float', magenta: 'float', yellow: 'float', black: 'float') -> \"'PdfColorRequest'\"",
+          "arity": 5,
+          "static": true
+        },
+        {
+          "id": "method:gray",
+          "name": "gray",
+          "kind": "method",
+          "signature": "gray(cls, gray: 'float') -> \"'PdfColorRequest'\"",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "method:rgb",
+          "name": "rgb",
+          "kind": "method",
+          "signature": "rgb(cls, red: 'float', green: 'float', blue: 'float') -> \"'PdfColorRequest'\"",
+          "arity": 4,
+          "static": true
+        },
+        {
+          "id": "method:to_dict",
+          "name": "to_dict",
+          "kind": "method",
+          "signature": "to_dict(self) -> 'dict[str, Any]'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:validated",
+          "name": "validated",
+          "kind": "method",
+          "signature": "validated(self) -> \"'PdfColorRequest'\"",
+          "arity": 1,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "PdfColorSpace",
+      "name": "PdfColorSpace",
+      "kind": "enum",
+      "signature": "PdfColorSpace(*values)",
+      "members": [
+        {
+          "id": "enum-value:CMYK",
+          "name": "CMYK",
+          "kind": "enum-value",
+          "signature": "CMYK = 'cmyk'",
+          "static": true
+        },
+        {
+          "id": "enum-value:GRAY",
+          "name": "GRAY",
+          "kind": "enum-value",
+          "signature": "GRAY = 'gray'",
+          "static": true
+        },
+        {
+          "id": "enum-value:RGB",
+          "name": "RGB",
+          "kind": "enum-value",
+          "signature": "RGB = 'rgb'",
+          "static": true
+        }
+      ]
+    },
+    {
+      "id": "PDFDancer",
+      "name": "PDFDancer",
+      "kind": "class",
+      "signature": "PDFDancer(token: 'str', pdf_data: 'Union[bytes, Path, str, BinaryIO]', base_url: 'str', read_timeout: 'float' = 0, max_attempts: 'int' = 3, retry_backoff_factor: 'float' = 2.0)",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, token: 'str', pdf_data: 'Union[bytes, Path, str, BinaryIO]', base_url: 'str', read_timeout: 'float' = 0, max_attempts: 'int' = 3, retry_backoff_factor: 'float' = 2.0)",
+          "arity": 7,
+          "static": false
+        },
+        {
+          "id": "method:clear_clipping",
+          "name": "clear_clipping",
+          "kind": "method",
+          "signature": "clear_clipping(self, object_ref: 'ObjectRef') -> 'bool'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:clear_path_group_clipping",
+          "name": "clear_path_group_clipping",
+          "kind": "method",
+          "signature": "clear_path_group_clipping(self, page_number: 'int', group_id: 'str') -> 'bool'",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:close",
+          "name": "close",
+          "kind": "method",
+          "signature": "close(self) -> 'None'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:find_fonts",
+          "name": "find_fonts",
+          "kind": "method",
+          "signature": "find_fonts(self, font_name: 'str', font_size: 'int') -> 'List[Font]'",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:get_bytes",
+          "name": "get_bytes",
+          "kind": "method",
+          "signature": "get_bytes(self) -> 'bytes'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:get_document_snapshot",
+          "name": "get_document_snapshot",
+          "kind": "method",
+          "signature": "get_document_snapshot(self, types: 'Optional[str]' = None) -> 'DocumentSnapshot'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:get_page_snapshot",
+          "name": "get_page_snapshot",
+          "kind": "method",
+          "signature": "get_page_snapshot(self, page_number: 'int', types: 'Optional[str]' = None) -> 'PageSnapshot'",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:move_page",
+          "name": "move_page",
+          "kind": "method",
+          "signature": "move_page(self, from_page: 'int', to_page: 'int') -> 'bool'",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:new",
+          "name": "new",
+          "kind": "method",
+          "signature": "new(cls, token: 'Optional[str]' = None, base_url: 'Optional[str]' = None, timeout: 'float' = 30.0, page_size: 'Optional[Union[PageSize, str, Mapping[str, Any]]]' = None, orientation: 'Optional[Union[Orientation, str]]' = None, initial_page_count: 'int' = 1, max_attempts: 'int' = 3, retry_backoff_factor: 'float' = 2.0) -> \"'PDFDancer'\"",
+          "arity": 9,
+          "static": true
+        },
+        {
+          "id": "method:new_bezier",
+          "name": "new_bezier",
+          "kind": "method",
+          "signature": "new_bezier(self, page_number: 'int') -> 'BezierBuilder'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:new_image",
+          "name": "new_image",
+          "kind": "method",
+          "signature": "new_image(self) -> 'ImageBuilder'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:new_line",
+          "name": "new_line",
+          "kind": "method",
+          "signature": "new_line(self, page_number: 'int') -> 'LineBuilder'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:new_page",
+          "name": "new_page",
+          "kind": "method",
+          "signature": "new_page(self, orientation: 'Optional[Union[Orientation, str]]' = <Orientation.PORTRAIT: 'PORTRAIT'>, size: 'Optional[Union[PageSize, str, Mapping[str, Any]]]' = PageSize(name='A4', width=595.0, height=842.0)) -> 'PageBuilder'",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:new_path",
+          "name": "new_path",
+          "kind": "method",
+          "signature": "new_path(self, page_number: 'int') -> \"'PathBuilder'\"",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:new_rectangle",
+          "name": "new_rectangle",
+          "kind": "method",
+          "signature": "new_rectangle(self, page_number: 'int') -> \"'RectangleBuilder'\"",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:open",
+          "name": "open",
+          "kind": "method",
+          "signature": "open(cls, pdf_data: 'Union[bytes, Path, str, BinaryIO]', token: 'Optional[str]' = None, base_url: 'Optional[str]' = None, timeout: 'float' = 30.0, max_attempts: 'int' = 3, retry_backoff_factor: 'float' = 2.0) -> \"'PDFDancer'\"",
+          "arity": 7,
+          "static": true
+        },
+        {
+          "id": "method:page",
+          "name": "page",
+          "kind": "method",
+          "signature": "page(self, page_number: 'int') -> 'PageClient'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:pages",
+          "name": "pages",
+          "kind": "method",
+          "signature": "pages(self) -> 'List[PageClient]'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:register_font",
+          "name": "register_font",
+          "kind": "method",
+          "signature": "register_font(self, ttf_file: 'Union[Path, str, bytes, BinaryIO]') -> 'str'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:save",
+          "name": "save",
+          "kind": "method",
+          "signature": "save(self, file_path: 'Union[str, Path]') -> 'None'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:select_elements",
+          "name": "select_elements",
+          "kind": "method",
+          "signature": "select_elements(self) -> 'List[ObjectRef]'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:select_form_field_by_name",
+          "name": "select_form_field_by_name",
+          "kind": "method",
+          "signature": "select_form_field_by_name(self, field_name: 'str') -> 'Optional[FormFieldObject]'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:select_form_fields",
+          "name": "select_form_fields",
+          "kind": "method",
+          "signature": "select_form_fields(self) -> 'List[FormFieldObject]'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:select_form_fields_by_name",
+          "name": "select_form_fields_by_name",
+          "kind": "method",
+          "signature": "select_form_fields_by_name(self, field_name: 'str') -> 'List[FormFieldObject]'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:select_forms",
+          "name": "select_forms",
+          "kind": "method",
+          "signature": "select_forms(self) -> 'List[FormObject]'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:select_images",
+          "name": "select_images",
+          "kind": "method",
+          "signature": "select_images(self) -> 'List[ImageObject]'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:select_paths",
+          "name": "select_paths",
+          "kind": "method",
+          "signature": "select_paths(self) -> 'List[ObjectRef]'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:text",
+          "name": "text",
+          "kind": "method",
+          "signature": "text(self) -> 'TextClient'",
+          "arity": 1,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "PdfDancerException",
+      "name": "PdfDancerException",
+      "kind": "class",
+      "signature": "PdfDancerException(message: str, cause: Exception | None = None)",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, message: str, cause: Exception | None = None)",
+          "arity": 3,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "PDFObjectBase",
+      "name": "PDFObjectBase",
+      "kind": "class",
+      "signature": "PDFObjectBase(client: \"'PDFDancer'\", internal_id: 'str', object_type: 'ObjectType', position: 'Position')",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, client: \"'PDFDancer'\", internal_id: 'str', object_type: 'ObjectType', position: 'Position')",
+          "arity": 5,
+          "static": false
+        },
+        {
+          "id": "method:clear_clipping",
+          "name": "clear_clipping",
+          "kind": "method",
+          "signature": "clear_clipping(self) -> 'bool'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:delete",
+          "name": "delete",
+          "kind": "method",
+          "signature": "delete(self) -> 'bool'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:move_to",
+          "name": "move_to",
+          "kind": "method",
+          "signature": "move_to(self, x: 'float', y: 'float') -> 'bool'",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:object_ref",
+          "name": "object_ref",
+          "kind": "method",
+          "signature": "object_ref(self) -> 'ObjectRef'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "property:page_number",
+          "name": "page_number",
+          "kind": "property",
+          "signature": "page_number: 'int'"
+        }
+      ]
+    },
+    {
+      "id": "Point",
+      "name": "Point",
+      "kind": "class",
+      "signature": "Point(x: float, y: float) -> None",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, x: float, y: float) -> None",
+          "arity": 3,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "Position",
+      "name": "Position",
+      "kind": "class",
+      "signature": "Position(page_number: int | None = None, shape: pdfdancer.models.ShapeType | None = None, mode: pdfdancer.models.PositionMode | None = None, bounding_rect: pdfdancer.models.BoundingRect | None = None, text_starts_with: str | None = None, text_pattern: str | None = None, name: str | None = None) -> None",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, page_number: int | None = None, shape: pdfdancer.models.ShapeType | None = None, mode: pdfdancer.models.PositionMode | None = None, bounding_rect: pdfdancer.models.BoundingRect | None = None, text_starts_with: str | None = None, text_pattern: str | None = None, name: str | None = None) -> None",
+          "arity": 8,
+          "static": false
+        },
+        {
+          "id": "method:at_coordinates",
+          "name": "at_coordinates",
+          "kind": "method",
+          "signature": "at_coordinates(self, point: pdfdancer.models.Point) -> 'Position'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:at_page",
+          "name": "at_page",
+          "kind": "method",
+          "signature": "at_page(page_number: int) -> 'Position'",
+          "arity": 1,
+          "static": true
+        },
+        {
+          "id": "method:at_page_coordinates",
+          "name": "at_page_coordinates",
+          "kind": "method",
+          "signature": "at_page_coordinates(page_number: int, x: float, y: float) -> 'Position'",
+          "arity": 3,
+          "static": true
+        },
+        {
+          "id": "method:by_name",
+          "name": "by_name",
+          "kind": "method",
+          "signature": "by_name(name: str) -> 'Position'",
+          "arity": 1,
+          "static": true
+        },
+        {
+          "id": "method:move_x",
+          "name": "move_x",
+          "kind": "method",
+          "signature": "move_x(self, x_offset: float) -> 'Position'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:move_y",
+          "name": "move_y",
+          "kind": "method",
+          "signature": "move_y(self, y_offset: float) -> 'Position'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:with_text_starts",
+          "name": "with_text_starts",
+          "kind": "method",
+          "signature": "with_text_starts(self, text: str) -> 'Position'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:x",
+          "name": "x",
+          "kind": "method",
+          "signature": "x(self) -> float | None",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:y",
+          "name": "y",
+          "kind": "method",
+          "signature": "y(self) -> float | None",
+          "arity": 1,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "PositionMode",
+      "name": "PositionMode",
+      "kind": "enum",
+      "signature": "PositionMode(*values)",
+      "members": [
+        {
+          "id": "enum-value:CONTAINS",
+          "name": "CONTAINS",
+          "kind": "enum-value",
+          "signature": "CONTAINS = 'CONTAINS'",
+          "static": true
+        },
+        {
+          "id": "enum-value:INTERSECT",
+          "name": "INTERSECT",
+          "kind": "enum-value",
+          "signature": "INTERSECT = 'INTERSECT'",
+          "static": true
+        }
+      ]
+    },
+    {
+      "id": "RateLimitException",
+      "name": "RateLimitException",
+      "kind": "class",
+      "signature": "RateLimitException(message: str, retry_after: int | None = None, response: httpx.Response | None = None)",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, message: str, retry_after: int | None = None, response: httpx.Response | None = None)",
+          "arity": 4,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "RectangleBuilder",
+      "name": "RectangleBuilder",
+      "kind": "class",
+      "signature": "RectangleBuilder(client: \"'PDFDancer'\", page_number: 'int')",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, client: \"'PDFDancer'\", page_number: 'int')",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:add",
+          "name": "add",
+          "kind": "method",
+          "signature": "add(self) -> 'bool'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:at_coordinates",
+          "name": "at_coordinates",
+          "kind": "method",
+          "signature": "at_coordinates(self, x: 'float', y: 'float') -> \"'RectangleBuilder'\"",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:dash_pattern",
+          "name": "dash_pattern",
+          "kind": "method",
+          "signature": "dash_pattern(self, dash_array: 'List[float]', dash_phase: 'float' = 0.0) -> \"'RectangleBuilder'\"",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:even_odd_fill",
+          "name": "even_odd_fill",
+          "kind": "method",
+          "signature": "even_odd_fill(self, enabled: 'bool' = True) -> \"'RectangleBuilder'\"",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:fill_color",
+          "name": "fill_color",
+          "kind": "method",
+          "signature": "fill_color(self, color: 'Color') -> \"'RectangleBuilder'\"",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:solid",
+          "name": "solid",
+          "kind": "method",
+          "signature": "solid(self) -> \"'RectangleBuilder'\"",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:stroke_color",
+          "name": "stroke_color",
+          "kind": "method",
+          "signature": "stroke_color(self, color: 'Color') -> \"'RectangleBuilder'\"",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:stroke_width",
+          "name": "stroke_width",
+          "kind": "method",
+          "signature": "stroke_width(self, width: 'float') -> \"'RectangleBuilder'\"",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:with_size",
+          "name": "with_size",
+          "kind": "method",
+          "signature": "with_size(self, width: 'float', height: 'float') -> \"'RectangleBuilder'\"",
+          "arity": 3,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "SessionException",
+      "name": "SessionException",
+      "kind": "class",
+      "signature": "SessionException(message: str, cause: Exception | None = None)",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, message: str, cause: Exception | None = None)",
+          "arity": 3,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "SessionNotFoundException",
+      "name": "SessionNotFoundException",
+      "kind": "class",
+      "signature": "SessionNotFoundException(message: str)",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, message: str)",
+          "arity": 2,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "set_ssl_verify",
+      "name": "set_ssl_verify",
+      "kind": "function",
+      "signature": "set_ssl_verify(enabled: bool) -> None",
+      "members": []
+    },
+    {
+      "id": "ShapeType",
+      "name": "ShapeType",
+      "kind": "enum",
+      "signature": "ShapeType(*values)",
+      "members": [
+        {
+          "id": "enum-value:CIRCLE",
+          "name": "CIRCLE",
+          "kind": "enum-value",
+          "signature": "CIRCLE = 'CIRCLE'",
+          "static": true
+        },
+        {
+          "id": "enum-value:LINE",
+          "name": "LINE",
+          "kind": "enum-value",
+          "signature": "LINE = 'LINE'",
+          "static": true
+        },
+        {
+          "id": "enum-value:POINT",
+          "name": "POINT",
+          "kind": "enum-value",
+          "signature": "POINT = 'POINT'",
+          "static": true
+        },
+        {
+          "id": "enum-value:RECT",
+          "name": "RECT",
+          "kind": "enum-value",
+          "signature": "RECT = 'RECT'",
+          "static": true
+        }
+      ]
+    },
+    {
+      "id": "Size",
+      "name": "Size",
+      "kind": "class",
+      "signature": "Size(width: float, height: float) -> None",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, width: float, height: float) -> None",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:to_dict",
+          "name": "to_dict",
+          "kind": "method",
+          "signature": "to_dict(self) -> Dict[str, Any]",
+          "arity": 1,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "StandardFonts",
+      "name": "StandardFonts",
+      "kind": "enum",
+      "signature": "StandardFonts(*values)",
+      "members": [
+        {
+          "id": "enum-value:COURIER",
+          "name": "COURIER",
+          "kind": "enum-value",
+          "signature": "COURIER = 'Courier'",
+          "static": true
+        },
+        {
+          "id": "enum-value:COURIER_BOLD",
+          "name": "COURIER_BOLD",
+          "kind": "enum-value",
+          "signature": "COURIER_BOLD = 'Courier-Bold'",
+          "static": true
+        },
+        {
+          "id": "enum-value:COURIER_BOLD_OBLIQUE",
+          "name": "COURIER_BOLD_OBLIQUE",
+          "kind": "enum-value",
+          "signature": "COURIER_BOLD_OBLIQUE = 'Courier-BoldOblique'",
+          "static": true
+        },
+        {
+          "id": "enum-value:COURIER_OBLIQUE",
+          "name": "COURIER_OBLIQUE",
+          "kind": "enum-value",
+          "signature": "COURIER_OBLIQUE = 'Courier-Oblique'",
+          "static": true
+        },
+        {
+          "id": "enum-value:HELVETICA",
+          "name": "HELVETICA",
+          "kind": "enum-value",
+          "signature": "HELVETICA = 'Helvetica'",
+          "static": true
+        },
+        {
+          "id": "enum-value:HELVETICA_BOLD",
+          "name": "HELVETICA_BOLD",
+          "kind": "enum-value",
+          "signature": "HELVETICA_BOLD = 'Helvetica-Bold'",
+          "static": true
+        },
+        {
+          "id": "enum-value:HELVETICA_BOLD_OBLIQUE",
+          "name": "HELVETICA_BOLD_OBLIQUE",
+          "kind": "enum-value",
+          "signature": "HELVETICA_BOLD_OBLIQUE = 'Helvetica-BoldOblique'",
+          "static": true
+        },
+        {
+          "id": "enum-value:HELVETICA_OBLIQUE",
+          "name": "HELVETICA_OBLIQUE",
+          "kind": "enum-value",
+          "signature": "HELVETICA_OBLIQUE = 'Helvetica-Oblique'",
+          "static": true
+        },
+        {
+          "id": "enum-value:SYMBOL",
+          "name": "SYMBOL",
+          "kind": "enum-value",
+          "signature": "SYMBOL = 'Symbol'",
+          "static": true
+        },
+        {
+          "id": "enum-value:TIMES_BOLD",
+          "name": "TIMES_BOLD",
+          "kind": "enum-value",
+          "signature": "TIMES_BOLD = 'Times-Bold'",
+          "static": true
+        },
+        {
+          "id": "enum-value:TIMES_BOLD_ITALIC",
+          "name": "TIMES_BOLD_ITALIC",
+          "kind": "enum-value",
+          "signature": "TIMES_BOLD_ITALIC = 'Times-BoldItalic'",
+          "static": true
+        },
+        {
+          "id": "enum-value:TIMES_ITALIC",
+          "name": "TIMES_ITALIC",
+          "kind": "enum-value",
+          "signature": "TIMES_ITALIC = 'Times-Italic'",
+          "static": true
+        },
+        {
+          "id": "enum-value:TIMES_ROMAN",
+          "name": "TIMES_ROMAN",
+          "kind": "enum-value",
+          "signature": "TIMES_ROMAN = 'Times-Roman'",
+          "static": true
+        },
+        {
+          "id": "enum-value:ZAPF_DINGBATS",
+          "name": "ZAPF_DINGBATS",
+          "kind": "enum-value",
+          "signature": "ZAPF_DINGBATS = 'ZapfDingbats'",
+          "static": true
+        }
+      ]
+    },
+    {
+      "id": "TextDeleteBuilder",
+      "name": "TextDeleteBuilder",
+      "kind": "class",
+      "signature": "TextDeleteBuilder() -> 'None'",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self) -> 'None'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:build",
+          "name": "build",
+          "kind": "method",
+          "signature": "build(self) -> 'TextDeleteRequest'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:case_sensitive",
+          "name": "case_sensitive",
+          "kind": "method",
+          "signature": "case_sensitive(self, case_sensitive: 'bool') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:hyphenation_enabled",
+          "name": "hyphenation_enabled",
+          "kind": "method",
+          "signature": "hyphenation_enabled(self, enabled: 'bool') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:layout",
+          "name": "layout",
+          "kind": "method",
+          "signature": "layout(self, layout: 'Optional[TextLayoutRequest]') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:literal",
+          "name": "literal",
+          "kind": "method",
+          "signature": "literal(self, literal: 'str') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:max_matches",
+          "name": "max_matches",
+          "kind": "method",
+          "signature": "max_matches(self, max_matches: 'int') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:pages",
+          "name": "pages",
+          "kind": "method",
+          "signature": "pages(self, *pages: 'int | Sequence[int]') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:reflow_when_supported",
+          "name": "reflow_when_supported",
+          "kind": "method",
+          "signature": "reflow_when_supported(self, profile: 'TextLayoutProfile') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:regex",
+          "name": "regex",
+          "kind": "method",
+          "signature": "regex(self, regex: 'str') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:require_reflow",
+          "name": "require_reflow",
+          "kind": "method",
+          "signature": "require_reflow(self, profile: 'TextLayoutProfile') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:source_anchored",
+          "name": "source_anchored",
+          "kind": "method",
+          "signature": "source_anchored(self) -> 'Self'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:whole_words",
+          "name": "whole_words",
+          "kind": "method",
+          "signature": "whole_words(self, whole_words: 'bool') -> 'Self'",
+          "arity": 2,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "TextDeleteRequest",
+      "name": "TextDeleteRequest",
+      "kind": "class",
+      "signature": "TextDeleteRequest(pages: 'Optional[tuple[int, ...]]', select: 'TextSelectorRequest', layout: 'Optional[TextLayoutRequest]' = None) -> None",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, pages: 'Optional[tuple[int, ...]]', select: 'TextSelectorRequest', layout: 'Optional[TextLayoutRequest]' = None) -> None",
+          "arity": 4,
+          "static": false
+        },
+        {
+          "id": "method:builder",
+          "name": "builder",
+          "kind": "method",
+          "signature": "builder(cls) -> \"'TextDeleteBuilder'\"",
+          "arity": 1,
+          "static": true
+        },
+        {
+          "id": "method:literal",
+          "name": "literal",
+          "kind": "method",
+          "signature": "literal(cls, text: 'str') -> \"'TextDeleteBuilder'\"",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "method:regex",
+          "name": "regex",
+          "kind": "method",
+          "signature": "regex(cls, regex: 'str') -> \"'TextDeleteBuilder'\"",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "method:to_dict",
+          "name": "to_dict",
+          "kind": "method",
+          "signature": "to_dict(self) -> 'dict[str, Any]'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:validated",
+          "name": "validated",
+          "kind": "method",
+          "signature": "validated(self) -> \"'TextDeleteRequest'\"",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:with_pages",
+          "name": "with_pages",
+          "kind": "method",
+          "signature": "with_pages(self, pages: 'Sequence[int]') -> \"'TextDeleteRequest'\"",
+          "arity": 2,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "TextEditChangeDiagnostic",
+      "name": "TextEditChangeDiagnostic",
+      "kind": "class",
+      "signature": "TextEditChangeDiagnostic(page: 'Optional[int]', operation: 'Optional[str]', source_text: 'Optional[str]', result_text: 'Optional[str]', requested_layout_mode: 'Optional[str]', requested_layout_profile: 'Optional[str]', effective_hyphenation_enabled: 'bool', applied_layout_mode: 'Optional[str]', element_ids: 'Optional[tuple[str, ...]]', generated_element_ids: 'Optional[tuple[str, ...]]', reflow_unit_ids: 'Optional[tuple[str, ...]]') -> None",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, page: 'Optional[int]', operation: 'Optional[str]', source_text: 'Optional[str]', result_text: 'Optional[str]', requested_layout_mode: 'Optional[str]', requested_layout_profile: 'Optional[str]', effective_hyphenation_enabled: 'bool', applied_layout_mode: 'Optional[str]', element_ids: 'Optional[tuple[str, ...]]', generated_element_ids: 'Optional[tuple[str, ...]]', reflow_unit_ids: 'Optional[tuple[str, ...]]') -> None",
+          "arity": 12,
+          "static": false
+        },
+        {
+          "id": "method:from_dict",
+          "name": "from_dict",
+          "kind": "method",
+          "signature": "from_dict(cls, data: 'dict[str, Any]') -> \"'TextEditChangeDiagnostic'\"",
+          "arity": 2,
+          "static": true
+        }
+      ]
+    },
+    {
+      "id": "TextEditResponse",
+      "name": "TextEditResponse",
+      "kind": "class",
+      "signature": "TextEditResponse(matched: 'Optional[int]', changed: 'Optional[int]', pages_changed: 'Optional[tuple[int, ...]]', change: 'Optional[tuple[TextEditChangeDiagnostic, ...]]', warnings: 'Optional[tuple[TextOperationDiagnostic, ...]]', errors: 'Optional[tuple[TextOperationDiagnostic, ...]]') -> None",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, matched: 'Optional[int]', changed: 'Optional[int]', pages_changed: 'Optional[tuple[int, ...]]', change: 'Optional[tuple[TextEditChangeDiagnostic, ...]]', warnings: 'Optional[tuple[TextOperationDiagnostic, ...]]', errors: 'Optional[tuple[TextOperationDiagnostic, ...]]') -> None",
+          "arity": 7,
+          "static": false
+        },
+        {
+          "id": "method:from_dict",
+          "name": "from_dict",
+          "kind": "method",
+          "signature": "from_dict(cls, data: 'dict[str, Any]') -> \"'TextEditResponse'\"",
+          "arity": 2,
+          "static": true
+        }
+      ]
+    },
+    {
+      "id": "TextInsertBuilder",
+      "name": "TextInsertBuilder",
+      "kind": "class",
+      "signature": "TextInsertBuilder() -> 'None'",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self) -> 'None'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:after",
+          "name": "after",
+          "kind": "method",
+          "signature": "after(self) -> \"'TextInsertBuilder'\"",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:before",
+          "name": "before",
+          "kind": "method",
+          "signature": "before(self) -> \"'TextInsertBuilder'\"",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:build",
+          "name": "build",
+          "kind": "method",
+          "signature": "build(self) -> 'TextInsertRequest'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:caret",
+          "name": "caret",
+          "kind": "method",
+          "signature": "caret(self, caret: 'TextInsertCaret') -> \"'TextInsertBuilder'\"",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:case_sensitive",
+          "name": "case_sensitive",
+          "kind": "method",
+          "signature": "case_sensitive(self, case_sensitive: 'bool') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:character_spacing",
+          "name": "character_spacing",
+          "kind": "method",
+          "signature": "character_spacing(self, spacing: 'float') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:coordinate",
+          "name": "coordinate",
+          "kind": "method",
+          "signature": "coordinate(self, *args: 'float') -> \"'TextInsertBuilder'\"",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:fill_color",
+          "name": "fill_color",
+          "kind": "method",
+          "signature": "fill_color(self, color: 'PdfColorRequest') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:font",
+          "name": "font",
+          "kind": "method",
+          "signature": "font(self, font: 'str') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:hyphenation_enabled",
+          "name": "hyphenation_enabled",
+          "kind": "method",
+          "signature": "hyphenation_enabled(self, enabled: 'bool') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:insert",
+          "name": "insert",
+          "kind": "method",
+          "signature": "insert(self, insert: 'str') -> \"'TextInsertBuilder'\"",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:layout",
+          "name": "layout",
+          "kind": "method",
+          "signature": "layout(self, layout: 'Optional[TextLayoutRequest]') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:literal",
+          "name": "literal",
+          "kind": "method",
+          "signature": "literal(self, literal: 'str') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:max_matches",
+          "name": "max_matches",
+          "kind": "method",
+          "signature": "max_matches(self, max_matches: 'int') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:pages",
+          "name": "pages",
+          "kind": "method",
+          "signature": "pages(self, *pages: 'int | Sequence[int]') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:reflow_when_supported",
+          "name": "reflow_when_supported",
+          "kind": "method",
+          "signature": "reflow_when_supported(self, profile: 'TextLayoutProfile') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:regex",
+          "name": "regex",
+          "kind": "method",
+          "signature": "regex(self, regex: 'str') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:require_reflow",
+          "name": "require_reflow",
+          "kind": "method",
+          "signature": "require_reflow(self, profile: 'TextLayoutProfile') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:rotation_degrees",
+          "name": "rotation_degrees",
+          "kind": "method",
+          "signature": "rotation_degrees(self, degrees: 'float') -> \"'TextInsertBuilder'\"",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:size",
+          "name": "size",
+          "kind": "method",
+          "signature": "size(self, size: 'float') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:source_anchored",
+          "name": "source_anchored",
+          "kind": "method",
+          "signature": "source_anchored(self) -> 'Self'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:stroke_color",
+          "name": "stroke_color",
+          "kind": "method",
+          "signature": "stroke_color(self, color: 'PdfColorRequest') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:style_patch",
+          "name": "style_patch",
+          "kind": "method",
+          "signature": "style_patch(self, patch: 'TextStylePatchRequest') -> \"'TextInsertBuilder'\"",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:whole_words",
+          "name": "whole_words",
+          "kind": "method",
+          "signature": "whole_words(self, whole_words: 'bool') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:word_spacing",
+          "name": "word_spacing",
+          "kind": "method",
+          "signature": "word_spacing(self, spacing: 'float') -> 'Self'",
+          "arity": 2,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "TextInsertCaret",
+      "name": "TextInsertCaret",
+      "kind": "enum",
+      "signature": "TextInsertCaret(*values)",
+      "members": [
+        {
+          "id": "enum-value:AFTER",
+          "name": "AFTER",
+          "kind": "enum-value",
+          "signature": "AFTER = 'after'",
+          "static": true
+        },
+        {
+          "id": "enum-value:BEFORE",
+          "name": "BEFORE",
+          "kind": "enum-value",
+          "signature": "BEFORE = 'before'",
+          "static": true
+        }
+      ]
+    },
+    {
+      "id": "TextInsertRequest",
+      "name": "TextInsertRequest",
+      "kind": "class",
+      "signature": "TextInsertRequest(target: 'TextInsertTargetRequest', insert: 'str', style: 'TextInsertStyleRequest', layout: 'Optional[TextLayoutRequest]' = None) -> None",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, target: 'TextInsertTargetRequest', insert: 'str', style: 'TextInsertStyleRequest', layout: 'Optional[TextLayoutRequest]' = None) -> None",
+          "arity": 5,
+          "static": false
+        },
+        {
+          "id": "method:after",
+          "name": "after",
+          "kind": "method",
+          "signature": "after(cls, anchor_literal: 'str', insert: 'str') -> \"'TextInsertBuilder'\"",
+          "arity": 3,
+          "static": true
+        },
+        {
+          "id": "method:after_regex",
+          "name": "after_regex",
+          "kind": "method",
+          "signature": "after_regex(cls, anchor_regex: 'str', insert: 'str') -> \"'TextInsertBuilder'\"",
+          "arity": 3,
+          "static": true
+        },
+        {
+          "id": "method:at",
+          "name": "at",
+          "kind": "method",
+          "signature": "at(cls, page: 'int', x: 'float', y: 'float', insert: 'str') -> \"'TextInsertBuilder'\"",
+          "arity": 5,
+          "static": true
+        },
+        {
+          "id": "method:before",
+          "name": "before",
+          "kind": "method",
+          "signature": "before(cls, anchor_literal: 'str', insert: 'str') -> \"'TextInsertBuilder'\"",
+          "arity": 3,
+          "static": true
+        },
+        {
+          "id": "method:before_regex",
+          "name": "before_regex",
+          "kind": "method",
+          "signature": "before_regex(cls, anchor_regex: 'str', insert: 'str') -> \"'TextInsertBuilder'\"",
+          "arity": 3,
+          "static": true
+        },
+        {
+          "id": "method:builder",
+          "name": "builder",
+          "kind": "method",
+          "signature": "builder(cls) -> \"'TextInsertBuilder'\"",
+          "arity": 1,
+          "static": true
+        },
+        {
+          "id": "method:to_dict",
+          "name": "to_dict",
+          "kind": "method",
+          "signature": "to_dict(self) -> 'dict[str, Any]'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:validated",
+          "name": "validated",
+          "kind": "method",
+          "signature": "validated(self) -> \"'TextInsertRequest'\"",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:with_pages",
+          "name": "with_pages",
+          "kind": "method",
+          "signature": "with_pages(self, pages: 'Sequence[int]') -> \"'TextInsertRequest'\"",
+          "arity": 2,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "TextLayoutMode",
+      "name": "TextLayoutMode",
+      "kind": "enum",
+      "signature": "TextLayoutMode(*values)",
+      "members": [
+        {
+          "id": "enum-value:REFLOW_WHEN_SUPPORTED",
+          "name": "REFLOW_WHEN_SUPPORTED",
+          "kind": "enum-value",
+          "signature": "REFLOW_WHEN_SUPPORTED = 'reflowWhenSupported'",
+          "static": true
+        },
+        {
+          "id": "enum-value:REQUIRE_REFLOW",
+          "name": "REQUIRE_REFLOW",
+          "kind": "enum-value",
+          "signature": "REQUIRE_REFLOW = 'requireReflow'",
+          "static": true
+        },
+        {
+          "id": "enum-value:SOURCE_ANCHORED",
+          "name": "SOURCE_ANCHORED",
+          "kind": "enum-value",
+          "signature": "SOURCE_ANCHORED = 'sourceAnchored'",
+          "static": true
+        }
+      ]
+    },
+    {
+      "id": "TextLayoutProfile",
+      "name": "TextLayoutProfile",
+      "kind": "enum",
+      "signature": "TextLayoutProfile(*values)",
+      "members": [
+        {
+          "id": "enum-value:BODY_TEXT",
+          "name": "BODY_TEXT",
+          "kind": "enum-value",
+          "signature": "BODY_TEXT = 'bodyText'",
+          "static": true
+        },
+        {
+          "id": "enum-value:DEFAULT",
+          "name": "DEFAULT",
+          "kind": "enum-value",
+          "signature": "DEFAULT = 'default'",
+          "static": true
+        },
+        {
+          "id": "enum-value:NO_REFLOW",
+          "name": "NO_REFLOW",
+          "kind": "enum-value",
+          "signature": "NO_REFLOW = 'noReflow'",
+          "static": true
+        }
+      ]
+    },
+    {
+      "id": "TextLayoutRequest",
+      "name": "TextLayoutRequest",
+      "kind": "class",
+      "signature": "TextLayoutRequest(mode: 'Optional[TextLayoutMode]' = None, profile: 'Optional[TextLayoutProfile]' = None, hyphenation_enabled: 'Optional[bool]' = None) -> None",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, mode: 'Optional[TextLayoutMode]' = None, profile: 'Optional[TextLayoutProfile]' = None, hyphenation_enabled: 'Optional[bool]' = None) -> None",
+          "arity": 4,
+          "static": false
+        },
+        {
+          "id": "method:reflow_when_supported",
+          "name": "reflow_when_supported",
+          "kind": "method",
+          "signature": "reflow_when_supported(cls, profile: 'TextLayoutProfile') -> \"'TextLayoutRequest'\"",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "method:require_reflow",
+          "name": "require_reflow",
+          "kind": "method",
+          "signature": "require_reflow(cls, profile: 'TextLayoutProfile') -> \"'TextLayoutRequest'\"",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "method:source_anchored",
+          "name": "source_anchored",
+          "kind": "method",
+          "signature": "source_anchored(cls) -> \"'TextLayoutRequest'\"",
+          "arity": 1,
+          "static": true
+        },
+        {
+          "id": "method:to_dict",
+          "name": "to_dict",
+          "kind": "method",
+          "signature": "to_dict(self) -> 'dict[str, Any]'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:validated",
+          "name": "validated",
+          "kind": "method",
+          "signature": "validated(self) -> \"'TextLayoutRequest'\"",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:with_hyphenation_enabled",
+          "name": "with_hyphenation_enabled",
+          "kind": "method",
+          "signature": "with_hyphenation_enabled(self, enabled: 'bool') -> \"'TextLayoutRequest'\"",
+          "arity": 2,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "TextOperationDiagnostic",
+      "name": "TextOperationDiagnostic",
+      "kind": "class",
+      "signature": "TextOperationDiagnostic(page: 'Optional[int]', code: 'Optional[str]', message: 'Optional[str]', element_ids: 'Optional[tuple[str, ...]]', reflow_unit_ids: 'Optional[tuple[str, ...]]') -> None",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, page: 'Optional[int]', code: 'Optional[str]', message: 'Optional[str]', element_ids: 'Optional[tuple[str, ...]]', reflow_unit_ids: 'Optional[tuple[str, ...]]') -> None",
+          "arity": 6,
+          "static": false
+        },
+        {
+          "id": "method:from_dict",
+          "name": "from_dict",
+          "kind": "method",
+          "signature": "from_dict(cls, data: 'dict[str, Any]') -> \"'TextOperationDiagnostic'\"",
+          "arity": 2,
+          "static": true
+        }
+      ]
+    },
+    {
+      "id": "TextReplaceBuilder",
+      "name": "TextReplaceBuilder",
+      "kind": "class",
+      "signature": "TextReplaceBuilder() -> 'None'",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self) -> 'None'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:build",
+          "name": "build",
+          "kind": "method",
+          "signature": "build(self) -> 'TextReplaceRequest'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:case_sensitive",
+          "name": "case_sensitive",
+          "kind": "method",
+          "signature": "case_sensitive(self, case_sensitive: 'bool') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:character_spacing",
+          "name": "character_spacing",
+          "kind": "method",
+          "signature": "character_spacing(self, spacing: 'float') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:fill_color",
+          "name": "fill_color",
+          "kind": "method",
+          "signature": "fill_color(self, color: 'PdfColorRequest') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:font",
+          "name": "font",
+          "kind": "method",
+          "signature": "font(self, font: 'str') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:hyphenation_enabled",
+          "name": "hyphenation_enabled",
+          "kind": "method",
+          "signature": "hyphenation_enabled(self, enabled: 'bool') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:layout",
+          "name": "layout",
+          "kind": "method",
+          "signature": "layout(self, layout: 'Optional[TextLayoutRequest]') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:literal",
+          "name": "literal",
+          "kind": "method",
+          "signature": "literal(self, literal: 'str') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:max_matches",
+          "name": "max_matches",
+          "kind": "method",
+          "signature": "max_matches(self, max_matches: 'int') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:pages",
+          "name": "pages",
+          "kind": "method",
+          "signature": "pages(self, *pages: 'int | Sequence[int]') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:reflow_when_supported",
+          "name": "reflow_when_supported",
+          "kind": "method",
+          "signature": "reflow_when_supported(self, profile: 'TextLayoutProfile') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:regex",
+          "name": "regex",
+          "kind": "method",
+          "signature": "regex(self, regex: 'str') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:replace_with",
+          "name": "replace_with",
+          "kind": "method",
+          "signature": "replace_with(self, value: 'str') -> \"'TextReplaceBuilder'\"",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:replace_with_image",
+          "name": "replace_with_image",
+          "kind": "method",
+          "signature": "replace_with_image(self, image: 'bytes | bytearray | Path | str', transformation: 'PdfAffineTransform') -> \"'TextReplaceBuilder'\"",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:require_reflow",
+          "name": "require_reflow",
+          "kind": "method",
+          "signature": "require_reflow(self, profile: 'TextLayoutProfile') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:reset_spacing_overrides",
+          "name": "reset_spacing_overrides",
+          "kind": "method",
+          "signature": "reset_spacing_overrides(self) -> \"'TextReplaceBuilder'\"",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:size",
+          "name": "size",
+          "kind": "method",
+          "signature": "size(self, size: 'float') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:source_anchored",
+          "name": "source_anchored",
+          "kind": "method",
+          "signature": "source_anchored(self) -> 'Self'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:stroke_color",
+          "name": "stroke_color",
+          "kind": "method",
+          "signature": "stroke_color(self, color: 'PdfColorRequest') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:style",
+          "name": "style",
+          "kind": "method",
+          "signature": "style(self, style: 'TextStyleSetRequest') -> \"'TextReplaceBuilder'\"",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:whole_words",
+          "name": "whole_words",
+          "kind": "method",
+          "signature": "whole_words(self, whole_words: 'bool') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:word_spacing",
+          "name": "word_spacing",
+          "kind": "method",
+          "signature": "word_spacing(self, spacing: 'float') -> 'Self'",
+          "arity": 2,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "TextReplacementImageRequest",
+      "name": "TextReplacementImageRequest",
+      "kind": "class",
+      "signature": "TextReplacementImageRequest(data: 'bytes', transformation: 'PdfAffineTransform') -> None",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, data: 'bytes', transformation: 'PdfAffineTransform') -> None",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:to_dict",
+          "name": "to_dict",
+          "kind": "method",
+          "signature": "to_dict(self) -> 'dict[str, Any]'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:validated",
+          "name": "validated",
+          "kind": "method",
+          "signature": "validated(self) -> \"'TextReplacementImageRequest'\"",
+          "arity": 1,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "TextReplaceRequest",
+      "name": "TextReplaceRequest",
+      "kind": "class",
+      "signature": "TextReplaceRequest(pages: 'Optional[tuple[int, ...]]', select: 'TextSelectorRequest', replace_with: 'Optional[str]' = None, replace_with_image: 'Optional[TextReplacementImageRequest]' = None, style: 'Optional[TextStyleSetRequest]' = None, layout: 'Optional[TextLayoutRequest]' = None) -> None",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, pages: 'Optional[tuple[int, ...]]', select: 'TextSelectorRequest', replace_with: 'Optional[str]' = None, replace_with_image: 'Optional[TextReplacementImageRequest]' = None, style: 'Optional[TextStyleSetRequest]' = None, layout: 'Optional[TextLayoutRequest]' = None) -> None",
+          "arity": 7,
+          "static": false
+        },
+        {
+          "id": "method:builder",
+          "name": "builder",
+          "kind": "method",
+          "signature": "builder(cls) -> \"'TextReplaceBuilder'\"",
+          "arity": 1,
+          "static": true
+        },
+        {
+          "id": "method:literal",
+          "name": "literal",
+          "kind": "method",
+          "signature": "literal(cls, text: 'str', replace_with: 'str') -> \"'TextReplaceBuilder'\"",
+          "arity": 3,
+          "static": true
+        },
+        {
+          "id": "method:regex",
+          "name": "regex",
+          "kind": "method",
+          "signature": "regex(cls, regex: 'str', replace_with: 'str') -> \"'TextReplaceBuilder'\"",
+          "arity": 3,
+          "static": true
+        },
+        {
+          "id": "method:to_dict",
+          "name": "to_dict",
+          "kind": "method",
+          "signature": "to_dict(self) -> 'dict[str, Any]'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:validated",
+          "name": "validated",
+          "kind": "method",
+          "signature": "validated(self) -> \"'TextReplaceRequest'\"",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:with_pages",
+          "name": "with_pages",
+          "kind": "method",
+          "signature": "with_pages(self, pages: 'Sequence[int]') -> \"'TextReplaceRequest'\"",
+          "arity": 2,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "TextSelectorRequest",
+      "name": "TextSelectorRequest",
+      "kind": "class",
+      "signature": "TextSelectorRequest(literal: 'Optional[str]' = None, regex: 'Optional[str]' = None, case_sensitive: 'Optional[bool]' = None, whole_words: 'Optional[bool]' = None, max_matches: 'Optional[int]' = None) -> None",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, literal: 'Optional[str]' = None, regex: 'Optional[str]' = None, case_sensitive: 'Optional[bool]' = None, whole_words: 'Optional[bool]' = None, max_matches: 'Optional[int]' = None) -> None",
+          "arity": 6,
+          "static": false
+        },
+        {
+          "id": "method:to_dict",
+          "name": "to_dict",
+          "kind": "method",
+          "signature": "to_dict(self) -> 'dict[str, Any]'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:validated",
+          "name": "validated",
+          "kind": "method",
+          "signature": "validated(self) -> \"'TextSelectorRequest'\"",
+          "arity": 1,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "TextStyleBuilder",
+      "name": "TextStyleBuilder",
+      "kind": "class",
+      "signature": "TextStyleBuilder() -> 'None'",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self) -> 'None'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:build",
+          "name": "build",
+          "kind": "method",
+          "signature": "build(self) -> 'TextStyleRequest'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:case_sensitive",
+          "name": "case_sensitive",
+          "kind": "method",
+          "signature": "case_sensitive(self, case_sensitive: 'bool') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:character_spacing",
+          "name": "character_spacing",
+          "kind": "method",
+          "signature": "character_spacing(self, spacing: 'float') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:fill_color",
+          "name": "fill_color",
+          "kind": "method",
+          "signature": "fill_color(self, color: 'PdfColorRequest') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:font",
+          "name": "font",
+          "kind": "method",
+          "signature": "font(self, font: 'str') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:hyphenation_enabled",
+          "name": "hyphenation_enabled",
+          "kind": "method",
+          "signature": "hyphenation_enabled(self, enabled: 'bool') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:layout",
+          "name": "layout",
+          "kind": "method",
+          "signature": "layout(self, layout: 'Optional[TextLayoutRequest]') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:literal",
+          "name": "literal",
+          "kind": "method",
+          "signature": "literal(self, literal: 'str') -> \"'TextStyleBuilder'\"",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:max_matches",
+          "name": "max_matches",
+          "kind": "method",
+          "signature": "max_matches(self, max_matches: 'int') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:pages",
+          "name": "pages",
+          "kind": "method",
+          "signature": "pages(self, *pages: 'int | Sequence[int]') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:reflow_when_supported",
+          "name": "reflow_when_supported",
+          "kind": "method",
+          "signature": "reflow_when_supported(self, profile: 'TextLayoutProfile') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:regex",
+          "name": "regex",
+          "kind": "method",
+          "signature": "regex(self, regex: 'str') -> \"'TextStyleBuilder'\"",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:require_reflow",
+          "name": "require_reflow",
+          "kind": "method",
+          "signature": "require_reflow(self, profile: 'TextLayoutProfile') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:reset_spacing_overrides",
+          "name": "reset_spacing_overrides",
+          "kind": "method",
+          "signature": "reset_spacing_overrides(self, value: 'bool' = True) -> \"'TextStyleBuilder'\"",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:runs_where",
+          "name": "runs_where",
+          "kind": "method",
+          "signature": "runs_where(self) -> \"'TextStyleBuilder'\"",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:size",
+          "name": "size",
+          "kind": "method",
+          "signature": "size(self, size: 'float') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:source_anchored",
+          "name": "source_anchored",
+          "kind": "method",
+          "signature": "source_anchored(self) -> 'Self'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:stroke_color",
+          "name": "stroke_color",
+          "kind": "method",
+          "signature": "stroke_color(self, color: 'PdfColorRequest') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:where_character_spacing",
+          "name": "where_character_spacing",
+          "kind": "method",
+          "signature": "where_character_spacing(self, eq: 'float', tolerance: 'Optional[float]' = None) -> \"'TextStyleBuilder'\"",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:where_contains_unmapped_glyphs",
+          "name": "where_contains_unmapped_glyphs",
+          "kind": "method",
+          "signature": "where_contains_unmapped_glyphs(self, value: 'bool') -> \"'TextStyleBuilder'\"",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:where_fill_color",
+          "name": "where_fill_color",
+          "kind": "method",
+          "signature": "where_fill_color(self, color: 'PdfColorRequest') -> \"'TextStyleBuilder'\"",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:where_font",
+          "name": "where_font",
+          "kind": "method",
+          "signature": "where_font(self, font: 'str') -> \"'TextStyleBuilder'\"",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:where_size",
+          "name": "where_size",
+          "kind": "method",
+          "signature": "where_size(self, eq: 'float', tolerance: 'Optional[float]' = None) -> \"'TextStyleBuilder'\"",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:where_stroke_color",
+          "name": "where_stroke_color",
+          "kind": "method",
+          "signature": "where_stroke_color(self, color: 'PdfColorRequest') -> \"'TextStyleBuilder'\"",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:where_text_contains",
+          "name": "where_text_contains",
+          "kind": "method",
+          "signature": "where_text_contains(self, text: 'str') -> \"'TextStyleBuilder'\"",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:where_word_spacing",
+          "name": "where_word_spacing",
+          "kind": "method",
+          "signature": "where_word_spacing(self, eq: 'float', tolerance: 'Optional[float]' = None) -> \"'TextStyleBuilder'\"",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:whole_words",
+          "name": "whole_words",
+          "kind": "method",
+          "signature": "whole_words(self, whole_words: 'bool') -> 'Self'",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:word_spacing",
+          "name": "word_spacing",
+          "kind": "method",
+          "signature": "word_spacing(self, spacing: 'float') -> 'Self'",
+          "arity": 2,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "TextStyleNumericFilterRequest",
+      "name": "TextStyleNumericFilterRequest",
+      "kind": "class",
+      "signature": "TextStyleNumericFilterRequest(eq: 'float', tolerance: 'Optional[float]' = None) -> None",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, eq: 'float', tolerance: 'Optional[float]' = None) -> None",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:equal_to",
+          "name": "equal_to",
+          "kind": "method",
+          "signature": "equal_to(cls, eq: 'float', tolerance: 'Optional[float]' = None) -> \"'TextStyleNumericFilterRequest'\"",
+          "arity": 3,
+          "static": true
+        },
+        {
+          "id": "method:to_dict",
+          "name": "to_dict",
+          "kind": "method",
+          "signature": "to_dict(self) -> 'dict[str, Any]'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:validated",
+          "name": "validated",
+          "kind": "method",
+          "signature": "validated(self) -> \"'TextStyleNumericFilterRequest'\"",
+          "arity": 1,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "TextStylePatchRequest",
+      "name": "TextStylePatchRequest",
+      "kind": "class",
+      "signature": "TextStylePatchRequest(font: 'Optional[str]' = None, size: 'Optional[float]' = None, fill_color: 'Optional[PdfColorRequest]' = None, stroke_color: 'Optional[PdfColorRequest]' = None, character_spacing: 'Optional[float]' = None, word_spacing: 'Optional[float]' = None) -> None",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, font: 'Optional[str]' = None, size: 'Optional[float]' = None, fill_color: 'Optional[PdfColorRequest]' = None, stroke_color: 'Optional[PdfColorRequest]' = None, character_spacing: 'Optional[float]' = None, word_spacing: 'Optional[float]' = None) -> None",
+          "arity": 7,
+          "static": false
+        },
+        {
+          "id": "method:builder",
+          "name": "builder",
+          "kind": "method",
+          "signature": "builder(cls) -> \"'TextStylePatchBuilder'\"",
+          "arity": 1,
+          "static": true
+        },
+        {
+          "id": "method:to_dict",
+          "name": "to_dict",
+          "kind": "method",
+          "signature": "to_dict(self) -> 'dict[str, Any]'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:validated",
+          "name": "validated",
+          "kind": "method",
+          "signature": "validated(self) -> \"'TextStylePatchRequest'\"",
+          "arity": 1,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "TextStyleRequest",
+      "name": "TextStyleRequest",
+      "kind": "class",
+      "signature": "TextStyleRequest(pages: 'Optional[tuple[int, ...]]', select: 'TextStyleSelectorRequest', style: 'TextStyleSetRequest', layout: 'Optional[TextLayoutRequest]' = None) -> None",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, pages: 'Optional[tuple[int, ...]]', select: 'TextStyleSelectorRequest', style: 'TextStyleSetRequest', layout: 'Optional[TextLayoutRequest]' = None) -> None",
+          "arity": 5,
+          "static": false
+        },
+        {
+          "id": "method:builder",
+          "name": "builder",
+          "kind": "method",
+          "signature": "builder(cls) -> \"'TextStyleBuilder'\"",
+          "arity": 1,
+          "static": true
+        },
+        {
+          "id": "method:literal",
+          "name": "literal",
+          "kind": "method",
+          "signature": "literal(cls, text: 'str') -> \"'TextStyleBuilder'\"",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "method:regex",
+          "name": "regex",
+          "kind": "method",
+          "signature": "regex(cls, regex: 'str') -> \"'TextStyleBuilder'\"",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "method:runs_where",
+          "name": "runs_where",
+          "kind": "method",
+          "signature": "runs_where(cls) -> \"'TextStyleBuilder'\"",
+          "arity": 1,
+          "static": true
+        },
+        {
+          "id": "method:to_dict",
+          "name": "to_dict",
+          "kind": "method",
+          "signature": "to_dict(self) -> 'dict[str, Any]'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:validated",
+          "name": "validated",
+          "kind": "method",
+          "signature": "validated(self) -> \"'TextStyleRequest'\"",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:with_pages",
+          "name": "with_pages",
+          "kind": "method",
+          "signature": "with_pages(self, pages: 'Sequence[int]') -> \"'TextStyleRequest'\"",
+          "arity": 2,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "TextStyleRunFilterRequest",
+      "name": "TextStyleRunFilterRequest",
+      "kind": "class",
+      "signature": "TextStyleRunFilterRequest(text_contains: 'Optional[str]' = None, font: 'Optional[str]' = None, size: 'Optional[TextStyleNumericFilterRequest]' = None, fill_color: 'Optional[PdfColorRequest]' = None, stroke_color: 'Optional[PdfColorRequest]' = None, character_spacing: 'Optional[TextStyleNumericFilterRequest]' = None, word_spacing: 'Optional[TextStyleNumericFilterRequest]' = None, contains_unmapped_glyphs: 'Optional[bool]' = None) -> None",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, text_contains: 'Optional[str]' = None, font: 'Optional[str]' = None, size: 'Optional[TextStyleNumericFilterRequest]' = None, fill_color: 'Optional[PdfColorRequest]' = None, stroke_color: 'Optional[PdfColorRequest]' = None, character_spacing: 'Optional[TextStyleNumericFilterRequest]' = None, word_spacing: 'Optional[TextStyleNumericFilterRequest]' = None, contains_unmapped_glyphs: 'Optional[bool]' = None) -> None",
+          "arity": 9,
+          "static": false
+        },
+        {
+          "id": "method:to_dict",
+          "name": "to_dict",
+          "kind": "method",
+          "signature": "to_dict(self) -> 'dict[str, Any]'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:validated",
+          "name": "validated",
+          "kind": "method",
+          "signature": "validated(self) -> \"'TextStyleRunFilterRequest'\"",
+          "arity": 1,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "TextStyleRunsSelectorRequest",
+      "name": "TextStyleRunsSelectorRequest",
+      "kind": "class",
+      "signature": "TextStyleRunsSelectorRequest(where: 'TextStyleRunFilterRequest', max_matches: 'Optional[int]' = None) -> None",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, where: 'TextStyleRunFilterRequest', max_matches: 'Optional[int]' = None) -> None",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:to_dict",
+          "name": "to_dict",
+          "kind": "method",
+          "signature": "to_dict(self) -> 'dict[str, Any]'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:validated",
+          "name": "validated",
+          "kind": "method",
+          "signature": "validated(self) -> \"'TextStyleRunsSelectorRequest'\"",
+          "arity": 1,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "TextStyleSelectorRequest",
+      "name": "TextStyleSelectorRequest",
+      "kind": "class",
+      "signature": "TextStyleSelectorRequest(literal: 'Optional[str]' = None, regex: 'Optional[str]' = None, case_sensitive: 'Optional[bool]' = None, whole_words: 'Optional[bool]' = None, max_matches: 'Optional[int]' = None, runs: 'Optional[TextStyleRunsSelectorRequest]' = None) -> None",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, literal: 'Optional[str]' = None, regex: 'Optional[str]' = None, case_sensitive: 'Optional[bool]' = None, whole_words: 'Optional[bool]' = None, max_matches: 'Optional[int]' = None, runs: 'Optional[TextStyleRunsSelectorRequest]' = None) -> None",
+          "arity": 7,
+          "static": false
+        },
+        {
+          "id": "method:from_text_selector",
+          "name": "from_text_selector",
+          "kind": "method",
+          "signature": "from_text_selector(cls, selector: 'TextSelectorRequest') -> \"'TextStyleSelectorRequest'\"",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "method:to_dict",
+          "name": "to_dict",
+          "kind": "method",
+          "signature": "to_dict(self) -> 'dict[str, Any]'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:validated",
+          "name": "validated",
+          "kind": "method",
+          "signature": "validated(self) -> \"'TextStyleSelectorRequest'\"",
+          "arity": 1,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "TextStyleSetRequest",
+      "name": "TextStyleSetRequest",
+      "kind": "class",
+      "signature": "TextStyleSetRequest(font: 'Optional[str]' = None, size: 'Optional[float]' = None, fill_color: 'Optional[PdfColorRequest]' = None, stroke_color: 'Optional[PdfColorRequest]' = None, character_spacing: 'Optional[float]' = None, word_spacing: 'Optional[float]' = None, reset_spacing_overrides: 'Optional[bool]' = None) -> None",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, font: 'Optional[str]' = None, size: 'Optional[float]' = None, fill_color: 'Optional[PdfColorRequest]' = None, stroke_color: 'Optional[PdfColorRequest]' = None, character_spacing: 'Optional[float]' = None, word_spacing: 'Optional[float]' = None, reset_spacing_overrides: 'Optional[bool]' = None) -> None",
+          "arity": 8,
+          "static": false
+        },
+        {
+          "id": "method:builder",
+          "name": "builder",
+          "kind": "method",
+          "signature": "builder(cls) -> \"'TextStyleSetBuilder'\"",
+          "arity": 1,
+          "static": true
+        },
+        {
+          "id": "method:to_dict",
+          "name": "to_dict",
+          "kind": "method",
+          "signature": "to_dict(self) -> 'dict[str, Any]'",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:validated",
+          "name": "validated",
+          "kind": "method",
+          "signature": "validated(self) -> \"'TextStyleSetRequest'\"",
+          "arity": 1,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "ValidationException",
+      "name": "ValidationException",
+      "kind": "class",
+      "signature": "ValidationException(message: str, cause: Exception | None = None)",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, message: str, cause: Exception | None = None)",
+          "arity": 3,
+          "static": false
+        }
+      ]
+    }
+  ]
+}

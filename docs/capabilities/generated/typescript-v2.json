@@ -1,0 +1,6539 @@
+{
+  "schemaVersion": 1,
+  "language": "typescript",
+  "repository": "pdfdancer-client-typescript",
+  "candidateRef": "release/v2",
+  "candidateCommit": "a9b72397f9992099ebbb7f2abc26dddfd5f8d8c3",
+  "symbols": [
+    {
+      "id": "BaseObject",
+      "name": "BaseObject",
+      "kind": "class",
+      "signature": "class BaseObject<TRef extends ObjectRef = ObjectRef>",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor<TRef extends ObjectRef = ObjectRef>(client: PDFDancer, internalId: string, type: ObjectType, position: Position): BaseObject<TRef>",
+          "arity": 4,
+          "static": true
+        },
+        {
+          "id": "method:clearClipping",
+          "name": "clearClipping",
+          "kind": "method",
+          "signature": "clearClipping(): Promise<boolean>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:delete",
+          "name": "delete",
+          "kind": "method",
+          "signature": "delete(): Promise<boolean>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:moveTo",
+          "name": "moveTo",
+          "kind": "method",
+          "signature": "moveTo(x: number, y: number): Promise<boolean>",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:objectRef",
+          "name": "objectRef",
+          "kind": "method",
+          "signature": "objectRef(): TRef",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "property:_client",
+          "name": "_client",
+          "kind": "property",
+          "signature": "_client: PDFDancer",
+          "static": false
+        },
+        {
+          "id": "property:internalId",
+          "name": "internalId",
+          "kind": "property",
+          "signature": "internalId: string",
+          "static": false
+        },
+        {
+          "id": "property:position",
+          "name": "position",
+          "kind": "property",
+          "signature": "position: Position",
+          "static": false
+        },
+        {
+          "id": "property:type",
+          "name": "type",
+          "kind": "property",
+          "signature": "type: ObjectType",
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "Bezier",
+      "name": "Bezier",
+      "kind": "class",
+      "signature": "class Bezier extends PathSegment",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(p0: PathPoint, p1: PathPoint, p2: PathPoint, p3: PathPoint, position?: Position, strokeColor?: Color, fillColor?: Color, strokeWidth?: number, dashArray?: number[], dashPhase?: number): Bezier",
+          "arity": 10,
+          "static": true
+        },
+        {
+          "id": "property:dashArray",
+          "name": "dashArray",
+          "kind": "property",
+          "signature": "dashArray?: number[]",
+          "static": false
+        },
+        {
+          "id": "property:dashPhase",
+          "name": "dashPhase",
+          "kind": "property",
+          "signature": "dashPhase?: number",
+          "static": false
+        },
+        {
+          "id": "property:fillColor",
+          "name": "fillColor",
+          "kind": "property",
+          "signature": "fillColor?: Color",
+          "static": false
+        },
+        {
+          "id": "property:p0",
+          "name": "p0",
+          "kind": "property",
+          "signature": "p0: PathPoint",
+          "static": false
+        },
+        {
+          "id": "property:p1",
+          "name": "p1",
+          "kind": "property",
+          "signature": "p1: PathPoint",
+          "static": false
+        },
+        {
+          "id": "property:p2",
+          "name": "p2",
+          "kind": "property",
+          "signature": "p2: PathPoint",
+          "static": false
+        },
+        {
+          "id": "property:p3",
+          "name": "p3",
+          "kind": "property",
+          "signature": "p3: PathPoint",
+          "static": false
+        },
+        {
+          "id": "property:position",
+          "name": "position",
+          "kind": "property",
+          "signature": "position?: Position",
+          "static": false
+        },
+        {
+          "id": "property:strokeColor",
+          "name": "strokeColor",
+          "kind": "property",
+          "signature": "strokeColor?: Color",
+          "static": false
+        },
+        {
+          "id": "property:strokeWidth",
+          "name": "strokeWidth",
+          "kind": "property",
+          "signature": "strokeWidth?: number",
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "BezierBuilder",
+      "name": "BezierBuilder",
+      "kind": "class",
+      "signature": "class BezierBuilder extends SinglePathBuilder<BezierBuilder>",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(client: PDFDancer, pageNumber: number): BezierBuilder",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "method:add",
+          "name": "add",
+          "kind": "method",
+          "signature": "add(): Promise<boolean>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:control1",
+          "name": "control1",
+          "kind": "method",
+          "signature": "control1(x: number, y: number): BezierBuilder",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:control2",
+          "name": "control2",
+          "kind": "method",
+          "signature": "control2(x: number, y: number): BezierBuilder",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:dashPattern",
+          "name": "dashPattern",
+          "kind": "method",
+          "signature": "dashPattern(pattern: number[], phase?: number): BezierBuilder",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:evenOddFill",
+          "name": "evenOddFill",
+          "kind": "method",
+          "signature": "evenOddFill(enabled?: boolean): BezierBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:fillColor",
+          "name": "fillColor",
+          "kind": "method",
+          "signature": "fillColor(color: Color): BezierBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:from",
+          "name": "from",
+          "kind": "method",
+          "signature": "from(x: number, y: number): BezierBuilder",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:solid",
+          "name": "solid",
+          "kind": "method",
+          "signature": "solid(): BezierBuilder",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:strokeColor",
+          "name": "strokeColor",
+          "kind": "method",
+          "signature": "strokeColor(color: Color): BezierBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:strokeWidth",
+          "name": "strokeWidth",
+          "kind": "method",
+          "signature": "strokeWidth(width: number): BezierBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:to",
+          "name": "to",
+          "kind": "method",
+          "signature": "to(x: number, y: number): BezierBuilder",
+          "arity": 2,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "BoundingRect",
+      "name": "BoundingRect",
+      "kind": "class",
+      "signature": "class BoundingRect",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(x: number, y: number, width: number, height: number): BoundingRect",
+          "arity": 4,
+          "static": true
+        },
+        {
+          "id": "method:getHeight",
+          "name": "getHeight",
+          "kind": "method",
+          "signature": "getHeight(): number",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:getWidth",
+          "name": "getWidth",
+          "kind": "method",
+          "signature": "getWidth(): number",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:getX",
+          "name": "getX",
+          "kind": "method",
+          "signature": "getX(): number",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:getY",
+          "name": "getY",
+          "kind": "method",
+          "signature": "getY(): number",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "property:height",
+          "name": "height",
+          "kind": "property",
+          "signature": "height: number",
+          "static": false
+        },
+        {
+          "id": "property:width",
+          "name": "width",
+          "kind": "property",
+          "signature": "width: number",
+          "static": false
+        },
+        {
+          "id": "property:x",
+          "name": "x",
+          "kind": "property",
+          "signature": "x: number",
+          "static": false
+        },
+        {
+          "id": "property:y",
+          "name": "y",
+          "kind": "property",
+          "signature": "y: number",
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "Color",
+      "name": "Color",
+      "kind": "class",
+      "signature": "class Color",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(r: number, g: number, b: number, a?: number): Color",
+          "arity": 4,
+          "static": true
+        },
+        {
+          "id": "property:a",
+          "name": "a",
+          "kind": "property",
+          "signature": "a: number",
+          "static": false
+        },
+        {
+          "id": "property:b",
+          "name": "b",
+          "kind": "property",
+          "signature": "b: number",
+          "static": false
+        },
+        {
+          "id": "property:BLACK",
+          "name": "BLACK",
+          "kind": "property",
+          "signature": "BLACK: Color",
+          "static": true
+        },
+        {
+          "id": "property:g",
+          "name": "g",
+          "kind": "property",
+          "signature": "g: number",
+          "static": false
+        },
+        {
+          "id": "property:r",
+          "name": "r",
+          "kind": "property",
+          "signature": "r: number",
+          "static": false
+        },
+        {
+          "id": "property:RED",
+          "name": "RED",
+          "kind": "property",
+          "signature": "RED: Color",
+          "static": true
+        },
+        {
+          "id": "property:WHITE",
+          "name": "WHITE",
+          "kind": "property",
+          "signature": "WHITE: Color",
+          "static": true
+        }
+      ]
+    },
+    {
+      "id": "CommandResult",
+      "name": "CommandResult",
+      "kind": "class",
+      "signature": "class CommandResult",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(commandName: string, elementId: string, message: string, success: boolean, warning: string): CommandResult",
+          "arity": 5,
+          "static": true
+        },
+        {
+          "id": "method:empty",
+          "name": "empty",
+          "kind": "method",
+          "signature": "empty(commandName: string, elementId: string): CommandResult",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "method:fromDict",
+          "name": "fromDict",
+          "kind": "method",
+          "signature": "fromDict(data: Record<string, any>): CommandResult",
+          "arity": 1,
+          "static": true
+        },
+        {
+          "id": "property:commandName",
+          "name": "commandName",
+          "kind": "property",
+          "signature": "commandName: string",
+          "static": false
+        },
+        {
+          "id": "property:elementId",
+          "name": "elementId",
+          "kind": "property",
+          "signature": "elementId: string",
+          "static": false
+        },
+        {
+          "id": "property:message",
+          "name": "message",
+          "kind": "property",
+          "signature": "message: string",
+          "static": false
+        },
+        {
+          "id": "property:success",
+          "name": "success",
+          "kind": "property",
+          "signature": "success: boolean",
+          "static": false
+        },
+        {
+          "id": "property:warning",
+          "name": "warning",
+          "kind": "property",
+          "signature": "warning: string",
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "DocumentFontInfo",
+      "name": "DocumentFontInfo",
+      "kind": "class",
+      "signature": "class DocumentFontInfo",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(documentFontName: string, systemFontName: string): DocumentFontInfo",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "method:getDocumentFontName",
+          "name": "getDocumentFontName",
+          "kind": "method",
+          "signature": "getDocumentFontName(): string",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:getSystemFontName",
+          "name": "getSystemFontName",
+          "kind": "method",
+          "signature": "getSystemFontName(): string",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "property:documentFontName",
+          "name": "documentFontName",
+          "kind": "property",
+          "signature": "documentFontName: string",
+          "static": false
+        },
+        {
+          "id": "property:systemFontName",
+          "name": "systemFontName",
+          "kind": "property",
+          "signature": "systemFontName: string",
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "DocumentSnapshot",
+      "name": "DocumentSnapshot",
+      "kind": "class",
+      "signature": "class DocumentSnapshot",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(pageCount: number, fonts: DocumentFontInfo[], pages: PageSnapshot[]): DocumentSnapshot",
+          "arity": 3,
+          "static": true
+        },
+        {
+          "id": "method:getAllElements",
+          "name": "getAllElements",
+          "kind": "method",
+          "signature": "getAllElements(): ObjectRef[]",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:getElementsByType",
+          "name": "getElementsByType",
+          "kind": "method",
+          "signature": "getElementsByType(type: ObjectType): ObjectRef[]",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:getPageSnapshot",
+          "name": "getPageSnapshot",
+          "kind": "method",
+          "signature": "getPageSnapshot(pageNumber: number): PageSnapshot",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:getTotalElementCount",
+          "name": "getTotalElementCount",
+          "kind": "method",
+          "signature": "getTotalElementCount(): number",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "property:fonts",
+          "name": "fonts",
+          "kind": "property",
+          "signature": "fonts: DocumentFontInfo[]",
+          "static": false
+        },
+        {
+          "id": "property:pageCount",
+          "name": "pageCount",
+          "kind": "property",
+          "signature": "pageCount: number",
+          "static": false
+        },
+        {
+          "id": "property:pages",
+          "name": "pages",
+          "kind": "property",
+          "signature": "pages: PageSnapshot[]",
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "FlipDirection",
+      "name": "FlipDirection",
+      "kind": "enum",
+      "signature": "enum FlipDirection",
+      "members": [
+        {
+          "id": "enum-value:BOTH",
+          "name": "BOTH",
+          "kind": "enum-value",
+          "signature": "BOTH = \"BOTH\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:HORIZONTAL",
+          "name": "HORIZONTAL",
+          "kind": "enum-value",
+          "signature": "HORIZONTAL = \"HORIZONTAL\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:VERTICAL",
+          "name": "VERTICAL",
+          "kind": "enum-value",
+          "signature": "VERTICAL = \"VERTICAL\"",
+          "static": true
+        }
+      ]
+    },
+    {
+      "id": "Font",
+      "name": "Font",
+      "kind": "class",
+      "signature": "class Font",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(name: string, size: number): Font",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "property:name",
+          "name": "name",
+          "kind": "property",
+          "signature": "name: string",
+          "static": false
+        },
+        {
+          "id": "property:size",
+          "name": "size",
+          "kind": "property",
+          "signature": "size: number",
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "FontNotFoundException",
+      "name": "FontNotFoundException",
+      "kind": "class",
+      "signature": "class FontNotFoundException extends PdfDancerException",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(message: string): FontNotFoundException",
+          "arity": 1,
+          "static": true
+        },
+        {
+          "id": "method:captureStackTrace",
+          "name": "captureStackTrace",
+          "kind": "method",
+          "signature": "captureStackTrace(targetObject: object, constructorOpt?: Function): void",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "method:prepareStackTrace",
+          "name": "prepareStackTrace",
+          "kind": "method",
+          "signature": "prepareStackTrace(err: Error, stackTraces: CallSite[]): any",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "property:cause",
+          "name": "cause",
+          "kind": "property",
+          "signature": "cause?: Error",
+          "static": false
+        },
+        {
+          "id": "property:message",
+          "name": "message",
+          "kind": "property",
+          "signature": "message: string",
+          "static": false
+        },
+        {
+          "id": "property:name",
+          "name": "name",
+          "kind": "property",
+          "signature": "name: string",
+          "static": false
+        },
+        {
+          "id": "property:stack",
+          "name": "stack",
+          "kind": "property",
+          "signature": "stack?: string",
+          "static": false
+        },
+        {
+          "id": "property:stackTraceLimit",
+          "name": "stackTraceLimit",
+          "kind": "property",
+          "signature": "stackTraceLimit: number",
+          "static": true
+        }
+      ]
+    },
+    {
+      "id": "FontRecommendation",
+      "name": "FontRecommendation",
+      "kind": "class",
+      "signature": "class FontRecommendation",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(documentFontName: string, systemFontName: string): DocumentFontInfo",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "method:getDocumentFontName",
+          "name": "getDocumentFontName",
+          "kind": "method",
+          "signature": "getDocumentFontName(): string",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:getSystemFontName",
+          "name": "getSystemFontName",
+          "kind": "method",
+          "signature": "getSystemFontName(): string",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "property:documentFontName",
+          "name": "documentFontName",
+          "kind": "property",
+          "signature": "documentFontName: string",
+          "static": false
+        },
+        {
+          "id": "property:systemFontName",
+          "name": "systemFontName",
+          "kind": "property",
+          "signature": "systemFontName: string",
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "FontType",
+      "name": "FontType",
+      "kind": "enum",
+      "signature": "enum FontType",
+      "members": [
+        {
+          "id": "enum-value:EMBEDDED",
+          "name": "EMBEDDED",
+          "kind": "enum-value",
+          "signature": "EMBEDDED = \"EMBEDDED\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:STANDARD",
+          "name": "STANDARD",
+          "kind": "enum-value",
+          "signature": "STANDARD = \"STANDARD\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:SYSTEM",
+          "name": "SYSTEM",
+          "kind": "enum-value",
+          "signature": "SYSTEM = \"SYSTEM\"",
+          "static": true
+        }
+      ]
+    },
+    {
+      "id": "FormFieldObject",
+      "name": "FormFieldObject",
+      "kind": "class",
+      "signature": "class FormFieldObject extends BaseObject<FormFieldRef>",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(client: PDFDancer, internalId: string, type: ObjectType, position: Position, name: string, value: string): FormFieldObject",
+          "arity": 6,
+          "static": true
+        },
+        {
+          "id": "method:clearClipping",
+          "name": "clearClipping",
+          "kind": "method",
+          "signature": "clearClipping(): Promise<boolean>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:delete",
+          "name": "delete",
+          "kind": "method",
+          "signature": "delete(): Promise<boolean>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:fromRef",
+          "name": "fromRef",
+          "kind": "method",
+          "signature": "fromRef(_client: PDFDancer, objectRef: FormFieldRef): FormFieldObject",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "method:moveTo",
+          "name": "moveTo",
+          "kind": "method",
+          "signature": "moveTo(x: number, y: number): Promise<boolean>",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:objectRef",
+          "name": "objectRef",
+          "kind": "method",
+          "signature": "objectRef(): FormFieldRef",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:setValue",
+          "name": "setValue",
+          "kind": "method",
+          "signature": "setValue(value: string): Promise<boolean>",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "property:_client",
+          "name": "_client",
+          "kind": "property",
+          "signature": "_client: PDFDancer",
+          "static": false
+        },
+        {
+          "id": "property:internalId",
+          "name": "internalId",
+          "kind": "property",
+          "signature": "internalId: string",
+          "static": false
+        },
+        {
+          "id": "property:name",
+          "name": "name",
+          "kind": "property",
+          "signature": "name: string",
+          "static": false
+        },
+        {
+          "id": "property:position",
+          "name": "position",
+          "kind": "property",
+          "signature": "position: Position",
+          "static": false
+        },
+        {
+          "id": "property:type",
+          "name": "type",
+          "kind": "property",
+          "signature": "type: ObjectType",
+          "static": false
+        },
+        {
+          "id": "property:value",
+          "name": "value",
+          "kind": "property",
+          "signature": "value: string",
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "FormFieldRef",
+      "name": "FormFieldRef",
+      "kind": "class",
+      "signature": "class FormFieldRef extends ObjectRef",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(internalId: string, position: Position, type: ObjectType, name: string, value: string): FormFieldRef",
+          "arity": 5,
+          "static": true
+        },
+        {
+          "id": "method:toDict",
+          "name": "toDict",
+          "kind": "method",
+          "signature": "toDict(): Record<string, any>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "property:internalId",
+          "name": "internalId",
+          "kind": "property",
+          "signature": "internalId: string",
+          "static": false
+        },
+        {
+          "id": "property:name",
+          "name": "name",
+          "kind": "property",
+          "signature": "name: string",
+          "static": false
+        },
+        {
+          "id": "property:position",
+          "name": "position",
+          "kind": "property",
+          "signature": "position: Position",
+          "static": false
+        },
+        {
+          "id": "property:type",
+          "name": "type",
+          "kind": "property",
+          "signature": "type: ObjectType",
+          "static": false
+        },
+        {
+          "id": "property:value",
+          "name": "value",
+          "kind": "property",
+          "signature": "value: string",
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "FormXObject",
+      "name": "FormXObject",
+      "kind": "class",
+      "signature": "class FormXObject extends BaseObject",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(client: PDFDancer, internalId: string, type: ObjectType, position: Position): FormXObject",
+          "arity": 4,
+          "static": true
+        },
+        {
+          "id": "method:clearClipping",
+          "name": "clearClipping",
+          "kind": "method",
+          "signature": "clearClipping(): Promise<boolean>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:delete",
+          "name": "delete",
+          "kind": "method",
+          "signature": "delete(): Promise<boolean>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:fromRef",
+          "name": "fromRef",
+          "kind": "method",
+          "signature": "fromRef(_client: PDFDancer, objectRef: ObjectRef): FormXObject",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "method:moveTo",
+          "name": "moveTo",
+          "kind": "method",
+          "signature": "moveTo(x: number, y: number): Promise<boolean>",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:objectRef",
+          "name": "objectRef",
+          "kind": "method",
+          "signature": "objectRef(): ObjectRef",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "property:_client",
+          "name": "_client",
+          "kind": "property",
+          "signature": "_client: PDFDancer",
+          "static": false
+        },
+        {
+          "id": "property:internalId",
+          "name": "internalId",
+          "kind": "property",
+          "signature": "internalId: string",
+          "static": false
+        },
+        {
+          "id": "property:position",
+          "name": "position",
+          "kind": "property",
+          "signature": "position: Position",
+          "static": false
+        },
+        {
+          "id": "property:type",
+          "name": "type",
+          "kind": "property",
+          "signature": "type: ObjectType",
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "HttpClientException",
+      "name": "HttpClientException",
+      "kind": "class",
+      "signature": "class HttpClientException extends PdfDancerException",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(message: string, response?: Response, cause?: Error): HttpClientException",
+          "arity": 3,
+          "static": true
+        },
+        {
+          "id": "method:captureStackTrace",
+          "name": "captureStackTrace",
+          "kind": "method",
+          "signature": "captureStackTrace(targetObject: object, constructorOpt?: Function): void",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "method:prepareStackTrace",
+          "name": "prepareStackTrace",
+          "kind": "method",
+          "signature": "prepareStackTrace(err: Error, stackTraces: CallSite[]): any",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "property:cause",
+          "name": "cause",
+          "kind": "property",
+          "signature": "cause?: Error",
+          "static": false
+        },
+        {
+          "id": "property:message",
+          "name": "message",
+          "kind": "property",
+          "signature": "message: string",
+          "static": false
+        },
+        {
+          "id": "property:name",
+          "name": "name",
+          "kind": "property",
+          "signature": "name: string",
+          "static": false
+        },
+        {
+          "id": "property:response",
+          "name": "response",
+          "kind": "property",
+          "signature": "response?: Response",
+          "static": false
+        },
+        {
+          "id": "property:stack",
+          "name": "stack",
+          "kind": "property",
+          "signature": "stack?: string",
+          "static": false
+        },
+        {
+          "id": "property:stackTraceLimit",
+          "name": "stackTraceLimit",
+          "kind": "property",
+          "signature": "stackTraceLimit: number",
+          "static": true
+        },
+        {
+          "id": "property:statusCode",
+          "name": "statusCode",
+          "kind": "property",
+          "signature": "statusCode?: number",
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "Image",
+      "name": "Image",
+      "kind": "class",
+      "signature": "class Image",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(position?: Position, format?: string, width?: number, height?: number, data?: Uint8Array): Image",
+          "arity": 5,
+          "static": true
+        },
+        {
+          "id": "method:getPosition",
+          "name": "getPosition",
+          "kind": "method",
+          "signature": "getPosition(): Position",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:setPosition",
+          "name": "setPosition",
+          "kind": "method",
+          "signature": "setPosition(position: Position): void",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "property:data",
+          "name": "data",
+          "kind": "property",
+          "signature": "data?: Uint8Array",
+          "static": false
+        },
+        {
+          "id": "property:format",
+          "name": "format",
+          "kind": "property",
+          "signature": "format?: string",
+          "static": false
+        },
+        {
+          "id": "property:height",
+          "name": "height",
+          "kind": "property",
+          "signature": "height?: number",
+          "static": false
+        },
+        {
+          "id": "property:position",
+          "name": "position",
+          "kind": "property",
+          "signature": "position?: Position",
+          "static": false
+        },
+        {
+          "id": "property:width",
+          "name": "width",
+          "kind": "property",
+          "signature": "width?: number",
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "ImageObject",
+      "name": "ImageObject",
+      "kind": "class",
+      "signature": "class ImageObject extends BaseObject",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(client: PDFDancer, internalId: string, type: ObjectType, position: Position): ImageObject",
+          "arity": 4,
+          "static": true
+        },
+        {
+          "id": "method:clearClipping",
+          "name": "clearClipping",
+          "kind": "method",
+          "signature": "clearClipping(): Promise<boolean>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:crop",
+          "name": "crop",
+          "kind": "method",
+          "signature": "crop(left: number, top: number, right: number, bottom: number): Promise<CommandResult>",
+          "arity": 4,
+          "static": false
+        },
+        {
+          "id": "method:delete",
+          "name": "delete",
+          "kind": "method",
+          "signature": "delete(): Promise<boolean>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:fillRegion",
+          "name": "fillRegion",
+          "kind": "method",
+          "signature": "fillRegion(x: number, y: number, width: number, height: number, color: Color): Promise<CommandResult>",
+          "arity": 5,
+          "static": false
+        },
+        {
+          "id": "method:flip",
+          "name": "flip",
+          "kind": "method",
+          "signature": "flip(direction: FlipDirection): Promise<CommandResult>",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:flipHorizontal",
+          "name": "flipHorizontal",
+          "kind": "method",
+          "signature": "flipHorizontal(): Promise<CommandResult>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:flipVertical",
+          "name": "flipVertical",
+          "kind": "method",
+          "signature": "flipVertical(): Promise<CommandResult>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:fromRef",
+          "name": "fromRef",
+          "kind": "method",
+          "signature": "fromRef(_client: PDFDancer, objectRef: ObjectRef): ImageObject",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "method:moveTo",
+          "name": "moveTo",
+          "kind": "method",
+          "signature": "moveTo(x: number, y: number): Promise<boolean>",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:objectRef",
+          "name": "objectRef",
+          "kind": "method",
+          "signature": "objectRef(): ObjectRef",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:replace",
+          "name": "replace",
+          "kind": "method",
+          "signature": "replace(newImage: Image): Promise<CommandResult>",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:replaceFromFile",
+          "name": "replaceFromFile",
+          "kind": "method",
+          "signature": "replaceFromFile(imagePath: string): Promise<CommandResult>",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:rotate",
+          "name": "rotate",
+          "kind": "method",
+          "signature": "rotate(angle: number): Promise<CommandResult>",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:scale",
+          "name": "scale",
+          "kind": "method",
+          "signature": "scale(factor: number): Promise<CommandResult>",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:scaleTo",
+          "name": "scaleTo",
+          "kind": "method",
+          "signature": "scaleTo(width: number, height: number, preserveAspectRatio?: boolean): Promise<CommandResult>",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:setOpacity",
+          "name": "setOpacity",
+          "kind": "method",
+          "signature": "setOpacity(opacity: number): Promise<CommandResult>",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "property:_client",
+          "name": "_client",
+          "kind": "property",
+          "signature": "_client: PDFDancer",
+          "static": false
+        },
+        {
+          "id": "property:aspectRatio",
+          "name": "aspectRatio",
+          "kind": "property",
+          "signature": "aspectRatio: number",
+          "static": false
+        },
+        {
+          "id": "property:height",
+          "name": "height",
+          "kind": "property",
+          "signature": "height: number",
+          "static": false
+        },
+        {
+          "id": "property:internalId",
+          "name": "internalId",
+          "kind": "property",
+          "signature": "internalId: string",
+          "static": false
+        },
+        {
+          "id": "property:position",
+          "name": "position",
+          "kind": "property",
+          "signature": "position: Position",
+          "static": false
+        },
+        {
+          "id": "property:type",
+          "name": "type",
+          "kind": "property",
+          "signature": "type: ObjectType",
+          "static": false
+        },
+        {
+          "id": "property:width",
+          "name": "width",
+          "kind": "property",
+          "signature": "width: number",
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "ImageTransformType",
+      "name": "ImageTransformType",
+      "kind": "enum",
+      "signature": "enum ImageTransformType",
+      "members": [
+        {
+          "id": "enum-value:CROP",
+          "name": "CROP",
+          "kind": "enum-value",
+          "signature": "CROP = \"CROP\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:FILL_REGION",
+          "name": "FILL_REGION",
+          "kind": "enum-value",
+          "signature": "FILL_REGION = \"FILL_REGION\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:FLIP",
+          "name": "FLIP",
+          "kind": "enum-value",
+          "signature": "FLIP = \"FLIP\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:OPACITY",
+          "name": "OPACITY",
+          "kind": "enum-value",
+          "signature": "OPACITY = \"OPACITY\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:REPLACE",
+          "name": "REPLACE",
+          "kind": "enum-value",
+          "signature": "REPLACE = \"REPLACE\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:ROTATE",
+          "name": "ROTATE",
+          "kind": "enum-value",
+          "signature": "ROTATE = \"ROTATE\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:SCALE",
+          "name": "SCALE",
+          "kind": "enum-value",
+          "signature": "SCALE = \"SCALE\"",
+          "static": true
+        }
+      ]
+    },
+    {
+      "id": "Line",
+      "name": "Line",
+      "kind": "class",
+      "signature": "class Line extends PathSegment",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(p0: PathPoint, p1: PathPoint, position?: Position, strokeColor?: Color, fillColor?: Color, strokeWidth?: number, dashArray?: number[], dashPhase?: number): Line",
+          "arity": 8,
+          "static": true
+        },
+        {
+          "id": "property:dashArray",
+          "name": "dashArray",
+          "kind": "property",
+          "signature": "dashArray?: number[]",
+          "static": false
+        },
+        {
+          "id": "property:dashPhase",
+          "name": "dashPhase",
+          "kind": "property",
+          "signature": "dashPhase?: number",
+          "static": false
+        },
+        {
+          "id": "property:fillColor",
+          "name": "fillColor",
+          "kind": "property",
+          "signature": "fillColor?: Color",
+          "static": false
+        },
+        {
+          "id": "property:p0",
+          "name": "p0",
+          "kind": "property",
+          "signature": "p0: PathPoint",
+          "static": false
+        },
+        {
+          "id": "property:p1",
+          "name": "p1",
+          "kind": "property",
+          "signature": "p1: PathPoint",
+          "static": false
+        },
+        {
+          "id": "property:position",
+          "name": "position",
+          "kind": "property",
+          "signature": "position?: Position",
+          "static": false
+        },
+        {
+          "id": "property:strokeColor",
+          "name": "strokeColor",
+          "kind": "property",
+          "signature": "strokeColor?: Color",
+          "static": false
+        },
+        {
+          "id": "property:strokeWidth",
+          "name": "strokeWidth",
+          "kind": "property",
+          "signature": "strokeWidth?: number",
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "LineBuilder",
+      "name": "LineBuilder",
+      "kind": "class",
+      "signature": "class LineBuilder extends SinglePathBuilder<LineBuilder>",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(client: PDFDancer, pageNumber: number): LineBuilder",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "method:add",
+          "name": "add",
+          "kind": "method",
+          "signature": "add(): Promise<boolean>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:dashPattern",
+          "name": "dashPattern",
+          "kind": "method",
+          "signature": "dashPattern(pattern: number[], phase?: number): LineBuilder",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:fillColor",
+          "name": "fillColor",
+          "kind": "method",
+          "signature": "fillColor(color: Color): LineBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:from",
+          "name": "from",
+          "kind": "method",
+          "signature": "from(x: number, y: number): LineBuilder",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:solid",
+          "name": "solid",
+          "kind": "method",
+          "signature": "solid(): LineBuilder",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:strokeColor",
+          "name": "strokeColor",
+          "kind": "method",
+          "signature": "strokeColor(color: Color): LineBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:strokeWidth",
+          "name": "strokeWidth",
+          "kind": "method",
+          "signature": "strokeWidth(width: number): LineBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:to",
+          "name": "to",
+          "kind": "method",
+          "signature": "to(x: number, y: number): LineBuilder",
+          "arity": 2,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "ModifyPathRequest",
+      "name": "ModifyPathRequest",
+      "kind": "class",
+      "signature": "class ModifyPathRequest",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(objectRef: ObjectRef, strokeColor?: Color, fillColor?: Color): ModifyPathRequest",
+          "arity": 3,
+          "static": true
+        },
+        {
+          "id": "method:toDict",
+          "name": "toDict",
+          "kind": "method",
+          "signature": "toDict(): Record<string, any>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "property:fillColor",
+          "name": "fillColor",
+          "kind": "property",
+          "signature": "fillColor?: Color",
+          "static": false
+        },
+        {
+          "id": "property:objectRef",
+          "name": "objectRef",
+          "kind": "property",
+          "signature": "objectRef: ObjectRef",
+          "static": false
+        },
+        {
+          "id": "property:strokeColor",
+          "name": "strokeColor",
+          "kind": "property",
+          "signature": "strokeColor?: Color",
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "ObjectRef",
+      "name": "ObjectRef",
+      "kind": "class",
+      "signature": "class ObjectRef",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(internalId: string, position: Position, type: ObjectType): ObjectRef",
+          "arity": 3,
+          "static": true
+        },
+        {
+          "id": "method:toDict",
+          "name": "toDict",
+          "kind": "method",
+          "signature": "toDict(): Record<string, any>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "property:internalId",
+          "name": "internalId",
+          "kind": "property",
+          "signature": "internalId: string",
+          "static": false
+        },
+        {
+          "id": "property:position",
+          "name": "position",
+          "kind": "property",
+          "signature": "position: Position",
+          "static": false
+        },
+        {
+          "id": "property:type",
+          "name": "type",
+          "kind": "property",
+          "signature": "type: ObjectType",
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "ObjectType",
+      "name": "ObjectType",
+      "kind": "enum",
+      "signature": "enum ObjectType",
+      "members": [
+        {
+          "id": "enum-value:BEZIER",
+          "name": "BEZIER",
+          "kind": "enum-value",
+          "signature": "BEZIER = \"BEZIER\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:BUTTON",
+          "name": "BUTTON",
+          "kind": "enum-value",
+          "signature": "BUTTON = \"BUTTON\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:CHECKBOX",
+          "name": "CHECKBOX",
+          "kind": "enum-value",
+          "signature": "CHECKBOX = \"CHECKBOX\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:CLIPPING",
+          "name": "CLIPPING",
+          "kind": "enum-value",
+          "signature": "CLIPPING = \"CLIPPING\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:DROPDOWN",
+          "name": "DROPDOWN",
+          "kind": "enum-value",
+          "signature": "DROPDOWN = \"DROPDOWN\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:FORM_FIELD",
+          "name": "FORM_FIELD",
+          "kind": "enum-value",
+          "signature": "FORM_FIELD = \"FORM_FIELD\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:FORM_X_OBJECT",
+          "name": "FORM_X_OBJECT",
+          "kind": "enum-value",
+          "signature": "FORM_X_OBJECT = \"FORM_X_OBJECT\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:IMAGE",
+          "name": "IMAGE",
+          "kind": "enum-value",
+          "signature": "IMAGE = \"IMAGE\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:LINE",
+          "name": "LINE",
+          "kind": "enum-value",
+          "signature": "LINE = \"LINE\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:PAGE",
+          "name": "PAGE",
+          "kind": "enum-value",
+          "signature": "PAGE = \"PAGE\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:PATH",
+          "name": "PATH",
+          "kind": "enum-value",
+          "signature": "PATH = \"PATH\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:PDF",
+          "name": "PDF",
+          "kind": "enum-value",
+          "signature": "PDF = \"PDF\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:RADIO_BUTTON",
+          "name": "RADIO_BUTTON",
+          "kind": "enum-value",
+          "signature": "RADIO_BUTTON = \"RADIO_BUTTON\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:RECTANGLE",
+          "name": "RECTANGLE",
+          "kind": "enum-value",
+          "signature": "RECTANGLE = \"RECTANGLE\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:TEXT_ELEMENT",
+          "name": "TEXT_ELEMENT",
+          "kind": "enum-value",
+          "signature": "TEXT_ELEMENT = \"TEXT_ELEMENT\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:TEXT_FIELD",
+          "name": "TEXT_FIELD",
+          "kind": "enum-value",
+          "signature": "TEXT_FIELD = \"TEXT_FIELD\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:TEXT_LINE",
+          "name": "TEXT_LINE",
+          "kind": "enum-value",
+          "signature": "TEXT_LINE = \"TEXT_LINE\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:WORD",
+          "name": "WORD",
+          "kind": "enum-value",
+          "signature": "WORD = \"WORD\"",
+          "static": true
+        }
+      ]
+    },
+    {
+      "id": "Orientation",
+      "name": "Orientation",
+      "kind": "enum",
+      "signature": "enum Orientation",
+      "members": [
+        {
+          "id": "enum-value:LANDSCAPE",
+          "name": "LANDSCAPE",
+          "kind": "enum-value",
+          "signature": "LANDSCAPE = \"LANDSCAPE\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:PORTRAIT",
+          "name": "PORTRAIT",
+          "kind": "enum-value",
+          "signature": "PORTRAIT = \"PORTRAIT\"",
+          "static": true
+        }
+      ]
+    },
+    {
+      "id": "PageBuilder",
+      "name": "PageBuilder",
+      "kind": "class",
+      "signature": "class PageBuilder",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(client: PDFDancer): PageBuilder",
+          "arity": 1,
+          "static": true
+        },
+        {
+          "id": "method:a3",
+          "name": "a3",
+          "kind": "method",
+          "signature": "a3(): PageBuilder",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:a4",
+          "name": "a4",
+          "kind": "method",
+          "signature": "a4(): PageBuilder",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:a5",
+          "name": "a5",
+          "kind": "method",
+          "signature": "a5(): PageBuilder",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:add",
+          "name": "add",
+          "kind": "method",
+          "signature": "add(): Promise<PageRef>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:atIndex",
+          "name": "atIndex",
+          "kind": "method",
+          "signature": "atIndex(pageNumber: number): PageBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:atPage",
+          "name": "atPage",
+          "kind": "method",
+          "signature": "atPage(pageNumber: number): PageBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:customSize",
+          "name": "customSize",
+          "kind": "method",
+          "signature": "customSize(width: number, height: number): PageBuilder",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:landscape",
+          "name": "landscape",
+          "kind": "method",
+          "signature": "landscape(): PageBuilder",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:legal",
+          "name": "legal",
+          "kind": "method",
+          "signature": "legal(): PageBuilder",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:letter",
+          "name": "letter",
+          "kind": "method",
+          "signature": "letter(): PageBuilder",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:orientation",
+          "name": "orientation",
+          "kind": "method",
+          "signature": "orientation(orientation: string): PageBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:pageSize",
+          "name": "pageSize",
+          "kind": "method",
+          "signature": "pageSize(pageSize: string | PageSize): PageBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:portrait",
+          "name": "portrait",
+          "kind": "method",
+          "signature": "portrait(): PageBuilder",
+          "arity": 0,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "PageClient",
+      "name": "PageClient",
+      "kind": "class",
+      "signature": "class PageClient",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(client: PDFDancer, pageNumber: number, pageRef?: PageRef): PageClient",
+          "arity": 3,
+          "static": true
+        },
+        {
+          "id": "method:delete",
+          "name": "delete",
+          "kind": "method",
+          "signature": "delete(): Promise<boolean>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:getPathGroups",
+          "name": "getPathGroups",
+          "kind": "method",
+          "signature": "getPathGroups(): Promise<PathGroupObject[]>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:getSnapshot",
+          "name": "getSnapshot",
+          "kind": "method",
+          "signature": "getSnapshot(types?: ObjectType[]): Promise<PageSnapshot>",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:groupPaths",
+          "name": "groupPaths",
+          "kind": "method",
+          "signature": "groupPaths(pathIds: string[]): Promise<PathGroupObject>",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:groupPathsInRegion",
+          "name": "groupPathsInRegion",
+          "kind": "method",
+          "signature": "groupPathsInRegion(region: BoundingRect): Promise<PathGroupObject>",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:moveTo",
+          "name": "moveTo",
+          "kind": "method",
+          "signature": "moveTo(targetPageNumber: number): Promise<boolean>",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:newBezier",
+          "name": "newBezier",
+          "kind": "method",
+          "signature": "newBezier(): BezierBuilder",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:newImage",
+          "name": "newImage",
+          "kind": "method",
+          "signature": "newImage(): ImageBuilder",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:newLine",
+          "name": "newLine",
+          "kind": "method",
+          "signature": "newLine(): LineBuilder",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:newPath",
+          "name": "newPath",
+          "kind": "method",
+          "signature": "newPath(): PathBuilder",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:newRectangle",
+          "name": "newRectangle",
+          "kind": "method",
+          "signature": "newRectangle(): RectangleBuilder",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:selectElements",
+          "name": "selectElements",
+          "kind": "method",
+          "signature": "selectElements(types?: ObjectType[]): Promise<ObjectRef[]>",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:selectForm",
+          "name": "selectForm",
+          "kind": "method",
+          "signature": "selectForm(): Promise<FormXObject>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:selectFormAt",
+          "name": "selectFormAt",
+          "kind": "method",
+          "signature": "selectFormAt(x: number, y: number, tolerance?: number): Promise<FormXObject>",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:selectFormFieldAt",
+          "name": "selectFormFieldAt",
+          "kind": "method",
+          "signature": "selectFormFieldAt(x: number, y: number, tolerance?: number): Promise<FormFieldObject>",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:selectFormFieldByName",
+          "name": "selectFormFieldByName",
+          "kind": "method",
+          "signature": "selectFormFieldByName(fieldName: string): Promise<FormFieldObject>",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:selectFormFields",
+          "name": "selectFormFields",
+          "kind": "method",
+          "signature": "selectFormFields(): Promise<FormFieldObject[]>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:selectFormFieldsAt",
+          "name": "selectFormFieldsAt",
+          "kind": "method",
+          "signature": "selectFormFieldsAt(x: number, y: number, tolerance?: number): Promise<FormFieldObject[]>",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:selectFormFieldsByName",
+          "name": "selectFormFieldsByName",
+          "kind": "method",
+          "signature": "selectFormFieldsByName(fieldName: string): Promise<FormFieldObject[]>",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:selectForms",
+          "name": "selectForms",
+          "kind": "method",
+          "signature": "selectForms(): Promise<FormXObject[]>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:selectFormsAt",
+          "name": "selectFormsAt",
+          "kind": "method",
+          "signature": "selectFormsAt(x: number, y: number, tolerance?: number): Promise<FormXObject[]>",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:selectImage",
+          "name": "selectImage",
+          "kind": "method",
+          "signature": "selectImage(): Promise<ImageObject>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:selectImageAt",
+          "name": "selectImageAt",
+          "kind": "method",
+          "signature": "selectImageAt(x: number, y: number, tolerance?: number): Promise<ImageObject>",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:selectImages",
+          "name": "selectImages",
+          "kind": "method",
+          "signature": "selectImages(): Promise<ImageObject[]>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:selectImagesAt",
+          "name": "selectImagesAt",
+          "kind": "method",
+          "signature": "selectImagesAt(x: number, y: number, tolerance?: number): Promise<ImageObject[]>",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:selectPath",
+          "name": "selectPath",
+          "kind": "method",
+          "signature": "selectPath(): Promise<PathObject>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:selectPathAt",
+          "name": "selectPathAt",
+          "kind": "method",
+          "signature": "selectPathAt(x: number, y: number, tolerance?: number): Promise<PathObject>",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:selectPaths",
+          "name": "selectPaths",
+          "kind": "method",
+          "signature": "selectPaths(): Promise<PathObject[]>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:selectPathsAt",
+          "name": "selectPathsAt",
+          "kind": "method",
+          "signature": "selectPathsAt(x: number, y: number, tolerance?: number): Promise<PathObject[]>",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:text",
+          "name": "text",
+          "kind": "method",
+          "signature": "text(): TextClient",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "property:internalId",
+          "name": "internalId",
+          "kind": "property",
+          "signature": "internalId: string",
+          "static": false
+        },
+        {
+          "id": "property:orientation",
+          "name": "orientation",
+          "kind": "property",
+          "signature": "orientation?: Orientation",
+          "static": false
+        },
+        {
+          "id": "property:pageSize",
+          "name": "pageSize",
+          "kind": "property",
+          "signature": "pageSize?: PageSize",
+          "static": false
+        },
+        {
+          "id": "property:position",
+          "name": "position",
+          "kind": "property",
+          "signature": "position: Position",
+          "static": false
+        },
+        {
+          "id": "property:type",
+          "name": "type",
+          "kind": "property",
+          "signature": "type: ObjectType",
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "PageRef",
+      "name": "PageRef",
+      "kind": "class",
+      "signature": "class PageRef extends ObjectRef",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(internalId: string, position: Position, type: ObjectType, pageSize?: PageSize, orientation?: Orientation): PageRef",
+          "arity": 5,
+          "static": true
+        },
+        {
+          "id": "method:toDict",
+          "name": "toDict",
+          "kind": "method",
+          "signature": "toDict(): Record<string, any>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "property:internalId",
+          "name": "internalId",
+          "kind": "property",
+          "signature": "internalId: string",
+          "static": false
+        },
+        {
+          "id": "property:orientation",
+          "name": "orientation",
+          "kind": "property",
+          "signature": "orientation?: Orientation",
+          "static": false
+        },
+        {
+          "id": "property:pageSize",
+          "name": "pageSize",
+          "kind": "property",
+          "signature": "pageSize?: PageSize",
+          "static": false
+        },
+        {
+          "id": "property:position",
+          "name": "position",
+          "kind": "property",
+          "signature": "position: Position",
+          "static": false
+        },
+        {
+          "id": "property:type",
+          "name": "type",
+          "kind": "property",
+          "signature": "type: ObjectType",
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "PageSize",
+      "name": "PageSize",
+      "kind": "interface",
+      "signature": "interface PageSize",
+      "members": [
+        {
+          "id": "property:height",
+          "name": "height",
+          "kind": "property",
+          "signature": "height?: number",
+          "static": false
+        },
+        {
+          "id": "property:name",
+          "name": "name",
+          "kind": "property",
+          "signature": "name?: string",
+          "static": false
+        },
+        {
+          "id": "property:width",
+          "name": "width",
+          "kind": "property",
+          "signature": "width?: number",
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "pageSizeFromDimensions",
+      "name": "pageSizeFromDimensions",
+      "kind": "function",
+      "signature": "pageSizeFromDimensions(width: number, height: number, tolerance?: number): PageSize",
+      "members": []
+    },
+    {
+      "id": "PageSnapshot",
+      "name": "PageSnapshot",
+      "kind": "class",
+      "signature": "class PageSnapshot",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(pageRef: PageRef, elements: ObjectRef[]): PageSnapshot",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "method:getElementCount",
+          "name": "getElementCount",
+          "kind": "method",
+          "signature": "getElementCount(): number",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:getElementsByType",
+          "name": "getElementsByType",
+          "kind": "method",
+          "signature": "getElementsByType(type: ObjectType): ObjectRef[]",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:getPageNumber",
+          "name": "getPageNumber",
+          "kind": "method",
+          "signature": "getPageNumber(): number",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "property:elements",
+          "name": "elements",
+          "kind": "property",
+          "signature": "elements: ObjectRef[]",
+          "static": false
+        },
+        {
+          "id": "property:pageRef",
+          "name": "pageRef",
+          "kind": "property",
+          "signature": "pageRef: PageRef",
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "Path",
+      "name": "Path",
+      "kind": "class",
+      "signature": "class Path",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(position?: Position, pathSegments?: PathSegment[], evenOddFill?: boolean): Path",
+          "arity": 3,
+          "static": true
+        },
+        {
+          "id": "method:addSegment",
+          "name": "addSegment",
+          "kind": "method",
+          "signature": "addSegment(segment: PathSegment): void",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:clearSegments",
+          "name": "clearSegments",
+          "kind": "method",
+          "signature": "clearSegments(): void",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:getPosition",
+          "name": "getPosition",
+          "kind": "method",
+          "signature": "getPosition(): Position",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:getSegments",
+          "name": "getSegments",
+          "kind": "method",
+          "signature": "getSegments(): PathSegment[]",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:setPosition",
+          "name": "setPosition",
+          "kind": "method",
+          "signature": "setPosition(position: Position): void",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "property:evenOddFill",
+          "name": "evenOddFill",
+          "kind": "property",
+          "signature": "evenOddFill?: boolean",
+          "static": false
+        },
+        {
+          "id": "property:pathSegments",
+          "name": "pathSegments",
+          "kind": "property",
+          "signature": "pathSegments: PathSegment[]",
+          "static": false
+        },
+        {
+          "id": "property:position",
+          "name": "position",
+          "kind": "property",
+          "signature": "position?: Position",
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "PathBuilder",
+      "name": "PathBuilder",
+      "kind": "class",
+      "signature": "class PathBuilder",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(_client: PDFDancer, _defaultPageNumber?: number): PathBuilder",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "method:add",
+          "name": "add",
+          "kind": "method",
+          "signature": "add(): Promise<boolean>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:addSegment",
+          "name": "addSegment",
+          "kind": "method",
+          "signature": "addSegment(segment: PathSegment): PathBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:at",
+          "name": "at",
+          "kind": "method",
+          "signature": "at(pageNumber: number, x: number, y: number): PathBuilder",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:at",
+          "name": "at",
+          "kind": "method",
+          "signature": "at(x: number, y: number): PathBuilder",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:atPosition",
+          "name": "atPosition",
+          "kind": "method",
+          "signature": "atPosition(position: Position): PathBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:bezierTo",
+          "name": "bezierTo",
+          "kind": "method",
+          "signature": "bezierTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number, y: number): PathBuilder",
+          "arity": 6,
+          "static": false
+        },
+        {
+          "id": "method:circle",
+          "name": "circle",
+          "kind": "method",
+          "signature": "circle(cx: number, cy: number, radius: number): PathBuilder",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:closePath",
+          "name": "closePath",
+          "kind": "method",
+          "signature": "closePath(): PathBuilder",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:dashPattern",
+          "name": "dashPattern",
+          "kind": "method",
+          "signature": "dashPattern(dashArray: number[], dashPhase?: number): PathBuilder",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:evenOddFill",
+          "name": "evenOddFill",
+          "kind": "method",
+          "signature": "evenOddFill(useEvenOdd: boolean): PathBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:fillColor",
+          "name": "fillColor",
+          "kind": "method",
+          "signature": "fillColor(color: Color): PathBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:lineTo",
+          "name": "lineTo",
+          "kind": "method",
+          "signature": "lineTo(x: number, y: number): PathBuilder",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:moveTo",
+          "name": "moveTo",
+          "kind": "method",
+          "signature": "moveTo(x: number, y: number): PathBuilder",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:rectangle",
+          "name": "rectangle",
+          "kind": "method",
+          "signature": "rectangle(x: number, y: number, width: number, height: number): PathBuilder",
+          "arity": 4,
+          "static": false
+        },
+        {
+          "id": "method:solid",
+          "name": "solid",
+          "kind": "method",
+          "signature": "solid(): PathBuilder",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:strokeColor",
+          "name": "strokeColor",
+          "kind": "method",
+          "signature": "strokeColor(color: Color): PathBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:strokeWidth",
+          "name": "strokeWidth",
+          "kind": "method",
+          "signature": "strokeWidth(width: number): PathBuilder",
+          "arity": 1,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "PathEditSession",
+      "name": "PathEditSession",
+      "kind": "class",
+      "signature": "class PathEditSession",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(_client: PDFDancer, _objectRef: ObjectRef): PathEditSession",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "method:apply",
+          "name": "apply",
+          "kind": "method",
+          "signature": "apply(): Promise<CommandResult>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:fillColor",
+          "name": "fillColor",
+          "kind": "method",
+          "signature": "fillColor(color: Color): PathEditSession",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:strokeColor",
+          "name": "strokeColor",
+          "kind": "method",
+          "signature": "strokeColor(color: Color): PathEditSession",
+          "arity": 1,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "PathGroupObject",
+      "name": "PathGroupObject",
+      "kind": "class",
+      "signature": "class PathGroupObject",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(client: PDFDancer, pageIndex: number, info: PathGroupInfo): PathGroupObject",
+          "arity": 3,
+          "static": true
+        },
+        {
+          "id": "method:clearClipping",
+          "name": "clearClipping",
+          "kind": "method",
+          "signature": "clearClipping(): Promise<boolean>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:moveTo",
+          "name": "moveTo",
+          "kind": "method",
+          "signature": "moveTo(x: number, y: number): Promise<boolean>",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:remove",
+          "name": "remove",
+          "kind": "method",
+          "signature": "remove(): Promise<boolean>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:resize",
+          "name": "resize",
+          "kind": "method",
+          "signature": "resize(width: number, height: number): Promise<boolean>",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:rotate",
+          "name": "rotate",
+          "kind": "method",
+          "signature": "rotate(degrees: number): Promise<boolean>",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:scale",
+          "name": "scale",
+          "kind": "method",
+          "signature": "scale(factor: number): Promise<boolean>",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "property:boundingBox",
+          "name": "boundingBox",
+          "kind": "property",
+          "signature": "boundingBox: Record<string, any>",
+          "static": false
+        },
+        {
+          "id": "property:groupId",
+          "name": "groupId",
+          "kind": "property",
+          "signature": "groupId: string",
+          "static": false
+        },
+        {
+          "id": "property:pathCount",
+          "name": "pathCount",
+          "kind": "property",
+          "signature": "pathCount: number",
+          "static": false
+        },
+        {
+          "id": "property:x",
+          "name": "x",
+          "kind": "property",
+          "signature": "x: number",
+          "static": false
+        },
+        {
+          "id": "property:y",
+          "name": "y",
+          "kind": "property",
+          "signature": "y: number",
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "PathObject",
+      "name": "PathObject",
+      "kind": "class",
+      "signature": "class PathObject extends BaseObject",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(client: PDFDancer, internalId: string, type: ObjectType, position: Position): PathObject",
+          "arity": 4,
+          "static": true
+        },
+        {
+          "id": "method:clearClipping",
+          "name": "clearClipping",
+          "kind": "method",
+          "signature": "clearClipping(): Promise<boolean>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:delete",
+          "name": "delete",
+          "kind": "method",
+          "signature": "delete(): Promise<boolean>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:edit",
+          "name": "edit",
+          "kind": "method",
+          "signature": "edit(): PathEditSession",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:fromRef",
+          "name": "fromRef",
+          "kind": "method",
+          "signature": "fromRef(_client: PDFDancer, objectRef: ObjectRef): PathObject",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "method:moveTo",
+          "name": "moveTo",
+          "kind": "method",
+          "signature": "moveTo(x: number, y: number): Promise<boolean>",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:objectRef",
+          "name": "objectRef",
+          "kind": "method",
+          "signature": "objectRef(): ObjectRef",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "property:_client",
+          "name": "_client",
+          "kind": "property",
+          "signature": "_client: PDFDancer",
+          "static": false
+        },
+        {
+          "id": "property:dashArray",
+          "name": "dashArray",
+          "kind": "property",
+          "signature": "dashArray: number[]",
+          "static": false
+        },
+        {
+          "id": "property:dashPhase",
+          "name": "dashPhase",
+          "kind": "property",
+          "signature": "dashPhase: number",
+          "static": false
+        },
+        {
+          "id": "property:fillColor",
+          "name": "fillColor",
+          "kind": "property",
+          "signature": "fillColor: Color",
+          "static": false
+        },
+        {
+          "id": "property:internalId",
+          "name": "internalId",
+          "kind": "property",
+          "signature": "internalId: string",
+          "static": false
+        },
+        {
+          "id": "property:position",
+          "name": "position",
+          "kind": "property",
+          "signature": "position: Position",
+          "static": false
+        },
+        {
+          "id": "property:strokeColor",
+          "name": "strokeColor",
+          "kind": "property",
+          "signature": "strokeColor: Color",
+          "static": false
+        },
+        {
+          "id": "property:strokeWidth",
+          "name": "strokeWidth",
+          "kind": "property",
+          "signature": "strokeWidth: number",
+          "static": false
+        },
+        {
+          "id": "property:type",
+          "name": "type",
+          "kind": "property",
+          "signature": "type: ObjectType",
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "PathObjectRef",
+      "name": "PathObjectRef",
+      "kind": "class",
+      "signature": "class PathObjectRef extends ObjectRef",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(internalId: string, position: Position, type: ObjectType, strokeColor?: Color, fillColor?: Color, strokeWidth?: number, dashArray?: number[], dashPhase?: number): PathObjectRef",
+          "arity": 8,
+          "static": true
+        },
+        {
+          "id": "method:toDict",
+          "name": "toDict",
+          "kind": "method",
+          "signature": "toDict(): Record<string, any>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "property:dashArray",
+          "name": "dashArray",
+          "kind": "property",
+          "signature": "dashArray?: number[]",
+          "static": false
+        },
+        {
+          "id": "property:dashPhase",
+          "name": "dashPhase",
+          "kind": "property",
+          "signature": "dashPhase?: number",
+          "static": false
+        },
+        {
+          "id": "property:fillColor",
+          "name": "fillColor",
+          "kind": "property",
+          "signature": "fillColor?: Color",
+          "static": false
+        },
+        {
+          "id": "property:internalId",
+          "name": "internalId",
+          "kind": "property",
+          "signature": "internalId: string",
+          "static": false
+        },
+        {
+          "id": "property:position",
+          "name": "position",
+          "kind": "property",
+          "signature": "position: Position",
+          "static": false
+        },
+        {
+          "id": "property:strokeColor",
+          "name": "strokeColor",
+          "kind": "property",
+          "signature": "strokeColor?: Color",
+          "static": false
+        },
+        {
+          "id": "property:strokeWidth",
+          "name": "strokeWidth",
+          "kind": "property",
+          "signature": "strokeWidth?: number",
+          "static": false
+        },
+        {
+          "id": "property:type",
+          "name": "type",
+          "kind": "property",
+          "signature": "type: ObjectType",
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "PathPoint",
+      "name": "PathPoint",
+      "kind": "interface",
+      "signature": "interface PathPoint",
+      "members": [
+        {
+          "id": "property:x",
+          "name": "x",
+          "kind": "property",
+          "signature": "x: number",
+          "static": false
+        },
+        {
+          "id": "property:y",
+          "name": "y",
+          "kind": "property",
+          "signature": "y: number",
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "PathSegment",
+      "name": "PathSegment",
+      "kind": "class",
+      "signature": "class PathSegment",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(position?: Position, strokeColor?: Color, fillColor?: Color, strokeWidth?: number, dashArray?: number[], dashPhase?: number): PathSegment",
+          "arity": 6,
+          "static": true
+        },
+        {
+          "id": "property:dashArray",
+          "name": "dashArray",
+          "kind": "property",
+          "signature": "dashArray?: number[]",
+          "static": false
+        },
+        {
+          "id": "property:dashPhase",
+          "name": "dashPhase",
+          "kind": "property",
+          "signature": "dashPhase?: number",
+          "static": false
+        },
+        {
+          "id": "property:fillColor",
+          "name": "fillColor",
+          "kind": "property",
+          "signature": "fillColor?: Color",
+          "static": false
+        },
+        {
+          "id": "property:position",
+          "name": "position",
+          "kind": "property",
+          "signature": "position?: Position",
+          "static": false
+        },
+        {
+          "id": "property:strokeColor",
+          "name": "strokeColor",
+          "kind": "property",
+          "signature": "strokeColor?: Color",
+          "static": false
+        },
+        {
+          "id": "property:strokeWidth",
+          "name": "strokeWidth",
+          "kind": "property",
+          "signature": "strokeWidth?: number",
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "PdfAffineTransform",
+      "name": "PdfAffineTransform",
+      "kind": "class",
+      "signature": "class PdfAffineTransform",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(): PdfAffineTransform",
+          "arity": 0,
+          "static": true
+        },
+        {
+          "id": "method:builder",
+          "name": "builder",
+          "kind": "method",
+          "signature": "builder(): PdfAffineTransformBuilder",
+          "arity": 0,
+          "static": true
+        },
+        {
+          "id": "method:followedBy",
+          "name": "followedBy",
+          "kind": "method",
+          "signature": "followedBy(next: PdfAffineTransform): PdfAffineTransform",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:fromPdfMatrix",
+          "name": "fromPdfMatrix",
+          "kind": "method",
+          "signature": "fromPdfMatrix(coefficients: number[]): PdfAffineTransform",
+          "arity": 1,
+          "static": true
+        },
+        {
+          "id": "method:toPdfMatrix",
+          "name": "toPdfMatrix",
+          "kind": "method",
+          "signature": "toPdfMatrix(): number[]",
+          "arity": 0,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "PdfAffineTransformBuilder",
+      "name": "PdfAffineTransformBuilder",
+      "kind": "class",
+      "signature": "class PdfAffineTransformBuilder",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(): PdfAffineTransformBuilder",
+          "arity": 0,
+          "static": true
+        },
+        {
+          "id": "method:build",
+          "name": "build",
+          "kind": "method",
+          "signature": "build(): PdfAffineTransform",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:rotateDegrees",
+          "name": "rotateDegrees",
+          "kind": "method",
+          "signature": "rotateDegrees(degrees: number): PdfAffineTransformBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:scale",
+          "name": "scale",
+          "kind": "method",
+          "signature": "scale(scaleX: number, scaleY: number): PdfAffineTransformBuilder",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:shear",
+          "name": "shear",
+          "kind": "method",
+          "signature": "shear(shearX: number, shearY: number): PdfAffineTransformBuilder",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:translate",
+          "name": "translate",
+          "kind": "method",
+          "signature": "translate(x: number, y: number): PdfAffineTransformBuilder",
+          "arity": 2,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "PdfColorRequest",
+      "name": "PdfColorRequest",
+      "kind": "class",
+      "signature": "class PdfColorRequest",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(space: PdfColorSpace, components: number[], alphaValue?: number): PdfColorRequest",
+          "arity": 3,
+          "static": true
+        },
+        {
+          "id": "method:alpha",
+          "name": "alpha",
+          "kind": "method",
+          "signature": "alpha(alpha: number): PdfColorRequest",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:cmyk",
+          "name": "cmyk",
+          "kind": "method",
+          "signature": "cmyk(cyan: number, magenta: number, yellow: number, black: number): PdfColorRequest",
+          "arity": 4,
+          "static": true
+        },
+        {
+          "id": "method:gray",
+          "name": "gray",
+          "kind": "method",
+          "signature": "gray(gray: number): PdfColorRequest",
+          "arity": 1,
+          "static": true
+        },
+        {
+          "id": "method:rgb",
+          "name": "rgb",
+          "kind": "method",
+          "signature": "rgb(red: number, green: number, blue: number): PdfColorRequest",
+          "arity": 3,
+          "static": true
+        },
+        {
+          "id": "method:toJSON",
+          "name": "toJSON",
+          "kind": "method",
+          "signature": "toJSON(): Record<string, unknown>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:validated",
+          "name": "validated",
+          "kind": "method",
+          "signature": "validated(): PdfColorRequest",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "property:alphaValue",
+          "name": "alphaValue",
+          "kind": "property",
+          "signature": "alphaValue?: number",
+          "static": false
+        },
+        {
+          "id": "property:components",
+          "name": "components",
+          "kind": "property",
+          "signature": "components: number[]",
+          "static": false
+        },
+        {
+          "id": "property:space",
+          "name": "space",
+          "kind": "property",
+          "signature": "space: PdfColorSpace",
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "PdfColorSpace",
+      "name": "PdfColorSpace",
+      "kind": "enum",
+      "signature": "enum PdfColorSpace",
+      "members": [
+        {
+          "id": "enum-value:CMYK",
+          "name": "CMYK",
+          "kind": "enum-value",
+          "signature": "CMYK = \"cmyk\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:GRAY",
+          "name": "GRAY",
+          "kind": "enum-value",
+          "signature": "GRAY = \"gray\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:RGB",
+          "name": "RGB",
+          "kind": "enum-value",
+          "signature": "RGB = \"rgb\"",
+          "static": true
+        }
+      ]
+    },
+    {
+      "id": "PDFDancer",
+      "name": "PDFDancer",
+      "kind": "class",
+      "signature": "class PDFDancer",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(): PDFDancer",
+          "arity": 0,
+          "static": true
+        },
+        {
+          "id": "method:clearClipping",
+          "name": "clearClipping",
+          "kind": "method",
+          "signature": "clearClipping(objectRef: ObjectRef): Promise<boolean>",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:clearPathGroupClipping",
+          "name": "clearPathGroupClipping",
+          "kind": "method",
+          "signature": "clearPathGroupClipping(pageNumber: number, groupId: string): Promise<boolean>",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:deletePage",
+          "name": "deletePage",
+          "kind": "method",
+          "signature": "deletePage(pageNumber: number): Promise<boolean>",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:findFonts",
+          "name": "findFonts",
+          "kind": "method",
+          "signature": "findFonts(fontName: string, fontSize: number): Promise<Font[]>",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:getBytes",
+          "name": "getBytes",
+          "kind": "method",
+          "signature": "getBytes(): Promise<Uint8Array>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:getDocumentSnapshot",
+          "name": "getDocumentSnapshot",
+          "kind": "method",
+          "signature": "getDocumentSnapshot(types?: ObjectType[]): Promise<DocumentSnapshot>",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:getPageSnapshot",
+          "name": "getPageSnapshot",
+          "kind": "method",
+          "signature": "getPageSnapshot(pageNumber: number, types?: ObjectType[]): Promise<PageSnapshot>",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:movePage",
+          "name": "movePage",
+          "kind": "method",
+          "signature": "movePage(fromPage: number, toPage: number): Promise<boolean>",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:new",
+          "name": "new",
+          "kind": "method",
+          "signature": "new(options?: { pageSize?: PageSizeInput; orientation?: Orientation; initialPageCount?: number; }, token?: string, baseUrl?: string, timeout?: number, retryConfig?: RetryConfig): Promise<PDFDancer>",
+          "arity": 5,
+          "static": true
+        },
+        {
+          "id": "method:newBezier",
+          "name": "newBezier",
+          "kind": "method",
+          "signature": "newBezier(pageNumber: number): BezierBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:newImage",
+          "name": "newImage",
+          "kind": "method",
+          "signature": "newImage(pageNumber?: number): ImageBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:newLine",
+          "name": "newLine",
+          "kind": "method",
+          "signature": "newLine(pageNumber: number): LineBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:newPage",
+          "name": "newPage",
+          "kind": "method",
+          "signature": "newPage(): PageBuilder",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:newPath",
+          "name": "newPath",
+          "kind": "method",
+          "signature": "newPath(pageNumber?: number): PathBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:newRectangle",
+          "name": "newRectangle",
+          "kind": "method",
+          "signature": "newRectangle(pageNumber: number): RectangleBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:open",
+          "name": "open",
+          "kind": "method",
+          "signature": "open(pdfData: string | Uint8Array | ArrayBuffer, token?: string, baseUrl?: string, timeout?: number, retryConfig?: RetryConfig): Promise<PDFDancer>",
+          "arity": 5,
+          "static": true
+        },
+        {
+          "id": "method:page",
+          "name": "page",
+          "kind": "method",
+          "signature": "page(pageNumber: number): PageClient",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:pages",
+          "name": "pages",
+          "kind": "method",
+          "signature": "pages(): Promise<PageClient[]>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:registerFont",
+          "name": "registerFont",
+          "kind": "method",
+          "signature": "registerFont(ttfFile: string | Uint8Array): Promise<string>",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:save",
+          "name": "save",
+          "kind": "method",
+          "signature": "save(filename: string): Promise<void>",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:selectElements",
+          "name": "selectElements",
+          "kind": "method",
+          "signature": "selectElements(types?: ObjectType[]): Promise<ObjectRef[]>",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:selectForm",
+          "name": "selectForm",
+          "kind": "method",
+          "signature": "selectForm(): Promise<FormXObject>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:selectFormFieldByName",
+          "name": "selectFormFieldByName",
+          "kind": "method",
+          "signature": "selectFormFieldByName(fieldName: string): Promise<FormFieldObject>",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:selectFormFields",
+          "name": "selectFormFields",
+          "kind": "method",
+          "signature": "selectFormFields(): Promise<FormFieldObject[]>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:selectFormFieldsByName",
+          "name": "selectFormFieldsByName",
+          "kind": "method",
+          "signature": "selectFormFieldsByName(fieldName: string): Promise<FormFieldObject[]>",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:selectForms",
+          "name": "selectForms",
+          "kind": "method",
+          "signature": "selectForms(): Promise<FormXObject[]>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:selectImage",
+          "name": "selectImage",
+          "kind": "method",
+          "signature": "selectImage(): Promise<ImageObject>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:selectImages",
+          "name": "selectImages",
+          "kind": "method",
+          "signature": "selectImages(): Promise<ImageObject[]>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:selectPath",
+          "name": "selectPath",
+          "kind": "method",
+          "signature": "selectPath(): Promise<PathObject>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:selectPaths",
+          "name": "selectPaths",
+          "kind": "method",
+          "signature": "selectPaths(): Promise<PathObject[]>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:text",
+          "name": "text",
+          "kind": "method",
+          "signature": "text(): TextClient",
+          "arity": 0,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "PdfDancerException",
+      "name": "PdfDancerException",
+      "kind": "class",
+      "signature": "class PdfDancerException extends Error",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(message: string, cause?: Error): PdfDancerException",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "method:captureStackTrace",
+          "name": "captureStackTrace",
+          "kind": "method",
+          "signature": "captureStackTrace(targetObject: object, constructorOpt?: Function): void",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "method:prepareStackTrace",
+          "name": "prepareStackTrace",
+          "kind": "method",
+          "signature": "prepareStackTrace(err: Error, stackTraces: CallSite[]): any",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "property:cause",
+          "name": "cause",
+          "kind": "property",
+          "signature": "cause?: Error",
+          "static": false
+        },
+        {
+          "id": "property:message",
+          "name": "message",
+          "kind": "property",
+          "signature": "message: string",
+          "static": false
+        },
+        {
+          "id": "property:name",
+          "name": "name",
+          "kind": "property",
+          "signature": "name: string",
+          "static": false
+        },
+        {
+          "id": "property:stack",
+          "name": "stack",
+          "kind": "property",
+          "signature": "stack?: string",
+          "static": false
+        },
+        {
+          "id": "property:stackTraceLimit",
+          "name": "stackTraceLimit",
+          "kind": "property",
+          "signature": "stackTraceLimit: number",
+          "static": true
+        }
+      ]
+    },
+    {
+      "id": "Point",
+      "name": "Point",
+      "kind": "interface",
+      "signature": "interface Point",
+      "members": [
+        {
+          "id": "property:x",
+          "name": "x",
+          "kind": "property",
+          "signature": "x: number",
+          "static": false
+        },
+        {
+          "id": "property:y",
+          "name": "y",
+          "kind": "property",
+          "signature": "y: number",
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "Position",
+      "name": "Position",
+      "kind": "class",
+      "signature": "class Position",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(pageNumber?: number, shape?: ShapeType, mode?: PositionMode, boundingRect?: BoundingRect): Position",
+          "arity": 4,
+          "static": true
+        },
+        {
+          "id": "method:atCoordinates",
+          "name": "atCoordinates",
+          "kind": "method",
+          "signature": "atCoordinates(point: Point): Position",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:atPage",
+          "name": "atPage",
+          "kind": "method",
+          "signature": "atPage(pageNumber: number): Position",
+          "arity": 1,
+          "static": true
+        },
+        {
+          "id": "method:atPageCoordinates",
+          "name": "atPageCoordinates",
+          "kind": "method",
+          "signature": "atPageCoordinates(pageNumber: number, x: number, y: number, tolerance?: number): Position",
+          "arity": 4,
+          "static": true
+        },
+        {
+          "id": "method:byName",
+          "name": "byName",
+          "kind": "method",
+          "signature": "byName(name: string): Position",
+          "arity": 1,
+          "static": true
+        },
+        {
+          "id": "method:copy",
+          "name": "copy",
+          "kind": "method",
+          "signature": "copy(): Position",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:getX",
+          "name": "getX",
+          "kind": "method",
+          "signature": "getX(): number",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:getY",
+          "name": "getY",
+          "kind": "method",
+          "signature": "getY(): number",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:moveX",
+          "name": "moveX",
+          "kind": "method",
+          "signature": "moveX(xOffset: number): Position",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:moveY",
+          "name": "moveY",
+          "kind": "method",
+          "signature": "moveY(yOffset: number): Position",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "property:boundingRect",
+          "name": "boundingRect",
+          "kind": "property",
+          "signature": "boundingRect?: BoundingRect",
+          "static": false
+        },
+        {
+          "id": "property:center",
+          "name": "center",
+          "kind": "property",
+          "signature": "center?: Point",
+          "static": false
+        },
+        {
+          "id": "property:mode",
+          "name": "mode",
+          "kind": "property",
+          "signature": "mode?: PositionMode",
+          "static": false
+        },
+        {
+          "id": "property:name",
+          "name": "name",
+          "kind": "property",
+          "signature": "name?: string",
+          "static": false
+        },
+        {
+          "id": "property:pageNumber",
+          "name": "pageNumber",
+          "kind": "property",
+          "signature": "pageNumber?: number",
+          "static": false
+        },
+        {
+          "id": "property:shape",
+          "name": "shape",
+          "kind": "property",
+          "signature": "shape?: ShapeType",
+          "static": false
+        },
+        {
+          "id": "property:tolerance",
+          "name": "tolerance",
+          "kind": "property",
+          "signature": "tolerance?: number",
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "PositionMode",
+      "name": "PositionMode",
+      "kind": "enum",
+      "signature": "enum PositionMode",
+      "members": [
+        {
+          "id": "enum-value:CONTAINS",
+          "name": "CONTAINS",
+          "kind": "enum-value",
+          "signature": "CONTAINS = \"CONTAINS\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:INTERSECT",
+          "name": "INTERSECT",
+          "kind": "enum-value",
+          "signature": "INTERSECT = \"INTERSECT\"",
+          "static": true
+        }
+      ]
+    },
+    {
+      "id": "RateLimitException",
+      "name": "RateLimitException",
+      "kind": "class",
+      "signature": "class RateLimitException extends HttpClientException",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(message: string, response?: Response, retryAfter?: number): RateLimitException",
+          "arity": 3,
+          "static": true
+        },
+        {
+          "id": "method:captureStackTrace",
+          "name": "captureStackTrace",
+          "kind": "method",
+          "signature": "captureStackTrace(targetObject: object, constructorOpt?: Function): void",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "method:prepareStackTrace",
+          "name": "prepareStackTrace",
+          "kind": "method",
+          "signature": "prepareStackTrace(err: Error, stackTraces: CallSite[]): any",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "property:cause",
+          "name": "cause",
+          "kind": "property",
+          "signature": "cause?: Error",
+          "static": false
+        },
+        {
+          "id": "property:message",
+          "name": "message",
+          "kind": "property",
+          "signature": "message: string",
+          "static": false
+        },
+        {
+          "id": "property:name",
+          "name": "name",
+          "kind": "property",
+          "signature": "name: string",
+          "static": false
+        },
+        {
+          "id": "property:response",
+          "name": "response",
+          "kind": "property",
+          "signature": "response?: Response",
+          "static": false
+        },
+        {
+          "id": "property:retryAfter",
+          "name": "retryAfter",
+          "kind": "property",
+          "signature": "retryAfter?: number",
+          "static": false
+        },
+        {
+          "id": "property:stack",
+          "name": "stack",
+          "kind": "property",
+          "signature": "stack?: string",
+          "static": false
+        },
+        {
+          "id": "property:stackTraceLimit",
+          "name": "stackTraceLimit",
+          "kind": "property",
+          "signature": "stackTraceLimit: number",
+          "static": true
+        },
+        {
+          "id": "property:statusCode",
+          "name": "statusCode",
+          "kind": "property",
+          "signature": "statusCode?: number",
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "RectangleBuilder",
+      "name": "RectangleBuilder",
+      "kind": "class",
+      "signature": "class RectangleBuilder extends SinglePathBuilder<RectangleBuilder>",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(client: PDFDancer, pageNumber: number): RectangleBuilder",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "method:add",
+          "name": "add",
+          "kind": "method",
+          "signature": "add(): Promise<boolean>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:at",
+          "name": "at",
+          "kind": "method",
+          "signature": "at(x: number, y: number): RectangleBuilder",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:dashPattern",
+          "name": "dashPattern",
+          "kind": "method",
+          "signature": "dashPattern(pattern: number[], phase?: number): RectangleBuilder",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:evenOddFill",
+          "name": "evenOddFill",
+          "kind": "method",
+          "signature": "evenOddFill(enabled?: boolean): RectangleBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:fillColor",
+          "name": "fillColor",
+          "kind": "method",
+          "signature": "fillColor(color: Color): RectangleBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:size",
+          "name": "size",
+          "kind": "method",
+          "signature": "size(width: number, height: number): RectangleBuilder",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:solid",
+          "name": "solid",
+          "kind": "method",
+          "signature": "solid(): RectangleBuilder",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:strokeColor",
+          "name": "strokeColor",
+          "kind": "method",
+          "signature": "strokeColor(color: Color): RectangleBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:strokeWidth",
+          "name": "strokeWidth",
+          "kind": "method",
+          "signature": "strokeWidth(width: number): RectangleBuilder",
+          "arity": 1,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "RetryConfig",
+      "name": "RetryConfig",
+      "kind": "interface",
+      "signature": "interface RetryConfig",
+      "members": [
+        {
+          "id": "property:backoffMultiplier",
+          "name": "backoffMultiplier",
+          "kind": "property",
+          "signature": "backoffMultiplier?: number",
+          "static": false
+        },
+        {
+          "id": "property:initialDelay",
+          "name": "initialDelay",
+          "kind": "property",
+          "signature": "initialDelay?: number",
+          "static": false
+        },
+        {
+          "id": "property:maxAttempts",
+          "name": "maxAttempts",
+          "kind": "property",
+          "signature": "maxAttempts?: number",
+          "static": false
+        },
+        {
+          "id": "property:maxDelay",
+          "name": "maxDelay",
+          "kind": "property",
+          "signature": "maxDelay?: number",
+          "static": false
+        },
+        {
+          "id": "property:respectRetryAfter",
+          "name": "respectRetryAfter",
+          "kind": "property",
+          "signature": "respectRetryAfter?: boolean",
+          "static": false
+        },
+        {
+          "id": "property:retryableStatusCodes",
+          "name": "retryableStatusCodes",
+          "kind": "property",
+          "signature": "retryableStatusCodes?: number[]",
+          "static": false
+        },
+        {
+          "id": "property:retryOnNetworkError",
+          "name": "retryOnNetworkError",
+          "kind": "property",
+          "signature": "retryOnNetworkError?: boolean",
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "SessionException",
+      "name": "SessionException",
+      "kind": "class",
+      "signature": "class SessionException extends PdfDancerException",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(message: string, cause?: Error): SessionException",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "method:captureStackTrace",
+          "name": "captureStackTrace",
+          "kind": "method",
+          "signature": "captureStackTrace(targetObject: object, constructorOpt?: Function): void",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "method:prepareStackTrace",
+          "name": "prepareStackTrace",
+          "kind": "method",
+          "signature": "prepareStackTrace(err: Error, stackTraces: CallSite[]): any",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "property:cause",
+          "name": "cause",
+          "kind": "property",
+          "signature": "cause?: Error",
+          "static": false
+        },
+        {
+          "id": "property:message",
+          "name": "message",
+          "kind": "property",
+          "signature": "message: string",
+          "static": false
+        },
+        {
+          "id": "property:name",
+          "name": "name",
+          "kind": "property",
+          "signature": "name: string",
+          "static": false
+        },
+        {
+          "id": "property:stack",
+          "name": "stack",
+          "kind": "property",
+          "signature": "stack?: string",
+          "static": false
+        },
+        {
+          "id": "property:stackTraceLimit",
+          "name": "stackTraceLimit",
+          "kind": "property",
+          "signature": "stackTraceLimit: number",
+          "static": true
+        }
+      ]
+    },
+    {
+      "id": "SessionNotFoundException",
+      "name": "SessionNotFoundException",
+      "kind": "class",
+      "signature": "class SessionNotFoundException extends SessionException",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(message: string): SessionNotFoundException",
+          "arity": 1,
+          "static": true
+        },
+        {
+          "id": "method:captureStackTrace",
+          "name": "captureStackTrace",
+          "kind": "method",
+          "signature": "captureStackTrace(targetObject: object, constructorOpt?: Function): void",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "method:prepareStackTrace",
+          "name": "prepareStackTrace",
+          "kind": "method",
+          "signature": "prepareStackTrace(err: Error, stackTraces: CallSite[]): any",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "property:cause",
+          "name": "cause",
+          "kind": "property",
+          "signature": "cause?: Error",
+          "static": false
+        },
+        {
+          "id": "property:message",
+          "name": "message",
+          "kind": "property",
+          "signature": "message: string",
+          "static": false
+        },
+        {
+          "id": "property:name",
+          "name": "name",
+          "kind": "property",
+          "signature": "name: string",
+          "static": false
+        },
+        {
+          "id": "property:stack",
+          "name": "stack",
+          "kind": "property",
+          "signature": "stack?: string",
+          "static": false
+        },
+        {
+          "id": "property:stackTraceLimit",
+          "name": "stackTraceLimit",
+          "kind": "property",
+          "signature": "stackTraceLimit: number",
+          "static": true
+        }
+      ]
+    },
+    {
+      "id": "ShapeType",
+      "name": "ShapeType",
+      "kind": "enum",
+      "signature": "enum ShapeType",
+      "members": [
+        {
+          "id": "enum-value:CIRCLE",
+          "name": "CIRCLE",
+          "kind": "enum-value",
+          "signature": "CIRCLE = \"CIRCLE\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:LINE",
+          "name": "LINE",
+          "kind": "enum-value",
+          "signature": "LINE = \"LINE\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:POINT",
+          "name": "POINT",
+          "kind": "enum-value",
+          "signature": "POINT = \"POINT\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:RECT",
+          "name": "RECT",
+          "kind": "enum-value",
+          "signature": "RECT = \"RECT\"",
+          "static": true
+        }
+      ]
+    },
+    {
+      "id": "Size",
+      "name": "Size",
+      "kind": "interface",
+      "signature": "interface Size",
+      "members": [
+        {
+          "id": "property:height",
+          "name": "height",
+          "kind": "property",
+          "signature": "height: number",
+          "static": false
+        },
+        {
+          "id": "property:width",
+          "name": "width",
+          "kind": "property",
+          "signature": "width: number",
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "STANDARD_PAGE_SIZES",
+      "name": "STANDARD_PAGE_SIZES",
+      "kind": "value",
+      "signature": "STANDARD_PAGE_SIZES: Record<string, { width: number; height: number; }>",
+      "members": []
+    },
+    {
+      "id": "StandardFonts",
+      "name": "StandardFonts",
+      "kind": "enum",
+      "signature": "enum StandardFonts",
+      "members": [
+        {
+          "id": "enum-value:COURIER",
+          "name": "COURIER",
+          "kind": "enum-value",
+          "signature": "COURIER = \"Courier\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:COURIER_BOLD",
+          "name": "COURIER_BOLD",
+          "kind": "enum-value",
+          "signature": "COURIER_BOLD = \"Courier-Bold\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:COURIER_BOLD_OBLIQUE",
+          "name": "COURIER_BOLD_OBLIQUE",
+          "kind": "enum-value",
+          "signature": "COURIER_BOLD_OBLIQUE = \"Courier-BoldOblique\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:COURIER_OBLIQUE",
+          "name": "COURIER_OBLIQUE",
+          "kind": "enum-value",
+          "signature": "COURIER_OBLIQUE = \"Courier-Oblique\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:HELVETICA",
+          "name": "HELVETICA",
+          "kind": "enum-value",
+          "signature": "HELVETICA = \"Helvetica\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:HELVETICA_BOLD",
+          "name": "HELVETICA_BOLD",
+          "kind": "enum-value",
+          "signature": "HELVETICA_BOLD = \"Helvetica-Bold\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:HELVETICA_BOLD_OBLIQUE",
+          "name": "HELVETICA_BOLD_OBLIQUE",
+          "kind": "enum-value",
+          "signature": "HELVETICA_BOLD_OBLIQUE = \"Helvetica-BoldOblique\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:HELVETICA_OBLIQUE",
+          "name": "HELVETICA_OBLIQUE",
+          "kind": "enum-value",
+          "signature": "HELVETICA_OBLIQUE = \"Helvetica-Oblique\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:SYMBOL",
+          "name": "SYMBOL",
+          "kind": "enum-value",
+          "signature": "SYMBOL = \"Symbol\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:TIMES_BOLD",
+          "name": "TIMES_BOLD",
+          "kind": "enum-value",
+          "signature": "TIMES_BOLD = \"Times-Bold\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:TIMES_BOLD_ITALIC",
+          "name": "TIMES_BOLD_ITALIC",
+          "kind": "enum-value",
+          "signature": "TIMES_BOLD_ITALIC = \"Times-BoldItalic\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:TIMES_ITALIC",
+          "name": "TIMES_ITALIC",
+          "kind": "enum-value",
+          "signature": "TIMES_ITALIC = \"Times-Italic\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:TIMES_ROMAN",
+          "name": "TIMES_ROMAN",
+          "kind": "enum-value",
+          "signature": "TIMES_ROMAN = \"Times-Roman\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:ZAPF_DINGBATS",
+          "name": "ZAPF_DINGBATS",
+          "kind": "enum-value",
+          "signature": "ZAPF_DINGBATS = \"ZapfDingbats\"",
+          "static": true
+        }
+      ]
+    },
+    {
+      "id": "TextClient",
+      "name": "TextClient",
+      "kind": "class",
+      "signature": "class TextClient",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(edit: TextEditingFunction, pageNumber?: number): TextClient",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "method:delete",
+          "name": "delete",
+          "kind": "method",
+          "signature": "delete(request: TextDeleteRequest): Promise<TextEditResponse>",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:insert",
+          "name": "insert",
+          "kind": "method",
+          "signature": "insert(request: TextInsertRequest): Promise<TextEditResponse>",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:replace",
+          "name": "replace",
+          "kind": "method",
+          "signature": "replace(request: TextReplaceRequest): Promise<TextEditResponse>",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:style",
+          "name": "style",
+          "kind": "method",
+          "signature": "style(request: TextStyleRequest): Promise<TextEditResponse>",
+          "arity": 1,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "TextDeleteRequest",
+      "name": "TextDeleteRequest",
+      "kind": "class",
+      "signature": "class TextDeleteRequest",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(pages: number[], select: TextSelectorRequest, layout?: TextLayoutRequest): TextDeleteRequest",
+          "arity": 3,
+          "static": true
+        },
+        {
+          "id": "method:builder",
+          "name": "builder",
+          "kind": "method",
+          "signature": "builder(): TextDeleteRequestBuilder",
+          "arity": 0,
+          "static": true
+        },
+        {
+          "id": "method:literal",
+          "name": "literal",
+          "kind": "method",
+          "signature": "literal(text: string): TextDeleteRequestBuilder",
+          "arity": 1,
+          "static": true
+        },
+        {
+          "id": "method:regex",
+          "name": "regex",
+          "kind": "method",
+          "signature": "regex(regex: string): TextDeleteRequestBuilder",
+          "arity": 1,
+          "static": true
+        },
+        {
+          "id": "method:toJSON",
+          "name": "toJSON",
+          "kind": "method",
+          "signature": "toJSON(): Record<string, unknown>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:validated",
+          "name": "validated",
+          "kind": "method",
+          "signature": "validated(): TextDeleteRequest",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:withPages",
+          "name": "withPages",
+          "kind": "method",
+          "signature": "withPages(pages: number[]): TextDeleteRequest",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "property:layout",
+          "name": "layout",
+          "kind": "property",
+          "signature": "layout?: TextLayoutRequest",
+          "static": false
+        },
+        {
+          "id": "property:pages",
+          "name": "pages",
+          "kind": "property",
+          "signature": "pages: number[]",
+          "static": false
+        },
+        {
+          "id": "property:select",
+          "name": "select",
+          "kind": "property",
+          "signature": "select: TextSelectorRequest",
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "TextDeleteRequestBuilder",
+      "name": "TextDeleteRequestBuilder",
+      "kind": "class",
+      "signature": "class TextDeleteRequestBuilder extends SelectorLayoutBuilder<TextDeleteRequest>",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(): TextDeleteRequestBuilder",
+          "arity": 0,
+          "static": true
+        },
+        {
+          "id": "method:build",
+          "name": "build",
+          "kind": "method",
+          "signature": "build(): TextDeleteRequest",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:caseSensitive",
+          "name": "caseSensitive",
+          "kind": "method",
+          "signature": "caseSensitive(value: boolean): TextDeleteRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:hyphenationEnabled",
+          "name": "hyphenationEnabled",
+          "kind": "method",
+          "signature": "hyphenationEnabled(enabled: boolean): TextDeleteRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:layout",
+          "name": "layout",
+          "kind": "method",
+          "signature": "layout(value: TextLayoutRequest): TextDeleteRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:literal",
+          "name": "literal",
+          "kind": "method",
+          "signature": "literal(value: string): TextDeleteRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:maxMatches",
+          "name": "maxMatches",
+          "kind": "method",
+          "signature": "maxMatches(value: number): TextDeleteRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:pages",
+          "name": "pages",
+          "kind": "method",
+          "signature": "pages(...pages: (number | number[])[]): TextDeleteRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:reflowWhenSupported",
+          "name": "reflowWhenSupported",
+          "kind": "method",
+          "signature": "reflowWhenSupported(profile: TextLayoutProfile): TextDeleteRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:regex",
+          "name": "regex",
+          "kind": "method",
+          "signature": "regex(value: string): TextDeleteRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:requireReflow",
+          "name": "requireReflow",
+          "kind": "method",
+          "signature": "requireReflow(profile: TextLayoutProfile): TextDeleteRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:sourceAnchored",
+          "name": "sourceAnchored",
+          "kind": "method",
+          "signature": "sourceAnchored(): TextDeleteRequestBuilder",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:wholeWords",
+          "name": "wholeWords",
+          "kind": "method",
+          "signature": "wholeWords(value: boolean): TextDeleteRequestBuilder",
+          "arity": 1,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "TextEditChangeDiagnostic",
+      "name": "TextEditChangeDiagnostic",
+      "kind": "interface",
+      "signature": "interface TextEditChangeDiagnostic",
+      "members": [
+        {
+          "id": "property:appliedLayoutMode",
+          "name": "appliedLayoutMode",
+          "kind": "property",
+          "signature": "appliedLayoutMode?: string",
+          "static": false
+        },
+        {
+          "id": "property:effectiveHyphenationEnabled",
+          "name": "effectiveHyphenationEnabled",
+          "kind": "property",
+          "signature": "effectiveHyphenationEnabled: boolean",
+          "static": false
+        },
+        {
+          "id": "property:elementIds",
+          "name": "elementIds",
+          "kind": "property",
+          "signature": "elementIds?: string[]",
+          "static": false
+        },
+        {
+          "id": "property:generatedElementIds",
+          "name": "generatedElementIds",
+          "kind": "property",
+          "signature": "generatedElementIds?: string[]",
+          "static": false
+        },
+        {
+          "id": "property:operation",
+          "name": "operation",
+          "kind": "property",
+          "signature": "operation?: string",
+          "static": false
+        },
+        {
+          "id": "property:page",
+          "name": "page",
+          "kind": "property",
+          "signature": "page?: number",
+          "static": false
+        },
+        {
+          "id": "property:reflowUnitIds",
+          "name": "reflowUnitIds",
+          "kind": "property",
+          "signature": "reflowUnitIds?: string[]",
+          "static": false
+        },
+        {
+          "id": "property:requestedLayoutMode",
+          "name": "requestedLayoutMode",
+          "kind": "property",
+          "signature": "requestedLayoutMode?: string",
+          "static": false
+        },
+        {
+          "id": "property:requestedLayoutProfile",
+          "name": "requestedLayoutProfile",
+          "kind": "property",
+          "signature": "requestedLayoutProfile?: string",
+          "static": false
+        },
+        {
+          "id": "property:resultText",
+          "name": "resultText",
+          "kind": "property",
+          "signature": "resultText?: string",
+          "static": false
+        },
+        {
+          "id": "property:sourceText",
+          "name": "sourceText",
+          "kind": "property",
+          "signature": "sourceText?: string",
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "TextEditResponse",
+      "name": "TextEditResponse",
+      "kind": "interface",
+      "signature": "interface TextEditResponse",
+      "members": [
+        {
+          "id": "property:change",
+          "name": "change",
+          "kind": "property",
+          "signature": "change?: TextEditChangeDiagnostic[]",
+          "static": false
+        },
+        {
+          "id": "property:changed",
+          "name": "changed",
+          "kind": "property",
+          "signature": "changed?: number",
+          "static": false
+        },
+        {
+          "id": "property:errors",
+          "name": "errors",
+          "kind": "property",
+          "signature": "errors?: TextOperationDiagnostic[]",
+          "static": false
+        },
+        {
+          "id": "property:matched",
+          "name": "matched",
+          "kind": "property",
+          "signature": "matched?: number",
+          "static": false
+        },
+        {
+          "id": "property:pagesChanged",
+          "name": "pagesChanged",
+          "kind": "property",
+          "signature": "pagesChanged?: number[]",
+          "static": false
+        },
+        {
+          "id": "property:warnings",
+          "name": "warnings",
+          "kind": "property",
+          "signature": "warnings?: TextOperationDiagnostic[]",
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "TextInsertCaret",
+      "name": "TextInsertCaret",
+      "kind": "enum",
+      "signature": "enum TextInsertCaret",
+      "members": [
+        {
+          "id": "enum-value:AFTER",
+          "name": "AFTER",
+          "kind": "enum-value",
+          "signature": "AFTER = \"after\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:BEFORE",
+          "name": "BEFORE",
+          "kind": "enum-value",
+          "signature": "BEFORE = \"before\"",
+          "static": true
+        }
+      ]
+    },
+    {
+      "id": "TextInsertRequest",
+      "name": "TextInsertRequest",
+      "kind": "class",
+      "signature": "class TextInsertRequest",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(target: TextInsertTarget, insert: string, style: TextInsertStyle, layout?: TextLayoutRequest): TextInsertRequest",
+          "arity": 4,
+          "static": true
+        },
+        {
+          "id": "method:after",
+          "name": "after",
+          "kind": "method",
+          "signature": "after(anchor: string, insert: string): TextInsertRequestBuilder",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "method:afterRegex",
+          "name": "afterRegex",
+          "kind": "method",
+          "signature": "afterRegex(anchor: string, insert: string): TextInsertRequestBuilder",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "method:at",
+          "name": "at",
+          "kind": "method",
+          "signature": "at(page: number, x: number, y: number, insert: string): TextInsertRequestBuilder",
+          "arity": 4,
+          "static": true
+        },
+        {
+          "id": "method:before",
+          "name": "before",
+          "kind": "method",
+          "signature": "before(anchor: string, insert: string): TextInsertRequestBuilder",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "method:beforeRegex",
+          "name": "beforeRegex",
+          "kind": "method",
+          "signature": "beforeRegex(anchor: string, insert: string): TextInsertRequestBuilder",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "method:builder",
+          "name": "builder",
+          "kind": "method",
+          "signature": "builder(): TextInsertRequestBuilder",
+          "arity": 0,
+          "static": true
+        },
+        {
+          "id": "method:toJSON",
+          "name": "toJSON",
+          "kind": "method",
+          "signature": "toJSON(): Record<string, unknown>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:validated",
+          "name": "validated",
+          "kind": "method",
+          "signature": "validated(allowMissingCoordinatePage?: boolean): TextInsertRequest",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:withPages",
+          "name": "withPages",
+          "kind": "method",
+          "signature": "withPages(pages: number[]): TextInsertRequest",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "property:insert",
+          "name": "insert",
+          "kind": "property",
+          "signature": "insert: string",
+          "static": false
+        },
+        {
+          "id": "property:layout",
+          "name": "layout",
+          "kind": "property",
+          "signature": "layout?: TextLayoutRequest",
+          "static": false
+        },
+        {
+          "id": "property:style",
+          "name": "style",
+          "kind": "property",
+          "signature": "style: TextInsertStyle",
+          "static": false
+        },
+        {
+          "id": "property:target",
+          "name": "target",
+          "kind": "property",
+          "signature": "target: TextInsertTarget",
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "TextInsertRequestBuilder",
+      "name": "TextInsertRequestBuilder",
+      "kind": "class",
+      "signature": "class TextInsertRequestBuilder extends SelectorLayoutBuilder<TextInsertRequest>",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(): TextInsertRequestBuilder",
+          "arity": 0,
+          "static": true
+        },
+        {
+          "id": "method:build",
+          "name": "build",
+          "kind": "method",
+          "signature": "build(): TextInsertRequest",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:caret",
+          "name": "caret",
+          "kind": "method",
+          "signature": "caret(value: TextInsertCaret): TextInsertRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:caseSensitive",
+          "name": "caseSensitive",
+          "kind": "method",
+          "signature": "caseSensitive(value: boolean): TextInsertRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:characterSpacing",
+          "name": "characterSpacing",
+          "kind": "method",
+          "signature": "characterSpacing(value: number): TextInsertRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:coordinate",
+          "name": "coordinate",
+          "kind": "method",
+          "signature": "coordinate(page: number, x: number, y: number): TextInsertRequestBuilder",
+          "arity": 3,
+          "static": false
+        },
+        {
+          "id": "method:coordinate",
+          "name": "coordinate",
+          "kind": "method",
+          "signature": "coordinate(x: number, y: number): TextInsertRequestBuilder",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:fillColor",
+          "name": "fillColor",
+          "kind": "method",
+          "signature": "fillColor(value: PdfColorRequest): TextInsertRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:font",
+          "name": "font",
+          "kind": "method",
+          "signature": "font(value: string): TextInsertRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:hyphenationEnabled",
+          "name": "hyphenationEnabled",
+          "kind": "method",
+          "signature": "hyphenationEnabled(enabled: boolean): TextInsertRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:insert",
+          "name": "insert",
+          "kind": "method",
+          "signature": "insert(value: string): TextInsertRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:layout",
+          "name": "layout",
+          "kind": "method",
+          "signature": "layout(value: TextLayoutRequest): TextInsertRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:literal",
+          "name": "literal",
+          "kind": "method",
+          "signature": "literal(value: string): TextInsertRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:maxMatches",
+          "name": "maxMatches",
+          "kind": "method",
+          "signature": "maxMatches(value: number): TextInsertRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:pages",
+          "name": "pages",
+          "kind": "method",
+          "signature": "pages(...pages: (number | number[])[]): TextInsertRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:reflowWhenSupported",
+          "name": "reflowWhenSupported",
+          "kind": "method",
+          "signature": "reflowWhenSupported(profile: TextLayoutProfile): TextInsertRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:regex",
+          "name": "regex",
+          "kind": "method",
+          "signature": "regex(value: string): TextInsertRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:requireReflow",
+          "name": "requireReflow",
+          "kind": "method",
+          "signature": "requireReflow(profile: TextLayoutProfile): TextInsertRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:rotationDegrees",
+          "name": "rotationDegrees",
+          "kind": "method",
+          "signature": "rotationDegrees(value: number): TextInsertRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:size",
+          "name": "size",
+          "kind": "method",
+          "signature": "size(value: number): TextInsertRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:sourceAnchored",
+          "name": "sourceAnchored",
+          "kind": "method",
+          "signature": "sourceAnchored(): TextInsertRequestBuilder",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:strokeColor",
+          "name": "strokeColor",
+          "kind": "method",
+          "signature": "strokeColor(value: PdfColorRequest): TextInsertRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:stylePatch",
+          "name": "stylePatch",
+          "kind": "method",
+          "signature": "stylePatch(value: TextStylePatchRequest): TextInsertRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:wholeWords",
+          "name": "wholeWords",
+          "kind": "method",
+          "signature": "wholeWords(value: boolean): TextInsertRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:wordSpacing",
+          "name": "wordSpacing",
+          "kind": "method",
+          "signature": "wordSpacing(value: number): TextInsertRequestBuilder",
+          "arity": 1,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "TextLayoutMode",
+      "name": "TextLayoutMode",
+      "kind": "enum",
+      "signature": "enum TextLayoutMode",
+      "members": [
+        {
+          "id": "enum-value:REFLOW_WHEN_SUPPORTED",
+          "name": "REFLOW_WHEN_SUPPORTED",
+          "kind": "enum-value",
+          "signature": "REFLOW_WHEN_SUPPORTED = \"reflowWhenSupported\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:REQUIRE_REFLOW",
+          "name": "REQUIRE_REFLOW",
+          "kind": "enum-value",
+          "signature": "REQUIRE_REFLOW = \"requireReflow\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:SOURCE_ANCHORED",
+          "name": "SOURCE_ANCHORED",
+          "kind": "enum-value",
+          "signature": "SOURCE_ANCHORED = \"sourceAnchored\"",
+          "static": true
+        }
+      ]
+    },
+    {
+      "id": "TextLayoutProfile",
+      "name": "TextLayoutProfile",
+      "kind": "enum",
+      "signature": "enum TextLayoutProfile",
+      "members": [
+        {
+          "id": "enum-value:BODY_TEXT",
+          "name": "BODY_TEXT",
+          "kind": "enum-value",
+          "signature": "BODY_TEXT = \"bodyText\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:DEFAULT",
+          "name": "DEFAULT",
+          "kind": "enum-value",
+          "signature": "DEFAULT = \"default\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:NO_REFLOW",
+          "name": "NO_REFLOW",
+          "kind": "enum-value",
+          "signature": "NO_REFLOW = \"noReflow\"",
+          "static": true
+        }
+      ]
+    },
+    {
+      "id": "TextLayoutRequest",
+      "name": "TextLayoutRequest",
+      "kind": "class",
+      "signature": "class TextLayoutRequest",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(mode?: TextLayoutMode, profile?: TextLayoutProfile, hyphenationEnabled?: boolean): TextLayoutRequest",
+          "arity": 3,
+          "static": true
+        },
+        {
+          "id": "method:reflowWhenSupported",
+          "name": "reflowWhenSupported",
+          "kind": "method",
+          "signature": "reflowWhenSupported(profile: TextLayoutProfile): TextLayoutRequest",
+          "arity": 1,
+          "static": true
+        },
+        {
+          "id": "method:requireReflow",
+          "name": "requireReflow",
+          "kind": "method",
+          "signature": "requireReflow(profile: TextLayoutProfile): TextLayoutRequest",
+          "arity": 1,
+          "static": true
+        },
+        {
+          "id": "method:sourceAnchored",
+          "name": "sourceAnchored",
+          "kind": "method",
+          "signature": "sourceAnchored(): TextLayoutRequest",
+          "arity": 0,
+          "static": true
+        },
+        {
+          "id": "method:toJSON",
+          "name": "toJSON",
+          "kind": "method",
+          "signature": "toJSON(): Record<string, unknown>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:validated",
+          "name": "validated",
+          "kind": "method",
+          "signature": "validated(): TextLayoutRequest",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:withHyphenationEnabled",
+          "name": "withHyphenationEnabled",
+          "kind": "method",
+          "signature": "withHyphenationEnabled(enabled: boolean): TextLayoutRequest",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "property:hyphenationEnabled",
+          "name": "hyphenationEnabled",
+          "kind": "property",
+          "signature": "hyphenationEnabled?: boolean",
+          "static": false
+        },
+        {
+          "id": "property:mode",
+          "name": "mode",
+          "kind": "property",
+          "signature": "mode?: TextLayoutMode",
+          "static": false
+        },
+        {
+          "id": "property:profile",
+          "name": "profile",
+          "kind": "property",
+          "signature": "profile?: TextLayoutProfile",
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "TextOperationDiagnostic",
+      "name": "TextOperationDiagnostic",
+      "kind": "interface",
+      "signature": "interface TextOperationDiagnostic",
+      "members": [
+        {
+          "id": "property:code",
+          "name": "code",
+          "kind": "property",
+          "signature": "code?: string",
+          "static": false
+        },
+        {
+          "id": "property:elementIds",
+          "name": "elementIds",
+          "kind": "property",
+          "signature": "elementIds?: string[]",
+          "static": false
+        },
+        {
+          "id": "property:message",
+          "name": "message",
+          "kind": "property",
+          "signature": "message?: string",
+          "static": false
+        },
+        {
+          "id": "property:page",
+          "name": "page",
+          "kind": "property",
+          "signature": "page?: number",
+          "static": false
+        },
+        {
+          "id": "property:reflowUnitIds",
+          "name": "reflowUnitIds",
+          "kind": "property",
+          "signature": "reflowUnitIds?: string[]",
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "TextReplacementImageRequest",
+      "name": "TextReplacementImageRequest",
+      "kind": "class",
+      "signature": "class TextReplacementImageRequest",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(data: Uint8Array, transformation: PdfAffineTransform): TextReplacementImageRequest",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "method:toJSON",
+          "name": "toJSON",
+          "kind": "method",
+          "signature": "toJSON(): Record<string, unknown>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "property:data",
+          "name": "data",
+          "kind": "property",
+          "signature": "data: Uint8Array",
+          "static": false
+        },
+        {
+          "id": "property:transformation",
+          "name": "transformation",
+          "kind": "property",
+          "signature": "transformation: PdfAffineTransform",
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "TextReplaceRequest",
+      "name": "TextReplaceRequest",
+      "kind": "class",
+      "signature": "class TextReplaceRequest",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(pages: number[], select: TextSelectorRequest, replaceWith?: string, replaceWithImage?: TextReplacementImageRequest, style?: TextStyleSetRequest, layout?: TextLayoutRequest): TextReplaceRequest",
+          "arity": 6,
+          "static": true
+        },
+        {
+          "id": "method:builder",
+          "name": "builder",
+          "kind": "method",
+          "signature": "builder(): TextReplaceRequestBuilder",
+          "arity": 0,
+          "static": true
+        },
+        {
+          "id": "method:literal",
+          "name": "literal",
+          "kind": "method",
+          "signature": "literal(text: string, replaceWith: string): TextReplaceRequestBuilder",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "method:regex",
+          "name": "regex",
+          "kind": "method",
+          "signature": "regex(regex: string, replaceWith: string): TextReplaceRequestBuilder",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "method:toJSON",
+          "name": "toJSON",
+          "kind": "method",
+          "signature": "toJSON(): Record<string, unknown>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:validated",
+          "name": "validated",
+          "kind": "method",
+          "signature": "validated(): TextReplaceRequest",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:withPages",
+          "name": "withPages",
+          "kind": "method",
+          "signature": "withPages(pages: number[]): TextReplaceRequest",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "property:layout",
+          "name": "layout",
+          "kind": "property",
+          "signature": "layout?: TextLayoutRequest",
+          "static": false
+        },
+        {
+          "id": "property:pages",
+          "name": "pages",
+          "kind": "property",
+          "signature": "pages: number[]",
+          "static": false
+        },
+        {
+          "id": "property:replaceWith",
+          "name": "replaceWith",
+          "kind": "property",
+          "signature": "replaceWith?: string",
+          "static": false
+        },
+        {
+          "id": "property:replaceWithImage",
+          "name": "replaceWithImage",
+          "kind": "property",
+          "signature": "replaceWithImage?: TextReplacementImageRequest",
+          "static": false
+        },
+        {
+          "id": "property:select",
+          "name": "select",
+          "kind": "property",
+          "signature": "select: TextSelectorRequest",
+          "static": false
+        },
+        {
+          "id": "property:style",
+          "name": "style",
+          "kind": "property",
+          "signature": "style?: TextStyleSetRequest",
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "TextReplaceRequestBuilder",
+      "name": "TextReplaceRequestBuilder",
+      "kind": "class",
+      "signature": "class TextReplaceRequestBuilder extends SelectorLayoutBuilder<TextReplaceRequest>",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(): TextReplaceRequestBuilder",
+          "arity": 0,
+          "static": true
+        },
+        {
+          "id": "method:build",
+          "name": "build",
+          "kind": "method",
+          "signature": "build(): TextReplaceRequest",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:caseSensitive",
+          "name": "caseSensitive",
+          "kind": "method",
+          "signature": "caseSensitive(value: boolean): TextReplaceRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:characterSpacing",
+          "name": "characterSpacing",
+          "kind": "method",
+          "signature": "characterSpacing(value: number): TextReplaceRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:fillColor",
+          "name": "fillColor",
+          "kind": "method",
+          "signature": "fillColor(value: PdfColorRequest): TextReplaceRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:font",
+          "name": "font",
+          "kind": "method",
+          "signature": "font(value: string): TextReplaceRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:hyphenationEnabled",
+          "name": "hyphenationEnabled",
+          "kind": "method",
+          "signature": "hyphenationEnabled(enabled: boolean): TextReplaceRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:layout",
+          "name": "layout",
+          "kind": "method",
+          "signature": "layout(value: TextLayoutRequest): TextReplaceRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:literal",
+          "name": "literal",
+          "kind": "method",
+          "signature": "literal(value: string): TextReplaceRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:maxMatches",
+          "name": "maxMatches",
+          "kind": "method",
+          "signature": "maxMatches(value: number): TextReplaceRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:pages",
+          "name": "pages",
+          "kind": "method",
+          "signature": "pages(...pages: (number | number[])[]): TextReplaceRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:reflowWhenSupported",
+          "name": "reflowWhenSupported",
+          "kind": "method",
+          "signature": "reflowWhenSupported(profile: TextLayoutProfile): TextReplaceRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:regex",
+          "name": "regex",
+          "kind": "method",
+          "signature": "regex(value: string): TextReplaceRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:replaceWith",
+          "name": "replaceWith",
+          "kind": "method",
+          "signature": "replaceWith(value: string): TextReplaceRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:replaceWithImage",
+          "name": "replaceWithImage",
+          "kind": "method",
+          "signature": "replaceWithImage(data: Uint8Array, transformation: PdfAffineTransform): TextReplaceRequestBuilder",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:requireReflow",
+          "name": "requireReflow",
+          "kind": "method",
+          "signature": "requireReflow(profile: TextLayoutProfile): TextReplaceRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:resetSpacingOverrides",
+          "name": "resetSpacingOverrides",
+          "kind": "method",
+          "signature": "resetSpacingOverrides(): TextReplaceRequestBuilder",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:size",
+          "name": "size",
+          "kind": "method",
+          "signature": "size(value: number): TextReplaceRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:sourceAnchored",
+          "name": "sourceAnchored",
+          "kind": "method",
+          "signature": "sourceAnchored(): TextReplaceRequestBuilder",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:strokeColor",
+          "name": "strokeColor",
+          "kind": "method",
+          "signature": "strokeColor(value: PdfColorRequest): TextReplaceRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:style",
+          "name": "style",
+          "kind": "method",
+          "signature": "style(value: TextStyleSetRequest): TextReplaceRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:wholeWords",
+          "name": "wholeWords",
+          "kind": "method",
+          "signature": "wholeWords(value: boolean): TextReplaceRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:wordSpacing",
+          "name": "wordSpacing",
+          "kind": "method",
+          "signature": "wordSpacing(value: number): TextReplaceRequestBuilder",
+          "arity": 1,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "TextSelectorRequest",
+      "name": "TextSelectorRequest",
+      "kind": "class",
+      "signature": "class TextSelectorRequest",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(literal?: string, regex?: string, caseSensitive?: boolean, wholeWords?: boolean, maxMatches?: number): TextSelectorRequest",
+          "arity": 5,
+          "static": true
+        },
+        {
+          "id": "method:toJSON",
+          "name": "toJSON",
+          "kind": "method",
+          "signature": "toJSON(): Record<string, unknown>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:validated",
+          "name": "validated",
+          "kind": "method",
+          "signature": "validated(): TextSelectorRequest",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "property:caseSensitive",
+          "name": "caseSensitive",
+          "kind": "property",
+          "signature": "caseSensitive?: boolean",
+          "static": false
+        },
+        {
+          "id": "property:literal",
+          "name": "literal",
+          "kind": "property",
+          "signature": "literal?: string",
+          "static": false
+        },
+        {
+          "id": "property:maxMatches",
+          "name": "maxMatches",
+          "kind": "property",
+          "signature": "maxMatches?: number",
+          "static": false
+        },
+        {
+          "id": "property:regex",
+          "name": "regex",
+          "kind": "property",
+          "signature": "regex?: string",
+          "static": false
+        },
+        {
+          "id": "property:wholeWords",
+          "name": "wholeWords",
+          "kind": "property",
+          "signature": "wholeWords?: boolean",
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "TextStyleNumericFilterRequest",
+      "name": "TextStyleNumericFilterRequest",
+      "kind": "class",
+      "signature": "class TextStyleNumericFilterRequest",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(eq?: number, tolerance?: number): TextStyleNumericFilterRequest",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "method:equals",
+          "name": "equals",
+          "kind": "method",
+          "signature": "equals(eq: number, tolerance?: number): TextStyleNumericFilterRequest",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "method:validated",
+          "name": "validated",
+          "kind": "method",
+          "signature": "validated(): TextStyleNumericFilterRequest",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "property:eq",
+          "name": "eq",
+          "kind": "property",
+          "signature": "eq?: number",
+          "static": false
+        },
+        {
+          "id": "property:tolerance",
+          "name": "tolerance",
+          "kind": "property",
+          "signature": "tolerance?: number",
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "TextStylePatchBuilder",
+      "name": "TextStylePatchBuilder",
+      "kind": "class",
+      "signature": "class TextStylePatchBuilder",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(): TextStylePatchBuilder",
+          "arity": 0,
+          "static": true
+        },
+        {
+          "id": "method:build",
+          "name": "build",
+          "kind": "method",
+          "signature": "build(): TextStylePatchRequest",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:characterSpacing",
+          "name": "characterSpacing",
+          "kind": "method",
+          "signature": "characterSpacing(value: number): TextStylePatchBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:fillColor",
+          "name": "fillColor",
+          "kind": "method",
+          "signature": "fillColor(value: PdfColorRequest): TextStylePatchBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:font",
+          "name": "font",
+          "kind": "method",
+          "signature": "font(value: string): TextStylePatchBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:size",
+          "name": "size",
+          "kind": "method",
+          "signature": "size(value: number): TextStylePatchBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:strokeColor",
+          "name": "strokeColor",
+          "kind": "method",
+          "signature": "strokeColor(value: PdfColorRequest): TextStylePatchBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:wordSpacing",
+          "name": "wordSpacing",
+          "kind": "method",
+          "signature": "wordSpacing(value: number): TextStylePatchBuilder",
+          "arity": 1,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "TextStylePatchRequest",
+      "name": "TextStylePatchRequest",
+      "kind": "class",
+      "signature": "class TextStylePatchRequest implements StyleFields",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(font?: string, size?: number, fillColor?: PdfColorRequest, strokeColor?: PdfColorRequest, characterSpacing?: number, wordSpacing?: number): TextStylePatchRequest",
+          "arity": 6,
+          "static": true
+        },
+        {
+          "id": "method:builder",
+          "name": "builder",
+          "kind": "method",
+          "signature": "builder(): TextStylePatchBuilder",
+          "arity": 0,
+          "static": true
+        },
+        {
+          "id": "method:toJSON",
+          "name": "toJSON",
+          "kind": "method",
+          "signature": "toJSON(): Record<string, unknown>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:validated",
+          "name": "validated",
+          "kind": "method",
+          "signature": "validated(): TextStylePatchRequest",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "property:characterSpacing",
+          "name": "characterSpacing",
+          "kind": "property",
+          "signature": "characterSpacing?: number",
+          "static": false
+        },
+        {
+          "id": "property:fillColor",
+          "name": "fillColor",
+          "kind": "property",
+          "signature": "fillColor?: PdfColorRequest",
+          "static": false
+        },
+        {
+          "id": "property:font",
+          "name": "font",
+          "kind": "property",
+          "signature": "font?: string",
+          "static": false
+        },
+        {
+          "id": "property:size",
+          "name": "size",
+          "kind": "property",
+          "signature": "size?: number",
+          "static": false
+        },
+        {
+          "id": "property:strokeColor",
+          "name": "strokeColor",
+          "kind": "property",
+          "signature": "strokeColor?: PdfColorRequest",
+          "static": false
+        },
+        {
+          "id": "property:wordSpacing",
+          "name": "wordSpacing",
+          "kind": "property",
+          "signature": "wordSpacing?: number",
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "TextStyleRequest",
+      "name": "TextStyleRequest",
+      "kind": "class",
+      "signature": "class TextStyleRequest",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(pages: number[], select: TextStyleSelectorRequest, style: TextStyleValue, layout?: TextLayoutRequest): TextStyleRequest",
+          "arity": 4,
+          "static": true
+        },
+        {
+          "id": "method:builder",
+          "name": "builder",
+          "kind": "method",
+          "signature": "builder(): TextStyleRequestBuilder",
+          "arity": 0,
+          "static": true
+        },
+        {
+          "id": "method:literal",
+          "name": "literal",
+          "kind": "method",
+          "signature": "literal(text: string): TextStyleRequestBuilder",
+          "arity": 1,
+          "static": true
+        },
+        {
+          "id": "method:regex",
+          "name": "regex",
+          "kind": "method",
+          "signature": "regex(regex: string): TextStyleRequestBuilder",
+          "arity": 1,
+          "static": true
+        },
+        {
+          "id": "method:runsWhere",
+          "name": "runsWhere",
+          "kind": "method",
+          "signature": "runsWhere(): TextStyleRequestBuilder",
+          "arity": 0,
+          "static": true
+        },
+        {
+          "id": "method:toJSON",
+          "name": "toJSON",
+          "kind": "method",
+          "signature": "toJSON(): Record<string, unknown>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:validated",
+          "name": "validated",
+          "kind": "method",
+          "signature": "validated(): TextStyleRequest",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:withPages",
+          "name": "withPages",
+          "kind": "method",
+          "signature": "withPages(pages: number[]): TextStyleRequest",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "property:layout",
+          "name": "layout",
+          "kind": "property",
+          "signature": "layout?: TextLayoutRequest",
+          "static": false
+        },
+        {
+          "id": "property:pages",
+          "name": "pages",
+          "kind": "property",
+          "signature": "pages: number[]",
+          "static": false
+        },
+        {
+          "id": "property:select",
+          "name": "select",
+          "kind": "property",
+          "signature": "select: TextStyleSelectorRequest",
+          "static": false
+        },
+        {
+          "id": "property:style",
+          "name": "style",
+          "kind": "property",
+          "signature": "style: TextStyleValue",
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "TextStyleRequestBuilder",
+      "name": "TextStyleRequestBuilder",
+      "kind": "class",
+      "signature": "class TextStyleRequestBuilder extends SelectorLayoutBuilder<TextStyleRequest>",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(): TextStyleRequestBuilder",
+          "arity": 0,
+          "static": true
+        },
+        {
+          "id": "method:build",
+          "name": "build",
+          "kind": "method",
+          "signature": "build(): TextStyleRequest",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:caseSensitive",
+          "name": "caseSensitive",
+          "kind": "method",
+          "signature": "caseSensitive(value: boolean): TextStyleRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:characterSpacing",
+          "name": "characterSpacing",
+          "kind": "method",
+          "signature": "characterSpacing(value: number): TextStyleRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:fillColor",
+          "name": "fillColor",
+          "kind": "method",
+          "signature": "fillColor(value: PdfColorRequest): TextStyleRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:font",
+          "name": "font",
+          "kind": "method",
+          "signature": "font(value: string): TextStyleRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:hyphenationEnabled",
+          "name": "hyphenationEnabled",
+          "kind": "method",
+          "signature": "hyphenationEnabled(enabled: boolean): TextStyleRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:layout",
+          "name": "layout",
+          "kind": "method",
+          "signature": "layout(value: TextLayoutRequest): TextStyleRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:literal",
+          "name": "literal",
+          "kind": "method",
+          "signature": "literal(value: string): TextStyleRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:maxMatches",
+          "name": "maxMatches",
+          "kind": "method",
+          "signature": "maxMatches(value: number): TextStyleRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:pages",
+          "name": "pages",
+          "kind": "method",
+          "signature": "pages(...pages: (number | number[])[]): TextStyleRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:reflowWhenSupported",
+          "name": "reflowWhenSupported",
+          "kind": "method",
+          "signature": "reflowWhenSupported(profile: TextLayoutProfile): TextStyleRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:regex",
+          "name": "regex",
+          "kind": "method",
+          "signature": "regex(value: string): TextStyleRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:requireReflow",
+          "name": "requireReflow",
+          "kind": "method",
+          "signature": "requireReflow(profile: TextLayoutProfile): TextStyleRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:resetSpacingOverrides",
+          "name": "resetSpacingOverrides",
+          "kind": "method",
+          "signature": "resetSpacingOverrides(value?: boolean): TextStyleRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:runsWhere",
+          "name": "runsWhere",
+          "kind": "method",
+          "signature": "runsWhere(): TextStyleRequestBuilder",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:size",
+          "name": "size",
+          "kind": "method",
+          "signature": "size(value: number): TextStyleRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:sourceAnchored",
+          "name": "sourceAnchored",
+          "kind": "method",
+          "signature": "sourceAnchored(): TextStyleRequestBuilder",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:strokeColor",
+          "name": "strokeColor",
+          "kind": "method",
+          "signature": "strokeColor(value: PdfColorRequest): TextStyleRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:whereCharacterSpacing",
+          "name": "whereCharacterSpacing",
+          "kind": "method",
+          "signature": "whereCharacterSpacing(eq: number, tolerance?: number): TextStyleRequestBuilder",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:whereContainsUnmappedGlyphs",
+          "name": "whereContainsUnmappedGlyphs",
+          "kind": "method",
+          "signature": "whereContainsUnmappedGlyphs(value: boolean): TextStyleRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:whereFillColor",
+          "name": "whereFillColor",
+          "kind": "method",
+          "signature": "whereFillColor(value: PdfColorRequest): TextStyleRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:whereFont",
+          "name": "whereFont",
+          "kind": "method",
+          "signature": "whereFont(value: string): TextStyleRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:whereSize",
+          "name": "whereSize",
+          "kind": "method",
+          "signature": "whereSize(eq: number, tolerance?: number): TextStyleRequestBuilder",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:whereStrokeColor",
+          "name": "whereStrokeColor",
+          "kind": "method",
+          "signature": "whereStrokeColor(value: PdfColorRequest): TextStyleRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:whereTextContains",
+          "name": "whereTextContains",
+          "kind": "method",
+          "signature": "whereTextContains(value: string): TextStyleRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:whereWordSpacing",
+          "name": "whereWordSpacing",
+          "kind": "method",
+          "signature": "whereWordSpacing(eq: number, tolerance?: number): TextStyleRequestBuilder",
+          "arity": 2,
+          "static": false
+        },
+        {
+          "id": "method:wholeWords",
+          "name": "wholeWords",
+          "kind": "method",
+          "signature": "wholeWords(value: boolean): TextStyleRequestBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:wordSpacing",
+          "name": "wordSpacing",
+          "kind": "method",
+          "signature": "wordSpacing(value: number): TextStyleRequestBuilder",
+          "arity": 1,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "TextStyleRunFilterRequest",
+      "name": "TextStyleRunFilterRequest",
+      "kind": "interface",
+      "signature": "interface TextStyleRunFilterRequest",
+      "members": [
+        {
+          "id": "property:characterSpacing",
+          "name": "characterSpacing",
+          "kind": "property",
+          "signature": "characterSpacing?: TextStyleNumericFilterRequest",
+          "static": false
+        },
+        {
+          "id": "property:containsUnmappedGlyphs",
+          "name": "containsUnmappedGlyphs",
+          "kind": "property",
+          "signature": "containsUnmappedGlyphs?: boolean",
+          "static": false
+        },
+        {
+          "id": "property:fillColor",
+          "name": "fillColor",
+          "kind": "property",
+          "signature": "fillColor?: PdfColorRequest",
+          "static": false
+        },
+        {
+          "id": "property:font",
+          "name": "font",
+          "kind": "property",
+          "signature": "font?: string",
+          "static": false
+        },
+        {
+          "id": "property:size",
+          "name": "size",
+          "kind": "property",
+          "signature": "size?: TextStyleNumericFilterRequest",
+          "static": false
+        },
+        {
+          "id": "property:strokeColor",
+          "name": "strokeColor",
+          "kind": "property",
+          "signature": "strokeColor?: PdfColorRequest",
+          "static": false
+        },
+        {
+          "id": "property:textContains",
+          "name": "textContains",
+          "kind": "property",
+          "signature": "textContains?: string",
+          "static": false
+        },
+        {
+          "id": "property:wordSpacing",
+          "name": "wordSpacing",
+          "kind": "property",
+          "signature": "wordSpacing?: TextStyleNumericFilterRequest",
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "TextStyleSelectorRequest",
+      "name": "TextStyleSelectorRequest",
+      "kind": "interface",
+      "signature": "interface TextStyleSelectorRequest extends Omit<TextSelectorRequest,'validated' | 'toJSON'>",
+      "members": [
+        {
+          "id": "property:caseSensitive",
+          "name": "caseSensitive",
+          "kind": "property",
+          "signature": "caseSensitive?: boolean",
+          "static": false
+        },
+        {
+          "id": "property:literal",
+          "name": "literal",
+          "kind": "property",
+          "signature": "literal?: string",
+          "static": false
+        },
+        {
+          "id": "property:maxMatches",
+          "name": "maxMatches",
+          "kind": "property",
+          "signature": "maxMatches?: number",
+          "static": false
+        },
+        {
+          "id": "property:regex",
+          "name": "regex",
+          "kind": "property",
+          "signature": "regex?: string",
+          "static": false
+        },
+        {
+          "id": "property:runs",
+          "name": "runs",
+          "kind": "property",
+          "signature": "runs?: { where: TextStyleRunFilterRequest; maxMatches?: number; }",
+          "static": false
+        },
+        {
+          "id": "property:wholeWords",
+          "name": "wholeWords",
+          "kind": "property",
+          "signature": "wholeWords?: boolean",
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "TextStyleSetBuilder",
+      "name": "TextStyleSetBuilder",
+      "kind": "class",
+      "signature": "class TextStyleSetBuilder",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(style?: TextStyleSetRequest): TextStyleSetBuilder",
+          "arity": 1,
+          "static": true
+        },
+        {
+          "id": "method:build",
+          "name": "build",
+          "kind": "method",
+          "signature": "build(): TextStyleSetRequest",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:characterSpacing",
+          "name": "characterSpacing",
+          "kind": "method",
+          "signature": "characterSpacing(value: number): TextStyleSetBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:fillColor",
+          "name": "fillColor",
+          "kind": "method",
+          "signature": "fillColor(value: PdfColorRequest): TextStyleSetBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:font",
+          "name": "font",
+          "kind": "method",
+          "signature": "font(value: string): TextStyleSetBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:resetSpacingOverrides",
+          "name": "resetSpacingOverrides",
+          "kind": "method",
+          "signature": "resetSpacingOverrides(): TextStyleSetBuilder",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:size",
+          "name": "size",
+          "kind": "method",
+          "signature": "size(value: number): TextStyleSetBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:strokeColor",
+          "name": "strokeColor",
+          "kind": "method",
+          "signature": "strokeColor(value: PdfColorRequest): TextStyleSetBuilder",
+          "arity": 1,
+          "static": false
+        },
+        {
+          "id": "method:wordSpacing",
+          "name": "wordSpacing",
+          "kind": "method",
+          "signature": "wordSpacing(value: number): TextStyleSetBuilder",
+          "arity": 1,
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "TextStyleSetRequest",
+      "name": "TextStyleSetRequest",
+      "kind": "class",
+      "signature": "class TextStyleSetRequest implements StyleFields",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(font?: string, size?: number, fillColor?: PdfColorRequest, strokeColor?: PdfColorRequest, characterSpacing?: number, wordSpacing?: number, resetSpacingOverrides?: boolean): TextStyleSetRequest",
+          "arity": 7,
+          "static": true
+        },
+        {
+          "id": "method:builder",
+          "name": "builder",
+          "kind": "method",
+          "signature": "builder(): TextStyleSetBuilder",
+          "arity": 0,
+          "static": true
+        },
+        {
+          "id": "method:toJSON",
+          "name": "toJSON",
+          "kind": "method",
+          "signature": "toJSON(): Record<string, unknown>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:validated",
+          "name": "validated",
+          "kind": "method",
+          "signature": "validated(): TextStyleSetRequest",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "property:characterSpacing",
+          "name": "characterSpacing",
+          "kind": "property",
+          "signature": "characterSpacing?: number",
+          "static": false
+        },
+        {
+          "id": "property:fillColor",
+          "name": "fillColor",
+          "kind": "property",
+          "signature": "fillColor?: PdfColorRequest",
+          "static": false
+        },
+        {
+          "id": "property:font",
+          "name": "font",
+          "kind": "property",
+          "signature": "font?: string",
+          "static": false
+        },
+        {
+          "id": "property:resetSpacingOverrides",
+          "name": "resetSpacingOverrides",
+          "kind": "property",
+          "signature": "resetSpacingOverrides?: boolean",
+          "static": false
+        },
+        {
+          "id": "property:size",
+          "name": "size",
+          "kind": "property",
+          "signature": "size?: number",
+          "static": false
+        },
+        {
+          "id": "property:strokeColor",
+          "name": "strokeColor",
+          "kind": "property",
+          "signature": "strokeColor?: PdfColorRequest",
+          "static": false
+        },
+        {
+          "id": "property:wordSpacing",
+          "name": "wordSpacing",
+          "kind": "property",
+          "signature": "wordSpacing?: number",
+          "static": false
+        }
+      ]
+    },
+    {
+      "id": "ValidationException",
+      "name": "ValidationException",
+      "kind": "class",
+      "signature": "class ValidationException extends PdfDancerException",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(message: string): ValidationException",
+          "arity": 1,
+          "static": true
+        },
+        {
+          "id": "method:captureStackTrace",
+          "name": "captureStackTrace",
+          "kind": "method",
+          "signature": "captureStackTrace(targetObject: object, constructorOpt?: Function): void",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "method:prepareStackTrace",
+          "name": "prepareStackTrace",
+          "kind": "method",
+          "signature": "prepareStackTrace(err: Error, stackTraces: CallSite[]): any",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "property:cause",
+          "name": "cause",
+          "kind": "property",
+          "signature": "cause?: Error",
+          "static": false
+        },
+        {
+          "id": "property:message",
+          "name": "message",
+          "kind": "property",
+          "signature": "message: string",
+          "static": false
+        },
+        {
+          "id": "property:name",
+          "name": "name",
+          "kind": "property",
+          "signature": "name: string",
+          "static": false
+        },
+        {
+          "id": "property:stack",
+          "name": "stack",
+          "kind": "property",
+          "signature": "stack?: string",
+          "static": false
+        },
+        {
+          "id": "property:stackTraceLimit",
+          "name": "stackTraceLimit",
+          "kind": "property",
+          "signature": "stackTraceLimit: number",
+          "static": true
+        }
+      ]
+    },
+    {
+      "id": "VERSION",
+      "name": "VERSION",
+      "kind": "value",
+      "signature": "VERSION: \"0.0.0-dev\"",
+      "members": []
+    }
+  ]
+}

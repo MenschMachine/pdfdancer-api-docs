@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "sdkRoot": "../client-sdks",
+  "outputDirectory": "docs/capabilities/generated",
+  "languages": {
+    "python": {
+      "repository": "pdfdancer-client-python",
+      "baseRef": "release/v1",
+      "candidateRef": "release/v2"
+    },
+    "typescript": {
+      "repository": "pdfdancer-client-typescript",
+      "baseRef": "v1.0.23",
+      "candidateRef": "release/v2"
+    },
+    "java": {
+      "repository": "pdfdancer-client-java",
+      "baseRef": "release/v1",
+      "candidateRef": "release/v2"
+    }
+  }
+}

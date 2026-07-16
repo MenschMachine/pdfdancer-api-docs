@@ -20,7 +20,9 @@
     "test:docs:examples": "npm run test:docs:ts && npm run test:docs:python && npm run test:docs:java",
     "test:docs:v1": "PDFDANCER_DOCS_DIR=versioned_docs/version-1 npm run test:docs:examples",
     "test:docs": "npm run test:docs:v1",
-    "test:versioning": "node scripts/test-versioned-build.js"
+    "test:versioning": "node scripts/test-versioned-build.js",
+    "extract:v2-interfaces": "node scripts/extract-v2-interfaces.js",
+    "test:interface-extractor": "node --test tests/interface-extractor.test.js"
   },
   "dependencies": {
     "@docusaurus/core": "3.9.1",
