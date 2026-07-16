@@ -7,9 +7,10 @@ This document explains how the automated deployment and search indexing works fo
 The documentation site uses GitHub Actions to automatically:
 1. Build the Docusaurus site
 2. Deploy search indexes to Cloudflare KV
-3. Upload markdown content to Cloudflare KV
 
 This happens automatically on every push to the `main` branch.
+
+The workflow retains the original Markdown upload step, but an explicit `if: ${{ false }}` condition currently disables it. The deployment therefore only uploads generated search indexes. Remove that condition to re-enable the step.
 
 ## Cloudflare Setup (One-Time)
 
@@ -59,7 +60,7 @@ The `.github/workflows/deploy.yml` file defines the deployment pipeline:
 2. Install dependencies (npm ci)
 3. Build Docusaurus site (npm run build)
 4. Deploy search indexes (npx dcs deploy)
-5. Upload markdown content (npx dcs upload-content)
+5. Skip the disabled markdown-content upload step (npx dcs upload-content)
 ```
 
 ### Search Index Generation
@@ -74,7 +75,7 @@ During the build step, the `@mlahr/docusaurus-cloudflare-search` plugin automati
 - Lunr.js search indexes for fast full-text search
 - Stored in Cloudflare KV with keys like `search-index-docs-default-current`
 
-**Markdown Content** (`npx dcs upload-content`):
+**Markdown Content** (`npx dcs upload-content`, currently disabled):
 - Original markdown files from the `docs/` directory
 - Stored in Cloudflare KV with keys like `content:/docs/getting-started`
 - Useful for RAG/AI applications and documentation mirrors
@@ -102,17 +103,17 @@ npm run build
 # Deploy search indexes
 npx dcs deploy
 
-# Upload markdown content
+# Upload markdown content manually; the automated workflow step is disabled
 npx dcs upload-content
 
-# Dry run (see what would be deployed without actually deploying)
+# Dry run (show what would be deployed without deploying)
 npx dcs deploy --dry-run
 npx dcs upload-content --dry-run
 ```
 
 ## Accessing the Search API
 
-Once deployed, your search indexes and content are available through the Cloudflare Worker API:
+Once deployed, your search indexes are available through the Cloudflare Worker API:
 
 ### Search Endpoint
 
@@ -130,6 +131,8 @@ curl -X POST https://your-worker.workers.dev/search \
 ```bash
 curl https://your-worker.workers.dev/indexes
 ```
+
+If Markdown content has been uploaded manually or was uploaded before the workflow step was disabled, it remains available through these endpoints:
 
 ### Get Markdown Content
 

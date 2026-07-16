@@ -35,7 +35,8 @@ npm run clear      # Clear Docusaurus cache
 GitHub Actions (`.github/workflows/deploy.yml`) auto-deploys on push to `main`:
 1. `npm ci && npm run build`
 2. Deploy search indexes to Cloudflare KV (`npx dcs deploy`)
-3. Upload markdown to Cloudflare KV (`npx dcs upload-content`)
+
+Raw Markdown upload (`npx dcs upload-content`) is intentionally disabled.
 
 ## Important Details
 
