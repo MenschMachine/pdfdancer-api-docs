@@ -1316,4 +1316,4 @@ pdf.save("documents/book_new_fonts.pdf");
 
 - [**Advanced**](advanced.md) – Learn advanced patterns and optimization
 - [**Error Handling**](error-handling.md) – Handle exceptions properly
-- [**Getting Started**](/) – Return to the beginning
+- [**Getting Started**](getting-started.md) – Return to the beginning

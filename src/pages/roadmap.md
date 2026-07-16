@@ -1,3 +1,8 @@
+---
+title: Product Roadmap
+description: Current PDFDancer product development priorities and recently shipped capabilities.
+---
+
 # Product Roadmap
 
 PDFDancer is actively developed with regular updates and new features. This roadmap provides visibility into what we're working on and what's planned for the future.

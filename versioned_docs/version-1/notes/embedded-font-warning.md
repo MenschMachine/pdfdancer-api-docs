@@ -44,10 +44,10 @@ Open the output PDF and check that the modified text looks correct. If it does, 
 
 If the output has rendering problems, switch to a font you can trust:
 
-- Use one of the [standard PDF fonts](/working-with-fonts#standard-pdf-fonts) — these are built into every PDF reader and always have complete glyph coverage for their character set.
-- [Upload a custom font](/working-with-fonts#custom-fonts) — use a full TrueType or OpenType font file instead of relying on the embedded subset.
+- Use one of the [standard PDF fonts](../working-with-fonts.md#standard-pdf-fonts) — these are built into every PDF reader and always have complete glyph coverage for their character set.
+- [Upload a custom font](../working-with-fonts.md#custom-fonts) — use a full TrueType or OpenType font file instead of relying on the embedded subset.
 
-PDFDancer provides font recommendations with similarity scores to help you pick a replacement. See [Working with Embedded Fonts](/working-with-fonts#working-with-embedded-fonts-in-pdfdancer) for code examples.
+PDFDancer provides font recommendations with similarity scores to help you pick a replacement. See [Working with Embedded Fonts](../working-with-fonts.md#working-with-embedded-fonts-in-pdfdancer) for code examples.
 
 ### 3. Suppress the warning
 
@@ -55,4 +55,4 @@ If you have verified the output and it renders correctly, you can safely ignore 
 
 ## Further Reading
 
-- [Working with Fonts — Embedded Fonts](/working-with-fonts#embedded-fonts) — full background on embedded fonts, their types, and limitations.
+- [Working with Fonts — Embedded Fonts](../working-with-fonts.md#embedded-fonts) — full background on embedded fonts, their types, and limitations.

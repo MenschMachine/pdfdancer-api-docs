@@ -9,7 +9,10 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 
-const DOCS_DIR = path.join(__dirname, '..', 'docs');
+const REPO_ROOT = path.join(__dirname, '..');
+const DOCS_DIR = process.env.PDFDANCER_DOCS_DIR
+  ? path.resolve(REPO_ROOT, process.env.PDFDANCER_DOCS_DIR)
+  : path.join(REPO_ROOT, 'docs');
 const TEMP_DIR = path.join(__dirname, '..', 'tests', '.java-temp');
 const JAVA_SUBMODULE = path.join(__dirname, '..', 'external', 'pdfdancer-client-java');
 

@@ -5,12 +5,13 @@ This document explains how the automated deployment and search indexing works fo
 ## Overview
 
 The documentation site uses GitHub Actions to automatically:
-1. Build the Docusaurus site
-2. Deploy search indexes to Cloudflare KV
+1. Validate supported API v1 examples against their pinned SDK revisions
+2. Build the Docusaurus site
+3. Deploy API v1 and API v2 search indexes to Cloudflare KV
 
 This happens automatically on every push to the `main` branch.
 
-The workflow retains the original Markdown upload step, but an explicit `if: ${{ false }}` condition currently disables it. The deployment therefore only uploads generated search indexes. Remove that condition to re-enable the step.
+The workflow retains the original Markdown upload step, but an explicit `if: ${{ false }}` condition currently disables it. The deployment therefore only uploads generated search indexes. Before re-enabling the step, select an explicit API-version content directory; the command defaults to the mutable `docs/` directory.
 
 ## Cloudflare Setup (One-Time)
 
@@ -58,16 +59,19 @@ The `.github/workflows/deploy.yml` file defines the deployment pipeline:
 ```yaml
 1. Setup Node.js 20
 2. Install dependencies (npm ci)
-3. Build Docusaurus site (npm run build)
-4. Deploy search indexes (npx dcs deploy)
-5. Skip the disabled markdown-content upload step (npx dcs upload-content)
+3. Check out and build the SDK revisions pinned by API v1
+4. Validate API v1 documentation examples (npm run test:docs:v1)
+5. Build Docusaurus site (npm run build)
+6. Deploy search indexes (npx dcs deploy)
+7. Skip the disabled markdown-content upload step (npx dcs upload-content)
 ```
 
 ### Search Index Generation
 
-During the build step, the `@mlahr/docusaurus-cloudflare-search` plugin automatically generates search index files in the `build/` directory:
-- `build/search-index-docs-default-current.json` - Main documentation index
-- Other indexes based on your site structure
+During the build step, the `@pdfdancer/docusaurus-cloudflare-search` plugin generates separate search indexes in the `build/` directory:
+- `build/search-index-docs-default-1.json` - API v1 documentation
+- `build/search-index-docs-default-current.json` - API v2 documentation
+- `build/search-index-default.json` - Global pages such as the product roadmap
 
 ### What Gets Uploaded
 

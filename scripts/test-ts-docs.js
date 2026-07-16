@@ -9,7 +9,10 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 
-const DOCS_DIR = path.join(__dirname, '..', 'docs');
+const REPO_ROOT = path.join(__dirname, '..');
+const DOCS_DIR = process.env.PDFDANCER_DOCS_DIR
+  ? path.resolve(REPO_ROOT, process.env.PDFDANCER_DOCS_DIR)
+  : path.join(REPO_ROOT, 'docs');
 const TEMP_DIR = path.join(__dirname, '..', 'tests', '.ts-temp');
 
 // Files to test
@@ -33,6 +36,17 @@ function ensureTempDir() {
     fs.rmSync(TEMP_DIR, { recursive: true });
   }
   fs.mkdirSync(TEMP_DIR, { recursive: true });
+
+  if (process.env.PDFDANCER_TYPESCRIPT_SDK_DIR) {
+    const sdkDir = path.resolve(REPO_ROOT, process.env.PDFDANCER_TYPESCRIPT_SDK_DIR);
+    const tempNodeModules = path.join(TEMP_DIR, 'node_modules');
+    fs.mkdirSync(tempNodeModules);
+    fs.symlinkSync(
+      sdkDir,
+      path.join(tempNodeModules, 'pdfdancer-client-typescript'),
+      'dir'
+    );
+  }
 }
 
 // Clean up temp directory

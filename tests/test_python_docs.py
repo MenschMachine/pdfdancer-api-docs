@@ -3,11 +3,16 @@
 from pathlib import Path
 import ast
 import importlib.util
+import os
 import pytest
 import mktestdocs
 
 # Read markdown file content
-DOC_FILE = Path(__file__).parent.parent / "docs" / "getting-started-python.md"
+REPO_ROOT = Path(__file__).parent.parent
+DOCS_DIR = Path(os.environ.get("PDFDANCER_DOCS_DIR", "docs"))
+if not DOCS_DIR.is_absolute():
+    DOCS_DIR = REPO_ROOT / DOCS_DIR
+DOC_FILE = DOCS_DIR / "getting-started-python.md"
 DOC_CONTENT = DOC_FILE.read_text()
 
 # SDK class to methods mapping (for semantic validation)

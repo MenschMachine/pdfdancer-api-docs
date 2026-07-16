@@ -35,30 +35,30 @@ This starts a local development server at `http://localhost:3000` with hot reloa
 
 ```
 pdfdancer-api-docs/
-├── docs/                    # Documentation content
-│   ├── getting-started.md
-│   ├── authentication.md
-│   ├── java/               # Java SDK docs
-│   ├── python/             # Python SDK docs
-│   └── typescript/         # TypeScript SDK docs
+├── docs/                    # Upcoming API v2 documentation
+├── versioned_docs/
+│   └── version-1/          # Supported API v1 documentation
+├── versioned_sidebars/     # API v1 navigation
 ├── src/
 │   ├── components/         # Custom React components
 │   ├── css/               # Custom styles (Cyber Orange theme)
-│   └── pages/             # Custom pages
+│   └── pages/              # Global pages, including /roadmap
 ├── static/                 # Static assets (images, logos)
-├── docusaurus.config.ts   # Docusaurus configuration
-└── sidebars.ts           # Sidebar structure
+├── docusaurus.config.ts    # Version routing and release configuration
+└── sidebars.ts             # API v2 navigation
 ```
 
 ## Contributing Documentation
 
 ### Adding New Documentation
 
-1. Create or edit markdown files in the `docs/` directory
-2. Update `sidebars.ts` if adding new pages
+1. Edit API v2 content in `docs/`, or supported API v1 content in `versioned_docs/version-1/`
+2. Update the matching v2 or v1 sidebar
 3. Test locally with `npm start`
-4. Run type checking: `npm run typecheck`
-5. Build and verify: `npm run build`
+4. Validate v1 examples: `npm run test:docs:v1`
+5. Run type checking and build: `npm run typecheck && npm run build`
+
+API v1 and API v2 use stable `/v1/` and `/v2/` paths. Do not recreate the v1 snapshot. When API v2 is released, change only `V2_RELEASED` in `docusaurus.config.ts`.
 
 ## Available Commands
 
@@ -68,6 +68,8 @@ pdfdancer-api-docs/
 | `npm run build`     | Build static site for production |
 | `npm run serve`     | Serve built site locally         |
 | `npm run typecheck` | Run TypeScript type checking     |
+| `npm run test:docs:v1` | Validate supported API v1 examples |
+| `npm run test:versioning` | Verify routes and search indexes after a build |
 | `npm run clear`     | Clear Docusaurus cache           |
 
 ## Theming
@@ -84,11 +86,14 @@ To modify the theme, edit `src/css/custom.css`.
 
 ## Deployment
 
-The site deploys automatically via GitHub Actions on push to any branch. The workflow:
+The site deploys automatically via GitHub Actions on pushes to `main`. The workflow:
 
-1. Installs dependencies
-2. Builds the site
-3. Deploys to GitHub Pages
+1. Checks out the SDK revisions pinned by API v1
+2. Validates API v1 examples
+3. Builds the site
+4. Deploys versioned search indexes to Cloudflare KV
+
+Raw Markdown upload to Cloudflare KV is retained in the workflow but explicitly disabled.
 
 Manual deployment:
 

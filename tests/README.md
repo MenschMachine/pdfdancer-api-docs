@@ -5,36 +5,39 @@ Automated tests that verify code examples in the getting-started guides compile 
 ## Running Tests
 
 ```bash
-# All languages
+# Supported API v1 examples
 npm run test:docs
+npm run test:docs:v1
 
-# Individual languages
+# Individual languages; set PDFDANCER_DOCS_DIR when testing a versioned tree
 npm run test:docs:ts      # TypeScript
 npm run test:docs:python  # Python
 npm run test:docs:java    # Java
 ```
 
+The scripts read documentation from `PDFDANCER_DOCS_DIR`, defaulting to `docs/`. CI sets it to `versioned_docs/version-1` for v1.
+
 ## How It Works
 
 ### TypeScript (`scripts/test-ts-docs.js`)
 
-Extracts `typescript` code blocks from markdown and runs `tsc --noEmit` to verify syntax. Ignores module resolution errors (missing SDK at compile time) but catches real syntax errors.
+Extracts `typescript` code blocks from markdown and runs `tsc --noEmit`. CI builds the exact v1 SDK revision and exposes it through `PDFDANCER_TYPESCRIPT_SDK_DIR`, so module and method errors fail validation.
 
 ### Python (`tests/test_python_docs.py`)
 
 Uses `mktestdocs` + `pytest` to extract and syntax-check `python` code blocks. Requires:
 
 ```bash
-pip install mktestdocs pytest pdfdancer-client-python
+pip install mktestdocs pytest ./external/pdfdancer-client-python
 ```
 
 ### Java (`scripts/test-java-docs.js`)
 
-Extracts `java` code blocks and runs `javac` syntax check. Ignores missing dependency errors but catches syntax issues.
+Extracts `java` code blocks and compiles them with `javac` against the JAR built from the exact v1 SDK revision under `external/pdfdancer-client-java`. Java 11 is required by that SDK's Gradle toolchain.
 
 ## CI Integration
 
-Tests run automatically in `.github/workflows/deploy.yml` before build. Failures block deployment.
+Tests run automatically in `.github/workflows/deploy.yml` before build. The workflow reads all three SDK commit IDs from `versioned_docs/version-1/sdk-versions.md`, checks out those exact revisions, and fails deployment on validation errors.
 
 ## Adding New Docs
 
