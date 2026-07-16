@@ -39,6 +39,15 @@ function declarationKind(symbol) {
   return 'value';
 }
 
+function documentation(checker, symbol) {
+  const text = ts.displayPartsToString(symbol.getDocumentationComment(checker)).trim();
+  const tags = symbol.getJsDocTags(checker)
+    .filter((tag) => tag.name === 'deprecated')
+    .map((tag) => ts.displayPartsToString(tag.text || []).trim())
+    .filter(Boolean);
+  return {description: text || undefined, deprecated: tags.join('\n') || undefined};
+}
+
 function compactSourceText(node) {
   return node.getText().replace(/\s+/g, ' ').replace(/\s*([<>,])\s*/g, '$1').trim();
 }
@@ -64,6 +73,7 @@ function membersForType(checker, ownerName, type, isStatic) {
     const signatures = checker.getSignaturesOfType(propertyType, ts.SignatureKind.Call);
     if (signatures.length > 0) {
       for (const signature of signatures) {
+        const docs = documentation(checker, property);
         result.push({
           id: `method:${name}`,
           name,
@@ -71,17 +81,20 @@ function membersForType(checker, ownerName, type, isStatic) {
           signature: signatureText(checker, signature, name),
           arity: signatureArity(signature),
           static: isStatic,
+          ...docs,
         });
       }
       continue;
     }
     const optional = (property.flags & ts.SymbolFlags.Optional) !== 0 ? '?' : '';
+    const docs = documentation(checker, property);
     result.push({
       id: `property:${name}`,
       name,
       kind: 'property',
       signature: `${name}${optional}: ${checker.typeToString(propertyType, declaration, ts.TypeFormatFlags.NoTruncation)}`,
       static: isStatic,
+      ...docs,
     });
   }
   return result;
@@ -138,7 +151,7 @@ function extractSymbol(checker, symbol, exportName, moduleName) {
     }
   }
 
-  return {id: exportName, name: exportName, module: moduleName, kind, signature: summary, members};
+  return {id: exportName, name: exportName, module: moduleName, kind, signature: summary, members, ...documentation(checker, symbol)};
 }
 
 function declarationFiles(input) {

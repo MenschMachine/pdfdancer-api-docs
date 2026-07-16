@@ -32,6 +32,13 @@ def arity(value: Any) -> int | None:
         return None
 
 
+def description(value: Any) -> str | None:
+    documentation = inspect.getdoc(value)
+    if not documentation:
+        return None
+    return documentation.strip()
+
+
 def member(owner: type[Any], name: str, value: Any) -> dict[str, Any] | None:
     raw = inspect.getattr_static(owner, name)
     if isinstance(raw, property):
@@ -39,7 +46,11 @@ def member(owner: type[Any], name: str, value: Any) -> dict[str, Any] | None:
         if raw.fget is not None:
             annotation = inspect.signature(raw.fget).return_annotation
         suffix = "" if annotation in (None, inspect.Signature.empty) else f": {clean(inspect.formatannotation(annotation))}"
-        return {"id": f"property:{name}", "name": name, "kind": "property", "signature": f"{name}{suffix}"}
+        result = {"id": f"property:{name}", "name": name, "kind": "property", "signature": f"{name}{suffix}"}
+        documentation = description(raw.fget) if raw.fget is not None else None
+        if documentation:
+            result["description"] = documentation
+        return result
 
     is_static = isinstance(raw, staticmethod)
     is_class = isinstance(raw, classmethod)
@@ -55,6 +66,9 @@ def member(owner: type[Any], name: str, value: Any) -> dict[str, Any] | None:
         count = arity(callable_value)
         if count is not None:
             result["arity"] = count
+        documentation = description(callable_value)
+        if documentation:
+            result["description"] = documentation
         return result
     return None
 
@@ -85,7 +99,7 @@ def class_symbol(export_name: str, value: type[Any]) -> dict[str, Any]:
         if extracted is not None:
             members.append(extracted)
 
-    return {
+    result = {
         "id": export_name,
         "name": export_name,
         "module": value.__module__.removeprefix("pdfdancer."),
@@ -93,13 +107,17 @@ def class_symbol(export_name: str, value: type[Any]) -> dict[str, Any]:
         "signature": signature(value, export_name),
         "members": members,
     }
+    documentation = description(value)
+    if documentation:
+        result["description"] = documentation
+    return result
 
 
 def exported_symbol(export_name: str, value: Any) -> dict[str, Any]:
     if inspect.isclass(value):
         return class_symbol(export_name, value)
     if inspect.isroutine(value):
-        return {
+        result = {
             "id": export_name,
             "name": export_name,
             "module": getattr(value, "__module__", "").removeprefix("pdfdancer."),
@@ -107,6 +125,10 @@ def exported_symbol(export_name: str, value: Any) -> dict[str, Any]:
             "signature": signature(value, export_name),
             "members": [],
         }
+        documentation = description(value)
+        if documentation:
+            result["description"] = documentation
+        return result
     return {
         "id": export_name,
         "name": export_name,

@@ -124,6 +124,27 @@ These are cross-cutting tasks for the new v2 page copies, not edits to the versi
 | `capabilities/CLEAR_CLIPPING.md` | **Archive v1; optional v2 internal successor** | Leave the v1 artifact unchanged as implementation evidence. If a separate v2 successor is created, remove obsolete text-line references and use v2 page-number terminology and object types there. Do not add either artifact directly to the public sidebar. |
 | `capabilities/.gitkeep` | **No content action** | Directory placeholder only. |
 
+## Approved API v2 Information Architecture
+
+The target sidebar is approved and implemented as a task-first structure with 29 routes. All routes contain release documentation; the earlier coming-soon placeholders for AI, Advanced Usage, Cookbook, and Glossary were replaced before release review.
+
+The approved text split is:
+
+| API v2 page | Source material |
+|---|---|
+| `working-with-text.md` | Java v2 text tutorial request lifecycle, selectors, response verification, saving, and PDF text-structure guidance |
+| `editing-text.md` | Java v2 tutorial replace, insert, and delete sections plus corresponding Python and TypeScript v2 interfaces |
+| `styling-text.md` | Java v2 tutorial styling and appearance-inheritance sections plus corresponding Python and TypeScript v2 interfaces |
+| `text-layout.md` | Java v2 tutorial layout section and audited concepts from v1 `reflow-internals.md` |
+
+Approved merges and omissions:
+
+- `introduction.md` is merged into v2 `getting-started.md`.
+- `deleting-content.md` is distributed across the relevant content guides.
+- `reflow-internals.md` maps to v2 `text-layout.md`.
+- `notes/embedded-font-warning.md` is merged into v2 `working-with-fonts.md`.
+- `extracting-text.md` and `redaction.md` have no v2 counterpart until a corresponding public v2 SDK interface exists.
+
 ## Required and Candidate New v2 Content
 
 One new page is required by the version transition itself:
@@ -132,13 +153,7 @@ One new page is required by the version transition itself:
 |---|---|
 | `migrating-from-v1.md` | Users need an explicit mapping for removed paragraph/text-line APIs, request-based text editing, package-root promotions, result-type changes, and unavailable capabilities. |
 
-Selective restructuring also permits the following candidate pages or splits:
-
-- A separate text-selector concepts page if the rewritten `working-with-text.md` becomes too large.
-- A separate text-layout page if `reflow-internals.md` cannot serve that role without a misleading title.
-- A diagnostics/reference page if `TextEditResponse` requires more detail than the text guide can carry.
-
-Their final IDs and source-page mappings are not yet approved.
+The three approved additional text routes are `editing-text.md`, `styling-text.md`, and `text-layout.md`. Targeting and response diagnostics remain in `working-with-text.md` rather than becoming standalone pages.
 
 ## Selected Sidebar Strategy
 
@@ -151,7 +166,7 @@ The v2 sidebar will be selectively restructured rather than mirroring the v1 sid
 - Keep their v1 versions accessible under `/v1`.
 - Keep internal `capabilities/` material excluded.
 
-The exact v2 categories, order, splits, merges, and new IDs still require a target-sidebar proposal.
+The exact categories, ordering, merges, and page IDs are implemented in `sidebars.ts`.
 
 ## Suggested Execution Order
 
@@ -168,9 +183,9 @@ The exact v2 categories, order, splits, merges, and new IDs still require a targ
 ## Reviewer Decisions
 
 - [x] Select **Option 3: selective restructuring**.
-- [ ] Approve the target v2 sidebar and page IDs.
-- [ ] Approve the split/merge source map for each restructured page.
-- [ ] Confirm that no v2 counterpart for `extracting-text.md` should be created until a v2 inspection API is identified.
-- [ ] Confirm that no v2 counterpart for `redaction.md` should be created unless a v2 replacement exists.
-- [ ] Decide how `working-with-text.md` is split across v2 workflows.
-- [ ] Decide whether `reflow-internals.md` keeps its existing page ID/title or becomes a text-layout page.
+- [x] Approve the target v2 sidebar and page IDs.
+- [x] Approve the split/merge source map for each restructured page.
+- [x] Confirm no v2 counterpart for `extracting-text.md` until a public v2 inspection API is identified.
+- [x] Confirm no v2 counterpart for `redaction.md` until a public v2 replacement exists.
+- [x] Split text into four broader guides derived from the Java v2 tutorial.
+- [x] Replace the v1 reflow page with `text-layout.md`.

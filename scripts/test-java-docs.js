@@ -14,10 +14,14 @@ const DOCS_DIR = process.env.PDFDANCER_DOCS_DIR
   ? path.resolve(REPO_ROOT, process.env.PDFDANCER_DOCS_DIR)
   : path.join(REPO_ROOT, 'docs');
 const TEMP_DIR = path.join(__dirname, '..', 'tests', '.java-temp');
-const JAVA_SUBMODULE = path.join(__dirname, '..', 'external', 'pdfdancer-client-java');
+const JAVA_SUBMODULE = process.env.PDFDANCER_JAVA_SDK_DIR
+  ? path.resolve(REPO_ROOT, process.env.PDFDANCER_JAVA_SDK_DIR)
+  : path.join(REPO_ROOT, 'external', 'pdfdancer-client-java');
 
-// Files to test
-const FILES_TO_TEST = ['getting-started-java.md'];
+function filesToTest() {
+  if (DOCS_DIR.includes(`${path.sep}versioned_docs${path.sep}`)) return ['getting-started-java.md'];
+  return fs.readdirSync(DOCS_DIR).filter((file) => file.endsWith('.md')).sort();
+}
 
 // Extract Java code blocks from markdown
 function extractJavaBlocks(markdownPath) {
@@ -51,11 +55,39 @@ function wrapInClass(code, className) {
   if (code.includes('public static void main')) {
     return code;
   }
-  // Wrap as a method body
+  const imports = code.match(/^\s*import[^;]+;\s*$/gm) || [];
+  const body = imports.reduce((value, statement) => value.replace(statement, ''), code).trim();
+  const standardImports = `
+import java.io.*;
+import java.nio.file.*;
+import java.util.*;
+import com.pdfdancer.client.rest.*;
+import com.pdfdancer.common.model.*;
+import com.pdfdancer.common.model.path.*;
+import com.pdfdancer.common.request.*;
+import com.pdfdancer.common.response.*;
+import com.pdfdancer.common.util.*;
+`;
   return `
+${standardImports}
+${imports.join('\n')}
 public class ${className} {
+    private PDFDancer pdf;
+    private PDFDancer.PageClient page;
+    private ImageReference image;
+    private PathReference path;
+    private FormXObjectReference form;
+    private FormFieldReference field;
+    private TextEditResponse response;
+    private byte[] inputBytes;
+    private byte[] imageBytes;
+    private byte[] replacementBytes;
+    private Object request;
+    private Object selected;
+    private Object result;
+
     public void example() throws Exception {
-        ${code}
+        ${body}
     }
 }
 `;
@@ -139,7 +171,8 @@ function main() {
   let hasErrors = false;
   let totalBlocks = 0;
 
-  for (const file of FILES_TO_TEST) {
+  let fileNumber = 0;
+  for (const file of filesToTest()) {
     const filePath = path.join(DOCS_DIR, file);
     if (!fs.existsSync(filePath)) {
       console.error(`File not found: ${filePath}`);
@@ -152,7 +185,7 @@ function main() {
 
     blocks.forEach((block, index) => {
       totalBlocks++;
-      let className = `Example${index + 1}`;
+      let className = `Example${++fileNumber}_${index + 1}`;
 
       // Check if code has its own class definition
       let code = block;

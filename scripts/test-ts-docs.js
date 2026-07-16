@@ -15,8 +15,10 @@ const DOCS_DIR = process.env.PDFDANCER_DOCS_DIR
   : path.join(REPO_ROOT, 'docs');
 const TEMP_DIR = path.join(__dirname, '..', 'tests', '.ts-temp');
 
-// Files to test
-const FILES_TO_TEST = ['getting-started-typescript.md'];
+function filesToTest() {
+  if (DOCS_DIR.includes(`${path.sep}versioned_docs${path.sep}`)) return ['getting-started-typescript.md'];
+  return fs.readdirSync(DOCS_DIR).filter((file) => file.endsWith('.md')).sort();
+}
 
 // Extract TypeScript code blocks from markdown
 function extractTsBlocks(markdownPath) {
@@ -54,6 +56,54 @@ function cleanupTempDir() {
   if (fs.existsSync(TEMP_DIR)) {
     fs.rmSync(TEMP_DIR, { recursive: true });
   }
+}
+
+function testableCode(block) {
+  const sdkImports = `
+import * as SDK from 'pdfdancer-client-typescript';
+import {
+  PDFDancer, TextReplaceRequest, TextDeleteRequest, TextInsertRequest, TextStyleRequest,
+  TextLayoutRequest, TextLayoutMode, TextLayoutProfile, PdfColorRequest, PdfColorSpace,
+  Color, Font, PageSize, Orientation, ImageTransformType, FlipDirection, ModifyPathRequest,
+  RateLimitException, PdfDancerException
+} from 'pdfdancer-client-typescript';
+`;
+  const context = `
+declare const pdf: SDK.PDFDancer;
+declare const page: SDK.PageClient;
+declare const image: SDK.ImageObject;
+declare const path: SDK.PathObject;
+declare const form: SDK.FormXObject;
+declare const field: SDK.FormFieldObject;
+declare const response: SDK.TextEditResponse;
+declare const inputBytes: Uint8Array;
+declare const imageBytes: Uint8Array;
+declare const replacementBytes: Uint8Array;
+declare const fontData: Uint8Array;
+declare const request: any;
+declare const selected: any;
+declare const result: any;
+`;
+  const imports = block.match(/^\s*import[^;]+;\s*$/gm) || [];
+  const body = imports.reduce((value, statement) => value.replace(statement, ''), block).trim();
+  if (imports.length) {
+    if (/^\s*(?:export\s+)?(?:class|interface)\s+\w+/m.test(body) || /\b(?:async\s+)?function\s+\w+\s*\(/.test(body)) {
+      return `${imports.join('\n')}\n${body}\n`;
+    }
+    return `${imports.join('\n')}\nimport * as SDK from 'pdfdancer-client-typescript';\n${context}\nasync function docsExample(): Promise<void> {\n${body}\n}\n`;
+  }
+  if (/^\s*(?:export\s+)?(?:class|interface)\s+\w+/m.test(block) || /\b(?:async\s+)?function\s+\w+\s*\(/.test(block)) {
+    return `${sdkImports}\n${block}`;
+  }
+  return `
+import * as fs from 'node:fs';
+${sdkImports}
+${context}
+
+async function docsExample(): Promise<void> {
+${block}
+}
+`;
 }
 
 // Check if tsc is available
@@ -94,7 +144,8 @@ function main() {
   };
   fs.writeFileSync(path.join(TEMP_DIR, 'tsconfig.json'), JSON.stringify(tsconfig, null, 2));
 
-  for (const file of FILES_TO_TEST) {
+  let fileNumber = 0;
+  for (const file of filesToTest()) {
     const filePath = path.join(DOCS_DIR, file);
     if (!fs.existsSync(filePath)) {
       console.error(`File not found: ${filePath}`);
@@ -107,10 +158,10 @@ function main() {
 
     blocks.forEach((block, index) => {
       totalBlocks++;
-      const tsFile = path.join(TEMP_DIR, `example${index + 1}.ts`);
+      const tsFile = path.join(TEMP_DIR, `example${++fileNumber}-${index + 1}.ts`);
 
       // Add the import at the top if needed
-      let code = block;
+      let code = testableCode(block);
 
       fs.writeFileSync(tsFile, code);
 

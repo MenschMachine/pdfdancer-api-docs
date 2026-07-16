@@ -11,7 +11,7 @@ const preferredDocsPath = V2_RELEASED ? '/v2/' : '/v1/';
 
 const config: Config = {
     title: 'PDFDancer SDK Docs',
-    tagline: 'Unified guides for every PDFDancer SDK SDK',
+    tagline: 'Unified guides for every PDFDancer SDK',
     favicon: 'img/favicon.ico',
 
     // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future

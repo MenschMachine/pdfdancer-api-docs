@@ -51,6 +51,23 @@ jobs:
 
           chmod +x external/pdfdancer-client-java/gradlew
 
+          . scripts/docs-v2-sdk-commits.env
+          V2_PYTHON_COMMIT="$PYTHON_COMMIT"
+          V2_TS_COMMIT="$TYPESCRIPT_COMMIT"
+          V2_JAVA_COMMIT="$JAVA_COMMIT"
+          for repo_info in \
+            "pdfdancer-client-python $V2_PYTHON_COMMIT" \
+            "pdfdancer-client-typescript $V2_TS_COMMIT" \
+            "pdfdancer-client-java $V2_JAVA_COMMIT"; do
+            repo=$(echo "$repo_info" | cut -d' ' -f1)
+            commit=$(echo "$repo_info" | cut -d' ' -f2)
+            test -n "$commit"
+            mkdir -p "external-v2/$repo"
+            curl -sL "https://github.com/MenschMachine/$repo/archive/$commit.tar.gz" \
+              | tar xz --strip-components=1 -C "external-v2/$repo"
+          done
+          chmod +x external-v2/pdfdancer-client-java/gradlew
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -60,18 +77,29 @@ jobs:
       - uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '11'
+          java-version: '17'
       - run: npm ci
       - name: Build pinned v1 TypeScript SDK
         run: |
           npm ci --ignore-scripts --prefix external/pdfdancer-client-typescript
           npm run build --prefix external/pdfdancer-client-typescript
+      - name: Build pinned v2 TypeScript SDK
+        run: |
+          npm ci --ignore-scripts --prefix external-v2/pdfdancer-client-typescript
+          npm run build --prefix external-v2/pdfdancer-client-typescript
       - name: Install pinned v1 Python SDK and test dependencies
         run: pip install mktestdocs pytest ./external/pdfdancer-client-python
       - name: Test documentation examples
         env:
           PDFDANCER_TYPESCRIPT_SDK_DIR: external/pdfdancer-client-typescript
         run: npm run test:docs:v1
+      - name: Install pinned v2 Python SDK and test documentation examples
+        env:
+          PDFDANCER_TYPESCRIPT_SDK_DIR: external-v2/pdfdancer-client-typescript
+          PDFDANCER_JAVA_SDK_DIR: external-v2/pdfdancer-client-java
+        run: |
+          pip install --force-reinstall ./external-v2/pdfdancer-client-python
+          npm run test:docs:v2
       - run: npm run build
       - name: Verify versioned routes and search indexes
         run: npm run test:versioning

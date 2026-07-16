@@ -19,9 +19,12 @@
     "test:docs:java": "node scripts/test-java-docs.js",
     "test:docs:examples": "npm run test:docs:ts && npm run test:docs:python && npm run test:docs:java",
     "test:docs:v1": "PDFDANCER_DOCS_DIR=versioned_docs/version-1 npm run test:docs:examples",
-    "test:docs": "npm run test:docs:v1",
+    "test:docs:v2": "PDFDANCER_DOCS_DIR=docs npm run test:docs:examples",
+    "test:docs": "npm run test:docs:v2",
     "test:versioning": "node scripts/test-versioned-build.js",
     "extract:v2-interfaces": "node scripts/extract-v2-interfaces.js",
+    "generate:v2-reference": "node scripts/generate-v2-reference.js",
+    "test:v2-reference": "node scripts/generate-v2-reference.js --check",
     "test:interface-extractor": "node --test tests/interface-extractor.test.js"
   },
   "dependencies": {
@@ -31,7 +34,7 @@
     "@mdx-js/react": "^3.0.0",
     "@pdfdancer/docusaurus-cloudflare-search": "^1.0.0",
     "clsx": "^2.0.0",
-    "pdfdancer-client-typescript": "^2.0.6",
+    "pdfdancer-client-typescript": "github:MenschMachine/pdfdancer-client-typescript#7bd49ac104cc",
     "posthog-docusaurus": "^2.0.5",
     "prism-react-renderer": "^2.3.0",
     "react": "^19.0.0",
@@ -42,6 +45,7 @@
     "@docusaurus/tsconfig": "3.9.1",
     "@docusaurus/types": "3.9.1",
     "baseline-browser-mapping": "^2.9.4",
+    "cheerio": "^1.0.0-rc.12",
     "typescript": "~5.6.2"
   },
   "browserslist": {

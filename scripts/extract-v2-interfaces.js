@@ -5,6 +5,7 @@ const childProcess = require('node:child_process');
 const fs = require('node:fs');
 const os = require('node:os');
 const path = require('node:path');
+const cheerio = require('cheerio');
 const {
   buildDiff,
   normalizeManifest,
@@ -13,7 +14,7 @@ const {
   replaceDirectoryAtomically,
   stableJson,
 } = require('./interface-extractors/core');
-const {parseJavapCollection} = require('./interface-extractors/java');
+const {parseJavapCollection, splitParameters} = require('./interface-extractors/java');
 
 const ROOT = path.resolve(__dirname, '..');
 const MAX_BUFFER = 100 * 1024 * 1024;
@@ -101,7 +102,7 @@ function extractTypeScript(snapshot) {
 function extractJava(snapshot) {
   const gradlew = path.join(snapshot, 'gradlew');
   fs.chmodSync(gradlew, 0o755);
-  command(gradlew, ['jar', '-x', 'test', '--no-daemon'], {cwd: snapshot, quiet: true});
+  command(gradlew, ['jar', 'javadoc', '-x', 'test', '--no-daemon'], {cwd: snapshot, quiet: true});
   const libraries = path.join(snapshot, 'build/libs');
   const jarName = fs.readdirSync(libraries)
     .filter((name) => name.endsWith('.jar') && !name.endsWith('-sources.jar') && !name.endsWith('-javadoc.jar'))
@@ -115,7 +116,57 @@ function extractJava(snapshot) {
     .map((name) => name.slice(0, -6).replaceAll('/', '.'))
     .sort();
   const output = command('javap', ['-public', '-classpath', jarPath, ...classes], {quiet: true});
-  return {symbols: parseJavapCollection(output)};
+  const symbols = parseJavapCollection(output);
+  const javadocRoot = path.join(snapshot, 'build/docs/javadoc');
+  for (const symbol of symbols) attachJavaDocumentation(symbol, javadocRoot);
+  return {symbols};
+}
+
+function javaDocumentationFile(javadocRoot, symbolId) {
+  const separator = symbolId.lastIndexOf('.');
+  const packagePath = symbolId.slice(0, separator).replaceAll('.', '/');
+  const typeName = symbolId.slice(separator + 1).replaceAll('$', '.');
+  return path.join(javadocRoot, packagePath, `${typeName}.html`);
+}
+
+function javadocArity(section) {
+  const id = section.attr('id') || '';
+  const open = id.indexOf('(');
+  const close = id.lastIndexOf(')');
+  if (open === -1 || close === -1) return undefined;
+  return splitParameters(id.slice(open + 1, close)).length;
+}
+
+function cleanJavadocText(value) {
+  return value.replace(/\u00a0/g, ' ').replace(/[ \t]+\n/g, '\n').replace(/\n[ \t]+/g, '\n').replace(/\n{3,}/g, '\n\n').trim();
+}
+
+function attachJavaDocumentation(symbol, javadocRoot) {
+  const file = javaDocumentationFile(javadocRoot, symbol.id);
+  if (!fs.existsSync(file)) return;
+  const $ = cheerio.load(fs.readFileSync(file, 'utf8'));
+  const overview = cleanJavadocText($('section.class-description .block').first().text());
+  if (overview) symbol.description = overview;
+  const descriptions = new Map();
+  $('section.detail').each((_, element) => {
+    const section = $(element);
+    let name = section.find('.element-name').first().text().trim();
+    if (!name) return;
+    if (name === symbol.name.split('$').pop()) name = 'constructor';
+    const description = cleanJavadocText(section.find('.block').first().text());
+    const deprecated = cleanJavadocText(section.find('.deprecation-comment').first().text());
+    if (!description && !deprecated) return;
+    const entries = descriptions.get(name) || [];
+    entries.push({arity: javadocArity(section), description, deprecated});
+    descriptions.set(name, entries);
+  });
+  for (const member of symbol.members) {
+    const entries = descriptions.get(member.name) || [];
+    const documentation = entries.find((entry) => entry.arity === member.arity) || entries[0];
+    if (!documentation) continue;
+    if (documentation.description) member.description = documentation.description;
+    if (documentation.deprecated) member.deprecated = documentation.deprecated;
+  }
 }
 
 function extractLanguage(language, snapshot) {

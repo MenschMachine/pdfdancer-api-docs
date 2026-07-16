@@ -43,7 +43,8 @@
           "arity": 0,
           "static": false
         }
-      ]
+      ],
+      "description": "Minimal replacement for Micronaut's Argument type used for capturing generics."
     },
     {
       "id": "com.pdfdancer.client.http.HttpRequest",
@@ -83,7 +84,8 @@
           "arity": 2,
           "static": true
         }
-      ]
+      ],
+      "description": "Factory for simplified HTTP requests used by the PDFDancer client."
     },
     {
       "id": "com.pdfdancer.client.http.MediaType",
@@ -150,7 +152,8 @@
           "arity": 0,
           "static": false
         }
-      ]
+      ],
+      "description": "Minimal representation of an HTTP media type used by the PDFDancer client.\nProvides constants for the content types used by the REST API."
     },
     {
       "id": "com.pdfdancer.client.http.MultipartBody",
@@ -182,7 +185,8 @@
           "arity": 0,
           "static": false
         }
-      ]
+      ],
+      "description": "Simple multipart body representation used for file uploads."
     },
     {
       "id": "com.pdfdancer.client.http.MultipartBody$Builder",
@@ -382,7 +386,8 @@
           "arity": 0,
           "static": false
         }
-      ]
+      ],
+      "description": "Simplified mutable HTTP request used by the PDFDancer client.\nCaptures method, path, headers, and body without depending on Micronaut classes."
     },
     {
       "id": "com.pdfdancer.client.rest.AnonTokenResponse",
@@ -694,7 +699,8 @@
           "arity": 2,
           "static": false
         }
-      ]
+      ],
+      "description": "Fluent builder for adding a cubic Bezier curve to a PDF page.\n\nCoordinate system: origin bottom-left; units in points (1/72\").\nThe curve is added as a one-segment Path with STROKE painting by default.\n\nStyling: color(Color), lineWidth(double), dash(...), dashWithPhase(...)."
     },
     {
       "id": "com.pdfdancer.client.rest.EnvironmentInfo",
@@ -742,7 +748,8 @@
           "arity": 0,
           "static": false
         }
-      ]
+      ],
+      "description": "Required font is not available to the document session."
     },
     {
       "id": "com.pdfdancer.client.rest.FormFieldReference",
@@ -772,7 +779,8 @@
           "kind": "method",
           "signature": "public java.lang.String getValue()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Gets the current value of this form field.\nAlias for value() to match Python client API."
         },
         {
           "id": "method:isButton",
@@ -934,7 +942,8 @@
           "arity": 0,
           "static": false
         }
-      ]
+      ],
+      "description": "HTTP transport or non-success response failure."
     },
     {
       "id": "com.pdfdancer.client.rest.ImageBuilder",
@@ -1012,7 +1021,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.common.response.CommandResult crop(int, int, int, int)",
           "arity": 4,
-          "static": false
+          "static": false,
+          "description": "Crops this image by trimming pixels from each edge."
         },
         {
           "id": "method:fillRegion",
@@ -1020,7 +1030,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.common.response.CommandResult fillRegion(int, int, int, int, com.pdfdancer.common.model.Color)",
           "arity": 5,
-          "static": false
+          "static": false,
+          "description": "Fills a rectangular pixel region of the image with a solid color."
         },
         {
           "id": "method:flip",
@@ -1028,7 +1039,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.common.response.CommandResult flip(com.pdfdancer.common.request.ImageTransformRequest$FlipDirection)",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Flips this image in the specified direction."
         },
         {
           "id": "method:flipHorizontal",
@@ -1036,7 +1048,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.common.response.CommandResult flipHorizontal()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Flips this image horizontally (mirror left-right)."
         },
         {
           "id": "method:flipVertical",
@@ -1044,7 +1057,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.common.response.CommandResult flipVertical()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Flips this image vertically (mirror top-bottom)."
         },
         {
           "id": "method:getAspectRatio",
@@ -1052,7 +1066,8 @@
           "kind": "method",
           "signature": "public java.lang.Double getAspectRatio()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Returns the aspect ratio (width/height) of the image."
         },
         {
           "id": "method:getHeight",
@@ -1060,7 +1075,8 @@
           "kind": "method",
           "signature": "public java.lang.Double getHeight()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Returns the height of the image from its bounding rect."
         },
         {
           "id": "method:getWidth",
@@ -1068,7 +1084,8 @@
           "kind": "method",
           "signature": "public java.lang.Double getWidth()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Returns the width of the image from its bounding rect."
         },
         {
           "id": "method:opacity",
@@ -1076,7 +1093,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.common.response.CommandResult opacity(double)",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Sets the opacity of this image."
         },
         {
           "id": "method:replace",
@@ -1084,7 +1102,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.common.response.CommandResult replace(com.pdfdancer.common.model.Image)",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Replaces this image with a new image from a file."
         },
         {
           "id": "method:replace",
@@ -1092,7 +1111,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.common.response.CommandResult replace(java.io.File) throws java.io.IOException",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Replaces this image with a new image from a file."
         },
         {
           "id": "method:rotate",
@@ -1100,7 +1120,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.common.response.CommandResult rotate(double)",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Rotates this image by the specified angle."
         },
         {
           "id": "method:scale",
@@ -1108,7 +1129,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.common.response.CommandResult scale(double)",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Scales this image by a factor."
         },
         {
           "id": "method:scaleTo",
@@ -1116,7 +1138,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.common.response.CommandResult scaleTo(com.pdfdancer.common.model.Size, boolean)",
           "arity": 2,
-          "static": false
+          "static": false,
+          "description": "Scales this image to a target size."
         },
         {
           "id": "method:scaleTo",
@@ -1124,7 +1147,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.common.response.CommandResult scaleTo(com.pdfdancer.common.model.Size)",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Scales this image to a target size, preserving aspect ratio."
         },
         {
           "id": "method:scaleTo",
@@ -1132,7 +1156,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.common.response.CommandResult scaleTo(double, double, boolean)",
           "arity": 3,
-          "static": false
+          "static": false,
+          "description": "Scales this image to a target width and height."
         },
         {
           "id": "method:scaleTo",
@@ -1140,9 +1165,11 @@
           "kind": "method",
           "signature": "public com.pdfdancer.common.response.CommandResult scaleTo(double, double)",
           "arity": 2,
-          "static": false
+          "static": false,
+          "description": "Scales this image to a target size."
         }
-      ]
+      ],
+      "description": "Reference to an image in a PDF document with transformation capabilities."
     },
     {
       "id": "com.pdfdancer.client.rest.LineBuilder",
@@ -1156,7 +1183,8 @@
           "kind": "constructor",
           "signature": "public com.pdfdancer.client.rest.LineBuilder(com.pdfdancer.client.rest.PDFDancer, int)",
           "arity": 2,
-          "static": false
+          "static": false,
+          "description": "Creates a builder bound to a specific page."
         },
         {
           "id": "method:add",
@@ -1164,7 +1192,8 @@
           "kind": "method",
           "signature": "public boolean add()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Finalizes the line and adds it to the PDF as a single-segment Path.\n\nValidation: both from(double, double) and to(double, double)\nmust be specified or an IllegalArgumentException is thrown.\n\nEffect: constructs a Path containing one Line segment with the\nconfigured stroke color, width, and optional dash settings, positioned on the\nspecified page."
         },
         {
           "id": "method:color",
@@ -1172,7 +1201,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.client.rest.LineBuilder color(com.pdfdancer.common.model.Color)",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Sets the stroke color.\n\nUses RGBA; alpha < 255 yields semi-transparent strokes, depending on the\nrenderer. If not set, a backend default is used (typically black)."
         },
         {
           "id": "method:dash",
@@ -1180,7 +1210,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.client.rest.LineBuilder dash(double...)",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Sets a dash pattern for the stroke with zero phase (no offset).\n\nThe pattern is interpreted as alternating on/off lengths in user space units,\ne.g., (3, 2) = 3pt on, 2pt off, (10, 5, 2, 5) = dash-dot-like.\nNull or empty pattern means a solid line. Values should be non-negative\nand the pattern should not be all zeros."
         },
         {
           "id": "method:dashWithPhase",
@@ -1188,7 +1219,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.client.rest.LineBuilder dashWithPhase(double, double...)",
           "arity": 2,
-          "static": false
+          "static": false,
+          "description": "Sets a dash pattern with an explicit phase (offset) into the pattern.\n\nPhase is the distance into the pattern at which stroking begins. For a\npattern (10, 5) and phase=5, the first dash is shortened by 5."
         },
         {
           "id": "method:from",
@@ -1196,7 +1228,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.client.rest.LineBuilder from(double, double)",
           "arity": 2,
-          "static": false
+          "static": false,
+          "description": "Sets the start point of the line in page coordinates.\n\nUnits are points (1/72 inch). Origin at bottom-left."
         },
         {
           "id": "method:lineWidth",
@@ -1204,7 +1237,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.client.rest.LineBuilder lineWidth(double)",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Sets the stroke width in points.\n\nA width of 0 produces a device-dependent hairline per PDF spec. For a\nthin but consistent line, use a small positive value like 0.25."
         },
         {
           "id": "method:to",
@@ -1212,9 +1246,11 @@
           "kind": "method",
           "signature": "public com.pdfdancer.client.rest.LineBuilder to(double, double)",
           "arity": 2,
-          "static": false
+          "static": false,
+          "description": "Sets the end point of the line in page coordinates.\n\nUnits are points (1/72 inch). Origin at bottom-left."
         }
-      ]
+      ],
+      "description": "Fluent builder for adding a straight line to a PDF page.\n\nCoordinate system: origin is at the bottom-left of the page, X to the right, Y upwards.\nAll distances are in points (1 point = 1/72 inch). The line is added as a one-segment\nPath with STROKE painting.\n\nStyling options:\n\ncolor(Color) — stroke color (RGBA). Alpha < 255 yields semi-transparency.\nlineWidth(double) — stroke width in points. Width 0 produces a device-dependent\nhairline in PDF; use a small positive value (e.g., 0.25) for a thin but consistent line.\ndash(double...) and dashWithPhase(double, double...) — dash pattern and phase, in user space units.\n\nDefaults: black stroke with a width of 1 point.\n\nThread-safety: instances are not thread-safe. Intended usage is single-threaded, typically as\npart of a fluent chain per line."
     },
     {
       "id": "com.pdfdancer.client.rest.mutation.ModificationService",
@@ -1366,7 +1402,8 @@
           "arity": 1,
           "static": false
         }
-      ]
+      ],
+      "description": "Encapsulates all mutation HTTP operations. Stateless and reusable per session."
     },
     {
       "id": "com.pdfdancer.client.rest.PageApi",
@@ -1420,7 +1457,8 @@
           "kind": "method",
           "signature": "public java.util.Optional<com.pdfdancer.client.rest.FormXObjectReference> selectFormAt(double, double, double)",
           "arity": 3,
-          "static": false
+          "static": false,
+          "description": "Selects a single form XObject at the specified coordinates with custom epsilon tolerance."
         },
         {
           "id": "method:selectFormAt",
@@ -1428,7 +1466,8 @@
           "kind": "method",
           "signature": "public java.util.Optional<com.pdfdancer.client.rest.FormXObjectReference> selectFormAt(double, double)",
           "arity": 2,
-          "static": false
+          "static": false,
+          "description": "Selects a single form XObject at the specified coordinates with default epsilon."
         },
         {
           "id": "method:selectFormFieldAt",
@@ -1436,7 +1475,8 @@
           "kind": "method",
           "signature": "public java.util.Optional<com.pdfdancer.client.rest.FormFieldReference> selectFormFieldAt(double, double, double)",
           "arity": 3,
-          "static": false
+          "static": false,
+          "description": "Selects a single form field at the specified coordinates with custom epsilon tolerance."
         },
         {
           "id": "method:selectFormFieldAt",
@@ -1444,7 +1484,8 @@
           "kind": "method",
           "signature": "public java.util.Optional<com.pdfdancer.client.rest.FormFieldReference> selectFormFieldAt(double, double)",
           "arity": 2,
-          "static": false
+          "static": false,
+          "description": "Selects a single form field at the specified coordinates with default epsilon."
         },
         {
           "id": "method:selectFormFields",
@@ -1500,7 +1541,8 @@
           "kind": "method",
           "signature": "public java.util.Optional<com.pdfdancer.client.rest.ImageReference> selectImageAt(double, double, double)",
           "arity": 3,
-          "static": false
+          "static": false,
+          "description": "Selects a single image at the specified coordinates with custom epsilon tolerance."
         },
         {
           "id": "method:selectImageAt",
@@ -1508,7 +1550,8 @@
           "kind": "method",
           "signature": "public java.util.Optional<com.pdfdancer.client.rest.ImageReference> selectImageAt(double, double)",
           "arity": 2,
-          "static": false
+          "static": false,
+          "description": "Selects a single image at the specified coordinates with default epsilon."
         },
         {
           "id": "method:selectImages",
@@ -1540,7 +1583,8 @@
           "kind": "method",
           "signature": "public java.util.Optional<com.pdfdancer.client.rest.PathReference> selectPathAt(double, double)",
           "arity": 2,
-          "static": false
+          "static": false,
+          "description": "Selects a single path at the specified coordinates."
         },
         {
           "id": "method:selectPaths",
@@ -1566,7 +1610,8 @@
           "arity": 0,
           "static": false
         }
-      ]
+      ],
+      "description": "Page-scoped operations extracted from PDFDancer.PageClient.\nPDFDancer.PageClient becomes a thin wrapper extending this class to preserve API."
     },
     {
       "id": "com.pdfdancer.client.rest.PageBuilder",
@@ -1620,7 +1665,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.client.rest.PageBuilder atPage(int)",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Sets the page number where the new page should be inserted (1-based).\nPage 1 is the first page."
         },
         {
           "id": "method:customSize",
@@ -1756,7 +1802,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.client.rest.PathBuilder circle(double, double, double)",
           "arity": 3,
-          "static": false
+          "static": false,
+          "description": "Adds a circle approximation using four cubic Bezier segments.\nCenter at (cx, cy), radius r, using kappa approximation."
         },
         {
           "id": "method:closePath",
@@ -1764,7 +1811,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.client.rest.PathBuilder closePath()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Closes the current subpath by connecting the current point back to the last moveTo point.\nIf already at the start, no extra segment is added."
         },
         {
           "id": "method:color",
@@ -1836,7 +1884,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.client.rest.PathBuilder rect(double, double, double, double)",
           "arity": 4,
-          "static": false
+          "static": false,
+          "description": "Adds a rectangle path starting at bottom-left (x, y) with given width and height.\nCoordinates are in points; origin is bottom-left of the page."
         },
         {
           "id": "method:solid",
@@ -1846,7 +1895,8 @@
           "arity": 0,
           "static": false
         }
-      ]
+      ],
+      "description": "Fluent builder for constructing a multi-segment Path (lines and cubic Beziers)\nand adding it to a page as a single vector object."
     },
     {
       "id": "com.pdfdancer.client.rest.PathGroupReference",
@@ -1996,7 +2046,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.common.model.Color getFillColor()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Gets the fill color of this path."
         },
         {
           "id": "method:getStrokeColor",
@@ -2004,7 +2055,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.common.model.Color getStrokeColor()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Gets the stroke color of this path."
         }
       ]
     },
@@ -2099,7 +2151,8 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.client.rest.PDFDancer createNew()",
           "arity": 0,
-          "static": true
+          "static": true,
+          "description": "Creates a new PDFDancer client with a blank PDF.\nUses default page size (A4), orientation (PORTRAIT), and page count (1).\nUses the default HTTP client configured for https://api.pdfdancer.com.\nAuthentication:\n- If PDFDANCER_API_TOKEN or PDFDANCER_TOKEN is set, uses it\n- Otherwise, automatically issues an anonymous token and proceeds"
         },
         {
           "id": "method:createNew",
@@ -2107,7 +2160,8 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.client.rest.PDFDancer createNew(com.pdfdancer.common.model.PageSize, com.pdfdancer.common.model.Orientation, int)",
           "arity": 3,
-          "static": true
+          "static": true,
+          "description": "Creates a new PDFDancer client with a blank PDF using custom parameters.\nUses the default HTTP client configured for https://api.pdfdancer.com.\nAuthentication:\n- If PDFDANCER_API_TOKEN or PDFDANCER_TOKEN is set, uses it\n- Otherwise, automatically issues an anonymous token and proceeds"
         },
         {
           "id": "method:createNew",
@@ -2115,7 +2169,8 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.client.rest.PDFDancer createNew(java.lang.String, com.pdfdancer.common.model.PageSize, com.pdfdancer.common.model.Orientation, int, com.pdfdancer.client.rest.PdfDancerHttpClient)",
           "arity": 5,
-          "static": true
+          "static": true,
+          "description": "Creates a new PDFDancer client with a blank PDF using custom HTTP client."
         },
         {
           "id": "method:createNew",
@@ -2123,7 +2178,8 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.client.rest.PDFDancer createNew(java.lang.String, com.pdfdancer.common.model.PageSize, com.pdfdancer.common.model.Orientation, int, java.net.http.HttpClient, java.net.URI)",
           "arity": 6,
-          "static": true
+          "static": true,
+          "description": "Creates a new PDFDancer client with a blank PDF.\nUses default page size (A4), orientation (PORTRAIT), and page count (1).\nUses the default HTTP client configured for https://api.pdfdancer.com.\nAuthentication:\n- If PDFDANCER_API_TOKEN or PDFDANCER_TOKEN is set, uses it\n- Otherwise, automatically issues an anonymous token and proceeds"
         },
         {
           "id": "method:createNew",
@@ -2131,7 +2187,8 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.client.rest.PDFDancer createNew(java.lang.String, com.pdfdancer.common.model.PageSize, com.pdfdancer.common.model.Orientation, int, java.net.http.HttpClient)",
           "arity": 5,
-          "static": true
+          "static": true,
+          "description": "Creates a new PDFDancer client with a blank PDF using custom HTTP client."
         },
         {
           "id": "method:createNew",
@@ -2139,7 +2196,8 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.client.rest.PDFDancer createNew(java.lang.String, com.pdfdancer.common.model.PageSize, com.pdfdancer.common.model.Orientation, int)",
           "arity": 4,
-          "static": true
+          "static": true,
+          "description": "Creates a new PDFDancer client with a blank PDF using custom parameters.\nUses the default HTTP client configured for https://api.pdfdancer.com."
         },
         {
           "id": "method:createSession",
@@ -2147,7 +2205,8 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.client.rest.PDFDancer createSession(java.io.File)",
           "arity": 1,
-          "static": true
+          "static": true,
+          "description": "Creates a new PDFDancer client by uploading an existing PDF file.\nUses the default HTTP client configured for https://api.pdfdancer.com.\nAuthentication:\n- If PDFDANCER_API_TOKEN or PDFDANCER_TOKEN is set, uses it\n- Otherwise, automatically issues an anonymous token and proceeds"
         },
         {
           "id": "method:createSession",
@@ -2155,7 +2214,8 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.client.rest.PDFDancer createSession(java.lang.String, byte[], com.pdfdancer.client.rest.PdfDancerHttpClient)",
           "arity": 3,
-          "static": true
+          "static": true,
+          "description": "Creates a new PDFDancer client by uploading an existing PDF.\nThis method initializes the client, uploads the PDF data to create\na new session, and prepares the client for PDF manipulation operations."
         },
         {
           "id": "method:createSession",
@@ -2163,7 +2223,8 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.client.rest.PDFDancer createSession(java.lang.String, byte[], java.net.http.HttpClient, java.net.URI)",
           "arity": 4,
-          "static": true
+          "static": true,
+          "description": "Creates a new PDFDancer client by uploading an existing PDF file.\nUses the default HTTP client configured for https://api.pdfdancer.com."
         },
         {
           "id": "method:createSession",
@@ -2171,7 +2232,8 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.client.rest.PDFDancer createSession(java.lang.String, byte[], java.net.http.HttpClient)",
           "arity": 3,
-          "static": true
+          "static": true,
+          "description": "Creates a new PDFDancer client by uploading an existing PDF.\nThis method initializes the client, uploads the PDF data to create\na new session, and prepares the client for PDF manipulation operations."
         },
         {
           "id": "method:createSession",
@@ -2179,7 +2241,8 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.client.rest.PDFDancer createSession(java.lang.String, java.io.File)",
           "arity": 2,
-          "static": true
+          "static": true,
+          "description": "Creates a new PDFDancer client by uploading an existing PDF file.\nUses the default HTTP client configured for https://api.pdfdancer.com."
         },
         {
           "id": "method:createSession",
@@ -2187,7 +2250,8 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.client.rest.PDFDancer createSession(java.lang.String)",
           "arity": 1,
-          "static": true
+          "static": true,
+          "description": "Creates a new PDFDancer client by uploading an existing PDF file.\nUses the default HTTP client configured for https://api.pdfdancer.com.\nAuthentication:\n- If PDFDANCER_API_TOKEN or PDFDANCER_TOKEN is set, uses it\n- Otherwise, automatically issues an anonymous token and proceeds"
         },
         {
           "id": "method:deletePage",
@@ -2195,7 +2259,8 @@
           "kind": "method",
           "signature": "public java.lang.Boolean deletePage(com.pdfdancer.common.model.ObjectRef)",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Deletes a page from the PDF document.\nThis method removes the specified page from the document permanently,\nupdating the page numbering for subsequent pages."
         },
         {
           "id": "method:findFonts",
@@ -2211,7 +2276,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.common.response.DocumentSnapshot getDocumentSnapshot()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Retrieves a complete snapshot of the entire PDF document.\nThis method returns all pages with their elements, document metadata,\nand font catalog in a single response, significantly reducing API overhead."
         },
         {
           "id": "method:getDocumentSnapshot",
@@ -2219,7 +2285,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.common.response.DocumentSnapshot getDocumentSnapshot(java.lang.String)",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Retrieves a complete snapshot of the entire PDF document with type filtering.\nOnly elements matching the specified types will be included in the snapshot."
         },
         {
           "id": "method:getFileBytes",
@@ -2227,7 +2294,8 @@
           "kind": "method",
           "signature": "public byte[] getFileBytes()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Downloads the current state of the PDF document with all modifications applied.\nThis method retrieves the complete PDF file as binary data, reflecting\nall changes made during the current session."
         },
         {
           "id": "method:getHttpClient",
@@ -2235,7 +2303,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.client.rest.PdfDancerHttpClient getHttpClient()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Gets the HTTP client used by this PDFDancer instance.\nUseful for testing and creating new instances with the same client."
         },
         {
           "id": "method:getPage",
@@ -2243,7 +2312,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.common.model.ObjectRef getPage(int)",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Retrieves a reference to a specific page by its page number.\nThis method returns an object reference for the specified page,\nenabling targeted page operations."
         },
         {
           "id": "method:getPages",
@@ -2251,7 +2321,8 @@
           "kind": "method",
           "signature": "public java.util.List<com.pdfdancer.common.model.PageRef> getPages()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Retrieves references to all pages in the PDF document.\nThis method returns a list of object references for every page\nin the current document, enabling page-level operations."
         },
         {
           "id": "method:getPageSnapshot",
@@ -2259,7 +2330,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.common.response.PageSnapshot getPageSnapshot(int, java.lang.String)",
           "arity": 2,
-          "static": false
+          "static": false,
+          "description": "Retrieves a snapshot of a single PDF page with type filtering.\nOnly elements matching the specified types will be included in the snapshot."
         },
         {
           "id": "method:getPageSnapshot",
@@ -2267,7 +2339,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.common.response.PageSnapshot getPageSnapshot(int)",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Retrieves a snapshot of a single PDF page.\nThis method returns the page metadata and all elements in a single response."
         },
         {
           "id": "method:getPathGroups",
@@ -2307,7 +2380,8 @@
           "kind": "method",
           "signature": "public boolean movePage(int, int)",
           "arity": 2,
-          "static": false
+          "static": false,
+          "description": "Moves a page from one position to another within the PDF document."
         },
         {
           "id": "method:newBezier",
@@ -2347,7 +2421,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.client.rest.PageBuilder newPage()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Creates a new page builder for fluent page creation."
         },
         {
           "id": "method:newPath",
@@ -2371,7 +2446,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.client.rest.PageBuilder page()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "deprecated": "Use newPage() instead. This method will be removed in a future release."
         },
         {
           "id": "method:page",
@@ -2379,7 +2455,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.client.rest.PDFDancer$PageClient page(int)",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Creates a client for working with a specific page."
         },
         {
           "id": "method:pages",
@@ -2387,7 +2464,8 @@
           "kind": "method",
           "signature": "public java.util.List<com.pdfdancer.client.rest.PDFDancer$PageClient> pages()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Returns page-scoped clients in document order."
         },
         {
           "id": "method:registerFont",
@@ -2419,7 +2497,8 @@
           "kind": "method",
           "signature": "public java.util.Optional<com.pdfdancer.client.rest.FormFieldReference> selectFormFieldByName(java.lang.String)",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Selects a single form field with the specified name."
         },
         {
           "id": "method:selectFormFields",
@@ -2469,7 +2548,8 @@
           "arity": 0,
           "static": false
         }
-      ]
+      ],
+      "description": "REST API client for interacting with the PDFDancer PDF manipulation service.\nThis client provides a convenient Java interface for performing PDF operations\nincluding session management, object searching, manipulation, and retrieval.\nHandles authentication, session lifecycle, and HTTP communication transparently."
     },
     {
       "id": "com.pdfdancer.client.rest.PDFDancer$PageClient",
@@ -2483,7 +2563,8 @@
           "kind": "method",
           "signature": "public boolean delete()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Deletes the current page from the PDF document.\nThis method removes the page at the current pageNumber from the document permanently,\nupdating the page numbering for subsequent pages."
         },
         {
           "id": "method:getPageNumber",
@@ -2611,7 +2692,8 @@
           "kind": "method",
           "signature": "public java.util.Optional selectFormAt(double, double, double)",
           "arity": 3,
-          "static": false
+          "static": false,
+          "description": "Selects a single form XObject at the specified coordinates with custom epsilon tolerance."
         },
         {
           "id": "method:selectFormAt",
@@ -2619,7 +2701,8 @@
           "kind": "method",
           "signature": "public java.util.Optional selectFormAt(double, double)",
           "arity": 2,
-          "static": false
+          "static": false,
+          "description": "Selects a single form XObject at the specified coordinates with default epsilon."
         },
         {
           "id": "method:selectFormFieldAt",
@@ -2627,7 +2710,8 @@
           "kind": "method",
           "signature": "public java.util.Optional selectFormFieldAt(double, double, double)",
           "arity": 3,
-          "static": false
+          "static": false,
+          "description": "Selects a single form field at the specified coordinates with custom epsilon tolerance."
         },
         {
           "id": "method:selectFormFieldAt",
@@ -2635,7 +2719,8 @@
           "kind": "method",
           "signature": "public java.util.Optional selectFormFieldAt(double, double)",
           "arity": 2,
-          "static": false
+          "static": false,
+          "description": "Selects a single form field at the specified coordinates with default epsilon."
         },
         {
           "id": "method:selectFormFieldByName",
@@ -2643,7 +2728,8 @@
           "kind": "method",
           "signature": "public java.util.Optional selectFormFieldByName(java.lang.String)",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Selects a single form field on this page with the specified name."
         },
         {
           "id": "method:selectFormFields",
@@ -2675,7 +2761,8 @@
           "kind": "method",
           "signature": "public java.util.List selectFormFieldsByName(java.lang.String)",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Selects all form fields on this page with the specified name."
         },
         {
           "id": "method:selectForms",
@@ -2715,7 +2802,8 @@
           "kind": "method",
           "signature": "public java.util.Optional selectImageAt(double, double, double)",
           "arity": 3,
-          "static": false
+          "static": false,
+          "description": "Selects a single image at the specified coordinates with custom epsilon tolerance."
         },
         {
           "id": "method:selectImageAt",
@@ -2723,7 +2811,8 @@
           "kind": "method",
           "signature": "public java.util.Optional selectImageAt(double, double)",
           "arity": 2,
-          "static": false
+          "static": false,
+          "description": "Selects a single image at the specified coordinates with default epsilon."
         },
         {
           "id": "method:selectImages",
@@ -2763,7 +2852,8 @@
           "kind": "method",
           "signature": "public java.util.Optional selectPathAt(double, double, double)",
           "arity": 3,
-          "static": false
+          "static": false,
+          "description": "Selects a single path at the specified coordinates."
         },
         {
           "id": "method:selectPathAt",
@@ -2771,7 +2861,8 @@
           "kind": "method",
           "signature": "public java.util.Optional selectPathAt(double, double)",
           "arity": 2,
-          "static": false
+          "static": false,
+          "description": "Selects a single path at the specified coordinates."
         },
         {
           "id": "method:selectPaths",
@@ -2805,7 +2896,8 @@
           "arity": 0,
           "static": false
         }
-      ]
+      ],
+      "description": "Represents operations scoped to a single page of a PDF document.\nProvides type-safe selection methods for images, form fields, and paths."
     },
     {
       "id": "com.pdfdancer.client.rest.PdfDancerClientException",
@@ -2845,7 +2937,8 @@
           "arity": 1,
           "static": false
         }
-      ]
+      ],
+      "description": "Runtime exception used for HTTP or serialization failures in the client."
     },
     {
       "id": "com.pdfdancer.client.rest.PdfDancerException",
@@ -2877,7 +2970,8 @@
           "arity": 1,
           "static": false
         }
-      ]
+      ],
+      "description": "Base runtime exception for all PDFDancer client failures."
     },
     {
       "id": "com.pdfdancer.client.rest.PdfDancerHttpClient",
@@ -2933,7 +3027,8 @@
           "arity": 0,
           "static": false
         }
-      ]
+      ],
+      "description": "Minimal HTTP client abstraction backed by HttpClient that mimics\nthe subset of Micronaut's client API used by the original PDFDancer client.\n\nBy default, clients created without an explicit RetryConfig will use\nRetryConfig.defaultConfig(), which includes retry logic for transient errors\n(429, 503, etc.) with exponential backoff. To disable retries, explicitly pass\nRetryConfig.noRetry() when creating the client."
     },
     {
       "id": "com.pdfdancer.client.rest.PdfDancerHttpClient$Blocking",
@@ -2965,7 +3060,8 @@
           "arity": 2,
           "static": false
         }
-      ]
+      ],
+      "description": "Blocking facade with retrieve helpers mirroring the Micronaut client."
     },
     {
       "id": "com.pdfdancer.client.rest.RateLimitException",
@@ -2989,7 +3085,8 @@
           "arity": 0,
           "static": false
         }
-      ]
+      ],
+      "description": "HTTP 429 response after the configured attempts are exhausted."
     },
     {
       "id": "com.pdfdancer.client.rest.RectangleBuilder",
@@ -3077,7 +3174,8 @@
           "arity": 0,
           "static": false
         }
-      ]
+      ],
+      "description": "Fluent builder for an axis-aligned rectangle on one page."
     },
     {
       "id": "com.pdfdancer.client.rest.RetryConfig",
@@ -3091,7 +3189,8 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.client.rest.RetryConfig$Builder builder()",
           "arity": 0,
-          "static": true
+          "static": true,
+          "description": "Creates a new builder for constructing a RetryConfig."
         },
         {
           "id": "method:defaultConfig",
@@ -3099,7 +3198,8 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.client.rest.RetryConfig defaultConfig()",
           "arity": 0,
-          "static": true
+          "static": true,
+          "description": "Creates a default retry configuration suitable for most scenarios.\n\nDefault settings:\n\nMax attempts: 3 (2 retries)\nInitial delay: 1 second\nBackoff multiplier: 2.0 (exponential backoff)\nMax delay: 5 seconds\nRetryable status codes: 408, 429, 500, 502, 503, 504, 520\nRetry on timeout: true\nRetry on connection error: true"
         },
         {
           "id": "method:getBackoffMultiplier",
@@ -3107,7 +3207,8 @@
           "kind": "method",
           "signature": "public double getBackoffMultiplier()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Gets the backoff multiplier for exponential backoff.\nEach retry delay is calculated as: initialDelay * (backoffMultiplier ^ attempt)"
         },
         {
           "id": "method:getInitialDelay",
@@ -3115,7 +3216,8 @@
           "kind": "method",
           "signature": "public java.time.Duration getInitialDelay()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Gets the initial delay before the first retry."
         },
         {
           "id": "method:getMaxAttempts",
@@ -3123,7 +3225,8 @@
           "kind": "method",
           "signature": "public int getMaxAttempts()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Gets the maximum number of attempts (including the initial request).\nA value of 1 means no retries, 2 means 1 retry, etc."
         },
         {
           "id": "method:getMaxDelay",
@@ -3131,7 +3234,8 @@
           "kind": "method",
           "signature": "public java.time.Duration getMaxDelay()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Gets the maximum delay between retry attempts."
         },
         {
           "id": "method:getRetryableStatusCodes",
@@ -3139,7 +3243,8 @@
           "kind": "method",
           "signature": "public java.util.Set<java.lang.Integer> getRetryableStatusCodes()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Gets the set of HTTP status codes that should trigger a retry."
         },
         {
           "id": "method:isRetryableStatusCode",
@@ -3147,7 +3252,8 @@
           "kind": "method",
           "signature": "public boolean isRetryableStatusCode(int)",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Checks if a specific HTTP status code is retryable."
         },
         {
           "id": "method:isRetryOnConnectionError",
@@ -3155,7 +3261,8 @@
           "kind": "method",
           "signature": "public boolean isRetryOnConnectionError()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Determines if requests should be retried on connection errors (IOException)."
         },
         {
           "id": "method:isRetryOnTimeout",
@@ -3163,7 +3270,8 @@
           "kind": "method",
           "signature": "public boolean isRetryOnTimeout()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Determines if requests should be retried on timeout exceptions."
         },
         {
           "id": "method:noRetry",
@@ -3171,9 +3279,11 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.client.rest.RetryConfig noRetry()",
           "arity": 0,
-          "static": true
+          "static": true,
+          "description": "Creates a default retry configuration with no retries."
         }
-      ]
+      ],
+      "description": "Configuration for HTTP request retry behavior.\n\nThis class defines when and how HTTP requests should be retried on failure.\nIt supports configurable retry attempts, exponential backoff, and selective retrying\nbased on HTTP status codes or exception types.\n\nExample Usage:\n\n// Retry up to 3 times with exponential backoff\nRetryConfig config = RetryConfig.builder()\n.maxAttempts(3)\n.initialDelay(Duration.ofMillis(100))\n.backoffMultiplier(2.0)\n.retryOnStatus(429, 503, 504)\n.build();"
     },
     {
       "id": "com.pdfdancer.client.rest.RetryConfig$Builder",
@@ -3187,7 +3297,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.client.rest.RetryConfig$Builder backoffMultiplier(double)",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Sets the backoff multiplier for exponential backoff.\nMust be at least 1.0."
         },
         {
           "id": "method:build",
@@ -3195,7 +3306,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.client.rest.RetryConfig build()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Builds the RetryConfig instance."
         },
         {
           "id": "method:initialDelay",
@@ -3203,7 +3315,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.client.rest.RetryConfig$Builder initialDelay(java.time.Duration)",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Sets the initial delay before the first retry."
         },
         {
           "id": "method:maxAttempts",
@@ -3211,7 +3324,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.client.rest.RetryConfig$Builder maxAttempts(int)",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Sets the maximum number of attempts (including the initial request).\nMust be at least 1."
         },
         {
           "id": "method:maxDelay",
@@ -3219,7 +3333,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.client.rest.RetryConfig$Builder maxDelay(java.time.Duration)",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Sets the maximum delay between retry attempts."
         },
         {
           "id": "method:retryOnConnectionError",
@@ -3227,7 +3342,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.client.rest.RetryConfig$Builder retryOnConnectionError(boolean)",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Sets whether requests should be retried on connection errors."
         },
         {
           "id": "method:retryOnStatus",
@@ -3235,7 +3351,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.client.rest.RetryConfig$Builder retryOnStatus(int...)",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Adds HTTP status codes that should trigger a retry."
         },
         {
           "id": "method:retryOnTimeout",
@@ -3243,9 +3360,11 @@
           "kind": "method",
           "signature": "public com.pdfdancer.client.rest.RetryConfig$Builder retryOnTimeout(boolean)",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Sets whether requests should be retried on timeout exceptions."
         }
-      ]
+      ],
+      "description": "Builder for constructing RetryConfig instances."
     },
     {
       "id": "com.pdfdancer.client.rest.selection.SelectionService",
@@ -3373,7 +3492,8 @@
           "arity": 3,
           "static": true
         }
-      ]
+      ],
+      "description": "Session lifecycle utilities: issuing anonymous token and creating sessions."
     },
     {
       "id": "com.pdfdancer.client.rest.SessionException",
@@ -3397,7 +3517,8 @@
           "arity": 1,
           "static": false
         }
-      ]
+      ],
+      "description": "Session creation or session-state failure."
     },
     {
       "id": "com.pdfdancer.client.rest.SessionNotFoundException",
@@ -3573,7 +3694,8 @@
           "arity": 1,
           "static": false
         }
-      ]
+      ],
+      "description": "A typed snapshot of the whole document containing pages with elements of type T."
     },
     {
       "id": "com.pdfdancer.client.rest.TypedPageSnapshot",
@@ -3629,7 +3751,8 @@
           "arity": 1,
           "static": false
         }
-      ]
+      ],
+      "description": "A typed snapshot of a single page containing elements of type T."
     },
     {
       "id": "com.pdfdancer.client.rest.ValidationException",
@@ -3645,7 +3768,8 @@
           "arity": 1,
           "static": false
         }
-      ]
+      ],
+      "description": "Invalid client input detected before a request is sent."
     },
     {
       "id": "com.pdfdancer.common.model.BoundingRect",
@@ -3659,7 +3783,8 @@
           "kind": "constructor",
           "signature": "public com.pdfdancer.common.model.BoundingRect(double, double, double, double)",
           "arity": 4,
-          "static": false
+          "static": false,
+          "description": "Creates a bounding rectangle with specified getPosition and dimensions."
         },
         {
           "id": "method:equals",
@@ -3683,7 +3808,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.common.model.Point getOrigin()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Returns the origin point of this bounding rectangle.\nThe origin represents the bottom-left corner in PDF coordinate system."
         },
         {
           "id": "method:getWidth",
@@ -3757,7 +3883,8 @@
           "arity": 0,
           "static": false
         }
-      ]
+      ],
+      "description": "Represents a rectangular area defined by getPosition and dimensions.\nThis class encapsulates bounding box information for PDF objects,\nproviding spatial extent data used for positioning, collision detection,\nand layout operations within PDF documents."
     },
     {
       "id": "com.pdfdancer.common.model.Clipping",
@@ -3771,7 +3898,8 @@
           "kind": "constructor",
           "signature": "public com.pdfdancer.common.model.Clipping()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Default constructor for serialization frameworks."
         },
         {
           "id": "constructor:constructor",
@@ -3779,7 +3907,8 @@
           "kind": "constructor",
           "signature": "public com.pdfdancer.common.model.Clipping(java.lang.String, com.pdfdancer.common.model.Position, com.pdfdancer.common.model.path.PathSegment)",
           "arity": 3,
-          "static": false
+          "static": false,
+          "description": "Creates a clipping region with specified boundary path."
         },
         {
           "id": "method:getClippedPath",
@@ -3787,7 +3916,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.common.model.path.PathSegment getClippedPath()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Returns the path segment defining the clipping boundary."
         },
         {
           "id": "method:setClippedPath",
@@ -3795,9 +3925,11 @@
           "kind": "method",
           "signature": "public void setClippedPath(com.pdfdancer.common.model.path.PathSegment)",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Sets the path segment that defines the clipping boundary."
         }
-      ]
+      ],
+      "description": "Represents a clipping region that masks or limits the visibility of other path segments.\nThis class defines clipping boundaries within PDF documents, controlling which parts\nof underlying content are visible. Clipping regions are defined by path segments\nthat establish the visible area boundaries."
     },
     {
       "id": "com.pdfdancer.common.model.Color",
@@ -3811,7 +3943,8 @@
           "kind": "constructor",
           "signature": "public com.pdfdancer.common.model.Color()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Default constructor creating a transparent black color."
         },
         {
           "id": "constructor:constructor",
@@ -3819,7 +3952,8 @@
           "kind": "constructor",
           "signature": "public com.pdfdancer.common.model.Color(int, int, int, int)",
           "arity": 4,
-          "static": false
+          "static": false,
+          "description": "Creates a color with specified RGBA values."
         },
         {
           "id": "constructor:constructor",
@@ -3827,7 +3961,8 @@
           "kind": "constructor",
           "signature": "public com.pdfdancer.common.model.Color(int, int, int)",
           "arity": 3,
-          "static": false
+          "static": false,
+          "description": "Creates an opaque color with specified RGB values.\nAlpha is automatically atPosition to 255 (fully opaque)."
         },
         {
           "id": "field:BLACK",
@@ -3936,7 +4071,8 @@
           "kind": "method",
           "signature": "public java.lang.String toHex()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Converts the RGB components to a hexadecimal color string.\nThis method generates a standard hex color representation (e.g., #FF0000 for red)\nthat can be used in web contexts or other color representations.\nNote: Alpha component is not included in the hex representation."
         },
         {
           "id": "method:toString",
@@ -3946,7 +4082,8 @@
           "arity": 0,
           "static": false
         }
-      ]
+      ],
+      "description": "Represents color information using RGBA (Red, Green, Blue, Alpha) color model.\nThis class encapsulates color data for PDF objects, supporting both opaque and\ntransparent colors with integer values ranging from 0-255 for each component.\nProvides convenient constructors and utility methods for color manipulation."
     },
     {
       "id": "com.pdfdancer.common.model.DocumentFontInfoDto",
@@ -4072,7 +4209,8 @@
           "kind": "constructor",
           "signature": "public com.pdfdancer.common.model.Font()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Default constructor creating an uninitialized font."
         },
         {
           "id": "constructor:constructor",
@@ -4080,7 +4218,8 @@
           "kind": "constructor",
           "signature": "public com.pdfdancer.common.model.Font(java.lang.String, double, boolean)",
           "arity": 3,
-          "static": false
+          "static": false,
+          "description": "Creates a font with specified name and size, using regular styling."
         },
         {
           "id": "constructor:constructor",
@@ -4088,7 +4227,8 @@
           "kind": "constructor",
           "signature": "public com.pdfdancer.common.model.Font(java.lang.String, double)",
           "arity": 2,
-          "static": false
+          "static": false,
+          "description": "Default constructor creating an uninitialized font."
         },
         {
           "id": "method:getName",
@@ -4138,7 +4278,8 @@
           "arity": 1,
           "static": false
         }
-      ]
+      ],
+      "description": "Represents font properties for text rendering in PDF documents.\nThis class encapsulates font characteristics including typeface name, size,\nand styling attributes such as bold, italic, and underline formatting.\nUsed throughout the API for consistent text formatting and style management."
     },
     {
       "id": "com.pdfdancer.common.model.FontRecommendationDto",
@@ -4237,7 +4378,8 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.common.model.FontType valueOf(java.lang.String)",
           "arity": 1,
-          "static": true
+          "static": true,
+          "description": "Returns the enum constant of this class with the specified name.\nThe string must match exactly an identifier used to declare an\nenum constant in this class.  (Extraneous whitespace characters are\nnot permitted.)"
         },
         {
           "id": "method:values",
@@ -4245,7 +4387,8 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.common.model.FontType[] values()",
           "arity": 0,
-          "static": true
+          "static": true,
+          "description": "Returns an array containing the constants of this enum class, in\nthe order they are declared."
         }
       ]
     },
@@ -4261,7 +4404,8 @@
           "kind": "constructor",
           "signature": "public com.pdfdancer.common.model.Form()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Default constructor for serialization frameworks."
         },
         {
           "id": "constructor:constructor",
@@ -4269,7 +4413,8 @@
           "kind": "constructor",
           "signature": "public com.pdfdancer.common.model.Form(java.lang.String, java.lang.String, com.pdfdancer.common.model.Form$FormType, com.pdfdancer.common.model.Position, com.pdfdancer.common.model.Size)",
           "arity": 5,
-          "static": false
+          "static": false,
+          "description": "Creates a form field with specified properties."
         },
         {
           "id": "method:getFont",
@@ -4351,7 +4496,8 @@
           "arity": 1,
           "static": false
         }
-      ]
+      ],
+      "description": "Represents an interactive form field within a PDF document.\nThis class encapsulates form field properties including type, value, appearance,\nand behavior for various interactive PDF form elements such as text fields,\ncheckboxes, radio buttons, and dropdowns."
     },
     {
       "id": "com.pdfdancer.common.model.Form$FormType",
@@ -4364,35 +4510,40 @@
           "name": "BUTTON",
           "kind": "enum-value",
           "signature": "public static final com.pdfdancer.common.model.Form$FormType BUTTON",
-          "static": true
+          "static": true,
+          "description": "Clickable button element"
         },
         {
           "id": "enum-value:CHECKBOX",
           "name": "CHECKBOX",
           "kind": "enum-value",
           "signature": "public static final com.pdfdancer.common.model.Form$FormType CHECKBOX",
-          "static": true
+          "static": true,
+          "description": "Checkbox for binary selections"
         },
         {
           "id": "enum-value:DROPDOWN",
           "name": "DROPDOWN",
           "kind": "enum-value",
           "signature": "public static final com.pdfdancer.common.model.Form$FormType DROPDOWN",
-          "static": true
+          "static": true,
+          "description": "Dropdown list with selectable options"
         },
         {
           "id": "enum-value:RADIO_BUTTON",
           "name": "RADIO_BUTTON",
           "kind": "enum-value",
           "signature": "public static final com.pdfdancer.common.model.Form$FormType RADIO_BUTTON",
-          "static": true
+          "static": true,
+          "description": "Radio button for mutually exclusive selections"
         },
         {
           "id": "enum-value:TEXT_FIELD",
           "name": "TEXT_FIELD",
           "kind": "enum-value",
           "signature": "public static final com.pdfdancer.common.model.Form$FormType TEXT_FIELD",
-          "static": true
+          "static": true,
+          "description": "Single-line or multi-line text input field"
         },
         {
           "id": "method:valueOf",
@@ -4400,7 +4551,8 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.common.model.Form$FormType valueOf(java.lang.String)",
           "arity": 1,
-          "static": true
+          "static": true,
+          "description": "Returns the enum constant of this class with the specified name.\nThe string must match exactly an identifier used to declare an\nenum constant in this class.  (Extraneous whitespace characters are\nnot permitted.)"
         },
         {
           "id": "method:values",
@@ -4408,9 +4560,11 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.common.model.Form$FormType[] values()",
           "arity": 0,
-          "static": true
+          "static": true,
+          "description": "Returns an array containing the constants of this enum class, in\nthe order they are declared."
         }
-      ]
+      ],
+      "description": "Enumeration of supported PDF form field types."
     },
     {
       "id": "com.pdfdancer.common.model.FormFieldRef",
@@ -4456,7 +4610,8 @@
           "kind": "constructor",
           "signature": "public com.pdfdancer.common.model.Image()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Default constructor for serialization frameworks."
         },
         {
           "id": "constructor:constructor",
@@ -4464,7 +4619,8 @@
           "kind": "constructor",
           "signature": "public com.pdfdancer.common.model.Image(java.lang.String, java.lang.String, com.pdfdancer.common.model.Size, com.pdfdancer.common.model.Position, byte[])",
           "arity": 5,
-          "static": false
+          "static": false,
+          "description": "Creates an image with specified properties and data."
         },
         {
           "id": "method:fromFile",
@@ -4472,7 +4628,8 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.common.model.Image fromFile(java.io.File) throws java.io.IOException",
           "arity": 1,
-          "static": true
+          "static": true,
+          "description": "Creates an Image object by loading data from a file.\nThis factory method reads image file data, extracts format and dimension\ninformation, and creates a complete Image object ready for PDF integration."
         },
         {
           "id": "method:getData",
@@ -4522,7 +4679,8 @@
           "arity": 1,
           "static": false
         }
-      ]
+      ],
+      "description": "Represents an image object within a PDF document.\nThis class encapsulates image data, format information, and dimensional properties\nfor embedded or overlaid images in PDF documents. Supports various image formats\nand provides utilities for loading images from files."
     },
     {
       "id": "com.pdfdancer.common.model.ObjectRef",
@@ -4536,7 +4694,8 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.common.model.ObjectRef create(java.lang.String, com.pdfdancer.common.model.Position, com.pdfdancer.common.model.ObjectType, com.pdfdancer.common.model.ObjectType)",
           "arity": 4,
-          "static": true
+          "static": true,
+          "description": "Creates a new object reference with the specified properties.\nThis constructor initializes all the essential information needed\nto identify and work with a PDF object through the API."
         },
         {
           "id": "method:getInternalId",
@@ -4544,7 +4703,8 @@
           "kind": "method",
           "signature": "public java.lang.String getInternalId()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Returns the internal identifier for the referenced object."
         },
         {
           "id": "method:getObjectRefType",
@@ -4560,7 +4720,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.common.model.Position getPosition()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Returns the current getPosition information for the referenced object."
         },
         {
           "id": "method:getType",
@@ -4568,7 +4729,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.common.model.ObjectType getType()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Returns the type classification of the referenced object."
         },
         {
           "id": "method:setPosition",
@@ -4576,9 +4738,11 @@
           "kind": "method",
           "signature": "public void setPosition(com.pdfdancer.common.model.Position)",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Updates the getPosition information for the referenced object.\nThis method allows updating the object's spatial information\nas it may change through move operations."
         }
-      ]
+      ],
+      "description": "Lightweight reference to a PDF object providing identity and type information.\nObject references enable efficient API operations by providing a way to identify\nand reference PDF objects without transferring their complete content.\nThis design pattern reduces payload sizes and improves performance for\noperations that only need object identification and basic properties."
     },
     {
       "id": "com.pdfdancer.common.model.ObjectType",
@@ -4591,7 +4755,8 @@
           "name": "BEZIER",
           "kind": "enum-value",
           "signature": "public static final com.pdfdancer.common.model.ObjectType BEZIER",
-          "static": true
+          "static": true,
+          "description": "Bezier curve path element"
         },
         {
           "id": "enum-value:BUTTON",
@@ -4612,7 +4777,8 @@
           "name": "CLIPPING",
           "kind": "enum-value",
           "signature": "public static final com.pdfdancer.common.model.ObjectType CLIPPING",
-          "static": true
+          "static": true,
+          "description": "Clipping region or mask"
         },
         {
           "id": "enum-value:DROPDOWN",
@@ -4626,49 +4792,56 @@
           "name": "FORM_FIELD",
           "kind": "enum-value",
           "signature": "public static final com.pdfdancer.common.model.ObjectType FORM_FIELD",
-          "static": true
+          "static": true,
+          "description": "Interactive acroform field element"
         },
         {
           "id": "enum-value:FORM_X_OBJECT",
           "name": "FORM_X_OBJECT",
           "kind": "enum-value",
           "signature": "public static final com.pdfdancer.common.model.ObjectType FORM_X_OBJECT",
-          "static": true
+          "static": true,
+          "description": "FormXObject container"
         },
         {
           "id": "enum-value:IMAGE",
           "name": "IMAGE",
           "kind": "enum-value",
           "signature": "public static final com.pdfdancer.common.model.ObjectType IMAGE",
-          "static": true
+          "static": true,
+          "description": "Embedded image or graphics element"
         },
         {
           "id": "enum-value:LINE",
           "name": "LINE",
           "kind": "enum-value",
           "signature": "public static final com.pdfdancer.common.model.ObjectType LINE",
-          "static": true
+          "static": true,
+          "description": "Linear path segment"
         },
         {
           "id": "enum-value:PAGE",
           "name": "PAGE",
           "kind": "enum-value",
           "signature": "public static final com.pdfdancer.common.model.ObjectType PAGE",
-          "static": true
+          "static": true,
+          "description": "Individual page within the PDF document"
         },
         {
           "id": "enum-value:PATH",
           "name": "PATH",
           "kind": "enum-value",
           "signature": "public static final com.pdfdancer.common.model.ObjectType PATH",
-          "static": true
+          "static": true,
+          "description": "Vector path or shape element"
         },
         {
           "id": "enum-value:PDF",
           "name": "PDF",
           "kind": "enum-value",
           "signature": "public static final com.pdfdancer.common.model.ObjectType PDF",
-          "static": true
+          "static": true,
+          "description": "Root PDF document object containing all pages and metadata"
         },
         {
           "id": "enum-value:RADIO_BUTTON",
@@ -4682,14 +4855,16 @@
           "name": "RECTANGLE",
           "kind": "enum-value",
           "signature": "public static final com.pdfdancer.common.model.ObjectType RECTANGLE",
-          "static": true
+          "static": true,
+          "description": "Rectangular shape element"
         },
         {
           "id": "enum-value:TEXT_ELEMENT",
           "name": "TEXT_ELEMENT",
           "kind": "enum-value",
           "signature": "public static final com.pdfdancer.common.model.ObjectType TEXT_ELEMENT",
-          "static": true
+          "static": true,
+          "description": "Single character or glyph element"
         },
         {
           "id": "enum-value:TEXT_FIELD",
@@ -4718,7 +4893,8 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.common.model.ObjectType valueOf(java.lang.String)",
           "arity": 1,
-          "static": true
+          "static": true,
+          "description": "Returns the enum constant of this class with the specified name.\nThe string must match exactly an identifier used to declare an\nenum constant in this class.  (Extraneous whitespace characters are\nnot permitted.)"
         },
         {
           "id": "method:values",
@@ -4726,9 +4902,11 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.common.model.ObjectType[] values()",
           "arity": 0,
-          "static": true
+          "static": true,
+          "description": "Returns an array containing the constants of this enum class, in\nthe order they are declared."
         }
-      ]
+      ],
+      "description": "Enumeration of PDF object types supported by the PDFDancer API.\nThis enum categorizes the different types of objects that can exist within\na PDF document, enabling type-safe operations and filtering across the API.\nEach type represents a distinct category of PDF content with specific\nmanipulation capabilities and properties."
     },
     {
       "id": "com.pdfdancer.common.model.Orientation",
@@ -4741,14 +4919,16 @@
           "name": "LANDSCAPE",
           "kind": "enum-value",
           "signature": "public static final com.pdfdancer.common.model.Orientation LANDSCAPE",
-          "static": true
+          "static": true,
+          "description": "Landscape orientation (width > height)"
         },
         {
           "id": "enum-value:PORTRAIT",
           "name": "PORTRAIT",
           "kind": "enum-value",
           "signature": "public static final com.pdfdancer.common.model.Orientation PORTRAIT",
-          "static": true
+          "static": true,
+          "description": "Portrait orientation (height > width)"
         },
         {
           "id": "method:valueOf",
@@ -4756,7 +4936,8 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.common.model.Orientation valueOf(java.lang.String)",
           "arity": 1,
-          "static": true
+          "static": true,
+          "description": "Returns the enum constant of this class with the specified name.\nThe string must match exactly an identifier used to declare an\nenum constant in this class.  (Extraneous whitespace characters are\nnot permitted.)"
         },
         {
           "id": "method:values",
@@ -4764,9 +4945,11 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.common.model.Orientation[] values()",
           "arity": 0,
-          "static": true
+          "static": true,
+          "description": "Returns an array containing the constants of this enum class, in\nthe order they are declared."
         }
-      ]
+      ],
+      "description": "Enumeration of page orientations."
     },
     {
       "id": "com.pdfdancer.common.model.Page",
@@ -4780,7 +4963,8 @@
           "kind": "constructor",
           "signature": "public com.pdfdancer.common.model.Page()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Default constructor for serialization frameworks.\nCreates an uninitialized page that should be populated with content."
         },
         {
           "id": "constructor:constructor",
@@ -4788,7 +4972,8 @@
           "kind": "constructor",
           "signature": "public com.pdfdancer.common.model.Page(java.lang.String, int, com.pdfdancer.common.model.PageSize)",
           "arity": 3,
-          "static": false
+          "static": false,
+          "description": "Creates a page with essential identification and dimensional properties.\nThis constructor initializes the fundamental page characteristics,\nwith content elements to be added separately."
         },
         {
           "id": "method:getForms",
@@ -4804,7 +4989,8 @@
           "kind": "method",
           "signature": "public java.lang.String getId()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Description copied from class: PDFObject"
         },
         {
           "id": "method:getImages",
@@ -4836,7 +5022,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.common.model.Position getPosition()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Description copied from class: PDFObject"
         },
         {
           "id": "method:getSize",
@@ -4860,7 +5047,8 @@
           "kind": "method",
           "signature": "public void setId(java.lang.String)",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Description copied from class: PDFObject"
         },
         {
           "id": "method:setImages",
@@ -4892,7 +5080,8 @@
           "kind": "method",
           "signature": "public void setPosition(com.pdfdancer.common.model.Position)",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Description copied from class: PDFObject"
         },
         {
           "id": "method:setSize",
@@ -4908,7 +5097,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.common.model.ObjectRef toObjectRef()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Creates an object reference for this page.\nThis method generates a lightweight reference that can be used\nin API operations to identify this page without transferring\nits complete content structure."
         },
         {
           "id": "method:toObjectRef",
@@ -4916,9 +5106,11 @@
           "kind": "method",
           "signature": "public com.pdfdancer.common.model.PageRef toObjectRef()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Creates an object reference for this page.\nThis method generates a lightweight reference that can be used\nin API operations to identify this page without transferring\nits complete content structure."
         }
-      ]
+      ],
+      "description": "Represents a single page within a PDF document, containing all content elements.\nThis class encapsulates a complete page structure including text, images, forms,\nand vector graphics, providing a comprehensive view of page content for\nmanipulation and analysis operations."
     },
     {
       "id": "com.pdfdancer.common.model.PageRef",
@@ -4964,7 +5156,8 @@
           "kind": "constructor",
           "signature": "public com.pdfdancer.common.model.PageSize()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Default constructor for serialization."
         },
         {
           "id": "constructor:constructor",
@@ -4972,7 +5165,8 @@
           "kind": "constructor",
           "signature": "public com.pdfdancer.common.model.PageSize(double, double)",
           "arity": 2,
-          "static": false
+          "static": false,
+          "description": "Creates a page size with specified dimensions."
         },
         {
           "id": "constructor:constructor",
@@ -4980,112 +5174,128 @@
           "kind": "constructor",
           "signature": "public com.pdfdancer.common.model.PageSize(java.lang.String, double, double)",
           "arity": 3,
-          "static": false
+          "static": false,
+          "description": "Creates a page size with name and dimensions."
         },
         {
           "id": "field:A0",
           "name": "A0",
           "kind": "field",
           "signature": "public static final com.pdfdancer.common.model.PageSize A0",
-          "static": true
+          "static": true,
+          "description": "ISO A0 size (841mm x 1189mm = 2384 x 3370 points)"
         },
         {
           "id": "field:A1",
           "name": "A1",
           "kind": "field",
           "signature": "public static final com.pdfdancer.common.model.PageSize A1",
-          "static": true
+          "static": true,
+          "description": "ISO A1 size (594mm x 841mm = 1684 x 2384 points)"
         },
         {
           "id": "field:A2",
           "name": "A2",
           "kind": "field",
           "signature": "public static final com.pdfdancer.common.model.PageSize A2",
-          "static": true
+          "static": true,
+          "description": "ISO A2 size (420mm x 594mm = 1191 x 1684 points)"
         },
         {
           "id": "field:A3",
           "name": "A3",
           "kind": "field",
           "signature": "public static final com.pdfdancer.common.model.PageSize A3",
-          "static": true
+          "static": true,
+          "description": "ISO A3 size (297mm x 420mm = 842 x 1191 points)"
         },
         {
           "id": "field:A4",
           "name": "A4",
           "kind": "field",
           "signature": "public static final com.pdfdancer.common.model.PageSize A4",
-          "static": true
+          "static": true,
+          "description": "ISO A4 size (210mm x 297mm = 595 x 842 points)"
         },
         {
           "id": "field:A5",
           "name": "A5",
           "kind": "field",
           "signature": "public static final com.pdfdancer.common.model.PageSize A5",
-          "static": true
+          "static": true,
+          "description": "ISO A5 size (148mm x 210mm = 420 x 595 points)"
         },
         {
           "id": "field:A6",
           "name": "A6",
           "kind": "field",
           "signature": "public static final com.pdfdancer.common.model.PageSize A6",
-          "static": true
+          "static": true,
+          "description": "ISO A6 size (105mm x 148mm = 298 x 420 points)"
         },
         {
           "id": "field:B4",
           "name": "B4",
           "kind": "field",
           "signature": "public static final com.pdfdancer.common.model.PageSize B4",
-          "static": true
+          "static": true,
+          "description": "ISO B4 size (250mm x 353mm = 709 x 1001 points)"
         },
         {
           "id": "field:B5",
           "name": "B5",
           "kind": "field",
           "signature": "public static final com.pdfdancer.common.model.PageSize B5",
-          "static": true
+          "static": true,
+          "description": "ISO B5 size (176mm x 250mm = 499 x 709 points)"
         },
         {
           "id": "field:EXECUTIVE",
           "name": "EXECUTIVE",
           "kind": "field",
           "signature": "public static final com.pdfdancer.common.model.PageSize EXECUTIVE",
-          "static": true
+          "static": true,
+          "description": "US Executive size (7.25\" x 10.5\" = 522 x 756 points)"
         },
         {
           "id": "field:INDEX_3X5",
           "name": "INDEX_3X5",
           "kind": "field",
           "signature": "public static final com.pdfdancer.common.model.PageSize INDEX_3X5",
-          "static": true
+          "static": true,
+          "description": "Index Card 3x5 size (3\" x 5\" = 216 x 360 points)"
         },
         {
           "id": "field:LEGAL",
           "name": "LEGAL",
           "kind": "field",
           "signature": "public static final com.pdfdancer.common.model.PageSize LEGAL",
-          "static": true
+          "static": true,
+          "description": "US Legal size (8.5\" x 14\" = 612 x 1008 points)"
         },
         {
           "id": "field:LETTER",
           "name": "LETTER",
           "kind": "field",
           "signature": "public static final com.pdfdancer.common.model.PageSize LETTER",
-          "static": true
+          "static": true,
+          "description": "US Letter size (8.5\" x 11\" = 612 x 792 points)"
         },
         {
           "id": "field:POSTCARD",
           "name": "POSTCARD",
           "kind": "field",
           "signature": "public static final com.pdfdancer.common.model.PageSize POSTCARD",
-          "static": true
+          "static": true,
+          "description": "Postcard size (4\" x 6\" = 288 x 432 points)"
         },
         {
           "id": "field:TABLOID",
           "name": "TABLOID",
           "kind": "field",
           "signature": "public static final com.pdfdancer.common.model.PageSize TABLOID",
-          "static": true
+          "static": true,
+          "description": "US Tabloid/Ledger size (11\" x 17\" = 792 x 1224 points)"
         },
         {
           "id": "method:custom",
@@ -5093,7 +5303,8 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.common.model.PageSize custom(double, double)",
           "arity": 2,
-          "static": true
+          "static": true,
+          "description": "Creates a custom page size with specified dimensions in points."
         },
         {
           "id": "method:equals",
@@ -5183,7 +5394,8 @@
           "arity": 1,
           "static": false
         }
-      ]
+      ],
+      "description": "Represents PDF page dimensions, supporting both standard sizes and custom dimensions.\nDimensions are specified in points (1/72 inch)."
     },
     {
       "id": "com.pdfdancer.common.model.path.Bezier",
@@ -5197,7 +5409,8 @@
           "kind": "constructor",
           "signature": "public com.pdfdancer.common.model.path.Bezier()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Default constructor for deserialization."
         },
         {
           "id": "constructor:constructor",
@@ -5205,7 +5418,8 @@
           "kind": "constructor",
           "signature": "public com.pdfdancer.common.model.path.Bezier(com.pdfdancer.common.model.Point, com.pdfdancer.common.model.Point, com.pdfdancer.common.model.Point, com.pdfdancer.common.model.Point)",
           "arity": 4,
-          "static": false
+          "static": false,
+          "description": "Creates a cubic Bezier curve with the specified control points."
         },
         {
           "id": "method:evaluate",
@@ -5213,7 +5427,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.common.model.Point evaluate(double)",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Evaluates a point on the Bezier curve for the given parameter value.\nThis method uses the cubic Bezier mathematical formula to calculate\nthe exact coordinates at any point along the curve."
         },
         {
           "id": "method:getP0",
@@ -5221,7 +5436,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.common.model.Point getP0()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Returns the starting point p0 of this Bezier segment."
         },
         {
           "id": "method:getP1",
@@ -5229,7 +5445,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.common.model.Point getP1()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Returns the first control point p1 of this Bezier segment."
         },
         {
           "id": "method:getP2",
@@ -5237,7 +5454,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.common.model.Point getP2()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Returns the second control point p2 of this Bezier segment."
         },
         {
           "id": "method:getP3",
@@ -5245,7 +5463,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.common.model.Point getP3()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Returns the ending point p3 of this Bezier segment."
         },
         {
           "id": "method:setP0",
@@ -5279,7 +5498,8 @@
           "arity": 1,
           "static": false
         }
-      ]
+      ],
+      "description": "Represents a cubic Bezier curve path segment defined by four control points.\nThis class implements a cubic Bezier curve with start point, two control points,\nand end point, providing smooth curved path segments for complex vector graphics.\nIncludes mathematical evaluation methods for point calculation along the curve."
     },
     {
       "id": "com.pdfdancer.common.model.path.Line",
@@ -5293,7 +5513,8 @@
           "kind": "constructor",
           "signature": "public com.pdfdancer.common.model.path.Line()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Default constructor for deserialization."
         },
         {
           "id": "constructor:constructor",
@@ -5301,7 +5522,8 @@
           "kind": "constructor",
           "signature": "public com.pdfdancer.common.model.path.Line(com.pdfdancer.common.model.Point, com.pdfdancer.common.model.Point)",
           "arity": 2,
-          "static": false
+          "static": false,
+          "description": "Creates a line segment between the specified points."
         },
         {
           "id": "method:getP0",
@@ -5309,7 +5531,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.common.model.Point getP0()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Returns the starting point of this line segment."
         },
         {
           "id": "method:getP1",
@@ -5317,7 +5540,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.common.model.Point getP1()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Returns the ending point of this line segment."
         },
         {
           "id": "method:setP0",
@@ -5335,7 +5559,8 @@
           "arity": 1,
           "static": false
         }
-      ]
+      ],
+      "description": "Represents a straight line path segment between two points.\nThis class defines a linear path element connecting two coordinate points,\ncommonly used in vector graphics and geometric shapes within PDF documents."
     },
     {
       "id": "com.pdfdancer.common.model.path.Path",
@@ -5357,7 +5582,8 @@
           "kind": "method",
           "signature": "public void addPathSegment(com.pdfdancer.common.model.path.PathSegment)",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Adds a new path segment to this path.\nSegments are added in sequence and contribute to the overall path shape."
         },
         {
           "id": "method:getEvenOddFill",
@@ -5365,7 +5591,8 @@
           "kind": "method",
           "signature": "public java.lang.Boolean getEvenOddFill()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Returns whether even-odd fill rule should be used (true) or nonzero (false). Null means default (nonzero)."
         },
         {
           "id": "method:getPathSegments",
@@ -5373,7 +5600,8 @@
           "kind": "method",
           "signature": "public java.util.List<com.pdfdancer.common.model.path.PathSegment> getPathSegments()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Returns the list of path segments that compose this path."
         },
         {
           "id": "method:getPosition",
@@ -5381,7 +5609,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.common.model.Position getPosition()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Calculates the getPosition of this path based on its constituent segments.\nThis method determines the path's getPosition by finding the leftmost X coordinate\nand topmost Y coordinate from all path segments, representing the path's origin."
         },
         {
           "id": "method:setEvenOddFill",
@@ -5389,7 +5618,8 @@
           "kind": "method",
           "signature": "public void setEvenOddFill(java.lang.Boolean)",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Sets the fill rule for this path. If true, uses even-odd; if false, nonzero; if null, defaults to nonzero."
         },
         {
           "id": "method:setPathSegments",
@@ -5397,7 +5627,8 @@
           "kind": "method",
           "signature": "public void setPathSegments(java.util.List<com.pdfdancer.common.model.path.PathSegment>)",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Sets the path segments for this path.\nUsed for deserialization."
         },
         {
           "id": "method:setPosition",
@@ -5405,9 +5636,11 @@
           "kind": "method",
           "signature": "public void setPosition(com.pdfdancer.common.model.Position)",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Position setting is not supported for complex paths.\nPath getPosition is automatically calculated from constituent segments."
         }
-      ]
+      ],
+      "description": "Represents a complex vector path consisting of multiple path segments.\nThis class encapsulates vector graphics data within PDF documents,\ncomposed of various path elements like lines, curves, and shapes.\nProvides automatic getPosition calculation based on constituent segments."
     },
     {
       "id": "com.pdfdancer.common.model.path.PathSegment",
@@ -5421,7 +5654,8 @@
           "kind": "constructor",
           "signature": "public com.pdfdancer.common.model.path.PathSegment()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Default constructor for serialization frameworks."
         },
         {
           "id": "constructor:constructor",
@@ -5429,7 +5663,8 @@
           "kind": "constructor",
           "signature": "public com.pdfdancer.common.model.path.PathSegment(java.lang.String, com.pdfdancer.common.model.Color, com.pdfdancer.common.model.Color, double, com.pdfdancer.common.model.Position)",
           "arity": 5,
-          "static": false
+          "static": false,
+          "description": "Creates a path segment with specified styling and getPosition properties."
         },
         {
           "id": "method:getDashArray",
@@ -5511,7 +5746,8 @@
           "arity": 1,
           "static": false
         }
-      ]
+      ],
+      "description": "Abstract base class for individual path segments within vector paths.\nThis class provides common properties for path elements including stroke and fill\ncolors, line width, and positioning. Concrete subclasses implement specific\ngeometric shapes like lines, curves, and bezier segments."
     },
     {
       "id": "com.pdfdancer.common.model.PathGroupInfo",
@@ -5647,7 +5883,8 @@
           "arity": 0,
           "static": false
         }
-      ]
+      ],
+      "description": "Lightweight reference to a PDF path object providing identity, type, and styling information.\nObject references enable efficient API operations by providing a way to identify\nand reference PDF objects without transferring their complete content.\nThis design pattern reduces payload sizes and improves performance for\noperations that only need object identification and basic properties."
     },
     {
       "id": "com.pdfdancer.common.model.PdfAffineTransform",
@@ -5725,7 +5962,8 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.common.model.PdfAffineTransform fromPdfMatrix(double[])",
           "arity": 1,
-          "static": true
+          "static": true,
+          "description": "Creates a transform from coefficients in PDF [a,b,c,d,e,f] order."
         },
         {
           "id": "method:hashCode",
@@ -5741,7 +5979,8 @@
           "kind": "method",
           "signature": "public double[] toPdfMatrix()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Returns a defensive copy in PDF [a,b,c,d,e,f] order."
         },
         {
           "id": "method:toString",
@@ -5751,7 +5990,8 @@
           "arity": 0,
           "static": false
         }
-      ]
+      ],
+      "description": "Immutable two-dimensional affine transformation using the PDF six-number\nmatrix convention [a, b, c, d, e, f].\n\nThe transform maps a point (x, y) to:\nx' = a * x + c * y + e\ny' = b * x + d * y + f\n\nThe fluent builder starts with the identity transform. Operations are\napplied to points in invocation order."
     },
     {
       "id": "com.pdfdancer.common.model.PdfAffineTransform$Builder",
@@ -5789,7 +6029,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.common.model.PdfAffineTransform$Builder shear(double, double)",
           "arity": 2,
-          "static": false
+          "static": false,
+          "description": "Shears X by Y and Y by X using the matrix\n[1, shearY, shearX, 1, 0, 0]."
         },
         {
           "id": "method:translate",
@@ -5813,7 +6054,8 @@
           "kind": "constructor",
           "signature": "public com.pdfdancer.common.model.PDFObject()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Default constructor required for serialization frameworks.\nCreates an uninitialized PDF object that should be populated\nwith appropriate values before use."
         },
         {
           "id": "constructor:constructor",
@@ -5821,7 +6063,8 @@
           "kind": "constructor",
           "signature": "public com.pdfdancer.common.model.PDFObject(java.lang.String, com.pdfdancer.common.model.Position)",
           "arity": 2,
-          "static": false
+          "static": false,
+          "description": "Constructs a PDF object with the specified identifier and getPosition.\nThis constructor initializes the fundamental properties that all\nPDF objects require for proper identification and spatial location."
         },
         {
           "id": "method:getId",
@@ -5829,7 +6072,8 @@
           "kind": "method",
           "signature": "public java.lang.String getId()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Returns the unique identifier for this PDF object."
         },
         {
           "id": "method:getPosition",
@@ -5837,7 +6081,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.common.model.Position getPosition()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Returns the spatial getPosition information for this object."
         },
         {
           "id": "method:setId",
@@ -5845,7 +6090,8 @@
           "kind": "method",
           "signature": "public void setId(java.lang.String)",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Sets the unique identifier for this PDF object."
         },
         {
           "id": "method:setPosition",
@@ -5853,7 +6099,8 @@
           "kind": "method",
           "signature": "public void setPosition(com.pdfdancer.common.model.Position)",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Updates the spatial getPosition information for this object."
         },
         {
           "id": "method:toObjectRef",
@@ -5861,9 +6108,11 @@
           "kind": "method",
           "signature": "public com.pdfdancer.common.model.ObjectRef toObjectRef()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Creates an object reference for this PDF object.\nObject references provide a lightweight way to refer to PDF objects\nwithout including their full content, enabling efficient API operations."
         }
-      ]
+      ],
+      "description": "Abstract base class for all PDF objects that can be manipulated within the API.\nThis class provides the fundamental properties and behaviors shared by all PDF content elements,\nincluding getPosition tracking, identification, and object reference generation.\n\nThe class uses Jackson polymorphic serialization to handle different concrete types\nduring JSON serialization/deserialization, enabling type-safe API operations\nwhile maintaining flexibility for different PDF object types."
     },
     {
       "id": "com.pdfdancer.common.model.Point",
@@ -5893,7 +6142,8 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.common.model.Point fromPoint2D(java.awt.geom.Point2D)",
           "arity": 1,
-          "static": true
+          "static": true,
+          "description": "Creates a Point from a Java AWT Point2D instance.\nThis factory method enables conversion from standard Java geometry objects\nto the API's coordinate representation."
         },
         {
           "id": "method:hashCode",
@@ -5909,7 +6159,8 @@
           "kind": "method",
           "signature": "public java.awt.geom.Point2D toPoint2D()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Converts this Point to a Java AWT Point2D instance.\nThis method enables interoperability with standard Java geometry libraries\nand graphics operations that require Point2D objects."
         },
         {
           "id": "method:toString",
@@ -5935,7 +6186,8 @@
           "arity": 0,
           "static": false
         }
-      ]
+      ],
+      "description": "Immutable point record representing 2D coordinates.\nThis record provides a simple and efficient way to represent coordinate pairs\nwithin PDF documents, with conversion utilities for interoperability with\nJava's standard geometry classes."
     },
     {
       "id": "com.pdfdancer.common.model.Position",
@@ -5949,7 +6201,8 @@
           "kind": "constructor",
           "signature": "public com.pdfdancer.common.model.Position()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Default constructor for serialization frameworks.\nCreates an uninitialized getPosition that should be configured before use."
         },
         {
           "id": "constructor:constructor",
@@ -5957,7 +6210,8 @@
           "kind": "constructor",
           "signature": "public com.pdfdancer.common.model.Position(double, double)",
           "arity": 2,
-          "static": false
+          "static": false,
+          "description": "Creates a point getPosition at the specified coordinates.\nThis constructor creates a zero-area getPosition representing a precise point,\nuseful for exact positioning without page specification."
         },
         {
           "id": "constructor:constructor",
@@ -5965,7 +6219,8 @@
           "kind": "constructor",
           "signature": "public com.pdfdancer.common.model.Position(java.lang.Integer, com.pdfdancer.common.model.BoundingRect, com.pdfdancer.common.model.Position$PositionMode)",
           "arity": 3,
-          "static": false
+          "static": false,
+          "description": "Creates a getPosition with specified page, bounding area, and matching mode.\nThis constructor allows full specification of getPosition parameters for\ncomplex positioning requirements."
         },
         {
           "id": "method:atPage",
@@ -5973,7 +6228,8 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.common.model.Position atPage(int)",
           "arity": 1,
-          "static": true
+          "static": true,
+          "description": "Creates a getPosition specification for an entire page.\nThis factory method creates a getPosition that encompasses the entire specified page,\nuseful for page-level operations or when precise coordinates are not needed."
         },
         {
           "id": "method:atPageCoordinates",
@@ -5981,7 +6237,8 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.common.model.Position atPageCoordinates(int, double, double)",
           "arity": 3,
-          "static": true
+          "static": true,
+          "description": "Creates a getPosition specification for specific coordinates on a page.\nThis factory method creates a precise point location within the specified page,\nenabling accurate positioning for object placement and searching operations."
         },
         {
           "id": "method:atPosition",
@@ -5989,7 +6246,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.common.model.Position atPosition(double, double)",
           "arity": 2,
-          "static": false
+          "static": false,
+          "description": "Sets the getPosition to a specific point location.\nThis method configures the getPosition to represent a precise point coordinate\nwith zero area, typically used for exact positioning operations."
         },
         {
           "id": "method:atPosition",
@@ -5997,7 +6255,8 @@
           "kind": "method",
           "signature": "public void atPosition(com.pdfdancer.common.model.Point)",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Sets the getPosition to a specific point location.\nThis method configures the getPosition to represent a precise point coordinate\nwith zero area, typically used for exact positioning operations."
         },
         {
           "id": "method:byName",
@@ -6021,7 +6280,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.common.model.BoundingRect getBoundingRect()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Returns the bounding rectangle defining the spatial extent of this getPosition."
         },
         {
           "id": "method:getCenter",
@@ -6037,7 +6297,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.common.model.Position$PositionMode getMode()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Returns the getPosition matching mode."
         },
         {
           "id": "method:getName",
@@ -6053,7 +6314,8 @@
           "kind": "method",
           "signature": "public java.lang.Integer getPageNumber()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Returns the page number where this getPosition is located."
         },
         {
           "id": "method:getShape",
@@ -6061,7 +6323,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.common.model.Position$ShapeType getShape()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Returns the geometric shape type of this getPosition."
         },
         {
           "id": "method:getX",
@@ -6069,7 +6332,8 @@
           "kind": "method",
           "signature": "public java.lang.Double getX()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Returns the X coordinate of this getPosition.\nIf no bounding rectangle is defined, returns -1 as a sentinel value."
         },
         {
           "id": "method:getY",
@@ -6077,7 +6341,8 @@
           "kind": "method",
           "signature": "public java.lang.Double getY()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Returns the Y coordinate of this getPosition.\nIf no bounding rectangle is defined, returns -1 as a sentinel value."
         },
         {
           "id": "method:moveX",
@@ -6101,7 +6366,8 @@
           "kind": "method",
           "signature": "public void setBoundingRect(com.pdfdancer.common.model.BoundingRect)",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Sets the bounding rectangle for this getPosition."
         },
         {
           "id": "method:setMode",
@@ -6109,7 +6375,8 @@
           "kind": "method",
           "signature": "public void setMode(com.pdfdancer.common.model.Position$PositionMode)",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Sets the getPosition matching mode."
         },
         {
           "id": "method:setName",
@@ -6125,7 +6392,8 @@
           "kind": "method",
           "signature": "public void setPageNumber(java.lang.Integer)",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Sets the page number for this getPosition."
         },
         {
           "id": "method:setShape",
@@ -6133,7 +6401,8 @@
           "kind": "method",
           "signature": "public void setShape(com.pdfdancer.common.model.Position$ShapeType)",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Sets the geometric shape type for this getPosition."
         },
         {
           "id": "method:toString",
@@ -6143,7 +6412,8 @@
           "arity": 0,
           "static": false
         }
-      ]
+      ],
+      "description": "Represents spatial positioning and location information for PDF objects.\nThis class encapsulates various ways to specify object locations within PDF documents,\nincluding page-based coordinates, bounding rectangles, and different positioning modes.\nIt supports both precise coordinate positioning and area-based location specifications."
     },
     {
       "id": "com.pdfdancer.common.model.Position$PositionMode",
@@ -6156,14 +6426,16 @@
           "name": "CONTAINS",
           "kind": "enum-value",
           "signature": "public static final com.pdfdancer.common.model.Position$PositionMode CONTAINS",
-          "static": true
+          "static": true,
+          "description": "Objects completely contained within the specified getPosition area"
         },
         {
           "id": "enum-value:INTERSECT",
           "name": "INTERSECT",
           "kind": "enum-value",
           "signature": "public static final com.pdfdancer.common.model.Position$PositionMode INTERSECT",
-          "static": true
+          "static": true,
+          "description": "Objects that intersect with the specified getPosition area"
         },
         {
           "id": "method:valueOf",
@@ -6171,7 +6443,8 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.common.model.Position$PositionMode valueOf(java.lang.String)",
           "arity": 1,
-          "static": true
+          "static": true,
+          "description": "Returns the enum constant of this class with the specified name.\nThe string must match exactly an identifier used to declare an\nenum constant in this class.  (Extraneous whitespace characters are\nnot permitted.)"
         },
         {
           "id": "method:values",
@@ -6179,9 +6452,11 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.common.model.Position$PositionMode[] values()",
           "arity": 0,
-          "static": true
+          "static": true,
+          "description": "Returns an array containing the constants of this enum class, in\nthe order they are declared."
         }
-      ]
+      ],
+      "description": "Defines how getPosition matching should be performed when searching for objects."
     },
     {
       "id": "com.pdfdancer.common.model.Position$ShapeType",
@@ -6194,28 +6469,32 @@
           "name": "CIRCLE",
           "kind": "enum-value",
           "signature": "public static final com.pdfdancer.common.model.Position$ShapeType CIRCLE",
-          "static": true
+          "static": true,
+          "description": "Circular area with radius"
         },
         {
           "id": "enum-value:LINE",
           "name": "LINE",
           "kind": "enum-value",
           "signature": "public static final com.pdfdancer.common.model.Position$ShapeType LINE",
-          "static": true
+          "static": true,
+          "description": "Linear shape between two points"
         },
         {
           "id": "enum-value:POINT",
           "name": "POINT",
           "kind": "enum-value",
           "signature": "public static final com.pdfdancer.common.model.Position$ShapeType POINT",
-          "static": true
+          "static": true,
+          "description": "Single point coordinate"
         },
         {
           "id": "enum-value:RECT",
           "name": "RECT",
           "kind": "enum-value",
           "signature": "public static final com.pdfdancer.common.model.Position$ShapeType RECT",
-          "static": true
+          "static": true,
+          "description": "Rectangular area with width and height"
         },
         {
           "id": "method:valueOf",
@@ -6223,7 +6502,8 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.common.model.Position$ShapeType valueOf(java.lang.String)",
           "arity": 1,
-          "static": true
+          "static": true,
+          "description": "Returns the enum constant of this class with the specified name.\nThe string must match exactly an identifier used to declare an\nenum constant in this class.  (Extraneous whitespace characters are\nnot permitted.)"
         },
         {
           "id": "method:values",
@@ -6231,9 +6511,11 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.common.model.Position$ShapeType[] values()",
           "arity": 0,
-          "static": true
+          "static": true,
+          "description": "Returns an array containing the constants of this enum class, in\nthe order they are declared."
         }
-      ]
+      ],
+      "description": "Defines the geometric shape type used for getPosition specification."
     },
     {
       "id": "com.pdfdancer.common.model.PositionBuilder",
@@ -6287,7 +6569,8 @@
           "kind": "constructor",
           "signature": "public com.pdfdancer.common.model.Size()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Default constructor for serialization frameworks."
         },
         {
           "id": "constructor:constructor",
@@ -6295,7 +6578,8 @@
           "kind": "constructor",
           "signature": "public com.pdfdancer.common.model.Size(double, double)",
           "arity": 2,
-          "static": false
+          "static": false,
+          "description": "Creates a size with specified width and height dimensions."
         },
         {
           "id": "method:getArea",
@@ -6303,7 +6587,8 @@
           "kind": "method",
           "signature": "public double getArea()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Calculates and returns the total area.\nThis method computes the area by multiplying width and height,\nuseful for size comparisons and layout calculations."
         },
         {
           "id": "method:getHeight",
@@ -6311,7 +6596,8 @@
           "kind": "method",
           "signature": "public double getHeight()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Returns the height dimension."
         },
         {
           "id": "method:getWidth",
@@ -6319,7 +6605,8 @@
           "kind": "method",
           "signature": "public double getWidth()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Returns the width dimension."
         },
         {
           "id": "method:setHeight",
@@ -6327,7 +6614,8 @@
           "kind": "method",
           "signature": "public void setHeight(double)",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Sets the height dimension."
         },
         {
           "id": "method:setWidth",
@@ -6335,9 +6623,11 @@
           "kind": "method",
           "signature": "public void setWidth(double)",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Sets the width dimension."
         }
-      ]
+      ],
+      "description": "Represents dimensional measurements with width and height properties.\nThis class encapsulates size information for PDF objects (images, forms, etc.),\nproviding both individual dimension access and calculated area methods."
     },
     {
       "id": "com.pdfdancer.common.request.AddPageRequest",
@@ -6449,7 +6739,8 @@
           "arity": 0,
           "static": false
         }
-      ]
+      ],
+      "description": "Request record for adding new PDF objects to a document.\nThis immutable record encapsulates the data needed to add new content\nelements to a PDF document, including the complete object specification\nwith getPosition, properties, and content data."
     },
     {
       "id": "com.pdfdancer.common.request.ChangeFormFieldRequest",
@@ -6673,7 +6964,8 @@
           "arity": 0,
           "static": false
         }
-      ]
+      ],
+      "description": "Request to create a new blank PDF session."
     },
     {
       "id": "com.pdfdancer.common.request.CreatePathGroupRequest",
@@ -6785,7 +7077,8 @@
           "arity": 0,
           "static": false
         }
-      ]
+      ],
+      "description": "Request record for deleting PDF objects from a document.\nThis immutable record encapsulates the object reference needed to identify\nand remove specific PDF objects from a document during editing operations."
     },
     {
       "id": "com.pdfdancer.common.request.FindRequest",
@@ -6849,7 +7142,8 @@
           "arity": 0,
           "static": false
         }
-      ]
+      ],
+      "description": "Request record for searching PDF objects within a document.\nThis immutable record encapsulates search criteria for locating PDF objects\nbased on type, getPosition constraints, and optional search hints, enabling\nflexible and efficient object discovery within PDF documents."
     },
     {
       "id": "com.pdfdancer.common.request.ImageTransformRequest",
@@ -7017,7 +7311,8 @@
           "arity": 0,
           "static": false
         }
-      ]
+      ],
+      "description": "Request for transforming an image in a PDF document.\nSupports replace, scale, rotate, crop, opacity, and flip operations."
     },
     {
       "id": "com.pdfdancer.common.request.ImageTransformRequest$Builder",
@@ -7158,21 +7453,24 @@
           "name": "BOTH",
           "kind": "enum-value",
           "signature": "public static final com.pdfdancer.common.request.ImageTransformRequest$FlipDirection BOTH",
-          "static": true
+          "static": true,
+          "description": "Flip both horizontally and vertically."
         },
         {
           "id": "enum-value:HORIZONTAL",
           "name": "HORIZONTAL",
           "kind": "enum-value",
           "signature": "public static final com.pdfdancer.common.request.ImageTransformRequest$FlipDirection HORIZONTAL",
-          "static": true
+          "static": true,
+          "description": "Flip horizontally (mirror left-right)."
         },
         {
           "id": "enum-value:VERTICAL",
           "name": "VERTICAL",
           "kind": "enum-value",
           "signature": "public static final com.pdfdancer.common.request.ImageTransformRequest$FlipDirection VERTICAL",
-          "static": true
+          "static": true,
+          "description": "Flip vertically (mirror top-bottom)."
         },
         {
           "id": "method:valueOf",
@@ -7180,7 +7478,8 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.common.request.ImageTransformRequest$FlipDirection valueOf(java.lang.String)",
           "arity": 1,
-          "static": true
+          "static": true,
+          "description": "Returns the enum constant of this class with the specified name.\nThe string must match exactly an identifier used to declare an\nenum constant in this class.  (Extraneous whitespace characters are\nnot permitted.)"
         },
         {
           "id": "method:values",
@@ -7188,9 +7487,11 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.common.request.ImageTransformRequest$FlipDirection[] values()",
           "arity": 0,
-          "static": true
+          "static": true,
+          "description": "Returns an array containing the constants of this enum class, in\nthe order they are declared."
         }
-      ]
+      ],
+      "description": "Direction for flip operations."
     },
     {
       "id": "com.pdfdancer.common.request.ImageTransformRequest$TransformType",
@@ -7203,49 +7504,56 @@
           "name": "CROP",
           "kind": "enum-value",
           "signature": "public static final com.pdfdancer.common.request.ImageTransformRequest$TransformType CROP",
-          "static": true
+          "static": true,
+          "description": "Crop the image by trimming edges."
         },
         {
           "id": "enum-value:FILL_REGION",
           "name": "FILL_REGION",
           "kind": "enum-value",
           "signature": "public static final com.pdfdancer.common.request.ImageTransformRequest$TransformType FILL_REGION",
-          "static": true
+          "static": true,
+          "description": "Fill a rectangular region with a solid color."
         },
         {
           "id": "enum-value:FLIP",
           "name": "FLIP",
           "kind": "enum-value",
           "signature": "public static final com.pdfdancer.common.request.ImageTransformRequest$TransformType FLIP",
-          "static": true
+          "static": true,
+          "description": "Flip the image horizontally or vertically."
         },
         {
           "id": "enum-value:OPACITY",
           "name": "OPACITY",
           "kind": "enum-value",
           "signature": "public static final com.pdfdancer.common.request.ImageTransformRequest$TransformType OPACITY",
-          "static": true
+          "static": true,
+          "description": "Set the opacity/transparency of the image."
         },
         {
           "id": "enum-value:REPLACE",
           "name": "REPLACE",
           "kind": "enum-value",
           "signature": "public static final com.pdfdancer.common.request.ImageTransformRequest$TransformType REPLACE",
-          "static": true
+          "static": true,
+          "description": "Replace image content while keeping position."
         },
         {
           "id": "enum-value:ROTATE",
           "name": "ROTATE",
           "kind": "enum-value",
           "signature": "public static final com.pdfdancer.common.request.ImageTransformRequest$TransformType ROTATE",
-          "static": true
+          "static": true,
+          "description": "Rotate the image."
         },
         {
           "id": "enum-value:SCALE",
           "name": "SCALE",
           "kind": "enum-value",
           "signature": "public static final com.pdfdancer.common.request.ImageTransformRequest$TransformType SCALE",
-          "static": true
+          "static": true,
+          "description": "Scale/resize the image."
         },
         {
           "id": "method:valueOf",
@@ -7253,7 +7561,8 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.common.request.ImageTransformRequest$TransformType valueOf(java.lang.String)",
           "arity": 1,
-          "static": true
+          "static": true,
+          "description": "Returns the enum constant of this class with the specified name.\nThe string must match exactly an identifier used to declare an\nenum constant in this class.  (Extraneous whitespace characters are\nnot permitted.)"
         },
         {
           "id": "method:values",
@@ -7261,9 +7570,11 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.common.request.ImageTransformRequest$TransformType[] values()",
           "arity": 0,
-          "static": true
+          "static": true,
+          "description": "Returns an array containing the constants of this enum class, in\nthe order they are declared."
         }
-      ]
+      ],
+      "description": "Types of image transformations supported."
     },
     {
       "id": "com.pdfdancer.common.request.ModifyPathRequest",
@@ -7511,7 +7822,8 @@
           "arity": 0,
           "static": false
         }
-      ]
+      ],
+      "description": "Request record for moving PDF objects to new positions within a document.\nThis immutable record encapsulates both the object to be moved and its target\ngetPosition, enabling precise repositioning operations during PDF editing."
     },
     {
       "id": "com.pdfdancer.common.request.PageMoveRequest",
@@ -7567,7 +7879,8 @@
           "arity": 0,
           "static": false
         }
-      ]
+      ],
+      "description": "Request record for reordering pages within a PDF document.\nThis immutable record specifies a page movement operation, defining\nwhich page should be moved and where it should be repositioned\nin the document's page sequence."
     },
     {
       "id": "com.pdfdancer.common.request.PdfColorRequest",
@@ -7706,7 +8019,8 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.common.request.PdfColorRequest$Space valueOf(java.lang.String)",
           "arity": 1,
-          "static": true
+          "static": true,
+          "description": "Returns the enum constant of this class with the specified name.\nThe string must match exactly an identifier used to declare an\nenum constant in this class.  (Extraneous whitespace characters are\nnot permitted.)"
         },
         {
           "id": "method:values",
@@ -7714,7 +8028,8 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.common.request.PdfColorRequest$Space[] values()",
           "arity": 0,
-          "static": true
+          "static": true,
+          "description": "Returns an array containing the constants of this enum class, in\nthe order they are declared."
         }
       ]
     },
@@ -8440,7 +8755,8 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.common.request.TextInsertRequest$Caret valueOf(java.lang.String)",
           "arity": 1,
-          "static": true
+          "static": true,
+          "description": "Returns the enum constant of this class with the specified name.\nThe string must match exactly an identifier used to declare an\nenum constant in this class.  (Extraneous whitespace characters are\nnot permitted.)"
         },
         {
           "id": "method:values",
@@ -8448,7 +8764,8 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.common.request.TextInsertRequest$Caret[] values()",
           "arity": 0,
-          "static": true
+          "static": true,
+          "description": "Returns an array containing the constants of this enum class, in\nthe order they are declared."
         }
       ]
     },
@@ -8615,7 +8932,8 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.common.request.TextInsertRequest$StyleFrom valueOf(java.lang.String)",
           "arity": 1,
-          "static": true
+          "static": true,
+          "description": "Returns the enum constant of this class with the specified name.\nThe string must match exactly an identifier used to declare an\nenum constant in this class.  (Extraneous whitespace characters are\nnot permitted.)"
         },
         {
           "id": "method:values",
@@ -8623,7 +8941,8 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.common.request.TextInsertRequest$StyleFrom[] values()",
           "arity": 0,
-          "static": true
+          "static": true,
+          "description": "Returns an array containing the constants of this enum class, in\nthe order they are declared."
         }
       ]
     },
@@ -8828,7 +9147,8 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.common.request.TextLayoutRequest$Mode valueOf(java.lang.String)",
           "arity": 1,
-          "static": true
+          "static": true,
+          "description": "Returns the enum constant of this class with the specified name.\nThe string must match exactly an identifier used to declare an\nenum constant in this class.  (Extraneous whitespace characters are\nnot permitted.)"
         },
         {
           "id": "method:values",
@@ -8836,7 +9156,8 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.common.request.TextLayoutRequest$Mode[] values()",
           "arity": 0,
-          "static": true
+          "static": true,
+          "description": "Returns an array containing the constants of this enum class, in\nthe order they are declared."
         }
       ]
     },
@@ -8889,7 +9210,8 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.common.request.TextLayoutRequest$Profile valueOf(java.lang.String)",
           "arity": 1,
-          "static": true
+          "static": true,
+          "description": "Returns the enum constant of this class with the specified name.\nThe string must match exactly an identifier used to declare an\nenum constant in this class.  (Extraneous whitespace characters are\nnot permitted.)"
         },
         {
           "id": "method:values",
@@ -8897,7 +9219,8 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.common.request.TextLayoutRequest$Profile[] values()",
           "arity": 0,
-          "static": true
+          "static": true,
+          "description": "Returns an array containing the constants of this enum class, in\nthe order they are declared."
         }
       ]
     },
@@ -8947,7 +9270,8 @@
           "arity": 0,
           "static": false
         }
-      ]
+      ],
+      "description": "Bitmap data and caret-relative geometry for replacing matched decoded text."
     },
     {
       "id": "com.pdfdancer.common.request.TextReplaceRequest",
@@ -10491,7 +10815,8 @@
           "arity": 0,
           "static": false
         }
-      ]
+      ],
+      "description": "Style overrides applied atomically to replacement text.\nOmitted fields preserve the corresponding source-text style."
     },
     {
       "id": "com.pdfdancer.common.request.TextStyleSetRequest$Builder",
@@ -10694,7 +11019,8 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.common.request.TransformPathGroupRequest$TransformType valueOf(java.lang.String)",
           "arity": 1,
-          "static": true
+          "static": true,
+          "description": "Returns the enum constant of this class with the specified name.\nThe string must match exactly an identifier used to declare an\nenum constant in this class.  (Extraneous whitespace characters are\nnot permitted.)"
         },
         {
           "id": "method:values",
@@ -10702,7 +11028,8 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.common.request.TransformPathGroupRequest$TransformType[] values()",
           "arity": 0,
-          "static": true
+          "static": true,
+          "description": "Returns an array containing the constants of this enum class, in\nthe order they are declared."
         }
       ]
     },
@@ -10824,7 +11151,8 @@
           "arity": 0,
           "static": false
         }
-      ]
+      ],
+      "description": "Represents a complete snapshot of a PDF document including metadata and all pages."
     },
     {
       "id": "com.pdfdancer.common.response.PageSnapshot",
@@ -10864,7 +11192,8 @@
           "arity": 0,
           "static": false
         }
-      ]
+      ],
+      "description": "Represents a complete snapshot of a single PDF page including its metadata and all elements.\nThis response aggregates page information and contained objects into a single response,\nreducing the number of API calls needed to retrieve page content."
     },
     {
       "id": "com.pdfdancer.common.response.TextEditChangeDiagnostic",
@@ -11214,7 +11543,8 @@
           "kind": "method",
           "signature": "public static java.nio.file.Path saveToFile(byte[], java.nio.file.Path, java.lang.String) throws java.io.IOException",
           "arity": 3,
-          "static": true
+          "static": true,
+          "description": "Saves PDF data to a temporary file with automatic cleanup.\nThis method creates a temporary file with the specified base filename,\nwrites the PDF data to it, and sets it for automatic deletion when\nthe application exits. Useful for processing uploaded PDF files."
         },
         {
           "id": "method:writeBytesToFile",
@@ -11222,9 +11552,11 @@
           "kind": "method",
           "signature": "public static java.io.File writeBytesToFile(byte[], java.lang.String) throws java.io.IOException",
           "arity": 2,
-          "static": true
+          "static": true,
+          "description": "Writes binary data to a file at the specified path.\nThis method creates parent directories if they don't exist and safely\nwrites the provided data to the target file using proper resource management."
         }
-      ]
+      ],
+      "description": "Utility class providing file system operations for the PDF processing API.\nThis class offers convenient methods for writing binary data to files and\ncreating temporary files for PDF processing operations, with proper directory\ncreation and resource management."
     },
     {
       "id": "com.pdfdancer.common.util.FileVersioner",
@@ -11326,7 +11658,8 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.common.util.ImageInfo read(java.io.File) throws java.io.IOException",
           "arity": 1,
-          "static": true
+          "static": true,
+          "description": "Reads and analyzes an image file to extract complete image information.\nThis factory method processes an image file to determine its format, dimensions,\nand binary content, creating a complete ImageInfo record suitable for PDF\nintegration operations."
         },
         {
           "id": "method:toString",
@@ -11344,7 +11677,8 @@
           "arity": 0,
           "static": false
         }
-      ]
+      ],
+      "description": "Immutable record containing comprehensive image file information.\nThis record encapsulates image data, format details, and dimensional properties\nextracted from image files, providing all necessary information for PDF image\nintegration and processing operations."
     },
     {
       "id": "com.pdfdancer.common.util.StandardFonts",
@@ -11464,7 +11798,8 @@
           "kind": "method",
           "signature": "public static boolean isStandardFont(java.lang.String)",
           "arity": 1,
-          "static": true
+          "static": true,
+          "description": "Checks whether a given font name matches one of the standard PDF fonts."
         },
         {
           "id": "method:valueOf",
@@ -11472,7 +11807,8 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.common.util.StandardFonts valueOf(java.lang.String)",
           "arity": 1,
-          "static": true
+          "static": true,
+          "description": "Returns the enum constant of this class with the specified name.\nThe string must match exactly an identifier used to declare an\nenum constant in this class.  (Extraneous whitespace characters are\nnot permitted.)"
         },
         {
           "id": "method:values",
@@ -11480,9 +11816,11 @@
           "kind": "method",
           "signature": "public static com.pdfdancer.common.util.StandardFonts[] values()",
           "arity": 0,
-          "static": true
+          "static": true,
+          "description": "Returns an array containing the constants of this enum class, in\nthe order they are declared."
         }
-      ]
+      ],
+      "description": "The 14 standard PDF fonts that are guaranteed to be available in all PDF readers.\nThese fonts do not need to be embedded in the PDF document.\n\nSerif fonts (Times family):\n- TIMES_ROMAN: Standard Times Roman font\n- TIMES_BOLD: Bold version of Times Roman\n- TIMES_ITALIC: Italic version of Times Roman\n- TIMES_BOLD_ITALIC: Bold and italic version of Times Roman\n\nSans-serif fonts (Helvetica family):\n- HELVETICA: Standard Helvetica font\n- HELVETICA_BOLD: Bold version of Helvetica\n- HELVETICA_OBLIQUE: Oblique (italic) version of Helvetica\n- HELVETICA_BOLD_OBLIQUE: Bold and oblique version of Helvetica\n\nMonospace fonts (Courier family):\n- COURIER: Standard Courier font\n- COURIER_BOLD: Bold version of Courier\n- COURIER_OBLIQUE: Oblique (italic) version of Courier\n- COURIER_BOLD_OBLIQUE: Bold and oblique version of Courier\n\nSymbol and decorative fonts:\n- SYMBOL: Symbol font for mathematical and special characters\n- ZAPF_DINGBATS: Zapf Dingbats font for decorative symbols"
     },
     {
       "id": "com.pdfdancer.common.util.UrlUtils",
@@ -11504,7 +11842,8 @@
           "kind": "method",
           "signature": "public static java.net.URL buildUrlWithPath(java.net.URL, java.lang.String) throws java.net.URISyntaxException, java.net.MalformedURLException",
           "arity": 2,
-          "static": true
+          "static": true,
+          "description": "Builds a new URL using the same protocol, host, and (if non-standard) port\nfrom the given URL, but with a new path."
         },
         {
           "id": "method:getRootUrl",

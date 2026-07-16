@@ -12,8 +12,17 @@ REPO_ROOT = Path(__file__).parent.parent
 DOCS_DIR = Path(os.environ.get("PDFDANCER_DOCS_DIR", "docs"))
 if not DOCS_DIR.is_absolute():
     DOCS_DIR = REPO_ROOT / DOCS_DIR
-DOC_FILE = DOCS_DIR / "getting-started-python.md"
-DOC_CONTENT = DOC_FILE.read_text()
+DOC_FILES = (
+    [DOCS_DIR / "getting-started-python.md"]
+    if "versioned_docs" in DOCS_DIR.parts
+    else sorted(DOCS_DIR.glob("*.md"))
+)
+DOC_BLOCKS = [
+    (doc_file.name, block)
+    for doc_file in DOC_FILES
+    if doc_file.exists()
+    for block in mktestdocs.grab_code_blocks(doc_file.read_text(), lang="python")
+]
 
 # SDK class to methods mapping (for semantic validation)
 SDK_METHODS = {}
@@ -26,7 +35,11 @@ def _load_sdk_methods():
 
     try:
         from pdfdancer import PDFDancer
-        from pdfdancer.pdfdancer_v1 import PageClient, TextObjectRef
+        if "versioned_docs" in DOCS_DIR.parts:
+            from pdfdancer.pdfdancer_v1 import PageClient, TextObjectRef
+        else:
+            from pdfdancer.pdfdancer_v2 import PageClient, TextClient
+            TextObjectRef = TextClient
 
         SDK_METHODS = {
             'PDFDancer': {m for m in dir(PDFDancer) if not m.startswith('_')},
@@ -70,8 +83,17 @@ class UndefinedNameChecker(ast.NodeVisitor):
 
     def visit_ImportFrom(self, node):
         for alias in node.names:
-            name = alias.asname or alias.name
-            self.defined.add(name)
+            if alias.name == "*" and node.module:
+                spec = importlib.util.find_spec(node.module)
+                if spec:
+                    module = __import__(node.module, fromlist=["*"])
+                    self.defined.update(
+                        getattr(module, "__all__", ())
+                        or (name for name in dir(module) if not name.startswith("_"))
+                    )
+            else:
+                name = alias.asname or alias.name
+                self.defined.add(name)
         self.generic_visit(node)
 
     def visit_FunctionDef(self, node):
@@ -103,6 +125,11 @@ class UndefinedNameChecker(ast.NodeVisitor):
         for item in node.items:
             if item.optional_vars and isinstance(item.optional_vars, ast.Name):
                 self.defined.add(item.optional_vars.id)
+        self.generic_visit(node)
+
+    def visit_ExceptHandler(self, node):
+        if node.name:
+            self.defined.add(node.name)
         self.generic_visit(node)
 
     def check(self):
@@ -215,6 +242,12 @@ def validate_python_syntax(code: str, filename: str = "<doc>") -> None:
                 module_name = node.module.split('.')[0]
                 if importlib.util.find_spec(module_name) is None:
                     raise ModuleNotFoundError(f"No module named '{module_name}'")
+                module = __import__(node.module, fromlist=[alias.name for alias in node.names])
+                for alias in node.names:
+                    if alias.name != "*" and not hasattr(module, alias.name):
+                        raise ImportError(
+                            f"cannot import name '{alias.name}' from '{node.module}'"
+                        )
 
     # Check for undefined names
     undefined_checker = UndefinedNameChecker()
@@ -232,10 +265,36 @@ def validate_python_syntax(code: str, filename: str = "<doc>") -> None:
             raise AttributeError("; ".join(validator.errors))
 
 
+def _testable_code(code: str) -> str:
+    """Supply named context for focused fragments without changing rendered examples."""
+    if "versioned_docs" in DOCS_DIR.parts:
+        return code
+    prelude = """
+from typing import Any
+from pdfdancer import *
+
+pdf: Any = None
+page: Any = None
+image: Any = None
+path: Any = None
+form: Any = None
+field: Any = None
+response: Any = None
+input_bytes: bytes = b""
+image_bytes: bytes = b""
+replacement_bytes: bytes = b""
+font_data: bytes = b""
+request: Any = None
+selected: Any = None
+result: Any = None
+"""
+    return prelude + "\n" + code
+
+
 @pytest.mark.parametrize(
-    "codeblock",
-    mktestdocs.grab_code_blocks(DOC_CONTENT, lang="python"),
+    "filename,codeblock",
+    DOC_BLOCKS,
 )
-def test_python_examples(codeblock):
-    """Test each Python code block from the getting started guide."""
-    validate_python_syntax(codeblock, DOC_FILE.name)
+def test_python_examples(filename, codeblock):
+    """Test each Python code block from the selected documentation pages."""
+    validate_python_syntax(_testable_code(codeblock), filename)

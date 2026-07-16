@@ -167,7 +167,8 @@
           "static": false
         }
       ],
-      "module": "models"
+      "module": "models",
+      "description": "Represents a cubic Bezier curve with four control points."
     },
     {
       "id": "BezierBuilder",
@@ -349,7 +350,8 @@
           "static": false
         }
       ],
-      "module": "models"
+      "module": "models",
+      "description": "Represents a bounding rectangle with position and dimensions."
     },
     {
       "id": "Color",
@@ -415,7 +417,8 @@
           "static": true
         }
       ],
-      "module": "models"
+      "module": "models",
+      "description": "Represents an RGB color with optional alpha channel, values from 0-255."
     },
     {
       "id": "CommandResult",
@@ -483,7 +486,8 @@
           "static": false
         }
       ],
-      "module": "models"
+      "module": "models",
+      "description": "Result object returned by certain API endpoints indicating the outcome of an operation."
     },
     {
       "id": "DocumentFontInfo",
@@ -530,7 +534,8 @@
           "static": false
         }
       ],
-      "module": "models"
+      "module": "models",
+      "description": "Represents font mapping information for a document font."
     },
     {
       "id": "DocumentSnapshot",
@@ -552,7 +557,8 @@
           "kind": "method",
           "signature": "getAllElements(): ObjectRef[]",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Gets all elements across all pages."
         },
         {
           "id": "method:getElementsByType",
@@ -560,7 +566,8 @@
           "kind": "method",
           "signature": "getElementsByType(type: ObjectType): ObjectRef[]",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Gets all elements of a specific type across all pages."
         },
         {
           "id": "method:getPageSnapshot",
@@ -568,7 +575,8 @@
           "kind": "method",
           "signature": "getPageSnapshot(pageNumber: number): PageSnapshot",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Gets the snapshot for a specific page by index."
         },
         {
           "id": "method:getTotalElementCount",
@@ -576,7 +584,8 @@
           "kind": "method",
           "signature": "getTotalElementCount(): number",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Returns the total number of elements across all pages."
         },
         {
           "id": "property:fonts",
@@ -600,7 +609,8 @@
           "static": false
         }
       ],
-      "module": "models"
+      "module": "models",
+      "description": "Represents a complete snapshot of a PDF document.\nContains page count, font information, and snapshots of all pages."
     },
     {
       "id": "FlipDirection",
@@ -630,7 +640,8 @@
           "static": true
         }
       ],
-      "module": "models"
+      "module": "models",
+      "description": "Direction for flip operations."
     },
     {
       "id": "Font",
@@ -661,7 +672,8 @@
           "static": false
         }
       ],
-      "module": "models"
+      "module": "models",
+      "description": "Represents a font with name and size."
     },
     {
       "id": "FontNotFoundException",
@@ -683,7 +695,8 @@
           "kind": "method",
           "signature": "captureStackTrace(targetObject: object, constructorOpt?: Function): void",
           "arity": 2,
-          "static": true
+          "static": true,
+          "description": "Creates a `.stack` property on `targetObject`, which when accessed returns\na string representing the location in the code at which\n`Error.captureStackTrace()` was called.\n\n```js\nconst myObject = {};\nError.captureStackTrace(myObject);\nmyObject.stack;  // Similar to `new Error().stack`\n```\n\nThe first line of the trace will be prefixed with\n`${myObject.name}: ${myObject.message}`.\n\nThe optional `constructorOpt` argument accepts a function. If given, all frames\nabove `constructorOpt`, including `constructorOpt`, will be omitted from the\ngenerated stack trace.\n\nThe `constructorOpt` argument is useful for hiding implementation\ndetails of error generation from the user. For instance:\n\n```js\nfunction a() {\n  b();\n}\n\nfunction b() {\n  c();\n}\n\nfunction c() {\n  // Create an error without stack trace to avoid calculating the stack trace twice.\n  const { stackTraceLimit } = Error;\n  Error.stackTraceLimit = 0;\n  const error = new Error();\n  Error.stackTraceLimit = stackTraceLimit;\n\n  // Capture the stack trace above function b\n  Error.captureStackTrace(error, b); // Neither function c, nor b is included in the stack trace\n  throw error;\n}\n\na();\n```"
         },
         {
           "id": "method:prepareStackTrace",
@@ -726,10 +739,12 @@
           "name": "stackTraceLimit",
           "kind": "property",
           "signature": "stackTraceLimit: number",
-          "static": true
+          "static": true,
+          "description": "The `Error.stackTraceLimit` property specifies the number of stack frames\ncollected by a stack trace (whether generated by `new Error().stack` or\n`Error.captureStackTrace(obj)`).\n\nThe default value is `10` but may be set to any valid JavaScript number. Changes\nwill affect any stack trace captured _after_ the value has been changed.\n\nIf set to a non-number value, or set to a negative number, stack traces will\nnot capture any frames."
         }
       ],
-      "module": "exceptions"
+      "module": "exceptions",
+      "description": "Exception raised when a required font is not found or available."
     },
     {
       "id": "FontRecommendation",
@@ -776,7 +791,8 @@
           "static": false
         }
       ],
-      "module": "models"
+      "module": "models",
+      "description": "Represents font mapping information for a document font."
     },
     {
       "id": "FontType",
@@ -806,7 +822,8 @@
           "static": true
         }
       ],
-      "module": "models"
+      "module": "models",
+      "description": "Font type classification from the PDF."
     },
     {
       "id": "FormFieldObject",
@@ -973,7 +990,8 @@
           "static": false
         }
       ],
-      "module": "models"
+      "module": "models",
+      "description": "Represents a form field reference with name and value properties.\nExtends ObjectRef to include form-specific properties."
     },
     {
       "id": "FormXObject",
@@ -1080,7 +1098,8 @@
           "kind": "method",
           "signature": "captureStackTrace(targetObject: object, constructorOpt?: Function): void",
           "arity": 2,
-          "static": true
+          "static": true,
+          "description": "Creates a `.stack` property on `targetObject`, which when accessed returns\na string representing the location in the code at which\n`Error.captureStackTrace()` was called.\n\n```js\nconst myObject = {};\nError.captureStackTrace(myObject);\nmyObject.stack;  // Similar to `new Error().stack`\n```\n\nThe first line of the trace will be prefixed with\n`${myObject.name}: ${myObject.message}`.\n\nThe optional `constructorOpt` argument accepts a function. If given, all frames\nabove `constructorOpt`, including `constructorOpt`, will be omitted from the\ngenerated stack trace.\n\nThe `constructorOpt` argument is useful for hiding implementation\ndetails of error generation from the user. For instance:\n\n```js\nfunction a() {\n  b();\n}\n\nfunction b() {\n  c();\n}\n\nfunction c() {\n  // Create an error without stack trace to avoid calculating the stack trace twice.\n  const { stackTraceLimit } = Error;\n  Error.stackTraceLimit = 0;\n  const error = new Error();\n  Error.stackTraceLimit = stackTraceLimit;\n\n  // Capture the stack trace above function b\n  Error.captureStackTrace(error, b); // Neither function c, nor b is included in the stack trace\n  throw error;\n}\n\na();\n```"
         },
         {
           "id": "method:prepareStackTrace",
@@ -1130,7 +1149,8 @@
           "name": "stackTraceLimit",
           "kind": "property",
           "signature": "stackTraceLimit: number",
-          "static": true
+          "static": true,
+          "description": "The `Error.stackTraceLimit` property specifies the number of stack frames\ncollected by a stack trace (whether generated by `new Error().stack` or\n`Error.captureStackTrace(obj)`).\n\nThe default value is `10` but may be set to any valid JavaScript number. Changes\nwill affect any stack trace captured _after_ the value has been changed.\n\nIf set to a non-number value, or set to a negative number, stack traces will\nnot capture any frames."
         },
         {
           "id": "property:statusCode",
@@ -1140,7 +1160,8 @@
           "static": false
         }
       ],
-      "module": "exceptions"
+      "module": "exceptions",
+      "description": "Exception raised for HTTP client errors during API communication.\nWraps fetch exceptions and HTTP errors from the API."
     },
     {
       "id": "Image",
@@ -1208,7 +1229,8 @@
           "static": false
         }
       ],
-      "module": "models"
+      "module": "models",
+      "description": "Represents an image object in a PDF document."
     },
     {
       "id": "ImageObject",
@@ -1238,7 +1260,8 @@
           "kind": "method",
           "signature": "crop(left: number, top: number, right: number, bottom: number): Promise<CommandResult>",
           "arity": 4,
-          "static": false
+          "static": false,
+          "description": "Crops the image by trimming edges."
         },
         {
           "id": "method:delete",
@@ -1254,7 +1277,8 @@
           "kind": "method",
           "signature": "fillRegion(x: number, y: number, width: number, height: number, color: Color): Promise<CommandResult>",
           "arity": 5,
-          "static": false
+          "static": false,
+          "description": "Fills a rectangular pixel region of the image with a solid color."
         },
         {
           "id": "method:flip",
@@ -1262,7 +1286,8 @@
           "kind": "method",
           "signature": "flip(direction: FlipDirection): Promise<CommandResult>",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Flips the image horizontally, vertically, or both."
         },
         {
           "id": "method:flipHorizontal",
@@ -1310,7 +1335,8 @@
           "kind": "method",
           "signature": "replace(newImage: Image): Promise<CommandResult>",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Replaces this image with a new image while keeping the same position."
         },
         {
           "id": "method:replaceFromFile",
@@ -1326,7 +1352,8 @@
           "kind": "method",
           "signature": "rotate(angle: number): Promise<CommandResult>",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Rotates the image by the specified angle."
         },
         {
           "id": "method:scale",
@@ -1334,7 +1361,8 @@
           "kind": "method",
           "signature": "scale(factor: number): Promise<CommandResult>",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Scales the image by a factor."
         },
         {
           "id": "method:scaleTo",
@@ -1342,7 +1370,8 @@
           "kind": "method",
           "signature": "scaleTo(width: number, height: number, preserveAspectRatio?: boolean): Promise<CommandResult>",
           "arity": 3,
-          "static": false
+          "static": false,
+          "description": "Scales the image to a target size."
         },
         {
           "id": "method:setOpacity",
@@ -1350,7 +1379,8 @@
           "kind": "method",
           "signature": "setOpacity(opacity: number): Promise<CommandResult>",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Sets the opacity/transparency of the image."
         },
         {
           "id": "property:_client",
@@ -1460,7 +1490,8 @@
           "static": true
         }
       ],
-      "module": "models"
+      "module": "models",
+      "description": "Types of image transformations supported."
     },
     {
       "id": "Line",
@@ -1533,7 +1564,8 @@
           "static": false
         }
       ],
-      "module": "models"
+      "module": "models",
+      "description": "Represents a straight line segment between two points."
     },
     {
       "id": "LineBuilder",
@@ -1660,7 +1692,8 @@
           "static": false
         }
       ],
-      "module": "models"
+      "module": "models",
+      "description": "Request object for modifying path colors.\nSetting colors to null means \"don't change them\"."
     },
     {
       "id": "ObjectRef",
@@ -1706,7 +1739,8 @@
           "static": false
         }
       ],
-      "module": "models"
+      "module": "models",
+      "description": "Lightweight reference to a PDF object providing identity and type information."
     },
     {
       "id": "ObjectType",
@@ -1841,7 +1875,8 @@
           "static": true
         }
       ],
-      "module": "models"
+      "module": "models",
+      "description": "Model classes for the PDFDancer TypeScript client."
     },
     {
       "id": "Orientation",
@@ -1918,7 +1953,8 @@
           "kind": "method",
           "signature": "atIndex(pageNumber: number): PageBuilder",
           "arity": 1,
-          "static": false
+          "static": false,
+          "deprecated": "Use atPage() instead. This method will be removed in a future release."
         },
         {
           "id": "method:atPage",
@@ -1926,7 +1962,8 @@
           "kind": "method",
           "signature": "atPage(pageNumber: number): PageBuilder",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Sets the page number where the new page should be inserted (1-based).\nPage 1 is the first page."
         },
         {
           "id": "method:customSize",
@@ -2023,7 +2060,8 @@
           "kind": "method",
           "signature": "getSnapshot(types?: ObjectType[]): Promise<PageSnapshot>",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Gets a snapshot of this page, including all elements.\nOptionally filter by object types."
         },
         {
           "id": "method:groupPaths",
@@ -2397,7 +2435,8 @@
           "kind": "method",
           "signature": "getElementCount(): number",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Returns the number of elements on this page."
         },
         {
           "id": "method:getElementsByType",
@@ -2405,7 +2444,8 @@
           "kind": "method",
           "signature": "getElementsByType(type: ObjectType): ObjectRef[]",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Filters elements by object type."
         },
         {
           "id": "method:getPageNumber",
@@ -2413,7 +2453,8 @@
           "kind": "method",
           "signature": "getPageNumber(): number",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Gets the page index from the page reference."
         },
         {
           "id": "property:elements",
@@ -2430,7 +2471,8 @@
           "static": false
         }
       ],
-      "module": "models"
+      "module": "models",
+      "description": "Represents a snapshot of a single page in a PDF document.\nContains the page reference and all elements on that page."
     },
     {
       "id": "Path",
@@ -2508,7 +2550,8 @@
           "static": false
         }
       ],
-      "module": "models"
+      "module": "models",
+      "description": "Represents a vector path consisting of multiple path segments."
     },
     {
       "id": "PathBuilder",
@@ -2530,7 +2573,8 @@
           "kind": "method",
           "signature": "add(): Promise<boolean>",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Add the path to the PDF document."
         },
         {
           "id": "method:addSegment",
@@ -2538,7 +2582,8 @@
           "kind": "method",
           "signature": "addSegment(segment: PathSegment): PathBuilder",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Add a custom path segment."
         },
         {
           "id": "method:at",
@@ -2546,7 +2591,8 @@
           "kind": "method",
           "signature": "at(pageNumber: number, x: number, y: number): PathBuilder",
           "arity": 3,
-          "static": false
+          "static": false,
+          "description": "Set the position where the path will be added.\nCan be called with (x, y) for page-level or (pageNumber, x, y) for document-level."
         },
         {
           "id": "method:at",
@@ -2554,7 +2600,8 @@
           "kind": "method",
           "signature": "at(x: number, y: number): PathBuilder",
           "arity": 2,
-          "static": false
+          "static": false,
+          "description": "Set the position where the path will be added.\nCan be called with (x, y) for page-level or (pageNumber, x, y) for document-level."
         },
         {
           "id": "method:atPosition",
@@ -2562,7 +2609,8 @@
           "kind": "method",
           "signature": "atPosition(position: Position): PathBuilder",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Set the position using a Position object."
         },
         {
           "id": "method:bezierTo",
@@ -2570,7 +2618,8 @@
           "kind": "method",
           "signature": "bezierTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number, y: number): PathBuilder",
           "arity": 6,
-          "static": false
+          "static": false,
+          "description": "Draw a cubic Bezier curve from the current point."
         },
         {
           "id": "method:circle",
@@ -2594,7 +2643,8 @@
           "kind": "method",
           "signature": "dashPattern(dashArray: number[], dashPhase?: number): PathBuilder",
           "arity": 2,
-          "static": false
+          "static": false,
+          "description": "Set the dash pattern for subsequent path segments."
         },
         {
           "id": "method:evenOddFill",
@@ -2602,7 +2652,8 @@
           "kind": "method",
           "signature": "evenOddFill(useEvenOdd: boolean): PathBuilder",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Set whether to use even-odd fill rule (true) or nonzero winding rule (false)."
         },
         {
           "id": "method:fillColor",
@@ -2610,7 +2661,8 @@
           "kind": "method",
           "signature": "fillColor(color: Color): PathBuilder",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Set the fill color for subsequent path segments."
         },
         {
           "id": "method:lineTo",
@@ -2618,7 +2670,8 @@
           "kind": "method",
           "signature": "lineTo(x: number, y: number): PathBuilder",
           "arity": 2,
-          "static": false
+          "static": false,
+          "description": "Draw a line from the current point to the specified point."
         },
         {
           "id": "method:moveTo",
@@ -2626,7 +2679,8 @@
           "kind": "method",
           "signature": "moveTo(x: number, y: number): PathBuilder",
           "arity": 2,
-          "static": false
+          "static": false,
+          "description": "Move to a point without drawing.\nSets the current point for subsequent drawing operations."
         },
         {
           "id": "method:rectangle",
@@ -2650,7 +2704,8 @@
           "kind": "method",
           "signature": "strokeColor(color: Color): PathBuilder",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Set the stroke color for subsequent path segments."
         },
         {
           "id": "method:strokeWidth",
@@ -2658,10 +2713,12 @@
           "kind": "method",
           "signature": "strokeWidth(width: number): PathBuilder",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Set the stroke width for subsequent path segments."
         }
       ],
-      "module": "path-builder"
+      "module": "path-builder",
+      "description": "Builder for creating vector paths in PDF documents.\n\nSupports creating paths with:\n- Lines\n- Bezier curves\n- Custom stroke and fill colors\n- Stroke width and dash patterns"
     },
     {
       "id": "PathEditSession",
@@ -2683,7 +2740,8 @@
           "kind": "method",
           "signature": "apply(): Promise<CommandResult>",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Applies the color changes to the path.\nIf no changes have been made, this is a no-op."
         },
         {
           "id": "method:fillColor",
@@ -2691,7 +2749,8 @@
           "kind": "method",
           "signature": "fillColor(color: Color): PathEditSession",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Sets the fill color for the path."
         },
         {
           "id": "method:strokeColor",
@@ -2699,7 +2758,8 @@
           "kind": "method",
           "signature": "strokeColor(color: Color): PathEditSession",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Sets the stroke color for the path."
         }
       ],
       "module": "types"
@@ -2840,7 +2900,8 @@
           "kind": "method",
           "signature": "edit(): PathEditSession",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Starts an edit session to modify this path's colors."
         },
         {
           "id": "method:fromRef",
@@ -2878,21 +2939,24 @@
           "name": "dashArray",
           "kind": "property",
           "signature": "dashArray: number[]",
-          "static": false
+          "static": false,
+          "description": "Returns the dash array of this path, or undefined if not set."
         },
         {
           "id": "property:dashPhase",
           "name": "dashPhase",
           "kind": "property",
           "signature": "dashPhase: number",
-          "static": false
+          "static": false,
+          "description": "Returns the dash phase of this path, or undefined if not set."
         },
         {
           "id": "property:fillColor",
           "name": "fillColor",
           "kind": "property",
           "signature": "fillColor: Color",
-          "static": false
+          "static": false,
+          "description": "Returns the fill color of this path, or undefined if not set."
         },
         {
           "id": "property:internalId",
@@ -2913,14 +2977,16 @@
           "name": "strokeColor",
           "kind": "property",
           "signature": "strokeColor: Color",
-          "static": false
+          "static": false,
+          "description": "Returns the stroke color of this path, or undefined if not set."
         },
         {
           "id": "property:strokeWidth",
           "name": "strokeWidth",
           "kind": "property",
           "signature": "strokeWidth: number",
-          "static": false
+          "static": false,
+          "description": "Returns the stroke width of this path, or undefined if not set."
         },
         {
           "id": "property:type",
@@ -3011,7 +3077,8 @@
           "static": false
         }
       ],
-      "module": "models"
+      "module": "models",
+      "description": "Represents a path object reference with styling information.\nExtends ObjectRef to include stroke/fill colors and stroke properties."
     },
     {
       "id": "PathPoint",
@@ -3034,7 +3101,8 @@
           "static": false
         }
       ],
-      "module": "models"
+      "module": "models",
+      "description": "Represents a 2D point with x and y coordinates for path operations."
     },
     {
       "id": "PathSegment",
@@ -3093,7 +3161,8 @@
           "static": false
         }
       ],
-      "module": "models"
+      "module": "models",
+      "description": "Base class for path segments (lines, curves, etc.)\nEach segment extends PDFObject and requires a position."
     },
     {
       "id": "PdfAffineTransform",
@@ -3353,7 +3422,8 @@
           "kind": "method",
           "signature": "deletePage(pageNumber: number): Promise<boolean>",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Deletes the page at the specified page number."
         },
         {
           "id": "method:findFonts",
@@ -3361,7 +3431,8 @@
           "kind": "method",
           "signature": "findFonts(fontName: string, fontSize: number): Promise<Font[]>",
           "arity": 2,
-          "static": false
+          "static": false,
+          "description": "Finds available fonts matching the specified name and size."
         },
         {
           "id": "method:getBytes",
@@ -3369,7 +3440,8 @@
           "kind": "method",
           "signature": "getBytes(): Promise<Uint8Array>",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Downloads the current state of the PDF document with all modifications applied."
         },
         {
           "id": "method:getDocumentSnapshot",
@@ -3377,7 +3449,8 @@
           "kind": "method",
           "signature": "getDocumentSnapshot(types?: ObjectType[]): Promise<DocumentSnapshot>",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Gets a snapshot of the entire PDF document.\nReturns page count, fonts, and snapshots of all pages with their elements."
         },
         {
           "id": "method:getPageSnapshot",
@@ -3385,7 +3458,8 @@
           "kind": "method",
           "signature": "getPageSnapshot(pageNumber: number, types?: ObjectType[]): Promise<PageSnapshot>",
           "arity": 2,
-          "static": false
+          "static": false,
+          "description": "Gets a snapshot of a specific page.\nReturns the page reference and all elements on that page."
         },
         {
           "id": "method:movePage",
@@ -3393,7 +3467,8 @@
           "kind": "method",
           "signature": "movePage(fromPage: number, toPage: number): Promise<boolean>",
           "arity": 2,
-          "static": false
+          "static": false,
+          "description": "Moves an existing page to a new position."
         },
         {
           "id": "method:new",
@@ -3401,7 +3476,8 @@
           "kind": "method",
           "signature": "new(options?: { pageSize?: PageSizeInput; orientation?: Orientation; initialPageCount?: number; }, token?: string, baseUrl?: string, timeout?: number, retryConfig?: RetryConfig): Promise<PDFDancer>",
           "arity": 5,
-          "static": true
+          "static": true,
+          "description": "Creates a new, blank PDF document with the specified parameters."
         },
         {
           "id": "method:newBezier",
@@ -3457,7 +3533,8 @@
           "kind": "method",
           "signature": "open(pdfData: string | Uint8Array | ArrayBuffer, token?: string, baseUrl?: string, timeout?: number, retryConfig?: RetryConfig): Promise<PDFDancer>",
           "arity": 5,
-          "static": true
+          "static": true,
+          "description": "Opens a PDF document for manipulation."
         },
         {
           "id": "method:page",
@@ -3465,7 +3542,8 @@
           "kind": "method",
           "signature": "page(pageNumber: number): PageClient",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Creates a client for working with a specific page."
         },
         {
           "id": "method:pages",
@@ -3481,7 +3559,8 @@
           "kind": "method",
           "signature": "registerFont(ttfFile: string | Uint8Array): Promise<string>",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Registers a custom font for use in PDF operations."
         },
         {
           "id": "method:save",
@@ -3489,7 +3568,8 @@
           "kind": "method",
           "signature": "save(filename: string): Promise<void>",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Saves the current PDF to a file (browser environment).\nDownloads the PDF in the browser."
         },
         {
           "id": "method:selectElements",
@@ -3580,7 +3660,8 @@
           "static": false
         }
       ],
-      "module": "pdfdancer_v2"
+      "module": "pdfdancer_v2",
+      "description": "REST API client for interacting with the PDFDancer PDF manipulation service.\nThis client provides a convenient TypeScript interface for performing PDF operations\nincluding session management, object searching, manipulation, and retrieval.\nHandles authentication, session lifecycle, and HTTP communication transparently."
     },
     {
       "id": "PdfDancerException",
@@ -3602,7 +3683,8 @@
           "kind": "method",
           "signature": "captureStackTrace(targetObject: object, constructorOpt?: Function): void",
           "arity": 2,
-          "static": true
+          "static": true,
+          "description": "Creates a `.stack` property on `targetObject`, which when accessed returns\na string representing the location in the code at which\n`Error.captureStackTrace()` was called.\n\n```js\nconst myObject = {};\nError.captureStackTrace(myObject);\nmyObject.stack;  // Similar to `new Error().stack`\n```\n\nThe first line of the trace will be prefixed with\n`${myObject.name}: ${myObject.message}`.\n\nThe optional `constructorOpt` argument accepts a function. If given, all frames\nabove `constructorOpt`, including `constructorOpt`, will be omitted from the\ngenerated stack trace.\n\nThe `constructorOpt` argument is useful for hiding implementation\ndetails of error generation from the user. For instance:\n\n```js\nfunction a() {\n  b();\n}\n\nfunction b() {\n  c();\n}\n\nfunction c() {\n  // Create an error without stack trace to avoid calculating the stack trace twice.\n  const { stackTraceLimit } = Error;\n  Error.stackTraceLimit = 0;\n  const error = new Error();\n  Error.stackTraceLimit = stackTraceLimit;\n\n  // Capture the stack trace above function b\n  Error.captureStackTrace(error, b); // Neither function c, nor b is included in the stack trace\n  throw error;\n}\n\na();\n```"
         },
         {
           "id": "method:prepareStackTrace",
@@ -3645,10 +3727,12 @@
           "name": "stackTraceLimit",
           "kind": "property",
           "signature": "stackTraceLimit: number",
-          "static": true
+          "static": true,
+          "description": "The `Error.stackTraceLimit` property specifies the number of stack frames\ncollected by a stack trace (whether generated by `new Error().stack` or\n`Error.captureStackTrace(obj)`).\n\nThe default value is `10` but may be set to any valid JavaScript number. Changes\nwill affect any stack trace captured _after_ the value has been changed.\n\nIf set to a non-number value, or set to a negative number, stack traces will\nnot capture any frames."
         }
       ],
-      "module": "exceptions"
+      "module": "exceptions",
+      "description": "Base exception for all PDFDancer client errors."
     },
     {
       "id": "Point",
@@ -3671,7 +3755,8 @@
           "static": false
         }
       ],
-      "module": "models"
+      "module": "models",
+      "description": "Represents a 2D point with x and y coordinates."
     },
     {
       "id": "Position",
@@ -3693,7 +3778,8 @@
           "kind": "method",
           "signature": "atCoordinates(point: Point): Position",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Sets the position to a specific point location."
         },
         {
           "id": "method:atPage",
@@ -3701,7 +3787,8 @@
           "kind": "method",
           "signature": "atPage(pageNumber: number): Position",
           "arity": 1,
-          "static": true
+          "static": true,
+          "description": "Creates a position specification for an entire page using a 1-based page number."
         },
         {
           "id": "method:atPageCoordinates",
@@ -3709,7 +3796,8 @@
           "kind": "method",
           "signature": "atPageCoordinates(pageNumber: number, x: number, y: number, tolerance?: number): Position",
           "arity": 4,
-          "static": true
+          "static": true,
+          "description": "Creates a position specification for specific coordinates on a page."
         },
         {
           "id": "method:byName",
@@ -3717,7 +3805,8 @@
           "kind": "method",
           "signature": "byName(name: string): Position",
           "arity": 1,
-          "static": true
+          "static": true,
+          "description": "Creates a position specification for finding objects by name."
         },
         {
           "id": "method:copy",
@@ -3725,7 +3814,8 @@
           "kind": "method",
           "signature": "copy(): Position",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Creates a copy of this position."
         },
         {
           "id": "method:getX",
@@ -3733,7 +3823,8 @@
           "kind": "method",
           "signature": "getX(): number",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Returns the X coordinate of this position."
         },
         {
           "id": "method:getY",
@@ -3741,7 +3832,8 @@
           "kind": "method",
           "signature": "getY(): number",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Returns the Y coordinate of this position."
         },
         {
           "id": "method:moveX",
@@ -3749,7 +3841,8 @@
           "kind": "method",
           "signature": "moveX(xOffset: number): Position",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Move the position horizontally by the specified offset."
         },
         {
           "id": "method:moveY",
@@ -3757,7 +3850,8 @@
           "kind": "method",
           "signature": "moveY(yOffset: number): Position",
           "arity": 1,
-          "static": false
+          "static": false,
+          "description": "Move the position vertically by the specified offset."
         },
         {
           "id": "property:boundingRect",
@@ -3809,7 +3903,8 @@
           "static": false
         }
       ],
-      "module": "models"
+      "module": "models",
+      "description": "Represents spatial positioning and location information for PDF objects."
     },
     {
       "id": "PositionMode",
@@ -3832,7 +3927,8 @@
           "static": true
         }
       ],
-      "module": "models"
+      "module": "models",
+      "description": "Defines how position matching should be performed when searching for objects."
     },
     {
       "id": "RateLimitException",
@@ -3854,7 +3950,8 @@
           "kind": "method",
           "signature": "captureStackTrace(targetObject: object, constructorOpt?: Function): void",
           "arity": 2,
-          "static": true
+          "static": true,
+          "description": "Creates a `.stack` property on `targetObject`, which when accessed returns\na string representing the location in the code at which\n`Error.captureStackTrace()` was called.\n\n```js\nconst myObject = {};\nError.captureStackTrace(myObject);\nmyObject.stack;  // Similar to `new Error().stack`\n```\n\nThe first line of the trace will be prefixed with\n`${myObject.name}: ${myObject.message}`.\n\nThe optional `constructorOpt` argument accepts a function. If given, all frames\nabove `constructorOpt`, including `constructorOpt`, will be omitted from the\ngenerated stack trace.\n\nThe `constructorOpt` argument is useful for hiding implementation\ndetails of error generation from the user. For instance:\n\n```js\nfunction a() {\n  b();\n}\n\nfunction b() {\n  c();\n}\n\nfunction c() {\n  // Create an error without stack trace to avoid calculating the stack trace twice.\n  const { stackTraceLimit } = Error;\n  Error.stackTraceLimit = 0;\n  const error = new Error();\n  Error.stackTraceLimit = stackTraceLimit;\n\n  // Capture the stack trace above function b\n  Error.captureStackTrace(error, b); // Neither function c, nor b is included in the stack trace\n  throw error;\n}\n\na();\n```"
         },
         {
           "id": "method:prepareStackTrace",
@@ -3911,7 +4008,8 @@
           "name": "stackTraceLimit",
           "kind": "property",
           "signature": "stackTraceLimit: number",
-          "static": true
+          "static": true,
+          "description": "The `Error.stackTraceLimit` property specifies the number of stack frames\ncollected by a stack trace (whether generated by `new Error().stack` or\n`Error.captureStackTrace(obj)`).\n\nThe default value is `10` but may be set to any valid JavaScript number. Changes\nwill affect any stack trace captured _after_ the value has been changed.\n\nIf set to a non-number value, or set to a negative number, stack traces will\nnot capture any frames."
         },
         {
           "id": "property:statusCode",
@@ -3921,7 +4019,8 @@
           "static": false
         }
       ],
-      "module": "exceptions"
+      "module": "exceptions",
+      "description": "Exception raised after the configured attempts for an HTTP 429 are exhausted."
     },
     {
       "id": "RectangleBuilder",
@@ -4023,52 +4122,60 @@
           "name": "backoffMultiplier",
           "kind": "property",
           "signature": "backoffMultiplier?: number",
-          "static": false
+          "static": false,
+          "description": "Exponential backoff multiplier (default: 2)"
         },
         {
           "id": "property:initialDelay",
           "name": "initialDelay",
           "kind": "property",
           "signature": "initialDelay?: number",
-          "static": false
+          "static": false,
+          "description": "Initial delay in milliseconds before first retry (default: 1000)\nSubsequent delays use exponential backoff"
         },
         {
           "id": "property:maxAttempts",
           "name": "maxAttempts",
           "kind": "property",
           "signature": "maxAttempts?: number",
-          "static": false
+          "static": false,
+          "description": "Total number of attempts, including the initial request (default: 3)"
         },
         {
           "id": "property:maxDelay",
           "name": "maxDelay",
           "kind": "property",
           "signature": "maxDelay?: number",
-          "static": false
+          "static": false,
+          "description": "Maximum delay in milliseconds between retries (default: 5000)"
         },
         {
           "id": "property:respectRetryAfter",
           "name": "respectRetryAfter",
           "kind": "property",
           "signature": "respectRetryAfter?: boolean",
-          "static": false
+          "static": false,
+          "description": "Whether to respect Retry-After headers from server responses (default: true)\nWhen enabled, the client will use the server-specified delay instead of exponential backoff\nfor responses that include a Retry-After header (typically 429 or 503 responses)"
         },
         {
           "id": "property:retryableStatusCodes",
           "name": "retryableStatusCodes",
           "kind": "property",
           "signature": "retryableStatusCodes?: number[]",
-          "static": false
+          "static": false,
+          "description": "HTTP status codes that should trigger a retry (default: [429, 500, 502, 503, 504])"
         },
         {
           "id": "property:retryOnNetworkError",
           "name": "retryOnNetworkError",
           "kind": "property",
           "signature": "retryOnNetworkError?: boolean",
-          "static": false
+          "static": false,
+          "description": "Whether to retry on network errors (connection failures, timeouts) (default: true)"
         }
       ],
-      "module": "pdfdancer_v2"
+      "module": "pdfdancer_v2",
+      "description": "Configuration for retry mechanism on REST API calls."
     },
     {
       "id": "SessionException",
@@ -4090,7 +4197,8 @@
           "kind": "method",
           "signature": "captureStackTrace(targetObject: object, constructorOpt?: Function): void",
           "arity": 2,
-          "static": true
+          "static": true,
+          "description": "Creates a `.stack` property on `targetObject`, which when accessed returns\na string representing the location in the code at which\n`Error.captureStackTrace()` was called.\n\n```js\nconst myObject = {};\nError.captureStackTrace(myObject);\nmyObject.stack;  // Similar to `new Error().stack`\n```\n\nThe first line of the trace will be prefixed with\n`${myObject.name}: ${myObject.message}`.\n\nThe optional `constructorOpt` argument accepts a function. If given, all frames\nabove `constructorOpt`, including `constructorOpt`, will be omitted from the\ngenerated stack trace.\n\nThe `constructorOpt` argument is useful for hiding implementation\ndetails of error generation from the user. For instance:\n\n```js\nfunction a() {\n  b();\n}\n\nfunction b() {\n  c();\n}\n\nfunction c() {\n  // Create an error without stack trace to avoid calculating the stack trace twice.\n  const { stackTraceLimit } = Error;\n  Error.stackTraceLimit = 0;\n  const error = new Error();\n  Error.stackTraceLimit = stackTraceLimit;\n\n  // Capture the stack trace above function b\n  Error.captureStackTrace(error, b); // Neither function c, nor b is included in the stack trace\n  throw error;\n}\n\na();\n```"
         },
         {
           "id": "method:prepareStackTrace",
@@ -4133,10 +4241,12 @@
           "name": "stackTraceLimit",
           "kind": "property",
           "signature": "stackTraceLimit: number",
-          "static": true
+          "static": true,
+          "description": "The `Error.stackTraceLimit` property specifies the number of stack frames\ncollected by a stack trace (whether generated by `new Error().stack` or\n`Error.captureStackTrace(obj)`).\n\nThe default value is `10` but may be set to any valid JavaScript number. Changes\nwill affect any stack trace captured _after_ the value has been changed.\n\nIf set to a non-number value, or set to a negative number, stack traces will\nnot capture any frames."
         }
       ],
-      "module": "exceptions"
+      "module": "exceptions",
+      "description": "Exception raised for session-related errors.\nOccurs when session creation fails or session is invalid."
     },
     {
       "id": "SessionNotFoundException",
@@ -4158,7 +4268,8 @@
           "kind": "method",
           "signature": "captureStackTrace(targetObject: object, constructorOpt?: Function): void",
           "arity": 2,
-          "static": true
+          "static": true,
+          "description": "Creates a `.stack` property on `targetObject`, which when accessed returns\na string representing the location in the code at which\n`Error.captureStackTrace()` was called.\n\n```js\nconst myObject = {};\nError.captureStackTrace(myObject);\nmyObject.stack;  // Similar to `new Error().stack`\n```\n\nThe first line of the trace will be prefixed with\n`${myObject.name}: ${myObject.message}`.\n\nThe optional `constructorOpt` argument accepts a function. If given, all frames\nabove `constructorOpt`, including `constructorOpt`, will be omitted from the\ngenerated stack trace.\n\nThe `constructorOpt` argument is useful for hiding implementation\ndetails of error generation from the user. For instance:\n\n```js\nfunction a() {\n  b();\n}\n\nfunction b() {\n  c();\n}\n\nfunction c() {\n  // Create an error without stack trace to avoid calculating the stack trace twice.\n  const { stackTraceLimit } = Error;\n  Error.stackTraceLimit = 0;\n  const error = new Error();\n  Error.stackTraceLimit = stackTraceLimit;\n\n  // Capture the stack trace above function b\n  Error.captureStackTrace(error, b); // Neither function c, nor b is included in the stack trace\n  throw error;\n}\n\na();\n```"
         },
         {
           "id": "method:prepareStackTrace",
@@ -4201,10 +4312,12 @@
           "name": "stackTraceLimit",
           "kind": "property",
           "signature": "stackTraceLimit: number",
-          "static": true
+          "static": true,
+          "description": "The `Error.stackTraceLimit` property specifies the number of stack frames\ncollected by a stack trace (whether generated by `new Error().stack` or\n`Error.captureStackTrace(obj)`).\n\nThe default value is `10` but may be set to any valid JavaScript number. Changes\nwill affect any stack trace captured _after_ the value has been changed.\n\nIf set to a non-number value, or set to a negative number, stack traces will\nnot capture any frames."
         }
       ],
-      "module": "exceptions"
+      "module": "exceptions",
+      "description": "Exception raised when a session is not found (expired or invalid)."
     },
     {
       "id": "ShapeType",
@@ -4241,7 +4354,8 @@
           "static": true
         }
       ],
-      "module": "models"
+      "module": "models",
+      "description": "Defines the geometric shape type used for position specification."
     },
     {
       "id": "Size",
@@ -4264,7 +4378,8 @@
           "static": false
         }
       ],
-      "module": "models"
+      "module": "models",
+      "description": "Represents dimensional measurements with width and height properties."
     },
     {
       "id": "STANDARD_PAGE_SIZES",
@@ -4379,7 +4494,8 @@
           "static": true
         }
       ],
-      "module": "models"
+      "module": "models",
+      "description": "Standard PDF fonts that are available in all PDF readers.\nThese 14 fonts are guaranteed to be available without embedding."
     },
     {
       "id": "TextClient",
@@ -6564,7 +6680,8 @@
           "kind": "method",
           "signature": "captureStackTrace(targetObject: object, constructorOpt?: Function): void",
           "arity": 2,
-          "static": true
+          "static": true,
+          "description": "Creates a `.stack` property on `targetObject`, which when accessed returns\na string representing the location in the code at which\n`Error.captureStackTrace()` was called.\n\n```js\nconst myObject = {};\nError.captureStackTrace(myObject);\nmyObject.stack;  // Similar to `new Error().stack`\n```\n\nThe first line of the trace will be prefixed with\n`${myObject.name}: ${myObject.message}`.\n\nThe optional `constructorOpt` argument accepts a function. If given, all frames\nabove `constructorOpt`, including `constructorOpt`, will be omitted from the\ngenerated stack trace.\n\nThe `constructorOpt` argument is useful for hiding implementation\ndetails of error generation from the user. For instance:\n\n```js\nfunction a() {\n  b();\n}\n\nfunction b() {\n  c();\n}\n\nfunction c() {\n  // Create an error without stack trace to avoid calculating the stack trace twice.\n  const { stackTraceLimit } = Error;\n  Error.stackTraceLimit = 0;\n  const error = new Error();\n  Error.stackTraceLimit = stackTraceLimit;\n\n  // Capture the stack trace above function b\n  Error.captureStackTrace(error, b); // Neither function c, nor b is included in the stack trace\n  throw error;\n}\n\na();\n```"
         },
         {
           "id": "method:prepareStackTrace",
@@ -6607,10 +6724,12 @@
           "name": "stackTraceLimit",
           "kind": "property",
           "signature": "stackTraceLimit: number",
-          "static": true
+          "static": true,
+          "description": "The `Error.stackTraceLimit` property specifies the number of stack frames\ncollected by a stack trace (whether generated by `new Error().stack` or\n`Error.captureStackTrace(obj)`).\n\nThe default value is `10` but may be set to any valid JavaScript number. Changes\nwill affect any stack trace captured _after_ the value has been changed.\n\nIf set to a non-number value, or set to a negative number, stack traces will\nnot capture any frames."
         }
       ],
-      "module": "exceptions"
+      "module": "exceptions",
+      "description": "Exception raised for input validation errors."
     },
     {
       "id": "VERSION",
@@ -6618,7 +6737,8 @@
       "kind": "value",
       "signature": "VERSION: \"0.0.0-dev\"",
       "members": [],
-      "module": "version"
+      "module": "version",
+      "description": "Version file - DO NOT edit manually\n\nThis file is auto-generated during build from package.json / git tags.\nA fallback version is committed to git to ensure builds don't fail\nif version generation fails."
     }
   ]
 }

@@ -16,6 +16,8 @@ function normalizeMember(member) {
   };
   if (member.arity !== undefined) normalized.arity = Number(member.arity);
   if (member.static !== undefined) normalized.static = Boolean(member.static);
+  if (member.description) normalized.description = String(member.description);
+  if (member.deprecated) normalized.deprecated = String(member.deprecated);
   return normalized;
 }
 
@@ -29,6 +31,8 @@ function normalizeSymbol(symbol) {
       compareText(a.id, b.id) || compareText(a.signature, b.signature)),
   };
   if (symbol.module !== undefined) normalized.module = String(symbol.module);
+  if (symbol.description) normalized.description = String(symbol.description);
+  if (symbol.deprecated) normalized.deprecated = String(symbol.deprecated);
   return normalized;
 }
 

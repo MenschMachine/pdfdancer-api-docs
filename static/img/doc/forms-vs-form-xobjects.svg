@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 430" role="img" aria-labelledby="title description">
+  <title id="title">AcroForm fields compared with Form XObjects</title>
+  <description id="description">AcroForm fields are interactive controls with names and values. Form XObjects are reusable painted PDF content streams.</description>
+  <rect width="1000" height="430" rx="24" fill="#111217"/>
+  <rect x="35" y="35" width="445" height="360" rx="16" fill="#1b1d24" stroke="#ff9d00" stroke-width="3"/>
+  <text x="70" y="85" fill="#ffcf7c" font-family="Sora, sans-serif" font-size="28" font-weight="700">AcroForm field</text>
+  <text x="70" y="120" fill="#c8cad2" font-family="Sora, sans-serif" font-size="18">Interactive control with a stored name and value</text>
+  <text x="70" y="175" fill="#f5f5f6" font-family="JetBrains Mono, monospace" font-size="17">name: customer_name</text>
+  <rect x="70" y="195" width="350" height="54" rx="6" fill="#fff" stroke="#878b98" stroke-width="2"/>
+  <text x="88" y="229" fill="#292b34" font-family="Sora, sans-serif" font-size="20">Ada Lovelace</text>
+  <rect x="70" y="285" width="24" height="24" rx="3" fill="#fff" stroke="#878b98" stroke-width="2"/>
+  <path d="M75 297l7 7 15-19" fill="none" stroke="#ff9d00" stroke-width="5"/>
+  <text x="110" y="305" fill="#f5f5f6" font-family="JetBrains Mono, monospace" font-size="17">approved = true</text>
+  <rect x="520" y="35" width="445" height="360" rx="16" fill="#1b1d24" stroke="#6f778d" stroke-width="3"/>
+  <text x="555" y="85" fill="#d9dbe2" font-family="Sora, sans-serif" font-size="28" font-weight="700">Form XObject</text>
+  <text x="555" y="120" fill="#c8cad2" font-family="Sora, sans-serif" font-size="18">Reusable PDF drawing painted onto a page</text>
+  <g transform="translate(585 170)">
+    <rect x="0" y="0" width="280" height="135" rx="8" fill="#fff"/>
+    <circle cx="62" cy="67" r="39" fill="#ff9d00"/>
+    <path d="M45 67h34M62 50v34" stroke="#191a20" stroke-width="8" stroke-linecap="round"/>
+    <text x="120" y="61" fill="#242630" font-family="Sora, sans-serif" font-size="22" font-weight="700">Reusable</text>
+    <text x="120" y="91" fill="#555967" font-family="Sora, sans-serif" font-size="18">content stream</text>
+  </g>
+  <text x="555" y="350" fill="#c8cad2" font-family="JetBrains Mono, monospace" font-size="16">selectForms() / selectFormAt()</text>
+</svg>

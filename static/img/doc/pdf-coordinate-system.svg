@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" role="img" aria-labelledby="title description">
+  <title id="title">PDF page coordinate system</title>
+  <description id="description">A PDF page with its origin at the bottom-left, positive x to the right, positive y upward, and a positioned rectangle described by x, y, width, and height.</description>
+  <rect width="900" height="500" rx="24" fill="#111217"/>
+  <rect x="250" y="45" width="390" height="410" rx="5" fill="#fff" stroke="#a7a9b2" stroke-width="4"/>
+  <line x1="250" y1="455" x2="705" y2="455" stroke="#ff9d00" stroke-width="6"/>
+  <polygon points="705,455 680,443 680,467" fill="#ff9d00"/>
+  <line x1="250" y1="455" x2="250" y2="15" stroke="#ff9d00" stroke-width="6"/>
+  <polygon points="250,15 238,40 262,40" fill="#ff9d00"/>
+  <circle cx="250" cy="455" r="9" fill="#ff9d00"/>
+  <text x="204" y="484" fill="#ffcf7c" font-family="JetBrains Mono, monospace" font-size="20">(0, 0)</text>
+  <text x="714" y="462" fill="#ffcf7c" font-family="JetBrains Mono, monospace" font-size="20">+x</text>
+  <text x="218" y="27" fill="#ffcf7c" font-family="JetBrains Mono, monospace" font-size="20">+y</text>
+  <rect x="370" y="210" width="165" height="105" fill="#ff9d0022" stroke="#ff9d00" stroke-width="4"/>
+  <circle cx="370" cy="315" r="7" fill="#ff9d00"/>
+  <text x="285" y="340" fill="#1a1b20" font-family="JetBrains Mono, monospace" font-size="18">(x, y)</text>
+  <line x1="370" y1="335" x2="535" y2="335" stroke="#565a67" stroke-width="3"/>
+  <text x="430" y="360" fill="#343641" font-family="JetBrains Mono, monospace" font-size="17">width</text>
+  <line x1="555" y1="210" x2="555" y2="315" stroke="#565a67" stroke-width="3"/>
+  <text x="570" y="268" fill="#343641" font-family="JetBrains Mono, monospace" font-size="17">height</text>
+  <text x="35" y="90" fill="#f4f4f6" font-family="Sora, sans-serif" font-size="27" font-weight="700">PDF coordinates</text>
+  <text x="35" y="130" fill="#b9bbc4" font-family="Sora, sans-serif" font-size="19">• units are points</text>
+  <text x="35" y="165" fill="#b9bbc4" font-family="Sora, sans-serif" font-size="19">• 72 points = 1 inch</text>
+  <text x="35" y="200" fill="#b9bbc4" font-family="Sora, sans-serif" font-size="19">• page numbers start at 1</text>
+</svg>
