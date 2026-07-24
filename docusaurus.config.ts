@@ -6,7 +6,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 // Flip this single flag when API v3 is released. Explicit /v1 and /v3 routes
 // remain stable; only the preferred version and preview metadata change.
-const V3_RELEASED = false;
+const V3_RELEASED = true;
 const preferredDocsPath = V3_RELEASED ? '/v3/' : '/v1/';
 
 const config: Config = {
