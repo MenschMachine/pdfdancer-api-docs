@@ -1,16 +1,16 @@
 ---
 id: migrating-from-v1
 title: Migrating from API v1
-description: Map PDFDancer API v1 concepts and workflows to API v2.
+description: Map PDFDancer API v1 concepts and workflows to API v3.
 ---
 
 # Migrating from API v1
 
-API v2 keeps page, image, path, form, font, and snapshot workflows, but changes how you edit text. Instead of selecting an editable paragraph or text line, you specify the text to target as part of a replace, insert, delete, or style operation.
+API v3 keeps page, image, path, form, font, and snapshot workflows, but changes how you edit text. Instead of selecting an editable paragraph or text line, you specify the text to target as part of a replace, insert, delete, or style operation.
 
 ## Text migration
 
-| API v1 | API v2 |
+| API v1 | API v3 |
 |---|---|
 | Select a `Paragraph` or `TextLine`, then open an edit builder | Construct `TextReplaceRequest`, `TextInsertRequest`, `TextDeleteRequest`, or `TextStyleRequest` |
 | `ParagraphBuilder`, `TextLineBuilder`, or Java text references | `pdf.text()` or `pdf.page(n).text()` |
@@ -22,16 +22,16 @@ Literal and regular-expression selectors identify text to edit. They are not a r
 
 ## Documentation map
 
-| API v1 page | API v2 destination |
+| API v1 page | API v3 destination |
 |---|---|
-| Introduction + Getting Started | [Getting Started](/v2/) |
+| Introduction + Getting Started | [Getting Started](/v3/) |
 | Working with Text | [Working with Text](./working-with-text), [Editing Text](./editing-text), and [Styling Text](./styling-text) |
 | Deleting Content | The relevant text, page, image, path, or form guide |
 | How Reflow Works | [Text Layout](./text-layout) |
 | Embedded Font Warning | [Working with Fonts](./working-with-fonts) |
-| Extracting Text | No public v2 SDK counterpart is currently documented |
-| Redaction | No public v2 SDK counterpart is currently documented |
+| Extracting Text | No public v3 SDK counterpart is currently documented |
+| Redaction | No public v3 SDK counterpart is currently documented |
 
-Python and TypeScript promote several existing object types to their package root. Treat these as import-path changes, not new capabilities. Java v2 public packages use `com.pdfdancer...` names.
+Python and TypeScript promote several existing object types to their package root. Treat these as import-path changes, not new capabilities. Java v3 public packages use `com.pdfdancer...` names.
 
-Do not mix v1 examples with v2 sessions. The complete v1 documentation remains available under [/v1/](/v1/).
+Do not mix v1 examples with v3 sessions. The complete v1 documentation remains available under [/v1/](/v1/).

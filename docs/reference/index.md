@@ -1,12 +1,12 @@
 ---
 id: index
 title: SDK API Reference
-description: Version-pinned PDFDancer API v2 references for Python, TypeScript, and Java.
+description: Version-pinned PDFDancer API v3 references for Python, TypeScript, and Java.
 ---
 
 # SDK API Reference
 
-The reference pages list the supported public types and members in PDFDancer SDK version `2.0.0`. Use the task guides to learn a workflow and the reference to confirm exact names, signatures, return types, and exceptions.
+The reference pages list the supported public types and members in PDFDancer SDK version `3.0.0`. Use the task guides to learn a workflow and the reference to confirm exact names, signatures, return types, and exceptions.
 
 - [Python API reference](./python/)
 - [TypeScript API reference](./typescript/)

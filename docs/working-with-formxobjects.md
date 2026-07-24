@@ -15,7 +15,7 @@ A Form XObject is a reusable PDF content stream that can be painted one or more 
 
 ## Complete Form XObject workflow
 
-Download [form-xobject.pdf](/files/v2/samples/form-xobject.pdf) as `input.pdf`. The program selects the first Form XObject, clears its clipping path, and saves `output.pdf`.
+Download [form-xobject.pdf](/files/v3/samples/form-xobject.pdf) as `input.pdf`. The program selects the first Form XObject, clears its clipping path, and saves `output.pdf`.
 
 <Tabs>
 <TabItem value="python-complete" label="Python">
@@ -113,7 +113,7 @@ Plural selectors return every match. The singular coordinate selector returns `N
 
 ## Language-specific types
 
-The three v2 SDKs do not use one identical public class name. Use the actual exported `FormObject`, `FormXObject`, or reference type documented by the selected language; do not treat those names as interchangeable imports.
+The three v3 SDKs do not use one identical public class name. Use the actual exported `FormObject`, `FormXObject`, or reference type documented by the selected language; do not treat those names as interchangeable imports.
 
 ## Select and edit a Form XObject
 

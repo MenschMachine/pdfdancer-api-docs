@@ -4,10 +4,10 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
-// Flip this single flag when API v2 is released. Explicit /v1 and /v2 routes
+// Flip this single flag when API v3 is released. Explicit /v1 and /v3 routes
 // remain stable; only the preferred version and preview metadata change.
-const V2_RELEASED = false;
-const preferredDocsPath = V2_RELEASED ? '/v2/' : '/v1/';
+const V3_RELEASED = true;
+const preferredDocsPath = V3_RELEASED ? '/v3/' : '/v1/';
 
 const config: Config = {
     title: 'PDFDancer SDK Docs',
@@ -48,14 +48,14 @@ const config: Config = {
                     routeBasePath: '/', // Serve the docs at the site's root
                     sidebarPath: './sidebars.ts',
                     exclude: ['**/capabilities/**'],
-                    lastVersion: V2_RELEASED ? 'current' : '1',
+                    lastVersion: V3_RELEASED ? 'current' : '1',
                     versions: {
                         current: {
-                            label: V2_RELEASED ? 'API v2' : 'API v2 Preview',
-                            path: 'v2',
-                            banner: V2_RELEASED ? 'none' : 'unreleased',
+                            label: V3_RELEASED ? 'API v3' : 'API v3 Preview',
+                            path: 'v3',
+                            banner: V3_RELEASED ? 'none' : 'unreleased',
                             badge: true,
-                            noIndex: !V2_RELEASED,
+                            noIndex: !V3_RELEASED,
                         },
                         '1': {
                             label: 'API v1',

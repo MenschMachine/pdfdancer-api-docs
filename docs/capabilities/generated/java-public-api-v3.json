@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "release": "2.0.0",
-  "sourceRef": "release/v2",
+  "release": "3.0.0",
+  "sourceRef": "release/v3",
   "types": [
     {
       "name": "com.pdfdancer.client.http.Argument",

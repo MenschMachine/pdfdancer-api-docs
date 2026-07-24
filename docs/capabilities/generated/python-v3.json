@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "language": "python",
   "repository": "pdfdancer-client-python",
-  "candidateRef": "release/v2",
+  "candidateRef": "release/v3",
   "candidateCommit": "af2a1171a1b9b06dff14d2a0d64f4340f925d26c",
   "symbols": [
     {

@@ -64,7 +64,7 @@ test('review reports list new symbols once and detail only retained-symbol membe
     ]},
   ]);
   const refs = {test: {
-    repository: 'fixture', baseRef: 'v1', baseCommit: '111', candidateRef: 'v2', candidateCommit: '222',
+    repository: 'fixture', baseRef: 'v1', baseCommit: '111', candidateRef: 'v3', candidateCommit: '222',
   }};
   const diff = buildDiff({test: base}, {test: candidate}, refs);
   assert.deepEqual(diff.languages.test.counts.symbols, {added: 1, promoted: 0, removed: 1, changed: 1});
@@ -83,7 +83,7 @@ test('review model distinguishes an existing declaration promoted to the package
   const base = manifest([{id: 'BaseObject', name: 'BaseObject', module: 'types', kind: 'class', signature: 'class BaseObject', members: []}]);
   const candidate = manifest([{id: 'BaseObject', name: 'BaseObject', module: 'types', kind: 'class', signature: 'class BaseObject', members: []}]);
   const refs = {test: {
-    repository: 'fixture', baseRef: 'v1', baseCommit: '111', candidateRef: 'v2', candidateCommit: '222',
+    repository: 'fixture', baseRef: 'v1', baseCommit: '111', candidateRef: 'v3', candidateCommit: '222',
     promotedSymbols: ['BaseObject'],
   }};
   const diff = buildDiff({test: base}, {test: candidate}, refs);

@@ -1,7 +1,7 @@
 ---
 id: styling-text
 title: Styling Text
-description: Change PDF text fonts, size, colors, and spacing with API v2.
+description: Change PDF text fonts, size, colors, and spacing with API v3.
 ---
 
 import Tabs from '@theme/Tabs';

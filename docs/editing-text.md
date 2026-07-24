@@ -1,7 +1,7 @@
 ---
 id: editing-text
 title: Replace, Insert, and Delete Text
-description: Complete v2 examples for replacing, inserting, and deleting PDF text.
+description: Complete v3 examples for replacing, inserting, and deleting PDF text.
 ---
 
 import Tabs from '@theme/Tabs';

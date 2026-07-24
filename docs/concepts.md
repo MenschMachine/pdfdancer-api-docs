@@ -1,7 +1,7 @@
 ---
 id: concepts
 title: Core Concepts
-description: Understand sessions, scope, content selection, editing operations, results, and coordinates in API v2.
+description: Understand sessions, scope, content selection, editing operations, results, and coordinates in API v3.
 ---
 
 # Core Concepts
@@ -16,11 +16,11 @@ Document scope searches or edits the whole document. Page scope—`pdf.page(1)`�
 
 Selectors return typed existing objects or references, such as images, paths, Form XObjects, and form fields. The selected values provide the changes supported for that object type, such as moving, deleting, setting a form value, or clearing clipping.
 
-Builders create content. API v2 has dedicated image, path, line, Bézier, and rectangle builders. A builder does not change the document until its terminal `add` operation succeeds.
+Builders create content. API v3 has dedicated image, path, line, Bézier, and rectangle builders. A builder does not change the document until its terminal `add` operation succeeds.
 
 ## Editing text
 
-You can replace, insert, delete, or style text. For each edit, specify what to target—such as literal text, a regular expression, an existing style, an anchor, or page coordinates—and then apply the operation. The SDK represents these edit definitions with classes such as `TextReplaceRequest` and `TextInsertRequest`. Paragraphs and text lines are not editable objects in v2.
+You can replace, insert, delete, or style text. For each edit, specify what to target—such as literal text, a regular expression, an existing style, an anchor, or page coordinates—and then apply the operation. The SDK represents these edit definitions with classes such as `TextReplaceRequest` and `TextInsertRequest`. Paragraphs and text lines are not editable objects in v3.
 
 Every text operation returns `TextEditResponse`. Distinguish:
 

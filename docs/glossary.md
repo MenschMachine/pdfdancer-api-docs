@@ -1,7 +1,7 @@
 ---
 id: glossary
 title: Glossary
-description: Precise definitions of the PDF and PDFDancer API v2 terms used in this documentation.
+description: Precise definitions of the PDF and PDFDancer API v3 terms used in this documentation.
 ---
 
 # Glossary
@@ -92,9 +92,9 @@ description: Precise definitions of the PDF and PDFDancer API v2 terms used in t
 
 ## T
 
-**Text client** — The value returned by `pdf.text()` or `pdf.page(n).text()`. It exposes the four v2 text operations: `replace`, `insert`, `delete`, and `style`.
+**Text client** — The value returned by `pdf.text()` or `pdf.page(n).text()`. It exposes the four v3 text operations: `replace`, `insert`, `delete`, and `style`.
 
-**TextEditResponse** — The result of a v2 text operation. `matched` reports eligible targets, `changed` reports applied changes, `pagesChanged` reports affected one-based pages, `change` contains per-change details, and `warnings` and `errors` report nonfatal fallbacks and unapplied work.
+**TextEditResponse** — The result of a v3 text operation. `matched` reports eligible targets, `changed` reports applied changes, `pagesChanged` reports affected one-based pages, `change` contains per-change details, and `warnings` and `errors` report nonfatal fallbacks and unapplied work.
 
 **Text operation** — One call to `replace`, `insert`, `delete`, or `style`. The accompanying class—such as `TextReplaceRequest`—describes the target, desired change, scope, and layout behavior. In this documentation, “operation” refers to this SDK action; “HTTP request” is used explicitly when discussing transport behavior.
 

@@ -1,7 +1,7 @@
 ---
 id: working-with-images
 title: Working with Images
-description: Select, add, transform, replace, and delete images with API v2.
+description: Select, add, transform, replace, and delete images with API v3.
 ---
 
 import Tabs from '@theme/Tabs';
@@ -13,7 +13,7 @@ Select images at document or page scope, by collection or coordinates. Singular 
 
 ## Complete image-replacement workflow
 
-Download [images.pdf](/files/v2/samples/images.pdf) as `input.pdf` and [replacement-logo.png](/files/v2/samples/replacement-logo.png) into the same directory. The program replaces the first image and saves `output.pdf`.
+Download [images.pdf](/files/v3/samples/images.pdf) as `input.pdf` and [replacement-logo.png](/files/v3/samples/replacement-logo.png) into the same directory. The program replaces the first image and saves `output.pdf`.
 
 <Tabs>
 <TabItem value="python-complete" label="Python">

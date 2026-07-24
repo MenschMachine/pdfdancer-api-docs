@@ -1,7 +1,7 @@
 ---
 id: getting-started-typescript
 title: Getting Started with TypeScript
-description: Install the TypeScript SDK and perform a verified API v2 text edit.
+description: Install the TypeScript SDK and perform a verified API v3 text edit.
 ---
 
 # Getting Started with TypeScript
@@ -20,13 +20,13 @@ npm install --save-dev typescript tsx @types/node
 ## 2. Install PDFDancer
 
 ```bash
-npm install pdfdancer-client-typescript@2.0.0
+npm install pdfdancer-client-typescript@3.0.0
 ```
 
 Node.js 20 or newer is required.
 
 ```bash
-curl -L https://docs.pdfdancer.com/files/v2/pdfdancer-v2-quickstart.pdf -o input.pdf
+curl -L https://docs.pdfdancer.com/files/v3/pdfdancer-v3-quickstart.pdf -o input.pdf
 ```
 
 ## 3. Create `edit-pdf.ts`

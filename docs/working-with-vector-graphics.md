@@ -9,11 +9,11 @@ import TabItem from '@theme/TabItem';
 
 # Working with Vector Graphics
 
-PDF vector graphics are represented as paths. API v2 provides typed selected paths plus dedicated path, line, rectangle, and Bézier builders.
+PDF vector graphics are represented as paths. API v3 provides typed selected paths plus dedicated path, line, rectangle, and Bézier builders.
 
 ## Complete path-editing workflow
 
-Download [paths.pdf](/files/v2/samples/paths.pdf) as `input.pdf`. The program changes the first path's stroke color and saves `output.pdf`.
+Download [paths.pdf](/files/v3/samples/paths.pdf) as `input.pdf`. The program changes the first path's stroke color and saves `output.pdf`.
 
 <Tabs>
 <TabItem value="python-complete" label="Python">

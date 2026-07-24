@@ -2,7 +2,7 @@
 id: getting-started
 slug: /
 title: Getting Started
-description: Choose a PDFDancer API v2 SDK and edit your first PDF.
+description: Choose a PDFDancer API v3 SDK and edit your first PDF.
 ---
 
 # Getting Started with PDFDancer
@@ -15,7 +15,7 @@ PDFDancer edits text, pages, images, vector graphics, and form fields in existin
 - [TypeScript](./getting-started-typescript) — Node.js 20 or newer
 - [Java](./getting-started-java) — Java 17 or newer
 
-All page numbers passed to v2 SDK methods are **one-based**. PDF coordinates are measured in points, normally from the bottom-left corner of the page.
+All page numbers passed to v3 SDK methods are **one-based**. PDF coordinates are measured in points, normally from the bottom-left corner of the page.
 
 ## How editing works
 

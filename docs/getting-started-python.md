@@ -1,7 +1,7 @@
 ---
 id: getting-started-python
 title: Getting Started with Python
-description: Install the Python SDK and perform a verified API v2 text edit.
+description: Install the Python SDK and perform a verified API v3 text edit.
 ---
 
 # Getting Started with Python
@@ -20,13 +20,13 @@ source .venv/bin/activate  # Windows: .venv\Scripts\activate
 ## 2. Install PDFDancer
 
 ```bash
-python -m pip install pdfdancer-client-python==2.0.0
+python -m pip install pdfdancer-client-python==3.0.0
 ```
 
 Python 3.10 or newer is required.
 
 ```bash
-curl -L https://docs.pdfdancer.com/files/v2/pdfdancer-v2-quickstart.pdf -o input.pdf
+curl -L https://docs.pdfdancer.com/files/v3/pdfdancer-v3-quickstart.pdf -o input.pdf
 ```
 
 ## 3. Create `edit_pdf.py`

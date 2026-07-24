@@ -35,7 +35,7 @@ This starts a local development server at `http://localhost:3000` with hot reloa
 
 ```
 pdfdancer-api-docs/
-├── docs/                    # Upcoming API v2 documentation
+├── docs/                    # Upcoming API v3 documentation
 ├── versioned_docs/
 │   └── version-1/          # Supported API v1 documentation
 ├── versioned_sidebars/     # API v1 navigation
@@ -45,20 +45,20 @@ pdfdancer-api-docs/
 │   └── pages/              # Global pages, including /roadmap
 ├── static/                 # Static assets (images, logos)
 ├── docusaurus.config.ts    # Version routing and release configuration
-└── sidebars.ts             # API v2 navigation
+└── sidebars.ts             # API v3 navigation
 ```
 
 ## Contributing Documentation
 
 ### Adding New Documentation
 
-1. Edit API v2 content in `docs/`, or supported API v1 content in `versioned_docs/version-1/`
-2. Update the matching v2 or v1 sidebar
+1. Edit API v3 content in `docs/`, or supported API v1 content in `versioned_docs/version-1/`
+2. Update the matching v3 or v1 sidebar
 3. Test locally with `npm start`
 4. Validate v1 examples: `npm run test:docs:v1`
 5. Run type checking and build: `npm run typecheck && npm run build`
 
-API v1 and API v2 use stable `/v1/` and `/v2/` paths. Do not recreate the v1 snapshot. When API v2 is released, change only `V2_RELEASED` in `docusaurus.config.ts`.
+API v1 and API v3 use stable `/v1/` and `/v3/` paths. Do not recreate the v1 snapshot. When API v3 is released, change only `V3_RELEASED` in `docusaurus.config.ts`.
 
 ## Available Commands
 

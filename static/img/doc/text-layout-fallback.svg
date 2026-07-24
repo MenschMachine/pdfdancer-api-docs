@@ -15,14 +15,14 @@
 
   <text class="head" x="55" y="250">reflowWhenSupported(profile)</text>
   <rect class="box start" x="55" y="270" width="245" height="72" rx="10"/><text class="text" x="82" y="301">Attempt reflow</text><text class="small" x="82" y="324">Fallback is permitted</text>
-  <path class="line" d="M300 306H420V257H535" marker-end="url(#arrow)"/><text class="yes" x="365" y="279">AVAILABLE</text>
+  <path class="line" d="M300 306H420V357H535" marker-end="url(#arrow)"/><text class="yes" x="365" y="279">AVAILABLE</text>
   <rect class="box ok" x="545" y="221" width="280" height="72" rx="10"/><text class="text" x="573" y="252">Edit recomposed</text><text class="small" x="573" y="275">Applied mode reports reflow</text>
   <path class="line" d="M300 306H420V355H535" marker-end="url(#arrow)"/><text class="no" x="360" y="349">UNAVAILABLE</text>
   <rect class="box warn" x="545" y="319" width="280" height="72" rx="10"/><text class="text" x="573" y="350">Source-anchored fallback</text><text class="small" x="573" y="373">Edit applied + warning</text>
 
   <text class="head" x="855" y="105">requireReflow(profile)</text>
   <rect class="box start" x="855" y="125" width="290" height="72" rx="10"/><text class="text" x="883" y="156">Attempt reflow</text><text class="small" x="883" y="179">Fallback is forbidden</text>
-  <path class="line" d="M1000 197V242" marker-end="url(#arrow)"/><text class="yes" x="1014" y="225">AVAILABLE</text>
+  <path class="line" d="M1000 197V342" marker-end="url(#arrow)"/><text class="yes" x="1014" y="225">AVAILABLE</text>
   <rect class="box ok" x="855" y="252" width="290" height="72" rx="10"/><text class="text" x="883" y="283">Edit recomposed</text><text class="small" x="883" y="306">Applied mode reports reflow</text>
   <path class="line" d="M1000 324V369" marker-end="url(#arrow)"/><text class="no" x="1014" y="352">UNAVAILABLE</text>
   <rect class="box fail" x="855" y="379" width="290" height="72" rx="10"/><text class="text" x="883" y="410">Target left unchanged</text><text class="small" x="883" y="433">Error reports text-reflow</text>

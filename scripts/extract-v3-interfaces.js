@@ -31,7 +31,7 @@ function parseArguments(argv) {
       if (!argv[index + 1]) throw new Error(`${argument} requires a value`);
       result[argument.slice(2).replace(/-([a-z])/g, (_, letter) => letter.toUpperCase())] = argv[++index];
     } else if (argument === '--help') {
-      process.stdout.write('Usage: node scripts/extract-v2-interfaces.js [--config FILE] [--sdk-root DIR] [--output DIR] [--keep-temp]\n');
+      process.stdout.write('Usage: node scripts/extract-v3-interfaces.js [--config FILE] [--sdk-root DIR] [--output DIR] [--keep-temp]\n');
       process.exit(0);
     } else throw new Error(`Unknown argument: ${argument}`);
   }
@@ -188,7 +188,7 @@ function main() {
   if (config.schemaVersion !== 1) throw new Error(`Unsupported configuration schemaVersion: ${config.schemaVersion}`);
   const sdkRoot = resolvePath(options.sdkRoot, config.sdkRoot);
   const output = resolvePath(options.output, config.outputDirectory);
-  const tempRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'pdfdancer-v2-interfaces-'));
+  const tempRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'pdfdancer-v3-interfaces-'));
   const refs = {};
   const baseManifests = {};
   const candidateManifests = {};
@@ -263,11 +263,11 @@ function main() {
     const staging = fs.mkdtempSync(path.join(path.dirname(output), `.${path.basename(output)}.staging-`));
     try {
       for (const [language, manifest] of Object.entries(candidateManifests)) {
-        fs.writeFileSync(path.join(staging, `${language}-v2.json`), stableJson(manifest));
+        fs.writeFileSync(path.join(staging, `${language}-v3.json`), stableJson(manifest));
       }
-      fs.writeFileSync(path.join(staging, 'v2-interface-diff.json'), stableJson(diff));
-      fs.writeFileSync(path.join(staging, 'v2-interface-diff.md'), renderDiffMarkdown(diff));
-      fs.writeFileSync(path.join(staging, 'v2-interface-summary.md'), renderSummaryMarkdown(diff));
+      fs.writeFileSync(path.join(staging, 'v3-interface-diff.json'), stableJson(diff));
+      fs.writeFileSync(path.join(staging, 'v3-interface-diff.md'), renderDiffMarkdown(diff));
+      fs.writeFileSync(path.join(staging, 'v3-interface-summary.md'), renderSummaryMarkdown(diff));
       replaceDirectoryAtomically(staging, output);
     } finally {
       fs.rmSync(staging, {recursive: true, force: true});

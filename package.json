@@ -19,12 +19,12 @@
     "test:docs:java": "node scripts/test-java-docs.js",
     "test:docs:examples": "npm run test:docs:ts && npm run test:docs:python && npm run test:docs:java",
     "test:docs:v1": "PDFDANCER_DOCS_DIR=versioned_docs/version-1 npm run test:docs:examples",
-    "test:docs:v2": "PDFDANCER_DOCS_DIR=docs npm run test:docs:examples",
-    "test:docs": "npm run test:docs:v2",
+    "test:docs:v3": "PDFDANCER_DOCS_DIR=docs npm run test:docs:examples",
+    "test:docs": "npm run test:docs:v3",
     "test:versioning": "node scripts/test-versioned-build.js",
-    "extract:v2-interfaces": "node scripts/extract-v2-interfaces.js",
-    "generate:v2-reference": "node scripts/generate-v2-reference.js",
-    "test:v2-reference": "node scripts/generate-v2-reference.js --check",
+    "extract:v3-interfaces": "node scripts/extract-v3-interfaces.js",
+    "generate:v3-reference": "node scripts/generate-v3-reference.js",
+    "test:v3-reference": "node scripts/generate-v3-reference.js --check",
     "test:interface-extractor": "node --test tests/interface-extractor.test.js"
   },
   "dependencies": {

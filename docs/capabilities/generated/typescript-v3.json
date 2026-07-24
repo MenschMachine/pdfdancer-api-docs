@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "language": "typescript",
   "repository": "pdfdancer-client-typescript",
-  "candidateRef": "release/v2",
+  "candidateRef": "release/v3",
   "candidateCommit": "7bd49ac104cc228c66c28f448c72c756eb740183",
   "symbols": [
     {

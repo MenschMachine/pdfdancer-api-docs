@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "language": "java",
   "repository": "pdfdancer-client-java",
-  "candidateRef": "release/v2",
+  "candidateRef": "release/v3",
   "candidateCommit": "9c04036fe11472d78332038d401c7c44fbefa406",
   "symbols": [
     {

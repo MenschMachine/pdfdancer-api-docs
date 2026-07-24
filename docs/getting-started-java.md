@@ -1,7 +1,7 @@
 ---
 id: getting-started-java
 title: Getting Started with Java
-description: Install the Java SDK and perform a verified API v2 text edit.
+description: Install the Java SDK and perform a verified API v3 text edit.
 ---
 
 # Getting Started with Java
@@ -28,7 +28,7 @@ Create `src/main/java/EditPdf.java` and a `pom.xml` in an empty directory. Java 
     <dependency>
       <groupId>com.pdfdancer.client</groupId>
       <artifactId>pdfdancer-client-java</artifactId>
-      <version>2.0.0</version>
+      <version>3.0.0</version>
     </dependency>
   </dependencies>
 </project>
@@ -37,7 +37,7 @@ Create `src/main/java/EditPdf.java` and a `pom.xml` in an empty directory. Java 
 ## 2. Download the input PDF
 
 ```bash
-curl -L https://docs.pdfdancer.com/files/v2/pdfdancer-v2-quickstart.pdf -o input.pdf
+curl -L https://docs.pdfdancer.com/files/v3/pdfdancer-v3-quickstart.pdf -o input.pdf
 ```
 
 ## 3. Create `EditPdf.java`
@@ -74,6 +74,6 @@ mvn compile org.codehaus.mojo:exec-maven-plugin:3.5.0:java -Dexec.mainClass=Edit
 
 The program exits without output when the edit succeeds. Open `output.pdf` and confirm that `Hello` became `Final`. If the program reports that the text was not found, see [When visible text does not match](./working-with-text#when-visible-text-does-not-match).
 
-Gradle users can add `implementation("com.pdfdancer.client:pdfdancer-client-java:2.0.0")`.
+Gradle users can add `implementation("com.pdfdancer.client:pdfdancer-client-java:3.0.0")`.
 
 Next, learn about [text targeting and responses](./working-with-text) or [other content types](./concepts).

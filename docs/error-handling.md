@@ -1,7 +1,7 @@
 ---
 id: error-handling
 title: Error Handling
-description: Handle API v2 exceptions, command results, text diagnostics, retries, and partial outcomes.
+description: Handle API v3 exceptions, command results, text diagnostics, retries, and partial outcomes.
 ---
 
 import Tabs from '@theme/Tabs';
@@ -13,7 +13,7 @@ Handle failures at three levels: request construction, transport/session executi
 
 ## Exceptions
 
-The public v2 hierarchy includes validation, HTTP client, session, session-not-found, font-not-found, and rate-limit failures. Java classes use `com.pdfdancer...` packages. Catch the most specific useful type before the common PDFDancer exception.
+The public v3 hierarchy includes validation, HTTP client, session, session-not-found, font-not-found, and rate-limit failures. Java classes use `com.pdfdancer...` packages. Catch the most specific useful type before the common PDFDancer exception.
 
 | Failure | Typical meaning | Retry automatically? |
 |---|---|---|

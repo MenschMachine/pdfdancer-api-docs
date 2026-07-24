@@ -43,7 +43,7 @@ This roadmap is subject to change based on customer feedback and evolving requir
 
 ## Shipped
 
-- **Text Reflow (V2)** — New reflow engine with alignment detection (left, right, centered, justified)
+- **Text Reflow (V3)** — New reflow engine with alignment detection (left, right, centered, justified)
 - **Template Replacement API** — Replace placeholder text with dynamic content
 - **Paragraph & Column Detection** — Three-column and multi-column layout support
 - **Text Fragment Editing** — Change font, size, or color on specific parts of a text line

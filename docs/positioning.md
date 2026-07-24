@@ -24,7 +24,7 @@ PDFDancer measures page coordinates and dimensions in points.
 | 1 millimetre | approximately 2.835 |
 | 1 centimetre | approximately 28.346 |
 
-Page numbers passed to API v2 methods are one-based: page `1` is the first page.
+Page numbers passed to API v3 methods are one-based: page `1` is the first page.
 
 For an unrotated page, PDF user space normally works like this:
 

@@ -18,20 +18,20 @@ function hasNoIndex(html) {
 
 const rootRedirect = readBuildFile('index.html');
 const v1Home = readBuildFile('v1/index.html');
-const v2Home = readBuildFile('v2/index.html');
+const v3Home = readBuildFile('v3/index.html');
 readBuildFile('roadmap/index.html');
 readBuildFile('search-index-default.json');
 readBuildFile('search-index-docs-default-1.json');
 readBuildFile('search-index-docs-default-current.json');
 
 const previewMode = rootRedirect.includes('url=/v1/');
-const releaseMode = rootRedirect.includes('url=/v2/');
+const releaseMode = rootRedirect.includes('url=/v3/');
 assert.notStrictEqual(previewMode, releaseMode, 'Root must redirect to exactly one API version');
 assert.ok(!hasNoIndex(v1Home), 'Supported API v1 documentation must remain indexable');
 assert.strictEqual(
-  hasNoIndex(v2Home),
+  hasNoIndex(v3Home),
   previewMode,
-  'API v2 noindex metadata must match the release state'
+  'API v3 noindex metadata must match the release state'
 );
 
 const legacyRoute = readBuildFile('working-with-text/index.html');

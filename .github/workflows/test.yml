@@ -14,15 +14,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Checkout v1 and v2 SDK repos at pinned versions
+      - name: Checkout v1 and v3 SDK repos at pinned versions
         run: |
           set -euo pipefail
 
           checkout_set() {
             version="$1"
             versions_file="$2"
-            if [ "$version" = v2 ]; then
-              . scripts/docs-v2-sdk-commits.env
+            if [ "$version" = v3 ]; then
+              . scripts/docs-v3-sdk-commits.env
               python_commit="$PYTHON_COMMIT"
               ts_commit="$TYPESCRIPT_COMMIT"
               java_commit="$JAVA_COMMIT"
@@ -46,7 +46,7 @@ jobs:
           }
 
           checkout_set v1 versioned_docs/version-1/sdk-versions.md
-          checkout_set v2 docs/sdk-versions.md
+          checkout_set v3 docs/sdk-versions.md
 
       - uses: actions/setup-node@v4
         with:
@@ -76,8 +76,8 @@ jobs:
         run: |
           npm ci --ignore-scripts --prefix external/v1/pdfdancer-client-typescript
           npm run build --prefix external/v1/pdfdancer-client-typescript
-          npm ci --ignore-scripts --prefix external/v2/pdfdancer-client-typescript
-          npm run build --prefix external/v2/pdfdancer-client-typescript
+          npm ci --ignore-scripts --prefix external/v3/pdfdancer-client-typescript
+          npm run build --prefix external/v3/pdfdancer-client-typescript
 
       - name: Test API v1 documentation examples
         env:
@@ -87,15 +87,15 @@ jobs:
           pip install --force-reinstall ./external/v1/pdfdancer-client-python
           npm run test:docs:v1
 
-      - name: Test API v2 documentation examples
+      - name: Test API v3 documentation examples
         env:
-          PDFDANCER_TYPESCRIPT_SDK_DIR: external/v2/pdfdancer-client-typescript
-          PDFDANCER_JAVA_SDK_DIR: external/v2/pdfdancer-client-java
+          PDFDANCER_TYPESCRIPT_SDK_DIR: external/v3/pdfdancer-client-typescript
+          PDFDANCER_JAVA_SDK_DIR: external/v3/pdfdancer-client-java
         run: |
-          pip install --force-reinstall ./external/v2/pdfdancer-client-python
-          npm run test:docs:v2
+          pip install --force-reinstall ./external/v3/pdfdancer-client-python
+          npm run test:docs:v3
 
-      - name: Check generated API v2 reference
+      - name: Check generated API v3 reference
         env:
-          PDFDANCER_JAVA_SDK_DIR: external/v2/pdfdancer-client-java
-        run: npm run test:v2-reference
+          PDFDANCER_JAVA_SDK_DIR: external/v3/pdfdancer-client-java
+        run: npm run test:v3-reference

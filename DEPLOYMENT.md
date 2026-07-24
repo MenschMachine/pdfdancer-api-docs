@@ -7,7 +7,7 @@ This document explains how the automated deployment and search indexing works fo
 The documentation site uses GitHub Actions to automatically:
 1. Validate supported API v1 examples against their pinned SDK revisions
 2. Build the Docusaurus site
-3. Deploy API v1 and API v2 search indexes to Cloudflare KV
+3. Deploy API v1 and API v3 search indexes to Cloudflare KV
 
 This happens automatically on every push to the `main` branch.
 
@@ -70,7 +70,7 @@ The `.github/workflows/deploy.yml` file defines the deployment pipeline:
 
 During the build step, the `@pdfdancer/docusaurus-cloudflare-search` plugin generates separate search indexes in the `build/` directory:
 - `build/search-index-docs-default-1.json` - API v1 documentation
-- `build/search-index-docs-default-current.json` - API v2 documentation
+- `build/search-index-docs-default-current.json` - API v3 documentation
 - `build/search-index-default.json` - Global pages such as the product roadmap
 
 ### What Gets Uploaded

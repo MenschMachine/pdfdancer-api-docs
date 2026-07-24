@@ -1,7 +1,7 @@
 ---
 id: working-with-pages
 title: Working with Pages
-description: Access, inspect, create, move, and delete PDF pages with API v2.
+description: Access, inspect, create, move, and delete PDF pages with API v3.
 ---
 
 import Tabs from '@theme/Tabs';
@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem';
 
 # Working with Pages
 
-Page numbers in API v2 are one-based. `pdf.page(1)` returns a page-scoped client; the SDK's plural pages operation returns page clients for the current document.
+Page numbers in API v3 are one-based. `pdf.page(1)` returns a page-scoped client; the SDK's plural pages operation returns page clients for the current document.
 
 The **Create a blank PDF** examples below are complete programs. They create `blank.pdf` with two portrait A4 pages; no input file is required.
 
