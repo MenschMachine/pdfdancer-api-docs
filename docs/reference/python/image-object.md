@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `types`  
-**SDK:** `pdfdancer-client-python 3.0.0`
+**SDK:** `pdfdancer-client-python 3.0.1`
 
 Represents an image object inside a PDF page.
 

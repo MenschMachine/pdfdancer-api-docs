@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `types`  
-**SDK:** `pdfdancer-client-python 3.0.0`
+**SDK:** `pdfdancer-client-python 3.0.1`
 
 Base class for selectable PDF object references (paths, text lines, etc.)
 providing shared behavior such as position, deletion, and movement.

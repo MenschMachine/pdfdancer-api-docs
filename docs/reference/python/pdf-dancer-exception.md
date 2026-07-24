@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `exceptions`  
-**SDK:** `pdfdancer-client-python 3.0.0`
+**SDK:** `pdfdancer-client-python 3.0.1`
 
 Base exception for all PDFDancer client errors.
 Equivalent to runtime exceptions in the Java client.

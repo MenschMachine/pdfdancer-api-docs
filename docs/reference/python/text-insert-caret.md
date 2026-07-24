@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** enum  
 **Module/package:** `text_editing`  
-**SDK:** `pdfdancer-client-python 3.0.0`
+**SDK:** `pdfdancer-client-python 3.0.1`
 
 Create a collection of name/value pairs.
 

@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `text_editing`  
-**SDK:** `pdfdancer-client-python 3.0.0`
+**SDK:** `pdfdancer-client-python 3.0.1`
 
 TextEditResponse(matched: 'Optional[int]', changed: 'Optional[int]', pages_changed: 'Optional[tuple[int, ...]]', change: 'Optional[tuple[TextEditChangeDiagnostic, ...]]', warnings: 'Optional[tuple[TextOperationDiagnostic, ...]]', errors: 'Optional[tuple[TextOperationDiagnostic, ...]]')
 

@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `text_editing`  
-**SDK:** `pdfdancer-client-python 3.0.0`
+**SDK:** `pdfdancer-client-python 3.0.1`
 
 TextLayoutRequest(mode: 'Optional[TextLayoutMode]' = None, profile: 'Optional[TextLayoutProfile]' = None, hyphenation_enabled: 'Optional[bool]' = None)
 

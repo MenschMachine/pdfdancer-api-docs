@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `text_editing`  
-**SDK:** `pdfdancer-client-python 3.0.0`
+**SDK:** `pdfdancer-client-python 3.0.1`
 
 TextEditChangeDiagnostic(page: 'Optional[int]', operation: 'Optional[str]', source_text: 'Optional[str]', result_text: 'Optional[str]', requested_layout_mode: 'Optional[str]', requested_layout_profile: 'Optional[str]', effective_hyphenation_enabled: 'bool', applied_layout_mode: 'Optional[str]', element_ids: 'Optional[tuple[str, ...]]', generated_element_ids: 'Optional[tuple[str, ...]]', reflow_unit_ids: 'Optional[tuple[str, ...]]')
 

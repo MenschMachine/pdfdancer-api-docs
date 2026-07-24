@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** function  
 **Module/package:** `pdfdancer`  
-**SDK:** `pdfdancer-client-python 3.0.0`
+**SDK:** `pdfdancer-client-python 3.0.1`
 
 Enable or disable SSL certificate verification for all API requests.
 

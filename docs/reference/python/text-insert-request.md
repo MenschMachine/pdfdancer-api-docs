@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `text_editing`  
-**SDK:** `pdfdancer-client-python 3.0.0`
+**SDK:** `pdfdancer-client-python 3.0.1`
 
 TextInsertRequest(target: 'TextInsertTargetRequest', insert: 'str', style: 'TextInsertStyleRequest', layout: 'Optional[TextLayoutRequest]' = None)
 

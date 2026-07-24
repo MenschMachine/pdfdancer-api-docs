@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `text_editing`  
-**SDK:** `pdfdancer-client-python 3.0.0`
+**SDK:** `pdfdancer-client-python 3.0.1`
 
 TextStyleRunFilterRequest(text_contains: 'Optional[str]' = None, font: 'Optional[str]' = None, size: 'Optional[TextStyleNumericFilterRequest]' = None, fill_color: 'Optional[PdfColorRequest]' = None, stroke_color: 'Optional[PdfColorRequest]' = None, character_spacing: 'Optional[TextStyleNumericFilterRequest]' = None, word_spacing: 'Optional[TextStyleNumericFilterRequest]' = None, contains_unmapped_glyphs: 'Optional[bool]' = None)
 

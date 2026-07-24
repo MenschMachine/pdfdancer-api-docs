@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `path_builder`  
-**SDK:** `pdfdancer-client-python 3.0.0`
+**SDK:** `pdfdancer-client-python 3.0.1`
 
 Builder class for constructing Path objects with fluent interface.
 Allows building complex vector paths from multiple line and bezier segments.

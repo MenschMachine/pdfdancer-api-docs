@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `exceptions`  
-**SDK:** `pdfdancer-client-python 3.0.0`
+**SDK:** `pdfdancer-client-python 3.0.1`
 
 Exception raised when the API rate limit is exceeded (HTTP 429).
 Includes retry-after information if provided by the server.

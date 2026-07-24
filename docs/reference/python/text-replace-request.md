@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `text_editing`  
-**SDK:** `pdfdancer-client-python 3.0.0`
+**SDK:** `pdfdancer-client-python 3.0.1`
 
 TextReplaceRequest(pages: 'Optional[tuple[int, ...]]', select: 'TextSelectorRequest', replace_with: 'Optional[str]' = None, replace_with_image: 'Optional[TextReplacementImageRequest]' = None, style: 'Optional[TextStyleSetRequest]' = None, layout: 'Optional[TextLayoutRequest]' = None)
 

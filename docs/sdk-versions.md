@@ -6,11 +6,11 @@ description: Current PDFDancer API v3 SDK versions and runtime requirements.
 
 # SDK Versions
 
-Version 3.0.0 is the latest stable release of each PDFDancer API v3 SDK. This documentation covers these releases:
+Python SDK 3.0.1 is the latest stable Python API v3 release; the TypeScript and Java SDKs remain at 3.0.0. This documentation covers these releases:
 
 | SDK | Package | Version | Runtime |
 |---|---|---:|---|
-| Python | `pdfdancer-client-python` | `3.0.0` | Python 3.10+ |
+| Python | `pdfdancer-client-python` | `3.0.1` | Python 3.10+ |
 | TypeScript | `pdfdancer-client-typescript` | `3.0.0` | Node.js 20+ |
 | Java | `com.pdfdancer.client:pdfdancer-client-java` | `3.0.0` | Java 17+ |
 
@@ -18,7 +18,7 @@ Version 3.0.0 is the latest stable release of each PDFDancer API v3 SDK. This do
 
 ```bash
 # Python
-python -m pip install --upgrade pdfdancer-client-python==3.0.0
+python -m pip install --upgrade pdfdancer-client-python==3.0.1
 
 # TypeScript
 npm install pdfdancer-client-typescript@3.0.0

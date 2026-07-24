@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** enum  
 **Module/package:** `models`  
-**SDK:** `pdfdancer-client-python 3.0.0`
+**SDK:** `pdfdancer-client-python 3.0.1`
 
 Defines the geometric shape type used for position specification.
 

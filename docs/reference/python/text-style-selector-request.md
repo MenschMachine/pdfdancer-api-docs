@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `text_editing`  
-**SDK:** `pdfdancer-client-python 3.0.0`
+**SDK:** `pdfdancer-client-python 3.0.1`
 
 TextStyleSelectorRequest(literal: 'Optional[str]' = None, regex: 'Optional[str]' = None, case_sensitive: 'Optional[bool]' = None, whole_words: 'Optional[bool]' = None, max_matches: 'Optional[int]' = None, runs: 'Optional[TextStyleRunsSelectorRequest]' = None)
 

@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `pdfdancer_v2`  
-**SDK:** `pdfdancer-client-python 3.0.0`
+**SDK:** `pdfdancer-client-python 3.0.1`
 
 REST API client for interacting with the PDFDancer PDF manipulation service.
 This client provides a convenient Python interface for performing PDF operations

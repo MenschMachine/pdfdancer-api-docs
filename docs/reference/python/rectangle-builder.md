@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `path_builder`  
-**SDK:** `pdfdancer-client-python 3.0.0`
+**SDK:** `pdfdancer-client-python 3.0.1`
 
 Builder class for constructing Rectangle objects with fluent interface.
 Provides a convenient way to create a rectangle path with a single builder.

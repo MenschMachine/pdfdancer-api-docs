@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `text_editing`  
-**SDK:** `pdfdancer-client-python 3.0.0`
+**SDK:** `pdfdancer-client-python 3.0.1`
 
 TextStyleSetRequest(font: 'Optional[str]' = None, size: 'Optional[float]' = None, fill_color: 'Optional[PdfColorRequest]' = None, stroke_color: 'Optional[PdfColorRequest]' = None, character_spacing: 'Optional[float]' = None, word_spacing: 'Optional[float]' = None, reset_spacing_overrides: 'Optional[bool]' = None)
 

@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `models`  
-**SDK:** `pdfdancer-client-python 3.0.0`
+**SDK:** `pdfdancer-client-python 3.0.1`
 
 PathGroupInfo(group_id: str, path_count: int, bounding_box: Dict[str, Any] | None, x: float, y: float)
 

@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** enum  
 **Module/package:** `models`  
-**SDK:** `pdfdancer-client-python 3.0.0`
+**SDK:** `pdfdancer-client-python 3.0.1`
 
 The 14 standard PDF fonts that are guaranteed to be available in all PDF readers.
 These fonts do not need to be embedded in the PDF document.

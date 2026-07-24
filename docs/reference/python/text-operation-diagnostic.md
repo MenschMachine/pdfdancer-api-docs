@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `text_editing`  
-**SDK:** `pdfdancer-client-python 3.0.0`
+**SDK:** `pdfdancer-client-python 3.0.1`
 
 TextOperationDiagnostic(page: 'Optional[int]', code: 'Optional[str]', message: 'Optional[str]', element_ids: 'Optional[tuple[str, ...]]', reflow_unit_ids: 'Optional[tuple[str, ...]]')
 
