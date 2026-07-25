@@ -13,13 +13,10 @@ This roadmap is subject to change based on customer feedback and evolving requir
 
 ## What's Coming Next
 
-- **Text-Fragment Editing** — Edit individual text fragments within a line (font, size, color)
+- **Structured Text Extraction** - extract semantically classified text units (headings, paragraphs, lists, page headers) with reading
+  order, inclusion flags, page position, and source-element provenance
 - **Full Text-Metric Read/Write Access** — Complete control over text metrics
 - **PDF Metadata Editing** — Read and update PDF metadata properties
-
-## In Progress
-
-- **MCP Server Improvements** — Enhanced Model Context Protocol integration
 
 ## Performance
 
@@ -32,9 +29,7 @@ This roadmap is subject to change based on customer feedback and evolving requir
 - **Document Template Store API** — Cloud-based template storage
 - **Table Extraction** — Automatically detect and extract tabular data from PDFs
 - **XFA Form Support** — For financial and government forms
-- **AcroForm Editing** — Create and modify PDF form fields programmatically
 - **Extended Position Matching** — `contains()` and `intersects()` for bounding boxes
-- **Enhanced Content Extraction** — Improved access to text, images, form data, vector graphics
 - **Digital Signatures** — Sign and verify documents
 - **Signed PDF Handling** — Graceful handling of digitally signed documents
 - **Password Protected PDFs** — Support for encrypted documents
@@ -43,28 +38,22 @@ This roadmap is subject to change based on customer feedback and evolving requir
 
 ## Shipped
 
-- **Text Reflow (V3)** — New reflow engine with alignment detection (left, right, centered, justified)
-- **Template Replacement API** — Replace placeholder text with dynamic content
-- **Paragraph & Column Detection** — Three-column and multi-column layout support
-- **Text Fragment Editing** — Change font, size, or color on specific parts of a text line
-- **Vector Path Grouping** — Group and transform paths as a unit
-- **Path Color Support** — Fill and stroke colors with alpha channel support
-- **PDF/A Conformance Preservation** — ICC profiles, output intents, XMP metadata preserved
-- **Clipping Region Removal** — Reveal hidden content
-- **Kerning & Typography** — Character spacing, word spacing, horizontal scaling
-- **Image Manipulation** — Scale, rotate, replace, crop, flip, opacity
-- **Image Fill Region** — Fill rectangular regions with solid color
-- **PDF Outline & Bookmark Support** — Table of contents preserved
-- **Invisible Text Detection** — Extract text hidden in PDFs
-- **Z-Order Element Control** — Control stacking order of elements
-- **Custom Font Management** — Upload and manage fonts
-- **Regex Text Selection** — Select text lines by pattern
-- **Redaction API** — Permanently remove sensitive content
-- **Form Field Selection & Editing** — Work with PDF form fields
-- **Optional Content (PDF Layers)** — Support for OCGs and layer visibility
-- **Font Swap with Kerning** — Replace fonts with positioning preserved
-- **Template Placeholder Images** — Replace placeholders with images
-- **Automatic Retries & Rate Limiting** — Built-in retry logic
-- **OpenAPI Specification** — Full API documentation
-- **MCP Server** — Model Context Protocol for AI assistants
-- **SDKs for Java, Python, TypeScript** — Multi-language support
+- **API v3 SDKs** — Updated Java, Python, and TypeScript SDKs with a request-based workflow for replacing, inserting, deleting, and styling text
+- **Text Reflow** — Reflow edited text while respecting alignment, columns, lists, whitespace, hyphenation, and justified layouts
+- **Template Replacement** — Replace text and image placeholders with dynamic content, with optional reflow
+- **Text Fragment Editing** — Change the font, size, or color of specific parts of a text line
+- **Text Selection and Detection** — Select text by pattern or position, detect invisible text, and preserve stable text references across sessions
+- **Paragraph and Column Detection** — Detect paragraphs and complex multi-column layouts
+- **Page Operations** — Delete individual pages or page ranges while preserving page dimensions and rotation
+- **Vector Graphics** — Create, group, transform, and recolor vector paths, including transparent fills and strokes
+- **Image Manipulation** — Scale, rotate, replace, crop, flip, adjust opacity, and fill regions in images
+- **PDF/A Preservation** — Preserve PDF/A conformance information when processing compliant documents
+- **Clipping Region Removal** — Reveal content hidden by clipping regions
+- **Typography and Font Management** — Control kerning and text spacing, swap fonts while preserving positioning, and manage custom fonts
+- **PDF Structure Support** — Preserve outlines and bookmarks, control element stacking order, and work with PDF layers
+- **Redaction** — Permanently remove sensitive text, images, paths, and form fields
+- **Form Fields and Annotations** — Select and edit form fields while preserving supported appearances and annotations
+- **MCP Server** — Upload, inspect, edit, and export PDFs through Model Context Protocol clients
+- **Reliability Improvements** — Automatic retries and graceful rate-limit handling across the SDKs
+- **OpenAPI Specification** — Public API reference for integrating with PDFDancer
+- **SDKs for Java, Python, and TypeScript** — Supported SDKs for the three languages
