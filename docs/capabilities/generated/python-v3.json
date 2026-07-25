@@ -2776,7 +2776,7 @@
           "description": "Return document-scoped selector-based text editing operations."
         }
       ],
-      "module": "pdfdancer_v3",
+      "module": "pdfdancer_v2",
       "description": "REST API client for interacting with the PDFDancer PDF manipulation service.\nThis client provides a convenient Python interface for performing PDF operations\nincluding session management, object searching, manipulation, and retrieval.\nHandles authentication, session lifecycle, and HTTP communication transparently."
     },
     {

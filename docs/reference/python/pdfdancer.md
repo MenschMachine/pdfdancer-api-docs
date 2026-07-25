@@ -11,7 +11,7 @@ pagination_prev: null
 # `PDFDancer`
 
 **Kind:** class  
-**Module/package:** `pdfdancer_v3`  
+**Module/package:** `pdfdancer_v2`  
 **SDK:** `pdfdancer-client-python 3.0.1`
 
 REST API client for interacting with the PDFDancer PDF manipulation service.
@@ -394,5 +394,5 @@ text(self) -> 'TextClient'
 
 Return document-scoped selector-based text editing operations.
 
-[View source at `af2a1171a1b9`](https://github.com/MenschMachine/pdfdancer-client-python/blob/af2a1171a1b9b06dff14d2a0d64f4340f925d26c/src/pdfdancer/pdfdancer_v3.py)
+[View source at `af2a1171a1b9`](https://github.com/MenschMachine/pdfdancer-client-python/blob/af2a1171a1b9b06dff14d2a0d64f4340f925d26c/src/pdfdancer/pdfdancer_v2.py)
 

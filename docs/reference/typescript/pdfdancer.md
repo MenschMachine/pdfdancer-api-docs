@@ -11,7 +11,7 @@ pagination_prev: null
 # `PDFDancer`
 
 **Kind:** class  
-**Module/package:** `pdfdancer_v3`  
+**Module/package:** `pdfdancer_v2`  
 **SDK:** `pdfdancer-client-typescript 3.0.0`
 
 REST API client for interacting with the PDFDancer PDF manipulation service.
@@ -244,5 +244,5 @@ selectPaths(): Promise<PathObject[]>
 text(): TextClient
 ```
 
-[View source at `7bd49ac104cc`](https://github.com/MenschMachine/pdfdancer-client-typescript/blob/7bd49ac104cc228c66c28f448c72c756eb740183/src/pdfdancer_v3.ts)
+[View source at `7bd49ac104cc`](https://github.com/MenschMachine/pdfdancer-client-typescript/blob/7bd49ac104cc228c66c28f448c72c756eb740183/src/pdfdancer_v2.ts)
 

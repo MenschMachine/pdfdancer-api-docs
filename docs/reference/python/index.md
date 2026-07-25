@@ -76,7 +76,7 @@ This reference covers the supported public surface of `pdfdancer-client-python 3
 |---|---|
 | [`set_ssl_verify`](./set-ssl-verify) | function |
 
-## `pdfdancer_v3`
+## `pdfdancer_v2`
 
 | Symbol | Kind |
 |---|---|
