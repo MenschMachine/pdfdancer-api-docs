@@ -68,9 +68,9 @@ with PDFDancer.open(pdf_data=Path("input.pdf")) as pdf:
     page = pdf.page(1)
     paragraphs = page.select_paragraphs_matching("Hello")
 
-    # Replace the text if found
+    # Replace matching text if found
     if paragraphs:
-        paragraphs[0].edit().replace("Hello World!").apply()
+        pdf.apply_replacements({"Hello": "Hello World!"})
 
     # Save the result
     pdf.save("output.pdf")

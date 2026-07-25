@@ -21,23 +21,25 @@ The scripts read documentation from `PDFDANCER_DOCS_DIR`, defaulting to `docs/`.
 
 ### TypeScript (`scripts/test-ts-docs.js`)
 
-Extracts `typescript` code blocks from markdown and runs `tsc --noEmit`. CI builds the exact v1 SDK revision and exposes it through `PDFDANCER_TYPESCRIPT_SDK_DIR`, so module and method errors fail validation.
+Recursively extracts authored v3 `typescript` code blocks, or the v1 getting-started page, and compiles them together with `tsc --noEmit` against the exact npm package version declared in the selected tree's `sdk-pins` metadata. This catches invalid calls such as `pdf.getPage(2)` when the API exposes `pdf.page(2)`.
 
 ### Python (`tests/test_python_docs.py`)
 
-Uses `mktestdocs` + `pytest` to extract and syntax-check `python` code blocks. Requires:
+For v3, recursively extracts authored `python` code blocks while excluding generated API reference pages. For v1, it validates the getting-started Python page. The tests use the exact PyPI package version declared in the selected tree's `sdk-pins` metadata and perform syntax, import, undefined-name, and type-aware SDK method validation. Requires:
 
 ```bash
-pip install mktestdocs pytest ./external/pdfdancer-client-python
+npm run test:docs:python
 ```
+
+The npm command creates or reuses an isolated virtual environment under `node_modules/.cache/`, installs the version pinned by the selected documentation tree, and runs pytest through that environment.
 
 ### Java (`scripts/test-java-docs.js`)
 
-Extracts `java` code blocks and compiles them with `javac` against the JAR built from the exact v1 SDK revision under `external/pdfdancer-client-java`. Java 11 is required by that SDK's Gradle toolchain.
+For v3, recursively extracts authored `java` code blocks, excluding generated API reference pages. For v1, it validates the published getting-started Java page only. Examples compile with `javac` against the version-pinned Java artifact and transitive dependencies resolved from Maven Central. The Java coordinates come from the selected tree's `sdk-versions.md` metadata block.
 
 ## CI Integration
 
-Tests run automatically in `.github/workflows/deploy.yml` before build. The workflow reads all three SDK commit IDs from `versioned_docs/version-1/sdk-versions.md`, checks out those exact revisions, and fails deployment on validation errors.
+Tests run automatically in `.github/workflows/deploy.yml` before build. Python and TypeScript validation install their pinned package releases in isolated test environments; Java continues using Maven Central with version-pinned coordinates.
 
 ## Adding New Docs
 

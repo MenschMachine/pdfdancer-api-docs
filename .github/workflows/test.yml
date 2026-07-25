@@ -21,19 +21,8 @@ jobs:
           checkout_set() {
             version="$1"
             versions_file="$2"
-            if [ "$version" = v3 ]; then
-              . scripts/docs-v3-sdk-commits.env
-              python_commit="$PYTHON_COMMIT"
-              ts_commit="$TYPESCRIPT_COMMIT"
-              java_commit="$JAVA_COMMIT"
-            else
-              python_commit=$(grep -A7 '## Python SDK' "$versions_file" | grep '\*\*Commit\*\*' | sed 's/.*`\([^`]*\)`.*/\1/')
-              ts_commit=$(grep -A7 '## TypeScript SDK' "$versions_file" | grep '\*\*Commit\*\*' | sed 's/.*`\([^`]*\)`.*/\1/')
-              java_commit=$(grep -A7 '## Java SDK' "$versions_file" | grep '\*\*Commit\*\*' | sed 's/.*`\([^`]*\)`.*/\1/')
-            fi
+            java_commit=$(node scripts/sdk-metadata.js "$versions_file" java commit)
             for repo_info in \
-              "pdfdancer-client-python $python_commit" \
-              "pdfdancer-client-typescript $ts_commit" \
               "pdfdancer-client-java $java_commit"; do
               repo=$(echo "$repo_info" | cut -d' ' -f1)
               commit=$(echo "$repo_info" | cut -d' ' -f2)
@@ -62,38 +51,19 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
+          cache: 'maven'
 
       - name: Install Node dependencies
         run: npm ci
 
-      - name: Install documentation test dependencies
-        run: pip install mktestdocs pytest
-
       - name: Run typecheck
         run: npm run typecheck
 
-      - name: Build pinned TypeScript SDKs
-        run: |
-          npm ci --ignore-scripts --prefix external/v1/pdfdancer-client-typescript
-          npm run build --prefix external/v1/pdfdancer-client-typescript
-          npm ci --ignore-scripts --prefix external/v3/pdfdancer-client-typescript
-          npm run build --prefix external/v3/pdfdancer-client-typescript
-
       - name: Test API v1 documentation examples
-        env:
-          PDFDANCER_TYPESCRIPT_SDK_DIR: external/v1/pdfdancer-client-typescript
-          PDFDANCER_JAVA_SDK_DIR: external/v1/pdfdancer-client-java
-        run: |
-          pip install --force-reinstall ./external/v1/pdfdancer-client-python
-          npm run test:docs:v1
+        run: npm run test:docs:v1
 
       - name: Test API v3 documentation examples
-        env:
-          PDFDANCER_TYPESCRIPT_SDK_DIR: external/v3/pdfdancer-client-typescript
-          PDFDANCER_JAVA_SDK_DIR: external/v3/pdfdancer-client-java
-        run: |
-          pip install --force-reinstall ./external/v3/pdfdancer-client-python
-          npm run test:docs:v3
+        run: npm run test:docs:v3
 
       - name: Check generated API v3 reference
         env:

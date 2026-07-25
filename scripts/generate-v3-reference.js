@@ -3,6 +3,7 @@
 
 const fs = require('node:fs');
 const path = require('node:path');
+const {readSdkMetadata} = require('./sdk-metadata');
 
 const ROOT = path.resolve(__dirname, '..');
 const MANIFEST_DIR = path.join(ROOT, 'docs/capabilities/generated');
@@ -207,6 +208,11 @@ function renderIndex(language, manifest, symbols) {
 }
 
 function main() {
+  const sdkMetadata = readSdkMetadata(path.join(ROOT, 'docs/sdk-versions.md'));
+  for (const language of Object.keys(LANGUAGES)) {
+    LANGUAGES[language].version = sdkMetadata[language].version;
+  }
+
   fs.rmSync(OUTPUT_DIR, {recursive: true, force: true});
   fs.mkdirSync(OUTPUT_DIR, {recursive: true});
   const root = `---
@@ -217,7 +223,7 @@ description: Version-pinned PDFDancer API v3 references for Python, TypeScript, 
 
 # SDK API Reference
 
-The reference pages list the supported public types and members for the documented SDK releases: Python \`3.0.1\`, TypeScript \`3.0.0\`, and Java \`3.0.0\`. Use the task guides to learn a workflow and the reference to confirm exact names, signatures, return types, and exceptions.
+The reference pages list the supported public types and members for the documented SDK releases: Python \`${LANGUAGES.python.version}\`, TypeScript \`${LANGUAGES.typescript.version}\`, and Java \`${LANGUAGES.java.version}\`. Use the task guides to learn a workflow and the reference to confirm exact names, signatures, return types, and exceptions.
 
 - [Python API reference](./python/)
 - [TypeScript API reference](./typescript/)

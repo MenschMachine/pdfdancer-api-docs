@@ -1,61 +1,79 @@
 #!/usr/bin/env node
-/**
- * Extracts TypeScript code blocks from markdown and verifies they compile.
- *
- * Usage: node scripts/test-ts-docs.js
- */
+/** Validate authored TypeScript documentation blocks against the pinned npm SDK. */
 
-const fs = require('fs');
-const path = require('path');
-const { execSync } = require('child_process');
+const fs = require('node:fs');
+const path = require('node:path');
+const {spawnSync} = require('node:child_process');
+const {readSdkMetadata} = require('./sdk-metadata');
 
-const REPO_ROOT = path.join(__dirname, '..');
-const DOCS_DIR = process.env.PDFDANCER_DOCS_DIR
-  ? path.resolve(REPO_ROOT, process.env.PDFDANCER_DOCS_DIR)
-  : path.join(REPO_ROOT, 'docs');
-const TEMP_DIR = path.join(__dirname, '..', 'tests', '.ts-temp');
+const REPO_ROOT = path.resolve(__dirname, '..');
+const DOCS_DIR = path.resolve(REPO_ROOT, process.env.PDFDANCER_DOCS_DIR || 'docs');
+const IS_V1 = DOCS_DIR.split(path.sep).includes('versioned_docs');
+const METADATA = readSdkMetadata(path.join(DOCS_DIR, 'sdk-versions.md'));
+const SDK_VERSION = METADATA.typescript.version;
+const TEMP_DIR = path.join(REPO_ROOT, 'tests', '.ts-temp');
+const NPM_ENV_DIR = path.join(
+  REPO_ROOT,
+  'node_modules',
+  '.cache',
+  'pdfdancer-typescript-tests',
+  IS_V1 ? 'v1' : 'v3',
+);
+const TSC = path.join(
+  NPM_ENV_DIR,
+  'node_modules',
+  '.bin',
+  process.platform === 'win32' ? 'tsc.cmd' : 'tsc',
+);
 
-function filesToTest() {
-  if (DOCS_DIR.includes(`${path.sep}versioned_docs${path.sep}`)) return ['getting-started-typescript.md'];
-  return fs.readdirSync(DOCS_DIR).filter((file) => file.endsWith('.md')).sort();
+function run(command, args, options = {}) {
+  const result = spawnSync(command, args, {
+    cwd: REPO_ROOT,
+    stdio: 'inherit',
+    env: process.env,
+    ...options,
+  });
+  if (result.error) throw result.error;
+  if (result.status !== 0) process.exit(result.status ?? 1);
 }
 
-// Extract TypeScript code blocks from markdown
+function documentationFiles() {
+  if (IS_V1) return [path.join(DOCS_DIR, 'getting-started-typescript.md')];
+  return collectMarkdownFiles(DOCS_DIR).filter((file) => {
+    const relativeParts = path.relative(DOCS_DIR, file).split(path.sep);
+    return !relativeParts.includes('reference') && !relativeParts.includes('generated');
+  });
+}
+
+function collectMarkdownFiles(directory) {
+  return fs.readdirSync(directory, {withFileTypes: true}).flatMap((entry) => {
+    const entryPath = path.join(directory, entry.name);
+    if (entry.isDirectory()) return collectMarkdownFiles(entryPath);
+    return entry.isFile() && entry.name.endsWith('.md') ? [entryPath] : [];
+  }).sort();
+}
+
 function extractTsBlocks(markdownPath) {
-  const content = fs.readFileSync(markdownPath, 'utf-8');
+  const content = fs.readFileSync(markdownPath, 'utf8');
   const blocks = [];
-  const regex = /```typescript\n([\s\S]*?)```/g;
+  const regex = /```typescript[ \t]*\r?\n([\s\S]*?)```/g;
   let match;
-  while ((match = regex.exec(content)) !== null) {
-    blocks.push(match[1]);
-  }
+  while ((match = regex.exec(content)) !== null) blocks.push(match[1]);
   return blocks;
 }
 
-// Create temp directory
-function ensureTempDir() {
-  if (fs.existsSync(TEMP_DIR)) {
-    fs.rmSync(TEMP_DIR, { recursive: true });
-  }
-  fs.mkdirSync(TEMP_DIR, { recursive: true });
-
-  if (process.env.PDFDANCER_TYPESCRIPT_SDK_DIR) {
-    const sdkDir = path.resolve(REPO_ROOT, process.env.PDFDANCER_TYPESCRIPT_SDK_DIR);
-    const tempNodeModules = path.join(TEMP_DIR, 'node_modules');
-    fs.mkdirSync(tempNodeModules);
-    fs.symlinkSync(
-      sdkDir,
-      path.join(tempNodeModules, 'pdfdancer-client-typescript'),
-      'dir'
-    );
-  }
-}
-
-// Clean up temp directory
-function cleanupTempDir() {
-  if (fs.existsSync(TEMP_DIR)) {
-    fs.rmSync(TEMP_DIR, { recursive: true });
-  }
+function installEnvironment() {
+  fs.mkdirSync(NPM_ENV_DIR, {recursive: true});
+  console.log(`Installing TypeScript test environment: pdfdancer-client-typescript==${SDK_VERSION}`);
+  run('npm', [
+    'install',
+    '--prefix', NPM_ENV_DIR,
+    '--no-save',
+    '--package-lock=false',
+    'typescript@5.6.3',
+    '@types/node@22',
+    `pdfdancer-client-typescript@${SDK_VERSION}`,
+  ]);
 }
 
 function testableCode(block) {
@@ -95,119 +113,42 @@ declare const result: any;
   if (/^\s*(?:export\s+)?(?:class|interface)\s+\w+/m.test(block) || /\b(?:async\s+)?function\s+\w+\s*\(/.test(block)) {
     return `${sdkImports}\n${block}`;
   }
-  return `
-import * as fs from 'node:fs';
-${sdkImports}
-${context}
-
-async function docsExample(): Promise<void> {
-${block}
-}
-`;
-}
-
-// Check if tsc is available
-function checkTsc() {
-  try {
-    execSync('npx tsc --version', { stdio: 'pipe' });
-    return true;
-  } catch {
-    return false;
-  }
+  return `${sdkImports}\n${context}\nasync function docsExample(): Promise<void> {\n${block}\n}\n`;
 }
 
 function main() {
-  console.log('Testing TypeScript code examples in documentation...\n');
+  installEnvironment();
+  fs.rmSync(TEMP_DIR, {recursive: true, force: true});
+  fs.mkdirSync(TEMP_DIR, {recursive: true});
 
-  if (!checkTsc()) {
-    console.log('Warning: tsc not found, skipping TypeScript compile check');
-    process.exit(0);
+  let fileNumber = 0;
+  let totalBlocks = 0;
+  for (const markdownPath of documentationFiles()) {
+    for (const block of extractTsBlocks(markdownPath)) {
+      totalBlocks += 1;
+      const filename = `example-${++fileNumber}.ts`;
+      fs.writeFileSync(path.join(TEMP_DIR, filename), testableCode(block));
+    }
   }
 
-  ensureTempDir();
-  let hasErrors = false;
-  let totalBlocks = 0;
-
-  // Create a tsconfig for the temp dir
-  const tsconfig = {
+  fs.writeFileSync(path.join(TEMP_DIR, 'tsconfig.json'), JSON.stringify({
     compilerOptions: {
       target: 'ES2020',
       module: 'commonjs',
       moduleResolution: 'node',
       esModuleInterop: true,
-      strict: false,
+      strict: true,
       skipLibCheck: true,
       noEmit: true,
       types: ['node'],
     },
     include: ['*.ts'],
-  };
-  fs.writeFileSync(path.join(TEMP_DIR, 'tsconfig.json'), JSON.stringify(tsconfig, null, 2));
+  }, null, 2));
 
-  let fileNumber = 0;
-  for (const file of filesToTest()) {
-    const filePath = path.join(DOCS_DIR, file);
-    if (!fs.existsSync(filePath)) {
-      console.error(`File not found: ${filePath}`);
-      hasErrors = true;
-      continue;
-    }
-
-    console.log(`Checking: ${file}`);
-    const blocks = extractTsBlocks(filePath);
-
-    blocks.forEach((block, index) => {
-      totalBlocks++;
-      const tsFile = path.join(TEMP_DIR, `example${++fileNumber}-${index + 1}.ts`);
-
-      // Add the import at the top if needed
-      let code = testableCode(block);
-
-      fs.writeFileSync(tsFile, code);
-
-      try {
-        const result = execSync(`npx tsc --noEmit ${tsFile} 2>&1; exit 0`, {
-          cwd: TEMP_DIR,
-          encoding: 'utf-8',
-        });
-
-        // Check for real errors in example files only
-        // (ignore errors from node_modules type definitions)
-        const lines = result.split('\n');
-        const realErrors = lines.filter(
-          (line) =>
-            line.includes('error TS') &&
-            line.includes('example')
-        );
-
-        if (realErrors.length > 0) {
-          console.error(`  Block ${index + 1}: ERROR`);
-          realErrors.forEach((err) => console.error(`    ${err}`));
-          hasErrors = true;
-        } else {
-          console.log(`  Block ${index + 1}: OK`);
-        }
-      } catch (err) {
-        console.error(`  Block ${index + 1}: ERROR`);
-        console.error(`    ${err.message}`);
-        hasErrors = true;
-      }
-    });
-
-    console.log('');
-  }
-
-  cleanupTempDir();
-
-  console.log(`\nTotal: ${totalBlocks} code blocks checked`);
-
-  if (hasErrors) {
-    console.error('\nSome TypeScript code blocks have errors!');
-    process.exit(1);
-  } else {
-    console.log('\nAll TypeScript code blocks passed validation.');
-    process.exit(0);
-  }
+  console.log(`Checking ${totalBlocks} TypeScript blocks with TypeScript ${SDK_VERSION}`);
+  run(TSC, ['--project', path.join(TEMP_DIR, 'tsconfig.json')], {cwd: TEMP_DIR});
+  fs.rmSync(TEMP_DIR, {recursive: true, force: true});
+  console.log(`All ${totalBlocks} TypeScript blocks passed validation.`);
 }
 
 main();

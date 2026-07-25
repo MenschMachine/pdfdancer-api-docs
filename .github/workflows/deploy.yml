@@ -20,11 +20,10 @@ jobs:
           set -euo pipefail
 
           V1_SDK_VERSIONS=versioned_docs/version-1/sdk-versions.md
-          PYTHON_COMMIT=$(grep -A5 '## Python SDK' "$V1_SDK_VERSIONS" | grep '\*\*Commit\*\*' | sed 's/.*`\([^`]*\)`.*/\1/')
-          TS_COMMIT=$(grep -A5 '## TypeScript SDK' "$V1_SDK_VERSIONS" | grep '\*\*Commit\*\*' | sed 's/.*`\([^`]*\)`.*/\1/')
-          JAVA_COMMIT=$(grep -A5 '## Java SDK' "$V1_SDK_VERSIONS" | grep '\*\*Commit\*\*' | sed 's/.*`\([^`]*\)`.*/\1/')
+          V3_SDK_VERSIONS=docs/sdk-versions.md
+          JAVA_COMMIT=$(node scripts/sdk-metadata.js "$V1_SDK_VERSIONS" java commit)
 
-          for var_name in PYTHON_COMMIT TS_COMMIT JAVA_COMMIT; do
+          for var_name in JAVA_COMMIT; do
             val="${!var_name}"
             if [ -z "$val" ]; then
               echo "::error::Failed to parse $var_name from $V1_SDK_VERSIONS"
@@ -32,15 +31,11 @@ jobs:
             fi
           done
 
-          echo "Python commit: $PYTHON_COMMIT"
-          echo "TypeScript commit: $TS_COMMIT"
           echo "Java commit: $JAVA_COMMIT"
 
           mkdir -p external
 
           for repo_info in \
-            "pdfdancer-client-python $PYTHON_COMMIT" \
-            "pdfdancer-client-typescript $TS_COMMIT" \
             "pdfdancer-client-java $JAVA_COMMIT"; do
             repo=$(echo "$repo_info" | cut -d' ' -f1)
             commit=$(echo "$repo_info" | cut -d' ' -f2)
@@ -51,13 +46,8 @@ jobs:
 
           chmod +x external/pdfdancer-client-java/gradlew
 
-          . scripts/docs-v3-sdk-commits.env
-          V3_PYTHON_COMMIT="$PYTHON_COMMIT"
-          V3_TS_COMMIT="$TYPESCRIPT_COMMIT"
-          V3_JAVA_COMMIT="$JAVA_COMMIT"
+          V3_JAVA_COMMIT=$(node scripts/sdk-metadata.js "$V3_SDK_VERSIONS" java commit)
           for repo_info in \
-            "pdfdancer-client-python $V3_PYTHON_COMMIT" \
-            "pdfdancer-client-typescript $V3_TS_COMMIT" \
             "pdfdancer-client-java $V3_JAVA_COMMIT"; do
             repo=$(echo "$repo_info" | cut -d' ' -f1)
             commit=$(echo "$repo_info" | cut -d' ' -f2)
@@ -78,28 +68,12 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
+          cache: 'maven'
       - run: npm ci
-      - name: Build pinned v1 TypeScript SDK
-        run: |
-          npm ci --ignore-scripts --prefix external/pdfdancer-client-typescript
-          npm run build --prefix external/pdfdancer-client-typescript
-      - name: Build pinned v3 TypeScript SDK
-        run: |
-          npm ci --ignore-scripts --prefix external-v3/pdfdancer-client-typescript
-          npm run build --prefix external-v3/pdfdancer-client-typescript
-      - name: Install pinned v1 Python SDK and test dependencies
-        run: pip install mktestdocs pytest ./external/pdfdancer-client-python
       - name: Test documentation examples
-        env:
-          PDFDANCER_TYPESCRIPT_SDK_DIR: external/pdfdancer-client-typescript
         run: npm run test:docs:v1
-      - name: Install pinned v3 Python SDK and test documentation examples
-        env:
-          PDFDANCER_TYPESCRIPT_SDK_DIR: external-v3/pdfdancer-client-typescript
-          PDFDANCER_JAVA_SDK_DIR: external-v3/pdfdancer-client-java
-        run: |
-          pip install --force-reinstall ./external-v3/pdfdancer-client-python
-          npm run test:docs:v3
+      - name: Test v3 documentation examples
+        run: npm run test:docs:v3
       - run: npm run build
       - name: Verify versioned routes and search indexes
         run: npm run test:versioning
@@ -113,7 +87,6 @@ jobs:
 
       # Disabled until a version-specific raw Markdown upload policy is defined.
       - name: Upload markdown content to Cloudflare KV
-        if: ${{ false }}
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}

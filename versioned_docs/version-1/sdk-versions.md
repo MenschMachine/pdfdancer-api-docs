@@ -6,6 +6,19 @@ description: Current SDK versions used in this documentation
 
 # SDK Versions
 
+<!-- sdk-pins
+{
+  "python": {"version": "0.3.12", "commit": "2e92b4e"},
+  "typescript": {"version": "2.0.15", "commit": "834b4bc"},
+  "java": {
+    "version": "0.2.14",
+    "commit": "e26c48c",
+    "groupId": "com.pdfdancer.client",
+    "artifactId": "pdfdancer-client-java"
+  }
+}
+-->
+
 **Documentation Version**: 8.7 (March 10, 2026)
 
 This documentation tracks the current SDK release baselines. The commit IDs below show the upstream revisions used to verify the examples and feature coverage described on this site.

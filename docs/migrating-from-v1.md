@@ -48,8 +48,9 @@ In v1, your code selects a paragraph before changing it:
 | Boolean or edited-object result | `TextEditResponse`, including match/change counts and diagnostics. | [Working with Text](./working-with-text) |
 | Result from changing an existing object | Usually `CommandResult`; some operations return booleans. | [Error Handling](./error-handling) |
 
-In v1, that workflow looks like this:
+In v1, that workflow looks like this. This comparison-only snippet is intentionally not validated against the v3 SDK:
 
+<!-- docs-test: ignore -->
 ```python
 with PDFDancer.open("input.pdf") as pdf:
     paragraphs = pdf.page(1).select_paragraphs_matching("Hello")
