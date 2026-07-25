@@ -120,6 +120,11 @@ function main() {
   installEnvironment();
   fs.rmSync(TEMP_DIR, {recursive: true, force: true});
   fs.mkdirSync(TEMP_DIR, {recursive: true});
+  fs.symlinkSync(
+    path.join(NPM_ENV_DIR, 'node_modules'),
+    path.join(TEMP_DIR, 'node_modules'),
+    process.platform === 'win32' ? 'junction' : 'dir',
+  );
 
   let fileNumber = 0;
   let totalBlocks = 0;
