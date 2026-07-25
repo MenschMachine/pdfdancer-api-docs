@@ -89,4 +89,10 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_KV_NAMESPACE_ID: ${{ secrets.CLOUDFLARE_KV_NAMESPACE_ID }}
-        run: npx dcs upload-content
+        run: |
+          set -euo pipefail
+
+          content_dir=$(mktemp -d)
+          trap 'rm -rf "$content_dir"' EXIT
+          node scripts/prepare-search-content.js "$content_dir"
+          npx dcs upload-content --content-dir "$content_dir"
