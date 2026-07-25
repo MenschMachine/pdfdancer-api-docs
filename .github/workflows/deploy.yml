@@ -85,7 +85,6 @@ jobs:
           CLOUDFLARE_KV_NAMESPACE_ID: ${{ secrets.CLOUDFLARE_KV_NAMESPACE_ID }}
         run: npx dcs deploy
 
-      # Disabled until a version-specific raw Markdown upload policy is defined.
       - name: Upload markdown content to Cloudflare KV
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
