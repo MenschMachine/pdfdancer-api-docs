@@ -34,7 +34,6 @@
     "@mdx-js/react": "^3.0.0",
     "@pdfdancer/docusaurus-cloudflare-search": "^1.0.0",
     "clsx": "^2.0.0",
-    "pdfdancer-client-typescript": "github:MenschMachine/pdfdancer-client-typescript#7bd49ac104cc",
     "posthog-docusaurus": "^2.0.5",
     "prism-react-renderer": "^2.3.0",
     "react": "^19.0.0",

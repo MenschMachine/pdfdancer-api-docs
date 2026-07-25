@@ -34,7 +34,6 @@ jobs:
             chmod +x "external/$version/pdfdancer-client-java/gradlew"
           }
 
-          checkout_set v1 versioned_docs/version-1/sdk-versions.md
           checkout_set v3 docs/sdk-versions.md
 
       - uses: actions/setup-node@v4
