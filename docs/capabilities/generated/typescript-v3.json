@@ -2315,7 +2315,7 @@
           "static": false
         }
       ],
-      "module": "pdfdancer_v2"
+      "module": "pdfdancer_v3"
     },
     {
       "id": "PageRef",
@@ -3660,7 +3660,7 @@
           "static": false
         }
       ],
-      "module": "pdfdancer_v2",
+      "module": "pdfdancer_v3",
       "description": "REST API client for interacting with the PDFDancer PDF manipulation service.\nThis client provides a convenient TypeScript interface for performing PDF operations\nincluding session management, object searching, manipulation, and retrieval.\nHandles authentication, session lifecycle, and HTTP communication transparently."
     },
     {
@@ -4174,7 +4174,7 @@
           "description": "Whether to retry on network errors (connection failures, timeouts) (default: true)"
         }
       ],
-      "module": "pdfdancer_v2",
+      "module": "pdfdancer_v3",
       "description": "Configuration for retry mechanism on REST API calls."
     },
     {

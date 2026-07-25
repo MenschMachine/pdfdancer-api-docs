@@ -23,7 +23,7 @@ function copyVersion(version, sourceDirectory) {
     // The source home page uses slug: /, but its search route is versioned.
     const homePage = path.join(destinationDirectory, 'getting-started.md');
     let content = fs.readFileSync(homePage, 'utf8');
-    content = content.replace(/^slug: \/$/m, `slug: /${version}/`);
+    content = content.replace(/^slug: \/$/m, `slug: /${version}`);
     fs.writeFileSync(homePage, content);
 }
 

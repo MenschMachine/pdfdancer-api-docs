@@ -94,16 +94,16 @@ const config: Config = {
                 },
                 {
                     from: '/sdk/templating',
-                    to: '/v1/working-with-templates',
+                    to: '/v3/',
                 },
             ],
             createRedirects(existingPath) {
-                const v1Prefix = '/v1/';
-                if (!existingPath.startsWith(v1Prefix)) {
+                const v3Prefix = '/v3/';
+                if (!V3_RELEASED || !existingPath.startsWith(v3Prefix)) {
                     return undefined;
                 }
 
-                const legacyPath = existingPath.slice('/v1'.length);
+                const legacyPath = existingPath.slice(v3Prefix.length - 1);
                 return legacyPath === '/' ? undefined : legacyPath;
             },
         }],

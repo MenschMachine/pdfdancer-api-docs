@@ -131,7 +131,7 @@ def _load_sdk_environment() -> None:
             for name in ("PageClient", "TextObjectRef"):
                 _register_type(name, getattr(sdk_module, name))
         else:
-            sdk_module = importlib.import_module("pdfdancer.pdfdancer_v2")
+            sdk_module = importlib.import_module("pdfdancer.pdfdancer_v3")
             for name in ("PageClient", "TextClient"):
                 _register_type(name, getattr(sdk_module, name))
 

@@ -36,14 +36,20 @@ assert.strictEqual(
 
 const legacyRoute = readBuildFile('working-with-text/index.html');
 assert.ok(
-  legacyRoute.includes('url=/v1/working-with-text'),
-  'Legacy documentation routes must preserve their API v1 meaning'
+  legacyRoute.includes('url=/v3/working-with-text'),
+  'Legacy documentation routes must redirect to API v3'
 );
 
 const legacyTemplatingRoute = readBuildFile('sdk/templating/index.html');
 assert.ok(
-  legacyTemplatingRoute.includes('url=/v1/working-with-templates'),
-  'The legacy templating route must redirect directly to API v1'
+  legacyTemplatingRoute.includes('url=/v3/'),
+  'The legacy templating route must redirect to API v3'
+);
+
+const cloudflareRedirects = readBuildFile('_redirects');
+assert.ok(
+  cloudflareRedirects.includes('/getting-started-java /v3/getting-started-java 301'),
+  'Cloudflare native redirects must target API v3'
 );
 
 console.log(`Versioned build verified in ${previewMode ? 'preview' : 'release'} mode.`);

@@ -75,7 +75,7 @@ This reference covers the supported public surface of `pdfdancer-client-typescri
 | [`PathBuilder`](./path-builder) | class |
 | [`RectangleBuilder`](./rectangle-builder) | class |
 
-## `pdfdancer_v2`
+## `pdfdancer_v3`
 
 | Symbol | Kind |
 |---|---|

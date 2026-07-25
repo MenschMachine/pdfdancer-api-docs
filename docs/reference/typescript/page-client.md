@@ -11,7 +11,7 @@ pagination_prev: null
 # `PageClient`
 
 **Kind:** class  
-**Module/package:** `pdfdancer_v2`  
+**Module/package:** `pdfdancer_v3`  
 **SDK:** `pdfdancer-client-typescript 3.0.0`
 
 ## Declaration
@@ -245,5 +245,5 @@ type: ObjectType
 
 - [Working with Pages](../../working-with-pages)
 
-[View source at `7bd49ac104cc`](https://github.com/MenschMachine/pdfdancer-client-typescript/blob/7bd49ac104cc228c66c28f448c72c756eb740183/src/pdfdancer_v2.ts)
+[View source at `7bd49ac104cc`](https://github.com/MenschMachine/pdfdancer-client-typescript/blob/7bd49ac104cc228c66c28f448c72c756eb740183/src/pdfdancer_v3.ts)
 
