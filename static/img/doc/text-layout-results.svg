@@ -2,7 +2,7 @@
   <title id="title">Comparison of PDFDancer text layout results</title>
   <desc id="desc">Replacing Q1 with First quarter using source anchored, no reflow, and body text layouts. Source anchored overlaps unchanged text, no reflow moves text on the same line and may overflow, and body text recalculates line breaks.</desc>
   <style>
-    .bg{fill:#111318}.panel{fill:#1b1f27;stroke:#3a414f;stroke-width:2}.page{fill:#fff;stroke:#bac1cc;stroke-width:2}.title{fill:#f5f7fa;font:700 25px system-ui,sans-serif}.label{fill:#ff7a1a;font:700 18px system-ui,sans-serif}.body{fill:#20242b;font:18px system-ui,sans-serif}.note{fill:#cbd1db;font:16px system-ui,sans-serif}.measure{stroke:#8690a0;stroke-width:2;stroke-dasharray:7 6}.danger{fill:#d64242}.orange{fill:#e85f00;font-weight:700}.arrow{fill:#ff7a1a;font:700 26px system-ui,sans-serif}
+    .bg{fill:#111318}.panel{fill:#1b1f27;stroke:#3a414f;stroke-width:2}.page{fill:#fff;stroke:#bac1cc;stroke-width:2}.title{fill:#f5f7fa;font:700 25px system-ui,sans-serif}.label{fill:#ff7a1a;font:700 18px system-ui,sans-serif}.body{fill:#20242b;font:18px system-ui,sans-serif}.unchanged{fill:#8d2930;font:18px system-ui,sans-serif}.note{fill:#cbd1db;font:16px system-ui,sans-serif}.measure{stroke:#8690a0;stroke-width:2;stroke-dasharray:7 6}.bound{stroke:#596575;stroke-width:3;stroke-dasharray:5 5}.danger{fill:#d64242}.orange{fill:#e85f00;font:700 18px system-ui,sans-serif}.arrow{fill:#ff7a1a;font:700 26px system-ui,sans-serif}
   </style>
   <rect class="bg" width="1200" height="790" rx="18"/>
   <text class="title" x="55" y="52">Replacing “Q1” with “First quarter”</text>
@@ -10,37 +10,49 @@
   <rect class="panel" x="45" y="82" width="1110" height="155" rx="14"/>
   <text class="label" x="70" y="116">BEFORE</text>
   <rect class="page" x="285" y="102" width="805" height="112" rx="5"/>
-  <line class="measure" x1="330" y1="128" x2="1010" y2="128"/>
-  <text class="body" x="330" y="173">Revenue in <tspan class="orange">Q1</tspan> increased 18% as demand improved across every region.</text>
+  <line class="measure" x1="330" y1="128" x2="910" y2="128"/>
+  <line class="bound" x1="450" y1="137" x2="450" y2="191"/>
+  <line class="bound" x1="910" y1="137" x2="910" y2="191"/>
+  <text class="body" x="330" y="173">Revenue in<tspan class="orange" dx="5">Q1</tspan><tspan class="unchanged" dx="5">increased 18% as demand improved across every region.</tspan></text>
   <text class="note" x="70" y="162">Original line within its</text>
-  <text class="note" x="70" y="185">available measure</text>
+  <text class="note" x="70" y="185">marked text measure</text>
 
   <rect class="panel" x="45" y="262" width="1110" height="155" rx="14"/>
   <text class="label" x="70" y="296">SOURCE ANCHORED</text>
-  <text class="note" x="70" y="328">Unchanged glyphs stay fixed.</text>
-  <text class="note" x="70" y="353">Long text can overlap.</text>
+  <text class="note" x="70" y="328">Following text stays fixed.</text>
+  <text class="note" x="70" y="353">Longer text can overlap.</text>
   <rect class="page" x="285" y="282" width="805" height="112" rx="5"/>
-  <line class="measure" x1="330" y1="308" x2="1010" y2="308"/>
-  <text class="body" x="330" y="353">Revenue in <tspan class="orange">First quarter</tspan></text>
-  <rect class="danger" x="515" y="333" width="142" height="26" opacity=".3"/>
-  <text class="body" x="515" y="353">increased 18% as demand improved across every region.</text>
+  <line class="measure" x1="330" y1="308" x2="910" y2="308"/>
+  <line class="bound" x1="450" y1="317" x2="450" y2="371"/>
+  <line class="bound" x1="910" y1="317" x2="910" y2="371"/>
+  <text class="body" x="330" y="353">Revenue in</text>
+  <text class="orange" x="423" y="353">First quarter</text>
+  <rect class="danger" x="450" y="333" width="142" height="26" opacity=".3"/>
+  <text class="unchanged" x="450" y="353">increased 18% as demand improved across every region.</text>
+  <text class="note" x="520" y="386" fill="#d64242">same suffix x-position as BEFORE</text>
 
   <rect class="panel" x="45" y="442" width="1110" height="155" rx="14"/>
   <text class="label" x="70" y="476">NO_REFLOW PROFILE</text>
   <text class="note" x="70" y="508">Following text moves right.</text>
   <text class="note" x="70" y="533">Line breaks stay fixed.</text>
   <rect class="page" x="285" y="462" width="805" height="112" rx="5"/>
-  <line class="measure" x1="330" y1="488" x2="1010" y2="488"/>
+  <line class="measure" x1="330" y1="488" x2="910" y2="488"/>
+  <line class="bound" x1="450" y1="497" x2="450" y2="551"/>
+  <line class="bound" x1="910" y1="497" x2="910" y2="551"/>
   <text class="body" x="330" y="533">Revenue in <tspan class="orange">First quarter</tspan> increased 18% as demand improved across every region.</text>
-  <path d="M1010 507h58" stroke="#d64242" stroke-width="5"/>
-  <text class="note" x="972" y="563" fill="#d64242">may overflow</text>
+  <path d="M910 507h82" stroke="#d64242" stroke-width="5"/>
+  <text class="note" x="910" y="563" fill="#d64242">may overflow measure</text>
 
   <rect class="panel" x="45" y="622" width="1110" height="135" rx="14"/>
   <text class="label" x="70" y="656">BODY_TEXT PROFILE</text>
   <text class="note" x="70" y="688">Paragraph line breaks and</text>
   <text class="note" x="70" y="713">spacing are recalculated.</text>
   <rect class="page" x="285" y="642" width="805" height="92" rx="5"/>
-  <line class="measure" x1="330" y1="664" x2="1010" y2="664"/>
-  <text class="body" x="330" y="692">Revenue in <tspan class="orange">First quarter</tspan> increased 18% as demand improved</text>
-  <text class="body" x="330" y="718">across every region.</text>
+  <line class="measure" x1="330" y1="664" x2="910" y2="664"/>
+  <line class="bound" x1="450" y1="673" x2="450" y2="725"/>
+  <line class="bound" x1="910" y1="673" x2="910" y2="725"/>
+  <text class="body" x="330" y="692">Revenue in</text>
+  <text class="orange" x="423" y="692">First quarter</text>
+  <text class="body" x="535" y="692" word-spacing="4.6">increased 18% as demand improved across</text>
+  <text class="body" x="330" y="718">every region.</text>
 </svg>

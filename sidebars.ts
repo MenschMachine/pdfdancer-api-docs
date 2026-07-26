@@ -17,7 +17,7 @@ const sidebars: SidebarsConfig = {
         },
         {
             type: 'category',
-            label: 'Understand Documents',
+            label: 'PDF Fundamentals',
             items: [
                 'concepts',
                 'finding-content',

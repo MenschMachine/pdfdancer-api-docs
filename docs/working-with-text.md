@@ -126,9 +126,9 @@ var selectedPages = pdf.text().replace(
 </TabItem>
 </Tabs>
 
-## Choose a selector
+## Choose how to match text
 
-Literal selectors are safest for known text. Regular expressions are useful for variable content such as invoice numbers.
+Literal matching is the clearest choice when the text is known. Use a regular expression when part of the text varies, such as an invoice number. Keep the pattern narrow and add `maxMatches` when only a bounded number of edits is expected.
 
 <Tabs>
 <TabItem value="python" label="Python">
@@ -170,7 +170,9 @@ TextReplaceRequest invoice = TextReplaceRequest
 </TabItem>
 </Tabs>
 
-`wholeWords` applies to literal selectors. `maxMatches` limits the number of eligible matches, which is useful protection for broad selectors.
+`wholeWords` applies to literal selectors. `maxMatches` limits the number of eligible matches, which protects against changing more occurrences than intended.
+
+PDF text is stored as positioned glyphs, not as a guaranteed plain-text paragraph. PDFDancer matches the text representation it can associate with those glyphs; unusual encoding, separated characters, or text converted to outlines can affect whether a literal or regular-expression target matches. Start with a small representative edit, inspect `matched`, and verify the rendered output before applying it in bulk.
 
 ## Replace, insert, delete, and style
 
@@ -323,7 +325,9 @@ PDF text is stored as positioned glyphs and runs. A phrase that looks continuous
 
 1. Confirm the page scope and capitalization.
 2. Try a smaller, unique literal.
-3. Inspect the source PDF with a PDF viewer or extraction tool to determine how its visible text is encoded.
-4. Use a narrowly bounded regular expression.
+3. Inspect `matched`, `changed`, warnings, and errors from a small representative edit.
+4. Use a regular-expression pattern that matches only the intended text, and set `maxMatches` when you expect a limited number of matches.
+
+If the result still does not match the rendered text, the PDF may represent the visible content as separated glyphs, outlines, or another structure that is not editable text. In that case, inspect the rendered output and the source PDF as an optional diagnostic step rather than assuming that the visible phrase is one text target.
 
 Continue with [Replace, Insert, and Delete](./editing-text), [Styling Text](./styling-text), or [Text Layout](./text-layout).

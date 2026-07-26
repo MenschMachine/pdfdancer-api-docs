@@ -23,8 +23,8 @@ Page scope reduces ambiguity and is required for coordinate selection.
 | What you know | Selector form | Result |
 |---|---|---|
 | Object type only | `selectImages()`, `selectPaths()`, `selectForms()`, or `selectFormFields()` | Every matching object in the chosen scope |
-| Object type and page | Call the plural selector on `pdf.page(n)` | Every matching object on that page |
-| Object type and coordinates | Page-scoped `select…At(x, y)` | Objects matching that point |
+| Object type and page | `pdf.page(n).selectImages()` (or another plural selector) | Every matching object on that page |
+| Object type and coordinates | `pdf.page(n).selectImagesAt(x, y)` (or another type-specific selector) | Objects matching that point |
 | Stable AcroForm field name | `selectFormFieldsByName(name)` | Every field with that name |
 | You need only the first match | Singular `selectImage`, `selectPath`, `selectForm`, or supported `selectFormField…` method | One object or the language's empty value |
 | You need a heterogeneous object list | `selectElements()` | Read-only object references rather than type-specific editing objects |
@@ -107,12 +107,10 @@ with PDFDancer.open(Path("input.pdf")) as pdf:
 <TabItem value="typescript-point" label="TypeScript">
 
 ```typescript
-import * as fs from 'node:fs';
 import {PDFDancer} from 'pdfdancer-client-typescript';
 
 async function main(): Promise<void> {
-  const input = new Uint8Array(fs.readFileSync('input.pdf'));
-  const pdf = await PDFDancer.open(input);
+  const pdf = await PDFDancer.open('input.pdf');
   const image = await pdf.page(1).selectImageAt(72, 680, 1.0);
   if (image === null) throw new Error('No image found near (72, 680) on page 1');
   if (!await image.moveTo(90, 650)) throw new Error('The image could not be moved');
@@ -185,10 +183,6 @@ if (fields.size() != 1) {
 </Tabs>
 
 See [Working with AcroForms](./working-with-acroforms) for reading and changing field values.
-
-## Finding text is different
-
-The object selectors on this page do not return editable paragraphs or text lines. To replace, insert, delete, or style text, specify the target as part of the text operation and inspect `TextEditResponse.matched` and `TextEditResponse.changed`. See [Working with Text](./working-with-text).
 
 ## When a selector finds nothing
 

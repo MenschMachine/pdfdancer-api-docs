@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" role="img" aria-labelledby="title description">
+  <title id="title">PDFDancer core concepts</title>
+  <desc id="description">A PDFDancer session contains PDF pages. Each page can contain text, images, paths, Form XObjects, and AcroForm fields. Selectors find existing content, builders create new content, and operations return results.</desc>
+  <style>
+    .background{fill:#111217}.panel{fill:#1b1f27;stroke:#454c5a;stroke-width:2}.session{fill:#252c38;stroke:#ff9d00;stroke-width:3}.page{fill:#f7f8fa;stroke:#b8bec9;stroke-width:2}.object{fill:#fff4e4;stroke:#ff9d00;stroke-width:2}.result{fill:#e8f7ee;stroke:#43a66b;stroke-width:2}.heading{fill:#f4f4f6;font:700 25px Sora,system-ui,sans-serif}.label{fill:#ffcf7c;font:700 16px JetBrains Mono,monospace}.text{fill:#20242b;font:16px Sora,system-ui,sans-serif}.light{fill:#c7ccd5;font:16px Sora,system-ui,sans-serif}.arrow{stroke:#8993a3;stroke-width:3;fill:none}.arrowhead{fill:#8993a3}
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="arrowhead"/></marker>
+  </defs>
+  <rect width="1200" height="560" rx="24" class="background"/>
+  <text x="50" y="48" class="heading">How PDFDancer sees a PDF</text>
+
+  <rect x="45" y="90" width="215" height="390" rx="16" class="session"/>
+  <text x="70" y="130" class="label">SESSION</text>
+  <text x="70" y="170" class="light">Working copy</text>
+  <text x="70" y="198" class="light">of one PDF</text>
+  <text x="70" y="260" class="light">open</text>
+  <text x="70" y="292" class="light">scope</text>
+  <text x="70" y="324" class="light">operate</text>
+  <text x="70" y="356" class="light">inspect</text>
+  <text x="70" y="388" class="light">save</text>
+
+  <path d="M260 285 H315" class="arrow" marker-end="url(#arrow)"/>
+
+  <rect x="320" y="90" width="285" height="390" rx="16" class="panel"/>
+  <text x="345" y="130" class="label">PDF PAGE</text>
+  <rect x="370" y="160" width="185" height="265" rx="4" class="page"/>
+  <text x="388" y="190" class="text">positioned</text>
+  <text x="388" y="214" class="text">content</text>
+  <rect x="395" y="250" width="105" height="46" rx="4" class="object"/>
+  <line x1="420" y1="332" x2="525" y2="332" stroke="#59616e" stroke-width="3"/>
+  <line x1="420" y1="346" x2="500" y2="346" stroke="#59616e" stroke-width="3"/>
+  <text x="345" y="460" class="light">one-based page number</text>
+
+  <path d="M605 285 H660" class="arrow" marker-end="url(#arrow)"/>
+
+  <rect x="665" y="90" width="235" height="390" rx="16" class="panel"/>
+  <text x="690" y="130" class="label">CONTENT TYPES</text>
+  <rect x="690" y="160" width="185" height="42" rx="7" class="object"/><text x="708" y="187" class="text">text glyphs</text>
+  <rect x="690" y="218" width="185" height="42" rx="7" class="object"/><text x="708" y="245" class="text">images</text>
+  <rect x="690" y="276" width="185" height="42" rx="7" class="object"/><text x="708" y="303" class="text">paths</text>
+  <rect x="690" y="334" width="185" height="42" rx="7" class="object"/><text x="708" y="361" class="text">Form XObjects</text>
+  <rect x="690" y="392" width="185" height="42" rx="7" class="object"/><text x="708" y="419" class="text">AcroForm fields</text>
+
+  <path d="M900 285 H955" class="arrow" marker-end="url(#arrow)"/>
+
+  <rect x="960" y="90" width="195" height="390" rx="16" class="panel"/>
+  <text x="985" y="130" class="label">API ACTION</text>
+  <text x="985" y="177" class="light">selectors</text>
+  <text x="985" y="207" class="light">find existing</text>
+  <text x="985" y="267" class="light">builders</text>
+  <text x="985" y="297" class="light">create new</text>
+  <rect x="985" y="350" width="145" height="62" rx="8" class="result"/>
+  <text x="1003" y="378" class="text">result</text>
+  <text x="1003" y="400" class="text">inspect</text>
+</svg>

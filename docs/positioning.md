@@ -26,16 +26,7 @@ PDFDancer measures page coordinates and dimensions in points.
 
 Page numbers passed to API v3 methods are one-based: page `1` is the first page.
 
-For an unrotated page, PDF user space normally works like this:
-
-```text
-                         y increases
-                              ↑
-                              │
-                              │
-            (0, 0) ───────────┼────────→ x increases
-             bottom-left
-```
+On an unrotated page, `(0, 0)` is normally at the bottom-left. `x` increases to the right and `y` increases upward. The diagram above shows the same convention with a page and a rectangle whose lower-left corner is `(x, y)`.
 
 The page's crop box and rotation can affect how these coordinates correspond to what a PDF viewer displays. Do not assume that every PDF has an origin at the visible sheet's bottom-left corner; verify geometry-sensitive workflows with representative source files.
 
@@ -59,7 +50,7 @@ For example, US Letter is commonly 612 × 792 points. A point 72 points from the
 
 These formulas assume an unrotated page and coordinate systems referring to the same visible page box.
 
-## Coordinates mean different things by operation
+## How coordinates are used
 
 | Operation | Meaning of `(x, y)` |
 |---|---|
@@ -207,16 +198,29 @@ if (image.isEmpty() || !image.get().moveTo(144, 680)) {
 
 Moving an object to another page is not the same operation as changing its coordinates. Page objects have their own `moveTo(targetPageNumber)` operation for reordering pages.
 
-## Affine transforms
+## Transform points with a matrix
 
-A PDF matrix `[a, b, c, d, e, f]` maps points as:
+A transform is a reusable rule for moving, scaling, or rotating PDF content. For example, the same translation can move every point in an image or text range by the same amount.
+
+PDF stores this rule as six numbers: `[a, b, c, d, e, f]`. The first four numbers control the linear part of the transformation; `e` and `f` add an offset. Together they map an input point `(x, y)` to an output point `(x', y')`:
 
 ```text
 x' = a*x + c*y + e
 y' = b*x + d*y + f
 ```
 
-Common matrices include:
+For example, this matrix translates a point 72 points right and 36 points up without changing its size or rotation:
+
+```text
+[1, 0, 0, 1, 72, 36]
+
+x' = 1*10 + 0*20 + 72 = 82
+y' = 0*10 + 1*20 + 36 = 56
+
+(10, 20) becomes (82, 56)
+```
+
+The same representation can scale, rotate, or combine those operations. Common matrices include:
 
 | Effect | Matrix |
 |---|---|
@@ -224,7 +228,9 @@ Common matrices include:
 | Scale by `(sx, sy)` | `[sx, 0, 0, sy, 0, 0]` |
 | Rotate by angle `θ` | `[cos θ, sin θ, -sin θ, cos θ, 0, 0]` |
 
-For text-to-image replacement, the supplied transform is relative to the matched range's visually leftmost boundary caret. It is not the page's current transformation matrix.
+For a 2× scale, `[2, 0, 0, 2, 0, 0]` maps `(10, 20)` to `(20, 40)`. A 90-degree counterclockwise rotation uses `[0, 1, -1, 0, 0, 0]`; it maps `(10, 20)` to `(-20, 10)`.
+
+You do not need to calculate a page's current transformation matrix for ordinary placement. When text-to-image replacement accepts a transform, that transform is relative to the matched range's visually leftmost boundary caret, not the page's current transformation matrix.
 
 ## Troubleshooting misplaced content
 

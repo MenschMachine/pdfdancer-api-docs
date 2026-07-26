@@ -26,15 +26,15 @@ The diagram shows the same replacement under the three composition behaviors.
 
 | Behavior | What moves | Can line breaks change? | Main risk |
 |---|---|---:|---|
-| Source anchored | Only the inserted or replacement text | No | Longer text can overlap unchanged glyphs |
+| Source anchored | Only the inserted or replacement text; unaffected glyphs stay at their original coordinates | No | Longer text can overlap unchanged glyphs |
 | Reflow with `NO_REFLOW` | Following text on each existing line | No | The line can extend beyond its original width |
-| Reflow with `BODY_TEXT` | Text in the detected unit | Yes | An unsuitable unit can be composed like prose |
+| Reflow with `BODY_TEXT` | Text in the detected unit | Yes | A non-prose unit can be composed like a paragraph |
 
 ## Choose a layout mode
 
 ### `sourceAnchored()`
 
-The new text begins at the selected source position. Every unaffected glyph remains at its original coordinates. This is also the default when no layout mode is specified.
+The new text begins at the selected source position. Every unaffected glyph remains at its original coordinates. If the replacement is longer, it can overlap the glyphs that follow because those glyphs do not move.
 
 Use it for same-length or shorter substitutions, isolated labels with sufficient empty space, and coordinate insertion. Do not use it for a longer inline replacement when following text must move.
 
@@ -127,27 +127,30 @@ var response = pdf.text().replace(reflowRequired);
 
 A profile is required by `reflowWhenSupported` and `requireReflow`. It is not valid with `sourceAnchored`.
 
+There is no implicit reflow profile. Choose `DEFAULT` when the selected content can have different detected layout types, `BODY_TEXT` when the target is paragraph-like prose, or `NO_REFLOW` when line boundaries must stay fixed.
+
 ### `DEFAULT`
 
-`DEFAULT` chooses a composition strategy from the detected layout type:
+`DEFAULT` chooses a meaningful composition strategy from the detected layout type. It is the profile to use when the same request may match different kinds of content:
 
-- paragraphs use body-text composition;
-- lists use composition appropriate to their detected alignment;
-- protected or fixed-layout units use the no-reflow profile.
+- paragraphs use paragraph composition;
+- list items use composition appropriate to their detected alignment;
+- table rows and cells use a table-aware composition;
+- headings, labels, and other supported structured units use a strategy appropriate to that unit.
 
-Protected units include headings, labels, tables, tables of contents, callouts, structured or preformatted text, headers, footers, footnotes, page numbers, watermarks, and unknown layouts.
+`DEFAULT` is the broad choice: it attempts to reflow each supported unit using its detected model rather than treating every unit as a paragraph.
 
-Use `DEFAULT` when one operation can match different kinds of content and PDFDancer should select the profile for each detected unit.
+Use `DEFAULT` when one operation can match different kinds of content and PDFDancer should choose the appropriate model for each unit.
 
 ### `BODY_TEXT`
 
-`BODY_TEXT` uses paragraph composition for every selected unit. It recalculates line breaks and can adjust tracking and word spacing within the profile's constraints while preserving a readable paragraph measure.
+`BODY_TEXT` reflows paragraph text. It recalculates paragraph line breaks and can adjust tracking and word spacing within the profile's constraints while preserving a readable paragraph measure.
 
-Use it for known prose. Do not force it onto headings, table cells, code, or preformatted text unless paragraph composition is explicitly the intended result.
+Use it when the target is paragraph-like prose. Do not use it for headings, table cells, lists, code, or preformatted text when their structure should be preserved; use `DEFAULT` when one operation must handle those different unit types.
 
 ### `NO_REFLOW`
 
-`NO_REFLOW` recomposes each existing line horizontally while preserving every original line boundary. Following text moves to make room for a longer replacement, but it never wraps to another line. The resulting line can extend beyond its original width.
+`NO_REFLOW` recomposes each existing line horizontally while preserving every original line boundary. Following text moves to make room for a longer replacement, but it never wraps to another line. The resulting line can extend beyond its original width. This is the default when no layout mode is specified.
 
 This differs from `sourceAnchored`: `NO_REFLOW` moves following text; `sourceAnchored` leaves it fixed.
 
@@ -316,12 +319,12 @@ if (response.change() != null) {
 
 ## Decision table
 
-| Required output | Configuration |
-|---|---|
-| Unaffected glyphs must remain at their exact coordinates | `sourceAnchored()` |
-| Mixed content may fall back to fixed coordinates | `reflowWhenSupported(DEFAULT)` |
-| Known prose may fall back to fixed coordinates | `reflowWhenSupported(BODY_TEXT)` |
-| Known prose must never use fixed-coordinate fallback | `requireReflow(BODY_TEXT)` |
-| Following text should move, but existing line breaks must remain | A reflow mode with `NO_REFLOW` |
+| Required output                                                                                               | Configuration                       |
+|---------------------------------------------------------------------------------------------------------------|-------------------------------------|
+| Unaffected glyphs must remain at their exact coordinates                                                      | `sourceAnchored()`                  |
+| The request may match paragraphs, list items, tables, or other supported units | `reflowWhenSupported(DEFAULT)` |
+| The target is paragraph-like prose and should be reflowed as paragraphs | `reflowWhenSupported(BODY_TEXT)` |
+| Paragraph reflow is required; otherwise reject the edit | `requireReflow(BODY_TEXT)` |
+| Following text should move, but existing line breaks must remain                                              | A reflow mode with `NO_REFLOW`      |
 
 Always save geometry-sensitive edits to a separate output file and inspect the rendered PDF before applying the same operation in bulk.

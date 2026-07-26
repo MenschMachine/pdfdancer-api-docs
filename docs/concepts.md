@@ -1,40 +1,113 @@
 ---
 id: concepts
 title: Core Concepts
-description: Understand sessions, scope, content selection, editing operations, results, and coordinates in API v3.
+description: Understand how PDFDancer represents PDF content, scopes operations, and reports changes in API v3.
 ---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # Core Concepts
 
-## Sessions and scope
+PDFDancer works with a PDF as a structured, positioned document. A page that looks like one visual composition may contain text glyphs, images, vector paths, reusable Form XObjects, and interactive AcroForm fields. These content types have different selectors and editing operations.
 
-An open `PDFDancer` value represents mutable server-side session state. Applied operations accumulate until you save or retrieve the PDF. Close Python sessions with a context manager; do not share a mutable session between unrelated concurrent workflows.
+![PDFDancer mental model: a session contains pages, pages contain different content types, and selectors or builders apply operations that return results](/img/doc/core-concepts-overview.svg)
 
-Document scope searches or edits the whole document. Page scope—`pdf.page(1)`—restricts selectors, builders, and text operations to one one-based page number.
+The most useful mental model is:
 
-## Existing objects and new content
+1. Open a PDFDancer session, which represents the working copy of a PDF.
+2. Choose document scope or a one-based page scope.
+3. Select existing content or describe new content with a builder.
+4. Apply an operation.
+5. Inspect the operation result.
+6. Save the working copy when the result is acceptable.
 
-Selectors return typed existing objects or references, such as images, paths, Form XObjects, and form fields. The selected values provide the changes supported for that object type, such as moving, deleting, setting a form value, or clearing clipping.
+## A session is a working copy
 
-Builders create content. API v3 has dedicated image, path, line, Bézier, and rectangle builders. A builder does not change the document until its terminal `add` operation succeeds.
+An open `PDFDancer` value represents the mutable working copy for one PDF. Successful operations accumulate in that session; they do not overwrite the source file until you explicitly save to a path or retrieve the PDF bytes.
 
-## Editing text
+Keep one session associated with one workflow. In Python, close it with a context manager. Do not share a mutable session between unrelated concurrent workflows.
 
-You can replace, insert, delete, or style text. For each edit, specify what to target—such as literal text, a regular expression, an existing style, an anchor, or page coordinates—and then apply the operation. The SDK represents these edit definitions with classes such as `TextReplaceRequest` and `TextInsertRequest`. Paragraphs and text lines are not editable objects in v3.
+## A page contains different kinds of content
 
-Every text operation returns `TextEditResponse`. Distinguish:
+The same visible page can contain several different content types:
 
-- `matched`: eligible targets found.
-- `changed`: changes actually applied.
-- `pagesChanged`: affected one-based page numbers.
-- `warnings`: nonfatal fallbacks or fidelity concerns.
-- `errors`: requested work that was not applied.
-- per-change diagnostics: requested and applied layout plus affected element identifiers.
+| Content type | What it represents | Typical API v3 operation |
+|---|---|---|
+| Text glyphs and style runs | Characters painted at positions with appearance properties such as font, size, and color | Replace, insert, delete, or style through the text client |
+| Image | Raster content painted on a page | Select, move, replace, scale, rotate, or delete |
+| Path | Lines, curves, fills, and strokes used for vector graphics | Select, create, edit, or delete |
+| Form XObject | Reusable content that can contain text, images, paths, or other graphics | Select, move, edit, clear clipping, or delete |
+| AcroForm field | An interactive field with a stored name and value, such as a text input or checkbox | Select by name or position, set its value, or delete it |
 
-## Geometry
+Form XObjects and AcroForm fields are different PDF concepts. A Form XObject is reusable painted content. An AcroForm field is interactive form data. A visible form-like box may contain either one or both, so select the type that matches the operation you intend to perform.
 
-PDF distances are measured in points: 72 points equal one inch. Coordinates normally start at the page's bottom-left. A position or transform is not a CSS pixel coordinate. See [Positioning](./positioning).
+## A visible thing is not always one editable object
 
-## Results are operation-specific
+PDFs describe how content is painted, not only the visual objects a person perceives. A logo may be an image, a collection of paths, or a Form XObject. A word may be split into separately positioned glyphs. Text may also have been converted to outlines, in which case it is no longer text for text-editing purposes.
 
-Object changes generally return `CommandResult`; some object methods return a boolean. Text edits return `TextEditResponse`. Inspect the documented fields for that operation: receiving a result object does not by itself mean that the PDF changed.
+Clipping, reuse, and overlapping painted content can also affect what is visible and what a selector returns. If a visible item does not match the expected selector, identify how it is represented before treating the result as an SDK failure. [Finding Existing Objects](./finding-content) shows how to inspect objects by type, page, and coordinate.
+
+## Existing content and new content use different APIs
+
+Use a selector when the content already exists in the PDF. The selector returns a typed object or reference with the operations supported for that content type.
+
+Use a builder when you want to add new content. Builder methods collect and validate the inputs; the document changes only when the builder's terminal `add` operation succeeds. Text edit requests are built with `build()` and then passed to `replace`, `insert`, `delete`, or `style`.
+
+## Scope determines where an operation applies
+
+Document scope starts from `pdf` and searches or edits the whole document. Page scope starts from `pdf.page(n)` and restricts the operation to one one-based page number. Use page scope when the page is known, especially for coordinate-based selection.
+
+<Tabs>
+<TabItem value="python-scope" label="Python">
+
+```python
+all_images = pdf.select_images()
+page_one_images = pdf.page(1).select_images()
+```
+
+</TabItem>
+<TabItem value="typescript-scope" label="TypeScript">
+
+```typescript
+const allImages = await pdf.selectImages();
+const pageOneImages = await pdf.page(1).selectImages();
+```
+
+</TabItem>
+<TabItem value="java-scope" label="Java">
+
+```java
+var allImages = pdf.selectImages();
+var pageOneImages = pdf.page(1).selectImages();
+```
+
+</TabItem>
+</Tabs>
+
+The two calls express the same selection at different scopes. See [Positioning and Coordinates](./positioning) for PDF points, page geometry, and coordinate origins.
+
+## Text is a special case
+
+Text is painted from positioned glyphs rather than stored as guaranteed editable paragraphs or lines. PDFDancer therefore targets text through an operation request: a literal string, regular expression, existing style, anchor, or coordinate.
+
+Text edits can change the amount of content. A source-anchored edit keeps unaffected glyphs at their original coordinates; a reflowing edit may move text or recompute line breaks for a detected text unit. These choices are operation-specific. See [Working with Text](./working-with-text) and [Text Layout and Reflow](./text-layout).
+
+## Results describe what happened
+
+A result object is not, by itself, proof that the PDF changed. Inspect the return type documented for the operation:
+
+| Operation family | Typical result | What to check |
+|---|---|---|
+| Image, path, Form XObject, and field operations | `CommandResult`, a boolean, or a language-specific empty value | Whether the operation succeeded or found an object |
+| Text replacement, insertion, deletion, and styling | `TextEditResponse` | `matched`, `changed`, `warnings`, and `errors` |
+
+For text, `matched` is the number of eligible targets and `changed` is the number actually applied. A warning may describe a permitted fallback or fidelity concern. An error means requested work was not applied. Inspect these fields before saving, especially when an edit is required to change a specific number of occurrences.
+
+## Where to go next
+
+- [Finding Existing Objects](./finding-content) — select images, paths, Form XObjects, and AcroForm fields.
+- [Positioning and Coordinates](./positioning) — work with points, rectangles, origins, and transforms.
+- [Working with Text](./working-with-text) — target and edit text.
+- [Working with AcroForms](./working-with-acroforms) — inspect and change interactive fields.
+- [Working with Form XObjects](./working-with-formxobjects) — inspect and edit reusable painted content.
