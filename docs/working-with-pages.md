@@ -101,7 +101,7 @@ import com.pdfdancer.common.model.PageSize;
 public class CreateBlankPdf {
     public static void main(String[] args) throws Exception {
         var pdf = PDFDancer.createNew(PageSize.A4, Orientation.PORTRAIT, 2);
-        pdf.save("blank.pdf");
+        pdf.save("./blank.pdf");
     }
 }
 ```
@@ -251,7 +251,7 @@ const pdfBytes = await pdf.getBytes();
 <TabItem value="java-save" label="Java">
 
 ```java
-pdf.save("output.pdf");
+pdf.save("./output.pdf");
 byte[] pdfBytes = pdf.getFileBytes();
 ```
 

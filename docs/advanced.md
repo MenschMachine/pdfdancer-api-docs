@@ -64,7 +64,7 @@ for (var replacement : Map.of("Draft", "Final", "Acme Ltd", "Northwind GmbH").en
         throw new IllegalStateException("Required edit failed: " + replacement.getKey());
     }
 }
-pdf.save("output.pdf");
+pdf.save("./output.pdf");
 ```
 
 </TabItem>

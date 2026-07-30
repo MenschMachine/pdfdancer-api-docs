@@ -62,7 +62,7 @@ public class FillForm {
         if (!field.setValue("Ada")) {
             throw new IllegalStateException("The firstName field was not updated");
         }
-        pdf.save("output.pdf");
+        pdf.save("./output.pdf");
     }
 }
 ```

@@ -62,7 +62,7 @@ public class EditPath {
         if (paths.isEmpty()) throw new IllegalStateException("The sample path was not found");
         var result = paths.get(0).edit().strokeColor(new Color(220, 30, 30)).apply();
         if (!result.success()) throw new IllegalStateException(result.message());
-        pdf.save("output.pdf");
+        pdf.save("./output.pdf");
     }
 }
 ```

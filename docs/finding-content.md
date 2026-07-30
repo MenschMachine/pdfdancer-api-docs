@@ -135,7 +135,7 @@ public class MoveImage {
         if (!image.moveTo(90, 650)) {
             throw new IllegalStateException("The image could not be moved");
         }
-        pdf.save("output.pdf");
+        pdf.save("./output.pdf");
     }
 }
 ```

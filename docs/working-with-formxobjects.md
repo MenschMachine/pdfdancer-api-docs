@@ -62,7 +62,7 @@ public class ClearFormClipping {
         if (!forms.get(0).clearClipping()) {
             throw new IllegalStateException("The clipping path was not cleared");
         }
-        pdf.save("output.pdf");
+        pdf.save("./output.pdf");
     }
 }
 ```

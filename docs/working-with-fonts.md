@@ -65,7 +65,7 @@ public class ChangeFont {
                 || (response.errors() != null && !response.errors().isEmpty())) {
             throw new IllegalStateException("Font change failed: " + response.errors());
         }
-        pdf.save("output.pdf");
+        pdf.save("./output.pdf");
     }
 }
 ```

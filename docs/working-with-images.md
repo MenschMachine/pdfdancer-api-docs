@@ -62,7 +62,7 @@ public class ReplaceImage {
         if (images.isEmpty()) throw new IllegalStateException("The sample image was not found");
         var result = images.get(0).replace(new File("replacement-logo.png"));
         if (!result.success()) throw new IllegalStateException(result.message());
-        pdf.save("output.pdf");
+        pdf.save("./output.pdf");
     }
 }
 ```

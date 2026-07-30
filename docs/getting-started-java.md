@@ -68,7 +68,7 @@ public class EditPdf {
         if (response.errors() != null && !response.errors().isEmpty()) {
             throw new IllegalStateException("The edit failed: " + response.errors());
         }
-        pdf.save("output.pdf");
+        pdf.save("./output.pdf");
     }
 }
 ```

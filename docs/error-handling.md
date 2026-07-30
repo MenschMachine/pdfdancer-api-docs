@@ -106,7 +106,7 @@ try {
             || (result.errors() != null && !result.errors().isEmpty())) {
         throw new IllegalStateException("Edit was only partially applied");
     }
-    pdf.save("output.pdf");
+    pdf.save("./output.pdf");
 } catch (RateLimitException exception) {
     System.err.println("Rate limited: " + exception.getMessage());
 } catch (PdfDancerException exception) {

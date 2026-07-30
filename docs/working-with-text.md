@@ -77,7 +77,7 @@ if (response.matched() == 0) {
 if (response.errors() != null && !response.errors().isEmpty()) {
     throw new IllegalStateException(response.errors().toString());
 }
-pdf.save("output.pdf");
+pdf.save("./output.pdf");
 ```
 
 </TabItem>
