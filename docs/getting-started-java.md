@@ -31,6 +31,15 @@ Create `src/main/java/EditPdf.java` and a `pom.xml` in an empty directory. Java 
       <version>3.0.0</version>
     </dependency>
   </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.13.0</version>
+      </plugin>
+    </plugins>
+  </build>
 </project>
 ```
 

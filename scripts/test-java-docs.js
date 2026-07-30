@@ -65,6 +65,16 @@ function extractJavaBlocks(markdownPath) {
   return blocks;
 }
 
+function extractTitledBlock(markdownPath, language, title) {
+  const content = fs.readFileSync(markdownPath, 'utf8');
+  const escapedLanguage = language.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const escapedTitle = title.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const pattern = new RegExp(
+    '```' + escapedLanguage + '[^\\r\\n]*title="' + escapedTitle + '"[^\\r\\n]*\\r?\\n([\\s\\S]*?)```'
+  );
+  return content.match(pattern)?.[1] ?? null;
+}
+
 function needsClassWrapper(code) {
   return !code.includes('class ') && !code.includes('interface ');
 }
@@ -119,6 +129,38 @@ function ensureTempDir() {
 
 function cleanupTempDir() {
   if (fs.existsSync(TEMP_DIR)) fs.rmSync(TEMP_DIR, {recursive: true});
+}
+
+function validateGettingStartedMavenProject() {
+  if (path.relative(REPO_ROOT, DOCS_DIR).split(path.sep).includes('version-1')) return;
+
+  const markdownPath = path.join(DOCS_DIR, 'getting-started-java.md');
+  const pom = extractTitledBlock(markdownPath, 'xml', 'pom.xml');
+  const java = extractJavaBlocks(markdownPath)
+    .map((block) => block.code)
+    .find((code) => code.includes('public class EditPdf'));
+
+  if (!pom || !java) {
+    throw new Error('Could not extract the Maven POM and EditPdf.java from docs/getting-started-java.md');
+  }
+
+  const projectDirectory = path.join(TEMP_DIR, 'getting-started-maven');
+  const sourceDirectory = path.join(projectDirectory, 'src', 'main', 'java');
+  fs.mkdirSync(sourceDirectory, {recursive: true});
+  fs.writeFileSync(path.join(projectDirectory, 'pom.xml'), pom);
+  fs.writeFileSync(path.join(sourceDirectory, 'EditPdf.java'), java);
+
+  try {
+    execFileSync('mvn', ['-B', '-ntp', '-q', 'compile'], {
+      cwd: projectDirectory,
+      stdio: ['ignore', 'pipe', 'pipe'],
+    });
+  } catch (error) {
+    const output = [error.stdout, error.stderr].filter(Boolean).join('\n').trim();
+    throw new Error(`The Maven project in docs/getting-started-java.md does not compile${output ? `\n${output}` : ''}`);
+  }
+
+  console.log('Maven quick-start project: OK\n');
 }
 
 function resolveMavenDependencies(javaSdk) {
@@ -194,6 +236,7 @@ function main() {
   let fileNumber = 0;
 
   try {
+    validateGettingStartedMavenProject();
     const dependenciesDir = resolveMavenDependencies(javaSdk);
     for (const markdownPath of markdownFiles(DOCS_DIR)) {
       const blocks = extractJavaBlocks(markdownPath);
