@@ -1,7 +1,7 @@
 ---
 id: path-group-object
 title: "PathGroupObject"
-description: "Python API reference for PathGroupObject."
+description: "Python API reference for PathGroupObject. Represents a group of vector paths that can be manipulated as a unit."
 pagination_next: null
 pagination_prev: null
 ---

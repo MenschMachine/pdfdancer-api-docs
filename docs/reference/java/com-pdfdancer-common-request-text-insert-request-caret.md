@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-common-request-text-insert-request-caret
 title: "TextInsertRequest$Caret"
-description: "Java API reference for TextInsertRequest$Caret."
+description: "Java API reference for TextInsertRequest$Caret This public enum belongs to the com.pdfdancer.common.request package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.0."
 pagination_next: null
 pagination_prev: null
 ---

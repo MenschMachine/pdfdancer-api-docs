@@ -1,7 +1,7 @@
 ---
 id: finding-content
 title: Finding Content
-description: Learn how to locate and select content in PDFs using all available selection methods.
+description: Locate and select existing PDF content using text, image, path, page, coordinate, and pattern-based selection methods.
 ---
 
 import Tabs from '@theme/Tabs';

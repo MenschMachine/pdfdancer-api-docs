@@ -1,7 +1,7 @@
 ---
 id: object-type
 title: "ObjectType"
-description: "TypeScript API reference for ObjectType."
+description: "TypeScript API reference for ObjectType. Model classes for the PDFDancer TypeScript client. This public enum belongs to the models package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.0."
 pagination_next: null
 pagination_prev: null
 ---

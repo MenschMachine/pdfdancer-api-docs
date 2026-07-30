@@ -1,7 +1,7 @@
 ---
 id: font-not-found-exception
 title: "FontNotFoundException"
-description: "Python API reference for FontNotFoundException."
+description: "Python API reference for FontNotFoundException. Exception raised when a required font is not found or available. Equivalent to FontNotFoundException in the Java client."
 pagination_next: null
 pagination_prev: null
 ---

@@ -1,7 +1,7 @@
 ---
 id: image-flip-direction
 title: "ImageFlipDirection"
-description: "Python API reference for ImageFlipDirection."
+description: "Python API reference for ImageFlipDirection. Direction for image flip operation. This public enum belongs to the models package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.1."
 pagination_next: null
 pagination_prev: null
 ---

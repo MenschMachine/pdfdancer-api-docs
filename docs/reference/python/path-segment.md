@@ -1,7 +1,7 @@
 ---
 id: path-segment
 title: "PathSegment"
-description: "Python API reference for PathSegment."
+description: "Python API reference for PathSegment. Base class for vector path segments. Parameters: - stroke_color: Outline color for the segment (`Color`). - fill_color: Fill color for closed shapes when applicable (`Color`). - stroke_width: Line width in points. - dash_array: Dash pattern (e.g. `[3, 2]` for 3 on, 2 off). None or empty for solid. - dash_phase: Offset into the dash pattern. Notes: - Concrete subclasses are `Line` and `Bezier`. - Used inside `Path.path_segments` and serialized by `AddRequest`."
 pagination_next: null
 pagination_prev: null
 ---

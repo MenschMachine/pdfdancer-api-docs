@@ -1,7 +1,7 @@
 ---
 id: modify-path-request
 title: "ModifyPathRequest"
-description: "Python API reference for ModifyPathRequest."
+description: "Python API reference for ModifyPathRequest. Request to modify path stroke and fill colors. Parameters: - object_ref: Reference to the path to modify. - stroke_color: New stroke color (optional - null means don't change). - fill_color: New fill color (optional - null means don't change). Example: ```python req = ModifyPathRequest(object_ref=path_ref, stroke_color=Color(255, 0, 0), fill_color=None) payload = req.to_dict() ```"
 pagination_next: null
 pagination_prev: null
 ---

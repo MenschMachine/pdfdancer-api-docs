@@ -1,7 +1,7 @@
 ---
 id: working-with-formxobjects
 title: Working with FormXObjects
-description: Learn how to work with PDF FormXObjects for reusable content blocks.
+description: Work with reusable PDF FormXObjects and their content streams for repeatable layouts, shared graphics, and template-driven document generation.
 ---
 
 import Tabs from '@theme/Tabs';

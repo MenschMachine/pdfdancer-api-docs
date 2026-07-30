@@ -1,7 +1,7 @@
 ---
 id: path-edit-session
 title: "PathEditSession"
-description: "Python API reference for PathEditSession."
+description: "Python API reference for PathEditSession. Fluent editing helper for modifying path stroke and fill colors. This public class belongs to the types package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.1."
 pagination_next: null
 pagination_prev: null
 ---

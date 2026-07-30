@@ -1,7 +1,7 @@
 ---
 id: getting-started-python
 title: Getting Started with Python
-description: Complete beginner guide to editing PDFs with PDFDancer and Python.
+description: Follow a beginner workflow for editing PDFs with PDFDancer and Python, from opening an input file to saving the result.
 ---
 
 # Getting Started with Python

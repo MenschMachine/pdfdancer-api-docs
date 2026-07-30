@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-client-rest-pdf-dancer-http-client
 title: "PdfDancerHttpClient"
-description: "Java API reference for PdfDancerHttpClient."
+description: "Java API reference for PdfDancerHttpClient. Minimal HTTP client abstraction backed by HttpClient that mimics the subset of Micronaut's client API used by the original PDFDancer client. By default, clients created without an explicit RetryConfig will use RetryConfig.defaultConfig(), which includes retry logic for transient errors (429, 503, etc.) with exponential backoff. To disable retries, explicitly pass RetryConfig.noRetry() when creating the client."
 pagination_next: null
 pagination_prev: null
 ---

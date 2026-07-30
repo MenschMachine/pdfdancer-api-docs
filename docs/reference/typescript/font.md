@@ -1,7 +1,7 @@
 ---
 id: font
 title: "Font"
-description: "TypeScript API reference for Font."
+description: "TypeScript API reference for Font. Represents a font with name and size. This public class belongs to the models package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.0."
 pagination_next: null
 pagination_prev: null
 ---

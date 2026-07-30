@@ -1,7 +1,7 @@
 ---
 id: text-style-numeric-filter-request
 title: "TextStyleNumericFilterRequest"
-description: "Python API reference for TextStyleNumericFilterRequest."
+description: "Python API reference for TextStyleNumericFilterRequest. TextStyleNumericFilterRequest(eq: 'float', tolerance: 'Optional[float]' = None)"
 pagination_next: null
 pagination_prev: null
 ---

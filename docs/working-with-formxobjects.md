@@ -1,7 +1,7 @@
 ---
 id: working-with-formxobjects
 title: Working with Form XObjects
-description: Select and manipulate reusable PDF Form XObject content.
+description: Select and manipulate reusable PDF Form XObject content while distinguishing reusable streams from ordinary page objects and form fields.
 ---
 
 import Tabs from '@theme/Tabs';

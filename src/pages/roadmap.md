@@ -1,6 +1,6 @@
 ---
 title: Product Roadmap
-description: Current PDFDancer product development priorities and recently shipped capabilities.
+description: Review PDFDancer’s current product priorities, recently shipped capabilities, and planned improvements for PDF editing and SDK workflows.
 ---
 
 # Product Roadmap

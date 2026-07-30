@@ -1,7 +1,7 @@
 ---
 id: size
 title: "Size"
-description: "Python API reference for Size."
+description: "Python API reference for Size. Represents dimensions with width and height. This public class belongs to the models package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.1."
 pagination_next: null
 pagination_prev: null
 ---

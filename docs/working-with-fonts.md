@@ -1,7 +1,7 @@
 ---
 id: working-with-fonts
 title: Working with Fonts
-description: Use service fonts, custom TTF files, and embedded PDF fonts safely.
+description: Use service fonts, custom TTF files, and embedded PDF fonts safely when creating or editing text in PDF documents.
 ---
 
 import Tabs from '@theme/Tabs';

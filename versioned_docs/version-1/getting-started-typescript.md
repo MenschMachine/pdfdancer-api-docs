@@ -1,7 +1,7 @@
 ---
 id: getting-started-typescript
 title: Getting Started with TypeScript
-description: Complete beginner guide to editing PDFs with PDFDancer and TypeScript.
+description: Follow a beginner workflow for editing PDFs with PDFDancer and TypeScript, from opening an input file to saving the result.
 ---
 
 # Getting Started with TypeScript

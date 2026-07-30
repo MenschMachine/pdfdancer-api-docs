@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-client-rest-typed-document-snapshot
 title: "TypedDocumentSnapshot"
-description: "Java API reference for TypedDocumentSnapshot."
+description: "Java API reference for TypedDocumentSnapshot. A typed snapshot of the whole document containing pages with elements of type T."
 pagination_next: null
 pagination_prev: null
 ---

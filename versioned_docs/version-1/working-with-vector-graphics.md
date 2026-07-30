@@ -1,7 +1,7 @@
 ---
 id: working-with-vector-graphics
 title: Working with Vector Graphics
-description: Learn how to select, create, and manipulate vector paths and shapes in PDFs.
+description: Select, create, and manipulate vector paths and shapes in PDFs, including lines, rectangles, curves, groups, and styled graphics.
 ---
 
 import Tabs from '@theme/Tabs';

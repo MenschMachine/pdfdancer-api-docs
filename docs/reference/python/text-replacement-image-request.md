@@ -1,7 +1,7 @@
 ---
 id: text-replacement-image-request
 title: "TextReplacementImageRequest"
-description: "Python API reference for TextReplacementImageRequest."
+description: "Python API reference for TextReplacementImageRequest. TextReplacementImageRequest(data: 'bytes', transformation: 'PdfAffineTransform')"
 pagination_next: null
 pagination_prev: null
 ---

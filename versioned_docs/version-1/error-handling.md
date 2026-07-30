@@ -1,7 +1,7 @@
 ---
 id: error-handling
 title: Error Handling
-description: Learn how to handle exceptions and errors in PDFDancer SDK.
+description: Diagnose and handle PDFDancer exceptions, request failures, validation errors, connection problems, and partial document-editing results.
 ---
 
 import Tabs from '@theme/Tabs';

@@ -1,7 +1,7 @@
 ---
 id: authentication
 title: Authentication
-description: Manage API credentials and configure your PDFDancer clients securely.
+description: Manage PDFDancer credentials and configure clients securely for local development, automated jobs, and production document-processing workflows.
 ---
 
 import Tabs from '@theme/Tabs';

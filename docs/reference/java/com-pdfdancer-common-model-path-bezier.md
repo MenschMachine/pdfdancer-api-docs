@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-common-model-path-bezier
 title: "Bezier"
-description: "Java API reference for Bezier."
+description: "Java API reference for Bezier. Represents a cubic Bezier curve path segment defined by four control points. This class implements a cubic Bezier curve with start point, two control points, and end point, providing smooth curved path segments for complex vector graphics. Includes mathematical evaluation methods for point calculation along the curve."
 pagination_next: null
 pagination_prev: null
 ---

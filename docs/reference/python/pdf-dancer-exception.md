@@ -1,7 +1,7 @@
 ---
 id: pdf-dancer-exception
 title: "PdfDancerException"
-description: "Python API reference for PdfDancerException."
+description: "Python API reference for PdfDancerException. Base exception for all PDFDancer client errors. Equivalent to runtime exceptions in the Java client."
 pagination_next: null
 pagination_prev: null
 ---

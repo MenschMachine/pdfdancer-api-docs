@@ -1,7 +1,7 @@
 ---
 id: page-ref
 title: "PageRef"
-description: "Python API reference for PageRef."
+description: "Python API reference for PageRef. Reference to a page with size and orientation metadata. Parameters (usually provided by the server): - internal_id: Identifier of the page object. - position: Position referencing the page (often via `Position.at_page(page_number)`). - type: Should be `ObjectType.PAGE`. - page_size: `PageSize` of the page. - orientation: `Orientation.PORTRAIT` or `Orientation.LANDSCAPE`. Usage: - Returned inside `PageSnapshot` objects. You can inspect page size/orientation and use the page number for subsequent operations."
 pagination_next: null
 pagination_prev: null
 ---

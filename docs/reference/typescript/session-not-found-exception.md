@@ -1,7 +1,7 @@
 ---
 id: session-not-found-exception
 title: "SessionNotFoundException"
-description: "TypeScript API reference for SessionNotFoundException."
+description: "TypeScript API reference for SessionNotFoundException. Exception raised when a session is not found (expired or invalid)."
 pagination_next: null
 pagination_prev: null
 ---

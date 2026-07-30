@@ -1,7 +1,7 @@
 ---
 id: text-layout-request
 title: "TextLayoutRequest"
-description: "Python API reference for TextLayoutRequest."
+description: "Python API reference for TextLayoutRequest. TextLayoutRequest(mode: 'Optional[TextLayoutMode]' = None, profile: 'Optional[TextLayoutProfile]' = None, hyphenation_enabled: 'Optional[bool]' = None)"
 pagination_next: null
 pagination_prev: null
 ---

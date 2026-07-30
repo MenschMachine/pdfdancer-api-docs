@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-common-model-pdf-affine-transform
 title: "PdfAffineTransform"
-description: "Java API reference for PdfAffineTransform."
+description: "Java API reference for PdfAffineTransform. Immutable two-dimensional affine transformation using the PDF six-number matrix convention [a, b, c, d, e, f]. The transform maps a point (x, y) to: x' = a * x + c * y + e y' = b * x + d * y + f The fluent builder starts with the identity transform. Operations are applied to points in invocation order."
 pagination_next: null
 pagination_prev: null
 ---

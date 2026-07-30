@@ -1,7 +1,7 @@
 ---
 id: rate-limit-exception
 title: "RateLimitException"
-description: "TypeScript API reference for RateLimitException."
+description: "TypeScript API reference for RateLimitException. Exception raised after the configured attempts for an HTTP 429 are exhausted."
 pagination_next: null
 pagination_prev: null
 ---

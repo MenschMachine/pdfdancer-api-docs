@@ -1,7 +1,7 @@
 ---
 id: orientation
 title: "Orientation"
-description: "Python API reference for Orientation."
+description: "Python API reference for Orientation. Page orientation options. This public enum belongs to the models package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.1."
 pagination_next: null
 pagination_prev: null
 ---

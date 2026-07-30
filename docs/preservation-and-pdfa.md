@@ -1,7 +1,7 @@
 ---
 id: preservation-and-pdfa
 title: Preservation and PDF/A
-description: Understand preservation boundaries when saving edited PDFs.
+description: Understand what PDFDancer preserves when saving edited documents, including metadata, profiles, PDF/A information, and unrelated content.
 ---
 
 # Preservation and PDF/A

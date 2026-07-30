@@ -1,7 +1,7 @@
 ---
 id: path-builder
 title: "PathBuilder"
-description: "Python API reference for PathBuilder."
+description: "Python API reference for PathBuilder. Builder class for constructing Path objects with fluent interface. Allows building complex vector paths from multiple line and bezier segments. All coordinates are absolute page coordinates."
 pagination_next: null
 pagination_prev: null
 ---

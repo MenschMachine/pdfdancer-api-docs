@@ -1,7 +1,7 @@
 ---
 id: rectangle-builder
 title: "RectangleBuilder"
-description: "Python API reference for RectangleBuilder."
+description: "Python API reference for RectangleBuilder. Builder class for constructing Rectangle objects with fluent interface. Provides a convenient way to create a rectangle path with a single builder."
 pagination_next: null
 pagination_prev: null
 ---

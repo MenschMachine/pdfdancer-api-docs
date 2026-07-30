@@ -1,7 +1,7 @@
 ---
 id: working-with-pages
 title: Working with Pages
-description: Learn how to access, iterate, inspect, and manipulate PDF pages.
+description: Access, inspect, iterate over, create, and manipulate PDF pages while building reliable document-processing workflows.
 ---
 
 import Tabs from '@theme/Tabs';

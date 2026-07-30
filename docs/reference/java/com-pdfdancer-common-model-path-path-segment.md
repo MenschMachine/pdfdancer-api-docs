@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-common-model-path-path-segment
 title: "PathSegment"
-description: "Java API reference for PathSegment."
+description: "Java API reference for PathSegment. Abstract base class for individual path segments within vector paths. This class provides common properties for path elements including stroke and fill colors, line width, and positioning. Concrete subclasses implement specific geometric shapes like lines, curves, and bezier segments."
 pagination_next: null
 pagination_prev: null
 ---

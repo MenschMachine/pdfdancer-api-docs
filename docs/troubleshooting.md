@@ -1,7 +1,7 @@
 ---
 id: troubleshooting
 title: Troubleshooting
-description: Diagnose common PDFDancer setup, selection, text, geometry, font, session, and rate-limit failures.
+description: Diagnose common PDFDancer setup, selection, text, geometry, font, session, and rate-limit failures using symptom-focused troubleshooting steps.
 ---
 
 # Troubleshooting

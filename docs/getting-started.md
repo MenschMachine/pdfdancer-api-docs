@@ -2,7 +2,7 @@
 id: getting-started
 slug: /
 title: Getting Started
-description: Choose a PDFDancer API v3 SDK and edit your first PDF.
+description: Choose a PDFDancer SDK and edit your first PDF with Python, TypeScript, or Java, from opening an input file through saving the edited document.
 ---
 
 # Getting Started with PDFDancer

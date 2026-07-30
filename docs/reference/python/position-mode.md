@@ -1,7 +1,7 @@
 ---
 id: position-mode
 title: "PositionMode"
-description: "Python API reference for PositionMode."
+description: "Python API reference for PositionMode. Defines how position matching should be performed when searching for objects."
 pagination_next: null
 pagination_prev: null
 ---

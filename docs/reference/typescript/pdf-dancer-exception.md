@@ -1,7 +1,7 @@
 ---
 id: pdf-dancer-exception
 title: "PdfDancerException"
-description: "TypeScript API reference for PdfDancerException."
+description: "TypeScript API reference for PdfDancerException. Base exception for all PDFDancer client errors. This public class belongs to the exceptions package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.0."
 pagination_next: null
 pagination_prev: null
 ---

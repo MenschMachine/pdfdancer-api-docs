@@ -1,7 +1,7 @@
 ---
 id: text-layout
 title: Text Layout and Reflow
-description: Control whether surrounding PDF text stays fixed, moves horizontally, or is recomposed into new lines.
+description: Control whether surrounding PDF text stays fixed, moves horizontally, or is recomposed into new lines when replacement text changes length.
 ---
 
 import Tabs from '@theme/Tabs';

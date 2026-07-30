@@ -1,7 +1,7 @@
 ---
 id: form-field-ref
 title: "FormFieldRef"
-description: "TypeScript API reference for FormFieldRef."
+description: "TypeScript API reference for FormFieldRef. Represents a form field reference with name and value properties. Extends ObjectRef to include form-specific properties."
 pagination_next: null
 pagination_prev: null
 ---

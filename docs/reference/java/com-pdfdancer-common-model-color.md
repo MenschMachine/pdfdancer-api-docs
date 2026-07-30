@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-common-model-color
 title: "Color"
-description: "Java API reference for Color."
+description: "Java API reference for Color. Represents color information using RGBA (Red, Green, Blue, Alpha) color model. This class encapsulates color data for PDF objects, supporting both opaque and transparent colors with integer values ranging from 0-255 for each component. Provides convenient constructors and utility methods for color manipulation."
 pagination_next: null
 pagination_prev: null
 ---

@@ -1,7 +1,7 @@
 ---
 id: glossary
 title: Glossary
-description: Precise definitions of the PDF and PDFDancer API v3 terms used in this documentation.
+description: Find precise definitions for PDFDancer, PDF structure, document editing, text layout, object selection, and form terminology.
 ---
 
 # Glossary

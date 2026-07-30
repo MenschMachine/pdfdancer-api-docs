@@ -1,7 +1,7 @@
 ---
 id: font-type
 title: "FontType"
-description: "TypeScript API reference for FontType."
+description: "TypeScript API reference for FontType. Font type classification from the PDF. This public enum belongs to the models package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.0."
 pagination_next: null
 pagination_prev: null
 ---

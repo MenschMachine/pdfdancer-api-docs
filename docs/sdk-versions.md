@@ -1,7 +1,7 @@
 ---
 id: sdk-versions
 title: SDK Versions
-description: Current PDFDancer API v3 SDK versions and runtime requirements.
+description: Review the SDK versions, package releases, supported runtimes, and installation requirements used by the documentation examples.
 ---
 
 # SDK Versions

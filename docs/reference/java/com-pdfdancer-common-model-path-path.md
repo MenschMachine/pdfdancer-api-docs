@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-common-model-path-path
 title: "Path"
-description: "Java API reference for Path."
+description: "Java API reference for Path. Represents a complex vector path consisting of multiple path segments. This class encapsulates vector graphics data within PDF documents, composed of various path elements like lines, curves, and shapes. Provides automatic getPosition calculation based on constituent segments."
 pagination_next: null
 pagination_prev: null
 ---

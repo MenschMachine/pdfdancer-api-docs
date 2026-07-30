@@ -1,7 +1,7 @@
 ---
 id: getting-started-typescript
 title: Getting Started with TypeScript
-description: Install the TypeScript SDK and perform a verified API v3 text edit.
+description: Install the TypeScript SDK and complete a verified PDF text-editing workflow, including opening a document, changing text, and saving the result.
 ---
 
 # Getting Started with TypeScript

@@ -1,7 +1,7 @@
 ---
 id: working-with-snapshots
 title: Working with Snapshots
-description: Learn how to use snapshots for efficient bulk operations and document inspection.
+description: Use snapshots for efficient bulk operations, document inspection, page analysis, and retrieving many PDF elements with fewer requests.
 ---
 
 import Tabs from '@theme/Tabs';
@@ -549,4 +549,3 @@ For simple, targeted selections (e.g., finding one paragraph), use the regular `
 - [**Finding Content**](finding-content.md) – Learn about all selection methods
 - [**Working with Text**](working-with-text.md) – Edit paragraphs and text lines
 - [**Working with Images**](working-with-images.md) – Manipulate images in PDFs
-

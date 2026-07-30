@@ -1,7 +1,7 @@
 ---
 id: object-type
 title: "ObjectType"
-description: "Python API reference for ObjectType."
+description: "Python API reference for ObjectType. Server object type discriminator used in refs, requests, and snapshots. This public enum belongs to the models package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.1."
 pagination_next: null
 pagination_prev: null
 ---

@@ -1,7 +1,7 @@
 ---
 id: getting-started-java
 title: Getting Started with Java
-description: Complete beginner guide to editing PDFs with PDFDancer and Java.
+description: Follow a beginner workflow for editing PDFs with PDFDancer and Java, from opening an input file to saving the result.
 ---
 
 # Getting Started with Java

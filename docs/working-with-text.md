@@ -1,7 +1,7 @@
 ---
 id: working-with-text
 title: Working with Text
-description: Find and edit PDF text, inspect the result, and save safely.
+description: Find and edit PDF text, inspect returned operation results, diagnose mismatches, and save the document safely after successful changes.
 ---
 
 import Tabs from '@theme/Tabs';

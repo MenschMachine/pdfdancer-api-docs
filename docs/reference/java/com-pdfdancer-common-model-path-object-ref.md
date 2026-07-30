@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-common-model-path-object-ref
 title: "PathObjectRef"
-description: "Java API reference for PathObjectRef."
+description: "Java API reference for PathObjectRef. Lightweight reference to a PDF path object providing identity, type, and styling information. Object references enable efficient API operations by providing a way to identify and reference PDF objects without transferring their complete content. This design pattern reduces payload sizes and improves performance for operations that only need object identification and basic properties."
 pagination_next: null
 pagination_prev: null
 ---

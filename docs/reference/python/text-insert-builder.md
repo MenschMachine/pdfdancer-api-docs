@@ -1,7 +1,7 @@
 ---
 id: text-insert-builder
 title: "TextInsertBuilder"
-description: "Python API reference for TextInsertBuilder."
+description: "Python API reference for TextInsertBuilder This public class belongs to the text_editing package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.1."
 pagination_next: null
 pagination_prev: null
 ---

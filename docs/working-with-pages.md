@@ -1,7 +1,7 @@
 ---
 id: working-with-pages
 title: Working with Pages
-description: Access, inspect, create, move, and delete PDF pages with API v3.
+description: Access, inspect, create, move, and delete PDF pages while maintaining page order and reliable document editing workflows.
 ---
 
 import Tabs from '@theme/Tabs';

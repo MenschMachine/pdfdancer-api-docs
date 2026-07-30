@@ -1,7 +1,7 @@
 ---
 id: font
 title: "Font"
-description: "Python API reference for Font."
+description: "Python API reference for Font. Font face and size. Parameters: - name: Font family name. Can be one of `StandardFonts` values or any embedded font name. - size: Font size in points (> 0). Raises: - ValueError: If `size` is not positive. Example: ```python from pdfdancer.models import Font, StandardFonts title_font = Font(name=StandardFonts.HELVETICA_BOLD.value, size=16) body_font = Font(name=\"MyEmbeddedFont\", size=10.5) ```"
 pagination_next: null
 pagination_prev: null
 ---

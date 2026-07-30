@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-client-rest-page-text-client
 title: "PageTextClient"
-description: "Java API reference for PageTextClient."
+description: "Java API reference for PageTextClient This public class belongs to the com.pdfdancer.client.rest package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.0."
 pagination_next: null
 pagination_prev: null
 ---

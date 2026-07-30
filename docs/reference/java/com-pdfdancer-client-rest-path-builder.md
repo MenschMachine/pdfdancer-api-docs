@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-client-rest-path-builder
 title: "PathBuilder"
-description: "Java API reference for PathBuilder."
+description: "Java API reference for PathBuilder. Fluent builder for constructing a multi-segment Path (lines and cubic Beziers) and adding it to a page as a single vector object."
 pagination_next: null
 pagination_prev: null
 ---

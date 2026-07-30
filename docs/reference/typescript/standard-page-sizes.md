@@ -1,7 +1,7 @@
 ---
 id: standard-page-sizes
 title: "STANDARD_PAGE_SIZES"
-description: "TypeScript API reference for STANDARD_PAGE_SIZES."
+description: "TypeScript API reference for STANDARD_PAGE_SIZES This public value belongs to the models package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.0."
 pagination_next: null
 pagination_prev: null
 ---

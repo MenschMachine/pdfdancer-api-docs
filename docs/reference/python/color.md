@@ -1,7 +1,7 @@
 ---
 id: color
 title: "Color"
-description: "Python API reference for Color."
+description: "Python API reference for Color. RGB color with optional alpha channel. Parameters: - r: Red component (0-255) - g: Green component (0-255) - b: Blue component (0-255) - a: Alpha component (0-255), default 255 (opaque) Raises: - ValueError: If any component is outside 0-255. Example: ```python red = Color(255, 0, 0) semi_transparent_black = Color(0, 0, 0, a=128) ```"
 pagination_next: null
 pagination_prev: null
 ---

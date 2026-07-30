@@ -1,7 +1,7 @@
 ---
 id: working-with-acroforms
 title: Working with AcroForms
-description: Find, inspect, fill, and delete interactive PDF form fields.
+description: Find, inspect, fill, and delete interactive PDF form fields while preserving the distinction between AcroForms and reusable Form XObjects.
 ---
 
 import Tabs from '@theme/Tabs';

@@ -1,7 +1,7 @@
 ---
 id: authentication
 title: Authentication
-description: Configure PDFDancer API credentials, endpoints, timeouts, and retries.
+description: Configure PDFDancer credentials, endpoints, timeouts, and retries for secure local development, automated jobs, and production document workflows.
 ---
 
 import Tabs from '@theme/Tabs';

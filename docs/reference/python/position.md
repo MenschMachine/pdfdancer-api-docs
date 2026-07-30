@@ -1,7 +1,7 @@
 ---
 id: position
 title: "Position"
-description: "Python API reference for Position."
+description: "Python API reference for Position. Spatial locator used to find or place objects on a page. Parameters: - page_number: One-based page number this position refers to. Required for most operations that place or search on a specific page; use `Position.at_page()` as a shortcut. - shape: Optional geometric shape used when matching by area (`POINT`, `LINE`, `CIRCLE`, `RECT`). - mode: How to match objects relative to the shape (`INTERSECT` or `CONTAINS`). - bounding_rect: Rectangle describing the area or point (for `POINT`, width/height are 0). - text_starts_with: Filter for text objects whose content starts with this string. - text_pattern: Regex pattern to match text content. - name: Named anchor or element name to target (e.g. form field name). Builder helpers: - `Position.at_page(page_number)` – target a whole page. - `Position.at_page_coordinates(page_number, x, y)` – target a point on a page. - `Position.by_name(name)` – target object(s) by name. - `pos.at_coordinates(Point(x, y))` – switch to a point on the current page. - `pos.move_x(dx)`, `pos.move_y(dy)` – offset the current coordinates. Examples: ```python # A point on page 1 pos = Position.at_page_coordinates(1, x=72, y=720) # Search by name (e.g. a form field) and then move down 12 points pos = Position.by_name(\"Email\").move_y(-12) # Match anything intersecting a rectangular area on page 1 pos = Position.at_page(1) pos.shape = ShapeType.RECT pos.mode = PositionMode.INTERSECT pos.bounding_rect = BoundingRect(x=100, y=100, width=200, height=50) ```"
 pagination_next: null
 pagination_prev: null
 ---

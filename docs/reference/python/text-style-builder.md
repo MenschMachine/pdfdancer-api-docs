@@ -1,7 +1,7 @@
 ---
 id: text-style-builder
 title: "TextStyleBuilder"
-description: "Python API reference for TextStyleBuilder."
+description: "Python API reference for TextStyleBuilder This public class belongs to the text_editing package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.1."
 pagination_next: null
 pagination_prev: null
 ---

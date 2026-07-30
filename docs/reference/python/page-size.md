@@ -1,7 +1,7 @@
 ---
 id: page-size
 title: "PageSize"
-description: "Python API reference for PageSize."
+description: "Python API reference for PageSize. Represents a page size specification, covering both standard and custom dimensions. Parameters: - name: Optional canonical name of the size (e.g. \"A4\", \"LETTER\"). Will be upper‑cased. - width: Page width in PDF points (1/72 inch). - height: Page height in PDF points (1/72 inch). Notes: - Use `PageSize.from_name()` or the convenience constants (e.g. `PageSize.A4`) for common sizes. - `width` and `height` must be positive numbers and are validated in `__post_init__`. Examples: - From standard name: ```python size = PageSize.from_name(\"A4\") # or PageSize.A4 ``` - From custom dimensions: ```python size = PageSize(name=None, width=500.0, height=700.0) ``` - From dict (e.g. deserialized JSON): ```python size = PageSize.from_dict({\"width\": 612, \"height\": 792, \"name\": \"letter\"}) ``` - Coercion utility: ```python size = PageSize.coerce(\"A4\") size = PageSize.coerce({\"width\": 300, \"height\": 300}) ```"
 pagination_next: null
 pagination_prev: null
 ---

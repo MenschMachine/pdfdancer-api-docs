@@ -1,7 +1,7 @@
 ---
 id: page-builder
 title: "PageBuilder"
-description: "Python API reference for PageBuilder."
+description: "Python API reference for PageBuilder. Fluent builder for adding pages with optional orientation, size, and page number. Usage: pdf.new_page().at_page(1).landscape().a4().add()"
 pagination_next: null
 pagination_prev: null
 ---

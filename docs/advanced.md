@@ -1,7 +1,7 @@
 ---
 id: advanced
 title: Advanced Usage
-description: Production patterns for sessions, batching, retries, and partial PDF edit results.
+description: Apply production patterns for PDFDancer sessions, batching, retries, resource management, and safely handling partial PDF edit results.
 ---
 
 import Tabs from '@theme/Tabs';

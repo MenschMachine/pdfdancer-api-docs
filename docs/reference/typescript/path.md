@@ -1,7 +1,7 @@
 ---
 id: path
 title: "Path"
-description: "TypeScript API reference for Path."
+description: "TypeScript API reference for Path. Represents a vector path consisting of multiple path segments. This public class belongs to the models package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.0."
 pagination_next: null
 pagination_prev: null
 ---

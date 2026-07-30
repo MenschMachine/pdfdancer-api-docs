@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-common-model-path-line
 title: "Line"
-description: "Java API reference for Line."
+description: "Java API reference for Line. Represents a straight line path segment between two points. This class defines a linear path element connecting two coordinate points, commonly used in vector graphics and geometric shapes within PDF documents."
 pagination_next: null
 pagination_prev: null
 ---

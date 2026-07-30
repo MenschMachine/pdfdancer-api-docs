@@ -1,7 +1,7 @@
 ---
 id: standard-fonts
 title: "StandardFonts"
-description: "TypeScript API reference for StandardFonts."
+description: "TypeScript API reference for StandardFonts. Standard PDF fonts that are available in all PDF readers. These 14 fonts are guaranteed to be available without embedding."
 pagination_next: null
 pagination_prev: null
 ---

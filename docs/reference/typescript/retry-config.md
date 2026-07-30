@@ -1,7 +1,7 @@
 ---
 id: retry-config
 title: "RetryConfig"
-description: "TypeScript API reference for RetryConfig."
+description: "TypeScript API reference for RetryConfig. Configuration for retry mechanism on REST API calls. This public interface belongs to the pdfdancer_v2 package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.0."
 pagination_next: null
 pagination_prev: null
 ---

@@ -1,7 +1,7 @@
 ---
 id: image-object
 title: "ImageObject"
-description: "Python API reference for ImageObject."
+description: "Python API reference for ImageObject. Represents an image object inside a PDF page. This public class belongs to the types package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.1."
 pagination_next: null
 pagination_prev: null
 ---

@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-client-rest-pdfdancer
 title: "PDFDancer"
-description: "Java API reference for PDFDancer."
+description: "Java API reference for PDFDancer. REST API client for interacting with the PDFDancer PDF manipulation service. This client provides a convenient Java interface for performing PDF operations including session management, object searching, manipulation, and retrieval. Handles authentication, session lifecycle, and HTTP communication transparently."
 pagination_next: null
 pagination_prev: null
 ---

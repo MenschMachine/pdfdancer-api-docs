@@ -1,7 +1,7 @@
 ---
 id: object-ref
 title: "ObjectRef"
-description: "Python API reference for ObjectRef."
+description: "Python API reference for ObjectRef. Reference to an object in a PDF document returned by the server. Parameters: - internal_id: Server-side identifier for the object. - position: Position information describing where the object is. - type: Object type (see `ObjectType`). Usage: - Instances are typically returned in snapshots or find results. - Pass an `ObjectRef` to request objects such as `MoveRequest`, `DeleteRequest`, `DeleteRequest`, `MoveRequest`, or `ModifyRequest`. Example: ```python # Move an object to a new position new_pos = Position.at_page_coordinates(0, 120, 500) payload = MoveRequest(object_ref=obj_ref, position=new_pos).to_dict() ```"
 pagination_next: null
 pagination_prev: null
 ---

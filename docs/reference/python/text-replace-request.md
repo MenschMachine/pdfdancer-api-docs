@@ -1,7 +1,7 @@
 ---
 id: text-replace-request
 title: "TextReplaceRequest"
-description: "Python API reference for TextReplaceRequest."
+description: "Python API reference for TextReplaceRequest. TextReplaceRequest(pages: 'Optional[tuple[int, ...]]', select: 'TextSelectorRequest', replace_with: 'Optional[str]' = None, replace_with_image: 'Optional[TextReplacementImageRequest]' = None, style: 'Optional[TextStyleSetRequest]' = None, layout: 'Optional[TextLayoutRequest]' = None)"
 pagination_next: null
 pagination_prev: null
 ---

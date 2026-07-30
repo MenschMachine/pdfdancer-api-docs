@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-client-rest-line-builder
 title: "LineBuilder"
-description: "Java API reference for LineBuilder."
+description: "Java API reference for LineBuilder. Fluent builder for adding a straight line to a PDF page. Coordinate system: origin is at the bottom-left of the page, X to the right, Y upwards. All distances are in points (1 point = 1/72 inch). The line is added as a one-segment Path with STROKE painting. Styling options: color(Color) — stroke color (RGBA). Alpha < 255 yields semi-transparency. lineWidth(double) — stroke width in points. Width 0 produces a device-dependent hairline in PDF; use a small positive value (e.g., 0.25) for a thin but consistent line. dash(double...) and dashWithPhase(double, double...) — dash pattern and phase, in user space units. Defaults: black stroke with a width of 1 point. Thread-safety: instances are not thread-safe. Intended usage is single-threaded, typically as part of a fluent chain per line."
 pagination_next: null
 pagination_prev: null
 ---

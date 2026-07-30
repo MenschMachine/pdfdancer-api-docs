@@ -1,7 +1,7 @@
 ---
 id: cookbook
 title: Cookbook
-description: Complete working examples for common PDF manipulation tasks.
+description: Follow complete working examples for common PDF manipulation tasks, including text edits, page operations, images, forms, and document output.
 ---
 
 import Tabs from '@theme/Tabs';

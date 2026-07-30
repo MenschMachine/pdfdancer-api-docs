@@ -1,7 +1,7 @@
 ---
 id: text-style-selector-request
 title: "TextStyleSelectorRequest"
-description: "Python API reference for TextStyleSelectorRequest."
+description: "Python API reference for TextStyleSelectorRequest. TextStyleSelectorRequest(literal: 'Optional[str]' = None, regex: 'Optional[str]' = None, case_sensitive: 'Optional[bool]' = None, whole_words: 'Optional[bool]' = None, max_matches: 'Optional[int]' = None, runs: 'Optional[TextStyleRunsSelectorRequest]' = None)"
 pagination_next: null
 pagination_prev: null
 ---

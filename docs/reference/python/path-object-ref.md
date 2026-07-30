@@ -1,7 +1,7 @@
 ---
 id: path-object-ref
 title: "PathObjectRef"
-description: "Python API reference for PathObjectRef."
+description: "Python API reference for PathObjectRef. Reference to a path object with stroke and fill color information. Parameters (typically provided by the server): - internal_id: Identifier of the path object. - position: Position of the path. - object_type: Should be ObjectType.PATH. - stroke_color: Stroke/outline color of the path (optional). - fill_color: Fill color of the path (optional). Usage: - Returned by find/snapshot APIs when querying paths. - Pass to ModifyPathRequest to update path colors."
 pagination_next: null
 pagination_prev: null
 ---

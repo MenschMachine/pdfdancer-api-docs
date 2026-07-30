@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-common-model-position-position-mode
 title: "Position$PositionMode"
-description: "Java API reference for Position$PositionMode."
+description: "Java API reference for Position$PositionMode. Defines how getPosition matching should be performed when searching for objects."
 pagination_next: null
 pagination_prev: null
 ---

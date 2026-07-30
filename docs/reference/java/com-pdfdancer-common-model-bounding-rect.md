@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-common-model-bounding-rect
 title: "BoundingRect"
-description: "Java API reference for BoundingRect."
+description: "Java API reference for BoundingRect. Represents a rectangular area defined by getPosition and dimensions. This class encapsulates bounding box information for PDF objects, providing spatial extent data used for positioning, collision detection, and layout operations within PDF documents."
 pagination_next: null
 pagination_prev: null
 ---

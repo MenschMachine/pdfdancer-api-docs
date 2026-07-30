@@ -1,7 +1,7 @@
 ---
 id: working-with-acroforms
 title: Working with Acroforms
-description: Learn how to fill, update, and manipulate PDF form fields (AcroForms).
+description: Fill, update, and manipulate interactive PDF form fields, including text boxes, checkboxes, and other AcroForms.
 ---
 
 import Tabs from '@theme/Tabs';

@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-common-model-point
 title: "Point"
-description: "Java API reference for Point."
+description: "Java API reference for Point. Immutable point record representing 2D coordinates. This record provides a simple and efficient way to represent coordinate pairs within PDF documents, with conversion utilities for interoperability with Java's standard geometry classes."
 pagination_next: null
 pagination_prev: null
 ---

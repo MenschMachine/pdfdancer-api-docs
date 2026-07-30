@@ -1,7 +1,7 @@
 ---
 id: standard-fonts
 title: "StandardFonts"
-description: "Python API reference for StandardFonts."
+description: "Python API reference for StandardFonts. The 14 standard PDF fonts that are guaranteed to be available in all PDF readers. These fonts do not need to be embedded in the PDF document. Serif fonts (Times family): - TIMES_ROMAN: Standard Times Roman font - TIMES_BOLD: Bold version of Times Roman - TIMES_ITALIC: Italic version of Times Roman - TIMES_BOLD_ITALIC: Bold and italic version of Times Roman Sans-serif fonts (Helvetica family): - HELVETICA: Standard Helvetica font - HELVETICA_BOLD: Bold version of Helvetica - HELVETICA_OBLIQUE: Oblique (italic) version of Helvetica - HELVETICA_BOLD_OBLIQUE: Bold and oblique version of Helvetica Monospace fonts (Courier family): - COURIER: Standard Courier font - COURIER_BOLD: Bold version of Courier - COURIER_OBLIQUE: Oblique (italic) version of Courier - COURIER_BOLD_OBLIQUE: Bold and oblique version of Courier Symbol and decorative fonts: - SYMBOL: Symbol font for mathematical and special characters - ZAPF_DINGBATS: Zapf Dingbats font for decorative symbols"
 pagination_next: null
 pagination_prev: null
 ---

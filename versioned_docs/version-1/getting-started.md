@@ -2,7 +2,7 @@
 id: getting-started
 slug: /
 title: Getting Started
-description: Choose your language and start editing PDFs with PDFDancer.
+description: Choose a PDFDancer SDK language and start editing PDF text, pages, images, forms, and other document content with beginner-friendly examples.
 ---
 
 # Getting Started

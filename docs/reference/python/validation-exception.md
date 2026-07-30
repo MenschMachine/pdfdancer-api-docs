@@ -1,7 +1,7 @@
 ---
 id: validation-exception
 title: "ValidationException"
-description: "Python API reference for ValidationException."
+description: "Python API reference for ValidationException. Exception raised for input validation errors. Equivalent to IllegalArgumentException in the Java client."
 pagination_next: null
 pagination_prev: null
 ---

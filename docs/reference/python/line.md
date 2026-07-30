@@ -1,7 +1,7 @@
 ---
 id: line
 title: "Line"
-description: "Python API reference for Line."
+description: "Python API reference for Line. Straight line segment between two points. Parameters: - p0: Start point. - p1: End point. Example: ```python from pdfdancer.models import Line, Point, Path line = Line(p0=Point(10, 10), p1=Point(100, 10)) path = Path(path_segments=[line]) ```"
 pagination_next: null
 pagination_prev: null
 ---

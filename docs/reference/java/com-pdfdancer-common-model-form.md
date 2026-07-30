@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-common-model-form
 title: "Form"
-description: "Java API reference for Form."
+description: "Java API reference for Form. Represents an interactive form field within a PDF document. This class encapsulates form field properties including type, value, appearance, and behavior for various interactive PDF form elements such as text fields, checkboxes, radio buttons, and dropdowns."
 pagination_next: null
 pagination_prev: null
 ---

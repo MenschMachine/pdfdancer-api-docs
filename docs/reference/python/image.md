@@ -1,7 +1,7 @@
 ---
 id: image
 title: "Image"
-description: "Python API reference for Image."
+description: "Python API reference for Image. Raster image to be placed on a page. Parameters: - position: Where to place the image. Use `Position.at_page_coordinates(page, x, y)`. - format: Image format hint for the server (e.g. \"PNG\", \"JPEG\"). Optional. - width: Target width in points. Optional; server may infer from data. - height: Target height in points. Optional; server may infer from data. - data: Raw image bytes. If provided, it will be base64-encoded in `AddRequest.to_dict()`. Example: ```python from pdfdancer.models import Image, Position, AddRequest img = Image( position=Position.at_page_coordinates(0, 72, 600), format=\"PNG\", width=128, height=64, data=open(\"/path/logo.png\", \"rb\").read(), ) payload = AddRequest(img).to_dict() ```"
 pagination_next: null
 pagination_prev: null
 ---

@@ -1,7 +1,7 @@
 ---
 id: text-style-request
 title: "TextStyleRequest"
-description: "TypeScript API reference for TextStyleRequest."
+description: "TypeScript API reference for TextStyleRequest This public class belongs to the text-editing package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.0."
 pagination_next: null
 pagination_prev: null
 ---

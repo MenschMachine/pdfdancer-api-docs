@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-client-rest-image-reference
 title: "ImageReference"
-description: "Java API reference for ImageReference."
+description: "Java API reference for ImageReference. Reference to an image in a PDF document with transformation capabilities."
 pagination_next: null
 pagination_prev: null
 ---

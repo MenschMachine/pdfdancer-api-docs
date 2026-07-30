@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-client-rest-retry-config
 title: "RetryConfig"
-description: "Java API reference for RetryConfig."
+description: "Java API reference for RetryConfig. Configuration for HTTP request retry behavior. This class defines when and how HTTP requests should be retried on failure. It supports configurable retry attempts, exponential backoff, and selective retrying based on HTTP status codes or exception types. Example Usage: // Retry up to 3 times with exponential backoff RetryConfig config = RetryConfig.builder() .maxAttempts(3) .initialDelay(Duration.ofMillis(100)) .backoffMultiplier(2.0) .retryOnStatus(429, 503, 504) .build();"
 pagination_next: null
 pagination_prev: null
 ---

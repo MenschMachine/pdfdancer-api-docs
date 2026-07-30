@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-client-rest-rate-limit-exception
 title: "RateLimitException"
-description: "Java API reference for RateLimitException."
+description: "Java API reference for RateLimitException. HTTP 429 response after the configured attempts are exhausted. This public class belongs to the com.pdfdancer.client.rest package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.0."
 pagination_next: null
 pagination_prev: null
 ---

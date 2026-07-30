@@ -1,7 +1,7 @@
 ---
 id: concepts
 title: Core Concepts
-description: Understand PDF fundamentals and PDFDancer's content model including Pages, Paragraphs, TextLines, Images, and more.
+description: Understand PDF fundamentals and PDFDancer’s content model for pages, paragraphs, text lines, images, paths, fonts, and reusable objects.
 ---
 
 import Tabs from '@theme/Tabs';

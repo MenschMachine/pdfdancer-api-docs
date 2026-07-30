@@ -1,7 +1,7 @@
 ---
 id: pdf-affine-transform
 title: "PdfAffineTransform"
-description: "Python API reference for PdfAffineTransform."
+description: "Python API reference for PdfAffineTransform. Immutable PDF six-number affine transformation ``[a,b,c,d,e,f]``."
 pagination_next: null
 pagination_prev: null
 ---

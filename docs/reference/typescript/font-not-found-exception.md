@@ -1,7 +1,7 @@
 ---
 id: font-not-found-exception
 title: "FontNotFoundException"
-description: "TypeScript API reference for FontNotFoundException."
+description: "TypeScript API reference for FontNotFoundException. Exception raised when a required font is not found or available."
 pagination_next: null
 pagination_prev: null
 ---

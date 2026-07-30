@@ -1,7 +1,7 @@
 ---
 id: text-delete-request
 title: "TextDeleteRequest"
-description: "Python API reference for TextDeleteRequest."
+description: "Python API reference for TextDeleteRequest. TextDeleteRequest(pages: 'Optional[tuple[int, ...]]', select: 'TextSelectorRequest', layout: 'Optional[TextLayoutRequest]' = None)"
 pagination_next: null
 pagination_prev: null
 ---

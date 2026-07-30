@@ -1,7 +1,7 @@
 ---
 id: available-fonts
 title: Available Fonts
-description: Complete list of pre-registered fonts available in PDFDancer.
+description: Browse pre-registered fonts available for PDFDancer document editing, text replacement, and consistent PDF rendering.
 ---
 
 import Tabs from '@theme/Tabs';

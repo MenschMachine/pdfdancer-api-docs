@@ -1,7 +1,7 @@
 ---
 id: path
 title: "Path"
-description: "Python API reference for Path."
+description: "Python API reference for Path. Vector path composed of one or more `PathSegment`s. Parameters: - position: Where to place the path on the page. - path_segments: List of `Line` and/or `Bezier` segments. - even_odd_fill: If True, use even-odd rule for fills; otherwise nonzero winding. Example (adding a triangle to a page): ```python from pdfdancer.models import Path, Line, Point, Position, AddRequest tri = Path( position=Position.at_page_coordinates(0, 100, 100), path_segments=[ Line(Point(0, 0), Point(50, 100)), Line(Point(50, 100), Point(100, 0)), Line(Point(100, 0), Point(0, 0)), ], even_odd_fill=True, ) payload = AddRequest(tri).to_dict() ```"
 pagination_next: null
 pagination_prev: null
 ---

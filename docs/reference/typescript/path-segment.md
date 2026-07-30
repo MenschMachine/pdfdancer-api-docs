@@ -1,7 +1,7 @@
 ---
 id: path-segment
 title: "PathSegment"
-description: "TypeScript API reference for PathSegment."
+description: "TypeScript API reference for PathSegment. Base class for path segments (lines, curves, etc.) Each segment extends PDFObject and requires a position."
 pagination_next: null
 pagination_prev: null
 ---

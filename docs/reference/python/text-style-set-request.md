@@ -1,7 +1,7 @@
 ---
 id: text-style-set-request
 title: "TextStyleSetRequest"
-description: "Python API reference for TextStyleSetRequest."
+description: "Python API reference for TextStyleSetRequest. TextStyleSetRequest(font: 'Optional[str]' = None, size: 'Optional[float]' = None, fill_color: 'Optional[PdfColorRequest]' = None, stroke_color: 'Optional[PdfColorRequest]' = None, character_spacing: 'Optional[float]' = None, word_spacing: 'Optional[float]' = None, reset_spacing_overrides: 'Optional[bool]' = None)"
 pagination_next: null
 pagination_prev: null
 ---

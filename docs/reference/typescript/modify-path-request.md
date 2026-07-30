@@ -1,7 +1,7 @@
 ---
 id: modify-path-request
 title: "ModifyPathRequest"
-description: "TypeScript API reference for ModifyPathRequest."
+description: "TypeScript API reference for ModifyPathRequest. Request object for modifying path colors. Setting colors to null means \"don't change them\"."
 pagination_next: null
 pagination_prev: null
 ---

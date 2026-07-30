@@ -1,7 +1,7 @@
 ---
 id: pdf-color-request
 title: "PdfColorRequest"
-description: "Python API reference for PdfColorRequest."
+description: "Python API reference for PdfColorRequest. PdfColorRequest(space: 'PdfColorSpace', components: 'tuple[float, ...]', alpha_value: 'Optional[float]' = None)"
 pagination_next: null
 pagination_prev: null
 ---

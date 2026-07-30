@@ -1,3 +1,7 @@
+---
+description: Understand why embedded fonts can produce warnings during text edits and how to inspect font availability before modifying PDF content.
+---
+
 # Embedded Font Warning
 
 When you modify text that uses an embedded font, PDFDancer may emit this warning:

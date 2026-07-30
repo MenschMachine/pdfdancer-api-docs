@@ -1,7 +1,7 @@
 ---
 id: image-transform-type
 title: "ImageTransformType"
-description: "TypeScript API reference for ImageTransformType."
+description: "TypeScript API reference for ImageTransformType. Types of image transformations supported. This public enum belongs to the models package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.0."
 pagination_next: null
 pagination_prev: null
 ---

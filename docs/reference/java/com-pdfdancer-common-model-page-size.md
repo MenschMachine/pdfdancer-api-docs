@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-common-model-page-size
 title: "PageSize"
-description: "Java API reference for PageSize."
+description: "Java API reference for PageSize. Represents PDF page dimensions, supporting both standard sizes and custom dimensions. Dimensions are specified in points (1/72 inch)."
 pagination_next: null
 pagination_prev: null
 ---

@@ -1,7 +1,7 @@
 ---
 id: text-style-set-builder
 title: "TextStyleSetBuilder"
-description: "TypeScript API reference for TextStyleSetBuilder."
+description: "TypeScript API reference for TextStyleSetBuilder This public class belongs to the text-editing package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.0."
 pagination_next: null
 pagination_prev: null
 ---

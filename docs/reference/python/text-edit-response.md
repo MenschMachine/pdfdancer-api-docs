@@ -1,7 +1,7 @@
 ---
 id: text-edit-response
 title: "TextEditResponse"
-description: "Python API reference for TextEditResponse."
+description: "Python API reference for TextEditResponse. TextEditResponse(matched: 'Optional[int]', changed: 'Optional[int]', pages_changed: 'Optional[tuple[int, ...]]', change: 'Optional[tuple[TextEditChangeDiagnostic, ...]]', warnings: 'Optional[tuple[TextOperationDiagnostic, ...]]', errors: 'Optional[tuple[TextOperationDiagnostic, ...]]')"
 pagination_next: null
 pagination_prev: null
 ---

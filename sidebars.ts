@@ -58,10 +58,6 @@ const sidebars: SidebarsConfig = {
             type: 'category',
             label: 'Reference',
             items: [
-                'reference/index',
-                'reference/python/index',
-                'reference/typescript/index',
-                'reference/java/index',
                 'available-fonts',
                 'sdk-versions',
                 'glossary',

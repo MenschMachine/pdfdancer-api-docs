@@ -1,7 +1,7 @@
 ---
 id: text-operation-diagnostic
 title: "TextOperationDiagnostic"
-description: "Python API reference for TextOperationDiagnostic."
+description: "Python API reference for TextOperationDiagnostic. TextOperationDiagnostic(page: 'Optional[int]', code: 'Optional[str]', message: 'Optional[str]', element_ids: 'Optional[tuple[str, ...]]', reflow_unit_ids: 'Optional[tuple[str, ...]]')"
 pagination_next: null
 pagination_prev: null
 ---

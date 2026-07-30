@@ -1,7 +1,7 @@
 ---
 id: positioning
 title: Details about Positioning
-description: Understand PDF coordinate systems, positioning, and bounding rectangles.
+description: Understand PDF coordinate systems, positioning rules, and bounding rectangles for placing and moving content precisely on document pages.
 ---
 
 import Tabs from '@theme/Tabs';

@@ -1,7 +1,7 @@
 ---
 id: path-builder
 title: "PathBuilder"
-description: "TypeScript API reference for PathBuilder."
+description: "TypeScript API reference for PathBuilder. Builder for creating vector paths in PDF documents. Supports creating paths with: - Lines - Bezier curves - Custom stroke and fill colors - Stroke width and dash patterns"
 pagination_next: null
 pagination_prev: null
 ---

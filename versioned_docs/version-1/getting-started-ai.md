@@ -1,6 +1,7 @@
 ---
 sidebar_position: 4
 title: Getting Started with AI
+description: Connect AI applications to PDFDancer, set up authentication, choose an SDK, and automate PDF extraction and editing workflows programmatically.
 ---
 
 # Getting Started with AI

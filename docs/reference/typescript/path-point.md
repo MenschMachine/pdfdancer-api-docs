@@ -1,7 +1,7 @@
 ---
 id: path-point
 title: "PathPoint"
-description: "TypeScript API reference for PathPoint."
+description: "TypeScript API reference for PathPoint. Represents a 2D point with x and y coordinates for path operations. This public interface belongs to the models package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.0."
 pagination_next: null
 pagination_prev: null
 ---

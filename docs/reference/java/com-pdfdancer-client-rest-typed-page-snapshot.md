@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-client-rest-typed-page-snapshot
 title: "TypedPageSnapshot"
-description: "Java API reference for TypedPageSnapshot."
+description: "Java API reference for TypedPageSnapshot. A typed snapshot of a single page containing elements of type T. This public class belongs to the com.pdfdancer.client.rest package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.0."
 pagination_next: null
 pagination_prev: null
 ---

@@ -1,7 +1,7 @@
 ---
 id: text-style-request
 title: "TextStyleRequest"
-description: "Python API reference for TextStyleRequest."
+description: "Python API reference for TextStyleRequest. TextStyleRequest(pages: 'Optional[tuple[int, ...]]', select: 'TextStyleSelectorRequest', style: 'TextStyleSetRequest', layout: 'Optional[TextLayoutRequest]' = None)"
 pagination_next: null
 pagination_prev: null
 ---

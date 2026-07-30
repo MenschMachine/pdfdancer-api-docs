@@ -1,7 +1,7 @@
 ---
 id: orientation
 title: "Orientation"
-description: "TypeScript API reference for Orientation."
+description: "TypeScript API reference for Orientation This public enum belongs to the models package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.0."
 pagination_next: null
 pagination_prev: null
 ---

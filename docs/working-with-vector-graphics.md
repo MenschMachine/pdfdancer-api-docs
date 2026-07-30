@@ -1,7 +1,7 @@
 ---
 id: working-with-vector-graphics
 title: Working with Vector Graphics
-description: Select, create, and edit paths, lines, rectangles, and Bézier curves.
+description: Select, create, and edit paths, lines, rectangles, and Bézier curves in PDF documents using typed vector editing operations.
 ---
 
 import Tabs from '@theme/Tabs';

@@ -109,13 +109,24 @@ function guideLinks(symbol) {
   return [...new Set(links)];
 }
 
+function referenceDescription(language, symbol) {
+  const config = LANGUAGES[language];
+  const subject = `${config.label} API reference for ${symbol.name}`;
+  const detail = String(symbol.description || '').replace(/\s+/g, ' ').trim();
+  const group = groupName(language, symbol);
+  const description = detail ? `${subject}. ${detail}` : subject;
+  if (description.length >= 110) return description;
+
+  return `${description} This public ${symbol.kind} belongs to the ${group} package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK ${config.version}.`;
+}
+
 function renderSymbol(language, manifest, symbol) {
   const config = LANGUAGES[language];
   const lines = [
     '---',
     `id: ${stableSlug(symbol.id)}`,
     `title: ${JSON.stringify(symbol.name)}`,
-    `description: ${JSON.stringify(`${config.label} API reference for ${symbol.name}.`)}`,
+    `description: ${JSON.stringify(referenceDescription(language, symbol))}`,
     'pagination_next: null',
     'pagination_prev: null',
     '---',

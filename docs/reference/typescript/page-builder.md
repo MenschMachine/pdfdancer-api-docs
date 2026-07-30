@@ -1,7 +1,7 @@
 ---
 id: page-builder
 title: "PageBuilder"
-description: "TypeScript API reference for PageBuilder."
+description: "TypeScript API reference for PageBuilder This public class belongs to the page-builder package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.0."
 pagination_next: null
 pagination_prev: null
 ---

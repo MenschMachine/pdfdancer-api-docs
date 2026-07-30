@@ -1,7 +1,7 @@
 ---
 id: http-client-exception
 title: "HttpClientException"
-description: "TypeScript API reference for HttpClientException."
+description: "TypeScript API reference for HttpClientException. Exception raised for HTTP client errors during API communication. Wraps fetch exceptions and HTTP errors from the API."
 pagination_next: null
 pagination_prev: null
 ---

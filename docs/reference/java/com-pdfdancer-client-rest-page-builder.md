@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-client-rest-page-builder
 title: "PageBuilder"
-description: "Java API reference for PageBuilder."
+description: "Java API reference for PageBuilder This public class belongs to the com.pdfdancer.client.rest package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.0."
 pagination_next: null
 pagination_prev: null
 ---

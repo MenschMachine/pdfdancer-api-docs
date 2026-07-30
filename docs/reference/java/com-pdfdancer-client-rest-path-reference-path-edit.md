@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-client-rest-path-reference-path-edit
 title: "PathReference$PathEdit"
-description: "Java API reference for PathReference$PathEdit."
+description: "Java API reference for PathReference$PathEdit This public class belongs to the com.pdfdancer.client.rest package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.0."
 pagination_next: null
 pagination_prev: null
 ---

@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-common-request-pdf-color-request
 title: "PdfColorRequest"
-description: "Java API reference for PdfColorRequest."
+description: "Java API reference for PdfColorRequest This public class belongs to the com.pdfdancer.common.request package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.0."
 pagination_next: null
 pagination_prev: null
 ---

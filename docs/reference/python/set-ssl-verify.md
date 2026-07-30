@@ -1,7 +1,7 @@
 ---
 id: set-ssl-verify
 title: "set_ssl_verify"
-description: "Python API reference for set_ssl_verify."
+description: "Python API reference for set_ssl_verify. Enable or disable SSL certificate verification for all API requests. Args: enabled: True to enable SSL verification (default, secure), False to disable SSL verification (only for testing with self-signed certs) WARNING: Disabling SSL verification should only be done in development/testing environments with self-signed certificates. Never disable in production. Example: import pdfdancer pdfdancer.set_ssl_verify(False) # Disable SSL verification"
 pagination_next: null
 pagination_prev: null
 ---

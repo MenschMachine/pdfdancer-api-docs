@@ -1,7 +1,7 @@
 ---
 id: text-edit-response
 title: "TextEditResponse"
-description: "TypeScript API reference for TextEditResponse."
+description: "TypeScript API reference for TextEditResponse This public interface belongs to the text-editing package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.0."
 pagination_next: null
 pagination_prev: null
 ---

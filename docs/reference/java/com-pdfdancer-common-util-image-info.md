@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-common-util-image-info
 title: "ImageInfo"
-description: "Java API reference for ImageInfo."
+description: "Java API reference for ImageInfo. Immutable record containing comprehensive image file information. This record encapsulates image data, format details, and dimensional properties extracted from image files, providing all necessary information for PDF image integration and processing operations."
 pagination_next: null
 pagination_prev: null
 ---

@@ -1,7 +1,7 @@
 ---
 id: page-snapshot
 title: "PageSnapshot"
-description: "TypeScript API reference for PageSnapshot."
+description: "TypeScript API reference for PageSnapshot. Represents a snapshot of a single page in a PDF document. Contains the page reference and all elements on that page."
 pagination_next: null
 pagination_prev: null
 ---

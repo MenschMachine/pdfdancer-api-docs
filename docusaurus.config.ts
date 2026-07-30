@@ -13,6 +13,15 @@ const config: Config = {
     title: 'PDFDancer SDK Docs',
     tagline: 'Unified guides for every PDFDancer SDK',
     favicon: 'img/favicon.ico',
+    headTags: [
+        {
+            tagName: 'meta',
+            attributes: {
+                property: 'og:type',
+                content: 'website',
+            },
+        },
+    ],
 
     // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
     future: {
@@ -47,7 +56,7 @@ const config: Config = {
                 docs: {
                     routeBasePath: '/', // Serve the docs at the site's root
                     sidebarPath: './sidebars.ts',
-                    exclude: ['**/capabilities/**'],
+                    exclude: ['**/capabilities/**', '**/reference/**'],
                     lastVersion: V3_RELEASED ? 'current' : '1',
                     versions: {
                         current: {
@@ -66,6 +75,15 @@ const config: Config = {
                     },
                 },
                 blog: false,
+                sitemap: {
+                    createSitemapItems: async ({defaultCreateSitemapItems, ...params}) => {
+                        const items = await defaultCreateSitemapItems(params);
+                        return items.map((item) => ({
+                            ...item,
+                            url: item.url.endsWith('/') ? item.url : `${item.url}/`,
+                        }));
+                    },
+                },
                 theme: {
                     customCss: './src/css/custom.css',
                 },

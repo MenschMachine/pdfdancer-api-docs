@@ -1,7 +1,7 @@
 ---
 id: available-fonts
 title: Available Fonts
-description: Service-hosted fonts available to PDFDancer text operations.
+description: Browse service-hosted fonts available for PDFDancer text operations and choose exact font names for consistent document rendering.
 ---
 
 import Tabs from '@theme/Tabs';

@@ -1,7 +1,7 @@
 ---
 id: error-handling
 title: Error Handling
-description: Handle API v3 exceptions, command results, text diagnostics, retries, and partial outcomes.
+description: Handle PDFDancer exceptions, command results, text diagnostics, retries, and partial outcomes when document operations fail or need recovery.
 ---
 
 import Tabs from '@theme/Tabs';

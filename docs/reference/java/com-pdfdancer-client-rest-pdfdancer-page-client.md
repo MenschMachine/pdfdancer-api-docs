@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-client-rest-pdfdancer-page-client
 title: "PDFDancer$PageClient"
-description: "Java API reference for PDFDancer$PageClient."
+description: "Java API reference for PDFDancer$PageClient. Represents operations scoped to a single page of a PDF document. Provides type-safe selection methods for images, form fields, and paths."
 pagination_next: null
 pagination_prev: null
 ---

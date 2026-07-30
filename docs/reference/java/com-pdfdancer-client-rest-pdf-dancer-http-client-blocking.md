@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-client-rest-pdf-dancer-http-client-blocking
 title: "PdfDancerHttpClient$Blocking"
-description: "Java API reference for PdfDancerHttpClient$Blocking."
+description: "Java API reference for PdfDancerHttpClient$Blocking. Blocking facade with retrieve helpers mirroring the Micronaut client."
 pagination_next: null
 pagination_prev: null
 ---

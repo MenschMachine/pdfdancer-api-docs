@@ -1,7 +1,7 @@
 ---
 id: version
 title: "VERSION"
-description: "TypeScript API reference for VERSION."
+description: "TypeScript API reference for VERSION. Version file - DO NOT edit manually This file is auto-generated during build from package.json / git tags. A fallback version is committed to git to ensure builds don't fail if version generation fails."
 pagination_next: null
 pagination_prev: null
 ---

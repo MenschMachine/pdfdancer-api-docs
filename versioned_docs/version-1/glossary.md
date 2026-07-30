@@ -1,7 +1,7 @@
 ---
 id: glossary
 title: Glossary
-description: Definitions of key PDF and PDFDancer terminology.
+description: Find definitions for PDF and PDFDancer terminology used in document structure, content selection, editing operations, and output workflows.
 ---
 
 A reference guide to PDF and PDFDancer terminology.

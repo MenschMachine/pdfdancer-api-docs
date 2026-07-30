@@ -1,7 +1,7 @@
 ---
 id: rectangle-builder
 title: "RectangleBuilder"
-description: "TypeScript API reference for RectangleBuilder."
+description: "TypeScript API reference for RectangleBuilder This public class belongs to the path-builder package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.0."
 pagination_next: null
 pagination_prev: null
 ---

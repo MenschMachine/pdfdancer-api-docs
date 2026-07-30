@@ -1,7 +1,7 @@
 ---
 id: finding-content
 title: Finding Existing Objects
-description: Select images, paths, Form XObjects, and AcroForm fields by page, coordinates, or field name.
+description: Select images, paths, Form XObjects, and AcroForm fields by page, coordinates, or field name before editing existing PDF content.
 ---
 
 import Tabs from '@theme/Tabs';

@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-common-model-pdf-affine-transform-builder
 title: "PdfAffineTransform$Builder"
-description: "Java API reference for PdfAffineTransform$Builder."
+description: "Java API reference for PdfAffineTransform$Builder This public class belongs to the com.pdfdancer.common.model package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.0."
 pagination_next: null
 pagination_prev: null
 ---

@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-common-request-image-transform-request-transform-type
 title: "ImageTransformRequest$TransformType"
-description: "Java API reference for ImageTransformRequest$TransformType."
+description: "Java API reference for ImageTransformRequest$TransformType. Types of image transformations supported. This public enum belongs to the com.pdfdancer.common.request package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.0."
 pagination_next: null
 pagination_prev: null
 ---

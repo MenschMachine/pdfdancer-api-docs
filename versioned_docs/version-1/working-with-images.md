@@ -1,7 +1,7 @@
 ---
 id: working-with-images
 title: Working with Images
-description: Learn how to add, select, and manipulate images in PDFs.
+description: Add, select, move, and manipulate images in PDF documents, including replacing existing images and controlling their placement.
 ---
 
 import Tabs from '@theme/Tabs';

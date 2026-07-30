@@ -1,7 +1,7 @@
 ---
 id: form-object
 title: "FormObject"
-description: "Python API reference for FormObject."
+description: "Python API reference for FormObject. Base class for selectable PDF object references (paths, text lines, etc.) providing shared behavior such as position, deletion, and movement."
 pagination_next: null
 pagination_prev: null
 ---

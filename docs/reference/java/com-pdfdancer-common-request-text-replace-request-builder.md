@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-common-request-text-replace-request-builder
 title: "TextReplaceRequest$Builder"
-description: "Java API reference for TextReplaceRequest$Builder."
+description: "Java API reference for TextReplaceRequest$Builder This public class belongs to the com.pdfdancer.common.request package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.0."
 pagination_next: null
 pagination_prev: null
 ---

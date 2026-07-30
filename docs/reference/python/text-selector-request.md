@@ -1,7 +1,7 @@
 ---
 id: text-selector-request
 title: "TextSelectorRequest"
-description: "Python API reference for TextSelectorRequest."
+description: "Python API reference for TextSelectorRequest. TextSelectorRequest(literal: 'Optional[str]' = None, regex: 'Optional[str]' = None, case_sensitive: 'Optional[bool]' = None, whole_words: 'Optional[bool]' = None, max_matches: 'Optional[int]' = None)"
 pagination_next: null
 pagination_prev: null
 ---

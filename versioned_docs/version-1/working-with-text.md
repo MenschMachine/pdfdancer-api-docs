@@ -1,7 +1,7 @@
 ---
 id: working-with-text
 title: Working with Text
-description: Learn how to find, add, edit, move, and delete text content in PDFs including paragraphs and text lines.
+description: Find, add, edit, move, and delete PDF text, including paragraphs and text lines, with examples for common editing workflows.
 ---
 
 import Tabs from '@theme/Tabs';

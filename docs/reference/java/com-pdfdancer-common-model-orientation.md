@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-common-model-orientation
 title: "Orientation"
-description: "Java API reference for Orientation."
+description: "Java API reference for Orientation. Enumeration of page orientations. This public enum belongs to the com.pdfdancer.common.model package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.0."
 pagination_next: null
 pagination_prev: null
 ---

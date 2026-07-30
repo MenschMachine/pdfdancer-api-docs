@@ -1,7 +1,7 @@
 ---
 id: text-delete-builder
 title: "TextDeleteBuilder"
-description: "Python API reference for TextDeleteBuilder."
+description: "Python API reference for TextDeleteBuilder This public class belongs to the text_editing package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.1."
 pagination_next: null
 pagination_prev: null
 ---

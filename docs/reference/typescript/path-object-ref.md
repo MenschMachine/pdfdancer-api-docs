@@ -1,7 +1,7 @@
 ---
 id: path-object-ref
 title: "PathObjectRef"
-description: "TypeScript API reference for PathObjectRef."
+description: "TypeScript API reference for PathObjectRef. Represents a path object reference with styling information. Extends ObjectRef to include stroke/fill colors and stroke properties."
 pagination_next: null
 pagination_prev: null
 ---

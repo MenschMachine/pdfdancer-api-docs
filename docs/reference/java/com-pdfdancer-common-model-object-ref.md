@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-common-model-object-ref
 title: "ObjectRef"
-description: "Java API reference for ObjectRef."
+description: "Java API reference for ObjectRef. Lightweight reference to a PDF object providing identity and type information. Object references enable efficient API operations by providing a way to identify and reference PDF objects without transferring their complete content. This design pattern reduces payload sizes and improves performance for operations that only need object identification and basic properties."
 pagination_next: null
 pagination_prev: null
 ---

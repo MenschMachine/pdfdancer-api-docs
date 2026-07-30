@@ -1,7 +1,7 @@
 ---
 id: session-exception
 title: "SessionException"
-description: "Python API reference for SessionException."
+description: "Python API reference for SessionException. Exception raised for session-related errors. Occurs when session creation fails or session is invalid."
 pagination_next: null
 pagination_prev: null
 ---

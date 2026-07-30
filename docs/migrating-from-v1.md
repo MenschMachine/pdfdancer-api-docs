@@ -1,7 +1,7 @@
 ---
 id: migrating-from-v1
 title: Migrating from API v1
-description: Upgrade a PDFDancer API v1 integration to API v3.
+description: Upgrade an existing PDFDancer integration with guidance for text editing, object selection, and result handling.
 ---
 
 import Tabs from '@theme/Tabs';
@@ -28,7 +28,7 @@ Find the v1 pattern in the first column and use the v3 capability in the second 
 | Text styling | Use a `TextStyleRequest` to change appearance without replacing characters. | [Styling Text](./styling-text) |
 | `ReflowPreset` | Choose whether text stays fixed, moves along the line, or is recomposed into new lines. | [Choose layout behavior](#choose-the-layout-behavior-your-output-needs) |
 | Images, paths, pages, forms, or fonts | Keep the same application task and adopt the v3 selectors, classes, methods, and result checks. | [Update other operations](#3-update-other-operations) |
-| Snapshots | Use the v3 snapshot classes and filter arguments. | [API references](./reference) |
+| Snapshots | Use the v3 snapshot classes and filter arguments. | See the language-specific examples in this documentation. |
 | Text extraction | Use the v3 REST API now; SDK support is coming in the next SDK releases. | [Text extraction](#text-extraction) |
 | Redaction | Keep the v1 workflow until a v3 SDK replacement is available. | [Plan remaining workflows](#6-plan-for-remaining-v1-workflows) |
 | Template request objects | Compose the workflow from individual v3 text requests and compare the output with your v1 result. | [Plan remaining workflows](#6-plan-for-remaining-v1-workflows) |
@@ -166,7 +166,7 @@ For these workflows, keep your application goal and update the v3 calls and resu
 | Create or edit vector graphics | Update returned object classes and use the v3 builder methods that finish with `add()` or edit-session methods that finish with `apply()`. See [Working with Vector Graphics](./working-with-vector-graphics). |
 | Register or apply fonts | Update registration and text-style calls. Verify glyph coverage and response diagnostics. See [Working with Fonts](./working-with-fonts). |
 | Fill forms or edit Form XObjects | Update form-field and Form XObject classes and selectors. See [Working with AcroForms](./working-with-acroforms) and [Working with Form XObjects](./working-with-formxobjects). |
-| Inspect snapshots | Update snapshot classes and filter arguments using the [language-specific API references](./reference). |
+| Inspect snapshots | Update snapshot classes and filter arguments using the language-specific examples in this documentation. |
 | Authenticate or configure the client | Update client construction and SDK-specific configuration. See [Authentication](./authentication). |
 
 ## 4. Update your language integration

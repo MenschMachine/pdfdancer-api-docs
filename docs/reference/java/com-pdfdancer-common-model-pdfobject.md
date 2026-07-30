@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-common-model-pdfobject
 title: "PDFObject"
-description: "Java API reference for PDFObject."
+description: "Java API reference for PDFObject. Abstract base class for all PDF objects that can be manipulated within the API. This class provides the fundamental properties and behaviors shared by all PDF content elements, including getPosition tracking, identification, and object reference generation. The class uses Jackson polymorphic serialization to handle different concrete types during JSON serialization/deserialization, enabling type-safe API operations while maintaining flexibility for different PDF object types."
 pagination_next: null
 pagination_prev: null
 ---

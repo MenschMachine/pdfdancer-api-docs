@@ -1,7 +1,7 @@
 ---
 id: text-style-runs-selector-request
 title: "TextStyleRunsSelectorRequest"
-description: "Python API reference for TextStyleRunsSelectorRequest."
+description: "Python API reference for TextStyleRunsSelectorRequest. TextStyleRunsSelectorRequest(where: 'TextStyleRunFilterRequest', max_matches: 'Optional[int]' = None)"
 pagination_next: null
 pagination_prev: null
 ---

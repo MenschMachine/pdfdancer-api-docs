@@ -1,7 +1,7 @@
 ---
 id: document-snapshot
 title: "DocumentSnapshot"
-description: "TypeScript API reference for DocumentSnapshot."
+description: "TypeScript API reference for DocumentSnapshot. Represents a complete snapshot of a PDF document. Contains page count, font information, and snapshots of all pages."
 pagination_next: null
 pagination_prev: null
 ---

@@ -1,7 +1,7 @@
 ---
 id: text-edit-change-diagnostic
 title: "TextEditChangeDiagnostic"
-description: "Python API reference for TextEditChangeDiagnostic."
+description: "Python API reference for TextEditChangeDiagnostic. TextEditChangeDiagnostic(page: 'Optional[int]', operation: 'Optional[str]', source_text: 'Optional[str]', result_text: 'Optional[str]', requested_layout_mode: 'Optional[str]', requested_layout_profile: 'Optional[str]', effective_hyphenation_enabled: 'bool', applied_layout_mode: 'Optional[str]', element_ids: 'Optional[tuple[str, ...]]', generated_element_ids: 'Optional[tuple[str, ...]]', reflow_unit_ids: 'Optional[tuple[str, ...]]')"
 pagination_next: null
 pagination_prev: null
 ---

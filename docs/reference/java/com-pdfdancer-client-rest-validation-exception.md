@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-client-rest-validation-exception
 title: "ValidationException"
-description: "Java API reference for ValidationException."
+description: "Java API reference for ValidationException. Invalid client input detected before a request is sent. This public class belongs to the com.pdfdancer.client.rest package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.0."
 pagination_next: null
 pagination_prev: null
 ---

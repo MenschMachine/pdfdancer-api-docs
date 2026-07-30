@@ -1,7 +1,7 @@
 ---
 id: working-with-images
 title: Working with Images
-description: Select, add, transform, replace, and delete images with API v3.
+description: Select, add, transform, replace, and delete images in PDF documents using document-scoped and page-scoped image operations.
 ---
 
 import Tabs from '@theme/Tabs';

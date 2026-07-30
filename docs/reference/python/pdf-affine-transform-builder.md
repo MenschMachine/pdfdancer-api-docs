@@ -1,7 +1,7 @@
 ---
 id: pdf-affine-transform-builder
 title: "PdfAffineTransformBuilder"
-description: "Python API reference for PdfAffineTransformBuilder."
+description: "Python API reference for PdfAffineTransformBuilder This public class belongs to the text_editing package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.1."
 pagination_next: null
 pagination_prev: null
 ---

@@ -1,7 +1,7 @@
 ---
 id: extracting-text
 title: Extracting Text from Documents
-description: Comprehensive guide to extracting text content from PDF documents and pages using PDFDancer SDK.
+description: Extract text content from PDF documents and pages with examples for reading paragraphs, lines, formatting, positions, and structured metadata.
 ---
 
 import Tabs from '@theme/Tabs';

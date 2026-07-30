@@ -1,7 +1,7 @@
 ---
 id: rate-limit-exception
 title: "RateLimitException"
-description: "Python API reference for RateLimitException."
+description: "Python API reference for RateLimitException. Exception raised when the API rate limit is exceeded (HTTP 429). Includes retry-after information if provided by the server."
 pagination_next: null
 pagination_prev: null
 ---

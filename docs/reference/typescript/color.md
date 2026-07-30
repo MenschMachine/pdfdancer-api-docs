@@ -1,7 +1,7 @@
 ---
 id: color
 title: "Color"
-description: "TypeScript API reference for Color."
+description: "TypeScript API reference for Color. Represents an RGB color with optional alpha channel, values from 0-255. This public class belongs to the models package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.0."
 pagination_next: null
 pagination_prev: null
 ---

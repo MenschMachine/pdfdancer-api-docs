@@ -1,7 +1,7 @@
 ---
 id: sdk-versions
 title: SDK Versions
-description: Current SDK versions used in this documentation
+description: Review the SDK versions, package releases, and runtime requirements used by this documentation and its executable examples.
 ---
 
 # SDK Versions

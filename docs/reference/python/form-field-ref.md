@@ -1,7 +1,7 @@
 ---
 id: form-field-ref
 title: "FormFieldRef"
-description: "Python API reference for FormFieldRef."
+description: "Python API reference for FormFieldRef. Reference to a form field object with name and value. Parameters (usually provided by the server): - internal_id: Identifier of the form field object. - position: Position of the field. - type: One of `ObjectType.TEXT_FIELD`, `ObjectType.CHECKBOX`, etc. - name: Field name (as defined inside the PDF). - value: Current field value (string representation). Usage: - You can pass a `FormFieldRef` to `ChangeFormFieldRequest` to update its value. ```python payload = ChangeFormFieldRequest(object_ref=field_ref, value=\"john@doe.com\").to_dict() ```"
 pagination_next: null
 pagination_prev: null
 ---

@@ -1,7 +1,7 @@
 ---
 id: working-with-templates
 title: Working with Templates
-description: Fill placeholders in PDF templates with dynamic content.
+description: Fill PDF template placeholders with dynamic content for repeatable mail merge and document generation workflows.
 ---
 
 import Tabs from '@theme/Tabs';

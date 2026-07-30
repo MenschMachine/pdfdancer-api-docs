@@ -1,7 +1,7 @@
 ---
 id: document-font-info
 title: "DocumentFontInfo"
-description: "TypeScript API reference for DocumentFontInfo."
+description: "TypeScript API reference for DocumentFontInfo. Represents font mapping information for a document font. This public class belongs to the models package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.0."
 pagination_next: null
 pagination_prev: null
 ---

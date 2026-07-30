@@ -1,7 +1,7 @@
 ---
 id: image-transform-request
 title: "ImageTransformRequest"
-description: "Python API reference for ImageTransformRequest."
+description: "Python API reference for ImageTransformRequest. Request to transform an image in the PDF document. Parameters: - object_ref: Reference to the image to transform. - transform_type: Type of transformation (REPLACE, SCALE, ROTATE, CROP, OPACITY, FLIP). - new_image: For REPLACE - the replacement Image object. - scale_factor: For SCALE - scaling factor (e.g., 0.5 for half size). - target_size: For SCALE - target Size with width/height. - preserve_aspect_ratio: For SCALE - maintain proportions. - rotation_angle: For ROTATE - angle in degrees. - crop_left/crop_top/crop_right/crop_bottom: For CROP - pixels to crop from edges. - opacity: For OPACITY - value 0.0-1.0. - flip_direction: For FLIP - HORIZONTAL, VERTICAL, or BOTH."
 pagination_next: null
 pagination_prev: null
 ---

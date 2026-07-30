@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-common-request-text-style-set-request
 title: "TextStyleSetRequest"
-description: "Java API reference for TextStyleSetRequest."
+description: "Java API reference for TextStyleSetRequest. Style overrides applied atomically to replacement text. Omitted fields preserve the corresponding source-text style."
 pagination_next: null
 pagination_prev: null
 ---

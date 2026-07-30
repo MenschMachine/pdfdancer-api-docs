@@ -1,7 +1,7 @@
 ---
 id: deleting-content
 title: Deleting Content
-description: Learn how to delete pages, text, and images from PDFs.
+description: Delete pages, text, and images from PDF documents using consistent content operations and verify the resulting document before saving.
 ---
 
 import Tabs from '@theme/Tabs';

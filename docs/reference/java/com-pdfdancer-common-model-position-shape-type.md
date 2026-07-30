@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-common-model-position-shape-type
 title: "Position$ShapeType"
-description: "Java API reference for Position$ShapeType."
+description: "Java API reference for Position$ShapeType. Defines the geometric shape type used for getPosition specification."
 pagination_next: null
 pagination_prev: null
 ---

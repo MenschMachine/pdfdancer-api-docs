@@ -1,7 +1,7 @@
 ---
 id: pdfdancer
 title: "PDFDancer"
-description: "TypeScript API reference for PDFDancer."
+description: "TypeScript API reference for PDFDancer. REST API client for interacting with the PDFDancer PDF manipulation service. This client provides a convenient TypeScript interface for performing PDF operations including session management, object searching, manipulation, and retrieval. Handles authentication, session lifecycle, and HTTP communication transparently."
 pagination_next: null
 pagination_prev: null
 ---

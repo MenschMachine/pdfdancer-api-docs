@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-common-model-object-type
 title: "ObjectType"
-description: "Java API reference for ObjectType."
+description: "Java API reference for ObjectType. Enumeration of PDF object types supported by the PDFDancer API. This enum categorizes the different types of objects that can exist within a PDF document, enabling type-safe operations and filtering across the API. Each type represents a distinct category of PDF content with specific manipulation capabilities and properties."
 pagination_next: null
 pagination_prev: null
 ---

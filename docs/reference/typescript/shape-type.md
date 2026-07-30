@@ -1,7 +1,7 @@
 ---
 id: shape-type
 title: "ShapeType"
-description: "TypeScript API reference for ShapeType."
+description: "TypeScript API reference for ShapeType. Defines the geometric shape type used for position specification. This public enum belongs to the models package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.0."
 pagination_next: null
 pagination_prev: null
 ---

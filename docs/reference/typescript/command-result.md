@@ -1,7 +1,7 @@
 ---
 id: command-result
 title: "CommandResult"
-description: "TypeScript API reference for CommandResult."
+description: "TypeScript API reference for CommandResult. Result object returned by certain API endpoints indicating the outcome of an operation."
 pagination_next: null
 pagination_prev: null
 ---

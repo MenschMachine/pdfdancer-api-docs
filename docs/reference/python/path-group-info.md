@@ -1,7 +1,7 @@
 ---
 id: path-group-info
 title: "PathGroupInfo"
-description: "Python API reference for PathGroupInfo."
+description: "Python API reference for PathGroupInfo. PathGroupInfo(group_id: str, path_count: int, bounding_box: Dict[str, Any] | None, x: float, y: float)"
 pagination_next: null
 pagination_prev: null
 ---

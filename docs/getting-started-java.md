@@ -1,7 +1,7 @@
 ---
 id: getting-started-java
 title: Getting Started with Java
-description: Install the Java SDK and perform a verified API v3 text edit.
+description: Install the Java SDK and complete a verified PDF text-editing workflow, including opening a document, changing text, and saving the result.
 ---
 
 # Getting Started with Java

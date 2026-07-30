@@ -1,7 +1,7 @@
 ---
 id: text-style-patch-request
 title: "TextStylePatchRequest"
-description: "Python API reference for TextStylePatchRequest."
+description: "Python API reference for TextStylePatchRequest. TextStylePatchRequest(font: 'Optional[str]' = None, size: 'Optional[float]' = None, fill_color: 'Optional[PdfColorRequest]' = None, stroke_color: 'Optional[PdfColorRequest]' = None, character_spacing: 'Optional[float]' = None, word_spacing: 'Optional[float]' = None)"
 pagination_next: null
 pagination_prev: null
 ---

@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-common-response-text-edit-response
 title: "TextEditResponse"
-description: "Java API reference for TextEditResponse."
+description: "Java API reference for TextEditResponse This public class belongs to the com.pdfdancer.common.response package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.0."
 pagination_next: null
 pagination_prev: null
 ---

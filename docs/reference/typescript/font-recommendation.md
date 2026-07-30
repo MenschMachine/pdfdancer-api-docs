@@ -1,7 +1,7 @@
 ---
 id: font-recommendation
 title: "FontRecommendation"
-description: "TypeScript API reference for FontRecommendation."
+description: "TypeScript API reference for FontRecommendation. Represents font mapping information for a document font. This public class belongs to the models package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.0."
 pagination_next: null
 pagination_prev: null
 ---

@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-common-model-page
 title: "Page"
-description: "Java API reference for Page."
+description: "Java API reference for Page. Represents a single page within a PDF document, containing all content elements. This class encapsulates a complete page structure including text, images, forms, and vector graphics, providing a comprehensive view of page content for manipulation and analysis operations."
 pagination_next: null
 pagination_prev: null
 ---

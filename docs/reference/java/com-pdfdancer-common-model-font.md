@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-common-model-font
 title: "Font"
-description: "Java API reference for Font."
+description: "Java API reference for Font. Represents font properties for text rendering in PDF documents. This class encapsulates font characteristics including typeface name, size, and styling attributes such as bold, italic, and underline formatting. Used throughout the API for consistent text formatting and style management."
 pagination_next: null
 pagination_prev: null
 ---

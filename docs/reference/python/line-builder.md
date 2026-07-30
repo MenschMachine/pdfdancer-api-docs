@@ -1,7 +1,7 @@
 ---
 id: line-builder
 title: "LineBuilder"
-description: "Python API reference for LineBuilder."
+description: "Python API reference for LineBuilder. Builder class for constructing Line objects with fluent interface. Mirrors the Java client LineBuilder API."
 pagination_next: null
 pagination_prev: null
 ---

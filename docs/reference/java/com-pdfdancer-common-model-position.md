@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-common-model-position
 title: "Position"
-description: "Java API reference for Position."
+description: "Java API reference for Position. Represents spatial positioning and location information for PDF objects. This class encapsulates various ways to specify object locations within PDF documents, including page-based coordinates, bounding rectangles, and different positioning modes. It supports both precise coordinate positioning and area-based location specifications."
 pagination_next: null
 pagination_prev: null
 ---

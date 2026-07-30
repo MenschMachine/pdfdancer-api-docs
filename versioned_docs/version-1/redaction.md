@@ -1,7 +1,7 @@
 ---
 id: redaction
 title: Redaction
-description: Learn how to permanently redact sensitive content from PDFs including text, images, paths, and form fields.
+description: Permanently redact sensitive text, images, paths, and form fields from PDFs using secure document operations rather than visual overlays.
 ---
 
 import Tabs from '@theme/Tabs';

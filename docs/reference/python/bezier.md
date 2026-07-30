@@ -1,7 +1,7 @@
 ---
 id: bezier
 title: "Bezier"
-description: "Python API reference for Bezier."
+description: "Python API reference for Bezier. Cubic Bezier curve segment defined by 4 points. Parameters: - p0: Start point. - p1: First control point. - p2: Second control point. - p3: End point. Example: ```python curve = Bezier( p0=Point(10, 10), p1=Point(50, 80), p2=Point(80, 50), p3=Point(120, 10) ) ```"
 pagination_next: null
 pagination_prev: null
 ---

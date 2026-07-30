@@ -1,7 +1,7 @@
 ---
 id: validation-exception
 title: "ValidationException"
-description: "TypeScript API reference for ValidationException."
+description: "TypeScript API reference for ValidationException. Exception raised for input validation errors. This public class belongs to the exceptions package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.0."
 pagination_next: null
 pagination_prev: null
 ---

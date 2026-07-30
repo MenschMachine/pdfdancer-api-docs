@@ -1,7 +1,7 @@
 ---
 id: bezier-builder
 title: "BezierBuilder"
-description: "Python API reference for BezierBuilder."
+description: "Python API reference for BezierBuilder. Builder class for constructing Bezier curve objects with fluent interface. Mirrors the Java client BezierBuilder API."
 pagination_next: null
 pagination_prev: null
 ---

@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-common-response-document-snapshot
 title: "DocumentSnapshot"
-description: "Java API reference for DocumentSnapshot."
+description: "Java API reference for DocumentSnapshot. Represents a complete snapshot of a PDF document including metadata and all pages."
 pagination_next: null
 pagination_prev: null
 ---

@@ -1,7 +1,7 @@
 ---
 id: concepts
 title: Core Concepts
-description: Understand how PDFDancer represents PDF content, scopes operations, and reports changes in API v3.
+description: Understand how PDFDancer represents PDF content, scopes operations to documents or pages, and reports changes from editing requests.
 ---
 
 import Tabs from '@theme/Tabs';

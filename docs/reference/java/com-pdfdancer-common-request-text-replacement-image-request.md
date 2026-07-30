@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-common-request-text-replacement-image-request
 title: "TextReplacementImageRequest"
-description: "Java API reference for TextReplacementImageRequest."
+description: "Java API reference for TextReplacementImageRequest. Bitmap data and caret-relative geometry for replacing matched decoded text."
 pagination_next: null
 pagination_prev: null
 ---

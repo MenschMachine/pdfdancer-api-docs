@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-common-request-image-transform-request
 title: "ImageTransformRequest"
-description: "Java API reference for ImageTransformRequest."
+description: "Java API reference for ImageTransformRequest. Request for transforming an image in a PDF document. Supports replace, scale, rotate, crop, opacity, and flip operations."
 pagination_next: null
 pagination_prev: null
 ---

@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-client-rest-bezier-builder
 title: "BezierBuilder"
-description: "Java API reference for BezierBuilder."
+description: "Java API reference for BezierBuilder. Fluent builder for adding a cubic Bezier curve to a PDF page. Coordinate system: origin bottom-left; units in points (1/72\"). The curve is added as a one-segment Path with STROKE painting by default. Styling: color(Color), lineWidth(double), dash(...), dashWithPhase(...)."
 pagination_next: null
 pagination_prev: null
 ---

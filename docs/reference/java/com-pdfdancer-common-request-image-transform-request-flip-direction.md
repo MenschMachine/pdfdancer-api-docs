@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-common-request-image-transform-request-flip-direction
 title: "ImageTransformRequest$FlipDirection"
-description: "Java API reference for ImageTransformRequest$FlipDirection."
+description: "Java API reference for ImageTransformRequest$FlipDirection. Direction for flip operations. This public enum belongs to the com.pdfdancer.common.request package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.0."
 pagination_next: null
 pagination_prev: null
 ---

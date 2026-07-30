@@ -1,7 +1,7 @@
 ---
 id: working-with-fonts
 title: Working with Fonts
-description: Learn how to use standard fonts and register custom fonts in PDFDancer.
+description: Use standard fonts and register custom fonts for PDFDancer text operations, document generation, and consistent cross-platform rendering.
 ---
 
 import Tabs from '@theme/Tabs';

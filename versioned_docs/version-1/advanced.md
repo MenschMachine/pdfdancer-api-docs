@@ -1,7 +1,7 @@
 ---
 id: advanced
 title: Advanced Usage
-description: Advanced patterns and techniques for PDFDancer SDK.
+description: Apply advanced PDFDancer patterns for custom fonts, batching, complex workflows, resource management, and performance-sensitive document processing.
 ---
 
 import Tabs from '@theme/Tabs';

@@ -1,7 +1,7 @@
 ---
 id: page-size
 title: "PageSize"
-description: "TypeScript API reference for PageSize."
+description: "TypeScript API reference for PageSize This public interface belongs to the models package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.0."
 pagination_next: null
 pagination_prev: null
 ---

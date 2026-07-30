@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-common-model-clipping
 title: "Clipping"
-description: "Java API reference for Clipping."
+description: "Java API reference for Clipping. Represents a clipping region that masks or limits the visibility of other path segments. This class defines clipping boundaries within PDF documents, controlling which parts of underlying content are visible. Clipping regions are defined by path segments that establish the visible area boundaries."
 pagination_next: null
 pagination_prev: null
 ---

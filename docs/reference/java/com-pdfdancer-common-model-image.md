@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-common-model-image
 title: "Image"
-description: "Java API reference for Image."
+description: "Java API reference for Image. Represents an image object within a PDF document. This class encapsulates image data, format information, and dimensional properties for embedded or overlaid images in PDF documents. Supports various image formats and provides utilities for loading images from files."
 pagination_next: null
 pagination_prev: null
 ---

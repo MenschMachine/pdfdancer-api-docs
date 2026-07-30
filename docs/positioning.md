@@ -1,7 +1,7 @@
 ---
 id: positioning
 title: Positioning and Coordinates
-description: Work precisely with PDF coordinates, sizes, rectangles, and transforms.
+description: Work precisely with PDF coordinates, sizes, rectangles, and transforms when placing and editing document content.
 ---
 
 import Tabs from '@theme/Tabs';

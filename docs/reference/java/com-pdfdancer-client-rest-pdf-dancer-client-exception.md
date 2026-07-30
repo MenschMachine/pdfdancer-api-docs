@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-client-rest-pdf-dancer-client-exception
 title: "PdfDancerClientException"
-description: "Java API reference for PdfDancerClientException."
+description: "Java API reference for PdfDancerClientException. Runtime exception used for HTTP or serialization failures in the client."
 pagination_next: null
 pagination_prev: null
 ---

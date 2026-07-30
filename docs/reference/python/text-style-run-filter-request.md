@@ -1,7 +1,7 @@
 ---
 id: text-style-run-filter-request
 title: "TextStyleRunFilterRequest"
-description: "Python API reference for TextStyleRunFilterRequest."
+description: "Python API reference for TextStyleRunFilterRequest. TextStyleRunFilterRequest(text_contains: 'Optional[str]' = None, font: 'Optional[str]' = None, size: 'Optional[TextStyleNumericFilterRequest]' = None, fill_color: 'Optional[PdfColorRequest]' = None, stroke_color: 'Optional[PdfColorRequest]' = None, character_spacing: 'Optional[TextStyleNumericFilterRequest]' = None, word_spacing: 'Optional[TextStyleNumericFilterRequest]' = None, contains_unmapped_glyphs: 'Optional[bool]' = None)"
 pagination_next: null
 pagination_prev: null
 ---

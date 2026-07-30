@@ -1,7 +1,7 @@
 ---
 id: text-insert-request
 title: "TextInsertRequest"
-description: "Python API reference for TextInsertRequest."
+description: "Python API reference for TextInsertRequest. TextInsertRequest(target: 'TextInsertTargetRequest', insert: 'str', style: 'TextInsertStyleRequest', layout: 'Optional[TextLayoutRequest]' = None)"
 pagination_next: null
 pagination_prev: null
 ---

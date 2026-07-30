@@ -1,7 +1,7 @@
 ---
 id: font-recommendation
 title: "FontRecommendation"
-description: "Python API reference for FontRecommendation."
+description: "Python API reference for FontRecommendation. Represents a font recommendation with similarity score. This public class belongs to the models package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.1."
 pagination_next: null
 pagination_prev: null
 ---

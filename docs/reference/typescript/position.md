@@ -1,7 +1,7 @@
 ---
 id: position
 title: "Position"
-description: "TypeScript API reference for Position."
+description: "TypeScript API reference for Position. Represents spatial positioning and location information for PDF objects."
 pagination_next: null
 pagination_prev: null
 ---

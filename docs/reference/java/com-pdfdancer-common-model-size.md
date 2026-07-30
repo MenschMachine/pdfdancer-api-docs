@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-common-model-size
 title: "Size"
-description: "Java API reference for Size."
+description: "Java API reference for Size. Represents dimensional measurements with width and height properties. This class encapsulates size information for PDF objects (images, forms, etc.), providing both individual dimension access and calculated area methods."
 pagination_next: null
 pagination_prev: null
 ---

@@ -1,7 +1,7 @@
 ---
 id: preservation-and-pdfa
 title: Preservation and PDF/A
-description: How PDFDancer preserves metadata, color profiles, tagged PDF information, and PDF/A conformance during edits.
+description: Understand how PDFDancer preserves metadata, color profiles, tagged PDF data, and PDF/A information during edits and document saves.
 ---
 
 PDFDancer edits the PDF structure directly. That means document fidelity matters just as much as the visible page content.

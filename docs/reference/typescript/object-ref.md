@@ -1,7 +1,7 @@
 ---
 id: object-ref
 title: "ObjectRef"
-description: "TypeScript API reference for ObjectRef."
+description: "TypeScript API reference for ObjectRef. Lightweight reference to a PDF object providing identity and type information."
 pagination_next: null
 pagination_prev: null
 ---

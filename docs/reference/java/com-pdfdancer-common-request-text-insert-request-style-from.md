@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-common-request-text-insert-request-style-from
 title: "TextInsertRequest$StyleFrom"
-description: "Java API reference for TextInsertRequest$StyleFrom."
+description: "Java API reference for TextInsertRequest$StyleFrom This public enum belongs to the com.pdfdancer.common.request package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.0."
 pagination_next: null
 pagination_prev: null
 ---
