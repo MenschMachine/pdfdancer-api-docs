@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "language": "python",
   "repository": "pdfdancer-client-python",
-  "candidateRef": "release/v3",
-  "candidateCommit": "af2a1171a1b9b06dff14d2a0d64f4340f925d26c",
+  "candidateRef": "v3.0.2",
+  "candidateCommit": "c76a79f72e694219212d5af0c2085195bdea4eee",
   "symbols": [
     {
       "id": "Bezier",
@@ -2415,7 +2415,8 @@
           "static": false
         }
       ],
-      "module": "text_editing"
+      "module": "text_editing",
+      "description": "Build a six-value PDF affine transformation matrix."
     },
     {
       "id": "PdfColorRequest",
@@ -2529,6 +2530,15 @@
           "arity": 7,
           "static": false,
           "description": "Creates a new client with PDF data.\nThis constructor initializes the client, uploads the PDF data to create\na new session, and prepares the client for PDF manipulation operations.\n\nArgs:\n    token: Authentication token for API access\n    pdf_data: PDF file data as bytes, Path, filename string, or file-like object\n    base_url: Base URL of the PDFDancer API server\n    read_timeout: Timeout in seconds for HTTP requests (default: 30.0)\n    max_attempts: Maximum number of total attempts (default: 3).\n        The initial request counts as one attempt.\n    retry_backoff_factor: Base multiplier for exponential backoff delays (default: 2.0).\n        Delay calculation: initial_delay * (retry_backoff_factor ** attempt_number).\n        Examples: 2.0 → delays of 1s, 2s, 4s; 3.0 → delays of 1s, 3s, 9s.\n\nRaises:\n    ValidationException: If token is empty or PDF data is invalid\n    SessionException: If session creation fails\n    HttpClientException: If HTTP communication fails"
+        },
+        {
+          "id": "method:analyze_reading_units",
+          "name": "analyze_reading_units",
+          "kind": "method",
+          "signature": "analyze_reading_units(self, page_number: 'Optional[int]' = None) -> 'Union[ReadingUnitDocumentAnalysis, ReadingUnitPageAnalysis]'",
+          "arity": 2,
+          "static": false,
+          "description": "Analyze the current session PDF, or one one-based page, into reading units."
         },
         {
           "id": "method:clear_clipping",
@@ -3021,6 +3031,303 @@
       "description": "Exception raised when the API rate limit is exceeded (HTTP 429).\nIncludes retry-after information if provided by the server."
     },
     {
+      "id": "ReadingUnit",
+      "name": "ReadingUnit",
+      "kind": "class",
+      "signature": "ReadingUnit(id: str, role: pdfdancer.models.ReadingUnitRole, raw_role: str, text: str, stream: Mapping[str, pdfdancer.models.ReadingUnitStreamMembership], provenance: pdfdancer.models.ReadingUnitProvenance, relationships: List[pdfdancer.models.ReadingUnitRelationship]) -> None",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, id: str, role: pdfdancer.models.ReadingUnitRole, raw_role: str, text: str, stream: Mapping[str, pdfdancer.models.ReadingUnitStreamMembership], provenance: pdfdancer.models.ReadingUnitProvenance, relationships: List[pdfdancer.models.ReadingUnitRelationship]) -> None",
+          "arity": 8,
+          "static": false,
+          "description": "Initialize self.  See help(type(self)) for accurate signature."
+        }
+      ],
+      "module": "models",
+      "description": "ReadingUnit(id: str, role: pdfdancer.models.ReadingUnitRole, raw_role: str, text: str, stream: Mapping[str, pdfdancer.models.ReadingUnitStreamMembership], provenance: pdfdancer.models.ReadingUnitProvenance, relationships: List[pdfdancer.models.ReadingUnitRelationship])"
+    },
+    {
+      "id": "ReadingUnitBounds",
+      "name": "ReadingUnitBounds",
+      "kind": "class",
+      "signature": "ReadingUnitBounds(x: float, y: float, width: float, height: float) -> None",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, x: float, y: float, width: float, height: float) -> None",
+          "arity": 5,
+          "static": false,
+          "description": "Initialize self.  See help(type(self)) for accurate signature."
+        }
+      ],
+      "module": "models",
+      "description": "ReadingUnitBounds(x: float, y: float, width: float, height: float)"
+    },
+    {
+      "id": "ReadingUnitDocumentAnalysis",
+      "name": "ReadingUnitDocumentAnalysis",
+      "kind": "class",
+      "signature": "ReadingUnitDocumentAnalysis(page_count: int, mode: pdfdancer.models.ReadingUnitMode, raw_mode: str, pages: List[pdfdancer.models.ReadingUnitPageAnalysis]) -> None",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, page_count: int, mode: pdfdancer.models.ReadingUnitMode, raw_mode: str, pages: List[pdfdancer.models.ReadingUnitPageAnalysis]) -> None",
+          "arity": 5,
+          "static": false,
+          "description": "Initialize self.  See help(type(self)) for accurate signature."
+        }
+      ],
+      "module": "models",
+      "description": "ReadingUnitDocumentAnalysis(page_count: int, mode: pdfdancer.models.ReadingUnitMode, raw_mode: str, pages: List[pdfdancer.models.ReadingUnitPageAnalysis])"
+    },
+    {
+      "id": "ReadingUnitMode",
+      "name": "ReadingUnitMode",
+      "kind": "enum",
+      "signature": "ReadingUnitMode(*values)",
+      "members": [
+        {
+          "id": "enum-value:PRIMARY",
+          "name": "PRIMARY",
+          "kind": "enum-value",
+          "signature": "PRIMARY = 'PRIMARY'",
+          "static": true
+        },
+        {
+          "id": "enum-value:UNKNOWN",
+          "name": "UNKNOWN",
+          "kind": "enum-value",
+          "signature": "UNKNOWN = 'UNKNOWN'",
+          "static": true
+        }
+      ],
+      "module": "models",
+      "description": "Create a collection of name/value pairs.\n\nExample enumeration:\n\n>>> class Color(Enum):\n...     RED = 1\n...     BLUE = 2\n...     GREEN = 3\n\nAccess them by:\n\n- attribute access:\n\n  >>> Color.RED\n  <Color.RED: 1>\n\n- value lookup:\n\n  >>> Color(1)\n  <Color.RED: 1>\n\n- name lookup:\n\n  >>> Color['RED']\n  <Color.RED: 1>\n\nEnumerations can be iterated over, and know how many members they have:\n\n>>> len(Color)\n3\n\n>>> list(Color)\n[<Color.RED: 1>, <Color.BLUE: 2>, <Color.GREEN: 3>]\n\nMethods can be added to enumerations, and members can have their own\nattributes -- see the documentation for details."
+    },
+    {
+      "id": "ReadingUnitPageAnalysis",
+      "name": "ReadingUnitPageAnalysis",
+      "kind": "class",
+      "signature": "ReadingUnitPageAnalysis(page_number: int, mode: pdfdancer.models.ReadingUnitMode, raw_mode: str, units: List[pdfdancer.models.ReadingUnit]) -> None",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, page_number: int, mode: pdfdancer.models.ReadingUnitMode, raw_mode: str, units: List[pdfdancer.models.ReadingUnit]) -> None",
+          "arity": 5,
+          "static": false,
+          "description": "Initialize self.  See help(type(self)) for accurate signature."
+        }
+      ],
+      "module": "models",
+      "description": "ReadingUnitPageAnalysis(page_number: int, mode: pdfdancer.models.ReadingUnitMode, raw_mode: str, units: List[pdfdancer.models.ReadingUnit])"
+    },
+    {
+      "id": "ReadingUnitProvenance",
+      "name": "ReadingUnitProvenance",
+      "kind": "class",
+      "signature": "ReadingUnitProvenance(page_number: int, source_element_ids: List[str], bounds: pdfdancer.models.ReadingUnitBounds) -> None",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, page_number: int, source_element_ids: List[str], bounds: pdfdancer.models.ReadingUnitBounds) -> None",
+          "arity": 4,
+          "static": false,
+          "description": "Initialize self.  See help(type(self)) for accurate signature."
+        }
+      ],
+      "module": "models",
+      "description": "ReadingUnitProvenance(page_number: int, source_element_ids: List[str], bounds: pdfdancer.models.ReadingUnitBounds)"
+    },
+    {
+      "id": "ReadingUnitRelationship",
+      "name": "ReadingUnitRelationship",
+      "kind": "class",
+      "signature": "ReadingUnitRelationship(type: pdfdancer.models.ReadingUnitRelationshipType, raw_type: str, target_unit_id: str) -> None",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, type: pdfdancer.models.ReadingUnitRelationshipType, raw_type: str, target_unit_id: str) -> None",
+          "arity": 4,
+          "static": false,
+          "description": "Initialize self.  See help(type(self)) for accurate signature."
+        },
+        {
+          "id": "method:from_dict",
+          "name": "from_dict",
+          "kind": "method",
+          "signature": "from_dict(cls, data: Mapping[str, Any]) -> 'ReadingUnitRelationship'",
+          "arity": 2,
+          "static": true
+        }
+      ],
+      "module": "models",
+      "description": "ReadingUnitRelationship(type: pdfdancer.models.ReadingUnitRelationshipType, raw_type: str, target_unit_id: str)"
+    },
+    {
+      "id": "ReadingUnitRelationshipType",
+      "name": "ReadingUnitRelationshipType",
+      "kind": "enum",
+      "signature": "ReadingUnitRelationshipType(*values)",
+      "members": [
+        {
+          "id": "enum-value:CAPTION_FOR",
+          "name": "CAPTION_FOR",
+          "kind": "enum-value",
+          "signature": "CAPTION_FOR = 'CAPTION_FOR'",
+          "static": true
+        },
+        {
+          "id": "enum-value:HEADING_PARENT_OF",
+          "name": "HEADING_PARENT_OF",
+          "kind": "enum-value",
+          "signature": "HEADING_PARENT_OF = 'HEADING_PARENT_OF'",
+          "static": true
+        },
+        {
+          "id": "enum-value:UNKNOWN",
+          "name": "UNKNOWN",
+          "kind": "enum-value",
+          "signature": "UNKNOWN = 'UNKNOWN'",
+          "static": true
+        }
+      ],
+      "module": "models",
+      "description": "Create a collection of name/value pairs.\n\nExample enumeration:\n\n>>> class Color(Enum):\n...     RED = 1\n...     BLUE = 2\n...     GREEN = 3\n\nAccess them by:\n\n- attribute access:\n\n  >>> Color.RED\n  <Color.RED: 1>\n\n- value lookup:\n\n  >>> Color(1)\n  <Color.RED: 1>\n\n- name lookup:\n\n  >>> Color['RED']\n  <Color.RED: 1>\n\nEnumerations can be iterated over, and know how many members they have:\n\n>>> len(Color)\n3\n\n>>> list(Color)\n[<Color.RED: 1>, <Color.BLUE: 2>, <Color.GREEN: 3>]\n\nMethods can be added to enumerations, and members can have their own\nattributes -- see the documentation for details."
+    },
+    {
+      "id": "ReadingUnitRole",
+      "name": "ReadingUnitRole",
+      "kind": "enum",
+      "signature": "ReadingUnitRole(*values)",
+      "members": [
+        {
+          "id": "enum-value:CALLOUT",
+          "name": "CALLOUT",
+          "kind": "enum-value",
+          "signature": "CALLOUT = 'CALLOUT'",
+          "static": true
+        },
+        {
+          "id": "enum-value:CAPTION",
+          "name": "CAPTION",
+          "kind": "enum-value",
+          "signature": "CAPTION = 'CAPTION'",
+          "static": true
+        },
+        {
+          "id": "enum-value:FOOTNOTE",
+          "name": "FOOTNOTE",
+          "kind": "enum-value",
+          "signature": "FOOTNOTE = 'FOOTNOTE'",
+          "static": true
+        },
+        {
+          "id": "enum-value:HEADING",
+          "name": "HEADING",
+          "kind": "enum-value",
+          "signature": "HEADING = 'HEADING'",
+          "static": true
+        },
+        {
+          "id": "enum-value:LIST",
+          "name": "LIST",
+          "kind": "enum-value",
+          "signature": "LIST = 'LIST'",
+          "static": true
+        },
+        {
+          "id": "enum-value:PAGE_FOOTER",
+          "name": "PAGE_FOOTER",
+          "kind": "enum-value",
+          "signature": "PAGE_FOOTER = 'PAGE_FOOTER'",
+          "static": true
+        },
+        {
+          "id": "enum-value:PAGE_HEADER",
+          "name": "PAGE_HEADER",
+          "kind": "enum-value",
+          "signature": "PAGE_HEADER = 'PAGE_HEADER'",
+          "static": true
+        },
+        {
+          "id": "enum-value:PAGE_NUMBER",
+          "name": "PAGE_NUMBER",
+          "kind": "enum-value",
+          "signature": "PAGE_NUMBER = 'PAGE_NUMBER'",
+          "static": true
+        },
+        {
+          "id": "enum-value:PARAGRAPH",
+          "name": "PARAGRAPH",
+          "kind": "enum-value",
+          "signature": "PARAGRAPH = 'PARAGRAPH'",
+          "static": true
+        },
+        {
+          "id": "enum-value:PREFORMATTED_TEXT",
+          "name": "PREFORMATTED_TEXT",
+          "kind": "enum-value",
+          "signature": "PREFORMATTED_TEXT = 'PREFORMATTED_TEXT'",
+          "static": true
+        },
+        {
+          "id": "enum-value:TABLE",
+          "name": "TABLE",
+          "kind": "enum-value",
+          "signature": "TABLE = 'TABLE'",
+          "static": true
+        },
+        {
+          "id": "enum-value:UNKNOWN",
+          "name": "UNKNOWN",
+          "kind": "enum-value",
+          "signature": "UNKNOWN = 'UNKNOWN'",
+          "static": true
+        },
+        {
+          "id": "enum-value:WATERMARK",
+          "name": "WATERMARK",
+          "kind": "enum-value",
+          "signature": "WATERMARK = 'WATERMARK'",
+          "static": true
+        }
+      ],
+      "module": "models",
+      "description": "Create a collection of name/value pairs.\n\nExample enumeration:\n\n>>> class Color(Enum):\n...     RED = 1\n...     BLUE = 2\n...     GREEN = 3\n\nAccess them by:\n\n- attribute access:\n\n  >>> Color.RED\n  <Color.RED: 1>\n\n- value lookup:\n\n  >>> Color(1)\n  <Color.RED: 1>\n\n- name lookup:\n\n  >>> Color['RED']\n  <Color.RED: 1>\n\nEnumerations can be iterated over, and know how many members they have:\n\n>>> len(Color)\n3\n\n>>> list(Color)\n[<Color.RED: 1>, <Color.BLUE: 2>, <Color.GREEN: 3>]\n\nMethods can be added to enumerations, and members can have their own\nattributes -- see the documentation for details."
+    },
+    {
+      "id": "ReadingUnitStreamMembership",
+      "name": "ReadingUnitStreamMembership",
+      "kind": "class",
+      "signature": "ReadingUnitStreamMembership(included: bool, order: int | None) -> None",
+      "members": [
+        {
+          "id": "method:__init__",
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, included: bool, order: int | None) -> None",
+          "arity": 3,
+          "static": false,
+          "description": "Initialize self.  See help(type(self)) for accurate signature."
+        }
+      ],
+      "module": "models",
+      "description": "ReadingUnitStreamMembership(included: bool, order: int | None)"
+    },
+    {
       "id": "RectangleBuilder",
       "name": "RectangleBuilder",
       "kind": "class",
@@ -3452,7 +3759,8 @@
           "static": false
         }
       ],
-      "module": "text_editing"
+      "module": "text_editing",
+      "description": "Build a validated text-deletion request."
     },
     {
       "id": "TextDeleteRequest",
@@ -3791,7 +4099,8 @@
           "static": false
         }
       ],
-      "module": "text_editing"
+      "module": "text_editing",
+      "description": "Build a validated text-insertion request."
     },
     {
       "id": "TextInsertCaret",
@@ -4256,7 +4565,8 @@
           "static": false
         }
       ],
-      "module": "text_editing"
+      "module": "text_editing",
+      "description": "Build a validated text-replacement request."
     },
     {
       "id": "TextReplacementImageRequest",
@@ -4635,7 +4945,8 @@
           "static": false
         }
       ],
-      "module": "text_editing"
+      "module": "text_editing",
+      "description": "Build a validated request that changes existing text appearance."
     },
     {
       "id": "TextStyleNumericFilterRequest",

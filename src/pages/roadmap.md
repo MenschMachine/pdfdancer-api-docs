@@ -13,8 +13,6 @@ This roadmap is subject to change based on customer feedback and evolving requir
 
 ## What's Coming Next
 
-- **Structured Text Extraction** - extract semantically classified text units (headings, paragraphs, lists, page headers) with reading
-  order, inclusion flags, page position, and source-element provenance
 - **Full Text-Metric Read/Write Access** — Complete control over text metrics
 - **PDF Metadata Editing** — Read and update PDF metadata properties
 
@@ -38,6 +36,7 @@ This roadmap is subject to change based on customer feedback and evolving requir
 
 ## Shipped
 
+- **Structured Text Extraction** — Analyze documents or individual pages as semantic reading units with roles, reading order, source provenance, bounds, and relationships
 - **API v3 SDKs** — Updated Java, Python, and TypeScript SDKs with a request-based workflow for replacing, inserting, deleting, and styling text
 - **Text Reflow** — Reflow edited text while respecting alignment, columns, lists, whitespace, hyphenation, and justified layouts
 - **Template Replacement** — Replace text and image placeholders with dynamic content, with optional reflow

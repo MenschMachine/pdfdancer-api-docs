@@ -6,14 +6,14 @@ Use this file to scope documentation work. Added and removed symbols appear once
 
 ## Java
 
-Comparing `release/v1` to `release/v3`.
+Comparing `release/v1` to `v3.0.1`.
 
 | Review unit | Added | Promoted | Removed | Changed |
 |---|---:|---:|---:|---:|
-| Public symbols | 45 | 0 | 25 | 18 |
-| Members of retained symbols | 26 | 0 | 73 | 17 |
+| Public symbols | 55 | 0 | 25 | 18 |
+| Members of retained symbols | 29 | 0 | 73 | 17 |
 
-### Added symbols (45)
+### Added symbols (55)
 
 #### `com.pdfdancer.client.rest`
 
@@ -71,6 +71,16 @@ Comparing `release/v1` to `release/v3`.
 
 #### `com.pdfdancer.common.response`
 
+- `ReadingUnit`
+- `ReadingUnitBounds`
+- `ReadingUnitDocumentAnalysis`
+- `ReadingUnitMode`
+- `ReadingUnitPageAnalysis`
+- `ReadingUnitProvenance`
+- `ReadingUnitRelationship`
+- `ReadingUnitRelationshipType`
+- `ReadingUnitRole`
+- `ReadingUnitStreamMembership`
 - `TextEditChangeDiagnostic`
 - `TextEditResponse`
 - `TextOperationDiagnostic`
@@ -155,19 +165,29 @@ None.
 
 ## Python
 
-Comparing `release/v1` to `release/v3`.
+Comparing `release/v1` to `v3.0.2`.
 
 | Review unit | Added | Promoted | Removed | Changed |
 |---|---:|---:|---:|---:|
-| Public symbols | 27 | 7 | 8 | 13 |
-| Members of retained symbols | 24 | 0 | 13 | 18 |
+| Public symbols | 37 | 7 | 8 | 13 |
+| Members of retained symbols | 25 | 0 | 13 | 18 |
 
-### Added symbols (27)
+### Added symbols (37)
 
 - `PdfAffineTransform`
 - `PdfAffineTransformBuilder`
 - `PdfColorRequest`
 - `PdfColorSpace`
+- `ReadingUnit`
+- `ReadingUnitBounds`
+- `ReadingUnitDocumentAnalysis`
+- `ReadingUnitMode`
+- `ReadingUnitPageAnalysis`
+- `ReadingUnitProvenance`
+- `ReadingUnitRelationship`
+- `ReadingUnitRelationshipType`
+- `ReadingUnitRole`
+- `ReadingUnitStreamMembership`
 - `TextDeleteBuilder`
 - `TextDeleteRequest`
 - `TextEditChangeDiagnostic`
@@ -231,14 +251,14 @@ Comparing `release/v1` to `release/v3`.
 
 ## Typescript
 
-Comparing `v1.0.23` to `release/v3`.
+Comparing `v1.0.23` to `v3.0.1`.
 
 | Review unit | Added | Promoted | Removed | Changed |
 |---|---:|---:|---:|---:|
-| Public symbols | 43 | 6 | 5 | 9 |
-| Members of retained symbols | 28 | 0 | 21 | 14 |
+| Public symbols | 53 | 6 | 5 | 9 |
+| Members of retained symbols | 30 | 0 | 21 | 14 |
 
-### Added symbols (43)
+### Added symbols (53)
 
 - `BezierBuilder`
 - `FlipDirection`
@@ -255,6 +275,16 @@ Comparing `v1.0.23` to `release/v3`.
 - `PdfColorRequest`
 - `PdfColorSpace`
 - `RateLimitException`
+- `ReadingUnit`
+- `ReadingUnitBounds`
+- `ReadingUnitDocumentAnalysis`
+- `ReadingUnitMode`
+- `ReadingUnitPageAnalysis`
+- `ReadingUnitProvenance`
+- `ReadingUnitRelationship`
+- `ReadingUnitRelationshipType`
+- `ReadingUnitRole`
+- `ReadingUnitStreamMembership`
 - `RectangleBuilder`
 - `SessionNotFoundException`
 - `Size`

@@ -8,33 +8,33 @@ description: Review the SDK versions, package releases, supported runtimes, and 
 
 <!-- sdk-pins
 {
-  "python": {"version": "3.0.1", "commit": "af2a1171a1b9"},
-  "typescript": {"version": "3.0.0", "commit": "7bd49ac104cc"},
+  "python": {"version": "3.0.2", "commit": "c76a79f72e69"},
+  "typescript": {"version": "3.0.1", "commit": "f7b7f2d7c269"},
   "java": {
-    "version": "3.0.0",
-    "commit": "9c04036fe114",
+    "version": "3.0.1",
+    "commit": "20639941174b",
     "groupId": "com.pdfdancer.client",
     "artifactId": "pdfdancer-client-java"
   }
 }
 -->
 
-Python SDK 3.0.1 is the latest stable Python API v3 release; the TypeScript and Java SDKs remain at 3.0.0. This documentation covers these releases:
+Python SDK 3.0.2, TypeScript SDK 3.0.1, and Java SDK 3.0.1 are the latest stable API v3 releases. This documentation covers these releases:
 
 | SDK | Package | Version | Runtime |
 |---|---|---:|---|
-| Python | `pdfdancer-client-python` | `3.0.1` | Python 3.10+ |
-| TypeScript | `pdfdancer-client-typescript` | `3.0.0` | Node.js 20+ |
-| Java | `com.pdfdancer.client:pdfdancer-client-java` | `3.0.0` | Java 17+ |
+| Python | `pdfdancer-client-python` | `3.0.2` | Python 3.10+ |
+| TypeScript | `pdfdancer-client-typescript` | `3.0.1` | Node.js 20+ |
+| Java | `com.pdfdancer.client:pdfdancer-client-java` | `3.0.1` | Java 17+ |
 
 ## Install or upgrade
 
 ```bash
 # Python
-python -m pip install --upgrade pdfdancer-client-python==3.0.1
+python -m pip install --upgrade pdfdancer-client-python==3.0.2
 
 # TypeScript
-npm install pdfdancer-client-typescript@3.0.0
+npm install pdfdancer-client-typescript@3.0.1
 ```
 
 ```xml
@@ -42,7 +42,7 @@ npm install pdfdancer-client-typescript@3.0.0
 <dependency>
   <groupId>com.pdfdancer.client</groupId>
   <artifactId>pdfdancer-client-java</artifactId>
-  <version>3.0.0</version>
+  <version>3.0.1</version>
 </dependency>
 ```
 

@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "language": "typescript",
   "repository": "pdfdancer-client-typescript",
-  "candidateRef": "release/v3",
-  "candidateCommit": "7bd49ac104cc228c66c28f448c72c756eb740183",
+  "candidateRef": "v3.0.1",
+  "candidateCommit": "f7b7f2d7c26956f37cac21c00f7efd8a93883931",
   "symbols": [
     {
       "id": "BaseObject",
@@ -80,7 +80,8 @@
           "static": false
         }
       ],
-      "module": "types"
+      "module": "types",
+      "description": "Common operations and metadata for a selected existing PDF object."
     },
     {
       "id": "Bezier",
@@ -273,7 +274,8 @@
           "static": false
         }
       ],
-      "module": "path-builder"
+      "module": "path-builder",
+      "description": "Builds and adds one cubic Bézier segment."
     },
     {
       "id": "BoundingRect",
@@ -930,7 +932,8 @@
           "static": false
         }
       ],
-      "module": "types"
+      "module": "types",
+      "description": "A selected interactive AcroForm field and its stored value."
     },
     {
       "id": "FormFieldRef",
@@ -1076,7 +1079,8 @@
           "static": false
         }
       ],
-      "module": "types"
+      "module": "types",
+      "description": "A selected Form XObject, which is a reusable PDF content stream."
     },
     {
       "id": "HttpClientException",
@@ -1432,7 +1436,8 @@
           "static": false
         }
       ],
-      "module": "types"
+      "module": "types",
+      "description": "A selected raster image with image-specific transformation operations."
     },
     {
       "id": "ImageTransformType",
@@ -1646,7 +1651,8 @@
           "static": false
         }
       ],
-      "module": "path-builder"
+      "module": "path-builder",
+      "description": "Builds and adds one straight line segment."
     },
     {
       "id": "ModifyPathRequest",
@@ -1899,7 +1905,8 @@
           "static": true
         }
       ],
-      "module": "models"
+      "module": "models",
+      "description": "Page orientation used when creating pages and documents."
     },
     {
       "id": "PageBuilder",
@@ -2022,7 +2029,8 @@
           "static": false
         }
       ],
-      "module": "page-builder"
+      "module": "page-builder",
+      "description": "Builds and inserts a page into the current PDFDancer session."
     },
     {
       "id": "PageClient",
@@ -2037,6 +2045,14 @@
           "signature": "constructor(client: PDFDancer, pageNumber: number, pageRef?: PageRef): PageClient",
           "arity": 3,
           "static": true
+        },
+        {
+          "id": "method:analyzeReadingUnits",
+          "name": "analyzeReadingUnits",
+          "kind": "method",
+          "signature": "analyzeReadingUnits(): Promise<ReadingUnitPageAnalysis>",
+          "arity": 0,
+          "static": false
         },
         {
           "id": "method:delete",
@@ -2315,7 +2331,8 @@
           "static": false
         }
       ],
-      "module": "pdfdancer_v2"
+      "module": "pdfdancer_v2",
+      "description": "Provides page-scoped selection, creation, and text-editing operations."
     },
     {
       "id": "PageRef",
@@ -2375,7 +2392,8 @@
           "static": false
         }
       ],
-      "module": "models"
+      "module": "models",
+      "description": "Immutable reference data for one page in a PDFDancer session."
     },
     {
       "id": "PageSize",
@@ -2405,7 +2423,8 @@
           "static": false
         }
       ],
-      "module": "models"
+      "module": "models",
+      "description": "Page dimensions in PDF points."
     },
     {
       "id": "pageSizeFromDimensions",
@@ -2413,7 +2432,8 @@
       "kind": "function",
       "signature": "pageSizeFromDimensions(width: number, height: number, tolerance?: number): PageSize",
       "members": [],
-      "module": "models"
+      "module": "models",
+      "description": "Resolves dimensions to a named standard size when they are within the supplied tolerance."
     },
     {
       "id": "PageSnapshot",
@@ -2762,7 +2782,8 @@
           "description": "Sets the stroke color for the path."
         }
       ],
-      "module": "types"
+      "module": "types",
+      "description": "Collects path appearance changes and applies them as one operation."
     },
     {
       "id": "PathGroupObject",
@@ -2862,7 +2883,8 @@
           "static": false
         }
       ],
-      "module": "types"
+      "module": "types",
+      "description": "A named group of vector paths that can be transformed together."
     },
     {
       "id": "PathObject",
@@ -2996,7 +3018,8 @@
           "static": false
         }
       ],
-      "module": "types"
+      "module": "types",
+      "description": "A selected vector path that can be inspected or edited."
     },
     {
       "id": "PathObjectRef",
@@ -3211,7 +3234,8 @@
           "static": false
         }
       ],
-      "module": "text-editing"
+      "module": "text-editing",
+      "description": "A six-value PDF affine transformation matrix."
     },
     {
       "id": "PdfAffineTransformBuilder",
@@ -3268,7 +3292,8 @@
           "static": false
         }
       ],
-      "module": "text-editing"
+      "module": "text-editing",
+      "description": "Builds a PDF affine transformation matrix."
     },
     {
       "id": "PdfColorRequest",
@@ -3354,7 +3379,8 @@
           "static": false
         }
       ],
-      "module": "text-editing"
+      "module": "text-editing",
+      "description": "A serializable color value used by text-editing requests."
     },
     {
       "id": "PdfColorSpace",
@@ -3384,7 +3410,8 @@
           "static": true
         }
       ],
-      "module": "text-editing"
+      "module": "text-editing",
+      "description": "Color spaces accepted by text-style color values."
     },
     {
       "id": "PDFDancer",
@@ -3399,6 +3426,22 @@
           "signature": "constructor(): PDFDancer",
           "arity": 0,
           "static": true
+        },
+        {
+          "id": "method:analyzeReadingUnits",
+          "name": "analyzeReadingUnits",
+          "kind": "method",
+          "signature": "analyzeReadingUnits(): Promise<ReadingUnitDocumentAnalysis>",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:analyzeReadingUnits",
+          "name": "analyzeReadingUnits",
+          "kind": "method",
+          "signature": "analyzeReadingUnits(pageNumber: number): Promise<ReadingUnitPageAnalysis>",
+          "arity": 1,
+          "static": false
         },
         {
           "id": "method:clearClipping",
@@ -4023,6 +4066,467 @@
       "description": "Exception raised after the configured attempts for an HTTP 429 are exhausted."
     },
     {
+      "id": "ReadingUnit",
+      "name": "ReadingUnit",
+      "kind": "class",
+      "signature": "class ReadingUnit",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(id: string, role: unknown, text: string, stream: Record<string, ReadingUnitStreamMembership>, provenance: ReadingUnitProvenance, relationships: ReadingUnitRelationship[]): ReadingUnit",
+          "arity": 6,
+          "static": true
+        },
+        {
+          "id": "property:id",
+          "name": "id",
+          "kind": "property",
+          "signature": "id: string",
+          "static": false
+        },
+        {
+          "id": "property:provenance",
+          "name": "provenance",
+          "kind": "property",
+          "signature": "provenance: ReadingUnitProvenance",
+          "static": false
+        },
+        {
+          "id": "property:rawRole",
+          "name": "rawRole",
+          "kind": "property",
+          "signature": "rawRole: string",
+          "static": false
+        },
+        {
+          "id": "property:relationships",
+          "name": "relationships",
+          "kind": "property",
+          "signature": "relationships: ReadingUnitRelationship[]",
+          "static": false
+        },
+        {
+          "id": "property:role",
+          "name": "role",
+          "kind": "property",
+          "signature": "role: ReadingUnitRole",
+          "static": false
+        },
+        {
+          "id": "property:stream",
+          "name": "stream",
+          "kind": "property",
+          "signature": "stream: Record<string, ReadingUnitStreamMembership>",
+          "static": false
+        },
+        {
+          "id": "property:text",
+          "name": "text",
+          "kind": "property",
+          "signature": "text: string",
+          "static": false
+        }
+      ],
+      "module": "models"
+    },
+    {
+      "id": "ReadingUnitBounds",
+      "name": "ReadingUnitBounds",
+      "kind": "class",
+      "signature": "class ReadingUnitBounds",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(x: number, y: number, width: number, height: number): ReadingUnitBounds",
+          "arity": 4,
+          "static": true
+        },
+        {
+          "id": "property:height",
+          "name": "height",
+          "kind": "property",
+          "signature": "height: number",
+          "static": false
+        },
+        {
+          "id": "property:width",
+          "name": "width",
+          "kind": "property",
+          "signature": "width: number",
+          "static": false
+        },
+        {
+          "id": "property:x",
+          "name": "x",
+          "kind": "property",
+          "signature": "x: number",
+          "static": false
+        },
+        {
+          "id": "property:y",
+          "name": "y",
+          "kind": "property",
+          "signature": "y: number",
+          "static": false
+        }
+      ],
+      "module": "models"
+    },
+    {
+      "id": "ReadingUnitDocumentAnalysis",
+      "name": "ReadingUnitDocumentAnalysis",
+      "kind": "class",
+      "signature": "class ReadingUnitDocumentAnalysis",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(pageCount: number, mode: unknown, pages: ReadingUnitPageAnalysis[]): ReadingUnitDocumentAnalysis",
+          "arity": 3,
+          "static": true
+        },
+        {
+          "id": "property:mode",
+          "name": "mode",
+          "kind": "property",
+          "signature": "mode: ReadingUnitMode",
+          "static": false
+        },
+        {
+          "id": "property:pageCount",
+          "name": "pageCount",
+          "kind": "property",
+          "signature": "pageCount: number",
+          "static": false
+        },
+        {
+          "id": "property:pages",
+          "name": "pages",
+          "kind": "property",
+          "signature": "pages: ReadingUnitPageAnalysis[]",
+          "static": false
+        },
+        {
+          "id": "property:rawMode",
+          "name": "rawMode",
+          "kind": "property",
+          "signature": "rawMode: string",
+          "static": false
+        }
+      ],
+      "module": "models"
+    },
+    {
+      "id": "ReadingUnitMode",
+      "name": "ReadingUnitMode",
+      "kind": "enum",
+      "signature": "enum ReadingUnitMode",
+      "members": [
+        {
+          "id": "enum-value:PRIMARY",
+          "name": "PRIMARY",
+          "kind": "enum-value",
+          "signature": "PRIMARY = \"PRIMARY\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:UNKNOWN",
+          "name": "UNKNOWN",
+          "kind": "enum-value",
+          "signature": "UNKNOWN = \"UNKNOWN\"",
+          "static": true
+        }
+      ],
+      "module": "models"
+    },
+    {
+      "id": "ReadingUnitPageAnalysis",
+      "name": "ReadingUnitPageAnalysis",
+      "kind": "class",
+      "signature": "class ReadingUnitPageAnalysis",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(pageNumber: number, mode: unknown, units: ReadingUnit[]): ReadingUnitPageAnalysis",
+          "arity": 3,
+          "static": true
+        },
+        {
+          "id": "property:mode",
+          "name": "mode",
+          "kind": "property",
+          "signature": "mode: ReadingUnitMode",
+          "static": false
+        },
+        {
+          "id": "property:pageNumber",
+          "name": "pageNumber",
+          "kind": "property",
+          "signature": "pageNumber: number",
+          "static": false
+        },
+        {
+          "id": "property:rawMode",
+          "name": "rawMode",
+          "kind": "property",
+          "signature": "rawMode: string",
+          "static": false
+        },
+        {
+          "id": "property:units",
+          "name": "units",
+          "kind": "property",
+          "signature": "units: ReadingUnit[]",
+          "static": false
+        }
+      ],
+      "module": "models"
+    },
+    {
+      "id": "ReadingUnitProvenance",
+      "name": "ReadingUnitProvenance",
+      "kind": "class",
+      "signature": "class ReadingUnitProvenance",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(pageNumber: number, sourceElementIds: string[], bounds: ReadingUnitBounds): ReadingUnitProvenance",
+          "arity": 3,
+          "static": true
+        },
+        {
+          "id": "property:bounds",
+          "name": "bounds",
+          "kind": "property",
+          "signature": "bounds: ReadingUnitBounds",
+          "static": false
+        },
+        {
+          "id": "property:pageNumber",
+          "name": "pageNumber",
+          "kind": "property",
+          "signature": "pageNumber: number",
+          "static": false
+        },
+        {
+          "id": "property:sourceElementIds",
+          "name": "sourceElementIds",
+          "kind": "property",
+          "signature": "sourceElementIds: string[]",
+          "static": false
+        }
+      ],
+      "module": "models"
+    },
+    {
+      "id": "ReadingUnitRelationship",
+      "name": "ReadingUnitRelationship",
+      "kind": "class",
+      "signature": "class ReadingUnitRelationship",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(type: unknown, targetUnitId: string): ReadingUnitRelationship",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "property:rawType",
+          "name": "rawType",
+          "kind": "property",
+          "signature": "rawType: string",
+          "static": false
+        },
+        {
+          "id": "property:targetUnitId",
+          "name": "targetUnitId",
+          "kind": "property",
+          "signature": "targetUnitId: string",
+          "static": false
+        },
+        {
+          "id": "property:type",
+          "name": "type",
+          "kind": "property",
+          "signature": "type: ReadingUnitRelationshipType",
+          "static": false
+        }
+      ],
+      "module": "models"
+    },
+    {
+      "id": "ReadingUnitRelationshipType",
+      "name": "ReadingUnitRelationshipType",
+      "kind": "enum",
+      "signature": "enum ReadingUnitRelationshipType",
+      "members": [
+        {
+          "id": "enum-value:CAPTION_FOR",
+          "name": "CAPTION_FOR",
+          "kind": "enum-value",
+          "signature": "CAPTION_FOR = \"CAPTION_FOR\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:HEADING_PARENT_OF",
+          "name": "HEADING_PARENT_OF",
+          "kind": "enum-value",
+          "signature": "HEADING_PARENT_OF = \"HEADING_PARENT_OF\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:UNKNOWN",
+          "name": "UNKNOWN",
+          "kind": "enum-value",
+          "signature": "UNKNOWN = \"UNKNOWN\"",
+          "static": true
+        }
+      ],
+      "module": "models"
+    },
+    {
+      "id": "ReadingUnitRole",
+      "name": "ReadingUnitRole",
+      "kind": "enum",
+      "signature": "enum ReadingUnitRole",
+      "members": [
+        {
+          "id": "enum-value:CALLOUT",
+          "name": "CALLOUT",
+          "kind": "enum-value",
+          "signature": "CALLOUT = \"CALLOUT\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:CAPTION",
+          "name": "CAPTION",
+          "kind": "enum-value",
+          "signature": "CAPTION = \"CAPTION\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:FOOTNOTE",
+          "name": "FOOTNOTE",
+          "kind": "enum-value",
+          "signature": "FOOTNOTE = \"FOOTNOTE\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:HEADING",
+          "name": "HEADING",
+          "kind": "enum-value",
+          "signature": "HEADING = \"HEADING\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:LIST",
+          "name": "LIST",
+          "kind": "enum-value",
+          "signature": "LIST = \"LIST\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:PAGE_FOOTER",
+          "name": "PAGE_FOOTER",
+          "kind": "enum-value",
+          "signature": "PAGE_FOOTER = \"PAGE_FOOTER\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:PAGE_HEADER",
+          "name": "PAGE_HEADER",
+          "kind": "enum-value",
+          "signature": "PAGE_HEADER = \"PAGE_HEADER\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:PAGE_NUMBER",
+          "name": "PAGE_NUMBER",
+          "kind": "enum-value",
+          "signature": "PAGE_NUMBER = \"PAGE_NUMBER\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:PARAGRAPH",
+          "name": "PARAGRAPH",
+          "kind": "enum-value",
+          "signature": "PARAGRAPH = \"PARAGRAPH\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:PREFORMATTED_TEXT",
+          "name": "PREFORMATTED_TEXT",
+          "kind": "enum-value",
+          "signature": "PREFORMATTED_TEXT = \"PREFORMATTED_TEXT\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:TABLE",
+          "name": "TABLE",
+          "kind": "enum-value",
+          "signature": "TABLE = \"TABLE\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:UNKNOWN",
+          "name": "UNKNOWN",
+          "kind": "enum-value",
+          "signature": "UNKNOWN = \"UNKNOWN\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:WATERMARK",
+          "name": "WATERMARK",
+          "kind": "enum-value",
+          "signature": "WATERMARK = \"WATERMARK\"",
+          "static": true
+        }
+      ],
+      "module": "models"
+    },
+    {
+      "id": "ReadingUnitStreamMembership",
+      "name": "ReadingUnitStreamMembership",
+      "kind": "class",
+      "signature": "class ReadingUnitStreamMembership",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "constructor(included: boolean, order: number): ReadingUnitStreamMembership",
+          "arity": 2,
+          "static": true
+        },
+        {
+          "id": "property:included",
+          "name": "included",
+          "kind": "property",
+          "signature": "included: boolean",
+          "static": false
+        },
+        {
+          "id": "property:order",
+          "name": "order",
+          "kind": "property",
+          "signature": "order: number",
+          "static": false
+        }
+      ],
+      "module": "models"
+    },
+    {
       "id": "RectangleBuilder",
       "name": "RectangleBuilder",
       "kind": "class",
@@ -4109,7 +4613,8 @@
           "static": false
         }
       ],
-      "module": "path-builder"
+      "module": "path-builder",
+      "description": "Builds and adds a rectangular vector path."
     },
     {
       "id": "RetryConfig",
@@ -4387,7 +4892,8 @@
       "kind": "value",
       "signature": "STANDARD_PAGE_SIZES: Record<string, { width: number; height: number; }>",
       "members": [],
-      "module": "models"
+      "module": "models",
+      "description": "Named page dimensions available to page and document builders."
     },
     {
       "id": "StandardFonts",
@@ -4544,7 +5050,8 @@
           "static": false
         }
       ],
-      "module": "text-editing"
+      "module": "text-editing",
+      "description": "Performs selector-based text operations at document or page scope."
     },
     {
       "id": "TextDeleteRequest",
@@ -4630,7 +5137,8 @@
           "static": false
         }
       ],
-      "module": "text-editing"
+      "module": "text-editing",
+      "description": "A validated operation that deletes selected PDF text."
     },
     {
       "id": "TextDeleteRequestBuilder",
@@ -4743,7 +5251,8 @@
           "static": false
         }
       ],
-      "module": "text-editing"
+      "module": "text-editing",
+      "description": "Builds a validated text-deletion request."
     },
     {
       "id": "TextEditChangeDiagnostic",
@@ -4829,7 +5338,8 @@
           "static": false
         }
       ],
-      "module": "text-editing"
+      "module": "text-editing",
+      "description": "Per-change diagnostic information returned by a text operation."
     },
     {
       "id": "TextEditResponse",
@@ -4880,7 +5390,8 @@
           "static": false
         }
       ],
-      "module": "text-editing"
+      "module": "text-editing",
+      "description": "Counts, warnings, errors, and diagnostics returned by a text operation."
     },
     {
       "id": "TextInsertCaret",
@@ -4903,7 +5414,8 @@
           "static": true
         }
       ],
-      "module": "text-editing"
+      "module": "text-editing",
+      "description": "Placement of inserted text relative to an existing text anchor."
     },
     {
       "id": "TextInsertRequest",
@@ -5020,7 +5532,8 @@
           "static": false
         }
       ],
-      "module": "text-editing"
+      "module": "text-editing",
+      "description": "A validated operation that inserts text at an anchor or coordinate."
     },
     {
       "id": "TextInsertRequestBuilder",
@@ -5229,7 +5742,8 @@
           "static": false
         }
       ],
-      "module": "text-editing"
+      "module": "text-editing",
+      "description": "Builds a validated text-insertion request."
     },
     {
       "id": "TextLayoutMode",
@@ -5259,7 +5773,8 @@
           "static": true
         }
       ],
-      "module": "text-editing"
+      "module": "text-editing",
+      "description": "Determines whether unaffected text remains anchored or is recomposed."
     },
     {
       "id": "TextLayoutProfile",
@@ -5289,7 +5804,8 @@
           "static": true
         }
       ],
-      "module": "text-editing"
+      "module": "text-editing",
+      "description": "Selects the layout strategy used when text is recomposed."
     },
     {
       "id": "TextLayoutRequest",
@@ -5375,7 +5891,8 @@
           "static": false
         }
       ],
-      "module": "text-editing"
+      "module": "text-editing",
+      "description": "Layout settings attached to a text-editing request."
     },
     {
       "id": "TextOperationDiagnostic",
@@ -5419,7 +5936,8 @@
           "static": false
         }
       ],
-      "module": "text-editing"
+      "module": "text-editing",
+      "description": "Diagnostic information about the complete text operation."
     },
     {
       "id": "TextReplacementImageRequest",
@@ -5458,7 +5976,8 @@
           "static": false
         }
       ],
-      "module": "text-editing"
+      "module": "text-editing",
+      "description": "Describes an image that replaces a selected text match."
     },
     {
       "id": "TextReplaceRequest",
@@ -5565,7 +6084,8 @@
           "static": false
         }
       ],
-      "module": "text-editing"
+      "module": "text-editing",
+      "description": "A validated operation that replaces selected PDF text."
     },
     {
       "id": "TextReplaceRequestBuilder",
@@ -5758,7 +6278,8 @@
           "static": false
         }
       ],
-      "module": "text-editing"
+      "module": "text-editing",
+      "description": "Builds a validated text-replacement request."
     },
     {
       "id": "TextSelectorRequest",
@@ -5826,7 +6347,8 @@
           "static": false
         }
       ],
-      "module": "text-editing"
+      "module": "text-editing",
+      "description": "A literal or regular-expression selector for existing PDF text."
     },
     {
       "id": "TextStyleNumericFilterRequest",
@@ -5873,7 +6395,8 @@
           "static": false
         }
       ],
-      "module": "text-editing"
+      "module": "text-editing",
+      "description": "Numeric comparison criteria for matching existing text style runs."
     },
     {
       "id": "TextStylePatchBuilder",
@@ -5946,7 +6469,8 @@
           "static": false
         }
       ],
-      "module": "text-editing"
+      "module": "text-editing",
+      "description": "Builds an appearance patch for replacement, insertion, or styling."
     },
     {
       "id": "TextStylePatchRequest",
@@ -6029,7 +6553,8 @@
           "static": false
         }
       ],
-      "module": "text-editing"
+      "module": "text-editing",
+      "description": "Optional appearance changes; omitted fields retain their existing values."
     },
     {
       "id": "TextStyleRequest",
@@ -6130,7 +6655,8 @@
           "static": false
         }
       ],
-      "module": "text-editing"
+      "module": "text-editing",
+      "description": "A validated operation that changes existing text appearance."
     },
     {
       "id": "TextStyleRequestBuilder",
@@ -6371,7 +6897,8 @@
           "static": false
         }
       ],
-      "module": "text-editing"
+      "module": "text-editing",
+      "description": "Builds a validated text-style request."
     },
     {
       "id": "TextStyleRunFilterRequest",
@@ -6436,7 +6963,8 @@
           "static": false
         }
       ],
-      "module": "text-editing"
+      "module": "text-editing",
+      "description": "Existing appearance criteria used to select text style runs."
     },
     {
       "id": "TextStyleSelectorRequest",
@@ -6487,7 +7015,8 @@
           "static": false
         }
       ],
-      "module": "text-editing"
+      "module": "text-editing",
+      "description": "Text and appearance criteria used by a style operation."
     },
     {
       "id": "TextStyleSetBuilder",
@@ -6568,7 +7097,8 @@
           "static": false
         }
       ],
-      "module": "text-editing"
+      "module": "text-editing",
+      "description": "Builds a complete text appearance value."
     },
     {
       "id": "TextStyleSetRequest",
@@ -6658,7 +7188,8 @@
           "static": false
         }
       ],
-      "module": "text-editing"
+      "module": "text-editing",
+      "description": "A complete set of explicitly supplied text appearance values."
     },
     {
       "id": "ValidationException",

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "release": "3.0.0",
-  "sourceRef": "release/v3",
+  "release": "3.0.1",
+  "sourceRef": "v3.0.1",
   "types": [
     {
       "name": "com.pdfdancer.client.http.Argument",
@@ -675,6 +675,56 @@
     },
     {
       "name": "com.pdfdancer.common.response.PageSnapshot",
+      "status": "supported",
+      "reason": "Supported user-facing API type."
+    },
+    {
+      "name": "com.pdfdancer.common.response.ReadingUnit",
+      "status": "supported",
+      "reason": "Supported user-facing API type."
+    },
+    {
+      "name": "com.pdfdancer.common.response.ReadingUnitBounds",
+      "status": "supported",
+      "reason": "Supported user-facing API type."
+    },
+    {
+      "name": "com.pdfdancer.common.response.ReadingUnitDocumentAnalysis",
+      "status": "supported",
+      "reason": "Supported user-facing API type."
+    },
+    {
+      "name": "com.pdfdancer.common.response.ReadingUnitMode",
+      "status": "supported",
+      "reason": "Supported user-facing API type."
+    },
+    {
+      "name": "com.pdfdancer.common.response.ReadingUnitPageAnalysis",
+      "status": "supported",
+      "reason": "Supported user-facing API type."
+    },
+    {
+      "name": "com.pdfdancer.common.response.ReadingUnitProvenance",
+      "status": "supported",
+      "reason": "Supported user-facing API type."
+    },
+    {
+      "name": "com.pdfdancer.common.response.ReadingUnitRelationship",
+      "status": "supported",
+      "reason": "Supported user-facing API type."
+    },
+    {
+      "name": "com.pdfdancer.common.response.ReadingUnitRelationshipType",
+      "status": "supported",
+      "reason": "Supported user-facing API type."
+    },
+    {
+      "name": "com.pdfdancer.common.response.ReadingUnitRole",
+      "status": "supported",
+      "reason": "Supported user-facing API type."
+    },
+    {
+      "name": "com.pdfdancer.common.response.ReadingUnitStreamMembership",
       "status": "supported",
       "reason": "Supported user-facing API type."
     },

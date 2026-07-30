@@ -14,9 +14,9 @@ const OUTPUT_DIR = CHECK_MODE
   ? path.join(ROOT, 'build', '.v3-reference-check')
   : PUBLISHED_OUTPUT_DIR;
 const LANGUAGES = {
-  python: {label: 'Python', repository: 'pdfdancer-client-python', packageName: 'pdfdancer-client-python', version: '3.0.1'},
-  typescript: {label: 'TypeScript', repository: 'pdfdancer-client-typescript', packageName: 'pdfdancer-client-typescript', version: '3.0.0'},
-  java: {label: 'Java', repository: 'pdfdancer-client-java', packageName: 'com.pdfdancer.client:pdfdancer-client-java', version: '3.0.0'},
+  python: {label: 'Python', repository: 'pdfdancer-client-python', packageName: 'pdfdancer-client-python', version: '3.0.2'},
+  typescript: {label: 'TypeScript', repository: 'pdfdancer-client-typescript', packageName: 'pdfdancer-client-typescript', version: '3.0.1'},
+  java: {label: 'Java', repository: 'pdfdancer-client-java', packageName: 'com.pdfdancer.client:pdfdancer-client-java', version: '3.0.1'},
 };
 
 function readJson(file) {

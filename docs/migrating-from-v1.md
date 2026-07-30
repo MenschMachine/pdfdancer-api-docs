@@ -29,7 +29,7 @@ Find the v1 pattern in the first column and use the v3 capability in the second 
 | `ReflowPreset` | Choose whether text stays fixed, moves along the line, or is recomposed into new lines. | [Choose layout behavior](#choose-the-layout-behavior-your-output-needs) |
 | Images, paths, pages, forms, or fonts | Keep the same application task and adopt the v3 selectors, classes, methods, and result checks. | [Update other operations](#3-update-other-operations) |
 | Snapshots | Use the v3 snapshot classes and filter arguments. | See the language-specific examples in this documentation. |
-| Text extraction | Use the v3 REST API now; SDK support is coming in the next SDK releases. | [Text extraction](#text-extraction) |
+| Text extraction | Use reading-unit analysis in Python 3.0.2, TypeScript 3.0.1, or Java 3.0.1. | [Text extraction](#text-extraction) |
 | Redaction | Keep the v1 workflow until a v3 SDK replacement is available. | [Plan remaining workflows](#6-plan-for-remaining-v1-workflows) |
 | Template request objects | Compose the workflow from individual v3 text requests and compare the output with your v1 result. | [Plan remaining workflows](#6-plan-for-remaining-v1-workflows) |
 
@@ -126,11 +126,11 @@ Make these changes in your application:
 4. `TextEditResponse.matched` reports matching text; `changed` reports applied changes.
 5. `matched` can be greater than `changed`. Check both values, warnings, and errors before saving when every replacement is required.
 
-Use a regular expression when a literal target is not sufficient. These selectors find text to edit; they do not extract text from the PDF. For extraction, use the REST API until SDK support is available.
+Use a regular expression when a literal target is not sufficient. These selectors find text to edit; they do not extract text from the PDF. For extraction, use [reading-unit analysis](./reading-units).
 
 ### Text extraction
 
-Text extraction remains available through the v3 REST API. SDK support is coming in the next SDK releases. Use the REST API until the SDK version you use exposes the extraction operation.
+Python 3.0.2, TypeScript 3.0.1, and Java 3.0.1 expose reading-unit analysis at document and one-based page scope. The v3 result contains semantic reading units rather than the v1 `Paragraph` and `TextLine` inspection model. See [Structured Text and Reading Units](./reading-units).
 
 ### Convert each text operation
 
@@ -210,12 +210,11 @@ For image and path transformations, inspect `CommandResult.success`, its message
 
 ## 6. Plan for remaining v1 workflows
 
-Most editing workflows can move to v3. Plan separately for text extraction, redaction, and template or reflow workflows:
+Most editing workflows can move to v3. Plan separately for redaction and template or reflow workflows:
 
-- [Text extraction](#text-extraction) is available through the REST API now; SDK support is coming in the next SDK releases.
 - [Redaction](/v1/redaction)
 
-Keep redaction on v1 or choose another solution until a v3 SDK replacement is available. Text deletion cannot replace redaction.
+Migrate text extraction to [reading-unit analysis](./reading-units). Keep redaction on v1 or choose another solution until a v3 SDK replacement is available. Text deletion cannot replace redaction.
 
 For templates and reflow, compare v3 output with representative v1 output. An individual text replacement or v3 layout request may be suitable, but it is not necessarily equivalent to every v1 template or reflow behavior.
 
@@ -228,7 +227,7 @@ For templates and reflow, compare v3 output with representative v1 output. An in
 - [ ] Check `matched`, `changed`, warnings, and errors.
 - [ ] Update imports and Java package names.
 - [ ] Re-test fonts and layout-sensitive PDFs.
-- [ ] Use the REST API for text extraction until SDK support is available.
+- [ ] Migrate text extraction to reading-unit analysis.
 - [ ] Keep redaction on v1, or replace it with another solution until v3 SDK support is available.
 - [ ] Compare template and reflow output with representative v1 output.
 - [ ] Compare generated PDFs against v1 output using representative fixtures.
@@ -242,5 +241,5 @@ For templates and reflow, compare v3 output with representative v1 output. An in
 | Deleting Content | The relevant text, page, image, path, or form guide |
 | How Reflow Works | [Text Layout](./text-layout) |
 | Embedded Font Warning | [Working with Fonts](./working-with-fonts) |
-| Extracting Text | Use the v3 REST API; SDK support is coming in the next SDK releases |
+| Extracting Text | [Structured Text and Reading Units](./reading-units) |
 | Redaction | No v3 SDK replacement; keep the v1 workflow or choose another solution |

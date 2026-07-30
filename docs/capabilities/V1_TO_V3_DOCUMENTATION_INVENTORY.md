@@ -73,7 +73,7 @@ These are cross-cutting tasks for the new v3 page copies, not edits to the versi
 | Frozen v1 source page | Proposed separate v3 counterpart | Source material to reuse | Changes in the v3 counterpart | Confidence / blocker |
 |---|---|---|---|---|
 | `concepts.md` | **Create v3 replacement** | PDF fundamentals, points, page sizes, coordinates, images, paths, form-field/FormXObject distinction, fonts, colors, builders, thread-safety section | Remove paragraphs and text lines as the primary public content model. Introduce v3 text selectors, request/builders, `TextEditResponse`, object/reference types, and page/document scoping. Retain only thread-safety claims confirmed for v3. | Content-model change confirmed; behavior descriptions need editorial/source review. |
-| `finding-content.md` | **Create v3 replacement** | Document-versus-page scope, position/content grouping, method-summary format | Replace paragraph/text-line selectors with v3 text selectors for editing. Retain and update image, path, form, form-field, snapshot, and generic element selection. Distinguish “select for mutation” from “inspect/extract.” | v1 text selectors removed; v3 selection models confirmed. Text inspection workflow remains open. |
+| `finding-content.md` | **Create v3 replacement** | Document-versus-page scope, position/content grouping, method-summary format | Replace paragraph/text-line selectors with v3 text selectors for editing. Retain and update image, path, form, form-field, snapshot, and generic element selection. Distinguish “select for mutation” from reading-unit analysis. | v1 text selectors removed; v3 selection and reading-unit models confirmed. |
 | `positioning.md` | **Derive and revise** | Coordinate-system explanation, PDF points, positions, bounding rectangles, common patterns | Update type names and examples. Audit every `pageIndex`/`pageNumber` statement and selection-tolerance example. | Core topic remains; indexing consistency requires careful edit. |
 | `deleting-content.md` | **Derive and revise** | Page deletion, image deletion, reverse-order page deletion rationale | Rewrite paragraph/text-line deletion as `TextDeleteRequest`. Update object types and return values. Keep “deletion versus redaction” only after v3 redaction status is resolved. | Text deletion API confirmed; redaction comparison blocked. |
 
@@ -81,7 +81,7 @@ These are cross-cutting tasks for the new v3 page copies, not edits to the versi
 
 | Frozen v1 source page | Proposed separate v3 counterpart | Source material to reuse | Changes in the v3 counterpart | Confidence / blocker |
 |---|---|---|---|---|
-| `extracting-text.md` | **No v3 counterpart yet** | User goal, extraction patterns, performance considerations | The page is built around removed paragraph/text-line inspection models. Publish only after a supported v3 text-extraction/inspection workflow is identified. Do not present text-edit selectors as extraction without evidence. | No replacement established from public interfaces. |
+| `extracting-text.md` | **Derive and revise as `reading-units.md`** | User goal, extraction patterns, performance considerations | Replace removed paragraph/text-line inspection models with document- and page-scoped reading-unit analysis. Document semantic roles, reading order, provenance, bounds, relationships, and limitations. Do not present text-edit selectors as extraction. | Public reading-unit interfaces are present in Python 3.0.2, TypeScript 3.0.1, and Java 3.0.1. |
 | `working-with-text.md` | **Create v3 replacement** | Page ID, broad user goal, language-tab format, links to fonts/positioning | Replace paragraph/text-line CRUD sections with select, replace, insert, delete, style, layout, image replacement, responses, and diagnostics. Decide whether the 1,800-line page should be split only after the rewrite outline is reviewed. | v3 text API confirmed. Exact workflow details come from SDK examples/tests. |
 | `working-with-images.md` | **Derive and revise** | Select/add/move/delete/transform organization | Update promoted object imports, page/document entry points, transformation methods, result types, and image-builder signatures. Keep clipping coverage and link to the internal clipping evidence where useful. | Capability retained and expanded. |
 | `working-with-pages.md` | **Derive and revise** | Access, iteration, delete, move, add, create-new organization | Update page clients/builders, snapshot signatures, insertion methods, page-number terminology, Java packages, and return types. | Capability retained; API details changed. |
@@ -143,7 +143,8 @@ Approved merges and omissions:
 - `deleting-content.md` is distributed across the relevant content guides.
 - `reflow-internals.md` maps to v3 `text-layout.md`.
 - `notes/embedded-font-warning.md` is merged into v3 `working-with-fonts.md`.
-- `extracting-text.md` and `redaction.md` have no v3 counterpart until a corresponding public v3 SDK interface exists.
+- `extracting-text.md` maps to the v3 `reading-units.md` guide.
+- `redaction.md` has no v3 counterpart until a corresponding public v3 SDK interface exists.
 
 ## Required and Candidate New v3 Content
 
@@ -153,7 +154,7 @@ One new page is required by the version transition itself:
 |---|---|
 | `migrating-from-v1.md` | Users need an explicit mapping for removed paragraph/text-line APIs, request-based text editing, package-root promotions, result-type changes, and unavailable capabilities. |
 
-The three approved additional text routes are `editing-text.md`, `styling-text.md`, and `text-layout.md`. Targeting and response diagnostics remain in `working-with-text.md` rather than becoming standalone pages.
+The three approved additional text routes are `editing-text.md`, `styling-text.md`, and `text-layout.md`. Targeting and response diagnostics remain in `working-with-text.md` rather than becoming standalone pages. Structured text extraction is documented separately in `reading-units.md`.
 
 ## Selected Sidebar Strategy
 
@@ -162,8 +163,9 @@ The v3 sidebar will be selectively restructured rather than mirroring the v1 sid
 - Reuse existing IDs for pages that retain a one-to-one purpose.
 - Record the source v1 sections for every split or merged v3 page.
 - Add `migrating-from-v1` after the language quickstarts.
-- Do not create v3 sidebar entries for pages classified **No v3 counterpart yet** (`extracting-text` and `redaction`) until support is confirmed.
-- Keep their v1 versions accessible under `/v1`.
+- Add `reading-units` under PDF Fundamentals as the v3 extraction counterpart.
+- Do not create a v3 sidebar entry for `redaction` until support is confirmed.
+- Keep the v1 extraction and redaction pages accessible under `/v1`.
 - Keep internal `capabilities/` material excluded.
 
 The exact categories, ordering, merges, and page IDs are implemented in `sidebars.ts`.
@@ -177,7 +179,7 @@ The exact categories, ordering, merges, and page IDs are implemented in `sidebar
 5. Create the approved v3 text pages, then derive their dependent concepts, deletion, fonts, templates, layout, cookbook, advanced, and error-handling content.
 6. Derive the approved non-text v3 pages: authentication, positioning, images, pages, forms, vector graphics, snapshots, preservation, fonts list, glossary, and embedded-font note.
 7. Draft `migrating-from-v1.md` from the reviewed migration inventory.
-8. Resolve pages with no v3 counterpart before adding corresponding entries to the v3 sidebar.
+8. Add the confirmed reading-unit extraction counterpart; resolve remaining pages with no v3 counterpart before adding their sidebar entries.
 9. Create the v3 `sdk-versions.md` replacement only after final release versions are known.
 
 ## Reviewer Decisions
@@ -185,7 +187,7 @@ The exact categories, ordering, merges, and page IDs are implemented in `sidebar
 - [x] Select **Option 3: selective restructuring**.
 - [x] Approve the target v3 sidebar and page IDs.
 - [x] Approve the split/merge source map for each restructured page.
-- [x] Confirm no v3 counterpart for `extracting-text.md` until a public v3 inspection API is identified.
+- [x] Replace `extracting-text.md` with `reading-units.md` after public v3 reading-unit interfaces were identified.
 - [x] Confirm no v3 counterpart for `redaction.md` until a public v3 replacement exists.
 - [x] Split text into four broader guides derived from the Java v3 tutorial.
 - [x] Replace the v1 reflow page with `text-layout.md`.

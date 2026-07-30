@@ -20,7 +20,7 @@ source .venv/bin/activate  # Windows: .venv\Scripts\activate
 ## 2. Install PDFDancer
 
 ```bash
-python -m pip install pdfdancer-client-python==3.0.1
+python -m pip install pdfdancer-client-python==3.0.2
 ```
 
 Python 3.10 or newer is required.

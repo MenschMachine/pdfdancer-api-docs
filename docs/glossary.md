@@ -70,7 +70,15 @@ description: Find precise definitions for PDFDancer, PDF structure, document edi
 
 **Position tolerance** — The distance in points allowed by a coordinate selector. Point selectors default to `0.01` point. Increasing tolerance can find objects near rounded coordinates but can also produce multiple matches.
 
+**Primary reading stream** — The logical sequence reported by reading-unit analysis. Stream membership states whether a unit participates, and its order gives the unit's one-based position among participating units. Excluded units can still appear in the analysis result.
+
 ## R
+
+**Reading unit** — A semantically classified text block returned by reading-unit analysis. A unit contains text, reading-stream membership, source provenance, bounds, and relationships. It is analysis output, not an accessibility tag or an editable text selector. See [Structured Text and Reading Units](./reading-units).
+
+**Reading-unit provenance** — The source information associated with a reading unit: its one-based page number, source-element identifiers, and page-space bounds. Provenance connects analysis output to the corresponding PDF content but does not create a permanent business identifier.
+
+**Reading-unit role** — The semantic classification assigned to a reading unit, such as heading, paragraph, list, caption, page header, or footnote. An `UNKNOWN` value allows clients to handle classifications introduced by a newer service.
 
 **Reflow** — Recomposition of a detected text unit after replacement, insertion, deletion, or styling. Depending on the selected profile, following text can move horizontally or wrap onto recalculated lines.
 
@@ -113,4 +121,5 @@ The three SDKs expose the same concepts with language-appropriate naming:
 | Move an object | `move_to(x, y)` | `moveTo(x, y)` | `moveTo(x, y)` |
 | Reflow if available | `reflow_when_supported(...)` | `reflowWhenSupported(...)` | `reflowWhenSupported(...)` |
 | Require reflow | `require_reflow(...)` | `requireReflow(...)` | `requireReflow(...)` |
+| Analyze reading units | `analyze_reading_units()` | `analyzeReadingUnits()` | `analyzeReadingUnits()` |
 | No singular match | `None` | `null` | `Optional.empty()` |

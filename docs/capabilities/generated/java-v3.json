@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "language": "java",
   "repository": "pdfdancer-client-java",
-  "candidateRef": "release/v3",
-  "candidateCommit": "9c04036fe11472d78332038d401c7c44fbefa406",
+  "candidateRef": "v3.0.1",
+  "candidateCommit": "20639941174b14fa131fb31969b69b72eb612c64",
   "symbols": [
     {
       "id": "com.pdfdancer.client.http.Argument",
@@ -2130,6 +2130,24 @@
           "static": false
         },
         {
+          "id": "method:analyzeReadingUnits",
+          "name": "analyzeReadingUnits",
+          "kind": "method",
+          "signature": "public com.pdfdancer.common.response.ReadingUnitDocumentAnalysis analyzeReadingUnits()",
+          "arity": 0,
+          "static": false,
+          "description": "Analyzes the current session PDF into semantic reading units."
+        },
+        {
+          "id": "method:analyzeReadingUnits",
+          "name": "analyzeReadingUnits",
+          "kind": "method",
+          "signature": "public com.pdfdancer.common.response.ReadingUnitPageAnalysis analyzeReadingUnits(int)",
+          "arity": 1,
+          "static": false,
+          "description": "Analyzes one one-based page of the current session PDF into reading units."
+        },
+        {
           "id": "method:clearClipping",
           "name": "clearClipping",
           "kind": "method",
@@ -2557,6 +2575,14 @@
       "kind": "class",
       "signature": "public class com.pdfdancer.client.rest.PDFDancer$PageClient extends com.pdfdancer.client.rest.PageClientImpl",
       "members": [
+        {
+          "id": "method:analyzeReadingUnits",
+          "name": "analyzeReadingUnits",
+          "kind": "method",
+          "signature": "public com.pdfdancer.common.response.ReadingUnitPageAnalysis analyzeReadingUnits()",
+          "arity": 0,
+          "static": false
+        },
         {
           "id": "method:delete",
           "name": "delete",
@@ -11194,6 +11220,803 @@
         }
       ],
       "description": "Represents a complete snapshot of a single PDF page including its metadata and all elements.\nThis response aggregates page information and contained objects into a single response,\nreducing the number of API calls needed to retrieve page content."
+    },
+    {
+      "id": "com.pdfdancer.common.response.ReadingUnit",
+      "name": "ReadingUnit",
+      "kind": "class",
+      "signature": "public final class com.pdfdancer.common.response.ReadingUnit extends java.lang.Record",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "public com.pdfdancer.common.response.ReadingUnit(java.lang.String, com.pdfdancer.common.response.ReadingUnitRole, java.lang.String, java.lang.String, java.util.Map<com.pdfdancer.common.response.ReadingUnitMode, com.pdfdancer.common.response.ReadingUnitStreamMembership>, com.pdfdancer.common.response.ReadingUnitProvenance, java.util.List<com.pdfdancer.common.response.ReadingUnitRelationship>)",
+          "arity": 7,
+          "static": false,
+          "description": "Creates an instance of a ReadingUnit record class."
+        },
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "public com.pdfdancer.common.response.ReadingUnit(java.lang.String, java.lang.String, java.lang.String, java.util.Map<java.lang.String, com.pdfdancer.common.response.ReadingUnitStreamMembership>, com.pdfdancer.common.response.ReadingUnitProvenance, java.util.List<com.pdfdancer.common.response.ReadingUnitRelationship>)",
+          "arity": 6,
+          "static": false,
+          "description": "Creates an instance of a ReadingUnit record class."
+        },
+        {
+          "id": "method:equals",
+          "name": "equals",
+          "kind": "method",
+          "signature": "public final boolean equals(java.lang.Object)",
+          "arity": 1,
+          "static": false,
+          "description": "Indicates whether some other object is \"equal to\" this one. The objects are equal if the other object is of the same class and if all the record components are equal. All components in this record class are compared with Objects::equals(Object,Object)."
+        },
+        {
+          "id": "method:hashCode",
+          "name": "hashCode",
+          "kind": "method",
+          "signature": "public final int hashCode()",
+          "arity": 0,
+          "static": false,
+          "description": "Returns a hash code value for this object. The value is derived from the hash code of each of the record components."
+        },
+        {
+          "id": "method:id",
+          "name": "id",
+          "kind": "method",
+          "signature": "public java.lang.String id()",
+          "arity": 0,
+          "static": false,
+          "description": "Returns the value of the id record component."
+        },
+        {
+          "id": "method:provenance",
+          "name": "provenance",
+          "kind": "method",
+          "signature": "public com.pdfdancer.common.response.ReadingUnitProvenance provenance()",
+          "arity": 0,
+          "static": false,
+          "description": "Returns the value of the provenance record component."
+        },
+        {
+          "id": "method:rawRole",
+          "name": "rawRole",
+          "kind": "method",
+          "signature": "public java.lang.String rawRole()",
+          "arity": 0,
+          "static": false,
+          "description": "Returns the value of the rawRole record component."
+        },
+        {
+          "id": "method:relationships",
+          "name": "relationships",
+          "kind": "method",
+          "signature": "public java.util.List<com.pdfdancer.common.response.ReadingUnitRelationship> relationships()",
+          "arity": 0,
+          "static": false,
+          "description": "Returns the value of the relationships record component."
+        },
+        {
+          "id": "method:role",
+          "name": "role",
+          "kind": "method",
+          "signature": "public com.pdfdancer.common.response.ReadingUnitRole role()",
+          "arity": 0,
+          "static": false,
+          "description": "Returns the value of the role record component."
+        },
+        {
+          "id": "method:stream",
+          "name": "stream",
+          "kind": "method",
+          "signature": "public java.util.Map<com.pdfdancer.common.response.ReadingUnitMode, com.pdfdancer.common.response.ReadingUnitStreamMembership> stream()",
+          "arity": 0,
+          "static": false,
+          "description": "Returns the value of the stream record component."
+        },
+        {
+          "id": "method:text",
+          "name": "text",
+          "kind": "method",
+          "signature": "public java.lang.String text()",
+          "arity": 0,
+          "static": false,
+          "description": "Returns the value of the text record component."
+        },
+        {
+          "id": "method:toString",
+          "name": "toString",
+          "kind": "method",
+          "signature": "public final java.lang.String toString()",
+          "arity": 0,
+          "static": false,
+          "description": "Returns a string representation of this record class. The representation contains the name of the class, followed by the name and value of each of the record components."
+        }
+      ]
+    },
+    {
+      "id": "com.pdfdancer.common.response.ReadingUnitBounds",
+      "name": "ReadingUnitBounds",
+      "kind": "class",
+      "signature": "public final class com.pdfdancer.common.response.ReadingUnitBounds extends java.lang.Record",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "public com.pdfdancer.common.response.ReadingUnitBounds(double, double, double, double)",
+          "arity": 4,
+          "static": false,
+          "description": "Creates an instance of a ReadingUnitBounds record class."
+        },
+        {
+          "id": "method:equals",
+          "name": "equals",
+          "kind": "method",
+          "signature": "public final boolean equals(java.lang.Object)",
+          "arity": 1,
+          "static": false,
+          "description": "Indicates whether some other object is \"equal to\" this one. The objects are equal if the other object is of the same class and if all the record components are equal. All components in this record class are compared with '=='."
+        },
+        {
+          "id": "method:hashCode",
+          "name": "hashCode",
+          "kind": "method",
+          "signature": "public final int hashCode()",
+          "arity": 0,
+          "static": false,
+          "description": "Returns a hash code value for this object. The value is derived from the hash code of each of the record components."
+        },
+        {
+          "id": "method:height",
+          "name": "height",
+          "kind": "method",
+          "signature": "public double height()",
+          "arity": 0,
+          "static": false,
+          "description": "Returns the value of the height record component."
+        },
+        {
+          "id": "method:toString",
+          "name": "toString",
+          "kind": "method",
+          "signature": "public final java.lang.String toString()",
+          "arity": 0,
+          "static": false,
+          "description": "Returns a string representation of this record class. The representation contains the name of the class, followed by the name and value of each of the record components."
+        },
+        {
+          "id": "method:width",
+          "name": "width",
+          "kind": "method",
+          "signature": "public double width()",
+          "arity": 0,
+          "static": false,
+          "description": "Returns the value of the width record component."
+        },
+        {
+          "id": "method:x",
+          "name": "x",
+          "kind": "method",
+          "signature": "public double x()",
+          "arity": 0,
+          "static": false,
+          "description": "Returns the value of the x record component."
+        },
+        {
+          "id": "method:y",
+          "name": "y",
+          "kind": "method",
+          "signature": "public double y()",
+          "arity": 0,
+          "static": false,
+          "description": "Returns the value of the y record component."
+        }
+      ]
+    },
+    {
+      "id": "com.pdfdancer.common.response.ReadingUnitDocumentAnalysis",
+      "name": "ReadingUnitDocumentAnalysis",
+      "kind": "class",
+      "signature": "public final class com.pdfdancer.common.response.ReadingUnitDocumentAnalysis extends java.lang.Record",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "public com.pdfdancer.common.response.ReadingUnitDocumentAnalysis(int, com.pdfdancer.common.response.ReadingUnitMode, java.util.List<com.pdfdancer.common.response.ReadingUnitPageAnalysis>)",
+          "arity": 3,
+          "static": false,
+          "description": "Creates an instance of a ReadingUnitDocumentAnalysis record class."
+        },
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "public com.pdfdancer.common.response.ReadingUnitDocumentAnalysis(int, java.lang.String, java.util.List<com.pdfdancer.common.response.ReadingUnitPageAnalysis>)",
+          "arity": 3,
+          "static": false,
+          "description": "Creates an instance of a ReadingUnitDocumentAnalysis record class."
+        },
+        {
+          "id": "method:equals",
+          "name": "equals",
+          "kind": "method",
+          "signature": "public final boolean equals(java.lang.Object)",
+          "arity": 1,
+          "static": false,
+          "description": "Indicates whether some other object is \"equal to\" this one. The objects are equal if the other object is of the same class and if all the record components are equal. Reference components are compared with Objects::equals(Object,Object); primitive components are compared with '=='."
+        },
+        {
+          "id": "method:hashCode",
+          "name": "hashCode",
+          "kind": "method",
+          "signature": "public final int hashCode()",
+          "arity": 0,
+          "static": false,
+          "description": "Returns a hash code value for this object. The value is derived from the hash code of each of the record components."
+        },
+        {
+          "id": "method:mode",
+          "name": "mode",
+          "kind": "method",
+          "signature": "public com.pdfdancer.common.response.ReadingUnitMode mode()",
+          "arity": 0,
+          "static": false,
+          "description": "Returns the value of the mode record component."
+        },
+        {
+          "id": "method:pageCount",
+          "name": "pageCount",
+          "kind": "method",
+          "signature": "public int pageCount()",
+          "arity": 0,
+          "static": false,
+          "description": "Returns the value of the pageCount record component."
+        },
+        {
+          "id": "method:pages",
+          "name": "pages",
+          "kind": "method",
+          "signature": "public java.util.List<com.pdfdancer.common.response.ReadingUnitPageAnalysis> pages()",
+          "arity": 0,
+          "static": false,
+          "description": "Returns the value of the pages record component."
+        },
+        {
+          "id": "method:toString",
+          "name": "toString",
+          "kind": "method",
+          "signature": "public final java.lang.String toString()",
+          "arity": 0,
+          "static": false,
+          "description": "Returns a string representation of this record class. The representation contains the name of the class, followed by the name and value of each of the record components."
+        }
+      ]
+    },
+    {
+      "id": "com.pdfdancer.common.response.ReadingUnitMode",
+      "name": "ReadingUnitMode",
+      "kind": "enum",
+      "signature": "public final class com.pdfdancer.common.response.ReadingUnitMode extends java.lang.Enum<com.pdfdancer.common.response.ReadingUnitMode>",
+      "members": [
+        {
+          "id": "enum-value:PRIMARY",
+          "name": "PRIMARY",
+          "kind": "enum-value",
+          "signature": "public static final com.pdfdancer.common.response.ReadingUnitMode PRIMARY",
+          "static": true
+        },
+        {
+          "id": "enum-value:UNKNOWN",
+          "name": "UNKNOWN",
+          "kind": "enum-value",
+          "signature": "public static final com.pdfdancer.common.response.ReadingUnitMode UNKNOWN",
+          "static": true
+        },
+        {
+          "id": "method:fromValue",
+          "name": "fromValue",
+          "kind": "method",
+          "signature": "public static com.pdfdancer.common.response.ReadingUnitMode fromValue(java.lang.String)",
+          "arity": 1,
+          "static": true
+        },
+        {
+          "id": "method:valueOf",
+          "name": "valueOf",
+          "kind": "method",
+          "signature": "public static com.pdfdancer.common.response.ReadingUnitMode valueOf(java.lang.String)",
+          "arity": 1,
+          "static": true,
+          "description": "Returns the enum constant of this class with the specified name.\nThe string must match exactly an identifier used to declare an\nenum constant in this class.  (Extraneous whitespace characters are\nnot permitted.)"
+        },
+        {
+          "id": "method:values",
+          "name": "values",
+          "kind": "method",
+          "signature": "public static com.pdfdancer.common.response.ReadingUnitMode[] values()",
+          "arity": 0,
+          "static": true,
+          "description": "Returns an array containing the constants of this enum class, in\nthe order they are declared."
+        }
+      ]
+    },
+    {
+      "id": "com.pdfdancer.common.response.ReadingUnitPageAnalysis",
+      "name": "ReadingUnitPageAnalysis",
+      "kind": "class",
+      "signature": "public final class com.pdfdancer.common.response.ReadingUnitPageAnalysis extends java.lang.Record",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "public com.pdfdancer.common.response.ReadingUnitPageAnalysis(int, com.pdfdancer.common.response.ReadingUnitMode, java.util.List<com.pdfdancer.common.response.ReadingUnit>)",
+          "arity": 3,
+          "static": false,
+          "description": "Creates an instance of a ReadingUnitPageAnalysis record class."
+        },
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "public com.pdfdancer.common.response.ReadingUnitPageAnalysis(int, java.lang.String, java.util.List<com.pdfdancer.common.response.ReadingUnit>)",
+          "arity": 3,
+          "static": false,
+          "description": "Creates an instance of a ReadingUnitPageAnalysis record class."
+        },
+        {
+          "id": "method:equals",
+          "name": "equals",
+          "kind": "method",
+          "signature": "public final boolean equals(java.lang.Object)",
+          "arity": 1,
+          "static": false,
+          "description": "Indicates whether some other object is \"equal to\" this one. The objects are equal if the other object is of the same class and if all the record components are equal. Reference components are compared with Objects::equals(Object,Object); primitive components are compared with '=='."
+        },
+        {
+          "id": "method:hashCode",
+          "name": "hashCode",
+          "kind": "method",
+          "signature": "public final int hashCode()",
+          "arity": 0,
+          "static": false,
+          "description": "Returns a hash code value for this object. The value is derived from the hash code of each of the record components."
+        },
+        {
+          "id": "method:mode",
+          "name": "mode",
+          "kind": "method",
+          "signature": "public com.pdfdancer.common.response.ReadingUnitMode mode()",
+          "arity": 0,
+          "static": false,
+          "description": "Returns the value of the mode record component."
+        },
+        {
+          "id": "method:pageNumber",
+          "name": "pageNumber",
+          "kind": "method",
+          "signature": "public int pageNumber()",
+          "arity": 0,
+          "static": false,
+          "description": "Returns the value of the pageNumber record component."
+        },
+        {
+          "id": "method:toString",
+          "name": "toString",
+          "kind": "method",
+          "signature": "public final java.lang.String toString()",
+          "arity": 0,
+          "static": false,
+          "description": "Returns a string representation of this record class. The representation contains the name of the class, followed by the name and value of each of the record components."
+        },
+        {
+          "id": "method:units",
+          "name": "units",
+          "kind": "method",
+          "signature": "public java.util.List<com.pdfdancer.common.response.ReadingUnit> units()",
+          "arity": 0,
+          "static": false,
+          "description": "Returns the value of the units record component."
+        }
+      ]
+    },
+    {
+      "id": "com.pdfdancer.common.response.ReadingUnitProvenance",
+      "name": "ReadingUnitProvenance",
+      "kind": "class",
+      "signature": "public final class com.pdfdancer.common.response.ReadingUnitProvenance extends java.lang.Record",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "public com.pdfdancer.common.response.ReadingUnitProvenance(int, java.util.List<java.lang.String>, com.pdfdancer.common.response.ReadingUnitBounds)",
+          "arity": 3,
+          "static": false,
+          "description": "Creates an instance of a ReadingUnitProvenance record class."
+        },
+        {
+          "id": "method:bounds",
+          "name": "bounds",
+          "kind": "method",
+          "signature": "public com.pdfdancer.common.response.ReadingUnitBounds bounds()",
+          "arity": 0,
+          "static": false,
+          "description": "Returns the value of the bounds record component."
+        },
+        {
+          "id": "method:equals",
+          "name": "equals",
+          "kind": "method",
+          "signature": "public final boolean equals(java.lang.Object)",
+          "arity": 1,
+          "static": false,
+          "description": "Indicates whether some other object is \"equal to\" this one. The objects are equal if the other object is of the same class and if all the record components are equal. Reference components are compared with Objects::equals(Object,Object); primitive components are compared with '=='."
+        },
+        {
+          "id": "method:hashCode",
+          "name": "hashCode",
+          "kind": "method",
+          "signature": "public final int hashCode()",
+          "arity": 0,
+          "static": false,
+          "description": "Returns a hash code value for this object. The value is derived from the hash code of each of the record components."
+        },
+        {
+          "id": "method:pageNumber",
+          "name": "pageNumber",
+          "kind": "method",
+          "signature": "public int pageNumber()",
+          "arity": 0,
+          "static": false,
+          "description": "Returns the value of the pageNumber record component."
+        },
+        {
+          "id": "method:sourceElementIds",
+          "name": "sourceElementIds",
+          "kind": "method",
+          "signature": "public java.util.List<java.lang.String> sourceElementIds()",
+          "arity": 0,
+          "static": false,
+          "description": "Returns the value of the sourceElementIds record component."
+        },
+        {
+          "id": "method:toString",
+          "name": "toString",
+          "kind": "method",
+          "signature": "public final java.lang.String toString()",
+          "arity": 0,
+          "static": false,
+          "description": "Returns a string representation of this record class. The representation contains the name of the class, followed by the name and value of each of the record components."
+        }
+      ]
+    },
+    {
+      "id": "com.pdfdancer.common.response.ReadingUnitRelationship",
+      "name": "ReadingUnitRelationship",
+      "kind": "class",
+      "signature": "public final class com.pdfdancer.common.response.ReadingUnitRelationship extends java.lang.Record",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "public com.pdfdancer.common.response.ReadingUnitRelationship(com.pdfdancer.common.response.ReadingUnitRelationshipType, java.lang.String, java.lang.String)",
+          "arity": 3,
+          "static": false,
+          "description": "Creates an instance of a ReadingUnitRelationship record class."
+        },
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "public com.pdfdancer.common.response.ReadingUnitRelationship(java.lang.String, java.lang.String)",
+          "arity": 2,
+          "static": false,
+          "description": "Creates an instance of a ReadingUnitRelationship record class."
+        },
+        {
+          "id": "method:equals",
+          "name": "equals",
+          "kind": "method",
+          "signature": "public final boolean equals(java.lang.Object)",
+          "arity": 1,
+          "static": false,
+          "description": "Indicates whether some other object is \"equal to\" this one. The objects are equal if the other object is of the same class and if all the record components are equal. All components in this record class are compared with Objects::equals(Object,Object)."
+        },
+        {
+          "id": "method:hashCode",
+          "name": "hashCode",
+          "kind": "method",
+          "signature": "public final int hashCode()",
+          "arity": 0,
+          "static": false,
+          "description": "Returns a hash code value for this object. The value is derived from the hash code of each of the record components."
+        },
+        {
+          "id": "method:rawType",
+          "name": "rawType",
+          "kind": "method",
+          "signature": "public java.lang.String rawType()",
+          "arity": 0,
+          "static": false,
+          "description": "Returns the value of the rawType record component."
+        },
+        {
+          "id": "method:targetUnitId",
+          "name": "targetUnitId",
+          "kind": "method",
+          "signature": "public java.lang.String targetUnitId()",
+          "arity": 0,
+          "static": false,
+          "description": "Returns the value of the targetUnitId record component."
+        },
+        {
+          "id": "method:toString",
+          "name": "toString",
+          "kind": "method",
+          "signature": "public final java.lang.String toString()",
+          "arity": 0,
+          "static": false,
+          "description": "Returns a string representation of this record class. The representation contains the name of the class, followed by the name and value of each of the record components."
+        },
+        {
+          "id": "method:type",
+          "name": "type",
+          "kind": "method",
+          "signature": "public com.pdfdancer.common.response.ReadingUnitRelationshipType type()",
+          "arity": 0,
+          "static": false,
+          "description": "Returns the value of the type record component."
+        }
+      ]
+    },
+    {
+      "id": "com.pdfdancer.common.response.ReadingUnitRelationshipType",
+      "name": "ReadingUnitRelationshipType",
+      "kind": "enum",
+      "signature": "public final class com.pdfdancer.common.response.ReadingUnitRelationshipType extends java.lang.Enum<com.pdfdancer.common.response.ReadingUnitRelationshipType>",
+      "members": [
+        {
+          "id": "enum-value:CAPTION_FOR",
+          "name": "CAPTION_FOR",
+          "kind": "enum-value",
+          "signature": "public static final com.pdfdancer.common.response.ReadingUnitRelationshipType CAPTION_FOR",
+          "static": true
+        },
+        {
+          "id": "enum-value:HEADING_PARENT_OF",
+          "name": "HEADING_PARENT_OF",
+          "kind": "enum-value",
+          "signature": "public static final com.pdfdancer.common.response.ReadingUnitRelationshipType HEADING_PARENT_OF",
+          "static": true
+        },
+        {
+          "id": "enum-value:UNKNOWN",
+          "name": "UNKNOWN",
+          "kind": "enum-value",
+          "signature": "public static final com.pdfdancer.common.response.ReadingUnitRelationshipType UNKNOWN",
+          "static": true
+        },
+        {
+          "id": "method:fromValue",
+          "name": "fromValue",
+          "kind": "method",
+          "signature": "public static com.pdfdancer.common.response.ReadingUnitRelationshipType fromValue(java.lang.String)",
+          "arity": 1,
+          "static": true
+        },
+        {
+          "id": "method:valueOf",
+          "name": "valueOf",
+          "kind": "method",
+          "signature": "public static com.pdfdancer.common.response.ReadingUnitRelationshipType valueOf(java.lang.String)",
+          "arity": 1,
+          "static": true,
+          "description": "Returns the enum constant of this class with the specified name.\nThe string must match exactly an identifier used to declare an\nenum constant in this class.  (Extraneous whitespace characters are\nnot permitted.)"
+        },
+        {
+          "id": "method:values",
+          "name": "values",
+          "kind": "method",
+          "signature": "public static com.pdfdancer.common.response.ReadingUnitRelationshipType[] values()",
+          "arity": 0,
+          "static": true,
+          "description": "Returns an array containing the constants of this enum class, in\nthe order they are declared."
+        }
+      ]
+    },
+    {
+      "id": "com.pdfdancer.common.response.ReadingUnitRole",
+      "name": "ReadingUnitRole",
+      "kind": "enum",
+      "signature": "public final class com.pdfdancer.common.response.ReadingUnitRole extends java.lang.Enum<com.pdfdancer.common.response.ReadingUnitRole>",
+      "members": [
+        {
+          "id": "enum-value:CALLOUT",
+          "name": "CALLOUT",
+          "kind": "enum-value",
+          "signature": "public static final com.pdfdancer.common.response.ReadingUnitRole CALLOUT",
+          "static": true
+        },
+        {
+          "id": "enum-value:CAPTION",
+          "name": "CAPTION",
+          "kind": "enum-value",
+          "signature": "public static final com.pdfdancer.common.response.ReadingUnitRole CAPTION",
+          "static": true
+        },
+        {
+          "id": "enum-value:FOOTNOTE",
+          "name": "FOOTNOTE",
+          "kind": "enum-value",
+          "signature": "public static final com.pdfdancer.common.response.ReadingUnitRole FOOTNOTE",
+          "static": true
+        },
+        {
+          "id": "enum-value:HEADING",
+          "name": "HEADING",
+          "kind": "enum-value",
+          "signature": "public static final com.pdfdancer.common.response.ReadingUnitRole HEADING",
+          "static": true
+        },
+        {
+          "id": "enum-value:LIST",
+          "name": "LIST",
+          "kind": "enum-value",
+          "signature": "public static final com.pdfdancer.common.response.ReadingUnitRole LIST",
+          "static": true
+        },
+        {
+          "id": "enum-value:PAGE_FOOTER",
+          "name": "PAGE_FOOTER",
+          "kind": "enum-value",
+          "signature": "public static final com.pdfdancer.common.response.ReadingUnitRole PAGE_FOOTER",
+          "static": true
+        },
+        {
+          "id": "enum-value:PAGE_HEADER",
+          "name": "PAGE_HEADER",
+          "kind": "enum-value",
+          "signature": "public static final com.pdfdancer.common.response.ReadingUnitRole PAGE_HEADER",
+          "static": true
+        },
+        {
+          "id": "enum-value:PAGE_NUMBER",
+          "name": "PAGE_NUMBER",
+          "kind": "enum-value",
+          "signature": "public static final com.pdfdancer.common.response.ReadingUnitRole PAGE_NUMBER",
+          "static": true
+        },
+        {
+          "id": "enum-value:PARAGRAPH",
+          "name": "PARAGRAPH",
+          "kind": "enum-value",
+          "signature": "public static final com.pdfdancer.common.response.ReadingUnitRole PARAGRAPH",
+          "static": true
+        },
+        {
+          "id": "enum-value:PREFORMATTED_TEXT",
+          "name": "PREFORMATTED_TEXT",
+          "kind": "enum-value",
+          "signature": "public static final com.pdfdancer.common.response.ReadingUnitRole PREFORMATTED_TEXT",
+          "static": true
+        },
+        {
+          "id": "enum-value:TABLE",
+          "name": "TABLE",
+          "kind": "enum-value",
+          "signature": "public static final com.pdfdancer.common.response.ReadingUnitRole TABLE",
+          "static": true
+        },
+        {
+          "id": "enum-value:UNKNOWN",
+          "name": "UNKNOWN",
+          "kind": "enum-value",
+          "signature": "public static final com.pdfdancer.common.response.ReadingUnitRole UNKNOWN",
+          "static": true
+        },
+        {
+          "id": "enum-value:WATERMARK",
+          "name": "WATERMARK",
+          "kind": "enum-value",
+          "signature": "public static final com.pdfdancer.common.response.ReadingUnitRole WATERMARK",
+          "static": true
+        },
+        {
+          "id": "method:fromValue",
+          "name": "fromValue",
+          "kind": "method",
+          "signature": "public static com.pdfdancer.common.response.ReadingUnitRole fromValue(java.lang.String)",
+          "arity": 1,
+          "static": true
+        },
+        {
+          "id": "method:valueOf",
+          "name": "valueOf",
+          "kind": "method",
+          "signature": "public static com.pdfdancer.common.response.ReadingUnitRole valueOf(java.lang.String)",
+          "arity": 1,
+          "static": true,
+          "description": "Returns the enum constant of this class with the specified name.\nThe string must match exactly an identifier used to declare an\nenum constant in this class.  (Extraneous whitespace characters are\nnot permitted.)"
+        },
+        {
+          "id": "method:values",
+          "name": "values",
+          "kind": "method",
+          "signature": "public static com.pdfdancer.common.response.ReadingUnitRole[] values()",
+          "arity": 0,
+          "static": true,
+          "description": "Returns an array containing the constants of this enum class, in\nthe order they are declared."
+        }
+      ]
+    },
+    {
+      "id": "com.pdfdancer.common.response.ReadingUnitStreamMembership",
+      "name": "ReadingUnitStreamMembership",
+      "kind": "class",
+      "signature": "public final class com.pdfdancer.common.response.ReadingUnitStreamMembership extends java.lang.Record",
+      "members": [
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
+          "signature": "public com.pdfdancer.common.response.ReadingUnitStreamMembership(boolean, java.lang.Integer)",
+          "arity": 2,
+          "static": false,
+          "description": "Creates an instance of a ReadingUnitStreamMembership record class."
+        },
+        {
+          "id": "method:equals",
+          "name": "equals",
+          "kind": "method",
+          "signature": "public final boolean equals(java.lang.Object)",
+          "arity": 1,
+          "static": false,
+          "description": "Indicates whether some other object is \"equal to\" this one. The objects are equal if the other object is of the same class and if all the record components are equal. Reference components are compared with Objects::equals(Object,Object); primitive components are compared with '=='."
+        },
+        {
+          "id": "method:hashCode",
+          "name": "hashCode",
+          "kind": "method",
+          "signature": "public final int hashCode()",
+          "arity": 0,
+          "static": false,
+          "description": "Returns a hash code value for this object. The value is derived from the hash code of each of the record components."
+        },
+        {
+          "id": "method:included",
+          "name": "included",
+          "kind": "method",
+          "signature": "public boolean included()",
+          "arity": 0,
+          "static": false,
+          "description": "Returns the value of the included record component."
+        },
+        {
+          "id": "method:order",
+          "name": "order",
+          "kind": "method",
+          "signature": "public java.lang.Integer order()",
+          "arity": 0,
+          "static": false,
+          "description": "Returns the value of the order record component."
+        },
+        {
+          "id": "method:toString",
+          "name": "toString",
+          "kind": "method",
+          "signature": "public final java.lang.String toString()",
+          "arity": 0,
+          "static": false,
+          "description": "Returns a string representation of this record class. The representation contains the name of the class, followed by the name and value of each of the record components."
+        }
+      ]
     },
     {
       "id": "com.pdfdancer.common.response.TextEditChangeDiagnostic",

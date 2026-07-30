@@ -20,7 +20,7 @@ npm install --save-dev typescript tsx @types/node
 ## 2. Install PDFDancer
 
 ```bash
-npm install pdfdancer-client-typescript@3.0.0
+npm install pdfdancer-client-typescript@3.0.1
 ```
 
 Node.js 20 or newer is required.

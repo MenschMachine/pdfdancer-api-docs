@@ -21,6 +21,7 @@ const sidebars: SidebarsConfig = {
             items: [
                 'concepts',
                 'finding-content',
+                'reading-units',
                 'positioning',
             ],
         },

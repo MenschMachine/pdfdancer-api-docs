@@ -4,24 +4,24 @@
     "java": {
       "repository": "pdfdancer-client-java",
       "baseRef": "release/v1",
-      "baseCommit": "b1d8daae708b3942ff5de7f9abd01366d883e38c",
-      "candidateRef": "release/v3",
-      "candidateCommit": "9c04036fe11472d78332038d401c7c44fbefa406",
+      "baseCommit": "2bb14909aea48ea633d3a0c3bd972188abe02d19",
+      "candidateRef": "v3.0.1",
+      "candidateCommit": "20639941174b14fa131fb31969b69b72eb612c64",
       "counts": {
         "symbols": {
-          "added": 45,
+          "added": 55,
           "promoted": 0,
           "removed": 25,
           "changed": 18
         },
         "retainedSymbolMembers": {
-          "added": 26,
+          "added": 29,
           "promoted": 0,
           "removed": 73,
           "changed": 17
         },
         "records": {
-          "added": 499,
+          "added": 596,
           "promoted": 0,
           "removed": 309,
           "changed": 19
@@ -407,6 +407,16 @@
               "before": "public static final java.lang.String TYPES_TEXT_LINE"
             },
             {
+              "kind": "added",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer",
+              "after": "public com.pdfdancer.common.response.ReadingUnitDocumentAnalysis analyzeReadingUnits()"
+            },
+            {
+              "kind": "added",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer",
+              "after": "public com.pdfdancer.common.response.ReadingUnitPageAnalysis analyzeReadingUnits(int)"
+            },
+            {
               "kind": "removed",
               "symbol": "com.pdfdancer.client.rest.PDFDancer",
               "before": "public boolean applyReplacements(com.pdfdancer.common.request.TemplateReplaceRequest)"
@@ -503,6 +513,11 @@
           "status": "changed",
           "kind": "class",
           "memberChanges": [
+            {
+              "kind": "added",
+              "symbol": "com.pdfdancer.client.rest.PDFDancer$PageClient",
+              "after": "public com.pdfdancer.common.response.ReadingUnitPageAnalysis analyzeReadingUnits()"
+            },
             {
               "kind": "added",
               "symbol": "com.pdfdancer.client.rest.PDFDancer$PageClient",
@@ -1207,6 +1222,76 @@
           "memberCount": 8
         },
         {
+          "id": "com.pdfdancer.common.response.ReadingUnit",
+          "status": "added",
+          "kind": "class",
+          "signature": "public final class com.pdfdancer.common.response.ReadingUnit extends java.lang.Record",
+          "memberCount": 12
+        },
+        {
+          "id": "com.pdfdancer.common.response.ReadingUnitBounds",
+          "status": "added",
+          "kind": "class",
+          "signature": "public final class com.pdfdancer.common.response.ReadingUnitBounds extends java.lang.Record",
+          "memberCount": 8
+        },
+        {
+          "id": "com.pdfdancer.common.response.ReadingUnitDocumentAnalysis",
+          "status": "added",
+          "kind": "class",
+          "signature": "public final class com.pdfdancer.common.response.ReadingUnitDocumentAnalysis extends java.lang.Record",
+          "memberCount": 8
+        },
+        {
+          "id": "com.pdfdancer.common.response.ReadingUnitMode",
+          "status": "added",
+          "kind": "enum",
+          "signature": "public final class com.pdfdancer.common.response.ReadingUnitMode extends java.lang.Enum<com.pdfdancer.common.response.ReadingUnitMode>",
+          "memberCount": 5
+        },
+        {
+          "id": "com.pdfdancer.common.response.ReadingUnitPageAnalysis",
+          "status": "added",
+          "kind": "class",
+          "signature": "public final class com.pdfdancer.common.response.ReadingUnitPageAnalysis extends java.lang.Record",
+          "memberCount": 8
+        },
+        {
+          "id": "com.pdfdancer.common.response.ReadingUnitProvenance",
+          "status": "added",
+          "kind": "class",
+          "signature": "public final class com.pdfdancer.common.response.ReadingUnitProvenance extends java.lang.Record",
+          "memberCount": 7
+        },
+        {
+          "id": "com.pdfdancer.common.response.ReadingUnitRelationship",
+          "status": "added",
+          "kind": "class",
+          "signature": "public final class com.pdfdancer.common.response.ReadingUnitRelationship extends java.lang.Record",
+          "memberCount": 8
+        },
+        {
+          "id": "com.pdfdancer.common.response.ReadingUnitRelationshipType",
+          "status": "added",
+          "kind": "enum",
+          "signature": "public final class com.pdfdancer.common.response.ReadingUnitRelationshipType extends java.lang.Enum<com.pdfdancer.common.response.ReadingUnitRelationshipType>",
+          "memberCount": 6
+        },
+        {
+          "id": "com.pdfdancer.common.response.ReadingUnitRole",
+          "status": "added",
+          "kind": "enum",
+          "signature": "public final class com.pdfdancer.common.response.ReadingUnitRole extends java.lang.Enum<com.pdfdancer.common.response.ReadingUnitRole>",
+          "memberCount": 16
+        },
+        {
+          "id": "com.pdfdancer.common.response.ReadingUnitStreamMembership",
+          "status": "added",
+          "kind": "class",
+          "signature": "public final class com.pdfdancer.common.response.ReadingUnitStreamMembership extends java.lang.Record",
+          "memberCount": 6
+        },
+        {
           "id": "com.pdfdancer.common.response.RedactResponse",
           "status": "removed",
           "kind": "class",
@@ -1715,6 +1800,16 @@
         {
           "kind": "added",
           "symbol": "com.pdfdancer.client.rest.PDFDancer",
+          "after": "public com.pdfdancer.common.response.ReadingUnitDocumentAnalysis analyzeReadingUnits()"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.client.rest.PDFDancer",
+          "after": "public com.pdfdancer.common.response.ReadingUnitPageAnalysis analyzeReadingUnits(int)"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.client.rest.PDFDancer",
           "after": "public java.util.List<com.pdfdancer.client.rest.PDFDancer$PageClient> pages()"
         },
         {
@@ -1811,6 +1906,11 @@
           "kind": "added",
           "symbol": "com.pdfdancer.client.rest.PDFDancer$PageClient",
           "after": "public com.pdfdancer.common.response.PageSnapshot getSnapshot(java.lang.String)"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.client.rest.PDFDancer$PageClient",
+          "after": "public com.pdfdancer.common.response.ReadingUnitPageAnalysis analyzeReadingUnits()"
         },
         {
           "kind": "added",
@@ -5145,6 +5245,476 @@
           "after": "public final class com.pdfdancer.common.request.TextStyleSetRequest$Builder"
         },
         {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnit",
+          "after": "public com.pdfdancer.common.response.ReadingUnit(java.lang.String, com.pdfdancer.common.response.ReadingUnitRole, java.lang.String, java.lang.String, java.util.Map<com.pdfdancer.common.response.ReadingUnitMode, com.pdfdancer.common.response.ReadingUnitStreamMembership>, com.pdfdancer.common.response.ReadingUnitProvenance, java.util.List<com.pdfdancer.common.response.ReadingUnitRelationship>)"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnit",
+          "after": "public com.pdfdancer.common.response.ReadingUnit(java.lang.String, java.lang.String, java.lang.String, java.util.Map<java.lang.String, com.pdfdancer.common.response.ReadingUnitStreamMembership>, com.pdfdancer.common.response.ReadingUnitProvenance, java.util.List<com.pdfdancer.common.response.ReadingUnitRelationship>)"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnit",
+          "after": "public com.pdfdancer.common.response.ReadingUnitProvenance provenance()"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnit",
+          "after": "public com.pdfdancer.common.response.ReadingUnitRole role()"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnit",
+          "after": "public final boolean equals(java.lang.Object)"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnit",
+          "after": "public final class com.pdfdancer.common.response.ReadingUnit extends java.lang.Record"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnit",
+          "after": "public final int hashCode()"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnit",
+          "after": "public final java.lang.String toString()"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnit",
+          "after": "public java.lang.String id()"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnit",
+          "after": "public java.lang.String rawRole()"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnit",
+          "after": "public java.lang.String text()"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnit",
+          "after": "public java.util.List<com.pdfdancer.common.response.ReadingUnitRelationship> relationships()"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnit",
+          "after": "public java.util.Map<com.pdfdancer.common.response.ReadingUnitMode, com.pdfdancer.common.response.ReadingUnitStreamMembership> stream()"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitBounds",
+          "after": "public com.pdfdancer.common.response.ReadingUnitBounds(double, double, double, double)"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitBounds",
+          "after": "public double height()"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitBounds",
+          "after": "public double width()"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitBounds",
+          "after": "public double x()"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitBounds",
+          "after": "public double y()"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitBounds",
+          "after": "public final boolean equals(java.lang.Object)"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitBounds",
+          "after": "public final class com.pdfdancer.common.response.ReadingUnitBounds extends java.lang.Record"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitBounds",
+          "after": "public final int hashCode()"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitBounds",
+          "after": "public final java.lang.String toString()"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitDocumentAnalysis",
+          "after": "public com.pdfdancer.common.response.ReadingUnitDocumentAnalysis(int, com.pdfdancer.common.response.ReadingUnitMode, java.util.List<com.pdfdancer.common.response.ReadingUnitPageAnalysis>)"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitDocumentAnalysis",
+          "after": "public com.pdfdancer.common.response.ReadingUnitDocumentAnalysis(int, java.lang.String, java.util.List<com.pdfdancer.common.response.ReadingUnitPageAnalysis>)"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitDocumentAnalysis",
+          "after": "public com.pdfdancer.common.response.ReadingUnitMode mode()"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitDocumentAnalysis",
+          "after": "public final boolean equals(java.lang.Object)"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitDocumentAnalysis",
+          "after": "public final class com.pdfdancer.common.response.ReadingUnitDocumentAnalysis extends java.lang.Record"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitDocumentAnalysis",
+          "after": "public final int hashCode()"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitDocumentAnalysis",
+          "after": "public final java.lang.String toString()"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitDocumentAnalysis",
+          "after": "public int pageCount()"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitDocumentAnalysis",
+          "after": "public java.util.List<com.pdfdancer.common.response.ReadingUnitPageAnalysis> pages()"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitMode",
+          "after": "public final class com.pdfdancer.common.response.ReadingUnitMode extends java.lang.Enum<com.pdfdancer.common.response.ReadingUnitMode>"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitMode",
+          "after": "public static com.pdfdancer.common.response.ReadingUnitMode fromValue(java.lang.String)"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitMode",
+          "after": "public static com.pdfdancer.common.response.ReadingUnitMode valueOf(java.lang.String)"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitMode",
+          "after": "public static com.pdfdancer.common.response.ReadingUnitMode[] values()"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitMode",
+          "after": "public static final com.pdfdancer.common.response.ReadingUnitMode PRIMARY"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitMode",
+          "after": "public static final com.pdfdancer.common.response.ReadingUnitMode UNKNOWN"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitPageAnalysis",
+          "after": "public com.pdfdancer.common.response.ReadingUnitMode mode()"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitPageAnalysis",
+          "after": "public com.pdfdancer.common.response.ReadingUnitPageAnalysis(int, com.pdfdancer.common.response.ReadingUnitMode, java.util.List<com.pdfdancer.common.response.ReadingUnit>)"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitPageAnalysis",
+          "after": "public com.pdfdancer.common.response.ReadingUnitPageAnalysis(int, java.lang.String, java.util.List<com.pdfdancer.common.response.ReadingUnit>)"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitPageAnalysis",
+          "after": "public final boolean equals(java.lang.Object)"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitPageAnalysis",
+          "after": "public final class com.pdfdancer.common.response.ReadingUnitPageAnalysis extends java.lang.Record"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitPageAnalysis",
+          "after": "public final int hashCode()"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitPageAnalysis",
+          "after": "public final java.lang.String toString()"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitPageAnalysis",
+          "after": "public int pageNumber()"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitPageAnalysis",
+          "after": "public java.util.List<com.pdfdancer.common.response.ReadingUnit> units()"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitProvenance",
+          "after": "public com.pdfdancer.common.response.ReadingUnitBounds bounds()"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitProvenance",
+          "after": "public com.pdfdancer.common.response.ReadingUnitProvenance(int, java.util.List<java.lang.String>, com.pdfdancer.common.response.ReadingUnitBounds)"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitProvenance",
+          "after": "public final boolean equals(java.lang.Object)"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitProvenance",
+          "after": "public final class com.pdfdancer.common.response.ReadingUnitProvenance extends java.lang.Record"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitProvenance",
+          "after": "public final int hashCode()"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitProvenance",
+          "after": "public final java.lang.String toString()"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitProvenance",
+          "after": "public int pageNumber()"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitProvenance",
+          "after": "public java.util.List<java.lang.String> sourceElementIds()"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitRelationship",
+          "after": "public com.pdfdancer.common.response.ReadingUnitRelationship(com.pdfdancer.common.response.ReadingUnitRelationshipType, java.lang.String, java.lang.String)"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitRelationship",
+          "after": "public com.pdfdancer.common.response.ReadingUnitRelationship(java.lang.String, java.lang.String)"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitRelationship",
+          "after": "public com.pdfdancer.common.response.ReadingUnitRelationshipType type()"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitRelationship",
+          "after": "public final boolean equals(java.lang.Object)"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitRelationship",
+          "after": "public final class com.pdfdancer.common.response.ReadingUnitRelationship extends java.lang.Record"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitRelationship",
+          "after": "public final int hashCode()"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitRelationship",
+          "after": "public final java.lang.String toString()"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitRelationship",
+          "after": "public java.lang.String rawType()"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitRelationship",
+          "after": "public java.lang.String targetUnitId()"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitRelationshipType",
+          "after": "public final class com.pdfdancer.common.response.ReadingUnitRelationshipType extends java.lang.Enum<com.pdfdancer.common.response.ReadingUnitRelationshipType>"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitRelationshipType",
+          "after": "public static com.pdfdancer.common.response.ReadingUnitRelationshipType fromValue(java.lang.String)"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitRelationshipType",
+          "after": "public static com.pdfdancer.common.response.ReadingUnitRelationshipType valueOf(java.lang.String)"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitRelationshipType",
+          "after": "public static com.pdfdancer.common.response.ReadingUnitRelationshipType[] values()"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitRelationshipType",
+          "after": "public static final com.pdfdancer.common.response.ReadingUnitRelationshipType CAPTION_FOR"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitRelationshipType",
+          "after": "public static final com.pdfdancer.common.response.ReadingUnitRelationshipType HEADING_PARENT_OF"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitRelationshipType",
+          "after": "public static final com.pdfdancer.common.response.ReadingUnitRelationshipType UNKNOWN"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitRole",
+          "after": "public final class com.pdfdancer.common.response.ReadingUnitRole extends java.lang.Enum<com.pdfdancer.common.response.ReadingUnitRole>"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitRole",
+          "after": "public static com.pdfdancer.common.response.ReadingUnitRole fromValue(java.lang.String)"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitRole",
+          "after": "public static com.pdfdancer.common.response.ReadingUnitRole valueOf(java.lang.String)"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitRole",
+          "after": "public static com.pdfdancer.common.response.ReadingUnitRole[] values()"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitRole",
+          "after": "public static final com.pdfdancer.common.response.ReadingUnitRole CALLOUT"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitRole",
+          "after": "public static final com.pdfdancer.common.response.ReadingUnitRole CAPTION"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitRole",
+          "after": "public static final com.pdfdancer.common.response.ReadingUnitRole FOOTNOTE"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitRole",
+          "after": "public static final com.pdfdancer.common.response.ReadingUnitRole HEADING"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitRole",
+          "after": "public static final com.pdfdancer.common.response.ReadingUnitRole LIST"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitRole",
+          "after": "public static final com.pdfdancer.common.response.ReadingUnitRole PAGE_FOOTER"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitRole",
+          "after": "public static final com.pdfdancer.common.response.ReadingUnitRole PAGE_HEADER"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitRole",
+          "after": "public static final com.pdfdancer.common.response.ReadingUnitRole PAGE_NUMBER"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitRole",
+          "after": "public static final com.pdfdancer.common.response.ReadingUnitRole PARAGRAPH"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitRole",
+          "after": "public static final com.pdfdancer.common.response.ReadingUnitRole PREFORMATTED_TEXT"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitRole",
+          "after": "public static final com.pdfdancer.common.response.ReadingUnitRole TABLE"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitRole",
+          "after": "public static final com.pdfdancer.common.response.ReadingUnitRole UNKNOWN"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitRole",
+          "after": "public static final com.pdfdancer.common.response.ReadingUnitRole WATERMARK"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitStreamMembership",
+          "after": "public boolean included()"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitStreamMembership",
+          "after": "public com.pdfdancer.common.response.ReadingUnitStreamMembership(boolean, java.lang.Integer)"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitStreamMembership",
+          "after": "public final boolean equals(java.lang.Object)"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitStreamMembership",
+          "after": "public final class com.pdfdancer.common.response.ReadingUnitStreamMembership extends java.lang.Record"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitStreamMembership",
+          "after": "public final int hashCode()"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitStreamMembership",
+          "after": "public final java.lang.String toString()"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.ReadingUnitStreamMembership",
+          "after": "public java.lang.Integer order()"
+        },
+        {
           "kind": "removed",
           "symbol": "com.pdfdancer.common.response.RedactResponse",
           "before": "public boolean equals(java.lang.Object)"
@@ -5409,24 +5979,24 @@
     "python": {
       "repository": "pdfdancer-client-python",
       "baseRef": "release/v1",
-      "baseCommit": "e89eae4efa048bbf566c45a5e202d414b74ea30b",
-      "candidateRef": "release/v3",
-      "candidateCommit": "af2a1171a1b9b06dff14d2a0d64f4340f925d26c",
+      "baseCommit": "55b58d713e6ca10abf155e70e85f5878f7b58f62",
+      "candidateRef": "v3.0.2",
+      "candidateCommit": "c76a79f72e694219212d5af0c2085195bdea4eee",
       "counts": {
         "symbols": {
-          "added": 27,
+          "added": 37,
           "promoted": 7,
           "removed": 8,
           "changed": 13
         },
         "retainedSymbolMembers": {
-          "added": 24,
+          "added": 25,
           "promoted": 0,
           "removed": 13,
           "changed": 18
         },
         "records": {
-          "added": 250,
+          "added": 287,
           "promoted": 0,
           "removed": 95,
           "changed": 29
@@ -5894,6 +6464,11 @@
               "after": "__init__(self, token: 'str', pdf_data: 'Union[bytes, Path, str, BinaryIO]', base_url: 'str', read_timeout: 'float' = 0, max_attempts: 'int' = 3, retry_backoff_factor: 'float' = 2.0)"
             },
             {
+              "kind": "added",
+              "symbol": "PDFDancer",
+              "after": "analyze_reading_units(self, page_number: 'Optional[int]' = None) -> 'Union[ReadingUnitDocumentAnalysis, ReadingUnitPageAnalysis]'"
+            },
+            {
               "kind": "removed",
               "symbol": "PDFDancer",
               "before": "apply_replacements(self, replacements: 'Dict[str, Union[str, dict]]', reflow_preset: 'Optional[ReflowPreset]' = None) -> 'bool'"
@@ -6016,6 +6591,76 @@
               "before": "redact(self, replacement: 'str' = '[REDACTED]') -> 'bool'"
             }
           ]
+        },
+        {
+          "id": "ReadingUnit",
+          "status": "added",
+          "kind": "class",
+          "signature": "ReadingUnit(id: str, role: pdfdancer.models.ReadingUnitRole, raw_role: str, text: str, stream: Mapping[str, pdfdancer.models.ReadingUnitStreamMembership], provenance: pdfdancer.models.ReadingUnitProvenance, relationships: List[pdfdancer.models.ReadingUnitRelationship]) -> None",
+          "memberCount": 1
+        },
+        {
+          "id": "ReadingUnitBounds",
+          "status": "added",
+          "kind": "class",
+          "signature": "ReadingUnitBounds(x: float, y: float, width: float, height: float) -> None",
+          "memberCount": 1
+        },
+        {
+          "id": "ReadingUnitDocumentAnalysis",
+          "status": "added",
+          "kind": "class",
+          "signature": "ReadingUnitDocumentAnalysis(page_count: int, mode: pdfdancer.models.ReadingUnitMode, raw_mode: str, pages: List[pdfdancer.models.ReadingUnitPageAnalysis]) -> None",
+          "memberCount": 1
+        },
+        {
+          "id": "ReadingUnitMode",
+          "status": "added",
+          "kind": "enum",
+          "signature": "ReadingUnitMode(*values)",
+          "memberCount": 2
+        },
+        {
+          "id": "ReadingUnitPageAnalysis",
+          "status": "added",
+          "kind": "class",
+          "signature": "ReadingUnitPageAnalysis(page_number: int, mode: pdfdancer.models.ReadingUnitMode, raw_mode: str, units: List[pdfdancer.models.ReadingUnit]) -> None",
+          "memberCount": 1
+        },
+        {
+          "id": "ReadingUnitProvenance",
+          "status": "added",
+          "kind": "class",
+          "signature": "ReadingUnitProvenance(page_number: int, source_element_ids: List[str], bounds: pdfdancer.models.ReadingUnitBounds) -> None",
+          "memberCount": 1
+        },
+        {
+          "id": "ReadingUnitRelationship",
+          "status": "added",
+          "kind": "class",
+          "signature": "ReadingUnitRelationship(type: pdfdancer.models.ReadingUnitRelationshipType, raw_type: str, target_unit_id: str) -> None",
+          "memberCount": 2
+        },
+        {
+          "id": "ReadingUnitRelationshipType",
+          "status": "added",
+          "kind": "enum",
+          "signature": "ReadingUnitRelationshipType(*values)",
+          "memberCount": 3
+        },
+        {
+          "id": "ReadingUnitRole",
+          "status": "added",
+          "kind": "enum",
+          "signature": "ReadingUnitRole(*values)",
+          "memberCount": 13
+        },
+        {
+          "id": "ReadingUnitStreamMembership",
+          "status": "added",
+          "kind": "class",
+          "signature": "ReadingUnitStreamMembership(included: bool, order: int | None) -> None",
+          "memberCount": 1
         },
         {
           "id": "RectangleBuilder",
@@ -6806,6 +7451,11 @@
         {
           "kind": "added",
           "symbol": "PDFDancer",
+          "after": "analyze_reading_units(self, page_number: 'Optional[int]' = None) -> 'Union[ReadingUnitDocumentAnalysis, ReadingUnitPageAnalysis]'"
+        },
+        {
+          "kind": "added",
+          "symbol": "PDFDancer",
           "after": "new_bezier(self, page_number: 'int') -> 'BezierBuilder'"
         },
         {
@@ -6924,6 +7574,186 @@
           "kind": "removed",
           "symbol": "PDFObjectBase",
           "before": "redact(self, replacement: 'str' = '[REDACTED]') -> 'bool'"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnit",
+          "after": "__init__(self, id: str, role: pdfdancer.models.ReadingUnitRole, raw_role: str, text: str, stream: Mapping[str, pdfdancer.models.ReadingUnitStreamMembership], provenance: pdfdancer.models.ReadingUnitProvenance, relationships: List[pdfdancer.models.ReadingUnitRelationship]) -> None"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnit",
+          "after": "ReadingUnit(id: str, role: pdfdancer.models.ReadingUnitRole, raw_role: str, text: str, stream: Mapping[str, pdfdancer.models.ReadingUnitStreamMembership], provenance: pdfdancer.models.ReadingUnitProvenance, relationships: List[pdfdancer.models.ReadingUnitRelationship]) -> None"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitBounds",
+          "after": "__init__(self, x: float, y: float, width: float, height: float) -> None"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitBounds",
+          "after": "ReadingUnitBounds(x: float, y: float, width: float, height: float) -> None"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitDocumentAnalysis",
+          "after": "__init__(self, page_count: int, mode: pdfdancer.models.ReadingUnitMode, raw_mode: str, pages: List[pdfdancer.models.ReadingUnitPageAnalysis]) -> None"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitDocumentAnalysis",
+          "after": "ReadingUnitDocumentAnalysis(page_count: int, mode: pdfdancer.models.ReadingUnitMode, raw_mode: str, pages: List[pdfdancer.models.ReadingUnitPageAnalysis]) -> None"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitMode",
+          "after": "PRIMARY = 'PRIMARY'"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitMode",
+          "after": "ReadingUnitMode(*values)"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitMode",
+          "after": "UNKNOWN = 'UNKNOWN'"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitPageAnalysis",
+          "after": "__init__(self, page_number: int, mode: pdfdancer.models.ReadingUnitMode, raw_mode: str, units: List[pdfdancer.models.ReadingUnit]) -> None"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitPageAnalysis",
+          "after": "ReadingUnitPageAnalysis(page_number: int, mode: pdfdancer.models.ReadingUnitMode, raw_mode: str, units: List[pdfdancer.models.ReadingUnit]) -> None"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitProvenance",
+          "after": "__init__(self, page_number: int, source_element_ids: List[str], bounds: pdfdancer.models.ReadingUnitBounds) -> None"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitProvenance",
+          "after": "ReadingUnitProvenance(page_number: int, source_element_ids: List[str], bounds: pdfdancer.models.ReadingUnitBounds) -> None"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitRelationship",
+          "after": "__init__(self, type: pdfdancer.models.ReadingUnitRelationshipType, raw_type: str, target_unit_id: str) -> None"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitRelationship",
+          "after": "from_dict(cls, data: Mapping[str, Any]) -> 'ReadingUnitRelationship'"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitRelationship",
+          "after": "ReadingUnitRelationship(type: pdfdancer.models.ReadingUnitRelationshipType, raw_type: str, target_unit_id: str) -> None"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitRelationshipType",
+          "after": "CAPTION_FOR = 'CAPTION_FOR'"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitRelationshipType",
+          "after": "HEADING_PARENT_OF = 'HEADING_PARENT_OF'"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitRelationshipType",
+          "after": "ReadingUnitRelationshipType(*values)"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitRelationshipType",
+          "after": "UNKNOWN = 'UNKNOWN'"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitRole",
+          "after": "CALLOUT = 'CALLOUT'"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitRole",
+          "after": "CAPTION = 'CAPTION'"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitRole",
+          "after": "FOOTNOTE = 'FOOTNOTE'"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitRole",
+          "after": "HEADING = 'HEADING'"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitRole",
+          "after": "LIST = 'LIST'"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitRole",
+          "after": "PAGE_FOOTER = 'PAGE_FOOTER'"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitRole",
+          "after": "PAGE_HEADER = 'PAGE_HEADER'"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitRole",
+          "after": "PAGE_NUMBER = 'PAGE_NUMBER'"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitRole",
+          "after": "PARAGRAPH = 'PARAGRAPH'"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitRole",
+          "after": "PREFORMATTED_TEXT = 'PREFORMATTED_TEXT'"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitRole",
+          "after": "ReadingUnitRole(*values)"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitRole",
+          "after": "TABLE = 'TABLE'"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitRole",
+          "after": "UNKNOWN = 'UNKNOWN'"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitRole",
+          "after": "WATERMARK = 'WATERMARK'"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitStreamMembership",
+          "after": "__init__(self, included: bool, order: int | None) -> None"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitStreamMembership",
+          "after": "ReadingUnitStreamMembership(included: bool, order: int | None) -> None"
         },
         {
           "kind": "removed",
@@ -8147,23 +8977,23 @@
       "repository": "pdfdancer-client-typescript",
       "baseRef": "v1.0.23",
       "baseCommit": "eae4b620505422a133b7915a1289220ba0c7afed",
-      "candidateRef": "release/v3",
-      "candidateCommit": "7bd49ac104cc228c66c28f448c72c756eb740183",
+      "candidateRef": "v3.0.1",
+      "candidateCommit": "f7b7f2d7c26956f37cac21c00f7efd8a93883931",
       "counts": {
         "symbols": {
-          "added": 43,
+          "added": 53,
           "promoted": 6,
           "removed": 5,
           "changed": 9
         },
         "retainedSymbolMembers": {
-          "added": 28,
+          "added": 30,
           "promoted": 0,
           "removed": 21,
           "changed": 14
         },
         "records": {
-          "added": 509,
+          "added": 574,
           "promoted": 0,
           "removed": 97,
           "changed": 15
@@ -8467,7 +9297,7 @@
           "status": "added",
           "kind": "class",
           "signature": "class PageClient",
-          "memberCount": 36
+          "memberCount": 37
         },
         {
           "id": "pageSizeFromDimensions",
@@ -8653,6 +9483,16 @@
           "status": "changed",
           "kind": "class",
           "memberChanges": [
+            {
+              "kind": "added",
+              "symbol": "PDFDancer",
+              "after": "analyzeReadingUnits(): Promise<ReadingUnitDocumentAnalysis>"
+            },
+            {
+              "kind": "added",
+              "symbol": "PDFDancer",
+              "after": "analyzeReadingUnits(pageNumber: number): Promise<ReadingUnitPageAnalysis>"
+            },
             {
               "kind": "added",
               "symbol": "PDFDancer",
@@ -8873,6 +9713,76 @@
           "kind": "class",
           "signature": "class RateLimitException extends HttpClientException",
           "memberCount": 11
+        },
+        {
+          "id": "ReadingUnit",
+          "status": "added",
+          "kind": "class",
+          "signature": "class ReadingUnit",
+          "memberCount": 8
+        },
+        {
+          "id": "ReadingUnitBounds",
+          "status": "added",
+          "kind": "class",
+          "signature": "class ReadingUnitBounds",
+          "memberCount": 5
+        },
+        {
+          "id": "ReadingUnitDocumentAnalysis",
+          "status": "added",
+          "kind": "class",
+          "signature": "class ReadingUnitDocumentAnalysis",
+          "memberCount": 5
+        },
+        {
+          "id": "ReadingUnitMode",
+          "status": "added",
+          "kind": "enum",
+          "signature": "enum ReadingUnitMode",
+          "memberCount": 2
+        },
+        {
+          "id": "ReadingUnitPageAnalysis",
+          "status": "added",
+          "kind": "class",
+          "signature": "class ReadingUnitPageAnalysis",
+          "memberCount": 5
+        },
+        {
+          "id": "ReadingUnitProvenance",
+          "status": "added",
+          "kind": "class",
+          "signature": "class ReadingUnitProvenance",
+          "memberCount": 4
+        },
+        {
+          "id": "ReadingUnitRelationship",
+          "status": "added",
+          "kind": "class",
+          "signature": "class ReadingUnitRelationship",
+          "memberCount": 4
+        },
+        {
+          "id": "ReadingUnitRelationshipType",
+          "status": "added",
+          "kind": "enum",
+          "signature": "enum ReadingUnitRelationshipType",
+          "memberCount": 3
+        },
+        {
+          "id": "ReadingUnitRole",
+          "status": "added",
+          "kind": "enum",
+          "signature": "enum ReadingUnitRole",
+          "memberCount": 13
+        },
+        {
+          "id": "ReadingUnitStreamMembership",
+          "status": "added",
+          "kind": "class",
+          "signature": "class ReadingUnitStreamMembership",
+          "memberCount": 3
         },
         {
           "id": "RectangleBuilder",
@@ -9527,6 +10437,11 @@
           "symbol": "PageBuilder",
           "before": "atIndex(pageIndex: number): PageBuilder",
           "after": "atIndex(pageNumber: number): PageBuilder"
+        },
+        {
+          "kind": "added",
+          "symbol": "PageClient",
+          "after": "analyzeReadingUnits(): Promise<ReadingUnitPageAnalysis>"
         },
         {
           "kind": "added",
@@ -10288,6 +11203,16 @@
         {
           "kind": "added",
           "symbol": "PDFDancer",
+          "after": "analyzeReadingUnits(): Promise<ReadingUnitDocumentAnalysis>"
+        },
+        {
+          "kind": "added",
+          "symbol": "PDFDancer",
+          "after": "analyzeReadingUnits(pageNumber: number): Promise<ReadingUnitPageAnalysis>"
+        },
+        {
+          "kind": "added",
+          "symbol": "PDFDancer",
           "after": "clearClipping(objectRef: ObjectRef): Promise<boolean>"
         },
         {
@@ -10549,6 +11474,316 @@
           "kind": "added",
           "symbol": "RateLimitException",
           "after": "statusCode?: number"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnit",
+          "after": "class ReadingUnit"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnit",
+          "after": "constructor(id: string, role: unknown, text: string, stream: Record<string, ReadingUnitStreamMembership>, provenance: ReadingUnitProvenance, relationships: ReadingUnitRelationship[]): ReadingUnit"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnit",
+          "after": "id: string"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnit",
+          "after": "provenance: ReadingUnitProvenance"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnit",
+          "after": "rawRole: string"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnit",
+          "after": "relationships: ReadingUnitRelationship[]"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnit",
+          "after": "role: ReadingUnitRole"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnit",
+          "after": "stream: Record<string, ReadingUnitStreamMembership>"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnit",
+          "after": "text: string"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitBounds",
+          "after": "class ReadingUnitBounds"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitBounds",
+          "after": "constructor(x: number, y: number, width: number, height: number): ReadingUnitBounds"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitBounds",
+          "after": "height: number"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitBounds",
+          "after": "width: number"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitBounds",
+          "after": "x: number"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitBounds",
+          "after": "y: number"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitDocumentAnalysis",
+          "after": "class ReadingUnitDocumentAnalysis"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitDocumentAnalysis",
+          "after": "constructor(pageCount: number, mode: unknown, pages: ReadingUnitPageAnalysis[]): ReadingUnitDocumentAnalysis"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitDocumentAnalysis",
+          "after": "mode: ReadingUnitMode"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitDocumentAnalysis",
+          "after": "pageCount: number"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitDocumentAnalysis",
+          "after": "pages: ReadingUnitPageAnalysis[]"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitDocumentAnalysis",
+          "after": "rawMode: string"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitMode",
+          "after": "enum ReadingUnitMode"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitMode",
+          "after": "PRIMARY = \"PRIMARY\""
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitMode",
+          "after": "UNKNOWN = \"UNKNOWN\""
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitPageAnalysis",
+          "after": "class ReadingUnitPageAnalysis"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitPageAnalysis",
+          "after": "constructor(pageNumber: number, mode: unknown, units: ReadingUnit[]): ReadingUnitPageAnalysis"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitPageAnalysis",
+          "after": "mode: ReadingUnitMode"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitPageAnalysis",
+          "after": "pageNumber: number"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitPageAnalysis",
+          "after": "rawMode: string"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitPageAnalysis",
+          "after": "units: ReadingUnit[]"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitProvenance",
+          "after": "bounds: ReadingUnitBounds"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitProvenance",
+          "after": "class ReadingUnitProvenance"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitProvenance",
+          "after": "constructor(pageNumber: number, sourceElementIds: string[], bounds: ReadingUnitBounds): ReadingUnitProvenance"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitProvenance",
+          "after": "pageNumber: number"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitProvenance",
+          "after": "sourceElementIds: string[]"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitRelationship",
+          "after": "class ReadingUnitRelationship"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitRelationship",
+          "after": "constructor(type: unknown, targetUnitId: string): ReadingUnitRelationship"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitRelationship",
+          "after": "rawType: string"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitRelationship",
+          "after": "targetUnitId: string"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitRelationship",
+          "after": "type: ReadingUnitRelationshipType"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitRelationshipType",
+          "after": "CAPTION_FOR = \"CAPTION_FOR\""
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitRelationshipType",
+          "after": "enum ReadingUnitRelationshipType"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitRelationshipType",
+          "after": "HEADING_PARENT_OF = \"HEADING_PARENT_OF\""
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitRelationshipType",
+          "after": "UNKNOWN = \"UNKNOWN\""
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitRole",
+          "after": "CALLOUT = \"CALLOUT\""
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitRole",
+          "after": "CAPTION = \"CAPTION\""
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitRole",
+          "after": "enum ReadingUnitRole"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitRole",
+          "after": "FOOTNOTE = \"FOOTNOTE\""
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitRole",
+          "after": "HEADING = \"HEADING\""
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitRole",
+          "after": "LIST = \"LIST\""
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitRole",
+          "after": "PAGE_FOOTER = \"PAGE_FOOTER\""
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitRole",
+          "after": "PAGE_HEADER = \"PAGE_HEADER\""
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitRole",
+          "after": "PAGE_NUMBER = \"PAGE_NUMBER\""
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitRole",
+          "after": "PARAGRAPH = \"PARAGRAPH\""
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitRole",
+          "after": "PREFORMATTED_TEXT = \"PREFORMATTED_TEXT\""
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitRole",
+          "after": "TABLE = \"TABLE\""
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitRole",
+          "after": "UNKNOWN = \"UNKNOWN\""
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitRole",
+          "after": "WATERMARK = \"WATERMARK\""
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitStreamMembership",
+          "after": "class ReadingUnitStreamMembership"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitStreamMembership",
+          "after": "constructor(included: boolean, order: number): ReadingUnitStreamMembership"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitStreamMembership",
+          "after": "included: boolean"
+        },
+        {
+          "kind": "added",
+          "symbol": "ReadingUnitStreamMembership",
+          "after": "order: number"
         },
         {
           "kind": "added",

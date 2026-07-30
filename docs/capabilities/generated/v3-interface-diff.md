@@ -7,12 +7,12 @@ This report compares the configured committed base and candidate refs. It does n
 ## Java
 
 - Repository: `pdfdancer-client-java`
-- Base: `release/v1` (`b1d8daae708b3942ff5de7f9abd01366d883e38c`)
-- Candidate: `release/v3` (`9c04036fe11472d78332038d401c7c44fbefa406`)
-- Public symbols: 45 added, 0 promoted to the package root, 25 removed, 18 changed
-- Members of retained symbols: 26 added, 73 removed, 17 changed
+- Base: `release/v1` (`2bb14909aea48ea633d3a0c3bd972188abe02d19`)
+- Candidate: `v3.0.1` (`20639941174b14fa131fb31969b69b72eb612c64`)
+- Public symbols: 55 added, 0 promoted to the package root, 25 removed, 18 changed
+- Members of retained symbols: 29 added, 73 removed, 17 changed
 
-### Added public symbols (45)
+### Added public symbols (55)
 
 - `com.pdfdancer.client.rest.FontNotFoundException` — class
 - `com.pdfdancer.client.rest.HttpClientException` — class
@@ -56,6 +56,16 @@ This report compares the configured committed base and candidate refs. It does n
 - `com.pdfdancer.common.request.TextStyleSelectorRequest` — class
 - `com.pdfdancer.common.request.TextStyleSetRequest` — class
 - `com.pdfdancer.common.request.TextStyleSetRequest$Builder` — class
+- `com.pdfdancer.common.response.ReadingUnit` — class
+- `com.pdfdancer.common.response.ReadingUnitBounds` — class
+- `com.pdfdancer.common.response.ReadingUnitDocumentAnalysis` — class
+- `com.pdfdancer.common.response.ReadingUnitMode` — enum
+- `com.pdfdancer.common.response.ReadingUnitPageAnalysis` — class
+- `com.pdfdancer.common.response.ReadingUnitProvenance` — class
+- `com.pdfdancer.common.response.ReadingUnitRelationship` — class
+- `com.pdfdancer.common.response.ReadingUnitRelationshipType` — enum
+- `com.pdfdancer.common.response.ReadingUnitRole` — enum
+- `com.pdfdancer.common.response.ReadingUnitStreamMembership` — class
 - `com.pdfdancer.common.response.TextEditChangeDiagnostic` — class
 - `com.pdfdancer.common.response.TextEditResponse` — class
 - `com.pdfdancer.common.response.TextOperationDiagnostic` — class
@@ -186,7 +196,9 @@ None.
 
 #### `com.pdfdancer.client.rest.PDFDancer`
 
-- Added members (7):
+- Added members (9):
+  - `public com.pdfdancer.common.response.ReadingUnitDocumentAnalysis analyzeReadingUnits()`
+  - `public com.pdfdancer.common.response.ReadingUnitPageAnalysis analyzeReadingUnits(int)`
   - `public com.pdfdancer.client.rest.BezierBuilder newBezier(int)`
   - `public com.pdfdancer.client.rest.ImageBuilder newImage(int)`
   - `public com.pdfdancer.client.rest.LineBuilder newLine(int)`
@@ -211,7 +223,8 @@ None.
 
 #### `com.pdfdancer.client.rest.PDFDancer$PageClient`
 
-- Added members (13):
+- Added members (14):
+  - `public com.pdfdancer.common.response.ReadingUnitPageAnalysis analyzeReadingUnits()`
   - `public com.pdfdancer.common.response.PageSnapshot getSnapshot()`
   - `public com.pdfdancer.common.response.PageSnapshot getSnapshot(java.lang.String)`
   - `public boolean moveTo(int)`
@@ -291,17 +304,27 @@ None.
 ## Python
 
 - Repository: `pdfdancer-client-python`
-- Base: `release/v1` (`e89eae4efa048bbf566c45a5e202d414b74ea30b`)
-- Candidate: `release/v3` (`af2a1171a1b9b06dff14d2a0d64f4340f925d26c`)
-- Public symbols: 27 added, 7 promoted to the package root, 8 removed, 13 changed
-- Members of retained symbols: 24 added, 13 removed, 18 changed
+- Base: `release/v1` (`55b58d713e6ca10abf155e70e85f5878f7b58f62`)
+- Candidate: `v3.0.2` (`c76a79f72e694219212d5af0c2085195bdea4eee`)
+- Public symbols: 37 added, 7 promoted to the package root, 8 removed, 13 changed
+- Members of retained symbols: 25 added, 13 removed, 18 changed
 
-### Added public symbols (27)
+### Added public symbols (37)
 
 - `PdfAffineTransform` — class
 - `PdfAffineTransformBuilder` — class
 - `PdfColorRequest` — class
 - `PdfColorSpace` — enum
+- `ReadingUnit` — class
+- `ReadingUnitBounds` — class
+- `ReadingUnitDocumentAnalysis` — class
+- `ReadingUnitMode` — enum
+- `ReadingUnitPageAnalysis` — class
+- `ReadingUnitProvenance` — class
+- `ReadingUnitRelationship` — class
+- `ReadingUnitRelationshipType` — enum
+- `ReadingUnitRole` — enum
+- `ReadingUnitStreamMembership` — class
 - `TextDeleteBuilder` — class
 - `TextDeleteRequest` — class
 - `TextEditChangeDiagnostic` — class
@@ -488,7 +511,8 @@ None.
 #### `PDFDancer`
 
 - Declaration: `PDFDancer(token: 'str', pdf_data: 'Union[bytes, Path, str, BinaryIO]', base_url: 'str', read_timeout: 'float' = 0, max_retries: 'int' = 3, retry_backoff_factor: 'float' = 2.0)` → `PDFDancer(token: 'str', pdf_data: 'Union[bytes, Path, str, BinaryIO]', base_url: 'str', read_timeout: 'float' = 0, max_attempts: 'int' = 3, retry_backoff_factor: 'float' = 2.0)`
-- Added members (5):
+- Added members (6):
+  - `analyze_reading_units(self, page_number: 'Optional[int]' = None) -> 'Union[ReadingUnitDocumentAnalysis, ReadingUnitPageAnalysis]'`
   - `new_bezier(self, page_number: 'int') -> 'BezierBuilder'`
   - `new_line(self, page_number: 'int') -> 'LineBuilder'`
   - `new_path(self, page_number: 'int') -> "'PathBuilder'"`
@@ -522,11 +546,11 @@ None.
 
 - Repository: `pdfdancer-client-typescript`
 - Base: `v1.0.23` (`eae4b620505422a133b7915a1289220ba0c7afed`)
-- Candidate: `release/v3` (`7bd49ac104cc228c66c28f448c72c756eb740183`)
-- Public symbols: 43 added, 6 promoted to the package root, 5 removed, 9 changed
-- Members of retained symbols: 28 added, 21 removed, 14 changed
+- Candidate: `v3.0.1` (`f7b7f2d7c26956f37cac21c00f7efd8a93883931`)
+- Public symbols: 53 added, 6 promoted to the package root, 5 removed, 9 changed
+- Members of retained symbols: 30 added, 21 removed, 14 changed
 
-### Added public symbols (43)
+### Added public symbols (53)
 
 - `BezierBuilder` — class
 - `FlipDirection` — enum
@@ -543,6 +567,16 @@ None.
 - `PdfColorRequest` — class
 - `PdfColorSpace` — enum
 - `RateLimitException` — class
+- `ReadingUnit` — class
+- `ReadingUnitBounds` — class
+- `ReadingUnitDocumentAnalysis` — class
+- `ReadingUnitMode` — enum
+- `ReadingUnitPageAnalysis` — class
+- `ReadingUnitProvenance` — class
+- `ReadingUnitRelationship` — class
+- `ReadingUnitRelationshipType` — enum
+- `ReadingUnitRole` — enum
+- `ReadingUnitStreamMembership` — class
 - `RectangleBuilder` — class
 - `SessionNotFoundException` — class
 - `Size` — interface
@@ -706,7 +740,9 @@ None.
 
 #### `PDFDancer`
 
-- Added members (8):
+- Added members (10):
+  - `analyzeReadingUnits(): Promise<ReadingUnitDocumentAnalysis>`
+  - `analyzeReadingUnits(pageNumber: number): Promise<ReadingUnitPageAnalysis>`
   - `clearClipping(objectRef: ObjectRef): Promise<boolean>`
   - `clearPathGroupClipping(pageNumber: number, groupId: string): Promise<boolean>`
   - `newBezier(pageNumber: number): BezierBuilder`
