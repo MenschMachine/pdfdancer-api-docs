@@ -1,7 +1,7 @@
 ---
 id: standard-page-sizes
 title: "STANDARD_PAGE_SIZES"
-description: "TypeScript API reference for STANDARD_PAGE_SIZES This public value belongs to the models package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.0."
+description: "TypeScript API reference for STANDARD_PAGE_SIZES. Named page dimensions available to page and document builders."
 pagination_next: null
 pagination_prev: null
 ---
@@ -12,7 +12,9 @@ pagination_prev: null
 
 **Kind:** value  
 **Module/package:** `models`  
-**SDK:** `pdfdancer-client-typescript 3.0.0`
+**SDK:** `pdfdancer-client-typescript 3.0.1`
+
+Named page dimensions available to page and document builders.
 
 ## Declaration
 
@@ -24,5 +26,5 @@ STANDARD_PAGE_SIZES: Record<string, { width: number; height: number; }>
 
 - [Working with Pages](../../working-with-pages)
 
-[View source at `7bd49ac104cc`](https://github.com/MenschMachine/pdfdancer-client-typescript/blob/7bd49ac104cc228c66c28f448c72c756eb740183/src/models.ts)
+[View source at `f7b7f2d7c269`](https://github.com/MenschMachine/pdfdancer-client-typescript/blob/f7b7f2d7c26956f37cac21c00f7efd8a93883931/src/models.ts)
 

@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `models`  
-**SDK:** `pdfdancer-client-python 3.0.1`
+**SDK:** `pdfdancer-client-python 3.0.2`
 
 Reference to an object in a PDF document returned by the server.
 
@@ -97,5 +97,5 @@ object_type: pdfdancer.models.ObjectType
 
 Return the object type using the public object naming convention.
 
-[View source at `af2a1171a1b9`](https://github.com/MenschMachine/pdfdancer-client-python/blob/af2a1171a1b9b06dff14d2a0d64f4340f925d26c/src/pdfdancer/models.py)
+[View source at `c76a79f72e69`](https://github.com/MenschMachine/pdfdancer-client-python/blob/c76a79f72e694219212d5af0c2085195bdea4eee/src/pdfdancer/models.py)
 

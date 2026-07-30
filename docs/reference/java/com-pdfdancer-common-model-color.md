@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `com.pdfdancer.common.model`  
-**SDK:** `com.pdfdancer.client:pdfdancer-client-java 3.0.0`
+**SDK:** `com.pdfdancer.client:pdfdancer-client-java 3.0.1`
 
 Represents color information using RGBA (Red, Green, Blue, Alpha) color model.
 This class encapsulates color data for PDF objects, supporting both opaque and
@@ -152,5 +152,5 @@ public java.lang.String toString()
 - [Working with Text](../../working-with-text)
 - [Text Layout and Reflow](../../text-layout)
 
-[View source at `9c04036fe114`](https://github.com/MenschMachine/pdfdancer-client-java/blob/9c04036fe11472d78332038d401c7c44fbefa406/src/main/java/com/pdfdancer/common/model/Color.java)
+[View source at `20639941174b`](https://github.com/MenschMachine/pdfdancer-client-java/blob/20639941174b14fa131fb31969b69b72eb612c64/src/main/java/com/pdfdancer/common/model/Color.java)
 

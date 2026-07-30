@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-common-request-image-transform-request-flip-direction
 title: "ImageTransformRequest$FlipDirection"
-description: "Java API reference for ImageTransformRequest$FlipDirection. Direction for flip operations. This public enum belongs to the com.pdfdancer.common.request package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.0."
+description: "Java API reference for ImageTransformRequest$FlipDirection. Direction for flip operations. This public enum belongs to the com.pdfdancer.common.request package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.1."
 pagination_next: null
 pagination_prev: null
 ---
@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** enum  
 **Module/package:** `com.pdfdancer.common.request`  
-**SDK:** `com.pdfdancer.client:pdfdancer-client-java 3.0.0`
+**SDK:** `com.pdfdancer.client:pdfdancer-client-java 3.0.1`
 
 Direction for flip operations.
 
@@ -73,5 +73,5 @@ the order they are declared.
 - [Working with Images](../../working-with-images)
 - [Working with Form XObjects](../../working-with-formxobjects)
 
-[View source at `9c04036fe114`](https://github.com/MenschMachine/pdfdancer-client-java/blob/9c04036fe11472d78332038d401c7c44fbefa406/src/main/java/com/pdfdancer/common/request/ImageTransformRequest.java)
+[View source at `20639941174b`](https://github.com/MenschMachine/pdfdancer-client-java/blob/20639941174b14fa131fb31969b69b72eb612c64/src/main/java/com/pdfdancer/common/request/ImageTransformRequest.java)
 

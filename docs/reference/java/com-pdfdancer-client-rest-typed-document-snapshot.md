@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `com.pdfdancer.client.rest`  
-**SDK:** `com.pdfdancer.client:pdfdancer-client-java 3.0.0`
+**SDK:** `com.pdfdancer.client:pdfdancer-client-java 3.0.1`
 
 A typed snapshot of the whole document containing pages with elements of type T.
 
@@ -72,5 +72,5 @@ public void setPageCount(int)
 public void setPages(java.util.List<com.pdfdancer.client.rest.TypedPageSnapshot<T>>)
 ```
 
-[View source at `9c04036fe114`](https://github.com/MenschMachine/pdfdancer-client-java/blob/9c04036fe11472d78332038d401c7c44fbefa406/src/main/java/com/pdfdancer/client/rest/TypedDocumentSnapshot.java)
+[View source at `20639941174b`](https://github.com/MenschMachine/pdfdancer-client-java/blob/20639941174b14fa131fb31969b69b72eb612c64/src/main/java/com/pdfdancer/client/rest/TypedDocumentSnapshot.java)
 

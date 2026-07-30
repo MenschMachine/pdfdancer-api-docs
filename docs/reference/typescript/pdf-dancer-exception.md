@@ -1,7 +1,7 @@
 ---
 id: pdf-dancer-exception
 title: "PdfDancerException"
-description: "TypeScript API reference for PdfDancerException. Base exception for all PDFDancer client errors. This public class belongs to the exceptions package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.0."
+description: "TypeScript API reference for PdfDancerException. Base exception for all PDFDancer client errors. This public class belongs to the exceptions package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.1."
 pagination_next: null
 pagination_prev: null
 ---
@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `exceptions`  
-**SDK:** `pdfdancer-client-typescript 3.0.0`
+**SDK:** `pdfdancer-client-typescript 3.0.1`
 
 Base exception for all PDFDancer client errors.
 
@@ -130,5 +130,5 @@ not capture any frames.
 
 - [Error Handling](../../error-handling)
 
-[View source at `7bd49ac104cc`](https://github.com/MenschMachine/pdfdancer-client-typescript/blob/7bd49ac104cc228c66c28f448c72c756eb740183/src/exceptions.ts)
+[View source at `f7b7f2d7c269`](https://github.com/MenschMachine/pdfdancer-client-typescript/blob/f7b7f2d7c26956f37cac21c00f7efd8a93883931/src/exceptions.ts)
 

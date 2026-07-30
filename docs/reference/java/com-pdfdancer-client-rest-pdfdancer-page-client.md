@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `com.pdfdancer.client.rest`  
-**SDK:** `com.pdfdancer.client:pdfdancer-client-java 3.0.0`
+**SDK:** `com.pdfdancer.client:pdfdancer-client-java 3.0.1`
 
 Represents operations scoped to a single page of a PDF document.
 Provides type-safe selection methods for images, form fields, and paths.
@@ -24,6 +24,12 @@ public class com.pdfdancer.client.rest.PDFDancer$PageClient extends com.pdfdance
 ```
 
 ## Members
+
+### `analyzeReadingUnits`
+
+```java
+public com.pdfdancer.common.response.ReadingUnitPageAnalysis analyzeReadingUnits()
+```
 
 ### `delete`
 
@@ -299,5 +305,5 @@ public com.pdfdancer.client.rest.PageTextClient text()
 
 - [Working with Pages](../../working-with-pages)
 
-[View source at `9c04036fe114`](https://github.com/MenschMachine/pdfdancer-client-java/blob/9c04036fe11472d78332038d401c7c44fbefa406/src/main/java/com/pdfdancer/client/rest/PDFDancer.java)
+[View source at `20639941174b`](https://github.com/MenschMachine/pdfdancer-client-java/blob/20639941174b14fa131fb31969b69b72eb612c64/src/main/java/com/pdfdancer/client/rest/PDFDancer.java)
 

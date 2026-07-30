@@ -1,7 +1,7 @@
 ---
 id: image-object
 title: "ImageObject"
-description: "Python API reference for ImageObject. Represents an image object inside a PDF page. This public class belongs to the types package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.1."
+description: "Python API reference for ImageObject. Represents an image object inside a PDF page. This public class belongs to the types package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.2."
 pagination_next: null
 pagination_prev: null
 ---
@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `types`  
-**SDK:** `pdfdancer-client-python 3.0.1`
+**SDK:** `pdfdancer-client-python 3.0.2`
 
 Represents an image object inside a PDF page.
 
@@ -231,5 +231,5 @@ width: 'Optional[float]'
 
 - [Working with Images](../../working-with-images)
 
-[View source at `af2a1171a1b9`](https://github.com/MenschMachine/pdfdancer-client-python/blob/af2a1171a1b9b06dff14d2a0d64f4340f925d26c/src/pdfdancer/types.py)
+[View source at `c76a79f72e69`](https://github.com/MenschMachine/pdfdancer-client-python/blob/c76a79f72e694219212d5af0c2085195bdea4eee/src/pdfdancer/types.py)
 

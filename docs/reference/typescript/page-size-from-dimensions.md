@@ -1,7 +1,7 @@
 ---
 id: page-size-from-dimensions
 title: "pageSizeFromDimensions"
-description: "TypeScript API reference for pageSizeFromDimensions This public function belongs to the models package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.0."
+description: "TypeScript API reference for pageSizeFromDimensions. Resolves dimensions to a named standard size when they are within the supplied tolerance."
 pagination_next: null
 pagination_prev: null
 ---
@@ -12,7 +12,9 @@ pagination_prev: null
 
 **Kind:** function  
 **Module/package:** `models`  
-**SDK:** `pdfdancer-client-typescript 3.0.0`
+**SDK:** `pdfdancer-client-typescript 3.0.1`
+
+Resolves dimensions to a named standard size when they are within the supplied tolerance.
 
 ## Declaration
 
@@ -24,5 +26,5 @@ pageSizeFromDimensions(width: number, height: number, tolerance?: number): PageS
 
 - [Working with Pages](../../working-with-pages)
 
-[View source at `7bd49ac104cc`](https://github.com/MenschMachine/pdfdancer-client-typescript/blob/7bd49ac104cc228c66c28f448c72c756eb740183/src/models.ts)
+[View source at `f7b7f2d7c269`](https://github.com/MenschMachine/pdfdancer-client-typescript/blob/f7b7f2d7c26956f37cac21c00f7efd8a93883931/src/models.ts)
 

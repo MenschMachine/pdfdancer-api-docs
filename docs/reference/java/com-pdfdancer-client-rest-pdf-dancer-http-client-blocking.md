@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `com.pdfdancer.client.rest`  
-**SDK:** `com.pdfdancer.client:pdfdancer-client-java 3.0.0`
+**SDK:** `com.pdfdancer.client:pdfdancer-client-java 3.0.1`
 
 Blocking facade with retrieve helpers mirroring the Micronaut client.
 
@@ -42,5 +42,5 @@ public <T> T retrieve(com.pdfdancer.client.http.MutableHttpRequest<?>, com.pdfda
 public <T> T retrieve(com.pdfdancer.client.http.MutableHttpRequest<?>, java.lang.Class<T>)
 ```
 
-[View source at `9c04036fe114`](https://github.com/MenschMachine/pdfdancer-client-java/blob/9c04036fe11472d78332038d401c7c44fbefa406/src/main/java/com/pdfdancer/client/rest/PdfDancerHttpClient.java)
+[View source at `20639941174b`](https://github.com/MenschMachine/pdfdancer-client-java/blob/20639941174b14fa131fb31969b69b72eb612c64/src/main/java/com/pdfdancer/client/rest/PdfDancerHttpClient.java)
 

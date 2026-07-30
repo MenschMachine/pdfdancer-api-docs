@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-client-rest-base-reference
 title: "BaseReference"
-description: "Java API reference for BaseReference This public class belongs to the com.pdfdancer.client.rest package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.0."
+description: "Java API reference for BaseReference This public class belongs to the com.pdfdancer.client.rest package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.1."
 pagination_next: null
 pagination_prev: null
 ---
@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `com.pdfdancer.client.rest`  
-**SDK:** `com.pdfdancer.client:pdfdancer-client-java 3.0.0`
+**SDK:** `com.pdfdancer.client:pdfdancer-client-java 3.0.1`
 
 ## Declaration
 
@@ -76,5 +76,5 @@ public boolean moveY(int)
 public com.pdfdancer.common.model.ObjectType type()
 ```
 
-[View source at `9c04036fe114`](https://github.com/MenschMachine/pdfdancer-client-java/blob/9c04036fe11472d78332038d401c7c44fbefa406/src/main/java/com/pdfdancer/client/rest/BaseReference.java)
+[View source at `20639941174b`](https://github.com/MenschMachine/pdfdancer-client-java/blob/20639941174b14fa131fb31969b69b72eb612c64/src/main/java/com/pdfdancer/client/rest/BaseReference.java)
 

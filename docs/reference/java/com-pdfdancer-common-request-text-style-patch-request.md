@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-common-request-text-style-patch-request
 title: "TextStylePatchRequest"
-description: "Java API reference for TextStylePatchRequest This public class belongs to the com.pdfdancer.common.request package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.0."
+description: "Java API reference for TextStylePatchRequest This public class belongs to the com.pdfdancer.common.request package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.1."
 pagination_next: null
 pagination_prev: null
 ---
@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `com.pdfdancer.common.request`  
-**SDK:** `com.pdfdancer.client:pdfdancer-client-java 3.0.0`
+**SDK:** `com.pdfdancer.client:pdfdancer-client-java 3.0.1`
 
 ## Declaration
 
@@ -99,5 +99,5 @@ public java.lang.Double wordSpacing()
 - [Working with Text](../../working-with-text)
 - [Text Layout and Reflow](../../text-layout)
 
-[View source at `9c04036fe114`](https://github.com/MenschMachine/pdfdancer-client-java/blob/9c04036fe11472d78332038d401c7c44fbefa406/src/main/java/com/pdfdancer/common/request/TextStylePatchRequest.java)
+[View source at `20639941174b`](https://github.com/MenschMachine/pdfdancer-client-java/blob/20639941174b14fa131fb31969b69b72eb612c64/src/main/java/com/pdfdancer/common/request/TextStylePatchRequest.java)
 

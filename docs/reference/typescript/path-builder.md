@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `path-builder`  
-**SDK:** `pdfdancer-client-typescript 3.0.0`
+**SDK:** `pdfdancer-client-typescript 3.0.1`
 
 Builder for creating vector paths in PDF documents.
 
@@ -171,5 +171,5 @@ Set the stroke width for subsequent path segments.
 
 - [Working with Vector Graphics](../../working-with-vector-graphics)
 
-[View source at `7bd49ac104cc`](https://github.com/MenschMachine/pdfdancer-client-typescript/blob/7bd49ac104cc228c66c28f448c72c756eb740183/src/path-builder.ts)
+[View source at `f7b7f2d7c269`](https://github.com/MenschMachine/pdfdancer-client-typescript/blob/f7b7f2d7c26956f37cac21c00f7efd8a93883931/src/path-builder.ts)
 

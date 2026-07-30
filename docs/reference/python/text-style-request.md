@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `text_editing`  
-**SDK:** `pdfdancer-client-python 3.0.1`
+**SDK:** `pdfdancer-client-python 3.0.2`
 
 TextStyleRequest(pages: 'Optional[tuple[int, ...]]', select: 'TextStyleSelectorRequest', style: 'TextStyleSetRequest', layout: 'Optional[TextLayoutRequest]' = None)
 
@@ -79,5 +79,5 @@ with_pages(self, pages: 'Sequence[int]') -> "'TextStyleRequest'"
 - [Working with Text](../../working-with-text)
 - [Text Layout and Reflow](../../text-layout)
 
-[View source at `af2a1171a1b9`](https://github.com/MenschMachine/pdfdancer-client-python/blob/af2a1171a1b9b06dff14d2a0d64f4340f925d26c/src/pdfdancer/text_editing.py)
+[View source at `c76a79f72e69`](https://github.com/MenschMachine/pdfdancer-client-python/blob/c76a79f72e694219212d5af0c2085195bdea4eee/src/pdfdancer/text_editing.py)
 

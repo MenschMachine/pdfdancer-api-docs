@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `models`  
-**SDK:** `pdfdancer-client-typescript 3.0.0`
+**SDK:** `pdfdancer-client-typescript 3.0.1`
 
 Represents a form field reference with name and value properties.
 Extends ObjectRef to include form-specific properties.
@@ -71,5 +71,5 @@ value: string
 
 - [Working with AcroForms](../../working-with-acroforms)
 
-[View source at `7bd49ac104cc`](https://github.com/MenschMachine/pdfdancer-client-typescript/blob/7bd49ac104cc228c66c28f448c72c756eb740183/src/models.ts)
+[View source at `f7b7f2d7c269`](https://github.com/MenschMachine/pdfdancer-client-typescript/blob/f7b7f2d7c26956f37cac21c00f7efd8a93883931/src/models.ts)
 

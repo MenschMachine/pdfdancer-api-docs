@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** function  
 **Module/package:** `pdfdancer`  
-**SDK:** `pdfdancer-client-python 3.0.1`
+**SDK:** `pdfdancer-client-python 3.0.2`
 
 Enable or disable SSL certificate verification for all API requests.
 
@@ -33,5 +33,5 @@ Example:
 set_ssl_verify(enabled: bool) -> None
 ```
 
-[View source at `af2a1171a1b9`](https://github.com/MenschMachine/pdfdancer-client-python/blob/af2a1171a1b9b06dff14d2a0d64f4340f925d26c/src/pdfdancer/__init__.py)
+[View source at `c76a79f72e69`](https://github.com/MenschMachine/pdfdancer-client-python/blob/c76a79f72e694219212d5af0c2085195bdea4eee/src/pdfdancer/__init__.py)
 

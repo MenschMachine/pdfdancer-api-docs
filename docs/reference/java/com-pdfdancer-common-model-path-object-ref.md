@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `com.pdfdancer.common.model`  
-**SDK:** `com.pdfdancer.client:pdfdancer-client-java 3.0.0`
+**SDK:** `com.pdfdancer.client:pdfdancer-client-java 3.0.1`
 
 Lightweight reference to a PDF path object providing identity, type, and styling information.
 Object references enable efficient API operations by providing a way to identify
@@ -68,5 +68,5 @@ public java.lang.Double getStrokeWidth()
 
 - [Working with Vector Graphics](../../working-with-vector-graphics)
 
-[View source at `9c04036fe114`](https://github.com/MenschMachine/pdfdancer-client-java/blob/9c04036fe11472d78332038d401c7c44fbefa406/src/main/java/com/pdfdancer/common/model/PathObjectRef.java)
+[View source at `20639941174b`](https://github.com/MenschMachine/pdfdancer-client-java/blob/20639941174b14fa131fb31969b69b72eb612c64/src/main/java/com/pdfdancer/common/model/PathObjectRef.java)
 

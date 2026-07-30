@@ -1,7 +1,7 @@
 ---
 id: pdf-affine-transform-builder
 title: "PdfAffineTransformBuilder"
-description: "Python API reference for PdfAffineTransformBuilder This public class belongs to the text_editing package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.1."
+description: "Python API reference for PdfAffineTransformBuilder. Build a six-value PDF affine transformation matrix. This public class belongs to the text_editing package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.2."
 pagination_next: null
 pagination_prev: null
 ---
@@ -12,7 +12,9 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `text_editing`  
-**SDK:** `pdfdancer-client-python 3.0.1`
+**SDK:** `pdfdancer-client-python 3.0.2`
+
+Build a six-value PDF affine transformation matrix.
 
 ## Declaration
 
@@ -66,5 +68,5 @@ translate(self, translate_x: 'float', translate_y: 'float') -> "'PdfAffineTransf
 - [Text Layout and Reflow](../../text-layout)
 - [Working with Form XObjects](../../working-with-formxobjects)
 
-[View source at `af2a1171a1b9`](https://github.com/MenschMachine/pdfdancer-client-python/blob/af2a1171a1b9b06dff14d2a0d64f4340f925d26c/src/pdfdancer/text_editing.py)
+[View source at `c76a79f72e69`](https://github.com/MenschMachine/pdfdancer-client-python/blob/c76a79f72e694219212d5af0c2085195bdea4eee/src/pdfdancer/text_editing.py)
 

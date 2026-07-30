@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `com.pdfdancer.client.rest`  
-**SDK:** `com.pdfdancer.client:pdfdancer-client-java 3.0.0`
+**SDK:** `com.pdfdancer.client:pdfdancer-client-java 3.0.1`
 
 REST API client for interacting with the PDFDancer PDF manipulation service.
 This client provides a convenient Java interface for performing PDF operations
@@ -44,6 +44,22 @@ public com.pdfdancer.common.model.PageRef addPage()
 ```java
 public com.pdfdancer.common.model.PageRef addPage(com.pdfdancer.common.request.AddPageRequest)
 ```
+
+### `analyzeReadingUnits`
+
+```java
+public com.pdfdancer.common.response.ReadingUnitDocumentAnalysis analyzeReadingUnits()
+```
+
+Analyzes the current session PDF into semantic reading units.
+
+### `analyzeReadingUnits`
+
+```java
+public com.pdfdancer.common.response.ReadingUnitPageAnalysis analyzeReadingUnits(int)
+```
+
+Analyzes one one-based page of the current session PDF into reading units.
 
 ### `clearClipping`
 
@@ -436,5 +452,5 @@ public java.util.List<com.pdfdancer.client.rest.PathReference> selectPaths()
 public com.pdfdancer.client.rest.TextClient text()
 ```
 
-[View source at `9c04036fe114`](https://github.com/MenschMachine/pdfdancer-client-java/blob/9c04036fe11472d78332038d401c7c44fbefa406/src/main/java/com/pdfdancer/client/rest/PDFDancer.java)
+[View source at `20639941174b`](https://github.com/MenschMachine/pdfdancer-client-java/blob/20639941174b14fa131fb31969b69b72eb612c64/src/main/java/com/pdfdancer/client/rest/PDFDancer.java)
 

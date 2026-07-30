@@ -1,7 +1,7 @@
 ---
 id: font-type
 title: "FontType"
-description: "TypeScript API reference for FontType. Font type classification from the PDF. This public enum belongs to the models package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.0."
+description: "TypeScript API reference for FontType. Font type classification from the PDF. This public enum belongs to the models package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.1."
 pagination_next: null
 pagination_prev: null
 ---
@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** enum  
 **Module/package:** `models`  
-**SDK:** `pdfdancer-client-typescript 3.0.0`
+**SDK:** `pdfdancer-client-typescript 3.0.1`
 
 Font type classification from the PDF.
 
@@ -46,5 +46,5 @@ SYSTEM = "SYSTEM"
 
 - [Working with Fonts](../../working-with-fonts)
 
-[View source at `7bd49ac104cc`](https://github.com/MenschMachine/pdfdancer-client-typescript/blob/7bd49ac104cc228c66c28f448c72c756eb740183/src/models.ts)
+[View source at `f7b7f2d7c269`](https://github.com/MenschMachine/pdfdancer-client-typescript/blob/f7b7f2d7c26956f37cac21c00f7efd8a93883931/src/models.ts)
 

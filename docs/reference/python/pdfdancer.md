@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `pdfdancer_v2`  
-**SDK:** `pdfdancer-client-python 3.0.1`
+**SDK:** `pdfdancer-client-python 3.0.2`
 
 REST API client for interacting with the PDFDancer PDF manipulation service.
 This client provides a convenient Python interface for performing PDF operations
@@ -52,6 +52,14 @@ Raises:
     ValidationException: If token is empty or PDF data is invalid
     SessionException: If session creation fails
     HttpClientException: If HTTP communication fails
+
+### `analyze_reading_units`
+
+```python
+analyze_reading_units(self, page_number: 'Optional[int]' = None) -> 'Union[ReadingUnitDocumentAnalysis, ReadingUnitPageAnalysis]'
+```
+
+Analyze the current session PDF, or one one-based page, into reading units.
 
 ### `clear_clipping`
 
@@ -394,5 +402,5 @@ text(self) -> 'TextClient'
 
 Return document-scoped selector-based text editing operations.
 
-[View source at `af2a1171a1b9`](https://github.com/MenschMachine/pdfdancer-client-python/blob/af2a1171a1b9b06dff14d2a0d64f4340f925d26c/src/pdfdancer/pdfdancer_v2.py)
+[View source at `c76a79f72e69`](https://github.com/MenschMachine/pdfdancer-client-python/blob/c76a79f72e694219212d5af0c2085195bdea4eee/src/pdfdancer/pdfdancer_v2.py)
 

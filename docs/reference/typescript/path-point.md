@@ -1,7 +1,7 @@
 ---
 id: path-point
 title: "PathPoint"
-description: "TypeScript API reference for PathPoint. Represents a 2D point with x and y coordinates for path operations. This public interface belongs to the models package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.0."
+description: "TypeScript API reference for PathPoint. Represents a 2D point with x and y coordinates for path operations. This public interface belongs to the models package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.1."
 pagination_next: null
 pagination_prev: null
 ---
@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** interface  
 **Module/package:** `models`  
-**SDK:** `pdfdancer-client-typescript 3.0.0`
+**SDK:** `pdfdancer-client-typescript 3.0.1`
 
 Represents a 2D point with x and y coordinates for path operations.
 
@@ -40,5 +40,5 @@ y: number
 
 - [Working with Vector Graphics](../../working-with-vector-graphics)
 
-[View source at `7bd49ac104cc`](https://github.com/MenschMachine/pdfdancer-client-typescript/blob/7bd49ac104cc228c66c28f448c72c756eb740183/src/models.ts)
+[View source at `f7b7f2d7c269`](https://github.com/MenschMachine/pdfdancer-client-typescript/blob/f7b7f2d7c26956f37cac21c00f7efd8a93883931/src/models.ts)
 

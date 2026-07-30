@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `com.pdfdancer.common.model`  
-**SDK:** `com.pdfdancer.client:pdfdancer-client-java 3.0.0`
+**SDK:** `com.pdfdancer.client:pdfdancer-client-java 3.0.1`
 
 Represents a clipping region that masks or limits the visibility of other path segments.
 This class defines clipping boundaries within PDF documents, controlling which parts
@@ -59,5 +59,5 @@ public void setClippedPath(com.pdfdancer.common.model.path.PathSegment)
 
 Sets the path segment that defines the clipping boundary.
 
-[View source at `9c04036fe114`](https://github.com/MenschMachine/pdfdancer-client-java/blob/9c04036fe11472d78332038d401c7c44fbefa406/src/main/java/com/pdfdancer/common/model/Clipping.java)
+[View source at `20639941174b`](https://github.com/MenschMachine/pdfdancer-client-java/blob/20639941174b14fa131fb31969b69b72eb612c64/src/main/java/com/pdfdancer/common/model/Clipping.java)
 

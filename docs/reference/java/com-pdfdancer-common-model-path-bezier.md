@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `com.pdfdancer.common.model.path`  
-**SDK:** `com.pdfdancer.client:pdfdancer-client-java 3.0.0`
+**SDK:** `com.pdfdancer.client:pdfdancer-client-java 3.0.1`
 
 Represents a cubic Bezier curve path segment defined by four control points.
 This class implements a cubic Bezier curve with start point, two control points,
@@ -113,5 +113,5 @@ public void setP3(com.pdfdancer.common.model.Point)
 
 - [Working with Vector Graphics](../../working-with-vector-graphics)
 
-[View source at `9c04036fe114`](https://github.com/MenschMachine/pdfdancer-client-java/blob/9c04036fe11472d78332038d401c7c44fbefa406/src/main/java/com/pdfdancer/common/model/path/Bezier.java)
+[View source at `20639941174b`](https://github.com/MenschMachine/pdfdancer-client-java/blob/20639941174b14fa131fb31969b69b72eb612c64/src/main/java/com/pdfdancer/common/model/path/Bezier.java)
 

@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-common-model-document-font-info-dto
 title: "DocumentFontInfoDto"
-description: "Java API reference for DocumentFontInfoDto This public class belongs to the com.pdfdancer.common.model package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.0."
+description: "Java API reference for DocumentFontInfoDto This public class belongs to the com.pdfdancer.common.model package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.1."
 pagination_next: null
 pagination_prev: null
 ---
@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `com.pdfdancer.common.model`  
-**SDK:** `com.pdfdancer.client:pdfdancer-client-java 3.0.0`
+**SDK:** `com.pdfdancer.client:pdfdancer-client-java 3.0.1`
 
 ## Declaration
 
@@ -62,5 +62,5 @@ public java.lang.String toString()
 
 - [Working with Fonts](../../working-with-fonts)
 
-[View source at `9c04036fe114`](https://github.com/MenschMachine/pdfdancer-client-java/blob/9c04036fe11472d78332038d401c7c44fbefa406/src/main/java/com/pdfdancer/common/model/DocumentFontInfoDto.java)
+[View source at `20639941174b`](https://github.com/MenschMachine/pdfdancer-client-java/blob/20639941174b14fa131fb31969b69b72eb612c64/src/main/java/com/pdfdancer/common/model/DocumentFontInfoDto.java)
 

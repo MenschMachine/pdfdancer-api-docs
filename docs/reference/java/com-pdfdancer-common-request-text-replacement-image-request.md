@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `com.pdfdancer.common.request`  
-**SDK:** `com.pdfdancer.client:pdfdancer-client-java 3.0.0`
+**SDK:** `com.pdfdancer.client:pdfdancer-client-java 3.0.1`
 
 Bitmap data and caret-relative geometry for replacing matched decoded text.
 
@@ -60,5 +60,5 @@ public com.pdfdancer.common.model.PdfAffineTransform transformation()
 - [Text Layout and Reflow](../../text-layout)
 - [Working with Images](../../working-with-images)
 
-[View source at `9c04036fe114`](https://github.com/MenschMachine/pdfdancer-client-java/blob/9c04036fe11472d78332038d401c7c44fbefa406/src/main/java/com/pdfdancer/common/request/TextReplacementImageRequest.java)
+[View source at `20639941174b`](https://github.com/MenschMachine/pdfdancer-client-java/blob/20639941174b14fa131fb31969b69b72eb612c64/src/main/java/com/pdfdancer/common/request/TextReplacementImageRequest.java)
 

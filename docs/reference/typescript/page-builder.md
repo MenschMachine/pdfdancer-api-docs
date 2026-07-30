@@ -1,7 +1,7 @@
 ---
 id: page-builder
 title: "PageBuilder"
-description: "TypeScript API reference for PageBuilder This public class belongs to the page-builder package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.0."
+description: "TypeScript API reference for PageBuilder. Builds and inserts a page into the current PDFDancer session. This public class belongs to the page-builder package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.1."
 pagination_next: null
 pagination_prev: null
 ---
@@ -12,7 +12,9 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `page-builder`  
-**SDK:** `pdfdancer-client-typescript 3.0.0`
+**SDK:** `pdfdancer-client-typescript 3.0.1`
+
+Builds and inserts a page into the current PDFDancer session.
 
 ## Declaration
 
@@ -115,5 +117,5 @@ portrait(): PageBuilder
 
 - [Working with Pages](../../working-with-pages)
 
-[View source at `7bd49ac104cc`](https://github.com/MenschMachine/pdfdancer-client-typescript/blob/7bd49ac104cc228c66c28f448c72c756eb740183/src/page-builder.ts)
+[View source at `f7b7f2d7c269`](https://github.com/MenschMachine/pdfdancer-client-typescript/blob/f7b7f2d7c26956f37cac21c00f7efd8a93883931/src/page-builder.ts)
 
