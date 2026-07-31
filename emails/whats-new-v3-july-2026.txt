@@ -1,0 +1,154 @@
+PDFDancer
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PDFDancer v3 Is Here: Precise Text Editing, Production-Grade Reflow
+
+We're excited to finally share PDFDancer v3. We've rebuilt how PDFDancer works
+with text, from precise editing to production-grade reflow. V3 also introduces
+semantic reading units, so you can work with a document's structure as well as
+its text.
+
+
+PRECISE CONTROL OVER PDF TEXT
+─────────────────────────────
+
+This is a big step beyond line- and paragraph-based editing. Target content,
+style runs, anchor carets, regions, or coordinates, then replace, insert,
+delete, or restyle exactly what you need.
+
+For example, this finds style runs by font, size, and content, then changes
+only those matches:
+
+    from pdfdancer import PdfColorRequest, TextStyleRequest
+
+    response = pdf.page(1).text().style(
+        TextStyleRequest.runs_where()
+        .where_font("Helvetica-Bold")
+        .where_size(12, tolerance=0.25)
+        .where_text_contains("Total")
+        .font("Helvetica")
+        .fill_color(PdfColorRequest.rgb(0, 0, 0))
+        .build()
+    )
+
+→ Learn about style-run targeting:
+https://docs.pdfdancer.com/v3/styling-text/?utm_source=email&utm_campaign=pdfdancer-v3-july-2026
+
+
+A PRODUCTION-GRADE REFLOW ENGINE
+────────────────────────────────
+
+We're especially proud of the new reflow engine. The previous engine wasn't
+ready for production; this one handles paragraphs, columns, lists, tables,
+headings, code, justified text, and explicit whitespace.
+
+You decide whether to preserve source positions, keep existing line breaks, or
+require full reflow. The response tells you what actually happened.
+
+This replacement requires body-text reflow, turns off generated hyphenation,
+and rejects an incomplete result:
+
+    from pdfdancer import TextLayoutProfile, TextReplaceRequest
+
+    response = pdf.text().replace(
+        TextReplaceRequest.literal("Q1", "First quarter")
+        .whole_words(True)
+        .pages(2, 4)
+        .max_matches(2)
+        .require_reflow(TextLayoutProfile.BODY_TEXT)
+        .hyphenation_enabled(False)
+        .build()
+    )
+
+    if response.errors or response.matched != response.changed:
+        raise RuntimeError(f"Text edit was incomplete: {response.errors}")
+
+    for change in response.change or ():
+        print(change.page, change.applied_layout_mode)
+
+→ Learn about text layout and reflow:
+https://docs.pdfdancer.com/v3/text-layout/?utm_source=email&utm_campaign=pdfdancer-v3-july-2026
+
+
+STRUCTURED TEXT EXTRACTION
+──────────────────────────
+
+V3 also opens up a new way to read PDFs in code. Reading units classify
+headings, paragraphs, lists, captions, footnotes, and other semantic blocks,
+with reading order, source provenance, page bounds, and relationships.
+
+One call analyzes the complete document:
+
+    analysis = pdf.analyze_reading_units()
+
+The Python SDK maps the response to typed ReadingUnit objects. Here's the
+underlying API data for one abridged unit:
+
+    {
+      "id": "unit-1",
+      "role": "HEADING",
+      "text": "Quarterly results",
+      "stream": {
+        "PRIMARY": {"included": true, "order": 1}
+      },
+      "provenance": {
+        "pageNumber": 1,
+        "sourceElementIds": ["text-17"],
+        "bounds": {"x": 72, "y": 680, "width": 214, "height": 18}
+      },
+      "relationships": [
+        {"type": "HEADING_PARENT_OF", "targetUnitId": "unit-2"}
+      ]
+    }
+
+→ Explore structured text and reading units:
+https://docs.pdfdancer.com/v3/reading-units/?utm_source=email&utm_campaign=pdfdancer-v3-july-2026
+
+
+SEE EXACTLY WHAT CHANGED
+────────────────────────
+
+Every text operation shows its work: matches, applied changes, affected pages,
+layout behavior, generated elements, warnings, and errors. You can catch an
+incomplete edit before it reaches the finished PDF.
+
+→ Handle diagnostics and partial outcomes:
+https://docs.pdfdancer.com/v3/error-handling/?utm_source=email&utm_campaign=pdfdancer-v3-july-2026
+
+
+START BUILDING WITH V3
+──────────────────────
+
+The current SDKs are ready to use:
+
+• Python 3.0.2 — Python 3.10+
+• TypeScript 3.0.1 — Node.js 20+
+• Java 3.0.1 — Java 17+
+
+→ Install a v3 SDK:
+https://docs.pdfdancer.com/v3/sdk-versions/?utm_source=email&utm_campaign=pdfdancer-v3-july-2026
+
+
+MIGRATING FROM API V1
+─────────────────────
+
+Already using API v1? The migration guide walks through the new editing model,
+changed conventions, and capabilities that remain on v1.
+
+→ Read the API v1 to v3 migration guide:
+https://docs.pdfdancer.com/v3/migrating-from-v1/?utm_source=email&utm_campaign=pdfdancer-v3-july-2026
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Try v3 on the PDFs that usually give you trouble. If you run into a difficult
+migration or an especially strange document, reply to this email. We'd love to
+take a look.
+
+Michael from PDFDancer
+
+──────────────────────────────────────────────────
+The Famous Cat Ltd.
+https://www.pdfdancer.com?utm_source=email&utm_campaign=pdfdancer-v3-july-2026
+
+Unsubscribe: __unsubscribe_url__
