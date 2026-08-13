@@ -85,8 +85,3 @@ A unit classified as `TABLE` identifies a semantic text block; it does not provi
 
 Use representative PDFs to verify that the returned units and reading order meet the requirements of your search, indexing, transformation, or downstream document workflow.
 
-## API reference
-
-- [Python `ReadingUnit` API reference](https://docs.pdfdancer.com/v3/reference/python/reading-unit)
-- [TypeScript `ReadingUnit` API reference](https://docs.pdfdancer.com/v3/reference/typescript/reading-unit)
-- [Java `ReadingUnit` API reference](https://docs.pdfdancer.com/v3/reference/java/com-pdfdancer-common-response-reading-unit)
