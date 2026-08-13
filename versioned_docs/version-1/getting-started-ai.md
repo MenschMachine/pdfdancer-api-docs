@@ -185,7 +185,7 @@ Your AI handles everything—from project setup to implementation to debugging.
 ## More Information
 
 - **PDFDancer Website**: [www.pdfdancer.com](https://www.pdfdancer.com)
-- **Documentation**: [docs.pdfdancer.com](https://docs.pdfdancer.com)
+- **Documentation**: [docs.pdfdancer.com](https://docs.pdfdancer.com/v3/)
 - **MCP Server GitHub**: [github.com/MenschMachine/pdfdancer-mcp](https://github.com/MenschMachine/pdfdancer-mcp)
 - **npm Package**: [@pdfdancer/pdfdancer-mcp](https://www.npmjs.com/package/@pdfdancer/pdfdancer-mcp)
 - **MCP Protocol**: [Model Context Protocol](https://modelcontextprotocol.io/)

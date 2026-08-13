@@ -33,6 +33,7 @@ const config: Config = {
     // Set the /<baseUrl>/ pathname under which your site is served
     // For GitHub pages deployment, it is often '/<projectName>/'
     baseUrl: '/',
+    trailingSlash: true,
 
     // GitHub pages deployment config.
     // If you aren't using GitHub pages, you don't need these.
@@ -170,15 +171,15 @@ const config: Config = {
                         },
                         {
                             label: 'Roadmap',
-                            to: '/roadmap',
+                            to: '/roadmap/',
                         },
                         {
                             label: 'Changelog',
-                            href: 'https://www.pdfdancer.com/changelog',
+                            href: 'https://www.pdfdancer.com/changelog/',
                         },
                         {
                             label: 'Status',
-                            href: 'https://status.pdfdancer.com',
+                            href: 'https://status.pdfdancer.com/',
                         },
                     ],
                 },
@@ -191,19 +192,19 @@ const config: Config = {
                         },
                         {
                             label: 'Privacy',
-                            href: 'https://www.pdfdancer.com/privacy',
+                            href: 'https://www.pdfdancer.com/privacy/',
                         },
                         {
                             label: 'Terms of Service',
-                            href: 'https://www.pdfdancer.com/terms-of-service',
+                            href: 'https://www.pdfdancer.com/terms-of-service/',
                         },
                         {
                             label: 'Refund Policy',
-                            href: 'https://www.pdfdancer.com/refund-policy',
+                            href: 'https://www.pdfdancer.com/refund-policy/',
                         },
                         {
                             label: 'Contact',
-                            href: 'https://www.pdfdancer.com/contact',
+                            href: 'https://www.pdfdancer.com/contact/',
                         },
                     ],
                 },
