@@ -193,4 +193,4 @@ Deletion is not redaction. It removes selected text but does not define the secu
 
 ## Accept or reject the result
 
-For an edit that must be applied, accept the result only when the expected number of matches changed, `errors` is empty, and any warnings are acceptable. See [Text Layout](./text-layout) when the replacement changes the amount of text and surrounding content may need to move.
+For an edit that must be applied, accept the result only when the expected number of matches changed, `errors` is empty, and any warnings are acceptable. See [Text Layout](./text-layout.md) when the replacement changes the amount of text and surrounding content may need to move.

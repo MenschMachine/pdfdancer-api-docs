@@ -123,7 +123,7 @@ var response = pdf.text().style(
 </TabItem>
 </Tabs>
 
-See [Available Fonts](./available-fonts) for service-hosted names.
+See [Available Fonts](./available-fonts.md) for service-hosted names.
 
 ## Register and use a TTF font
 

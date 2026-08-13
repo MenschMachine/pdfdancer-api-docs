@@ -8,17 +8,17 @@ description: Find precise definitions for PDFDancer, PDF structure, document edi
 
 ## A
 
-**AcroForm** — The PDF mechanism for interactive fields such as text inputs, checkboxes, radio buttons, dropdowns, and buttons. An AcroForm field has a stored name and value. It is unrelated to a Form XObject. See [Working with AcroForms](./working-with-acroforms).
+**AcroForm** — The PDF mechanism for interactive fields such as text inputs, checkboxes, radio buttons, dropdowns, and buttons. An AcroForm field has a stored name and value. It is unrelated to a Form XObject. See [Working with AcroForms](./working-with-acroforms.md).
 
 **Active session** — The server-side working copy represented by an open `PDFDancer` client. Successful operations change this copy. The source file is not overwritten unless the application explicitly saves to the same path.
 
 **Anchor** — Existing literal or regular-expression text used to choose the insertion caret immediately before or after a match. An anchor insertion differs from coordinate insertion because its position is derived from existing text.
 
-**Applied layout mode** — The layout behavior actually used for one text change. It is reported in `TextEditResponse.change`. With `reflowWhenSupported`, it may be source-anchored even when reflow was requested. See [Text Layout and Reflow](./text-layout).
+**Applied layout mode** — The layout behavior actually used for one text change. It is reported in `TextEditResponse.change`. With `reflowWhenSupported`, it may be source-anchored even when reflow was requested. See [Text Layout and Reflow](./text-layout.md).
 
 ## B
 
-**Bounding rectangle** — An axis-aligned rectangle described by `x`, `y`, `width`, and `height` in PDF points. Selected objects may expose one through their position data. See [Positioning and Coordinates](./positioning).
+**Bounding rectangle** — An axis-aligned rectangle described by `x`, `y`, `width`, and `height` in PDF points. Selected objects may expose one through their position data. See [Positioning and Coordinates](./positioning.md).
 
 **Builder** — A fluent object used to collect and validate the inputs for a new object or text edit. Calling methods on a builder does not by itself change the PDF. New-content builders finish with `add`; text-edit builders finish with `build`, after which the result is passed to `replace`, `insert`, `delete`, or `style`.
 
@@ -44,11 +44,11 @@ description: Find precise definitions for PDFDancer, PDF structure, document edi
 
 **Element identifier** — An identifier returned in selected objects or operation diagnostics. It identifies PDFDancer's representation of an element in the active session. Do not treat it as a permanent business identifier across unrelated PDFs or sessions.
 
-**Embedded font** — A font program or subset stored inside the PDF. Existing text can render with an embedded font even when that embedded data cannot encode newly introduced characters. See [Working with Fonts](./working-with-fonts).
+**Embedded font** — A font program or subset stored inside the PDF. Existing text can render with an embedded font even when that embedded data cannot encode newly introduced characters. See [Working with Fonts](./working-with-fonts.md).
 
 ## F
 
-**Form XObject** — A reusable PDF content stream that can be painted on one or more pages. It can contain text, images, paths, or other graphics. It is not an interactive AcroForm field. See [Working with Form XObjects](./working-with-formxobjects).
+**Form XObject** — A reusable PDF content stream that can be painted on one or more pages. It can contain text, images, paths, or other graphics. It is not an interactive AcroForm field. See [Working with Form XObjects](./working-with-formxobjects.md).
 
 ## H
 
@@ -60,7 +60,7 @@ description: Find precise definitions for PDFDancer, PDF structure, document edi
 
 ## O
 
-**Object selector** — An SDK method that returns existing typed objects, such as `selectImages()` or `select_form_fields_by_name(...)`. A plural selector returns a collection; a singular selector returns one match or the language's empty value. See [Finding Existing Objects](./finding-content).
+**Object selector** — An SDK method that returns existing typed objects, such as `selectImages()` or `select_form_fields_by_name(...)`. A plural selector returns a collection; a singular selector returns one match or the language's empty value. See [Finding Existing Objects](./finding-content.md).
 
 ## P
 
@@ -74,7 +74,7 @@ description: Find precise definitions for PDFDancer, PDF structure, document edi
 
 ## R
 
-**Reading unit** — A semantically classified text block returned by reading-unit analysis. A unit contains text, reading-stream membership, source provenance, bounds, and relationships. It is analysis output, not an accessibility tag or an editable text selector. See [Structured Text and Reading Units](./reading-units).
+**Reading unit** — A semantically classified text block returned by reading-unit analysis. A unit contains text, reading-stream membership, source provenance, bounds, and relationships. It is analysis output, not an accessibility tag or an editable text selector. See [Structured Text and Reading Units](./reading-units.md).
 
 **Reading-unit provenance** — The source information associated with a reading unit: its one-based page number, source-element identifiers, and page-space bounds. Provenance connects analysis output to the corresponding PDF content but does not create a permanent business identifier.
 

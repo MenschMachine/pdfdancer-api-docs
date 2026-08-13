@@ -46,7 +46,7 @@ Form XObjects and AcroForm fields are different PDF concepts. A Form XObject is 
 
 PDFs describe how content is painted, not only the visual objects a person perceives. A logo may be an image, a collection of paths, or a Form XObject. A word may be split into separately positioned glyphs. Text may also have been converted to outlines, in which case it is no longer text for text-editing purposes.
 
-Clipping, reuse, and overlapping painted content can also affect what is visible and what a selector returns. If a visible item does not match the expected selector, identify how it is represented before treating the result as an SDK failure. [Finding Existing Objects](./finding-content) shows how to inspect objects by type, page, and coordinate.
+Clipping, reuse, and overlapping painted content can also affect what is visible and what a selector returns. If a visible item does not match the expected selector, identify how it is represented before treating the result as an SDK failure. [Finding Existing Objects](./finding-content.md) shows how to inspect objects by type, page, and coordinate.
 
 ## Existing content and new content use different APIs
 
@@ -85,13 +85,13 @@ var pageOneImages = pdf.page(1).selectImages();
 </TabItem>
 </Tabs>
 
-The two calls express the same selection at different scopes. See [Positioning and Coordinates](./positioning) for PDF points, page geometry, and coordinate origins.
+The two calls express the same selection at different scopes. See [Positioning and Coordinates](./positioning.md) for PDF points, page geometry, and coordinate origins.
 
 ## Text is a special case
 
 Text is painted from positioned glyphs rather than stored as guaranteed editable paragraphs or lines. PDFDancer therefore targets text through an operation request: a literal string, regular expression, existing style, anchor, or coordinate.
 
-Text edits can change the amount of content. A source-anchored edit keeps unaffected glyphs at their original coordinates; a reflowing edit may move text or recompute line breaks for a detected text unit. These choices are operation-specific. See [Working with Text](./working-with-text) and [Text Layout and Reflow](./text-layout).
+Text edits can change the amount of content. A source-anchored edit keeps unaffected glyphs at their original coordinates; a reflowing edit may move text or recompute line breaks for a detected text unit. These choices are operation-specific. See [Working with Text](./working-with-text.md) and [Text Layout and Reflow](./text-layout.md).
 
 ## Results describe what happened
 
@@ -106,8 +106,8 @@ For text, `matched` is the number of eligible targets and `changed` is the numbe
 
 ## Where to go next
 
-- [Finding Existing Objects](./finding-content) — select images, paths, Form XObjects, and AcroForm fields.
-- [Positioning and Coordinates](./positioning) — work with points, rectangles, origins, and transforms.
-- [Working with Text](./working-with-text) — target and edit text.
-- [Working with AcroForms](./working-with-acroforms) — inspect and change interactive fields.
-- [Working with Form XObjects](./working-with-formxobjects) — inspect and edit reusable painted content.
+- [Finding Existing Objects](./finding-content.md) — select images, paths, Form XObjects, and AcroForm fields.
+- [Positioning and Coordinates](./positioning.md) — work with points, rectangles, origins, and transforms.
+- [Working with Text](./working-with-text.md) — target and edit text.
+- [Working with AcroForms](./working-with-acroforms.md) — inspect and change interactive fields.
+- [Working with Form XObjects](./working-with-formxobjects.md) — inspect and edit reusable painted content.

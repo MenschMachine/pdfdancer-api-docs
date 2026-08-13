@@ -79,9 +79,8 @@ The SDKs map unknown role, relationship, or mode values to an `UNKNOWN` enum mem
 
 ## Scope and limitations
 
-Reading-unit analysis is structured text extraction, not text editing. Use the [text-editing APIs](./working-with-text) when you need to replace, insert, delete, or style text.
+Reading-unit analysis is structured text extraction, not text editing. Use the [text-editing APIs](./working-with-text.md) when you need to replace, insert, delete, or style text.
 
 A unit classified as `TABLE` identifies a semantic text block; it does not provide a guaranteed row-and-column table model. Reading-unit analysis also does not itself perform OCR. Image-only documents require text recognition before text can participate in this analysis.
 
 Use representative PDFs to verify that the returned units and reading order meet the requirements of your search, indexing, transformation, or downstream document workflow.
-

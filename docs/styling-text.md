@@ -174,4 +174,4 @@ var response = pdf.text().style(
 
 ## Custom fonts and characters the font cannot display
 
-Register a TTF and use the returned font name. Registration only makes the font available; it does not guarantee that the font contains every character in the selected text. If `matched` is positive but `changed` is zero, inspect font-related errors before saving. See [Working with Fonts](./working-with-fonts).
+Register a TTF and use the returned font name. Registration only makes the font available; it does not guarantee that the font contains every character in the selected text. If `matched` is positive but `changed` is zero, inspect font-related errors before saving. See [Working with Fonts](./working-with-fonts.md).

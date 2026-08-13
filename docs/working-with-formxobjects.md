@@ -188,4 +188,4 @@ Clearing clipping removes the graphics-state boundary affecting the selected ins
 
 Moving or deleting a Form XObject reference can affect a reusable content instance in ways that differ from editing its underlying stream. Inspect the rendered output before applying the same change to multiple instances.
 
-For named interactive fields, see [AcroForms](./working-with-acroforms).
+For named interactive fields, see [AcroForms](./working-with-acroforms.md).

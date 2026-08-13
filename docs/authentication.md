@@ -85,4 +85,4 @@ The initial request counts as one attempt. HTTP 408, 429, 500, 502, 503, 504, an
 - Handle rate-limit and session exceptions separately from validation failures.
 - Do not disable TLS verification outside controlled local testing.
 
-See [Error Handling](./error-handling) for the language-specific exception model.
+See [Error Handling](./error-handling.md) for the language-specific exception model.

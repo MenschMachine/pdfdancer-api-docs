@@ -58,6 +58,6 @@ void main();
 npx tsx edit-pdf.ts
 ```
 
-The program exits without output when the edit succeeds. Open `output.pdf` and confirm that `Hello` became `Final`. If the script reports that the text was not found, see [When visible text does not match](./working-with-text#when-visible-text-does-not-match).
+The program exits without output when the edit succeeds. Open `output.pdf` and confirm that `Hello` became `Final`. If the script reports that the text was not found, see [When visible text does not match](./working-with-text.md#when-visible-text-does-not-match).
 
-Next, learn about [text targeting and responses](./working-with-text) or [other content types](./concepts).
+Next, learn about [text targeting and responses](./working-with-text.md) or [other content types](./concepts.md).

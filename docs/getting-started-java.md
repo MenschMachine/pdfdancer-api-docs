@@ -81,8 +81,8 @@ public class EditPdf {
 mvn compile org.codehaus.mojo:exec-maven-plugin:3.5.0:java -Dexec.mainClass=EditPdf
 ```
 
-The program exits without output when the edit succeeds. Open `output.pdf` and confirm that `Hello` became `Final`. If the program reports that the text was not found, see [When visible text does not match](./working-with-text#when-visible-text-does-not-match).
+The program exits without output when the edit succeeds. Open `output.pdf` and confirm that `Hello` became `Final`. If the program reports that the text was not found, see [When visible text does not match](./working-with-text.md#when-visible-text-does-not-match).
 
 Gradle users can add `implementation("com.pdfdancer.client:pdfdancer-client-java:3.0.1")`.
 
-Next, learn about [text targeting and responses](./working-with-text) or [other content types](./concepts).
+Next, learn about [text targeting and responses](./working-with-text.md) or [other content types](./concepts.md).

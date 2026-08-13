@@ -330,4 +330,4 @@ PDF text is stored as positioned glyphs and runs. A phrase that looks continuous
 
 If the result still does not match the rendered text, the PDF may represent the visible content as separated glyphs, outlines, or another structure that is not editable text. In that case, inspect the rendered output and the source PDF as an optional diagnostic step rather than assuming that the visible phrase is one text target.
 
-Continue with [Replace, Insert, and Delete](./editing-text), [Styling Text](./styling-text), or [Text Layout](./text-layout).
+Continue with [Replace, Insert, and Delete](./editing-text.md), [Styling Text](./styling-text.md), or [Text Layout](./text-layout.md).

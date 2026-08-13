@@ -25,7 +25,7 @@ Find the v1 pattern in the first column and use the v3 capability in the second 
 |---|---|---|
 | `select_paragraphs_*`, `select_text_lines_*`, or paragraph/text-line edit builders | Replace the selection-and-edit sequence with a request that targets the text as part of the operation. | [Rewrite text edits](#2-rewrite-text-edits) |
 | Text replacement or deletion | Use a dedicated `TextReplaceRequest` or `TextDeleteRequest`. | [Convert each text operation](#convert-each-text-operation) |
-| Text styling | Use a `TextStyleRequest` to change appearance without replacing characters. | [Styling Text](./styling-text) |
+| Text styling | Use a `TextStyleRequest` to change appearance without replacing characters. | [Styling Text](./styling-text.md) |
 | `ReflowPreset` | Choose whether text stays fixed, moves along the line, or is recomposed into new lines. | [Choose layout behavior](#choose-the-layout-behavior-your-output-needs) |
 | Images, paths, pages, forms, or fonts | Keep the same application task and adopt the v3 selectors, classes, methods, and result checks. | [Update other operations](#3-update-other-operations) |
 | Snapshots | Use the v3 snapshot classes and filter arguments. | See the language-specific examples in this documentation. |
@@ -41,12 +41,12 @@ In v1, your code selects a paragraph before changing it:
 
 | API v1 | API v3 | Learn more |
 |---|---|---|
-| Select a `Paragraph` or `TextLine` | Target text with a literal, regular-expression, style, anchor, or coordinate selector. | [Working with Text](./working-with-text) |
-| Call `.edit()` on the selected object | Build a `TextReplaceRequest`, `TextInsertRequest`, `TextDeleteRequest`, or `TextStyleRequest`. | [Editing Text](./editing-text) |
-| Paragraph or text-line object is what you edit | Specify the text to change as part of the v3 operation. Paragraphs and text lines are not editable objects in v3. | [Core Concepts](./concepts) |
-| `ReflowPreset` | A v3 layout mode and profile: `TextLayoutProfile` in Python/TypeScript or `TextLayoutRequest.Profile` in Java. | [Text Layout](./text-layout) |
-| Boolean or edited-object result | `TextEditResponse`, including match/change counts and diagnostics. | [Working with Text](./working-with-text) |
-| Result from changing an existing object | Usually `CommandResult`; some operations return booleans. | [Error Handling](./error-handling) |
+| Select a `Paragraph` or `TextLine` | Target text with a literal, regular-expression, style, anchor, or coordinate selector. | [Working with Text](./working-with-text.md) |
+| Call `.edit()` on the selected object | Build a `TextReplaceRequest`, `TextInsertRequest`, `TextDeleteRequest`, or `TextStyleRequest`. | [Editing Text](./editing-text.md) |
+| Paragraph or text-line object is what you edit | Specify the text to change as part of the v3 operation. Paragraphs and text lines are not editable objects in v3. | [Core Concepts](./concepts.md) |
+| `ReflowPreset` | A v3 layout mode and profile: `TextLayoutProfile` in Python/TypeScript or `TextLayoutRequest.Profile` in Java. | [Text Layout](./text-layout.md) |
+| Boolean or edited-object result | `TextEditResponse`, including match/change counts and diagnostics. | [Working with Text](./working-with-text.md) |
+| Result from changing an existing object | Usually `CommandResult`; some operations return booleans. | [Error Handling](./error-handling.md) |
 
 In v1, that workflow looks like this. This comparison-only snippet is intentionally not validated against the v3 SDK:
 
@@ -126,25 +126,25 @@ Make these changes in your application:
 4. `TextEditResponse.matched` reports matching text; `changed` reports applied changes.
 5. `matched` can be greater than `changed`. Check both values, warnings, and errors before saving when every replacement is required.
 
-Use a regular expression when a literal target is not sufficient. These selectors find text to edit; they do not extract text from the PDF. For extraction, use [reading-unit analysis](./reading-units).
+Use a regular expression when a literal target is not sufficient. These selectors find text to edit; they do not extract text from the PDF. For extraction, use [reading-unit analysis](./reading-units.md).
 
 ### Text extraction
 
-Python 3.0.2, TypeScript 3.0.1, and Java 3.0.1 expose reading-unit analysis at document and one-based page scope. The v3 result contains semantic reading units rather than the v1 `Paragraph` and `TextLine` inspection model. See [Structured Text and Reading Units](./reading-units).
+Python 3.0.2, TypeScript 3.0.1, and Java 3.0.1 expose reading-unit analysis at document and one-based page scope. The v3 result contains semantic reading units rather than the v1 `Paragraph` and `TextLine` inspection model. See [Structured Text and Reading Units](./reading-units.md).
 
 ### Convert each text operation
 
 | Your v1 task | Build this v3 request | Then call | Learn more |
 |---|---|---|---|
-| Replace text | `TextReplaceRequest` | `replace()` | [Editing Text](./editing-text) |
-| Insert text near existing text | `TextInsertRequest` | `insert()` | [Editing Text](./editing-text) |
-| Delete text | `TextDeleteRequest` | `delete()` | [Editing Text](./editing-text) |
-| Change text appearance | `TextStyleRequest` | `style()` | [Styling Text](./styling-text) |
-| Control wrapping and text movement | A request with a layout mode and profile | `replace()`, `insert()`, `delete()`, or `style()` | [Text Layout](./text-layout) |
+| Replace text | `TextReplaceRequest` | `replace()` | [Editing Text](./editing-text.md) |
+| Insert text near existing text | `TextInsertRequest` | `insert()` | [Editing Text](./editing-text.md) |
+| Delete text | `TextDeleteRequest` | `delete()` | [Editing Text](./editing-text.md) |
+| Change text appearance | `TextStyleRequest` | `style()` | [Styling Text](./styling-text.md) |
+| Control wrapping and text movement | A request with a layout mode and profile | `replace()`, `insert()`, `delete()`, or `style()` | [Text Layout](./text-layout.md) |
 
 ### Choose the layout behavior your output needs
 
-In v3, layout behavior is explicit. Choose the option that produces the output your application needs. In Python and TypeScript, use `TextLayoutProfile`; in Java, use `TextLayoutRequest.Profile`. See [Text Layout](./text-layout) before choosing a mode.
+In v3, layout behavior is explicit. Choose the option that produces the output your application needs. In Python and TypeScript, use `TextLayoutProfile`; in Java, use `TextLayoutRequest.Profile`. See [Text Layout](./text-layout.md) before choosing a mode.
 
 | Your output must… | Use this v3 choice |
 |---|---|
@@ -161,20 +161,20 @@ For these workflows, keep your application goal and update the v3 calls and resu
 
 | Your application task | What to change |
 |---|---|
-| Work with pages | Update the page methods and return-value handling that changed. See [Working with Pages](./working-with-pages). |
-| Select or replace images | Update selectors and replacement methods. Check `CommandResult.success`. See [Working with Images](./working-with-images). |
-| Create or edit vector graphics | Update returned object classes and use the v3 builder methods that finish with `add()` or edit-session methods that finish with `apply()`. See [Working with Vector Graphics](./working-with-vector-graphics). |
-| Register or apply fonts | Update registration and text-style calls. Verify glyph coverage and response diagnostics. See [Working with Fonts](./working-with-fonts). |
-| Fill forms or edit Form XObjects | Update form-field and Form XObject classes and selectors. See [Working with AcroForms](./working-with-acroforms) and [Working with Form XObjects](./working-with-formxobjects). |
+| Work with pages | Update the page methods and return-value handling that changed. See [Working with Pages](./working-with-pages.md). |
+| Select or replace images | Update selectors and replacement methods. Check `CommandResult.success`. See [Working with Images](./working-with-images.md). |
+| Create or edit vector graphics | Update returned object classes and use the v3 builder methods that finish with `add()` or edit-session methods that finish with `apply()`. See [Working with Vector Graphics](./working-with-vector-graphics.md). |
+| Register or apply fonts | Update registration and text-style calls. Verify glyph coverage and response diagnostics. See [Working with Fonts](./working-with-fonts.md). |
+| Fill forms or edit Form XObjects | Update form-field and Form XObject classes and selectors. See [Working with AcroForms](./working-with-acroforms.md) and [Working with Form XObjects](./working-with-formxobjects.md). |
 | Inspect snapshots | Update snapshot classes and filter arguments using the language-specific examples in this documentation. |
-| Authenticate or configure the client | Update client construction and SDK-specific configuration. See [Authentication](./authentication). |
+| Authenticate or configure the client | Update client construction and SDK-specific configuration. See [Authentication](./authentication.md). |
 
 ## 4. Update your language integration
 
 ### Python
 
 - Import v3 request and model types from the package root when the v3 guide shows them there.
-- Use the v3 `PDFDancer.open(pdf_data=...)` form shown in the [Python quickstart](./getting-started-python).
+- Use the v3 `PDFDancer.open(pdf_data=...)` form shown in the [Python quickstart](./getting-started-python.md).
 - Close mutable sessions with a context manager.
 - Use snake_case method names.
 
@@ -182,14 +182,14 @@ For these workflows, keep your application goal and update the v3 calls and resu
 
 - Import v3 public types from `pdfdancer-client-typescript`.
 - Await asynchronous session, edit, and save operations.
-- Use the camelCase method names shown in the [TypeScript quickstart](./getting-started-typescript).
+- Use the camelCase method names shown in the [TypeScript quickstart](./getting-started-typescript.md).
 
 ### Java
 
 - Use public packages under `com.pdfdancer...`.
 - Construct requests with the v3 request builders.
 - Use accessor methods such as `matched()` and `changed()` on response objects.
-- Check the dependency coordinates and Java version in the [Java quickstart](./getting-started-java).
+- Check the dependency coordinates and Java version in the [Java quickstart](./getting-started-java.md).
 
 The three SDKs expose the same v3 concepts with language-appropriate naming.
 
@@ -206,7 +206,7 @@ For text operations, inspect:
 - `errors`: requested work that was not applied; and
 - per-change diagnostics, including the requested and applied layout.
 
-For image and path transformations, inspect `CommandResult.success`, its message and warning fields, and the identifier of the changed object. Some other object operations return booleans. See [Error Handling](./error-handling).
+For image and path transformations, inspect `CommandResult.success`, its message and warning fields, and the identifier of the changed object. Some other object operations return booleans. See [Error Handling](./error-handling.md).
 
 ## 6. Plan for remaining v1 workflows
 
@@ -214,7 +214,7 @@ Most editing workflows can move to v3. Plan separately for redaction and templat
 
 - [Redaction](/v1/redaction)
 
-Migrate text extraction to [reading-unit analysis](./reading-units). Keep redaction on v1 or choose another solution until a v3 SDK replacement is available. Text deletion cannot replace redaction.
+Migrate text extraction to [reading-unit analysis](./reading-units.md). Keep redaction on v1 or choose another solution until a v3 SDK replacement is available. Text deletion cannot replace redaction.
 
 For templates and reflow, compare v3 output with representative v1 output. An individual text replacement or v3 layout request may be suitable, but it is not necessarily equivalent to every v1 template or reflow behavior.
 
@@ -237,9 +237,9 @@ For templates and reflow, compare v3 output with representative v1 output. An in
 | API v1 page | API v3 destination |
 |---|---|
 | Introduction + Getting Started | [Getting Started](/v3/) |
-| Working with Text | [Working with Text](./working-with-text), [Editing Text](./editing-text), and [Styling Text](./styling-text) |
+| Working with Text | [Working with Text](./working-with-text.md), [Editing Text](./editing-text.md), and [Styling Text](./styling-text.md) |
 | Deleting Content | The relevant text, page, image, path, or form guide |
-| How Reflow Works | [Text Layout](./text-layout) |
-| Embedded Font Warning | [Working with Fonts](./working-with-fonts) |
-| Extracting Text | [Structured Text and Reading Units](./reading-units) |
+| How Reflow Works | [Text Layout](./text-layout.md) |
+| Embedded Font Warning | [Working with Fonts](./working-with-fonts.md) |
+| Extracting Text | [Structured Text and Reading Units](./reading-units.md) |
 | Redaction | No v3 SDK replacement; keep the v1 workflow or choose another solution |

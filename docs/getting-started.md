@@ -11,9 +11,9 @@ PDFDancer edits text, pages, images, vector graphics, and form fields in existin
 
 ## Choose your SDK
 
-- [Python](./getting-started-python) — Python 3.10 or newer
-- [TypeScript](./getting-started-typescript) — Node.js 20 or newer
-- [Java](./getting-started-java) — Java 17 or newer
+- [Python](./getting-started-python.md) — Python 3.10 or newer
+- [TypeScript](./getting-started-typescript.md) — Node.js 20 or newer
+- [Java](./getting-started-java.md) — Java 17 or newer
 
 All page numbers passed to v3 SDK methods are **one-based**. PDF coordinates are measured in points, normally from the bottom-left corner of the page.
 
@@ -29,14 +29,14 @@ Start with the quickstart for your language. Each quickstart uses the same downl
 
 ## Authentication
 
-When no credential is supplied, the SDK requests a temporary anonymous token. Anonymous output is watermarked. For production, create an account and configure `PDFDANCER_API_TOKEN`. See [Authentication](./authentication).
+When no credential is supplied, the SDK requests a temporary anonymous token. Anonymous output is watermarked. For production, create an account and configure `PDFDANCER_API_TOKEN`. See [Authentication](./authentication.md).
 
 ## Where to go next
 
-- [Find and edit text](./working-with-text)
-- [Add or transform images](./working-with-images)
-- [Create and reorder pages](./working-with-pages)
-- [Work with PDF coordinates](./positioning)
-- [Handle failures in production](./error-handling)
+- [Find and edit text](./working-with-text.md)
+- [Add or transform images](./working-with-images.md)
+- [Create and reorder pages](./working-with-pages.md)
+- [Work with PDF coordinates](./positioning.md)
+- [Handle failures in production](./error-handling.md)
 
-Upgrading an existing integration? See [Migrating from API v1](./migrating-from-v1). The complete v1 documentation remains available under [/v1/](/v1/).
+Upgrading an existing integration? See [Migrating from API v1](./migrating-from-v1.md). The complete v1 documentation remains available under [/v1/](/v1/).

@@ -45,4 +45,4 @@ var response = pdf.text().style(
 </TabItem>
 </Tabs>
 
-For custom TTF registration, embedded-font warnings, and using fonts in text edits, see [Working with Fonts](./working-with-fonts).
+For custom TTF registration, embedded-font warnings, and using fonts in text edits, see [Working with Fonts](./working-with-fonts.md).

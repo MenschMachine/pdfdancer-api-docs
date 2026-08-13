@@ -70,7 +70,7 @@ Coordinate selection is available through a page client because `(x, y)` alone d
 pdf.page(1).select…At(x, y, tolerance)
 ```
 
-The default tolerance is `0.01` point. Use a larger value when input coordinates are rounded or approximate. Prefer a plural selector such as `selectImagesAt` while diagnosing a match: more than one object can occupy the same point. See [Finding Existing Objects](./finding-content) for complete examples and empty-result handling.
+The default tolerance is `0.01` point. Use a larger value when input coordinates are rounded or approximate. Prefer a plural selector such as `selectImagesAt` while diagnosing a match: more than one object can occupy the same point. See [Finding Existing Objects](./finding-content.md) for complete examples and empty-result handling.
 
 ## Inspect an existing object's bounds
 

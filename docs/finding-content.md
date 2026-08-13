@@ -182,7 +182,7 @@ if (fields.size() != 1) {
 </TabItem>
 </Tabs>
 
-See [Working with AcroForms](./working-with-acroforms) for reading and changing field values.
+See [Working with AcroForms](./working-with-acroforms.md) for reading and changing field values.
 
 ## When a selector finds nothing
 
