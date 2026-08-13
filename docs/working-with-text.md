@@ -11,7 +11,7 @@ import TabItem from '@theme/TabItem';
 
 To edit text, describe what PDFDancer should target and choose an operation: replace, insert, delete, or style. The operation returns a `TextEditResponse` describing what PDFDancer found and changed.
 
-Download the [quickstart PDF](/files/v3/pdfdancer-v3-quickstart.pdf) as `input.pdf`. It contains `Hello` on page 1. The complete example below writes `output.pdf` with `Hello` replaced by `Final`.
+Download the [quickstart PDF](pathname:///files/v3/pdfdancer-v3-quickstart.pdf) as `input.pdf`. It contains `Hello` on page 1. The complete example below writes `output.pdf` with `Hello` replaced by `Final`.
 
 ## The basic workflow
 

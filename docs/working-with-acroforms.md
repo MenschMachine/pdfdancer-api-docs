@@ -15,7 +15,7 @@ AcroForm fields are interactive PDF form controls. They are distinct from Form X
 
 ## Complete form-filling workflow
 
-Download [acroform.pdf](/files/v3/samples/acroform.pdf) as `input.pdf`. The program sets the field named `firstName` to `Ada` and saves `output.pdf`.
+Download [acroform.pdf](pathname:///files/v3/samples/acroform.pdf) as `input.pdf`. The program sets the field named `firstName` to `Ada` and saves `output.pdf`.
 
 <Tabs>
 <TabItem value="python-complete" label="Python">

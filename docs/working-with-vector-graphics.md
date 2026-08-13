@@ -13,7 +13,7 @@ PDF vector graphics are represented as paths. API v3 provides typed selected pat
 
 ## Complete path-editing workflow
 
-Download [paths.pdf](/files/v3/samples/paths.pdf) as `input.pdf`. The program changes the first path's stroke color and saves `output.pdf`.
+Download [paths.pdf](pathname:///files/v3/samples/paths.pdf) as `input.pdf`. The program changes the first path's stroke color and saves `output.pdf`.
 
 <Tabs>
 <TabItem value="python-complete" label="Python">

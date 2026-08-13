@@ -13,7 +13,7 @@ PDFDancer can use service-hosted fonts and fonts registered from TTF data for th
 
 ## Complete font-change workflow
 
-Download the [quickstart PDF](/files/v3/pdfdancer-v3-quickstart.pdf) as `input.pdf`. The program changes `Hello` to `Helvetica-Bold` and saves `output.pdf`.
+Download the [quickstart PDF](pathname:///files/v3/pdfdancer-v3-quickstart.pdf) as `input.pdf`. The program changes `Hello` to `Helvetica-Bold` and saves `output.pdf`.
 
 <Tabs>
 <TabItem value="python-complete" label="Python">

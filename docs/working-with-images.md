@@ -13,7 +13,7 @@ Select images at document or page scope, by collection or coordinates. Singular 
 
 ## Complete image-replacement workflow
 
-Download [images.pdf](/files/v3/samples/images.pdf) as `input.pdf` and [replacement-logo.png](/files/v3/samples/replacement-logo.png) into the same directory. The program replaces the first image and saves `output.pdf`.
+Download [images.pdf](pathname:///files/v3/samples/images.pdf) as `input.pdf` and [replacement-logo.png](pathname:///files/v3/samples/replacement-logo.png) into the same directory. The program replaces the first image and saves `output.pdf`.
 
 <Tabs>
 <TabItem value="python-complete" label="Python">
