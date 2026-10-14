@@ -42,7 +42,7 @@ export default function AvailableFontsMdx() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('https://api.pdfdancer.com/font/get')
+    fetch('https://api.pdfdancer.com/v2/font/get')
       .then((response) => {
         if (!response.ok) {
           throw new Error('Failed to fetch fonts');
