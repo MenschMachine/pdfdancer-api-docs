@@ -5,27 +5,27 @@ Automated tests that verify code examples in the getting-started guides compile 
 ## Running Tests
 
 ```bash
-# Supported API v1 examples
+# API v3 examples
 npm run test:docs
-npm run test:docs:v1
+npm run test:docs:v3
 
-# Individual languages; set PDFDANCER_DOCS_DIR when testing a versioned tree
+# Individual languages
 npm run test:docs:ts      # TypeScript
 npm run test:docs:python  # Python
 npm run test:docs:java    # Java
 ```
 
-The scripts read documentation from `PDFDANCER_DOCS_DIR`, defaulting to `docs/`. CI sets it to `versioned_docs/version-1` for v1.
+The scripts read documentation from `PDFDANCER_DOCS_DIR`, defaulting to `docs/`. CI validates the current API v3 documentation.
 
 ## How It Works
 
 ### TypeScript (`scripts/test-ts-docs.js`)
 
-Recursively extracts authored v3 `typescript` code blocks, or the v1 getting-started page, and compiles them together with `tsc --noEmit` against the exact npm package version declared in the selected tree's `sdk-pins` metadata. This catches invalid calls such as `pdf.getPage(2)` when the API exposes `pdf.page(2)`.
+Recursively extracts authored `typescript` code blocks and compiles them together with `tsc --noEmit` against the exact npm package version declared in `sdk-pins` metadata. This catches invalid calls such as `pdf.getPage(2)` when the API exposes `pdf.page(2)`.
 
 ### Python (`tests/test_python_docs.py`)
 
-For v3, recursively extracts authored `python` code blocks while excluding generated API reference pages. For v1, it validates the getting-started Python page. The tests use the exact PyPI package version declared in the selected tree's `sdk-pins` metadata and perform syntax, import, undefined-name, and type-aware SDK method validation. Requires:
+Recursively extracts authored `python` code blocks while excluding generated API reference pages. The tests use the exact PyPI package version declared in `sdk-pins` metadata and perform syntax, import, undefined-name, and type-aware SDK method validation. Requires:
 
 ```bash
 npm run test:docs:python
@@ -35,7 +35,7 @@ The npm command creates or reuses an isolated virtual environment under `node_mo
 
 ### Java (`scripts/test-java-docs.js`)
 
-For v3, recursively extracts authored `java` code blocks, excluding generated API reference pages. For v1, it validates the published getting-started Java page only. Examples compile with `javac` against the version-pinned Java artifact and transitive dependencies resolved from Maven Central. The Java coordinates come from the selected tree's `sdk-versions.md` metadata block.
+Recursively extracts authored `java` code blocks, excluding generated API reference pages. Examples compile with `javac` against the version-pinned Java artifact and transitive dependencies resolved from Maven Central. The Java coordinates come from `docs/sdk-versions.md`.
 
 ## CI Integration
 

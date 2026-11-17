@@ -35,16 +35,13 @@ This starts a local development server at `http://localhost:3000` with hot reloa
 
 ```
 pdfdancer-api-docs/
-├── docs/                    # Upcoming API v3 documentation
-├── versioned_docs/
-│   └── version-1/          # Supported API v1 documentation
-├── versioned_sidebars/     # API v1 navigation
+├── docs/                    # API v3 documentation
 ├── src/
 │   ├── components/         # Custom React components
 │   ├── css/               # Custom styles (Cyber Orange theme)
 │   └── pages/              # Global pages, including /roadmap
 ├── static/                 # Static assets (images, logos)
-├── docusaurus.config.ts    # Version routing and release configuration
+├── docusaurus.config.ts    # Documentation routing and redirects
 └── sidebars.ts             # API v3 navigation
 ```
 
@@ -52,13 +49,13 @@ pdfdancer-api-docs/
 
 ### Adding New Documentation
 
-1. Edit API v3 content in `docs/`, or supported API v1 content in `versioned_docs/version-1/`
-2. Update the matching v3 or v1 sidebar
+1. Edit API v3 content in `docs/`
+2. Update `sidebars.ts` when changing navigation
 3. Test locally with `npm start`
-4. Validate v1 examples: `npm run test:docs:v1`
+4. Validate examples: `npm run test:docs:v3`
 5. Run type checking and build: `npm run typecheck && npm run build`
 
-API v1 and API v3 use stable `/v1/` and `/v3/` paths. Do not recreate the v1 snapshot. When API v3 is released, change only `V3_RELEASED` in `docusaurus.config.ts`.
+API v3 documentation is served under `/v3/`. Retired `/v1/*` documentation URLs redirect to the [migration guide](/v3/migrating-from-v1/).
 
 ## Available Commands
 
@@ -68,7 +65,7 @@ API v1 and API v3 use stable `/v1/` and `/v3/` paths. Do not recreate the v1 sna
 | `npm run build`     | Build static site for production |
 | `npm run serve`     | Serve built site locally         |
 | `npm run typecheck` | Run TypeScript type checking     |
-| `npm run test:docs:v1` | Validate supported API v1 examples |
+| `npm run test:docs:v3` | Validate API v3 examples |
 | `npm run test:versioning` | Verify routes and search indexes after a build |
 | `npm run clear`     | Clear Docusaurus cache           |
 
@@ -88,12 +85,12 @@ To modify the theme, edit `src/css/custom.css`.
 
 The site deploys automatically via GitHub Actions on pushes to `main`. The workflow:
 
-1. Checks out the SDK revisions pinned by API v1
-2. Validates API v1 examples
+1. Checks out the Java SDK revision pinned by API v3
+2. Validates API v3 examples
 3. Builds the site
-4. Deploys versioned search indexes to Cloudflare KV
+4. Deploys the API v3 and global search indexes to Cloudflare KV
 
-Raw Markdown upload to Cloudflare KV is retained in the workflow but explicitly disabled.
+Raw Markdown upload to Cloudflare KV is explicitly disabled in the workflow.
 
 Manual deployment:
 

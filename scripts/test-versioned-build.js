@@ -17,21 +17,17 @@ function hasNoIndex(html) {
 }
 
 const rootRedirect = readBuildFile('index.html');
-const v1Home = readBuildFile('v1/index.html');
 const v3Home = readBuildFile('v3/index.html');
 readBuildFile('roadmap/index.html');
 readBuildFile('search-index-default.json');
-readBuildFile('search-index-docs-default-1.json');
 readBuildFile('search-index-docs-default-current.json');
 
-const previewMode = rootRedirect.includes('url=/v1/');
-const releaseMode = rootRedirect.includes('url=/v3/');
-assert.notStrictEqual(previewMode, releaseMode, 'Root must redirect to exactly one API version');
-assert.ok(!hasNoIndex(v1Home), 'Supported API v1 documentation must remain indexable');
-assert.strictEqual(
-  hasNoIndex(v3Home),
-  previewMode,
-  'API v3 noindex metadata must match the release state'
+assert.ok(rootRedirect.includes('url=/v3/'), 'Root must redirect to API v3');
+assert.ok(!hasNoIndex(v3Home), 'API v3 documentation must be indexable');
+assert.ok(!fs.existsSync(path.join(BUILD_DIR, 'v1')), 'Retired API v1 documentation must not be built');
+assert.ok(
+  !fs.existsSync(path.join(BUILD_DIR, 'search-index-docs-default-1.json')),
+  'Retired API v1 documentation must not have a search index'
 );
 
 const legacyRoute = readBuildFile('working-with-text/index.html');
@@ -51,5 +47,9 @@ assert.ok(
   cloudflareRedirects.includes('/getting-started-java /v3/getting-started-java 301'),
   'Cloudflare native redirects must target API v3'
 );
+assert.ok(
+  cloudflareRedirects.includes('/v1/* /v3/migrating-from-v1/ 301'),
+  'Retired API v1 documentation routes must redirect to the migration guide'
+);
 
-console.log(`Versioned build verified in ${previewMode ? 'preview' : 'release'} mode.`);
+console.log('V3-only documentation build verified.');

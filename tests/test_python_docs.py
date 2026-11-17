@@ -24,7 +24,6 @@ REPO_ROOT = Path(__file__).parent.parent
 DOCS_DIR = Path(os.environ.get("PDFDANCER_DOCS_DIR", "docs"))
 if not DOCS_DIR.is_absolute():
     DOCS_DIR = REPO_ROOT / DOCS_DIR
-IS_V1 = "versioned_docs" in DOCS_DIR.parts
 METADATA_FILE = DOCS_DIR / "sdk-versions.md"
 
 
@@ -47,14 +46,11 @@ def _is_generated_or_reference(path: Path) -> bool:
     return bool({"reference", "generated"}.intersection(path.relative_to(DOCS_DIR).parts))
 
 
-if IS_V1:
-    DOC_FILES = [DOCS_DIR / "getting-started-python.md"]
-else:
-    DOC_FILES = sorted(
-        path
-        for path in DOCS_DIR.rglob("*.md")
-        if not _is_generated_or_reference(path)
-    )
+DOC_FILES = sorted(
+    path
+    for path in DOCS_DIR.rglob("*.md")
+    if not _is_generated_or_reference(path)
+)
 
 
 DOC_BLOCKS = [
@@ -126,14 +122,9 @@ def _load_sdk_environment() -> None:
         pdfdancer = importlib.import_module("pdfdancer")
         _register_type("PDFDancer", getattr(pdfdancer, "PDFDancer"))
 
-        if IS_V1:
-            sdk_module = importlib.import_module("pdfdancer.pdfdancer_v1")
-            for name in ("PageClient", "TextObjectRef"):
-                _register_type(name, getattr(sdk_module, name))
-        else:
-            sdk_module = importlib.import_module("pdfdancer.pdfdancer_v2")
-            for name in ("PageClient", "TextClient"):
-                _register_type(name, getattr(sdk_module, name))
+        sdk_module = importlib.import_module("pdfdancer.pdfdancer_v2")
+        for name in ("PageClient", "TextClient"):
+            _register_type(name, getattr(sdk_module, name))
 
         # Register public package classes so imported request builders and models
         # are checked as well as the core client classes.
@@ -141,9 +132,7 @@ def _load_sdk_environment() -> None:
             value = getattr(pdfdancer, name, None)
             _register_type(name, value)
 
-        type_modules = ["pdfdancer.types"]
-        if not IS_V1:
-            type_modules.append("pdfdancer.text_editing")
+        type_modules = ["pdfdancer.types", "pdfdancer.text_editing"]
         for module_name in type_modules:
             module = importlib.import_module(module_name)
             for name in dir(module):

@@ -25,12 +25,6 @@ function commandAvailable(command, args) {
 }
 
 function markdownFiles(directory) {
-  // The v1 Java SDK examples are intentionally limited to the published
-  // getting-started page; the other v1 pages contain legacy Java API snippets.
-  if (path.relative(REPO_ROOT, DOCS_DIR).split(path.sep).includes('version-1')) {
-    return [path.join(directory, 'getting-started-java.md')];
-  }
-
   const files = [];
   function visit(current) {
     for (const entry of fs.readdirSync(current, {withFileTypes: true})) {
@@ -132,8 +126,6 @@ function cleanupTempDir() {
 }
 
 function validateGettingStartedMavenProject() {
-  if (path.relative(REPO_ROOT, DOCS_DIR).split(path.sep).includes('version-1')) return;
-
   const markdownPath = path.join(DOCS_DIR, 'getting-started-java.md');
   const pom = extractTitledBlock(markdownPath, 'xml', 'pom.xml');
   const java = extractJavaBlocks(markdownPath)

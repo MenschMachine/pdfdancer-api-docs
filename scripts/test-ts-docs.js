@@ -8,7 +8,6 @@ const {readSdkMetadata} = require('./sdk-metadata');
 
 const REPO_ROOT = path.resolve(__dirname, '..');
 const DOCS_DIR = path.resolve(REPO_ROOT, process.env.PDFDANCER_DOCS_DIR || 'docs');
-const IS_V1 = DOCS_DIR.split(path.sep).includes('versioned_docs');
 const METADATA = readSdkMetadata(path.join(DOCS_DIR, 'sdk-versions.md'));
 const SDK_VERSION = METADATA.typescript.version;
 const TEMP_DIR = path.join(REPO_ROOT, 'tests', '.ts-temp');
@@ -17,7 +16,7 @@ const NPM_ENV_DIR = path.join(
   'node_modules',
   '.cache',
   'pdfdancer-typescript-tests',
-  IS_V1 ? 'v1' : 'v3',
+  'v3',
 );
 const TSC = path.join(
   NPM_ENV_DIR,
@@ -38,7 +37,6 @@ function run(command, args, options = {}) {
 }
 
 function documentationFiles() {
-  if (IS_V1) return [path.join(DOCS_DIR, 'getting-started-typescript.md')];
   return collectMarkdownFiles(DOCS_DIR).filter((file) => {
     const relativeParts = path.relative(DOCS_DIR, file).split(path.sep);
     return !relativeParts.includes('reference') && !relativeParts.includes('generated');

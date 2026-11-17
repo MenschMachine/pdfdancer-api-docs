@@ -20,7 +20,6 @@
     "test:docs:python": "node scripts/test-python-docs.js",
     "test:docs:java": "node scripts/test-java-docs.js",
     "test:docs:examples": "npm run test:docs:ts && npm run test:docs:python && npm run test:docs:java",
-    "test:docs:v1": "PDFDANCER_DOCS_DIR=versioned_docs/version-1 npm run test:docs:examples",
     "test:docs:v3": "PDFDANCER_DOCS_DIR=docs npm run test:docs:examples",
     "test:docs": "npm run test:docs:v3",
     "test:versioning": "node scripts/test-versioned-build.js",

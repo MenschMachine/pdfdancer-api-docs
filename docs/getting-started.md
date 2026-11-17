@@ -39,4 +39,4 @@ When no credential is supplied, the SDK requests a temporary anonymous token. An
 - [Work with PDF coordinates](./positioning.md)
 - [Handle failures in production](./error-handling.md)
 
-Upgrading an existing integration? See [Migrating from API v1](./migrating-from-v1.md). The complete v1 documentation remains available under [/v1/](/v1/).
+Upgrading an existing integration from the retired API v1? See [Migrating from API v1](./migrating-from-v1.md).

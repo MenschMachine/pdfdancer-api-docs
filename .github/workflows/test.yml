@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Checkout v1 and v3 SDK repos at pinned versions
+      - name: Checkout v3 SDK repo at pinned version
         run: |
           set -euo pipefail
 
@@ -55,9 +55,6 @@ jobs:
 
       - name: Run typecheck
         run: npm run typecheck
-
-      - name: Test API v1 documentation examples
-        run: npm run test:docs:v1
 
       - name: Test API v3 documentation examples
         run: npm run test:docs:v3

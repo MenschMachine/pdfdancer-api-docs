@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-Docusaurus-based documentation site for the PDFDancer SDKs covering Java, Python, and TypeScript. API v1 is maintained in `versioned_docs/version-1/`; the upcoming API v3 documentation is authored in `docs/`.
+Docusaurus-based documentation site for the PDFDancer v3 SDKs covering Java, Python, and TypeScript. Current documentation is authored in `docs/`; retired `/v1/` URLs redirect to the migration guide.
 
 ## Development Commands
 
@@ -18,19 +18,16 @@ npm run clear      # Clear Docusaurus cache
 
 ## Documentation Workflow
 
-1. Edit API v3 markdown in `docs/`, or supported API v1 markdown in `versioned_docs/version-1/`
-2. Update `sidebars.ts` for v3 navigation, or `versioned_sidebars/version-1-sidebars.json` for v1 navigation
+1. Edit API v3 markdown in `docs/`
+2. Update `sidebars.ts` when changing v3 navigation
 3. Test with `npm start`
-4. Run `npm run test:docs:v1 && npm run typecheck` before committing
+4. Run `npm run test:docs:v3 && npm run typecheck` before committing
 5. Build and verify with `npm run build && npm run serve`
-
-Do not rerun `docusaurus docs:version 1`; the v1 snapshot already exists and is directly maintainable.
 
 ## Key Configuration
 
 - `docusaurus.config.ts`: Main config. Docs at root path (`routeBasePath: '/'`). No blog. Includes Cloudflare search and PostHog analytics.
 - `sidebars.ts`: API v3 sidebar navigation
-- `versioned_sidebars/version-1-sidebars.json`: API v1 sidebar navigation
 - `src/css/custom.css`: "PDFDancer Cyber Orange" theme (Sora UI font, JetBrains Mono code font)
 - `src/pages/roadmap.md`: Non-versioned product roadmap
 
@@ -46,7 +43,7 @@ Raw Markdown upload (`npx dcs upload-content`) is intentionally disabled.
 
 - **Node.js**: >= 20.0
 - **Strict links**: `onBrokenLinks: 'throw'` - builds fail on broken internal links
-- **Release switch**: Set `V3_RELEASED` in `docusaurus.config.ts`; explicit `/v1/` and `/v3/` URLs must not change
+- **Legacy URLs**: `/v1/*` redirects to `/v3/migrating-from-v1/`; API v3 docs use `/v3/`
 - **Roadmap source**: Use `/Users/michael/Documents/TFC/projects/pdfdancer/Product/Roadmap.md` and update `src/pages/roadmap.md`; rewrite for public consumption and omit internal details (mysql, payment, etc.)
 
 ## Testing

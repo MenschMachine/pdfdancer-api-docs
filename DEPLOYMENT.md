@@ -5,9 +5,9 @@ This document explains how the automated deployment and search indexing works fo
 ## Overview
 
 The documentation site uses GitHub Actions to automatically:
-1. Validate supported API v1 examples against their pinned SDK revisions
+1. Validate API v3 examples against their pinned SDK revisions
 2. Build the Docusaurus site
-3. Deploy API v1 and API v3 search indexes to Cloudflare KV
+3. Deploy the API v3 and global search indexes to Cloudflare KV
 
 This happens automatically on every push to the `main` branch.
 
@@ -59,8 +59,8 @@ The `.github/workflows/deploy.yml` file defines the deployment pipeline:
 ```yaml
 1. Setup Node.js 20
 2. Install dependencies (npm ci)
-3. Check out and build the SDK revisions pinned by API v1
-4. Validate API v1 documentation examples (npm run test:docs:v1)
+3. Check out the Java SDK revision pinned by API v3
+4. Validate API v3 documentation examples (npm run test:docs:v3)
 5. Build Docusaurus site (npm run build)
 6. Deploy search indexes (npx dcs deploy)
 7. Skip the disabled markdown-content upload step (npx dcs upload-content)
@@ -69,7 +69,6 @@ The `.github/workflows/deploy.yml` file defines the deployment pipeline:
 ### Search Index Generation
 
 During the build step, the `@pdfdancer/docusaurus-cloudflare-search` plugin generates separate search indexes in the `build/` directory:
-- `build/search-index-docs-default-1.json` - API v1 documentation
 - `build/search-index-docs-default-current.json` - API v3 documentation
 - `build/search-index-default.json` - Global pages such as the product roadmap
 

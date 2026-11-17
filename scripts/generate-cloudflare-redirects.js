@@ -34,7 +34,8 @@ const routes = collectMarkdownFiles(docsDirectory)
 
 const lines = [
   '# Cloudflare Pages native redirects for unversioned API v3 documentation routes.',
-  '# Keep explicit /v1/ and /v3/ URLs unchanged.',
+  '# Redirect retired API v1 documentation URLs to the migration guide.',
+  '/v1/* /v3/migrating-from-v1/ 301',
   '/ /v3/ 301',
   '/sdk/templating /v3/ 301',
 ];

@@ -27,5 +27,4 @@ function copyVersion(version, sourceDirectory) {
     fs.writeFileSync(homePage, content);
 }
 
-copyVersion('v1', 'versioned_docs/version-1');
 copyVersion('v3', 'docs');

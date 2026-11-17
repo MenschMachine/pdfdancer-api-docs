@@ -58,7 +58,7 @@ class TestPythonSemanticValidation:
         # This test validates the approach used in test_python_docs.py
         try:
             from pdfdancer import PDFDancer
-            from pdfdancer.pdfdancer_v1 import PageClient
+            from pdfdancer.pdfdancer_v2 import PageClient
         except ImportError:
             pytest.skip("pdfdancer SDK not installed")
 
@@ -68,10 +68,10 @@ class TestPythonSemanticValidation:
         }
 
         # Valid method should exist
-        assert 'select_paragraphs_matching' in sdk_methods['PageClient']
+        assert 'text' in sdk_methods['PageClient']
 
         # Typo should not exist
-        assert 'select_paragraphs_matchin' not in sdk_methods['PageClient']
+        assert 'texxt' not in sdk_methods['PageClient']
 
 
 class TestTypeScriptSemanticValidation:

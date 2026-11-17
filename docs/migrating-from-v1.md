@@ -11,7 +11,9 @@ import TabItem from '@theme/TabItem';
 
 API v3 gives text editing a more precise and capable model. You can target literal text, regular expressions, anchors, styles, or coordinates; replace, insert, delete, and style text with dedicated requests; and choose how surrounding content responds when text changes length.
 
-The main migration is straightforward: v1 selects a `Paragraph` or `TextLine` and opens an edit builder, while v3 puts the target and desired change into a request. The surrounding workflow remains familiar: open a PDF, make changes, inspect the result, and save the output. Keep the [v1 documentation](/v1/) open while you locate the code that needs to change.
+API v1 is retired and is no longer a supported SDK. This guide maps common v1 patterns to API v3 so you can update existing code. The old `/v1/*` documentation URLs redirect here.
+
+The main code change is that v1 selects a `Paragraph` or `TextLine` and opens an edit builder, while v3 puts the target and desired change into a request. The surrounding workflow remains familiar: open a PDF, make changes, inspect the result, and save the output.
 
 :::tip
 The v3 request model separates what to target from what to do. That lets you reuse the same targeting rules for replacement, insertion, deletion, and styling while choosing the layout behavior for each edit.
@@ -30,8 +32,8 @@ Find the v1 pattern in the first column and use the v3 capability in the second 
 | Images, paths, pages, forms, or fonts | Keep the same application task and adopt the v3 selectors, classes, methods, and result checks. | [Update other operations](#3-update-other-operations) |
 | Snapshots | Use the v3 snapshot classes and filter arguments. | See the language-specific examples in this documentation. |
 | Text extraction | Use reading-unit analysis in Python 3.0.2, TypeScript 3.0.1, or Java 3.0.1. | [Text extraction](#text-extraction) |
-| Redaction | Keep the v1 workflow until a v3 SDK replacement is available. | [Plan remaining workflows](#6-plan-for-remaining-v1-workflows) |
-| Template request objects | Compose the workflow from individual v3 text requests and compare the output with your v1 result. | [Plan remaining workflows](#6-plan-for-remaining-v1-workflows) |
+| Redaction | API v3 has no redaction operation. Use a supported redaction solution; text deletion is not a substitute. | [Check workflows without a v3 replacement](#6-check-workflows-without-a-v3-replacement) |
+| Template request objects | Rebuild the workflow from v3 operations and compare against saved output where behavior must match. | [Check workflows without a v3 replacement](#6-check-workflows-without-a-v3-replacement) |
 
 ## 2. Rewrite text edits
 
@@ -208,15 +210,13 @@ For text operations, inspect:
 
 For image and path transformations, inspect `CommandResult.success`, its message and warning fields, and the identifier of the changed object. Some other object operations return booleans. See [Error Handling](./error-handling.md).
 
-## 6. Plan for remaining v1 workflows
+## 6. Check workflows without a v3 replacement
 
-Most editing workflows can move to v3. Plan separately for redaction and template or reflow workflows:
+API v1 is retired; it is not a fallback for workflows without a v3 replacement. PDFDancer v3 does not provide a redaction operation. If your application requires redaction, use another supported redaction solution. Text deletion cannot replace redaction.
 
-- [Redaction](/v1/redaction)
+Template and reflow workflows may not map one-to-one to v3. Compare the v3 output with saved output from your previous workflow. A text replacement or v3 layout request may fit, but it will not reproduce every template or reflow behavior automatically.
 
-Migrate text extraction to [reading-unit analysis](./reading-units.md). Keep redaction on v1 or choose another solution until a v3 SDK replacement is available. Text deletion cannot replace redaction.
-
-For templates and reflow, compare v3 output with representative v1 output. An individual text replacement or v3 layout request may be suitable, but it is not necessarily equivalent to every v1 template or reflow behavior.
+For text extraction, migrate to [reading-unit analysis](./reading-units.md).
 
 ## 7. Run your migration checklist
 
@@ -228,13 +228,13 @@ For templates and reflow, compare v3 output with representative v1 output. An in
 - [ ] Update imports and Java package names.
 - [ ] Re-test fonts and layout-sensitive PDFs.
 - [ ] Migrate text extraction to reading-unit analysis.
-- [ ] Keep redaction on v1, or replace it with another solution until v3 SDK support is available.
-- [ ] Compare template and reflow output with representative v1 output.
-- [ ] Compare generated PDFs against v1 output using representative fixtures.
+- [ ] Use another supported redaction solution where redaction is required.
+- [ ] Compare template and reflow output with saved output from the previous workflow.
+- [ ] Compare generated PDFs against representative saved output.
 
-## Find the v3 guide for each v1 page
+## Find v3 guidance for common v1 tasks
 
-| API v1 page | API v3 destination |
+| Previous API v1 task | API v3 guidance |
 |---|---|
 | Introduction + Getting Started | [Getting Started](/v3/) |
 | Working with Text | [Working with Text](./working-with-text.md), [Editing Text](./editing-text.md), and [Styling Text](./styling-text.md) |
@@ -242,4 +242,4 @@ For templates and reflow, compare v3 output with representative v1 output. An in
 | How Reflow Works | [Text Layout](./text-layout.md) |
 | Embedded Font Warning | [Working with Fonts](./working-with-fonts.md) |
 | Extracting Text | [Structured Text and Reading Units](./reading-units.md) |
-| Redaction | No v3 SDK replacement; keep the v1 workflow or choose another solution |
+| Redaction | No v3 SDK replacement; use another supported redaction solution |

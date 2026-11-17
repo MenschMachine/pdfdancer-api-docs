@@ -46,4 +46,4 @@ npm install pdfdancer-client-typescript@3.0.1
 </dependency>
 ```
 
-API v1 documentation remains available under [/v1/](/v1/). See [Migrating from v1](./migrating-from-v1.md) before upgrading an existing application.
+API v1 is retired. See [Migrating from v1](./migrating-from-v1.md) when updating an existing application to the supported API v3 SDKs.

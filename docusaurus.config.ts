@@ -4,10 +4,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
-// Flip this single flag when API v3 is released. Explicit /v1 and /v3 routes
-// remain stable; only the preferred version and preview metadata change.
-const V3_RELEASED = true;
-const preferredDocsPath = V3_RELEASED ? '/v3/' : '/v1/';
+const preferredDocsPath = '/v3/';
 
 const config: Config = {
     title: 'PDFDancer SDK Docs',
@@ -58,18 +55,11 @@ const config: Config = {
                     routeBasePath: '/', // Serve the docs at the site's root
                     sidebarPath: './sidebars.ts',
                     exclude: ['**/capabilities/**', '**/reference/**'],
-                    lastVersion: V3_RELEASED ? 'current' : '1',
+                    lastVersion: 'current',
                     versions: {
                         current: {
-                            label: V3_RELEASED ? 'API v3' : 'API v3 Preview',
+                            label: 'API v3',
                             path: 'v3',
-                            banner: V3_RELEASED ? 'none' : 'unreleased',
-                            badge: true,
-                            noIndex: !V3_RELEASED,
-                        },
-                        '1': {
-                            label: 'API v1',
-                            path: 'v1',
                             banner: 'none',
                             badge: true,
                         },
@@ -118,9 +108,7 @@ const config: Config = {
             ],
             createRedirects(existingPath) {
                 const v3Prefix = '/v3/';
-                if (!V3_RELEASED || !existingPath.startsWith(v3Prefix)) {
-                    return undefined;
-                }
+                if (!existingPath.startsWith(v3Prefix)) return undefined;
 
                 const legacyPath = existingPath.slice(v3Prefix.length - 1);
                 return legacyPath === '/' ? undefined : legacyPath;
@@ -148,10 +136,6 @@ const config: Config = {
                     sidebarId: 'docs',
                     position: 'left',
                     label: 'Docs',
-                },
-                {
-                    type: 'docsVersionDropdown',
-                    position: 'left',
                 },
                 {
                     href: 'https://github.com/MenschMachine/pdfdancer-api-docs',
