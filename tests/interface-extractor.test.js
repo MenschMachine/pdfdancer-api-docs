@@ -142,6 +142,7 @@ test('Python extractor honors __all__ and includes SDK-defined inherited members
       'class Base:',
       '    def inherited(self, value: int = 3) -> str: return str(value)',
       'class Client(Base):',
+      '    ALIGNMENT_NOT_HONORED = "TEXT_ALIGNMENT_NOT_HONORED"',
       '    @property',
       '    def name(self) -> str: return "client"',
       'class Mode(Enum):',
@@ -162,6 +163,7 @@ test('Python extractor honors __all__ and includes SDK-defined inherited members
     const client = extracted.symbols.find((symbol) => symbol.id === 'Client');
     assert.ok(client.members.some((member) => member.name === 'inherited' && member.signature.includes('value: int = 3')));
     assert.ok(client.members.some((member) => member.name === 'name' && member.kind === 'property'));
+    assert.ok(client.members.some((member) => member.signature === "ALIGNMENT_NOT_HONORED = 'TEXT_ALIGNMENT_NOT_HONORED'" && member.static));
     const mode = extracted.symbols.find((symbol) => symbol.id === 'Mode');
     assert.ok(mode.members.some((member) => member.signature === "FAST = 'fast'"));
   } finally {
@@ -216,6 +218,24 @@ test('TypeScript module scan does not label an existing deep export as new when 
     assert.ok(candidateManifest.symbols.some((symbol) => symbol.id === 'BaseObject'));
     assert.ok(!diffManifests(baseManifest, candidateManifest)
       .some((change) => change.symbol === 'BaseObject'));
+  } finally {
+    fs.rmSync(root, {recursive: true, force: true});
+  }
+});
+
+test('TypeScript extractor includes the runtime value of a merged interface', () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'interface-typescript-merged-test-'));
+  try {
+    const entry = path.join(root, 'index.d.ts');
+    fs.writeFileSync(entry, [
+      'export declare const Diagnostic: { readonly ALIGNMENT_NOT_HONORED: "TEXT_ALIGNMENT_NOT_HONORED" };',
+      'export interface Diagnostic { code?: string; }',
+      '',
+    ].join('\n'));
+    const diagnostic = extractTypeScript(entry).symbols.find((symbol) => symbol.id === 'Diagnostic');
+    assert.ok(diagnostic.members.some((member) => member.signature === 'code?: string' && !member.static));
+    assert.ok(diagnostic.members.some((member) =>
+      member.signature === 'ALIGNMENT_NOT_HONORED: "TEXT_ALIGNMENT_NOT_HONORED"' && member.static));
   } finally {
     fs.rmSync(root, {recursive: true, force: true});
   }

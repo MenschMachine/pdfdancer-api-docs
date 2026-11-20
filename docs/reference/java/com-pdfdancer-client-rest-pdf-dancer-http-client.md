@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `com.pdfdancer.client.rest`  
-**SDK:** `com.pdfdancer.client:pdfdancer-client-java 3.0.1`
+**SDK:** `com.pdfdancer.client:pdfdancer-client-java 3.0.3`
 
 Minimal HTTP client abstraction backed by HttpClient that mimics
 the subset of Micronaut's client API used by the original PDFDancer client.
@@ -66,5 +66,5 @@ public static com.pdfdancer.client.rest.PdfDancerHttpClient createDefault(java.n
 public com.pdfdancer.client.rest.PdfDancerHttpClient$Blocking toBlocking()
 ```
 
-[View source at `20639941174b`](https://github.com/MenschMachine/pdfdancer-client-java/blob/20639941174b14fa131fb31969b69b72eb612c64/src/main/java/com/pdfdancer/client/rest/PdfDancerHttpClient.java)
+[View source at `035d811184f3`](https://github.com/MenschMachine/pdfdancer-client-java/blob/035d811184f39e687beef3126bcd833e633cb6f3/src/main/java/com/pdfdancer/client/rest/PdfDancerHttpClient.java)
 

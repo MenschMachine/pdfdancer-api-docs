@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-common-request-text-layout-request
 title: "TextLayoutRequest"
-description: "Java API reference for TextLayoutRequest This public class belongs to the com.pdfdancer.common.request package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.1."
+description: "Java API reference for TextLayoutRequest This public class belongs to the com.pdfdancer.common.request package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.3."
 pagination_next: null
 pagination_prev: null
 ---
@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `com.pdfdancer.common.request`  
-**SDK:** `com.pdfdancer.client:pdfdancer-client-java 3.0.1`
+**SDK:** `com.pdfdancer.client:pdfdancer-client-java 3.0.3`
 
 ## Declaration
 
@@ -25,13 +25,46 @@ public final class com.pdfdancer.common.request.TextLayoutRequest
 ### `constructor`
 
 ```java
+public com.pdfdancer.common.request.TextLayoutRequest(com.pdfdancer.common.request.TextLayoutRequest$Mode, com.pdfdancer.common.request.TextLayoutRequest$Profile, java.lang.Boolean, com.pdfdancer.common.request.TextLayoutRequest$Alignment)
+```
+
+Creates a layout.
+
+A layout with no mode and no profile gets TextLayoutRequest.Profile.NO_REFLOW. An omitted mode
+means reflowWhenSupported in the API, and that mode needs a profile. The SDK stores
+this profile, so profile(), equals, hashCode, toString and
+the JSON that the SDK sends all show the same value.
+
+### `constructor`
+
+```java
 public com.pdfdancer.common.request.TextLayoutRequest(com.pdfdancer.common.request.TextLayoutRequest$Mode, com.pdfdancer.common.request.TextLayoutRequest$Profile, java.lang.Boolean)
 ```
+
+Creates a layout.
+
+A layout with no mode and no profile gets TextLayoutRequest.Profile.NO_REFLOW. An omitted mode
+means reflowWhenSupported in the API, and that mode needs a profile. The SDK stores
+this profile, so profile(), equals, hashCode, toString and
+the JSON that the SDK sends all show the same value.
 
 ### `constructor`
 
 ```java
 public com.pdfdancer.common.request.TextLayoutRequest(com.pdfdancer.common.request.TextLayoutRequest$Mode, com.pdfdancer.common.request.TextLayoutRequest$Profile)
+```
+
+Creates a layout.
+
+A layout with no mode and no profile gets TextLayoutRequest.Profile.NO_REFLOW. An omitted mode
+means reflowWhenSupported in the API, and that mode needs a profile. The SDK stores
+this profile, so profile(), equals, hashCode, toString and
+the JSON that the SDK sends all show the same value.
+
+### `alignment`
+
+```java
+public com.pdfdancer.common.request.TextLayoutRequest$Alignment alignment()
 ```
 
 ### `equals`
@@ -88,6 +121,14 @@ public static com.pdfdancer.common.request.TextLayoutRequest sourceAnchored()
 public java.lang.String toString()
 ```
 
+### `withAlignment`
+
+```java
+public com.pdfdancer.common.request.TextLayoutRequest withAlignment(com.pdfdancer.common.request.TextLayoutRequest$Alignment)
+```
+
+Sets the explicit alignment. Valid only for text replace.
+
 ### `withHyphenationEnabled`
 
 ```java
@@ -99,5 +140,5 @@ public com.pdfdancer.common.request.TextLayoutRequest withHyphenationEnabled(boo
 - [Working with Text](../../working-with-text)
 - [Text Layout and Reflow](../../text-layout)
 
-[View source at `20639941174b`](https://github.com/MenschMachine/pdfdancer-client-java/blob/20639941174b14fa131fb31969b69b72eb612c64/src/main/java/com/pdfdancer/common/request/TextLayoutRequest.java)
+[View source at `035d811184f3`](https://github.com/MenschMachine/pdfdancer-client-java/blob/035d811184f39e687beef3126bcd833e633cb6f3/src/main/java/com/pdfdancer/common/request/TextLayoutRequest.java)
 

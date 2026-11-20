@@ -5,11 +5,11 @@
       "repository": "pdfdancer-client-java",
       "baseRef": "release/v1",
       "baseCommit": "2bb14909aea48ea633d3a0c3bd972188abe02d19",
-      "candidateRef": "v3.0.1",
-      "candidateCommit": "20639941174b14fa131fb31969b69b72eb612c64",
+      "candidateRef": "v3.0.3",
+      "candidateCommit": "035d811184f39e687beef3126bcd833e633cb6f3",
       "counts": {
         "symbols": {
-          "added": 55,
+          "added": 56,
           "promoted": 0,
           "removed": 25,
           "changed": 18
@@ -21,7 +21,7 @@
           "changed": 17
         },
         "records": {
-          "added": 596,
+          "added": 613,
           "promoted": 0,
           "removed": 309,
           "changed": 19
@@ -1100,7 +1100,14 @@
           "status": "added",
           "kind": "class",
           "signature": "public final class com.pdfdancer.common.request.TextLayoutRequest",
-          "memberCount": 12
+          "memberCount": 15
+        },
+        {
+          "id": "com.pdfdancer.common.request.TextLayoutRequest$Alignment",
+          "status": "added",
+          "kind": "enum",
+          "signature": "public final class com.pdfdancer.common.request.TextLayoutRequest$Alignment extends java.lang.Enum<com.pdfdancer.common.request.TextLayoutRequest$Alignment>",
+          "memberCount": 8
         },
         {
           "id": "com.pdfdancer.common.request.TextLayoutRequest$Mode",
@@ -1135,7 +1142,7 @@
           "status": "added",
           "kind": "class",
           "signature": "public final class com.pdfdancer.common.request.TextReplaceRequest$Builder",
-          "memberCount": 24
+          "memberCount": 25
         },
         {
           "id": "com.pdfdancer.common.request.TextSelectorRequest",
@@ -1303,21 +1310,21 @@
           "status": "added",
           "kind": "class",
           "signature": "public final class com.pdfdancer.common.response.TextEditChangeDiagnostic",
-          "memberCount": 16
+          "memberCount": 17
         },
         {
           "id": "com.pdfdancer.common.response.TextEditResponse",
           "status": "added",
           "kind": "class",
           "signature": "public final class com.pdfdancer.common.response.TextEditResponse",
-          "memberCount": 9
+          "memberCount": 10
         },
         {
           "id": "com.pdfdancer.common.response.TextOperationDiagnostic",
           "status": "added",
           "kind": "class",
           "signature": "public final class com.pdfdancer.common.response.TextOperationDiagnostic",
-          "memberCount": 8
+          "memberCount": 10
         },
         {
           "id": "com.pdfdancer.common.util.ParagraphUtil",
@@ -4077,7 +4084,17 @@
         {
           "kind": "added",
           "symbol": "com.pdfdancer.common.request.TextLayoutRequest",
+          "after": "public com.pdfdancer.common.request.TextLayoutRequest withAlignment(com.pdfdancer.common.request.TextLayoutRequest$Alignment)"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.request.TextLayoutRequest",
           "after": "public com.pdfdancer.common.request.TextLayoutRequest withHyphenationEnabled(boolean)"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.request.TextLayoutRequest",
+          "after": "public com.pdfdancer.common.request.TextLayoutRequest(com.pdfdancer.common.request.TextLayoutRequest$Mode, com.pdfdancer.common.request.TextLayoutRequest$Profile, java.lang.Boolean, com.pdfdancer.common.request.TextLayoutRequest$Alignment)"
         },
         {
           "kind": "added",
@@ -4088,6 +4105,11 @@
           "kind": "added",
           "symbol": "com.pdfdancer.common.request.TextLayoutRequest",
           "after": "public com.pdfdancer.common.request.TextLayoutRequest(com.pdfdancer.common.request.TextLayoutRequest$Mode, com.pdfdancer.common.request.TextLayoutRequest$Profile)"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.request.TextLayoutRequest",
+          "after": "public com.pdfdancer.common.request.TextLayoutRequest$Alignment alignment()"
         },
         {
           "kind": "added",
@@ -4133,6 +4155,51 @@
           "kind": "added",
           "symbol": "com.pdfdancer.common.request.TextLayoutRequest",
           "after": "public static com.pdfdancer.common.request.TextLayoutRequest sourceAnchored()"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.request.TextLayoutRequest$Alignment",
+          "after": "public final class com.pdfdancer.common.request.TextLayoutRequest$Alignment extends java.lang.Enum<com.pdfdancer.common.request.TextLayoutRequest$Alignment>"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.request.TextLayoutRequest$Alignment",
+          "after": "public java.lang.String value()"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.request.TextLayoutRequest$Alignment",
+          "after": "public static com.pdfdancer.common.request.TextLayoutRequest$Alignment fromValue(java.lang.String)"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.request.TextLayoutRequest$Alignment",
+          "after": "public static com.pdfdancer.common.request.TextLayoutRequest$Alignment valueOf(java.lang.String)"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.request.TextLayoutRequest$Alignment",
+          "after": "public static com.pdfdancer.common.request.TextLayoutRequest$Alignment[] values()"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.request.TextLayoutRequest$Alignment",
+          "after": "public static final com.pdfdancer.common.request.TextLayoutRequest$Alignment CENTERED"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.request.TextLayoutRequest$Alignment",
+          "after": "public static final com.pdfdancer.common.request.TextLayoutRequest$Alignment JUSTIFIED"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.request.TextLayoutRequest$Alignment",
+          "after": "public static final com.pdfdancer.common.request.TextLayoutRequest$Alignment LEFT"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.request.TextLayoutRequest$Alignment",
+          "after": "public static final com.pdfdancer.common.request.TextLayoutRequest$Alignment RIGHT"
         },
         {
           "kind": "added",
@@ -4328,6 +4395,11 @@
           "kind": "added",
           "symbol": "com.pdfdancer.common.request.TextReplaceRequest$Builder",
           "after": "public com.pdfdancer.common.request.TextReplaceRequest build()"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.request.TextReplaceRequest$Builder",
+          "after": "public com.pdfdancer.common.request.TextReplaceRequest$Builder alignment(com.pdfdancer.common.request.TextLayoutRequest$Alignment)"
         },
         {
           "kind": "added",
@@ -5827,6 +5899,11 @@
         {
           "kind": "added",
           "symbol": "com.pdfdancer.common.response.TextEditChangeDiagnostic",
+          "after": "public java.lang.String toString()"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.TextEditChangeDiagnostic",
           "after": "public java.util.List<java.lang.String> elementIds()"
         },
         {
@@ -5868,6 +5945,11 @@
           "kind": "added",
           "symbol": "com.pdfdancer.common.response.TextEditResponse",
           "after": "public java.lang.Integer matched()"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.TextEditResponse",
+          "after": "public java.lang.String toString()"
         },
         {
           "kind": "added",
@@ -5927,12 +6009,22 @@
         {
           "kind": "added",
           "symbol": "com.pdfdancer.common.response.TextOperationDiagnostic",
+          "after": "public java.lang.String toString()"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.TextOperationDiagnostic",
           "after": "public java.util.List<java.lang.String> elementIds()"
         },
         {
           "kind": "added",
           "symbol": "com.pdfdancer.common.response.TextOperationDiagnostic",
           "after": "public java.util.List<java.lang.String> reflowUnitIds()"
+        },
+        {
+          "kind": "added",
+          "symbol": "com.pdfdancer.common.response.TextOperationDiagnostic",
+          "after": "public static final java.lang.String ALIGNMENT_NOT_HONORED"
         },
         {
           "kind": "removed",
@@ -5980,11 +6072,11 @@
       "repository": "pdfdancer-client-python",
       "baseRef": "release/v1",
       "baseCommit": "55b58d713e6ca10abf155e70e85f5878f7b58f62",
-      "candidateRef": "v3.0.2",
-      "candidateCommit": "c76a79f72e694219212d5af0c2085195bdea4eee",
+      "candidateRef": "v3.0.3",
+      "candidateCommit": "45e6a10d33746ee34b0f6a054e9e2a355b5c83ea",
       "counts": {
         "symbols": {
-          "added": 37,
+          "added": 38,
           "promoted": 7,
           "removed": 8,
           "changed": 13
@@ -5996,7 +6088,7 @@
           "changed": 18
         },
         "records": {
-          "added": 287,
+          "added": 295,
           "promoted": 0,
           "removed": 95,
           "changed": 29
@@ -6704,6 +6796,13 @@
           ]
         },
         {
+          "id": "TextAlignment",
+          "status": "added",
+          "kind": "enum",
+          "signature": "TextAlignment(*values)",
+          "memberCount": 4
+        },
+        {
           "id": "TextDeleteBuilder",
           "status": "added",
           "kind": "class",
@@ -6770,8 +6869,8 @@
           "id": "TextLayoutRequest",
           "status": "added",
           "kind": "class",
-          "signature": "TextLayoutRequest(mode: 'Optional[TextLayoutMode]' = None, profile: 'Optional[TextLayoutProfile]' = None, hyphenation_enabled: 'Optional[bool]' = None) -> None",
-          "memberCount": 7
+          "signature": "TextLayoutRequest(mode: 'Optional[TextLayoutMode]' = None, profile: 'Optional[TextLayoutProfile]' = None, hyphenation_enabled: 'Optional[bool]' = None, alignment: 'Optional[TextAlignment]' = None) -> None",
+          "memberCount": 8
         },
         {
           "id": "TextLineBuilder",
@@ -6792,14 +6891,14 @@
           "status": "added",
           "kind": "class",
           "signature": "TextOperationDiagnostic(page: 'Optional[int]', code: 'Optional[str]', message: 'Optional[str]', element_ids: 'Optional[tuple[str, ...]]', reflow_unit_ids: 'Optional[tuple[str, ...]]') -> None",
-          "memberCount": 2
+          "memberCount": 3
         },
         {
           "id": "TextReplaceBuilder",
           "status": "added",
           "kind": "class",
           "signature": "TextReplaceBuilder() -> 'None'",
-          "memberCount": 23
+          "memberCount": 24
         },
         {
           "id": "TextReplacementImageRequest",
@@ -7813,6 +7912,31 @@
         },
         {
           "kind": "added",
+          "symbol": "TextAlignment",
+          "after": "CENTERED = 'centered'"
+        },
+        {
+          "kind": "added",
+          "symbol": "TextAlignment",
+          "after": "JUSTIFIED = 'justified'"
+        },
+        {
+          "kind": "added",
+          "symbol": "TextAlignment",
+          "after": "LEFT = 'left'"
+        },
+        {
+          "kind": "added",
+          "symbol": "TextAlignment",
+          "after": "RIGHT = 'right'"
+        },
+        {
+          "kind": "added",
+          "symbol": "TextAlignment",
+          "after": "TextAlignment(*values)"
+        },
+        {
+          "kind": "added",
           "symbol": "TextDeleteBuilder",
           "after": "__init__(self) -> 'None'"
         },
@@ -8199,7 +8323,7 @@
         {
           "kind": "added",
           "symbol": "TextLayoutRequest",
-          "after": "__init__(self, mode: 'Optional[TextLayoutMode]' = None, profile: 'Optional[TextLayoutProfile]' = None, hyphenation_enabled: 'Optional[bool]' = None) -> None"
+          "after": "__init__(self, mode: 'Optional[TextLayoutMode]' = None, profile: 'Optional[TextLayoutProfile]' = None, hyphenation_enabled: 'Optional[bool]' = None, alignment: 'Optional[TextAlignment]' = None) -> None"
         },
         {
           "kind": "added",
@@ -8219,7 +8343,7 @@
         {
           "kind": "added",
           "symbol": "TextLayoutRequest",
-          "after": "TextLayoutRequest(mode: 'Optional[TextLayoutMode]' = None, profile: 'Optional[TextLayoutProfile]' = None, hyphenation_enabled: 'Optional[bool]' = None) -> None"
+          "after": "TextLayoutRequest(mode: 'Optional[TextLayoutMode]' = None, profile: 'Optional[TextLayoutProfile]' = None, hyphenation_enabled: 'Optional[bool]' = None, alignment: 'Optional[TextAlignment]' = None) -> None"
         },
         {
           "kind": "added",
@@ -8230,6 +8354,11 @@
           "kind": "added",
           "symbol": "TextLayoutRequest",
           "after": "validated(self) -> \"'TextLayoutRequest'\""
+        },
+        {
+          "kind": "added",
+          "symbol": "TextLayoutRequest",
+          "after": "with_alignment(self, alignment: 'TextAlignment') -> \"'TextLayoutRequest'\""
         },
         {
           "kind": "added",
@@ -8399,6 +8528,11 @@
         {
           "kind": "added",
           "symbol": "TextOperationDiagnostic",
+          "after": "ALIGNMENT_NOT_HONORED = 'TEXT_ALIGNMENT_NOT_HONORED'"
+        },
+        {
+          "kind": "added",
+          "symbol": "TextOperationDiagnostic",
           "after": "from_dict(cls, data: 'dict[str, Any]') -> \"'TextOperationDiagnostic'\""
         },
         {
@@ -8410,6 +8544,11 @@
           "kind": "added",
           "symbol": "TextReplaceBuilder",
           "after": "__init__(self) -> 'None'"
+        },
+        {
+          "kind": "added",
+          "symbol": "TextReplaceBuilder",
+          "after": "alignment(self, alignment: 'TextAlignment') -> \"'TextReplaceBuilder'\""
         },
         {
           "kind": "added",
@@ -8977,11 +9116,11 @@
       "repository": "pdfdancer-client-typescript",
       "baseRef": "v1.0.23",
       "baseCommit": "eae4b620505422a133b7915a1289220ba0c7afed",
-      "candidateRef": "v3.0.1",
-      "candidateCommit": "f7b7f2d7c26956f37cac21c00f7efd8a93883931",
+      "candidateRef": "v3.0.3",
+      "candidateCommit": "d2d29e4487f01f6daeaa2290c2ce2513588ad1de",
       "counts": {
         "symbols": {
-          "added": 53,
+          "added": 54,
           "promoted": 6,
           "removed": 5,
           "changed": 9
@@ -8993,7 +9132,7 @@
           "changed": 14
         },
         "records": {
-          "added": 574,
+          "added": 583,
           "promoted": 0,
           "removed": 97,
           "changed": 15
@@ -9829,6 +9968,13 @@
           "memberCount": 2
         },
         {
+          "id": "TextAlignment",
+          "status": "added",
+          "kind": "enum",
+          "signature": "enum TextAlignment",
+          "memberCount": 4
+        },
+        {
           "id": "TextClient",
           "status": "added",
           "kind": "class",
@@ -9903,7 +10049,7 @@
           "status": "added",
           "kind": "class",
           "signature": "class TextLayoutRequest",
-          "memberCount": 10
+          "memberCount": 12
         },
         {
           "id": "TextLine",
@@ -9924,7 +10070,7 @@
           "status": "added",
           "kind": "interface",
           "signature": "interface TextOperationDiagnostic",
-          "memberCount": 5
+          "memberCount": 6
         },
         {
           "id": "TextReplacementImageRequest",
@@ -9945,7 +10091,7 @@
           "status": "added",
           "kind": "class",
           "signature": "class TextReplaceRequestBuilder extends SelectorLayoutBuilder<TextReplaceRequest>",
-          "memberCount": 23
+          "memberCount": 24
         },
         {
           "id": "TextSelectorRequest",
@@ -11917,6 +12063,31 @@
         },
         {
           "kind": "added",
+          "symbol": "TextAlignment",
+          "after": "CENTERED = \"centered\""
+        },
+        {
+          "kind": "added",
+          "symbol": "TextAlignment",
+          "after": "enum TextAlignment"
+        },
+        {
+          "kind": "added",
+          "symbol": "TextAlignment",
+          "after": "JUSTIFIED = \"justified\""
+        },
+        {
+          "kind": "added",
+          "symbol": "TextAlignment",
+          "after": "LEFT = \"left\""
+        },
+        {
+          "kind": "added",
+          "symbol": "TextAlignment",
+          "after": "RIGHT = \"right\""
+        },
+        {
+          "kind": "added",
           "symbol": "TextClient",
           "after": "class TextClient"
         },
@@ -12428,12 +12599,17 @@
         {
           "kind": "added",
           "symbol": "TextLayoutRequest",
+          "after": "alignment?: TextAlignment"
+        },
+        {
+          "kind": "added",
+          "symbol": "TextLayoutRequest",
           "after": "class TextLayoutRequest"
         },
         {
           "kind": "added",
           "symbol": "TextLayoutRequest",
-          "after": "constructor(mode?: TextLayoutMode, profile?: TextLayoutProfile, hyphenationEnabled?: boolean): TextLayoutRequest"
+          "after": "constructor(mode?: TextLayoutMode, profile?: TextLayoutProfile, hyphenationEnabled?: boolean, alignment?: TextAlignment): TextLayoutRequest"
         },
         {
           "kind": "added",
@@ -12474,6 +12650,11 @@
           "kind": "added",
           "symbol": "TextLayoutRequest",
           "after": "validated(): TextLayoutRequest"
+        },
+        {
+          "kind": "added",
+          "symbol": "TextLayoutRequest",
+          "after": "withAlignment(alignment: TextAlignment): TextLayoutRequest"
         },
         {
           "kind": "added",
@@ -12594,6 +12775,11 @@
           "kind": "removed",
           "symbol": "TextObjectRef",
           "before": "type: ObjectType"
+        },
+        {
+          "kind": "added",
+          "symbol": "TextOperationDiagnostic",
+          "after": "ALIGNMENT_NOT_HONORED: \"TEXT_ALIGNMENT_NOT_HONORED\""
         },
         {
           "kind": "added",
@@ -12719,6 +12905,11 @@
           "kind": "added",
           "symbol": "TextReplaceRequest",
           "after": "withPages(pages: number[]): TextReplaceRequest"
+        },
+        {
+          "kind": "added",
+          "symbol": "TextReplaceRequestBuilder",
+          "after": "alignment(value: TextAlignment): TextReplaceRequestBuilder"
         },
         {
           "kind": "added",

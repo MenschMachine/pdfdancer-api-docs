@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `com.pdfdancer.common.model`  
-**SDK:** `com.pdfdancer.client:pdfdancer-client-java 3.0.1`
+**SDK:** `com.pdfdancer.client:pdfdancer-client-java 3.0.3`
 
 Abstract base class for all PDF objects that can be manipulated within the API.
 This class provides the fundamental properties and behaviors shared by all PDF content elements,
@@ -92,5 +92,5 @@ Creates an object reference for this PDF object.
 Object references provide a lightweight way to refer to PDF objects
 without including their full content, enabling efficient API operations.
 
-[View source at `20639941174b`](https://github.com/MenschMachine/pdfdancer-client-java/blob/20639941174b14fa131fb31969b69b72eb612c64/src/main/java/com/pdfdancer/common/model/PDFObject.java)
+[View source at `035d811184f3`](https://github.com/MenschMachine/pdfdancer-client-java/blob/035d811184f39e687beef3126bcd833e633cb6f3/src/main/java/com/pdfdancer/common/model/PDFObject.java)
 

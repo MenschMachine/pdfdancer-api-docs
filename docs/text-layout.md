@@ -11,10 +11,12 @@ import TabItem from '@theme/TabItem';
 
 Changing the length of text creates a layout decision. If `Q1` becomes `First quarter`, PDFDancer must either leave all unaffected text at its existing coordinates or recompose the text around the change.
 
-Layout has two independent settings:
+Layout has two settings:
 
 - The **layout mode** decides whether PDFDancer attempts reflow and whether it may fall back when reflow is unavailable.
 - The **reflow profile** decides how PDFDancer composes a detected text unit when the selected mode attempts reflow.
+
+Text replacement can also request an explicit alignment for each edited line.
 
 A text unit is the detected layout structure that owns the selected characters, such as a paragraph, list item, heading, table cell, or fixed-layout line.
 
@@ -40,7 +42,7 @@ Use it for same-length or shorter substitutions, isolated labels with sufficient
 
 ### `reflowWhenSupported(profile)`
 
-PDFDancer attempts to recompose the detected text unit with the selected profile. If that unit cannot be reflowed, PDFDancer applies the edit source-anchored and adds a warning to `TextEditResponse`.
+PDFDancer attempts to recompose the detected text unit with the selected profile. If that unit cannot be reflowed, PDFDancer may apply the edit source-anchored and add a warning to `TextEditResponse`. An explicit alignment that cannot be honored instead leaves the affected text unit unchanged and reports an error; see [Align replacement text](#align-replacement-text).
 
 Choose this only when the source-anchored fallback is acceptable. A successful change count does not prove that reflow occurred; inspect the applied layout reported for each change.
 
@@ -125,9 +127,9 @@ var response = pdf.text().replace(reflowRequired);
 
 ## Choose a reflow profile
 
-A profile is required by `reflowWhenSupported` and `requireReflow`. It is not valid with `sourceAnchored`.
+A profile is required when explicitly choosing `reflowWhenSupported` or `requireReflow`. It is not valid with `sourceAnchored`. If neither mode nor profile is specified, the default behavior is `reflowWhenSupported` with `NO_REFLOW`.
 
-There is no implicit reflow profile. Choose `DEFAULT` when the selected content can have different detected layout types, `BODY_TEXT` when the target is paragraph-like prose, or `NO_REFLOW` when line boundaries must stay fixed.
+Choose `DEFAULT` when the selected content can have different detected layout types, `BODY_TEXT` when the target is paragraph-like prose, or `NO_REFLOW` when line boundaries must stay fixed.
 
 ### `DEFAULT`
 
@@ -204,11 +206,106 @@ var fixedLines = TextReplaceRequest.literal("Q1", "First quarter")
 </TabItem>
 </Tabs>
 
+## Align replacement text
+
+Use `alignment()` to control how each edited line is positioned after replacement. The reference is the line's original visible text extent, not the page margin or the bounds of the matched text alone.
+
+| Alignment | Position retained from the original line |
+|---|---|
+| `LEFT` | Left edge |
+| `RIGHT` | Right edge |
+| `CENTERED` | Midpoint |
+| `JUSTIFIED` | Both edges, by adjusting word gaps; the last line of a paragraph remains left-aligned |
+
+Text before and after the match on an edited line can move. Lines without a match are not changed. If alignment is omitted, PDFDancer uses the alignment detected from the source where available.
+
+These examples replace at most one account number and keep the original line's right edge. They assume an open `pdf` session.
+
+<Tabs>
+<TabItem value="python-alignment" label="Python">
+
+```python
+from pdfdancer import TextAlignment, TextOperationDiagnostic, TextReplaceRequest
+
+response = pdf.text().replace(
+    TextReplaceRequest.literal("<<account_number>>", "BC5502731")
+    .max_matches(1)
+    .alignment(TextAlignment.RIGHT)
+    .build()
+)
+
+if any(
+    error.code == TextOperationDiagnostic.ALIGNMENT_NOT_HONORED
+    for error in response.errors or ()
+):
+    raise RuntimeError(f"Could not apply alignment: {response.errors}")
+
+if response.errors or response.changed != 1:
+    raise RuntimeError(f"Replacement was incomplete: {response.errors}")
+```
+
+</TabItem>
+<TabItem value="typescript-alignment" label="TypeScript">
+
+```typescript
+import {TextAlignment, TextOperationDiagnostic, TextReplaceRequest} from 'pdfdancer-client-typescript';
+
+const response = await pdf.text().replace(
+  TextReplaceRequest.literal('<<account_number>>', 'BC5502731')
+    .maxMatches(1)
+    .alignment(TextAlignment.RIGHT)
+    .build()
+);
+
+if (response.errors?.some(
+  error => error.code === TextOperationDiagnostic.ALIGNMENT_NOT_HONORED
+)) {
+  throw new Error(`Could not apply alignment: ${JSON.stringify(response.errors)}`);
+}
+
+if (response.errors?.length || response.changed !== 1) {
+  throw new Error(`Replacement was incomplete: ${JSON.stringify(response.errors)}`);
+}
+```
+
+</TabItem>
+<TabItem value="java-alignment" label="Java">
+
+```java
+import com.pdfdancer.common.request.TextLayoutRequest;
+import com.pdfdancer.common.request.TextReplaceRequest;
+import com.pdfdancer.common.response.TextOperationDiagnostic;
+
+var response = pdf.text().replace(
+        TextReplaceRequest.literal("<<account_number>>", "BC5502731")
+                .maxMatches(1)
+                .alignment(TextLayoutRequest.Alignment.RIGHT)
+                .build());
+
+if (response.errors() != null && response.errors().stream()
+        .anyMatch(error -> TextOperationDiagnostic.ALIGNMENT_NOT_HONORED
+                .equals(error.code()))) {
+    throw new IllegalStateException("Could not apply alignment: " + response.errors());
+}
+
+if ((response.errors() != null && !response.errors().isEmpty())
+        || !Integer.valueOf(1).equals(response.changed())) {
+    throw new IllegalStateException("Replacement was incomplete: " + response.errors());
+}
+```
+
+</TabItem>
+</Tabs>
+
+Calling `alignment()` without another layout choice uses `reflowWhenSupported` with `NO_REFLOW`. You can also combine it with an explicit reflow mode and profile. Alignment cannot be combined with `sourceAnchored` or image replacement, and it is not available for insert, delete, or style operations.
+
+If PDFDancer cannot honor the requested alignment—for example, because a replacement adds or removes a line—the response reports `TEXT_ALIGNMENT_NOT_HONORED`. The affected text unit remains unchanged, but other matches in the same operation can still change. The SDK returns this error in the response rather than raising an exception, so check both `errors` and `changed`.
+
 ## Control generated hyphenation
 
 `hyphenationEnabled(true|false)` overrides dictionary-generated discretionary hyphenation for one edit. If omitted, the selected profile determines the effective setting.
 
-The override does not remove or add lexical hyphens present in the supplied text. It is valid only with `reflowWhenSupported` or `requireReflow`; it cannot be combined with `sourceAnchored`.
+The override does not remove or add lexical hyphens present in the supplied text. Combine it with a reflow mode, or omit the mode to use the default `reflowWhenSupported` behavior with `NO_REFLOW`. It cannot be combined with `sourceAnchored`. For coordinate insertion, omit the override: Java rejects unsupported coordinate layouts locally, while Python and TypeScript may send them to the API.
 
 <Tabs>
 <TabItem value="python-hyphenation" label="Python">

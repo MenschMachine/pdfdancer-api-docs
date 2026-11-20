@@ -262,6 +262,10 @@ function main() {
     fs.mkdirSync(path.dirname(output), {recursive: true});
     const staging = fs.mkdtempSync(path.join(path.dirname(output), `.${path.basename(output)}.staging-`));
     try {
+      const javaPolicy = path.join(output, 'java-public-api-v3.json');
+      if (fs.existsSync(javaPolicy)) {
+        fs.copyFileSync(javaPolicy, path.join(staging, 'java-public-api-v3.json'));
+      }
       for (const [language, manifest] of Object.entries(candidateManifests)) {
         fs.writeFileSync(path.join(staging, `${language}-v3.json`), stableJson(manifest));
       }

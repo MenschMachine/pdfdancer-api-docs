@@ -1,7 +1,7 @@
 ---
 id: image-transform-type
 title: "ImageTransformType"
-description: "Python API reference for ImageTransformType. Type of image transformation operation. This public enum belongs to the models package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.2."
+description: "Python API reference for ImageTransformType. Type of image transformation operation. This public enum belongs to the models package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.3."
 pagination_next: null
 pagination_prev: null
 ---
@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** enum  
 **Module/package:** `models`  
-**SDK:** `pdfdancer-client-python 3.0.2`
+**SDK:** `pdfdancer-client-python 3.0.3`
 
 Type of image transformation operation.
 
@@ -71,5 +71,5 @@ SCALE = 'SCALE'
 - [Working with Images](../../working-with-images)
 - [Working with Form XObjects](../../working-with-formxobjects)
 
-[View source at `c76a79f72e69`](https://github.com/MenschMachine/pdfdancer-client-python/blob/c76a79f72e694219212d5af0c2085195bdea4eee/src/pdfdancer/models.py)
+[View source at `45e6a10d3374`](https://github.com/MenschMachine/pdfdancer-client-python/blob/45e6a10d33746ee34b0f6a054e9e2a355b5c83ea/src/pdfdancer/models.py)
 

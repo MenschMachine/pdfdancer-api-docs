@@ -1,7 +1,7 @@
 ---
 id: text-layout-profile
 title: "TextLayoutProfile"
-description: "TypeScript API reference for TextLayoutProfile. Selects the layout strategy used when text is recomposed. This public enum belongs to the text-editing package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.1."
+description: "TypeScript API reference for TextLayoutProfile. Selects the layout strategy used when text is recomposed. This public enum belongs to the text-editing package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.3."
 pagination_next: null
 pagination_prev: null
 ---
@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** enum  
 **Module/package:** `text-editing`  
-**SDK:** `pdfdancer-client-typescript 3.0.1`
+**SDK:** `pdfdancer-client-typescript 3.0.3`
 
 Selects the layout strategy used when text is recomposed.
 
@@ -47,5 +47,5 @@ NO_REFLOW = "noReflow"
 - [Working with Text](../../working-with-text)
 - [Text Layout and Reflow](../../text-layout)
 
-[View source at `f7b7f2d7c269`](https://github.com/MenschMachine/pdfdancer-client-typescript/blob/f7b7f2d7c26956f37cac21c00f7efd8a93883931/src/text-editing.ts)
+[View source at `d2d29e4487f0`](https://github.com/MenschMachine/pdfdancer-client-typescript/blob/d2d29e4487f01f6daeaa2290c2ce2513588ad1de/src/text-editing.ts)
 

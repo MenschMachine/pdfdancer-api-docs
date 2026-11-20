@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-common-request-text-replace-request-builder
 title: "TextReplaceRequest$Builder"
-description: "Java API reference for TextReplaceRequest$Builder This public class belongs to the com.pdfdancer.common.request package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.1."
+description: "Java API reference for TextReplaceRequest$Builder This public class belongs to the com.pdfdancer.common.request package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.3."
 pagination_next: null
 pagination_prev: null
 ---
@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `com.pdfdancer.common.request`  
-**SDK:** `com.pdfdancer.client:pdfdancer-client-java 3.0.1`
+**SDK:** `com.pdfdancer.client:pdfdancer-client-java 3.0.3`
 
 ## Declaration
 
@@ -21,6 +21,42 @@ public final class com.pdfdancer.common.request.TextReplaceRequest$Builder
 ```
 
 ## Members
+
+### `alignment`
+
+```java
+public com.pdfdancer.common.request.TextReplaceRequest$Builder alignment(com.pdfdancer.common.request.TextLayoutRequest$Alignment)
+```
+
+Aligns each edited line explicitly. Valid only for text replace.
+
+The request always sends an explicit reflowWhenSupported mode with this
+alignment. Without a layout, it uses the noReflow profile, the API default for
+an omitted layout. You can combine it with
+reflowWhenSupported(TextLayoutRequest.Profile) and
+requireReflow(TextLayoutRequest.Profile) in any order.
+sourceAnchored() and replaceWithImage(...) are rejected at
+build(), in any order.
+
+Which alignment applies:
+
+An alignment that you set with this method stays until you call this method
+again. layout(TextLayoutRequest) keeps it, unless the layout that it gets
+has its own alignment. In that case, the alignment of the layout replaces it.
+An alignment inside a layout object belongs to that layout. The next call of
+layout(TextLayoutRequest) or sourceAnchored() replaces the
+layout, and its alignment goes with it.
+reflowWhenSupported(TextLayoutRequest.Profile) and
+requireReflow(TextLayoutRequest.Profile) change only the mode and the
+profile, so they keep the alignment.
+A call of this method after layout(TextLayoutRequest) replaces the
+alignment of that layout.
+
+The API reports an alignment that it cannot apply as an error with code
+TextOperationDiagnostic.ALIGNMENT_NOT_HONORED. The API then does not change the
+text of the unit named in the error. Other matches can still change. The response is
+returned without an exception. Check response.errors() together with
+response.changed().
 
 ### `build`
 
@@ -171,5 +207,5 @@ public com.pdfdancer.common.request.TextReplaceRequest$Builder wordSpacing(doubl
 - [Working with Text](../../working-with-text)
 - [Text Layout and Reflow](../../text-layout)
 
-[View source at `20639941174b`](https://github.com/MenschMachine/pdfdancer-client-java/blob/20639941174b14fa131fb31969b69b72eb612c64/src/main/java/com/pdfdancer/common/request/TextReplaceRequest.java)
+[View source at `035d811184f3`](https://github.com/MenschMachine/pdfdancer-client-java/blob/035d811184f39e687beef3126bcd833e633cb6f3/src/main/java/com/pdfdancer/common/request/TextReplaceRequest.java)
 

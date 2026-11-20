@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `com.pdfdancer.common.model.path`  
-**SDK:** `com.pdfdancer.client:pdfdancer-client-java 3.0.1`
+**SDK:** `com.pdfdancer.client:pdfdancer-client-java 3.0.3`
 
 Abstract base class for individual path segments within vector paths.
 This class provides common properties for path elements including stroke and fill
@@ -107,5 +107,5 @@ public void setStrokeWidth(double)
 
 - [Working with Vector Graphics](../../working-with-vector-graphics)
 
-[View source at `20639941174b`](https://github.com/MenschMachine/pdfdancer-client-java/blob/20639941174b14fa131fb31969b69b72eb612c64/src/main/java/com/pdfdancer/common/model/path/PathSegment.java)
+[View source at `035d811184f3`](https://github.com/MenschMachine/pdfdancer-client-java/blob/035d811184f39e687beef3126bcd833e633cb6f3/src/main/java/com/pdfdancer/common/model/path/PathSegment.java)
 

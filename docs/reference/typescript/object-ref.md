@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `models`  
-**SDK:** `pdfdancer-client-typescript 3.0.1`
+**SDK:** `pdfdancer-client-typescript 3.0.3`
 
 Lightweight reference to a PDF object providing identity and type information.
 
@@ -54,5 +54,5 @@ position: Position
 type: ObjectType
 ```
 
-[View source at `f7b7f2d7c269`](https://github.com/MenschMachine/pdfdancer-client-typescript/blob/f7b7f2d7c26956f37cac21c00f7efd8a93883931/src/models.ts)
+[View source at `d2d29e4487f0`](https://github.com/MenschMachine/pdfdancer-client-typescript/blob/d2d29e4487f01f6daeaa2290c2ce2513588ad1de/src/models.ts)
 

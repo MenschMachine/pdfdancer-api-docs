@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `text_editing`  
-**SDK:** `pdfdancer-client-python 3.0.2`
+**SDK:** `pdfdancer-client-python 3.0.3`
 
 TextStyleSelectorRequest(literal: 'Optional[str]' = None, regex: 'Optional[str]' = None, case_sensitive: 'Optional[bool]' = None, whole_words: 'Optional[bool]' = None, max_matches: 'Optional[int]' = None, runs: 'Optional[TextStyleRunsSelectorRequest]' = None)
 
@@ -55,5 +55,5 @@ validated(self) -> "'TextStyleSelectorRequest'"
 - [Working with Text](../../working-with-text)
 - [Text Layout and Reflow](../../text-layout)
 
-[View source at `c76a79f72e69`](https://github.com/MenschMachine/pdfdancer-client-python/blob/c76a79f72e694219212d5af0c2085195bdea4eee/src/pdfdancer/text_editing.py)
+[View source at `45e6a10d3374`](https://github.com/MenschMachine/pdfdancer-client-python/blob/45e6a10d33746ee34b0f6a054e9e2a355b5c83ea/src/pdfdancer/text_editing.py)
 

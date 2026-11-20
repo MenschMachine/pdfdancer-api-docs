@@ -1,7 +1,7 @@
 ---
 id: text-layout-request
 title: "TextLayoutRequest"
-description: "Python API reference for TextLayoutRequest. TextLayoutRequest(mode: 'Optional[TextLayoutMode]' = None, profile: 'Optional[TextLayoutProfile]' = None, hyphenation_enabled: 'Optional[bool]' = None)"
+description: "Python API reference for TextLayoutRequest. Layout policy of a text edit. An omitted ``mode`` means ``reflowWhenSupported``, as in the API. That mode needs a ``profile``. When ``mode`` and ``profile`` are both omitted, the SDK uses the ``noReflow`` profile."
 pagination_next: null
 pagination_prev: null
 ---
@@ -12,14 +12,18 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `text_editing`  
-**SDK:** `pdfdancer-client-python 3.0.2`
+**SDK:** `pdfdancer-client-python 3.0.3`
 
-TextLayoutRequest(mode: 'Optional[TextLayoutMode]' = None, profile: 'Optional[TextLayoutProfile]' = None, hyphenation_enabled: 'Optional[bool]' = None)
+Layout policy of a text edit.
+
+An omitted ``mode`` means ``reflowWhenSupported``, as in the API. That mode
+needs a ``profile``. When ``mode`` and ``profile`` are both omitted, the SDK
+uses the ``noReflow`` profile.
 
 ## Declaration
 
 ```python
-TextLayoutRequest(mode: 'Optional[TextLayoutMode]' = None, profile: 'Optional[TextLayoutProfile]' = None, hyphenation_enabled: 'Optional[bool]' = None) -> None
+TextLayoutRequest(mode: 'Optional[TextLayoutMode]' = None, profile: 'Optional[TextLayoutProfile]' = None, hyphenation_enabled: 'Optional[bool]' = None, alignment: 'Optional[TextAlignment]' = None) -> None
 ```
 
 ## Members
@@ -27,7 +31,7 @@ TextLayoutRequest(mode: 'Optional[TextLayoutMode]' = None, profile: 'Optional[Te
 ### `__init__`
 
 ```python
-__init__(self, mode: 'Optional[TextLayoutMode]' = None, profile: 'Optional[TextLayoutProfile]' = None, hyphenation_enabled: 'Optional[bool]' = None) -> None
+__init__(self, mode: 'Optional[TextLayoutMode]' = None, profile: 'Optional[TextLayoutProfile]' = None, hyphenation_enabled: 'Optional[bool]' = None, alignment: 'Optional[TextAlignment]' = None) -> None
 ```
 
 Initialize self.  See help(type(self)) for accurate signature.
@@ -62,6 +66,14 @@ to_dict(self) -> 'dict[str, Any]'
 validated(self) -> "'TextLayoutRequest'"
 ```
 
+### `with_alignment`
+
+```python
+with_alignment(self, alignment: 'TextAlignment') -> "'TextLayoutRequest'"
+```
+
+Set the explicit alignment. Valid only for text replace.
+
 ### `with_hyphenation_enabled`
 
 ```python
@@ -73,5 +85,5 @@ with_hyphenation_enabled(self, enabled: 'bool') -> "'TextLayoutRequest'"
 - [Working with Text](../../working-with-text)
 - [Text Layout and Reflow](../../text-layout)
 
-[View source at `c76a79f72e69`](https://github.com/MenschMachine/pdfdancer-client-python/blob/c76a79f72e694219212d5af0c2085195bdea4eee/src/pdfdancer/text_editing.py)
+[View source at `45e6a10d3374`](https://github.com/MenschMachine/pdfdancer-client-python/blob/45e6a10d33746ee34b0f6a054e9e2a355b5c83ea/src/pdfdancer/text_editing.py)
 

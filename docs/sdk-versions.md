@@ -8,33 +8,35 @@ description: Review the SDK versions, package releases, supported runtimes, and 
 
 <!-- sdk-pins
 {
-  "python": {"version": "3.0.2", "commit": "c76a79f72e69"},
-  "typescript": {"version": "3.0.1", "commit": "f7b7f2d7c269"},
+  "python": {"version": "3.0.3", "commit": "45e6a10d3374"},
+  "typescript": {"version": "3.0.3", "commit": "d2d29e4487f0"},
   "java": {
-    "version": "3.0.1",
-    "commit": "20639941174b",
+    "version": "3.0.3",
+    "commit": "035d811184f3",
     "groupId": "com.pdfdancer.client",
     "artifactId": "pdfdancer-client-java"
   }
 }
 -->
 
-Python SDK 3.0.2, TypeScript SDK 3.0.1, and Java SDK 3.0.1 are the latest stable API v3 releases. This documentation covers these releases:
+This documentation covers the following API v3 SDK releases:
 
 | SDK | Package | Version | Runtime |
 |---|---|---:|---|
-| Python | `pdfdancer-client-python` | `3.0.2` | Python 3.10+ |
-| TypeScript | `pdfdancer-client-typescript` | `3.0.1` | Node.js 20+ |
-| Java | `com.pdfdancer.client:pdfdancer-client-java` | `3.0.1` | Java 17+ |
+| Python | `pdfdancer-client-python` | `3.0.3` | Python 3.10+ |
+| TypeScript | `pdfdancer-client-typescript` | `3.0.3` | Node.js 20+ |
+| Java | `com.pdfdancer.client:pdfdancer-client-java` | `3.0.3` | Java 17+ |
+
+The alignment examples in [Text Layout and Reflow](./text-layout.md#align-replacement-text) require SDK version 3.0.3 or a later compatible release.
 
 ## Install or upgrade
 
 ```bash
 # Python
-python -m pip install --upgrade pdfdancer-client-python==3.0.2
+python -m pip install --upgrade pdfdancer-client-python==3.0.3
 
 # TypeScript
-npm install pdfdancer-client-typescript@3.0.1
+npm install pdfdancer-client-typescript@3.0.3
 ```
 
 ```xml
@@ -42,7 +44,7 @@ npm install pdfdancer-client-typescript@3.0.1
 <dependency>
   <groupId>com.pdfdancer.client</groupId>
   <artifactId>pdfdancer-client-java</artifactId>
-  <version>3.0.1</version>
+  <version>3.0.3</version>
 </dependency>
 ```
 

@@ -14,9 +14,9 @@ const OUTPUT_DIR = CHECK_MODE
   ? path.join(ROOT, 'build', '.v3-reference-check')
   : PUBLISHED_OUTPUT_DIR;
 const LANGUAGES = {
-  python: {label: 'Python', repository: 'pdfdancer-client-python', packageName: 'pdfdancer-client-python', version: '3.0.2'},
-  typescript: {label: 'TypeScript', repository: 'pdfdancer-client-typescript', packageName: 'pdfdancer-client-typescript', version: '3.0.1'},
-  java: {label: 'Java', repository: 'pdfdancer-client-java', packageName: 'com.pdfdancer.client:pdfdancer-client-java', version: '3.0.1'},
+  python: {label: 'Python', repository: 'pdfdancer-client-python', packageName: 'pdfdancer-client-python', version: '3.0.3'},
+  typescript: {label: 'TypeScript', repository: 'pdfdancer-client-typescript', packageName: 'pdfdancer-client-typescript', version: '3.0.3'},
+  java: {label: 'Java', repository: 'pdfdancer-client-java', packageName: 'com.pdfdancer.client:pdfdancer-client-java', version: '3.0.3'},
 };
 
 function readJson(file) {
@@ -161,15 +161,18 @@ function javaSupportedSymbols(manifest) {
   const configured = process.env.PDFDANCER_JAVA_SDK_DIR
     ? path.resolve(ROOT, process.env.PDFDANCER_JAVA_SDK_DIR, 'docs/public-api-v3.json')
     : path.resolve(ROOT, '../client-sdks/pdfdancer-client-java/docs/public-api-v3.json');
-  const policyFile = fs.existsSync(configured) ? configured : JAVA_POLICY_SNAPSHOT;
+  // The SDK may still ship a policy for an earlier release. In that case use
+  // the reviewed snapshot for this candidate instead of an out-of-date list.
+  const sdkPolicy = fs.existsSync(configured) ? readJson(configured) : null;
+  const policyFile = sdkPolicy?.sourceRef === manifest.candidateRef ? configured : JAVA_POLICY_SNAPSHOT;
   if (!fs.existsSync(policyFile)) {
     throw new Error(`Java public API manifest not found at ${configured} or ${JAVA_POLICY_SNAPSHOT}`);
   }
-  const policy = readJson(policyFile);
-  if (!CHECK_MODE && policyFile === configured) {
-    fs.writeFileSync(JAVA_POLICY_SNAPSHOT, `${JSON.stringify(policy, null, 2)}\n`);
-  }
+  const policy = policyFile === configured ? sdkPolicy : readJson(policyFile);
   if (policy.schemaVersion !== 1) throw new Error(`Unsupported Java public API manifest schema: ${policy.schemaVersion}`);
+  if (policy.sourceRef !== manifest.candidateRef) {
+    throw new Error(`Java API classification targets ${policy.sourceRef}, not ${manifest.candidateRef}.`);
+  }
   const symbolsById = new Map(manifest.symbols.map((symbol) => [symbol.id, symbol]));
   const classifications = new Map();
   for (const entry of policy.types) {
@@ -181,6 +184,9 @@ function javaSupportedSymbols(manifest) {
   const stale = [...classifications.keys()].filter((name) => !symbolsById.has(name));
   if (unclassified.length || stale.length) {
     throw new Error(`Java API classification drift. Unclassified: ${unclassified.join(', ') || 'none'}. Stale: ${stale.join(', ') || 'none'}.`);
+  }
+  if (!CHECK_MODE && policyFile === configured) {
+    fs.writeFileSync(JAVA_POLICY_SNAPSHOT, `${JSON.stringify(policy, null, 2)}\n`);
   }
   return manifest.symbols.filter((symbol) => classifications.get(symbol.id) === 'supported');
 }
@@ -240,7 +246,7 @@ The reference pages list the supported public types and members for the document
 - [TypeScript API reference](./typescript/)
 - [Java API reference](./java/)
 
-Python coverage follows \`pdfdancer.__all__\`. TypeScript coverage follows exports from the package entry point. Java coverage follows the reviewed public API manifest owned by the Java SDK.
+Python coverage follows \`pdfdancer.__all__\`. TypeScript coverage follows exports from the package entry point. Java coverage follows a reviewed public API manifest.
 `;
   fs.writeFileSync(path.join(OUTPUT_DIR, 'index.md'), root);
 

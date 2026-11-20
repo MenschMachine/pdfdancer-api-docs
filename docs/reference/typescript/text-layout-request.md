@@ -1,7 +1,7 @@
 ---
 id: text-layout-request
 title: "TextLayoutRequest"
-description: "TypeScript API reference for TextLayoutRequest. Layout settings attached to a text-editing request. This public class belongs to the text-editing package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.1."
+description: "TypeScript API reference for TextLayoutRequest. Layout settings attached to a text-editing request. An omitted `mode` means `reflowWhenSupported`, as in the API. That mode needs a `profile`. When `mode` and `profile` are both omitted, the SDK uses the `noReflow` profile."
 pagination_next: null
 pagination_prev: null
 ---
@@ -12,9 +12,12 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `text-editing`  
-**SDK:** `pdfdancer-client-typescript 3.0.1`
+**SDK:** `pdfdancer-client-typescript 3.0.3`
 
 Layout settings attached to a text-editing request.
+
+An omitted `mode` means `reflowWhenSupported`, as in the API. That mode needs a `profile`. When `mode` and
+`profile` are both omitted, the SDK uses the `noReflow` profile.
 
 ## Declaration
 
@@ -27,7 +30,7 @@ class TextLayoutRequest
 ### `constructor`
 
 ```typescript
-constructor(mode?: TextLayoutMode, profile?: TextLayoutProfile, hyphenationEnabled?: boolean): TextLayoutRequest
+constructor(mode?: TextLayoutMode, profile?: TextLayoutProfile, hyphenationEnabled?: boolean, alignment?: TextAlignment): TextLayoutRequest
 ```
 
 ### `reflowWhenSupported`
@@ -60,10 +63,24 @@ toJSON(): Record<string, unknown>
 validated(): TextLayoutRequest
 ```
 
+### `withAlignment`
+
+```typescript
+withAlignment(alignment: TextAlignment): TextLayoutRequest
+```
+
+Sets the explicit alignment. Valid only for text replace.
+
 ### `withHyphenationEnabled`
 
 ```typescript
 withHyphenationEnabled(enabled: boolean): TextLayoutRequest
+```
+
+### `alignment`
+
+```typescript
+alignment?: TextAlignment
 ```
 
 ### `hyphenationEnabled`
@@ -89,5 +106,5 @@ profile?: TextLayoutProfile
 - [Working with Text](../../working-with-text)
 - [Text Layout and Reflow](../../text-layout)
 
-[View source at `f7b7f2d7c269`](https://github.com/MenschMachine/pdfdancer-client-typescript/blob/f7b7f2d7c26956f37cac21c00f7efd8a93883931/src/text-editing.ts)
+[View source at `d2d29e4487f0`](https://github.com/MenschMachine/pdfdancer-client-typescript/blob/d2d29e4487f01f6daeaa2290c2ce2513588ad1de/src/text-editing.ts)
 

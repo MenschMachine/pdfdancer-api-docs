@@ -28,7 +28,7 @@ Create `src/main/java/EditPdf.java` and a `pom.xml` in an empty directory. Java 
     <dependency>
       <groupId>com.pdfdancer.client</groupId>
       <artifactId>pdfdancer-client-java</artifactId>
-      <version>3.0.1</version>
+      <version>3.0.3</version>
     </dependency>
   </dependencies>
   <build>
@@ -83,6 +83,6 @@ mvn compile org.codehaus.mojo:exec-maven-plugin:3.5.0:java -Dexec.mainClass=Edit
 
 The program exits without output when the edit succeeds. Open `output.pdf` and confirm that `Hello` became `Final`. If the program reports that the text was not found, see [When visible text does not match](./working-with-text.md#when-visible-text-does-not-match).
 
-Gradle users can add `implementation("com.pdfdancer.client:pdfdancer-client-java:3.0.1")`.
+Gradle users can add `implementation("com.pdfdancer.client:pdfdancer-client-java:3.0.3")`.
 
 Next, learn about [text targeting and responses](./working-with-text.md) or [other content types](./concepts.md).

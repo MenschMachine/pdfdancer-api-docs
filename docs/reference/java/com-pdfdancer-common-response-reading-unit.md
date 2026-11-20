@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-common-response-reading-unit
 title: "ReadingUnit"
-description: "Java API reference for ReadingUnit This public class belongs to the com.pdfdancer.common.response package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.1."
+description: "Java API reference for ReadingUnit This public class belongs to the com.pdfdancer.common.response package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.3."
 pagination_next: null
 pagination_prev: null
 ---
@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `com.pdfdancer.common.response`  
-**SDK:** `com.pdfdancer.client:pdfdancer-client-java 3.0.1`
+**SDK:** `com.pdfdancer.client:pdfdancer-client-java 3.0.3`
 
 ## Declaration
 
@@ -118,5 +118,5 @@ public final java.lang.String toString()
 
 Returns a string representation of this record class. The representation contains the name of the class, followed by the name and value of each of the record components.
 
-[View source at `20639941174b`](https://github.com/MenschMachine/pdfdancer-client-java/blob/20639941174b14fa131fb31969b69b72eb612c64/src/main/java/com/pdfdancer/common/response/ReadingUnit.java)
+[View source at `035d811184f3`](https://github.com/MenschMachine/pdfdancer-client-java/blob/035d811184f39e687beef3126bcd833e633cb6f3/src/main/java/com/pdfdancer/common/response/ReadingUnit.java)
 

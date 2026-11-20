@@ -111,6 +111,12 @@ function extractSymbol(checker, symbol, exportName, moduleName) {
     summary = declaredTypeHeader(kind, exportName, declaration);
     const declaredType = checker.getDeclaredTypeOfSymbol(symbol);
     members.push(...membersForType(checker, exportName, declaredType, false));
+    // An interface can share its name with a runtime value. Include that
+    // value's properties as well as the interface's instance properties.
+    if (kind === 'interface' && (symbol.flags & ts.SymbolFlags.Value)) {
+      const valueType = checker.getTypeOfSymbolAtLocation(symbol, declaration);
+      members.push(...membersForType(checker, exportName, valueType, true));
+    }
     if (kind === 'class') {
       const staticType = checker.getTypeOfSymbolAtLocation(symbol, declaration);
       const constructors = checker.getSignaturesOfType(staticType, ts.SignatureKind.Construct);

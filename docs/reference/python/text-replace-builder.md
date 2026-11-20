@@ -1,7 +1,7 @@
 ---
 id: text-replace-builder
 title: "TextReplaceBuilder"
-description: "Python API reference for TextReplaceBuilder. Build a validated text-replacement request. This public class belongs to the text_editing package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.2."
+description: "Python API reference for TextReplaceBuilder. Build a validated text-replacement request. This public class belongs to the text_editing package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.3."
 pagination_next: null
 pagination_prev: null
 ---
@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `text_editing`  
-**SDK:** `pdfdancer-client-python 3.0.2`
+**SDK:** `pdfdancer-client-python 3.0.3`
 
 Build a validated text-replacement request.
 
@@ -31,6 +31,29 @@ __init__(self) -> 'None'
 ```
 
 Initialize self.  See help(type(self)) for accurate signature.
+
+### `alignment`
+
+```python
+alignment(self, alignment: 'TextAlignment') -> "'TextReplaceBuilder'"
+```
+
+Align each edited line explicitly. Valid only for text replace.
+
+Without a layout, this selects ``reflowWhenSupported`` with the
+``noReflow`` profile, the API default for an omitted layout. It can be
+combined with ``reflow_when_supported(...)`` and ``require_reflow(...)``
+in any order. ``source_anchored()`` and ``replace_with_image(...)`` are
+rejected at ``build()``.
+
+``layout(...)`` keeps this alignment, unless the layout that it gets has
+its own alignment.
+
+The API reports an alignment that it cannot apply as an error with code
+``TextOperationDiagnostic.ALIGNMENT_NOT_HONORED``. The API then does not
+change the text of the unit named in the error. Other matches can still
+change. The response is returned without an exception. Check
+``response.errors`` together with ``response.changed``.
 
 ### `build`
 
@@ -169,5 +192,5 @@ word_spacing(self, spacing: 'float') -> 'Self'
 - [Working with Text](../../working-with-text)
 - [Text Layout and Reflow](../../text-layout)
 
-[View source at `c76a79f72e69`](https://github.com/MenschMachine/pdfdancer-client-python/blob/c76a79f72e694219212d5af0c2085195bdea4eee/src/pdfdancer/text_editing.py)
+[View source at `45e6a10d3374`](https://github.com/MenschMachine/pdfdancer-client-python/blob/45e6a10d33746ee34b0f6a054e9e2a355b5c83ea/src/pdfdancer/text_editing.py)
 

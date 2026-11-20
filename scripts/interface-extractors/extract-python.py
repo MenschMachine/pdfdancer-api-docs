@@ -89,6 +89,17 @@ def class_symbol(export_name: str, value: type[Any]) -> dict[str, Any]:
     for name, item in inspect.getmembers(value):
         if name != "__init__" and name.startswith("_"):
             continue
+        if kind == "class" and name.isupper() and isinstance(item, (str, int, float, bool)):
+            declaring_class = next((cls for cls in value.__mro__ if name in vars(cls)), None)
+            if declaring_class is not None and declaring_class.__module__.startswith("pdfdancer"):
+                members.append({
+                    "id": f"property:{name}",
+                    "name": name,
+                    "kind": "property",
+                    "signature": f"{name} = {repr(item)}",
+                    "static": True,
+                })
+            continue
         declaring_module = getattr(item, "__module__", "")
         raw = inspect.getattr_static(value, name)
         if isinstance(raw, property) and raw.fget is not None:

@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-common-response-reading-unit-page-analysis
 title: "ReadingUnitPageAnalysis"
-description: "Java API reference for ReadingUnitPageAnalysis This public class belongs to the com.pdfdancer.common.response package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.1."
+description: "Java API reference for ReadingUnitPageAnalysis This public class belongs to the com.pdfdancer.common.response package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.3."
 pagination_next: null
 pagination_prev: null
 ---
@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `com.pdfdancer.common.response`  
-**SDK:** `com.pdfdancer.client:pdfdancer-client-java 3.0.1`
+**SDK:** `com.pdfdancer.client:pdfdancer-client-java 3.0.3`
 
 ## Declaration
 
@@ -90,5 +90,5 @@ Returns the value of the units record component.
 
 - [Working with Pages](../../working-with-pages)
 
-[View source at `20639941174b`](https://github.com/MenschMachine/pdfdancer-client-java/blob/20639941174b14fa131fb31969b69b72eb612c64/src/main/java/com/pdfdancer/common/response/ReadingUnitPageAnalysis.java)
+[View source at `035d811184f3`](https://github.com/MenschMachine/pdfdancer-client-java/blob/035d811184f39e687beef3126bcd833e633cb6f3/src/main/java/com/pdfdancer/common/response/ReadingUnitPageAnalysis.java)
 

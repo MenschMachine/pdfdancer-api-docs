@@ -1,7 +1,7 @@
 ---
 id: text-replace-request-builder
 title: "TextReplaceRequestBuilder"
-description: "TypeScript API reference for TextReplaceRequestBuilder. Builds a validated text-replacement request. This public class belongs to the text-editing package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.1."
+description: "TypeScript API reference for TextReplaceRequestBuilder. Builds a validated text-replacement request. This public class belongs to the text-editing package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.3."
 pagination_next: null
 pagination_prev: null
 ---
@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `text-editing`  
-**SDK:** `pdfdancer-client-typescript 3.0.1`
+**SDK:** `pdfdancer-client-typescript 3.0.3`
 
 Builds a validated text-replacement request.
 
@@ -29,6 +29,25 @@ class TextReplaceRequestBuilder extends SelectorLayoutBuilder<TextReplaceRequest
 ```typescript
 constructor(): TextReplaceRequestBuilder
 ```
+
+### `alignment`
+
+```typescript
+alignment(value: TextAlignment): TextReplaceRequestBuilder
+```
+
+Aligns each edited line explicitly. Valid only for text replace.
+
+Without a layout, this selects `reflowWhenSupported` with the `noReflow` profile, the API default for an
+omitted layout. It can be combined with `reflowWhenSupported(...)` and `requireReflow(...)` in any order.
+`sourceAnchored()` and `replaceWithImage(...)` are rejected at `build()`.
+
+`layout(...)` keeps this alignment, unless the layout that it gets has its own alignment.
+
+The API reports an alignment that it cannot apply as an error with the code
+`TextOperationDiagnostic.ALIGNMENT_NOT_HONORED`. The API then does not change the text of the unit named in
+the error. Other matches can still change. The response is returned without an exception. Check
+`response.errors` together with `response.changed`.
 
 ### `build`
 
@@ -167,5 +186,5 @@ wordSpacing(value: number): TextReplaceRequestBuilder
 - [Working with Text](../../working-with-text)
 - [Text Layout and Reflow](../../text-layout)
 
-[View source at `f7b7f2d7c269`](https://github.com/MenschMachine/pdfdancer-client-typescript/blob/f7b7f2d7c26956f37cac21c00f7efd8a93883931/src/text-editing.ts)
+[View source at `d2d29e4487f0`](https://github.com/MenschMachine/pdfdancer-client-typescript/blob/d2d29e4487f01f6daeaa2290c2ce2513588ad1de/src/text-editing.ts)
 

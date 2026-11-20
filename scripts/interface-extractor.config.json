@@ -6,17 +6,17 @@
     "python": {
       "repository": "pdfdancer-client-python",
       "baseRef": "release/v1",
-      "candidateRef": "v3.0.2"
+      "candidateRef": "v3.0.3"
     },
     "typescript": {
       "repository": "pdfdancer-client-typescript",
       "baseRef": "v1.0.23",
-      "candidateRef": "v3.0.1"
+      "candidateRef": "v3.0.3"
     },
     "java": {
       "repository": "pdfdancer-client-java",
       "baseRef": "release/v1",
-      "candidateRef": "v3.0.1"
+      "candidateRef": "v3.0.3"
     }
   }
 }

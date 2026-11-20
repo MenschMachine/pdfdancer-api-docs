@@ -6,14 +6,14 @@ Use this file to scope documentation work. Added and removed symbols appear once
 
 ## Java
 
-Comparing `release/v1` to `v3.0.1`.
+Comparing `release/v1` to `v3.0.3`.
 
 | Review unit | Added | Promoted | Removed | Changed |
 |---|---:|---:|---:|---:|
-| Public symbols | 55 | 0 | 25 | 18 |
+| Public symbols | 56 | 0 | 25 | 18 |
 | Members of retained symbols | 29 | 0 | 73 | 17 |
 
-### Added symbols (55)
+### Added symbols (56)
 
 #### `com.pdfdancer.client.rest`
 
@@ -51,6 +51,7 @@ Comparing `release/v1` to `v3.0.1`.
 - `TextInsertRequest$StyleFrom`
 - `TextInsertRequest$Target`
 - `TextLayoutRequest`
+- `TextLayoutRequest$Alignment`
 - `TextLayoutRequest$Mode`
 - `TextLayoutRequest$Profile`
 - `TextReplacementImageRequest`
@@ -165,14 +166,14 @@ None.
 
 ## Python
 
-Comparing `release/v1` to `v3.0.2`.
+Comparing `release/v1` to `v3.0.3`.
 
 | Review unit | Added | Promoted | Removed | Changed |
 |---|---:|---:|---:|---:|
-| Public symbols | 37 | 7 | 8 | 13 |
+| Public symbols | 38 | 7 | 8 | 13 |
 | Members of retained symbols | 25 | 0 | 13 | 18 |
 
-### Added symbols (37)
+### Added symbols (38)
 
 - `PdfAffineTransform`
 - `PdfAffineTransformBuilder`
@@ -188,6 +189,7 @@ Comparing `release/v1` to `v3.0.2`.
 - `ReadingUnitRelationshipType`
 - `ReadingUnitRole`
 - `ReadingUnitStreamMembership`
+- `TextAlignment`
 - `TextDeleteBuilder`
 - `TextDeleteRequest`
 - `TextEditChangeDiagnostic`
@@ -251,14 +253,14 @@ Comparing `release/v1` to `v3.0.2`.
 
 ## Typescript
 
-Comparing `v1.0.23` to `v3.0.1`.
+Comparing `v1.0.23` to `v3.0.3`.
 
 | Review unit | Added | Promoted | Removed | Changed |
 |---|---:|---:|---:|---:|
-| Public symbols | 53 | 6 | 5 | 9 |
+| Public symbols | 54 | 6 | 5 | 9 |
 | Members of retained symbols | 30 | 0 | 21 | 14 |
 
-### Added symbols (53)
+### Added symbols (54)
 
 - `BezierBuilder`
 - `FlipDirection`
@@ -288,6 +290,7 @@ Comparing `v1.0.23` to `v3.0.1`.
 - `RectangleBuilder`
 - `SessionNotFoundException`
 - `Size`
+- `TextAlignment`
 - `TextClient`
 - `TextDeleteRequest`
 - `TextDeleteRequestBuilder`

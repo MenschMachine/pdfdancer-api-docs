@@ -65,6 +65,8 @@ var response = pdf.text().replace(
 
 Replacement text inherits the source appearance. Add font, size, color, or spacing overrides only when the replacement should look different.
 
+Use explicit alignment to keep the original line's left edge, right edge, or midpoint after replacement, or to justify the line by adjusting word gaps. Alignment applies to text replacement and cannot be combined with source-anchored layout or image replacement. See [Align replacement text](./text-layout.md#align-replacement-text) for examples and error handling.
+
 ## Insert relative to existing text
 
 Anchor insertion inherits appearance from the text at the insertion caret.
@@ -110,7 +112,7 @@ Use `before`, `after`, `beforeRegex`, or `afterRegex` to choose the anchor caret
 
 ## Insert at coordinates
 
-Coordinate insertion has no source appearance to inherit, so font and size are required.
+Coordinate insertion has no source appearance to inherit, so font and size are required. Omit the layout or use source-anchored layout; do not request reflow or hyphenation for a coordinate insertion.
 
 <Tabs>
 <TabItem value="python" label="Python">

@@ -105,6 +105,7 @@
 /reference/java/com-pdfdancer-common-request-text-insert-request-style-from /v3/reference/java/com-pdfdancer-common-request-text-insert-request-style-from 301
 /reference/java/com-pdfdancer-common-request-text-insert-request-target /v3/reference/java/com-pdfdancer-common-request-text-insert-request-target 301
 /reference/java/com-pdfdancer-common-request-text-layout-request /v3/reference/java/com-pdfdancer-common-request-text-layout-request 301
+/reference/java/com-pdfdancer-common-request-text-layout-request-alignment /v3/reference/java/com-pdfdancer-common-request-text-layout-request-alignment 301
 /reference/java/com-pdfdancer-common-request-text-layout-request-mode /v3/reference/java/com-pdfdancer-common-request-text-layout-request-mode 301
 /reference/java/com-pdfdancer-common-request-text-layout-request-profile /v3/reference/java/com-pdfdancer-common-request-text-layout-request-profile 301
 /reference/java/com-pdfdancer-common-request-text-replace-request /v3/reference/java/com-pdfdancer-common-request-text-replace-request 301
@@ -204,6 +205,7 @@
 /reference/python/shape-type /v3/reference/python/shape-type 301
 /reference/python/size /v3/reference/python/size 301
 /reference/python/standard-fonts /v3/reference/python/standard-fonts 301
+/reference/python/text-alignment /v3/reference/python/text-alignment 301
 /reference/python/text-delete-builder /v3/reference/python/text-delete-builder 301
 /reference/python/text-delete-request /v3/reference/python/text-delete-request 301
 /reference/python/text-edit-change-diagnostic /v3/reference/python/text-edit-change-diagnostic 301
@@ -298,6 +300,7 @@
 /reference/typescript/size /v3/reference/typescript/size 301
 /reference/typescript/standard-fonts /v3/reference/typescript/standard-fonts 301
 /reference/typescript/standard-page-sizes /v3/reference/typescript/standard-page-sizes 301
+/reference/typescript/text-alignment /v3/reference/typescript/text-alignment 301
 /reference/typescript/text-client /v3/reference/typescript/text-client 301
 /reference/typescript/text-delete-request /v3/reference/typescript/text-delete-request 301
 /reference/typescript/text-delete-request-builder /v3/reference/typescript/text-delete-request-builder 301

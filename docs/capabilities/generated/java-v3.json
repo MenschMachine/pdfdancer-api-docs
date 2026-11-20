@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "language": "java",
   "repository": "pdfdancer-client-java",
-  "candidateRef": "v3.0.1",
-  "candidateCommit": "20639941174b14fa131fb31969b69b72eb612c64",
+  "candidateRef": "v3.0.3",
+  "candidateCommit": "035d811184f39e687beef3126bcd833e633cb6f3",
   "symbols": [
     {
       "id": "com.pdfdancer.client.http.Argument",
@@ -9046,9 +9046,19 @@
           "id": "constructor:constructor",
           "name": "constructor",
           "kind": "constructor",
+          "signature": "public com.pdfdancer.common.request.TextLayoutRequest(com.pdfdancer.common.request.TextLayoutRequest$Mode, com.pdfdancer.common.request.TextLayoutRequest$Profile, java.lang.Boolean, com.pdfdancer.common.request.TextLayoutRequest$Alignment)",
+          "arity": 4,
+          "static": false,
+          "description": "Creates a layout.\n\nA layout with no mode and no profile gets TextLayoutRequest.Profile.NO_REFLOW. An omitted mode\nmeans reflowWhenSupported in the API, and that mode needs a profile. The SDK stores\nthis profile, so profile(), equals, hashCode, toString and\nthe JSON that the SDK sends all show the same value."
+        },
+        {
+          "id": "constructor:constructor",
+          "name": "constructor",
+          "kind": "constructor",
           "signature": "public com.pdfdancer.common.request.TextLayoutRequest(com.pdfdancer.common.request.TextLayoutRequest$Mode, com.pdfdancer.common.request.TextLayoutRequest$Profile, java.lang.Boolean)",
           "arity": 3,
-          "static": false
+          "static": false,
+          "description": "Creates a layout.\n\nA layout with no mode and no profile gets TextLayoutRequest.Profile.NO_REFLOW. An omitted mode\nmeans reflowWhenSupported in the API, and that mode needs a profile. The SDK stores\nthis profile, so profile(), equals, hashCode, toString and\nthe JSON that the SDK sends all show the same value."
         },
         {
           "id": "constructor:constructor",
@@ -9056,6 +9066,15 @@
           "kind": "constructor",
           "signature": "public com.pdfdancer.common.request.TextLayoutRequest(com.pdfdancer.common.request.TextLayoutRequest$Mode, com.pdfdancer.common.request.TextLayoutRequest$Profile)",
           "arity": 2,
+          "static": false,
+          "description": "Creates a layout.\n\nA layout with no mode and no profile gets TextLayoutRequest.Profile.NO_REFLOW. An omitted mode\nmeans reflowWhenSupported in the API, and that mode needs a profile. The SDK stores\nthis profile, so profile(), equals, hashCode, toString and\nthe JSON that the SDK sends all show the same value."
+        },
+        {
+          "id": "method:alignment",
+          "name": "alignment",
+          "kind": "method",
+          "signature": "public com.pdfdancer.common.request.TextLayoutRequest$Alignment alignment()",
+          "arity": 0,
           "static": false
         },
         {
@@ -9131,6 +9150,15 @@
           "static": false
         },
         {
+          "id": "method:withAlignment",
+          "name": "withAlignment",
+          "kind": "method",
+          "signature": "public com.pdfdancer.common.request.TextLayoutRequest withAlignment(com.pdfdancer.common.request.TextLayoutRequest$Alignment)",
+          "arity": 1,
+          "static": false,
+          "description": "Sets the explicit alignment. Valid only for text replace."
+        },
+        {
           "id": "method:withHyphenationEnabled",
           "name": "withHyphenationEnabled",
           "kind": "method",
@@ -9139,6 +9167,77 @@
           "static": false
         }
       ]
+    },
+    {
+      "id": "com.pdfdancer.common.request.TextLayoutRequest$Alignment",
+      "name": "TextLayoutRequest$Alignment",
+      "kind": "enum",
+      "signature": "public final class com.pdfdancer.common.request.TextLayoutRequest$Alignment extends java.lang.Enum<com.pdfdancer.common.request.TextLayoutRequest$Alignment>",
+      "members": [
+        {
+          "id": "enum-value:CENTERED",
+          "name": "CENTERED",
+          "kind": "enum-value",
+          "signature": "public static final com.pdfdancer.common.request.TextLayoutRequest$Alignment CENTERED",
+          "static": true
+        },
+        {
+          "id": "enum-value:JUSTIFIED",
+          "name": "JUSTIFIED",
+          "kind": "enum-value",
+          "signature": "public static final com.pdfdancer.common.request.TextLayoutRequest$Alignment JUSTIFIED",
+          "static": true
+        },
+        {
+          "id": "enum-value:LEFT",
+          "name": "LEFT",
+          "kind": "enum-value",
+          "signature": "public static final com.pdfdancer.common.request.TextLayoutRequest$Alignment LEFT",
+          "static": true
+        },
+        {
+          "id": "enum-value:RIGHT",
+          "name": "RIGHT",
+          "kind": "enum-value",
+          "signature": "public static final com.pdfdancer.common.request.TextLayoutRequest$Alignment RIGHT",
+          "static": true
+        },
+        {
+          "id": "method:fromValue",
+          "name": "fromValue",
+          "kind": "method",
+          "signature": "public static com.pdfdancer.common.request.TextLayoutRequest$Alignment fromValue(java.lang.String)",
+          "arity": 1,
+          "static": true
+        },
+        {
+          "id": "method:value",
+          "name": "value",
+          "kind": "method",
+          "signature": "public java.lang.String value()",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:valueOf",
+          "name": "valueOf",
+          "kind": "method",
+          "signature": "public static com.pdfdancer.common.request.TextLayoutRequest$Alignment valueOf(java.lang.String)",
+          "arity": 1,
+          "static": true,
+          "description": "Returns the enum constant of this class with the specified name.\nThe string must match exactly an identifier used to declare an\nenum constant in this class.  (Extraneous whitespace characters are\nnot permitted.)"
+        },
+        {
+          "id": "method:values",
+          "name": "values",
+          "kind": "method",
+          "signature": "public static com.pdfdancer.common.request.TextLayoutRequest$Alignment[] values()",
+          "arity": 0,
+          "static": true,
+          "description": "Returns an array containing the constants of this enum class, in\nthe order they are declared."
+        }
+      ],
+      "description": "Explicit alignment of each edited line. Valid only for text replace.\n\nEach edited line keeps its original visible text extent as the reference:\nLEFT keeps the left edge, RIGHT keeps the right edge, CENTERED\nkeeps the midpoint, and JUSTIFIED keeps both edges by changing the word gaps\n(the last line of a paragraph stays left-aligned)."
     },
     {
       "id": "com.pdfdancer.common.request.TextLayoutRequest$Mode",
@@ -9311,7 +9410,8 @@
           "kind": "constructor",
           "signature": "public com.pdfdancer.common.request.TextReplaceRequest(java.util.List<java.lang.Integer>, com.pdfdancer.common.request.TextSelectorRequest, java.lang.String, com.pdfdancer.common.request.TextLayoutRequest)",
           "arity": 4,
-          "static": false
+          "static": false,
+          "description": "Creates a request.\n\nAn image replace needs a sourceAnchored layout. When replaceWithImage is\nset and layout is null, the request gets TextLayoutRequest.sourceAnchored().\nlayout() and the JSON that the SDK sends then show this layout."
         },
         {
           "id": "constructor:constructor",
@@ -9319,7 +9419,8 @@
           "kind": "constructor",
           "signature": "public com.pdfdancer.common.request.TextReplaceRequest(java.util.List<java.lang.Integer>, com.pdfdancer.common.request.TextSelectorRequest, java.lang.String, com.pdfdancer.common.request.TextReplacementImageRequest, com.pdfdancer.common.request.TextLayoutRequest)",
           "arity": 5,
-          "static": false
+          "static": false,
+          "description": "Creates a request.\n\nAn image replace needs a sourceAnchored layout. When replaceWithImage is\nset and layout is null, the request gets TextLayoutRequest.sourceAnchored().\nlayout() and the JSON that the SDK sends then show this layout."
         },
         {
           "id": "constructor:constructor",
@@ -9327,7 +9428,8 @@
           "kind": "constructor",
           "signature": "public com.pdfdancer.common.request.TextReplaceRequest(java.util.List<java.lang.Integer>, com.pdfdancer.common.request.TextSelectorRequest, java.lang.String, com.pdfdancer.common.request.TextReplacementImageRequest, com.pdfdancer.common.request.TextStyleSetRequest, com.pdfdancer.common.request.TextLayoutRequest)",
           "arity": 6,
-          "static": false
+          "static": false,
+          "description": "Creates a request.\n\nAn image replace needs a sourceAnchored layout. When replaceWithImage is\nset and layout is null, the request gets TextLayoutRequest.sourceAnchored().\nlayout() and the JSON that the SDK sends then show this layout."
         },
         {
           "id": "method:builder",
@@ -9431,7 +9533,8 @@
           "kind": "method",
           "signature": "public com.pdfdancer.common.request.TextReplaceRequest validated()",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Validates the request and returns this request. It does not change the request."
         },
         {
           "id": "method:withPages",
@@ -9449,6 +9552,15 @@
       "kind": "class",
       "signature": "public final class com.pdfdancer.common.request.TextReplaceRequest$Builder",
       "members": [
+        {
+          "id": "method:alignment",
+          "name": "alignment",
+          "kind": "method",
+          "signature": "public com.pdfdancer.common.request.TextReplaceRequest$Builder alignment(com.pdfdancer.common.request.TextLayoutRequest$Alignment)",
+          "arity": 1,
+          "static": false,
+          "description": "Aligns each edited line explicitly. Valid only for text replace.\n\nThe request always sends an explicit reflowWhenSupported mode with this\nalignment. Without a layout, it uses the noReflow profile, the API default for\nan omitted layout. You can combine it with\nreflowWhenSupported(TextLayoutRequest.Profile) and\nrequireReflow(TextLayoutRequest.Profile) in any order.\nsourceAnchored() and replaceWithImage(...) are rejected at\nbuild(), in any order.\n\nWhich alignment applies:\n\nAn alignment that you set with this method stays until you call this method\nagain. layout(TextLayoutRequest) keeps it, unless the layout that it gets\nhas its own alignment. In that case, the alignment of the layout replaces it.\nAn alignment inside a layout object belongs to that layout. The next call of\nlayout(TextLayoutRequest) or sourceAnchored() replaces the\nlayout, and its alignment goes with it.\nreflowWhenSupported(TextLayoutRequest.Profile) and\nrequireReflow(TextLayoutRequest.Profile) change only the mode and the\nprofile, so they keep the alignment.\nA call of this method after layout(TextLayoutRequest) replaces the\nalignment of that layout.\n\nThe API reports an alignment that it cannot apply as an error with code\nTextOperationDiagnostic.ALIGNMENT_NOT_HONORED. The API then does not change the\ntext of the unit named in the error. Other matches can still change. The response is\nreturned without an exception. Check response.errors() together with\nresponse.changed()."
+        },
         {
           "id": "method:build",
           "name": "build",
@@ -12151,6 +12263,14 @@
           "signature": "public java.lang.String sourceText()",
           "arity": 0,
           "static": false
+        },
+        {
+          "id": "method:toString",
+          "name": "toString",
+          "kind": "method",
+          "signature": "public java.lang.String toString()",
+          "arity": 0,
+          "static": false
         }
       ]
     },
@@ -12225,6 +12345,14 @@
           "static": false
         },
         {
+          "id": "method:toString",
+          "name": "toString",
+          "kind": "method",
+          "signature": "public java.lang.String toString()",
+          "arity": 0,
+          "static": false
+        },
+        {
           "id": "method:warnings",
           "name": "warnings",
           "kind": "method",
@@ -12247,6 +12375,14 @@
           "signature": "public com.pdfdancer.common.response.TextOperationDiagnostic(java.lang.Integer, java.lang.String, java.lang.String, java.util.List<java.lang.String>, java.util.List<java.lang.String>)",
           "arity": 5,
           "static": false
+        },
+        {
+          "id": "field:ALIGNMENT_NOT_HONORED",
+          "name": "ALIGNMENT_NOT_HONORED",
+          "kind": "field",
+          "signature": "public static final java.lang.String ALIGNMENT_NOT_HONORED",
+          "static": true,
+          "description": "Error code of a requested layout.alignment that the API could not apply. The API does\nnot change the text of the unit named in the error. Other matches can still change. No\nexception is thrown; check TextEditResponse.errors() together with\nTextEditResponse.changed()."
         },
         {
           "id": "method:code",
@@ -12301,6 +12437,14 @@
           "name": "reflowUnitIds",
           "kind": "method",
           "signature": "public java.util.List<java.lang.String> reflowUnitIds()",
+          "arity": 0,
+          "static": false
+        },
+        {
+          "id": "method:toString",
+          "name": "toString",
+          "kind": "method",
+          "signature": "public java.lang.String toString()",
           "arity": 0,
           "static": false
         }

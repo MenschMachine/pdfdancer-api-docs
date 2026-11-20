@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "language": "typescript",
   "repository": "pdfdancer-client-typescript",
-  "candidateRef": "v3.0.1",
-  "candidateCommit": "f7b7f2d7c26956f37cac21c00f7efd8a93883931",
+  "candidateRef": "v3.0.3",
+  "candidateCommit": "d2d29e4487f01f6daeaa2290c2ce2513588ad1de",
   "symbols": [
     {
       "id": "BaseObject",
@@ -5004,6 +5004,44 @@
       "description": "Standard PDF fonts that are available in all PDF readers.\nThese 14 fonts are guaranteed to be available without embedding."
     },
     {
+      "id": "TextAlignment",
+      "name": "TextAlignment",
+      "kind": "enum",
+      "signature": "enum TextAlignment",
+      "members": [
+        {
+          "id": "enum-value:CENTERED",
+          "name": "CENTERED",
+          "kind": "enum-value",
+          "signature": "CENTERED = \"centered\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:JUSTIFIED",
+          "name": "JUSTIFIED",
+          "kind": "enum-value",
+          "signature": "JUSTIFIED = \"justified\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:LEFT",
+          "name": "LEFT",
+          "kind": "enum-value",
+          "signature": "LEFT = \"left\"",
+          "static": true
+        },
+        {
+          "id": "enum-value:RIGHT",
+          "name": "RIGHT",
+          "kind": "enum-value",
+          "signature": "RIGHT = \"right\"",
+          "static": true
+        }
+      ],
+      "module": "text-editing",
+      "description": "Explicit alignment of each edited line. Valid only for text replace.\n\nEach edited line keeps its original visible text extent as the reference: `LEFT` keeps the left edge, `RIGHT`\nkeeps the right edge, `CENTERED` keeps the midpoint, and `JUSTIFIED` keeps both edges by changing the word gaps\n(the last line of a paragraph stays left-aligned)."
+    },
+    {
       "id": "TextClient",
       "name": "TextClient",
       "kind": "class",
@@ -5817,8 +5855,8 @@
           "id": "constructor:constructor",
           "name": "constructor",
           "kind": "constructor",
-          "signature": "constructor(mode?: TextLayoutMode, profile?: TextLayoutProfile, hyphenationEnabled?: boolean): TextLayoutRequest",
-          "arity": 3,
+          "signature": "constructor(mode?: TextLayoutMode, profile?: TextLayoutProfile, hyphenationEnabled?: boolean, alignment?: TextAlignment): TextLayoutRequest",
+          "arity": 4,
           "static": true
         },
         {
@@ -5862,11 +5900,27 @@
           "static": false
         },
         {
+          "id": "method:withAlignment",
+          "name": "withAlignment",
+          "kind": "method",
+          "signature": "withAlignment(alignment: TextAlignment): TextLayoutRequest",
+          "arity": 1,
+          "static": false,
+          "description": "Sets the explicit alignment. Valid only for text replace."
+        },
+        {
           "id": "method:withHyphenationEnabled",
           "name": "withHyphenationEnabled",
           "kind": "method",
           "signature": "withHyphenationEnabled(enabled: boolean): TextLayoutRequest",
           "arity": 1,
+          "static": false
+        },
+        {
+          "id": "property:alignment",
+          "name": "alignment",
+          "kind": "property",
+          "signature": "alignment?: TextAlignment",
           "static": false
         },
         {
@@ -5892,7 +5946,7 @@
         }
       ],
       "module": "text-editing",
-      "description": "Layout settings attached to a text-editing request."
+      "description": "Layout settings attached to a text-editing request.\n\nAn omitted `mode` means `reflowWhenSupported`, as in the API. That mode needs a `profile`. When `mode` and\n`profile` are both omitted, the SDK uses the `noReflow` profile."
     },
     {
       "id": "TextOperationDiagnostic",
@@ -5900,6 +5954,14 @@
       "kind": "interface",
       "signature": "interface TextOperationDiagnostic",
       "members": [
+        {
+          "id": "property:ALIGNMENT_NOT_HONORED",
+          "name": "ALIGNMENT_NOT_HONORED",
+          "kind": "property",
+          "signature": "ALIGNMENT_NOT_HONORED: \"TEXT_ALIGNMENT_NOT_HONORED\"",
+          "static": true,
+          "description": "Error code of a requested `layout.alignment` that the API could not apply. The API does not change the text\nof the unit named in the error. Other matches can still change. No exception is raised; check\n`TextEditResponse.errors` together with `TextEditResponse.changed`."
+        },
         {
           "id": "property:code",
           "name": "code",
@@ -5937,7 +5999,7 @@
         }
       ],
       "module": "text-editing",
-      "description": "Diagnostic information about the complete text operation."
+      "description": "Error codes of text operation diagnostics.\nDiagnostic information about the complete text operation."
     },
     {
       "id": "TextReplacementImageRequest",
@@ -6031,7 +6093,8 @@
           "kind": "method",
           "signature": "validated(): TextReplaceRequest",
           "arity": 0,
-          "static": false
+          "static": false,
+          "description": "Validates the request. `replaceWithImage` needs a `sourceAnchored` layout. When `layout` is omitted, the\nreturned request has `TextLayoutRequest.sourceAnchored()`. In that case it is a new object, not `this`."
         },
         {
           "id": "method:withPages",
@@ -6100,6 +6163,15 @@
           "signature": "constructor(): TextReplaceRequestBuilder",
           "arity": 0,
           "static": true
+        },
+        {
+          "id": "method:alignment",
+          "name": "alignment",
+          "kind": "method",
+          "signature": "alignment(value: TextAlignment): TextReplaceRequestBuilder",
+          "arity": 1,
+          "static": false,
+          "description": "Aligns each edited line explicitly. Valid only for text replace.\n\nWithout a layout, this selects `reflowWhenSupported` with the `noReflow` profile, the API default for an\nomitted layout. It can be combined with `reflowWhenSupported(...)` and `requireReflow(...)` in any order.\n`sourceAnchored()` and `replaceWithImage(...)` are rejected at `build()`.\n\n`layout(...)` keeps this alignment, unless the layout that it gets has its own alignment.\n\nThe API reports an alignment that it cannot apply as an error with the code\n`TextOperationDiagnostic.ALIGNMENT_NOT_HONORED`. The API then does not change the text of the unit named in\nthe error. Other matches can still change. The response is returned without an exception. Check\n`response.errors` together with `response.changed`."
         },
         {
           "id": "method:build",

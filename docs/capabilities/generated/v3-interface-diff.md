@@ -8,11 +8,11 @@ This report compares the configured committed base and candidate refs. It does n
 
 - Repository: `pdfdancer-client-java`
 - Base: `release/v1` (`2bb14909aea48ea633d3a0c3bd972188abe02d19`)
-- Candidate: `v3.0.1` (`20639941174b14fa131fb31969b69b72eb612c64`)
-- Public symbols: 55 added, 0 promoted to the package root, 25 removed, 18 changed
+- Candidate: `v3.0.3` (`035d811184f39e687beef3126bcd833e633cb6f3`)
+- Public symbols: 56 added, 0 promoted to the package root, 25 removed, 18 changed
 - Members of retained symbols: 29 added, 73 removed, 17 changed
 
-### Added public symbols (55)
+### Added public symbols (56)
 
 - `com.pdfdancer.client.rest.FontNotFoundException` — class
 - `com.pdfdancer.client.rest.HttpClientException` — class
@@ -39,6 +39,7 @@ This report compares the configured committed base and candidate refs. It does n
 - `com.pdfdancer.common.request.TextInsertRequest$StyleFrom` — enum
 - `com.pdfdancer.common.request.TextInsertRequest$Target` — class
 - `com.pdfdancer.common.request.TextLayoutRequest` — class
+- `com.pdfdancer.common.request.TextLayoutRequest$Alignment` — enum
 - `com.pdfdancer.common.request.TextLayoutRequest$Mode` — enum
 - `com.pdfdancer.common.request.TextLayoutRequest$Profile` — enum
 - `com.pdfdancer.common.request.TextReplacementImageRequest` — class
@@ -305,11 +306,11 @@ None.
 
 - Repository: `pdfdancer-client-python`
 - Base: `release/v1` (`55b58d713e6ca10abf155e70e85f5878f7b58f62`)
-- Candidate: `v3.0.2` (`c76a79f72e694219212d5af0c2085195bdea4eee`)
-- Public symbols: 37 added, 7 promoted to the package root, 8 removed, 13 changed
+- Candidate: `v3.0.3` (`45e6a10d33746ee34b0f6a054e9e2a355b5c83ea`)
+- Public symbols: 38 added, 7 promoted to the package root, 8 removed, 13 changed
 - Members of retained symbols: 25 added, 13 removed, 18 changed
 
-### Added public symbols (37)
+### Added public symbols (38)
 
 - `PdfAffineTransform` — class
 - `PdfAffineTransformBuilder` — class
@@ -325,6 +326,7 @@ None.
 - `ReadingUnitRelationshipType` — enum
 - `ReadingUnitRole` — enum
 - `ReadingUnitStreamMembership` — class
+- `TextAlignment` — enum
 - `TextDeleteBuilder` — class
 - `TextDeleteRequest` — class
 - `TextEditChangeDiagnostic` — class
@@ -546,11 +548,11 @@ None.
 
 - Repository: `pdfdancer-client-typescript`
 - Base: `v1.0.23` (`eae4b620505422a133b7915a1289220ba0c7afed`)
-- Candidate: `v3.0.1` (`f7b7f2d7c26956f37cac21c00f7efd8a93883931`)
-- Public symbols: 53 added, 6 promoted to the package root, 5 removed, 9 changed
+- Candidate: `v3.0.3` (`d2d29e4487f01f6daeaa2290c2ce2513588ad1de`)
+- Public symbols: 54 added, 6 promoted to the package root, 5 removed, 9 changed
 - Members of retained symbols: 30 added, 21 removed, 14 changed
 
-### Added public symbols (53)
+### Added public symbols (54)
 
 - `BezierBuilder` — class
 - `FlipDirection` — enum
@@ -580,6 +582,7 @@ None.
 - `RectangleBuilder` — class
 - `SessionNotFoundException` — class
 - `Size` — interface
+- `TextAlignment` — enum
 - `TextClient` — class
 - `TextDeleteRequest` — class
 - `TextDeleteRequestBuilder` — class

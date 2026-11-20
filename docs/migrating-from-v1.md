@@ -31,7 +31,7 @@ Find the v1 pattern in the first column and use the v3 capability in the second 
 | `ReflowPreset` | Choose whether text stays fixed, moves along the line, or is recomposed into new lines. | [Choose layout behavior](#choose-the-layout-behavior-your-output-needs) |
 | Images, paths, pages, forms, or fonts | Keep the same application task and adopt the v3 selectors, classes, methods, and result checks. | [Update other operations](#3-update-other-operations) |
 | Snapshots | Use the v3 snapshot classes and filter arguments. | See the language-specific examples in this documentation. |
-| Text extraction | Use reading-unit analysis in Python 3.0.2, TypeScript 3.0.1, or Java 3.0.1. | [Text extraction](#text-extraction) |
+| Text extraction | Use reading-unit analysis in Python 3.0.3, TypeScript 3.0.3, or Java 3.0.3. | [Text extraction](#text-extraction) |
 | Redaction | API v3 has no redaction operation. Use a supported redaction solution; text deletion is not a substitute. | [Check workflows without a v3 replacement](#6-check-workflows-without-a-v3-replacement) |
 | Template request objects | Rebuild the workflow from v3 operations and compare against saved output where behavior must match. | [Check workflows without a v3 replacement](#6-check-workflows-without-a-v3-replacement) |
 
@@ -132,7 +132,7 @@ Use a regular expression when a literal target is not sufficient. These selector
 
 ### Text extraction
 
-Python 3.0.2, TypeScript 3.0.1, and Java 3.0.1 expose reading-unit analysis at document and one-based page scope. The v3 result contains semantic reading units rather than the v1 `Paragraph` and `TextLine` inspection model. See [Structured Text and Reading Units](./reading-units.md).
+Python 3.0.3, TypeScript 3.0.3, and Java 3.0.3 expose reading-unit analysis at document and one-based page scope. The v3 result contains semantic reading units rather than the v1 `Paragraph` and `TextLine` inspection model. See [Structured Text and Reading Units](./reading-units.md).
 
 ### Convert each text operation
 

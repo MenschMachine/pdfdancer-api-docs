@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "release": "3.0.1",
-  "sourceRef": "v3.0.1",
+  "release": "3.0.3",
+  "sourceRef": "v3.0.3",
   "types": [
     {
       "name": "com.pdfdancer.client.http.Argument",
@@ -565,6 +565,11 @@
     },
     {
       "name": "com.pdfdancer.common.request.TextLayoutRequest",
+      "status": "supported",
+      "reason": "Supported user-facing API type."
+    },
+    {
+      "name": "com.pdfdancer.common.request.TextLayoutRequest$Alignment",
       "status": "supported",
       "reason": "Supported user-facing API type."
     },

@@ -1,7 +1,7 @@
 ---
 id: text-operation-diagnostic
 title: "TextOperationDiagnostic"
-description: "TypeScript API reference for TextOperationDiagnostic. Diagnostic information about the complete text operation."
+description: "TypeScript API reference for TextOperationDiagnostic. Error codes of text operation diagnostics. Diagnostic information about the complete text operation."
 pagination_next: null
 pagination_prev: null
 ---
@@ -12,8 +12,9 @@ pagination_prev: null
 
 **Kind:** interface  
 **Module/package:** `text-editing`  
-**SDK:** `pdfdancer-client-typescript 3.0.1`
+**SDK:** `pdfdancer-client-typescript 3.0.3`
 
+Error codes of text operation diagnostics.
 Diagnostic information about the complete text operation.
 
 ## Declaration
@@ -23,6 +24,16 @@ interface TextOperationDiagnostic
 ```
 
 ## Members
+
+### `ALIGNMENT_NOT_HONORED`
+
+```typescript
+ALIGNMENT_NOT_HONORED: "TEXT_ALIGNMENT_NOT_HONORED"
+```
+
+Error code of a requested `layout.alignment` that the API could not apply. The API does not change the text
+of the unit named in the error. Other matches can still change. No exception is raised; check
+`TextEditResponse.errors` together with `TextEditResponse.changed`.
 
 ### `code`
 
@@ -60,5 +71,5 @@ reflowUnitIds?: string[]
 - [Text Layout and Reflow](../../text-layout)
 - [Error Handling](../../error-handling)
 
-[View source at `f7b7f2d7c269`](https://github.com/MenschMachine/pdfdancer-client-typescript/blob/f7b7f2d7c26956f37cac21c00f7efd8a93883931/src/text-editing.ts)
+[View source at `d2d29e4487f0`](https://github.com/MenschMachine/pdfdancer-client-typescript/blob/d2d29e4487f01f6daeaa2290c2ce2513588ad1de/src/text-editing.ts)
 

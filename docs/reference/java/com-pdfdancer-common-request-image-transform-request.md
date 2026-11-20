@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `com.pdfdancer.common.request`  
-**SDK:** `com.pdfdancer.client:pdfdancer-client-java 3.0.1`
+**SDK:** `com.pdfdancer.client:pdfdancer-client-java 3.0.3`
 
 Request for transforming an image in a PDF document.
 Supports replace, scale, rotate, crop, opacity, and flip operations.
@@ -150,5 +150,5 @@ public com.pdfdancer.common.request.ImageTransformRequest$TransformType transfor
 - [Working with Images](../../working-with-images)
 - [Working with Form XObjects](../../working-with-formxobjects)
 
-[View source at `20639941174b`](https://github.com/MenschMachine/pdfdancer-client-java/blob/20639941174b14fa131fb31969b69b72eb612c64/src/main/java/com/pdfdancer/common/request/ImageTransformRequest.java)
+[View source at `035d811184f3`](https://github.com/MenschMachine/pdfdancer-client-java/blob/035d811184f39e687beef3126bcd833e633cb6f3/src/main/java/com/pdfdancer/common/request/ImageTransformRequest.java)
 

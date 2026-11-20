@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-common-request-text-replace-request
 title: "TextReplaceRequest"
-description: "Java API reference for TextReplaceRequest This public class belongs to the com.pdfdancer.common.request package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.1."
+description: "Java API reference for TextReplaceRequest This public class belongs to the com.pdfdancer.common.request package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.3."
 pagination_next: null
 pagination_prev: null
 ---
@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `com.pdfdancer.common.request`  
-**SDK:** `com.pdfdancer.client:pdfdancer-client-java 3.0.1`
+**SDK:** `com.pdfdancer.client:pdfdancer-client-java 3.0.3`
 
 ## Declaration
 
@@ -28,17 +28,35 @@ public final class com.pdfdancer.common.request.TextReplaceRequest
 public com.pdfdancer.common.request.TextReplaceRequest(java.util.List<java.lang.Integer>, com.pdfdancer.common.request.TextSelectorRequest, java.lang.String, com.pdfdancer.common.request.TextLayoutRequest)
 ```
 
+Creates a request.
+
+An image replace needs a sourceAnchored layout. When replaceWithImage is
+set and layout is null, the request gets TextLayoutRequest.sourceAnchored().
+layout() and the JSON that the SDK sends then show this layout.
+
 ### `constructor`
 
 ```java
 public com.pdfdancer.common.request.TextReplaceRequest(java.util.List<java.lang.Integer>, com.pdfdancer.common.request.TextSelectorRequest, java.lang.String, com.pdfdancer.common.request.TextReplacementImageRequest, com.pdfdancer.common.request.TextLayoutRequest)
 ```
 
+Creates a request.
+
+An image replace needs a sourceAnchored layout. When replaceWithImage is
+set and layout is null, the request gets TextLayoutRequest.sourceAnchored().
+layout() and the JSON that the SDK sends then show this layout.
+
 ### `constructor`
 
 ```java
 public com.pdfdancer.common.request.TextReplaceRequest(java.util.List<java.lang.Integer>, com.pdfdancer.common.request.TextSelectorRequest, java.lang.String, com.pdfdancer.common.request.TextReplacementImageRequest, com.pdfdancer.common.request.TextStyleSetRequest, com.pdfdancer.common.request.TextLayoutRequest)
 ```
+
+Creates a request.
+
+An image replace needs a sourceAnchored layout. When replaceWithImage is
+set and layout is null, the request gets TextLayoutRequest.sourceAnchored().
+layout() and the JSON that the SDK sends then show this layout.
 
 ### `builder`
 
@@ -118,6 +136,8 @@ public java.lang.String toString()
 public com.pdfdancer.common.request.TextReplaceRequest validated()
 ```
 
+Validates the request and returns this request. It does not change the request.
+
 ### `withPages`
 
 ```java
@@ -129,5 +149,5 @@ public com.pdfdancer.common.request.TextReplaceRequest withPages(java.util.List<
 - [Working with Text](../../working-with-text)
 - [Text Layout and Reflow](../../text-layout)
 
-[View source at `20639941174b`](https://github.com/MenschMachine/pdfdancer-client-java/blob/20639941174b14fa131fb31969b69b72eb612c64/src/main/java/com/pdfdancer/common/request/TextReplaceRequest.java)
+[View source at `035d811184f3`](https://github.com/MenschMachine/pdfdancer-client-java/blob/035d811184f39e687beef3126bcd833e633cb6f3/src/main/java/com/pdfdancer/common/request/TextReplaceRequest.java)
 

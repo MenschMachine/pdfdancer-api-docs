@@ -1,7 +1,7 @@
 ---
 id: com-pdfdancer-common-response-text-edit-response
 title: "TextEditResponse"
-description: "Java API reference for TextEditResponse This public class belongs to the com.pdfdancer.common.response package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.1."
+description: "Java API reference for TextEditResponse This public class belongs to the com.pdfdancer.common.response package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.3."
 pagination_next: null
 pagination_prev: null
 ---
@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `com.pdfdancer.common.response`  
-**SDK:** `com.pdfdancer.client:pdfdancer-client-java 3.0.1`
+**SDK:** `com.pdfdancer.client:pdfdancer-client-java 3.0.3`
 
 ## Declaration
 
@@ -70,6 +70,12 @@ public java.lang.Integer matched()
 public java.util.List<java.lang.Integer> pagesChanged()
 ```
 
+### `toString`
+
+```java
+public java.lang.String toString()
+```
+
 ### `warnings`
 
 ```java
@@ -82,5 +88,5 @@ public java.util.List<com.pdfdancer.common.response.TextOperationDiagnostic> war
 - [Text Layout and Reflow](../../text-layout)
 - [Error Handling](../../error-handling)
 
-[View source at `20639941174b`](https://github.com/MenschMachine/pdfdancer-client-java/blob/20639941174b14fa131fb31969b69b72eb612c64/src/main/java/com/pdfdancer/common/response/TextEditResponse.java)
+[View source at `035d811184f3`](https://github.com/MenschMachine/pdfdancer-client-java/blob/035d811184f39e687beef3126bcd833e633cb6f3/src/main/java/com/pdfdancer/common/response/TextEditResponse.java)
 

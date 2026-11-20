@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `types`  
-**SDK:** `pdfdancer-client-python 3.0.2`
+**SDK:** `pdfdancer-client-python 3.0.3`
 
 Base class for selectable PDF object references (paths, text lines, etc.)
 providing shared behavior such as position, deletion, and movement.
@@ -75,5 +75,5 @@ Page index where this object resides.
 
 - [Working with Form XObjects](../../working-with-formxobjects)
 
-[View source at `c76a79f72e69`](https://github.com/MenschMachine/pdfdancer-client-python/blob/c76a79f72e694219212d5af0c2085195bdea4eee/src/pdfdancer/types.py)
+[View source at `45e6a10d3374`](https://github.com/MenschMachine/pdfdancer-client-python/blob/45e6a10d33746ee34b0f6a054e9e2a355b5c83ea/src/pdfdancer/types.py)
 

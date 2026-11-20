@@ -1,7 +1,7 @@
 ---
 id: path-object
 title: "PathObject"
-description: "Python API reference for PathObject. Represents a vector path object inside a PDF page. This public class belongs to the types package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.2."
+description: "Python API reference for PathObject. Represents a vector path object inside a PDF page. This public class belongs to the types package and documents API behavior used for PDF document editing and inspection in PDFDancer SDK 3.0.3."
 pagination_next: null
 pagination_prev: null
 ---
@@ -12,7 +12,7 @@ pagination_prev: null
 
 **Kind:** class  
 **Module/package:** `types`  
-**SDK:** `pdfdancer-client-python 3.0.2`
+**SDK:** `pdfdancer-client-python 3.0.3`
 
 Represents a vector path object inside a PDF page.
 
@@ -112,5 +112,5 @@ Page index where this object resides.
 
 - [Working with Vector Graphics](../../working-with-vector-graphics)
 
-[View source at `c76a79f72e69`](https://github.com/MenschMachine/pdfdancer-client-python/blob/c76a79f72e694219212d5af0c2085195bdea4eee/src/pdfdancer/types.py)
+[View source at `45e6a10d3374`](https://github.com/MenschMachine/pdfdancer-client-python/blob/45e6a10d33746ee34b0f6a054e9e2a355b5c83ea/src/pdfdancer/types.py)
 
